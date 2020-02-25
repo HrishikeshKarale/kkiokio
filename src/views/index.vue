@@ -1,5 +1,26 @@
 <template>
   <div class="index">
+    <div class="alert">
+      This site is under construction. Website Launch: Wednesday, February 26,
+      2020 12:00:00 noon.
+      <countdown-timer
+        starttime="Feb 25, 2020 06:24:25"
+        endtime="Feb 26, 2020 12:00:00"
+        trans='{  
+         "day":"Day",
+         "hours":"Hours",
+         "minutes":"Minuts",
+         "seconds":"Seconds",
+         "expired":"Event has been expired.",
+         "running":"Till the end of event.",
+         "upcoming":"Till start of event.",
+         "status": {
+            "expired":"Expired",
+            "running":"Under Construction",
+            "upcoming":"Future"
+           }}'
+      />
+    </div>
     <div class="welcomeText">
       <div>
         <img alt="Kkiokio" src="../assets/logo.svg" />
@@ -43,9 +64,9 @@
             delight and wonder for my users.
           </p>
           <p>
-            Having both a Design and Engineering background allows me to balance
+            Having both a Design and Development background allows me to balance
             both the needs of the end-user as well as the business goals of the
-            company. As a product designer, I strive to use a constant end-user
+            company. As a UX designer, I strive to use a constant end-user
             feedback loop to define and redefine my project objectives. The
             user's needs guide the strategic decisions I make during my UX
             process. This non-linear approach is integral to ensuring that my
@@ -54,14 +75,15 @@
             that my design decisions can be implemented in the final product
             without compromising the project timeline. In short, I like to think
             like an engineer, data-scientist and marketer in addition to being a
-            product designer.
+            UX designer.
           </p>
           <p>
-            I’m also a deeply passionate visual designer. I’ve designed over 30
-            working prototypes in healthcare, cloud-storage, online-shopping and
-            travel using a multitude of prototyping tools including products
-            from Adobe Creative Cloud, Sketch and Figma. My prototyping strategy
-            primarily focuses on functionality and usability.
+            I’m also a novice visual designer. I’ve designed over 30 working
+            prototypes in online-shopping, warehouse-management,
+            inventory-management, fulfillment and healthcare using a multitude
+            of prototyping tools including products from Adobe Creative Cloud,
+            Sketch and Figma. My prototyping strategy primarily focuses on
+            functionality and usability.
           </p>
         </div>
       </div>
@@ -72,12 +94,13 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
+import CountdownTimer from "@/components/countdownTimer.vue";
 
 export default {
   name: "index",
   components: {
     // HelloWorld,
-    // vueHeader,
+    CountdownTimer
   }
 };
 </script>
@@ -95,6 +118,18 @@ div {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
+      &.alert {
+        display: flex;
+        flex-direction: column;
+        background-color: red;
+        padding: 6px 16px;
+        color: white;
+        text-align: center;
+        // & > div {
+        //   display: flex;
+        //   flex-direction: row;
+        // }
+      }
       &.welcomeText {
         & > div {
           & > a {
@@ -129,6 +164,7 @@ div {
       &#aboutMe {
         display: flex;
         flex-direction: column;
+        margin-top: 8vh;
         & > div {
           display: flex;
           flex-direction: column;
