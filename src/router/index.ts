@@ -11,7 +11,30 @@ const routes = [
     component: index
   },
   {
-    path: "/about",
+    path: "/Design",
+    name: "design",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Design.vue")
+  },
+  {
+    path: "/Case Studies",
+    name: "caseStudy",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/CaseStudy.vue")
+  },
+  {
+    path: "/Logo",
+    name: "logo",
+    component: () => import(/* webpackChunkName: "about" */ "../views/Logo.vue")
+  },
+  {
+    path: "/Contact",
+    name: "contact",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Contact.vue")
+  },
+  {
+    path: "/About Me",
     name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

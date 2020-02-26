@@ -1,8 +1,6 @@
 <template>
   <div class="index">
     <div class="alert">
-      This site is under construction. Website Launch: Wednesday, February 26,
-      2020 12:00:00 noon.
       <countdown-timer
         starttime="Feb 25, 2020 06:24:25"
         endtime="Feb 26, 2020 12:00:00"
@@ -11,12 +9,12 @@
          "hours":"Hours",
          "minutes":"Minuts",
          "seconds":"Seconds",
-         "expired":"Event has been expired.",
-         "running":"Till the end of event.",
+         "expired":"Please contact the administrator (hrishirich619@gmail.com).",
+         "running":"Site Launch CountDown",
          "upcoming":"Till start of event.",
          "status": {
-            "expired":"Expired",
-            "running":"Under Construction",
+            "expired":"We apologise fior the delay, Please come back tomorrow.",
+            "running":"Site Under Construction",
             "upcoming":"Future"
            }}'
       />
@@ -93,13 +91,11 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
 import CountdownTimer from "@/components/countdownTimer.vue";
 
 export default {
   name: "index",
   components: {
-    // HelloWorld,
     CountdownTimer
   }
 };
@@ -125,10 +121,10 @@ div {
         padding: 6px 16px;
         color: white;
         text-align: center;
-        // & > div {
-        //   display: flex;
-        //   flex-direction: row;
-        // }
+        & > div {
+          display: flex;
+          flex-direction: row;
+        }
       }
       &.welcomeText {
         & > div {
@@ -169,7 +165,6 @@ div {
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
-          text-align: center;
           &:not(.bio) > div {
             display: flex;
             flex-direction: row;

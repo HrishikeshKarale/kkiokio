@@ -27,57 +27,49 @@ export default {
 .enterpriseAppLayout {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  width: 100%;
 
   & > div {
     display: flex;
     flex-direction: row;
     height: 100%;
 
-    &:last-child {
-      width: 100%;
-    }
+    // &.head {
+    //   background-color: #333333;
+    // }
 
-    &.head {
-      background-color: @secondaryColor;
-      height: auto;
-
-      //   @media screen {
-      //     @media (min-width: 1240px) {
-      //       display: none !important;
-      //     }
-      //   }
-    }
-
-    &.body > div {
+    &.body {
       display: flex;
       flex-direction: column;
       z-index: 1000;
+      height: 100vh;
       width: 100vw;
+      > div {
+        &.menu {
+          display: flex;
+          justify-content: space-between;
+          width: fit-content;
+          position: sticky;
+          top: 0;
+          left: 0;
+          z-index: 2000;
+          background-color: @navBackground;
 
-      &.menu {
-        display: flex;
-        justify-content: space-between;
-        width: fit-content;
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 2000;
-        background-color: @navBackground;
+          .boxShadow(@one);
 
-        .boxShadow(@one);
-
-        & > div:last-child {
-          flex-direction: row-reverse;
+          & > div:last-child {
+            flex-direction: row-reverse;
+          }
         }
-      }
 
-      &.content {
-        padding: @spaceLg @spaceXl;
-        color: @cometText;
-        margin: auto;
+        &.content {
+          padding: @spaceLg @spaceXl;
+          color: @cometText;
+          margin: auto;
 
-        .scroll(95vh);
+          width: 100vw;
+          .scroll(100vh);
+        }
       }
     }
   }
