@@ -15,15 +15,19 @@
     <div class="body">
       <div>
         <template v-for="l in logos">
-          <img :key="l.id" :src="l.link" />
+          <vue-img :key="l.id" :src="l.link" :alt="l.id + ' - ' + l.link" />
         </template>
       </div>
     </div>
   </div>
 </template>
 <script>
+import vueImg from "../components/vueImg.vue";
 export default {
   name: "logo",
+  components: {
+    vueImg
+  },
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logos = [

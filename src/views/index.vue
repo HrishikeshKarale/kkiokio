@@ -21,7 +21,7 @@
     </div> -->
     <div class="welcomeText">
       <div>
-        <img alt="Kkiokio" src="../assets/logo.svg" />
+        <vue-img :src="logo" alt="Kkiokio Logo" />
       </div>
       <div>
         <q
@@ -47,11 +47,19 @@
 <script>
 // @ is an alias to /src
 // import CountdownTimer from "@/components/countdownTimer.vue";
-
+import vueImg from "../components/vueImg.vue";
 export default {
   name: "index",
+  data() {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const logo = require("../assets/logo.svg");
+    return {
+      logo: logo
+    };
+  },
   components: {
     // CountdownTimer
+    vueImg
   }
 };
 </script>

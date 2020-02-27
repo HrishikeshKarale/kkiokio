@@ -1,0 +1,50 @@
+// onerror= "this.onerror=null; this.src='image.png'"
+<template>
+  <img class="vueImg" :src="src ? src : dImageSource" :alt="alt" :title="alt" />
+</template>
+
+<script>
+export default {
+  name: "vueImg",
+
+  data() {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const dImageSource = require("@/assets/default.svg");
+    return {
+      dImageSource: dImageSource
+    }; //return
+  }, //data
+
+  props: {
+    src: {
+      required: false,
+      type: String,
+      default: function(value) {
+        if (value) {
+          return value;
+        }
+        return null;
+      }
+    },
+
+    alt: {
+      required: false,
+      type: String,
+      default: function(value) {
+        if (value) {
+          return value;
+        }
+        return "An image goes here";
+      }
+    }
+  } //props
+}; //default
+</script>
+
+<style lang="less" scoped>
+@import (reference) "../Less/customVariables.less";
+
+.vueImg {
+  display: inline-flex;
+}
+</style>

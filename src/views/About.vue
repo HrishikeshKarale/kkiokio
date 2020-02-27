@@ -14,14 +14,14 @@
     <article>
       <div class="bio">
         <div>
-          <img alt="profile Picture" src="../../public/img/profilePic.jpg" />
+          <vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
         </div>
         <div>
           <p>
             I'm a UX Professional with 3+ years of experience working on several
             major software projects in healthcare, eCommerce and enterprise
-            systems. My primary objectives are to design interfaces that can
-            solve problems and create experiences that initiate a sense of
+            environments. My primary objectives are to design interfaces that
+            can solve problems and create experiences that initiate a sense of
             delight and wonder for my users.
           </p>
           <p>
@@ -51,6 +51,23 @@
     </article>
   </div>
 </template>
+
+<script>
+import vueImg from "@/components/vueImg.vue";
+export default {
+  name: "about",
+  data() {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const profilePic = require("../../public/img/profilePic.jpg");
+    return {
+      profilePic: profilePic
+    };
+  },
+  components: {
+    vueImg
+  }
+};
+</script>
 
 <style lang="less" scoped>
 .about {

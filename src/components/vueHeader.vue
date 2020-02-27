@@ -3,7 +3,7 @@
     <div class="header">
       <div class="logo">
         <router-link :to="'/'" v-if="logoLink">
-          <img :src="logoLink" />
+          <vue-img :src="logoLink" alt="Logo" />
         </router-link>
       </div>
       <div class="nav">
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="navigation">
-      <img :src="logoLink" />
+      <vue-img :src="logoLink" alt="Logo" />
       <span @click.prevent="toggle" class="fas fa-bars" />
       <div v-if="show">
         <slot name="nav" />
@@ -25,6 +25,7 @@
 
 <script>
 import { toggle } from "@/typeScript/toggle";
+import vueImg from "./vueImg.vue";
 export default {
   name: "vueHeader",
 
@@ -35,6 +36,10 @@ export default {
   }, //data
 
   mixins: [toggle],
+
+  components: {
+    vueImg
+  },
 
   props: {
     logoLink: {

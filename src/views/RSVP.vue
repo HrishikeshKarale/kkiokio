@@ -5,7 +5,7 @@
     </router-link>
     <div>
       <div class="header">
-        <img src="../assets/webApp/RSVP.svg" />
+        <vue-img :src="dRSVPImage" alt="RSVP Landing Image" />
         <div>
           <b>RSVP App</b>
         </div>
@@ -13,13 +13,13 @@
           <input
             type="text"
             v-model="dPerson"
-            placeholder="Invite Someone"
+            placeholder="Jon Doe"
             @keypress.enter.prevent="addPerson"
           />
           <vue-button
             buttonType="button"
             buttonName="inviteButton"
-            buttonText="SUBMIT"
+            buttonText="INVITE"
             buttonIcon="fas fa-user-check"
             buttonStyle="standard"
             :onClickAction="addPerson"
@@ -30,7 +30,7 @@
         <div>Attending: {{ attending }}</div>
         <div>Unconfirmed:{{ unconfirmed }}</div>
         <div>total: {{ total }}</div>
-        <div v-if="dPerson.length > 0">
+        <div v-if="dPerson && dPerson.length > 0">
           <div>
             {{ dPerson }}
           </div>
@@ -70,17 +70,22 @@
 
 <script>
 import vueButton from "@/components/vueButton.vue";
+import vueImg from "@/components/vueImg.vue";
 export default {
   data() {
     const dPerson = null;
     const dInvited = null;
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const dRSVPImage = require("../assets/webApp/RSVP.svg");
     return {
       dPerson: dPerson,
-      dInvited: dInvited
+      dInvited: dInvited,
+      dRSVPImage: dRSVPImage
     };
   },
   components: {
-    vueButton
+    vueButton,
+    vueImg
   },
 
   computed: {
@@ -124,8 +129,10 @@ export default {
           for (let i = 0; i < invited.length; i++) {
             if (name == invited[i].name) {
               alreadyExist = true;
+              break;
             } else {
               this.dInvited.push(person);
+              break;
             }
           }
         } else {
@@ -159,6 +166,7 @@ export default {
         }
         & > div {
           &.invite {
+            display: flex;
             position: absolute;
             left: 0;
             right: 0;
@@ -166,7 +174,7 @@ export default {
             margin: auto;
             background-color: #fafbfc;
             width: fit-content;
-            padding: 4px;
+            padding: 8px;
             border-radius: 4px;
             height: 64px;
             .boxShadow(@two);
@@ -177,7 +185,7 @@ export default {
               height: 40px;
               border: none;
               padding: 4px;
-              margin: 4px;
+              margin: auto 4px;
               &:focus,
               &:focus-within {
                 border: none;
