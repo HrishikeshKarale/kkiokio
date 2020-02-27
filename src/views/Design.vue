@@ -1,6 +1,17 @@
 <template>
   <div class="design">
-    <div>
+    <div class="title">
+      <h1>Design</h1>
+      <p>
+        Hello, I am located in Upstate New York area.
+        <br />
+        Feel free to use the contact form below and reach out to me for any
+        questions yo might have.
+        <br />
+        You can also write to me the old fashion way.
+      </p>
+    </div>
+    <div class="body">
       <h2>Mobile</h2>
       <div>
         <router-link :to="'/Design/GoGreen'">
@@ -150,7 +161,17 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   min-width: 480px;
-  & > div {
+  & > .title {
+    margin-bottom: 8vh;
+    & > h1 {
+      text-align: center;
+      & + p {
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+  }
+  & > .body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

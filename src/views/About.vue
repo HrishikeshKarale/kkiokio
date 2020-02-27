@@ -1,13 +1,17 @@
 <template>
   <div class="about">
+    <div class="title">
+      <h1>Hrishikesh Karale</h1>
+      <p>
+        Hello, I am located in Upstate New York area.
+        <br />
+        Feel free to use the contact form below and reach out to me for any
+        questions yo might have.
+        <br />
+        You can also write to me the old fashion way.
+      </p>
+    </div>
     <article>
-      <h1>About Me</h1>
-      <div>
-        <h3>Hrishikesh Karale</h3>
-        <h3>UX Professional</h3>
-        <h4>Full Stack Designer</h4>
-        <h4>Born 14th Feb, 1990</h4>
-      </div>
       <div class="bio">
         <div>
           <img alt="profile Picture" src="../../public/img/profilePic.jpg" />
@@ -50,19 +54,32 @@
 
 <style lang="less" scoped>
 .about {
+  & > .title {
+    margin-bottom: 8vh;
+    & > h1 {
+      text-align: center;
+      & + p {
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+  }
   & > article {
     display: flex;
     flex-direction: column;
     margin-top: 8vh;
+    & > .title {
+      margin-bottom: 8vh;
+      & > h1 {
+        text-align: center;
+        & + p {
+          font-size: 18px;
+          text-align: center;
+        }
+      }
+    }
     & > div {
       display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      &:not(.bio) > div {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
       &.bio {
         flex-direction: row;
         flex-wrap: wrap;
