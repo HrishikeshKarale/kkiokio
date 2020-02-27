@@ -17,6 +17,41 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/Design.vue")
   },
   {
+    path: "/Design/RSVPApp",
+    name: "rsvpApp",
+    component: () => import(/* webpackChunkName: "about" */ "../views/RSVP.vue")
+  },
+  {
+    path: "/Design/SignUpApp",
+    name: "signUpApp",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/SignUpApp.vue")
+  },
+  {
+    path: "/Design/MedCo",
+    name: "medCo",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/MedCo.vue")
+  },
+  {
+    path: "/Design/FitnessFriend",
+    name: "fitnessFriend",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/FitnessFriend.vue")
+  },
+  {
+    path: "/Design/Cilinarian",
+    name: "Cilinarian",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/Cilinarian.vue")
+  },
+  {
+    path: "/Design/GoGreen",
+    name: "goGreen",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/GoGreen.vue")
+  },
+  {
     path: "/Case Studies",
     name: "caseStudy",
     component: () =>

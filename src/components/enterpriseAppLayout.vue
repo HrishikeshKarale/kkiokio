@@ -44,6 +44,7 @@ export default {
       z-index: 1000;
       height: 100vh;
       width: 100vw;
+      .scroll(100vh);
       > div {
         &.menu {
           display: flex;
@@ -67,8 +68,7 @@ export default {
           color: @cometText;
           margin: auto;
 
-          width: 100vw;
-          .scroll(100vh);
+          width: 80vw;
         }
       }
     }

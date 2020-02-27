@@ -5,6 +5,7 @@
         <img :src="selected" />
       </div>
       <div>
+        <h3>Click on an icon to view preview</h3>
         <template v-for="l in logos">
           <img @click.prevent="select(l.link)" :key="l.id" :src="l.link" />
         </template>
@@ -165,24 +166,24 @@ export default {
   flex-wrap: wrap;
   & > div {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column-reverse;
     flex-wrap: wrap;
-    align-items: baseline;
     & > div {
-      margin: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
       & > img {
         width: 32vh;
-        height: auto;
+        height: 50vh;
       }
       &:last-child {
-        align-items: baseline;
-        width: 64vw;
-        .scroll(60vh);
-        .boxShadow(@one);
+        width: 80vw;
+        .scroll(40vh);
         img {
-          margin: 16px;
-          padding: 16px;
-          width: 200px;
+          margin:  8px 16px;
+          border-radius: 8px;
+          padding: 8px;
+          width: 64px;
           height: auto;
           .boxShadow(@two);
           cursor: pointer;

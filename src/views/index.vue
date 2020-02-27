@@ -14,7 +14,7 @@
          "upcoming":"Till start of event.",
          "status": {
             "expired":"We apologise fior the delay, Please come back tomorrow.",
-            "running":"Site Under Construction",
+            "running":"Site is being currently updated.",
             "upcoming":"Future"
            }}'
       />
@@ -34,12 +34,12 @@
           goes a long way
         </q>
       </div>
-      <div>
-        <a href="#aboutMe">
+      <!-- <div>
+        <a href="">
           <b>Scroll Down</b>
           <span class="far fa-arrow-alt-circle-down fa-3x" />
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -64,7 +64,6 @@ div {
   flex-direction: column;
   flex-wrap: nowrap;
   &.index {
-    // margin: 0 auto;
     & > div {
       display: flex;
       flex-direction: column;
@@ -74,6 +73,9 @@ div {
         flex-direction: column;
         background-color: red;
         padding: 6px 16px;
+        position: absolute;
+        top: 80px;
+        width: auto;
         color: white;
         text-align: center;
         & > div {

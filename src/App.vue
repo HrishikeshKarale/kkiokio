@@ -74,7 +74,7 @@ export default {
 
 <style lang="less">
 body {
-  background-color: #fffafa;
+  background-color: white;
   color: #0c090d; //#2c3e50;
   margin: 0;
   height: 100%;

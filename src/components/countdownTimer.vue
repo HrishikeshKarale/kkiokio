@@ -1,5 +1,5 @@
 <template>
-  <div class="timer">
+  <div class="countdownTimer">
     <div class="day">
       <span class="number">{{ days }}</span>
       <div class="format">{{ wordString.day }}</div>
@@ -96,12 +96,13 @@ export default {
 @import (reference) "./../Less/customVariables.less";
 @import (reference) "./../Less/customMixins.less";
 
-.timer {
+.countdownTimer {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   font-size: 20px;
   color: #fff;
-  text-align: center;
+  width: 100%;
 
   .day,
   .hour,
@@ -136,7 +137,7 @@ export default {
   }
   .status-tag {
     width: 270px;
-    margin: 10px auto;
+    margin: 10px 5vw;
     padding: 8px 0;
     font-weight: 500;
     color: #000;
