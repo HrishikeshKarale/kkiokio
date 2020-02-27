@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <div class="alert">
+    <!-- <div class="alert">
       <countdown-timer
         starttime="Feb 25, 2020 06:24:25"
         endtime="Feb 26, 2020 12:00:00"
@@ -18,7 +18,7 @@
             "upcoming":"Future"
            }}'
       />
-    </div>
+    </div> -->
     <div class="welcomeText">
       <div>
         <img alt="Kkiokio" src="../assets/logo.svg" />
@@ -46,12 +46,12 @@
 
 <script>
 // @ is an alias to /src
-import CountdownTimer from "@/components/countdownTimer.vue";
+// import CountdownTimer from "@/components/countdownTimer.vue";
 
 export default {
   name: "index",
   components: {
-    CountdownTimer
+    // CountdownTimer
   }
 };
 </script>

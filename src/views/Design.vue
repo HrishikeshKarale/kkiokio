@@ -68,11 +68,7 @@
           </showcase>
         </router-link>
       </div>
-    </div>
-    <div>
-      <div>
-        <h2>Web Apps</h2>
-      </div>
+      <h2>Web Apps</h2>
       <div>
         <router-link :to="'/Design/RSVPApp'">
           <showcase title="Simple Pack" subtitle="Fulfillment Pack Station">
@@ -174,12 +170,15 @@ export default {
   & > .body {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
 
     & > div {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      & > a,
+      & > a > * {
+        text-decoration: none!;
+      }
     }
   }
 }

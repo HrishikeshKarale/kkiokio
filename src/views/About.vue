@@ -55,7 +55,6 @@
 <style lang="less" scoped>
 .about {
   & > .title {
-    margin-bottom: 8vh;
     & > h1 {
       text-align: center;
       & + p {
@@ -67,7 +66,6 @@
   & > article {
     display: flex;
     flex-direction: column;
-    margin-top: 8vh;
     & > .title {
       margin-bottom: 8vh;
       & > h1 {
@@ -83,7 +81,7 @@
       &.bio {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: space-evenly;
         & > div {
           margin: 8vh 0 8vh 0;
           & > img {
