@@ -6,3 +6,14 @@
     <img src="../assets/mobile/login screen.png" />
   </div>
 </template>
+<style lang="less" scoped>
+@import (reference) "./../Less/customMixins.less";
+@import (reference) "./../Less/customVariables.less";
+.signUpApp {
+  img {
+    margin-top: 64px;
+    width: 80vw;
+    .boxShadow(@two);
+  }
+}
+</style>

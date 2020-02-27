@@ -1,13 +1,21 @@
 <template>
   <div class="logo">
-    <div>
+    <div class="title">
+      <h1>Logo's</h1>
+      <p>
+        A collection of Logo's and other illustrator designs.
+        <br />
+        As a not so creative individual, this is an attept to explore
+        illustrator and try my hand it.
+        <br />
+        Thee are either reproductions, modifications own own ideas and designs
+        that I came up with.
+      </p>
+    </div>
+    <div class="body">
       <div>
-        <img :src="selected" />
-      </div>
-      <div>
-        <h3>Click on an icon to view preview</h3>
         <template v-for="l in logos">
-          <img @click.prevent="select(l.link)" :key="l.id" :src="l.link" />
+          <img :key="l.id" :src="l.link" />
         </template>
       </div>
     </div>
@@ -17,9 +25,28 @@
 export default {
   name: "logo",
   data() {
-    const selected = null;
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logos = [
+      {
+        id: 32,
+        link: require("../assets/logo/Artboard1.svg")
+      },
+      {
+        id: 34,
+        link: require("../assets/logo/Artboard3.svg")
+      },
+      {
+        id: 35,
+        link: require("../assets/logo/Artboard4.svg")
+      },
+      {
+        id: 36,
+        link: require("../assets/logo/Artboard5.svg")
+      },
+      {
+        id: 37,
+        link: require("../assets/logo/Artboard 32.svg")
+      },
       {
         id: 1,
         link: require("../assets/logo/Artboard 1.svg")
@@ -143,17 +170,15 @@ export default {
       {
         id: 31,
         link: require("../assets/logo/Artboard 27.svg")
+      },
+      {
+        id: 33,
+        link: require("../assets/logo/Artboard2.svg")
       }
     ];
     return {
-      selected: selected,
       logos: logos
     };
-  },
-  methods: {
-    select: function(link) {
-      this.selected = link;
-    }
   }
 };
 </script>
@@ -165,28 +190,34 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   & > div {
-    display: flex;
-    flex-direction: column-reverse;
-    flex-wrap: wrap;
-    & > div {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      & > img {
-        width: 32vh;
-        height: 50vh;
+    &.title {
+      margin-bottom: 8vh;
+      & > h1 {
+        text-align: center;
+        & + p {
+          font-size: 18px;
+          text-align: center;
+        }
       }
-      &:last-child {
-        width: 80vw;
-        .scroll(40vh);
-        img {
-          margin:  8px 16px;
-          border-radius: 8px;
-          padding: 8px;
-          width: 64px;
-          height: auto;
-          .boxShadow(@two);
-          cursor: pointer;
+    }
+    &.body {
+      display: flex;
+      flex-direction: column-reverse;
+      flex-wrap: wrap;
+      & > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        &:last-child {
+          img {
+            margin: 8px 16px;
+            border-radius: 8px;
+            padding: 8px;
+            max-width: 16vw;
+            min-width: 320px;
+            height: auto;
+            .boxShadow(@two);
+          }
         }
       }
     }

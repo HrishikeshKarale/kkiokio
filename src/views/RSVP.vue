@@ -30,7 +30,7 @@
         <div>Attending: {{ attending }}</div>
         <div>Unconfirmed:{{ unconfirmed }}</div>
         <div>total: {{ total }}</div>
-        <div v-if="dPerson.length>0">
+        <div v-if="dPerson.length > 0">
           <div>
             {{ dPerson }}
           </div>

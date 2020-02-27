@@ -29,12 +29,12 @@
         </div>
         <div class="phone">
           <h3>Phone Number</h3>
+          <h5>(585) 520-7382</h5>
           <p>
             Hours: 8am - 4pm (EST), everyday
             <br />
             Text messages prefered.
           </p>
-          <h4>(585) 520-7382</h4>
           <i>
             *First time caller(s) are screened using virtual assistan<br />to
             weed out spam calls</i
@@ -47,21 +47,97 @@
           method="post"
           enctype="text/plain"
         >
-          Name:<br />
-          <input type="text" name="name" /><br />
-          E-mail:<br />
-          <input type="text" name="mail" /><br />
-          Phone number:<br />
-          <input type="text" name="mail" /><br />
-          Message:<br />
-          <input type="text" name="comment" size="50" /><br /><br />
-          <input type="submit" value="Send" />
-          <input type="reset" value="Reset" />
+          <text-input
+            label="NAME"
+            name="nameTextField"
+            v-model="name"
+            placeholder="John Doe"
+            :required="booleanTrue"
+          />
+          <email-input
+            label="E-MAIL"
+            name="emailField"
+            v-model="email"
+            placeholder="JDoe@email.com"
+            inputIcon="far fa-envelope"
+            :required="booleanTrue"
+          />
+          <phone-input
+            label="PHONE NUMBER"
+            name="phoneInputField"
+            v-model="phone"
+            placeholder="555 555 5555"
+          />
+          <vue-textarea
+            label="MESSAGE"
+            name="messageTextareaField"
+            v-model="message"
+            placeholder="John Doe"
+            :required="booleanTrue"
+          />
+          <div class="button">
+            <vue-button
+              buttonType="submit"
+              buttonName="submitButton"
+              buttonText="SUBMIT"
+              buttonIcon="fas fa-envelop"
+              buttonStyle="small"
+              :onClickAction="sendMail"
+              inputIcon="far fa-comment-dots"
+            />
+          </div>
         </form>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import vueButton from "../components/vueButton.vue";
+import textInput from "../components/textInput.vue";
+import emailInput from "../components/emailInput.vue";
+import phoneInput from "../components/phoneInput.vue";
+import vueTextarea from "../components/vueTextarea.vue";
+export default {
+  data() {
+    const name = null;
+    const email = null;
+    const phone = null;
+    const comment = null;
+    const booleanTrue = true;
+    return {
+      name: name,
+      email: email,
+      phone: phone,
+      comment: comment,
+      booleanTrue: booleanTrue
+    };
+  },
+  name: "contact",
+  components: {
+    vueButton,
+    textInput,
+    emailInput,
+    phoneInput,
+    vueTextarea
+  },
+  methods: {
+    sendMail: function() {
+      window.open(
+        "mailto:hrishikesh.karale@gmail.com?subject=portfolio website (" +
+          this.name +
+          " " +
+          this.email +
+          " " +
+          this.phone +
+          ")&body=" +
+          this.comment
+      );
+    }
+  }
+};
+</script>
+
 <style lang="less" scoped>
 @import (reference) "./../Less/customMixins.less";
 @import (reference) "./../Less/customVariables.less";
@@ -69,9 +145,12 @@
 .contact {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 
   & > div {
     &.title {
+      margin-bottom: 8vh;
       & > h1 {
         text-align: center;
         & + p {
@@ -83,7 +162,7 @@
     &.body {
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: space-evenly;
       & > div {
         display: flex;
         flex-direction: column;
@@ -96,9 +175,20 @@
             justify-content: space-around;
           }
         }
-
         &.contactForm {
           display: flex;
+          flex-direction: column;
+          max-width: 40vw;
+          min-width: 24opx;
+          padding: 16px;
+          background-color: #fafbfc;
+          border-radius: 8px;
+          .boxShadow(@one);
+          & > form {
+            & > div {
+              margin-top: 16px;
+            }
+          }
         }
       }
     }

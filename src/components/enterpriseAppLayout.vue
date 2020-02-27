@@ -69,6 +69,9 @@ export default {
           margin: auto;
 
           width: 80vw;
+          & > div {
+            margin-bottom: 80px;
+          }
         }
       }
     }
