@@ -71,7 +71,7 @@
           <vue-textarea
             label="MESSAGE"
             name="messageTextareaField"
-            v-model="message"
+            v-model="comment"
             placeholder="John Doe"
             :required="booleanTrue"
           />
