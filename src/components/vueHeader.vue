@@ -145,6 +145,14 @@ export default {
             display: flex;
             flex-direction: column;
             margin: 0 2vw;
+            padding: 8px;
+            border-radius: 8px;
+            &:hover {
+              & > a {
+                color: @primaryColor;
+                text-decoration: none;
+              }
+            }
             & > a {
               width: 100%;
               color: white;

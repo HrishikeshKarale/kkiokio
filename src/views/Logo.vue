@@ -3,12 +3,12 @@
     <div class="title">
       <h1>Logo's</h1>
       <p>
-        A collection of Logo's and other illustrator designs.
+        A collection of Logo's and other illustrator Projects.
         <br />
         As a not so creative individual, this is an attept to explore
         illustrator and try my hand it.
         <br />
-        Thee are either reproductions, modifications own own ideas and designs
+        Thee are either reproductions, modifications own own ideas and Projects
         that I came up with.
       </p>
     </div>

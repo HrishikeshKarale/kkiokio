@@ -1,0 +1,29 @@
+[debug] [2020-02-28T00:00:42.540Z] ----------------------------------------------------------------------
+[debug] [2020-02-28T00:00:42.542Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kkiokio\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2020-02-28T00:00:42.542Z] CLI Version:   7.13.1
+[debug] [2020-02-28T00:00:42.542Z] Platform:      win32
+[debug] [2020-02-28T00:00:42.542Z] Node Version:  v10.15.0
+[debug] [2020-02-28T00:00:42.543Z] Time:          Thu Feb 27 2020 19:00:42 GMT-0500 (Eastern Standard Time)
+[debug] [2020-02-28T00:00:42.543Z] ----------------------------------------------------------------------
+[debug] [2020-02-28T00:00:42.543Z] 
+[debug] [2020-02-28T00:00:42.558Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-28T00:00:42.559Z] > authorizing via signed-in user
+[debug] [2020-02-28T00:00:42.559Z] [iam] checking project portfolio-website-689b4 for permissions ["firebase.projects.get"]
+[debug] [2020-02-28T00:00:42.561Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-02-28T00:00:42.561Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-02-28T00:00:42.790Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-28T00:00:42.802Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/portfolio-website-689b4:testIamPermissions  
+
+[debug] [2020-02-28T00:00:43.036Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-28T00:00:43.037Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/portfolio-website-689b4  
+ 
+[debug] [2020-02-28T00:00:43.322Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Website desing\kkiokio\kkiokio'...
+[info] 
+[debug] [2020-02-28T00:00:43.326Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/portfolio-website-689b4/webApps/-/config  
+ 
+[debug] [2020-02-28T00:00:43.603Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: dist
+[info] +  hosting: Local server: http://localhost:5000

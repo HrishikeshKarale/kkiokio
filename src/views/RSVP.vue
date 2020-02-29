@@ -1,6 +1,6 @@
 <template>
   <div class="rsvp">
-    <router-link to="/Design">
+    <router-link to="/Project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div>
@@ -18,7 +18,7 @@
           />
           <vue-button
             buttonType="button"
-            buttonName="inviteButton"
+            buttopName="inviteButton"
             buttonText="INVITE"
             buttonIcon="fas fa-user-check"
             buttonStyle="standard"
@@ -27,41 +27,65 @@
         </div>
       </div>
       <div class="body">
-        <div>Attending: {{ attending }}</div>
-        <div>Unconfirmed:{{ unconfirmed }}</div>
-        <div>total: {{ total }}</div>
-        <div v-if="dPerson && dPerson.length > 0">
+        <div class="details">
+          <div>
+            <h2>Invitees</h2>
+            <!-- <vue-button
+              buttonType="button"
+              buttopName="toggleButton"
+              :buttonText="show ? 'Attending' : 'ALL'"
+              buttonStyle="small"
+              buttonIcon="fas fa-eye"
+              :onClickAction="toggle.bind()"
+            /> -->
+          </div>
+          <div>
+            <div>Attending: {{ attending }}</div>
+            <div>Unconfirmed:{{ unconfirmed }}</div>
+            <div>total: {{ total }}</div>
+          </div>
+        </div>
+        <div v-if="dPerson">
           <div>
             {{ dPerson }}
           </div>
           <div>
-            <input
-              type="checkbox"
-              :id="dPerson"
-              :name="dPerson"
-              :checked="invited.status"
-            />
+            <input type="checkbox" :id="dPerson" :name="dPerson" />
+            <label :for="dPerson">Confirmed</label>
           </div>
         </div>
         <template v-if="dInvited">
-          <div v-for="invited in dInvited" :key="invited.name">
-            <div>
-              {{ invited.name }}
+          <template v-for="(invited, index) in dInvited">
+            <div :key="index">
+              <div>
+                {{ invited.name }}
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  :id="invited.name"
+                  :name="invited.name"
+                  v-model="invited.status"
+                  :checked="invited.status"
+                />
+                <label :for="invited.name">Confirmed</label>
+              </div>
             </div>
-            <div>
-              <input
-                type="checkbox"
-                :id="invited.name"
-                :name="invited.name"
-                v-model="invited.status"
-                :checked="invited.status"
+            <div :key="index + 'buttons'">
+              <vue-button
+                buttopName="editButton"
+                buttonStyle="icon"
+                buttonIcon="fas fa-pen"
+                :onClickAction="updateInvited.bind(this, invited.name, false)"
               />
-              <label for="invited.name">Confirmed</label>
+              <vue-button
+                buttopName="deleteButton"
+                buttonStyle="icon"
+                buttonIcon="fas fa-eye"
+                :onClickAction="updateInvited.bind(this, invited.name, true)"
+              />
             </div>
-            <div>
-              {{ invited.name }}
-            </div>
-          </div>
+          </template>
         </template>
       </div>
     </div>
@@ -71,23 +95,27 @@
 <script>
 import vueButton from "@/components/vueButton.vue";
 import vueImg from "@/components/vueImg.vue";
+import { toggle } from "../typeScript/toggle";
 export default {
+  name: "rsvp",
   data() {
     const dPerson = null;
     const dInvited = null;
+    const dEdit = null;
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const dRSVPImage = require("../assets/webApp/RSVP.svg");
     return {
-      dPerson: dPerson,
-      dInvited: dInvited,
-      dRSVPImage: dRSVPImage
+      dPerson,
+      dInvited,
+      dRSVPImage,
+      dEdit
     };
   },
   components: {
     vueButton,
     vueImg
   },
-
+  mixins: [toggle],
   computed: {
     attending: function() {
       const invited = this.dInvited;
@@ -118,16 +146,42 @@ export default {
   },
 
   methods: {
-    addPerson: function() {
-      const name = this.dPerson;
-      let alreadyExist = false;
-      if (name) {
+    updateInvited: function(pName, remove) {
+      console.log(pName, remove, this.dEdit);
+      if (pName) {
         const invited = this.dInvited;
-        this.dPerson = null;
-        let person = { name: name, status: false };
         if (invited) {
           for (let i = 0; i < invited.length; i++) {
-            if (name == invited[i].name) {
+            if (pName == invited[i].name) {
+              if (remove) {
+                invited.splice(i, 1);
+              } else {
+                if (this.dEdit) {
+                  if (this.edit.includes(i)) {
+                    return;
+                  } else {
+                    this.dEdit.push(i);
+                  }
+                } else {
+                  this.dEdit = new Array(i);
+                }
+              }
+              return;
+            }
+          }
+        }
+      }
+    },
+    addPerson: function() {
+      const pName = this.dPerson;
+      let alreadyExist = false;
+      if (pName) {
+        const invited = this.dInvited;
+        this.dPerson = null;
+        let person = { name: pName, status: false };
+        if (invited) {
+          for (let i = 0; i < invited.length; i++) {
+            if (pName == invited[i].name) {
               alreadyExist = true;
               break;
             } else {
@@ -157,6 +211,22 @@ export default {
     & > div {
       &.body {
         display: flex;
+        flex-direction: column;
+        & > div {
+          display: flex;
+          flex-direction: row;
+          margin: 8px 16px;
+
+          &.details {
+            justify-content: space-between;
+            & > div {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              text-align: right;
+            }
+          }
+        }
       }
       &.header {
         position: relative;
@@ -166,7 +236,6 @@ export default {
         }
         & > div {
           &.invite {
-            display: flex;
             position: absolute;
             left: 0;
             right: 0;

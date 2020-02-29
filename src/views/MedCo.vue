@@ -1,6 +1,6 @@
 <template>
   <div class="medco">
-    <router-link to="/Design">
+    <router-link to="/Project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <vue-img

@@ -71,8 +71,8 @@
           <vue-textarea
             label="MESSAGE"
             name="messageTextareaField"
-            v-model="message"
-            placeholder="John Doe"
+            v-model="comment"
+            placeholder="message"
             :required="booleanTrue"
           />
           <div class="button">
@@ -98,6 +98,7 @@ import textInput from "../components/textInput.vue";
 import emailInput from "../components/emailInput.vue";
 import phoneInput from "../components/phoneInput.vue";
 import vueTextarea from "../components/vueTextarea.vue";
+// import nodemailer from "nodemailer";
 export default {
   data() {
     const name = null;
@@ -105,12 +106,30 @@ export default {
     const phone = null;
     const comment = null;
     const booleanTrue = true;
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    // const nodemailer = require("nodemailer");
+    // const transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: "hrishikesh.karale@gmail.com",
+    //     pass: "kkiokio6199"
+    //   }
+    // });
+    const mailOptions = {
+      from: "",
+      to: "",
+      subject: "",
+      text: ""
+    };
     return {
-      name: name,
-      email: email,
-      phone: phone,
-      comment: comment,
-      booleanTrue: booleanTrue
+      name,
+      email,
+      phone,
+      comment,
+      booleanTrue,
+      // nodemailer,
+      // transporter,
+      mailOptions
     };
   },
   name: "contact",
@@ -123,6 +142,14 @@ export default {
   },
   methods: {
     sendMail: function() {
+      // this.mailOptions["from"] = this.email;
+      // this.mailOptions["to"] = "hrishikesh.karale@gmail.com";
+      // this.mailOptions["subject"] =
+      //   "FW: kkiokio.com" + " " + this.name + " " + this.phone;
+      // this.mailOptions["text"] = this.comment;
+      // this.transporter.sendMail(this.mailOptions, function(error, info) {
+      //   if (error) {
+      //     console.log(error);
       window.open(
         "mailto:hrishikesh.karale@gmail.com?subject=portfolio website (" +
           this.name +
@@ -133,6 +160,22 @@ export default {
           ")&body=" +
           this.comment
       );
+      // } else {
+      //   alert("Email sent: " + info.response);
+      //   this.mailOptions["from"] = "hrishikesh.karale@gmail.com";
+      //   this.mailOptions["to"] = this.email;
+      //   this.mailOptions["subject"] =
+      //     "FW: kkiokio.com" + " " + this.name + " " + this.phone;
+      //   this.mailOptions["text"] = this.comment;
+      //   this.transporter.sendMail(this.mailOptions, function(error, info) {
+      //     if (error) {
+      //       console.log(error);
+      //     } else {
+      //       console.log("Email sent: " + info.response);
+      //     }
+      //   });
+      //   }
+      // });
     }
   }
 };

@@ -3,7 +3,7 @@
     <!-- <div class="alert">
       <countdown-timer
         starttime="Feb 25, 2020 06:24:25"
-        endtime="Feb 26, 2020 12:00:00"
+        endtime="Feb 28, 2020 12:00:00"
         trans='{  
          "day":"Day",
          "hours":"Hours",
@@ -58,7 +58,7 @@ export default {
     };
   },
   components: {
-    // CountdownTimer
+    // CountdownTimer,
     vueImg
   }
 };
@@ -82,8 +82,10 @@ div {
         background-color: red;
         padding: 6px 16px;
         position: absolute;
+        border-radius: 8px;
+        .boxShadow(@one);
         top: 80px;
-        width: auto;
+        width: 80vw;
         color: white;
         text-align: center;
         & > div {

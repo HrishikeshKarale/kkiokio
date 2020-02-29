@@ -11,42 +11,48 @@ const routes = [
     component: index
   },
   {
-    path: "/Design",
-    name: "design",
+    path: "/Project",
+    name: "Project",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Design.vue")
+      import(/* webpackChunkName: "about" */ "../views/Project.vue")
   },
   {
-    path: "/Design/RSVPApp",
+    path: "/Project/RSVPApp",
     name: "rsvpApp",
     component: () => import(/* webpackChunkName: "about" */ "../views/RSVP.vue")
   },
   {
-    path: "/Design/SignUpApp",
+    path: "/Project/SignUpApp",
     name: "signUpApp",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/SignUpApp.vue")
   },
   {
-    path: "/Design/MedCo",
+    path: "/Project/MedCo",
     name: "medCo",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/MedCo.vue")
   },
   {
-    path: "/Design/FitnessFriend",
+    path: "/Project/FitnessFriend",
     name: "fitnessFriend",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/FitnessFriend.vue")
   },
   {
-    path: "/Design/Culinarian",
+    path: "/Project/Culinarian",
     name: "Culinarian",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Culinarian.vue")
   },
   {
-    path: "/Design/GoGreen",
+    path: "/Project/PackStation",
+    name: "packStation",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/PackStation.vue")
+  },
+  {
+    path: "/Project/GoGreen",
     name: "goGreen",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/GoGreen.vue")

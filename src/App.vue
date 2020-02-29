@@ -12,9 +12,9 @@
               </router-link>
             </div>
             <div>
-              <router-link :to="'/Design'" v-if="logoLink">
+              <router-link :to="'/Project'" v-if="logoLink">
                 <span class="fas fa-swatchbook" />
-                <div>Designs</div>
+                <div>Projects</div>
               </router-link>
             </div>
             <div>
@@ -79,6 +79,7 @@ body {
   margin: 0;
   height: 100%;
   overflow-y: hidden;
+  font-size: 18px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

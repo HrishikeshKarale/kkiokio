@@ -1,6 +1,6 @@
 <template>
   <div class="fitnessFriend">
-    <router-link to="/Design">
+    <router-link to="/Project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <vue-img :src="dFitnessFriend" alt="Concept walkthroughfor a fitness app" />

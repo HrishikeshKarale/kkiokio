@@ -5,7 +5,7 @@
       <div class="sub-title">{{ subtitle }}</div>
     </div>
     <div class="description">
-      <slot name="tech" />
+      <slot name="description" />
     </div>
   </div>
 </template>
