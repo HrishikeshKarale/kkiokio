@@ -105,6 +105,18 @@ export default {
             link: "/Project/RSVPApp"
           }
         ]
+      },
+      {
+        type: "JS",
+        value: [
+          {
+            id: 1,
+            title: "DrumKit",
+            subtitle: "Javascript Drumkit",
+            descritpion: "",
+            link: "/Project/JS/DrumKit"
+          }
+        ]
       }
     ];
     return {

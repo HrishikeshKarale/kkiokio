@@ -14,7 +14,21 @@ const routes = [
     path: "/Project",
     name: "Project",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Project.vue")
+      import(/* webpackChunkName: "about" */ "../views/Project.vue"),
+    // children: [
+    //   {
+    //     path: "JS/DrumKit",
+    //     name: "drumKit",
+    //     component: () =>
+    //       import(/* webpackChunkName: "about" */ "../views/JS/DrumKit.vue")
+    //   }
+    // ]
+  },
+  {
+    path: "/Project/JS/DrumKit",
+    name: "drumKit",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/JS/DrumKit.vue")
   },
   {
     path: "/Project/RSVPApp",
