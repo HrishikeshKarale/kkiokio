@@ -56,13 +56,17 @@ export default {
       //do something
       const time = new Date();
       //date
-      this.date = time.getDate();
-      this.month = time.getMonth();
+      this.date = time.getDate() >= 10 ? time.getDate() : "0" + time.getDate();
+      this.month =
+        time.getMonth() >= 10 ? time.getMonth() : "0" + time.getMonth();
       this.year = time.getFullYear();
       //time
-      this.hours = time.getHours();
-      this.minutes = time.getMinutes();
-      this.seconds = time.getSeconds();
+      this.hours =
+        time.getHours() >= 10 ? time.getHours() : "0" + time.getHours();
+      this.minutes =
+        time.getMinutes() >= 10 ? time.getMinutes() : "0" + time.getMinutes();
+      this.seconds =
+        time.getSeconds() >= 10 ? time.getSeconds() : "0" + time.getSeconds();
       //clock hand manipulation
       const hourAngle = 90 + (this.hours / 12) * 360;
       const minuteAngle = 90 + (this.minutes / 60) * 360;
