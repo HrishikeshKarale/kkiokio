@@ -93,11 +93,11 @@
 </template>
 
 <script>
-import vueButton from "../components/vueButton.vue";
-import textInput from "../components/textInput.vue";
-import emailInput from "../components/emailInput.vue";
-import phoneInput from "../components/phoneInput.vue";
-import vueTextarea from "../components/vueTextarea.vue";
+import vueButton from "@/components/vueButton.vue";
+import textInput from "@/components/textInput.vue";
+import emailInput from "@/components/emailInput.vue";
+import phoneInput from "@/components/phoneInput.vue";
+import vueTextarea from "@/components/vueTextarea.vue";
 // import nodemailer from "nodemailer";
 export default {
   data() {

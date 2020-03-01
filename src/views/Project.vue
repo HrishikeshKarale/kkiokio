@@ -43,7 +43,7 @@ export default {
             subtitle: "Onboarding Screen for the Go Green App",
             descritpion:
               "GoGreen is online IOS app, where user can select from a list of flora, customize planters according to their needs and place order easily.",
-            link: "/Project/GoGreen"
+            link: "/Project/MobileUX//GoGreen"
           },
           {
             id: 2,
@@ -53,7 +53,7 @@ export default {
               "The Cullinarian App is an mobile aimed targetted towardsindividuals who like to cook.\
               <br />\
               The app walks users towards cooking home made cusines and thus promoting a healthy lifestyle.",
-            link: "/Project/Culinarian"
+            link: "/Project/MobileUX//Culinarian"
           },
           {
             id: 3,
@@ -63,7 +63,7 @@ export default {
               "The Go Green App is an mobile aimed towards the medical industry.\
               <br />\
               Users can look up details of services offered by various hospitals and the cost associated with those services.",
-            link: "/Project/MedCo"
+            link: "/Project/MobileUX//MedCo"
           },
           {
             id: 4,
@@ -73,14 +73,14 @@ export default {
               "A Fitness tracker app for smart watch.\
               <br />\
               It helps its users keep track of their daily activity and vitals.",
-            link: "/Project/FitnessFriend"
+            link: "/Project/MobileUX//FitnessFriend"
           },
           {
             id: 5,
             title: "App Login/SignUp",
             subtitle: "Login, SignUp Screens",
             descritpion: "Login/SignUp screen for a mobile app.",
-            link: "/Project/SignUpApp"
+            link: "/Project/MobileUX//SignUpApp"
           }
         ]
       },
@@ -95,14 +95,14 @@ export default {
               "The pack station is Projected to allow users to pack and ship orders.\
               <br />\
               Simple Pack supports orders with original packaging and default box items.",
-            link: "/Project/PackStation"
+            link: "/Project/web-UX/PackStation"
           },
           {
             id: 2,
             title: "RSVP",
             subtitle: "an interactive RSVP APP in progress..",
             descritpion: "details coming soon",
-            link: "/Project/RSVPApp"
+            link: "/Project/web-UX/RSVPApp"
           }
         ]
       },
@@ -112,9 +112,16 @@ export default {
           {
             id: 1,
             title: "DrumKit",
-            subtitle: "Javascript Drumkit",
+            subtitle: "Drum-kit",
             descritpion: "",
             link: "/Project/JS/DrumKit"
+          },
+          {
+            id: 2,
+            title: "AnalogCLock",
+            subtitle: "Analogue Clock",
+            descritpion: "",
+            link: "/Project/JS/AnalogCLock"
           }
         ]
       }

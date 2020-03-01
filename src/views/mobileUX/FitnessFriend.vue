@@ -7,11 +7,11 @@
   </div>
 </template>
 <script>
-import vueImg from "../components/vueImg.vue";
+import vueImg from "@/components/vueImg.vue";
 export default {
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dFitnessFriend = require("../assets/mobile/fitness friend.png");
+    const dFitnessFriend = require("@/assets/mobile/fitness friend.png");
     return {
       dFitnessFriend: dFitnessFriend
     };
@@ -22,8 +22,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../Less/customMixins.less";
-@import (reference) "./../Less/customVariables.less";
+@import (reference) "./../../Less/customMixins.less";
+@import (reference) "./../../Less/customVariables.less";
 .fitnessFriend {
   img {
     margin-top: 64px;

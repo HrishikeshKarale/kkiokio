@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-import vueImg from "../components/vueImg.vue";
+import vueImg from "@/components/vueImg.vue";
 export default {
   name: "packStation",
   components: {
@@ -38,43 +38,43 @@ export default {
     const screens = [
       {
         id: 32,
-        link: require("../assets/packstation/loginPage Packaging.jpg")
+        link: require("@/assets/packstation/loginPage Packaging.jpg")
       },
       {
         id: 34,
-        link: require("../assets/packstation/1.svg")
+        link: require("@/assets/packstation/1.svg")
       },
       {
         id: 35,
-        link: require("../assets/packstation/2.svg")
+        link: require("@/assets/packstation/2.svg")
       },
       {
         id: 36,
-        link: require("../assets/packstation/3.svg")
+        link: require("@/assets/packstation/3.svg")
       },
       {
         id: 37,
-        link: require("../assets/packstation/4.svg")
+        link: require("@/assets/packstation/4.svg")
       },
       {
         id: 1,
-        link: require("../assets/packstation/5.svg")
+        link: require("@/assets/packstation/5.svg")
       },
       {
         id: 2,
-        link: require("../assets/packstation/6.svg")
+        link: require("@/assets/packstation/6.svg")
       },
       {
         id: 3,
-        link: require("../assets/packstation/7.svg")
+        link: require("@/assets/packstation/7.svg")
       },
       {
         id: 4,
-        link: require("../assets/packstation/8.svg")
+        link: require("@/assets/packstation/8.svg")
       },
       {
         id: 5,
-        link: require("../assets/packstation/9.svg")
+        link: require("@/assets/packstation/9.svg")
       }
     ];
     return {
@@ -84,8 +84,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../Less/customMixins.less";
-@import (reference) "./../Less/customVariables.less";
+@import (reference) "./../../Less/customMixins.less";
+@import (reference) "./../../Less/customVariables.less";
 .packStation {
   display: flex;
   flex-direction: column;

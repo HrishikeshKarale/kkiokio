@@ -95,7 +95,7 @@
 <script>
 import vueButton from "@/components/vueButton.vue";
 import vueImg from "@/components/vueImg.vue";
-import { toggle } from "../typeScript/toggle";
+import { toggle } from "@/typeScript/toggle";
 export default {
   name: "rsvp",
   data() {
@@ -103,7 +103,7 @@ export default {
     const dInvited = null;
     const dEdit = null;
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dRSVPImage = require("../assets/webApp/RSVP.svg");
+    const dRSVPImage = require("@/assets/webApp/RSVP.svg");
     return {
       dPerson,
       dInvited,
@@ -204,8 +204,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import (reference) "../Less/customVariables.less";
-@import (reference) "../Less/customMixins.less";
+@import (reference) "../../Less/customVariables.less";
+@import (reference) "../../Less/customMixins.less";
 .rsvp {
   & > div {
     & > div {

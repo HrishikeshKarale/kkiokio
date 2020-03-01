@@ -1,22 +1,22 @@
 <template>
-  <div class="signUpApp">
+  <div class="medco">
     <router-link to="/Project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <vue-img
-      :src="dSignUpApp"
+      :src="dMedco"
       alt="Onboarding Screen ideas for a croudsource tree plntation app"
     />
   </div>
 </template>
 <script>
-import vueImg from "../components/vueImg.vue";
+import vueImg from "@/components/vueImg.vue";
 export default {
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dSignUpApp = require("../assets/mobile/login screen.png");
+    const dMedco = require("@/assets/mobile/medical research.png");
     return {
-      dSignUpApp: dSignUpApp
+      dMedco: dMedco
     };
   },
   components: {
@@ -25,9 +25,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../Less/customMixins.less";
-@import (reference) "./../Less/customVariables.less";
-.signUpApp {
+@import (reference) "./../../Less/customMixins.less";
+@import (reference) "./../../Less/customVariables.less";
+.medco {
   img {
     margin-top: 64px;
     width: 80vw;
