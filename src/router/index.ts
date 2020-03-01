@@ -37,6 +37,12 @@ const routes = [
       import(/* webpackChunkName: "about" */ "@/views/js/AnalogClock.vue")
   },
   {
+    path: "/Project/JS/ArrayCardio",
+    name: "arrayCardio",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/js/ArrayCardio.vue")
+  },
+  {
     path: "/Project/web-UX/PackStation",
     name: "packStation",
     component: () =>

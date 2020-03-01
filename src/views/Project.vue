@@ -122,6 +122,13 @@ export default {
             subtitle: "Analogue Clock",
             descritpion: "",
             link: "/Project/JS/AnalogCLock"
+          },
+          {
+            id: 3,
+            title: "ArrayCardio",
+            subtitle: "Array Cardio (filter, sory, map, reduce)",
+            descritpion: "",
+            link: "/Project/JS/ArrayCardio"
           }
         ]
       }
