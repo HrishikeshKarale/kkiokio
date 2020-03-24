@@ -122,6 +122,48 @@ export default {
             subtitle: "Analogue Clock",
             descritpion: "",
             link: "/Project/JS/AnalogCLock"
+          },
+          {
+            id: 3,
+            title: "Array Cardio",
+            subtitle: "Array Cardio (filter, sory, map, reduce)",
+            descritpion: "",
+            link: "/Project/JS/ArrayCardio"
+          },
+          {
+            id: 4,
+            title: "Image Gallery",
+            subtitle: "Langing page/Image galery",
+            descritpion: "",
+            link: "/Project/JS/ImageGalery"
+          },
+          {
+            id: 5,
+            title: "Fetch API",
+            subtitle: "Fetch API",
+            descritpion: "",
+            link: "/Project/JS/FetchApi"
+          },
+          {
+            id: 6,
+            title: "Canvas",
+            subtitle: "HTML5 Canvas",
+            descritpion: "",
+            link: "/Project/JS/CanvasExample"
+          },
+          {
+            id: 7,
+            title: "CheckboxChallange",
+            subtitle: "Checkbox Challange",
+            descritpion: "",
+            link: "/Project/JS/CheckboxChallange"
+          },
+          {
+            id: 8,
+            title: "KonamiCode",
+            subtitle: "Konami Code",
+            descritpion: "",
+            link: "/Project/JS/KonamiCode"
           }
         ]
       }

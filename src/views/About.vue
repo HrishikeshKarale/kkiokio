@@ -91,7 +91,6 @@ export default {
         type: "Tools & Technologies",
         value: [
           "SASS",
-          "HTML5",
           "D3.js",
           "Java",
           "C#",
