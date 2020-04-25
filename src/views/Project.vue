@@ -14,14 +14,16 @@
     <div class="body">
       <template v-for="project in projectDescription">
         <h2 :key="project.type">{{ project.type }}</h2>
-        <div v-for="value in project.value" :key="value.id">
-          <router-link :to="value.link">
-            <showcase :title="value.title" :subtitle="value.subtitle">
-              <p slot="description">
-                <span v-html="value.description" />
-              </p>
-            </showcase>
-          </router-link>
+        <div :key="project">
+          <div v-for="value in project.value" :key="value.id">
+            <router-link :to="value.link">
+              <showcase :title="value.title" :subtitle="value.subtitle">
+                <p slot="description">
+                  <span v-html="value.description" />
+                </p>
+              </showcase>
+            </router-link>
+          </div>
         </div>
       </template>
     </div>
@@ -125,10 +127,52 @@ export default {
           },
           {
             id: 3,
-            title: "ArrayCardio",
+            title: "Array Cardio",
             subtitle: "Array Cardio (filter, sory, map, reduce)",
             descritpion: "",
             link: "/Project/JS/ArrayCardio"
+          },
+          {
+            id: 4,
+            title: "Image Gallery",
+            subtitle: "Langing page/Image galery",
+            descritpion: "",
+            link: "/Project/JS/ImageGalery"
+          },
+          {
+            id: 5,
+            title: "Fetch API",
+            subtitle: "Fetch API",
+            descritpion: "",
+            link: "/Project/JS/FetchApi"
+          },
+          {
+            id: 6,
+            title: "Canvas",
+            subtitle: "HTML5 Canvas",
+            descritpion: "",
+            link: "/Project/JS/CanvasExample"
+          },
+          {
+            id: 7,
+            title: "CheckboxChallange",
+            subtitle: "Checkbox Challange",
+            descritpion: "",
+            link: "/Project/JS/CheckboxChallange"
+          },
+          {
+            id: 8,
+            title: "KonamiCode",
+            subtitle: "Konami Code",
+            descritpion: "",
+            link: "/Project/JS/KonamiCode"
+          },
+          {
+            id: 9,
+            title: "ScrollIn",
+            subtitle: "Scroll JS",
+            descritpion: "",
+            link: "/Project/JS/ScrollIn"
           }
         ]
       }
@@ -166,6 +210,7 @@ export default {
     & > div {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       & > a,
       & > a > * {
         text-decoration: none;

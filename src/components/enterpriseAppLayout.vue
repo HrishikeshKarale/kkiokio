@@ -93,7 +93,7 @@ export default {
           border-radius: 4px;
           text-align: center;
           .boxShadow(@three);
-          & > a  {
+          & > a {
             padding: 16px;
             color: white;
             font-weight: 24px;

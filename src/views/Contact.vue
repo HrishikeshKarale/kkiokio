@@ -80,10 +80,9 @@
               buttonType="submit"
               buttonName="submitButton"
               buttonText="SUBMIT"
-              buttonIcon="fas fa-envelop"
+              buttonIcon="fas fa-comment-dots"
               buttonStyle="small"
               :onClickAction="sendMail"
-              inputIcon="far fa-comment-dots"
             />
           </div>
         </form>

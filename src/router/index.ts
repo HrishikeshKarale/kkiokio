@@ -43,6 +43,42 @@ const routes = [
       import(/* webpackChunkName: "about" */ "@/views/js/ArrayCardio.vue")
   },
   {
+    path: "/Project/JS/ImageGalery",
+    name: "imageGalery",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/js/ImageGalery.vue")
+  },
+  {
+    path: "/Project/JS/FetchApi",
+    name: "fetchApi",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/js/FetchApi.vue")
+  },
+  {
+    path: "/Project/JS/CanvasExample",
+    name: "canvasExample",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/js/CanvasExample.vue")
+  },
+  {
+    path: "/Project/JS/CheckboxChallange",
+    name: "checkboxChallange",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/js/CheckboxChallange.vue")
+  },
+  {
+    path: "/Project/JS/KonamiCode",
+    name: "konamiCode",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/js/KonamiCode.vue")
+  },
+  {
+    path: "/Project/JS/ScrollIn",
+    name: "scrollIn",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "@/views/js/ScrollIn.vue")
+  },
+  {
     path: "/Project/web-UX/PackStation",
     name: "packStation",
     component: () =>

@@ -17,6 +17,23 @@
         <label for="">Computed (reduce)</label>
         {{ yearsLived }}
         <br />
+        <label for="">Computed (some inventors are Adult)</label>
+        {{ isAdult }}
+        <br />
+        <label for="">Computed (every inventors is Adult)</label>
+        {{ allAdult }}
+        <br />
+        <label for="">Computed (find inventors first name Albert)</label>
+        {{ findAdult("Albert") }}
+        <br />
+        <label for=""
+          >Computed (find inventors index for first name Albert)</label
+        >
+        {{ findAdultIndex("Albert") }}
+        <br />
+        <label for="">Computed (remove inventors with first name Albert)</label>
+        {{ removeInvestor("Albert") }}
+        <br />
         <label for="">Computed (sort by age)</label>
         {{ investorAge }}
         <br />
@@ -25,6 +42,7 @@
         <br />
         <label for="">Computed (sort people by firstName)</label>
         {{ orderPeopleByFirst }}
+        <br />
         <table>
           <thead>
             <tr>
@@ -153,6 +171,16 @@ export default {
     };
   },
   computed: {
+    isAdult: function() {
+      return this.inventors.some(
+        inv => new Date().getFullYear() - inv.year > 18
+      );
+    },
+    allAdult: function() {
+      return this.inventors.every(
+        inv => new Date().getFullYear() - inv.year > 18
+      );
+    },
     firstName: function() {
       return this.inventors.map(inv => inv.first + " " + inv.last);
     },
@@ -214,7 +242,20 @@ export default {
     }
   },
   methods: {
-    //do something
+    findAdult: function(name) {
+      return this.inventors.find(inv => inv.first === name);
+    },
+    findAdultIndex: function(name) {
+      return this.inventors.findIndex(inv => inv.first === name);
+    },
+    removeInvestor: function(name) {
+      const index = this.findAdultIndex(name);
+      const inventors = this.inventors;
+      return [
+        ...inventors.slice(0, index),
+        ...inventors.slice(index + 1, inventors.length)
+      ];
+    }
   }
 };
 </script>
