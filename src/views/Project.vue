@@ -14,14 +14,16 @@
     <div class="body">
       <template v-for="project in projectDescription">
         <h2 :key="project.type">{{ project.type }}</h2>
-        <div v-for="value in project.value" :key="value.id">
-          <router-link :to="value.link">
-            <showcase :title="value.title" :subtitle="value.subtitle">
-              <p slot="description">
-                <span v-html="value.description" />
-              </p>
-            </showcase>
-          </router-link>
+        <div :key="project">
+          <div v-for="value in project.value" :key="value.id">
+            <router-link :to="value.link">
+              <showcase :title="value.title" :subtitle="value.subtitle">
+                <p slot="description">
+                  <span v-html="value.description" />
+                </p>
+              </showcase>
+            </router-link>
+          </div>
         </div>
       </template>
     </div>
@@ -164,6 +166,16 @@ export default {
             subtitle: "Konami Code",
             descritpion: "",
             link: "/Project/JS/KonamiCode"
+<<<<<<< HEAD
+=======
+          },
+          {
+            id: 9,
+            title: "ScrollIn",
+            subtitle: "Scroll JS",
+            descritpion: "",
+            link: "/Project/JS/ScrollIn"
+>>>>>>> JS-ScrollIn
           }
         ]
       }
@@ -201,6 +213,7 @@ export default {
     & > div {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       & > a,
       & > a > * {
         text-decoration: none;

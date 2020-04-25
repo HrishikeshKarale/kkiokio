@@ -3,20 +3,25 @@
     <div class="alert">
       <countdown-timer
         starttime="Feb 25, 2020 06:24:25"
+<<<<<<< HEAD
         endtime="MAr 15, 2020 12:00:00"
+=======
+        endtime="Apr 10, 2020 12:00:00"
+>>>>>>> JS-ScrollIn
         trans='{  
-         "day":"Day",
-         "hours":"Hours",
-         "minutes":"Minuts",
-         "seconds":"Seconds",
-         "expired":"Please contact the administrator (hrishirich619@gmail.com).",
-         "running":"Site Launch CountDown",
-         "upcoming":"Till start of event.",
-         "status": {
+          "day":"Day",
+          "hours":"Hours",
+          "minutes":"Minuts",
+          "seconds":"Seconds",
+          "expired":"Please contact the administrator (hrishirich619@gmail.com).",
+          "running":"Site Launch CountDown",
+          "upcoming":"Till start of event.",
+          "status": {
             "expired":"We apologise fior the delay, Please come back tomorrow.",
             "running":"Site is being currently updated.",
             "upcoming":"Future"
-           }}'
+          }
+        }'
       />
     </div>
     <div class="welcomeText">

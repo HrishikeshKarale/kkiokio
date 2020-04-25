@@ -15,6 +15,7 @@
         <div class="keyboardKey" :data-key="k.dataKey">
           {{ k.key | capitalize }}
         </div>
+        <audio :src="k.audio" :data-key="k.dataKey"></audio>
         <div class="instrument" :data-key="k.dataKey">
           {{ k.name | capitalize }}
         </div>
@@ -116,17 +117,40 @@ export default {
       this.playAudio(keyCode);
     },
     playAudio(keyCode) {
-      console.log(keyCode);
-      const kit = this.kit;
-      let k = null;
-      for (const i in kit) {
-        k = kit[i];
-        if (k.dataKey == keyCode) {
-          k.audio.currentTime = 0;
-          k.isPlaying = true;
-          k.audio.play();
+      // const audioFiles = Array.from(document.getElementsByTagName("audio"));
+      // audioFiles.forEach(file => {
+      //   const dataKey= file.getAttribute("data-key");
+      //   if (dataKey == keyCode) {
+      //     file.audio.currentTime = 0;
+      //     file.isPlaying = true;
+      //     file.audio.play();
+      //   }
+      // });
+
+      this.kit.forEach(kit => {
+        if (kit.dataKey == keyCode) {
+          kit.audio.currentTime = 10;
+          kit.isPlaying = true;
+          try {
+            kit.audio.play().then(() => {
+              //automatic playback started
+            });
+          } catch (e) {
+            console.log(e);
+          }
         }
-      }
+      });
+
+      // let k = null;
+      // const kit = this.kit;
+      // for (const i in kit) {
+      //   k = kit[i];
+      //   if (k.dataKey == keyCode) {
+      //     k.audio.currentTime = 0;
+      //     k.isPlaying = true;
+      //     k.audio.play();
+      //   }
+      // }
     },
     keyPressed: function() {
       const keyCode = event.keyCode;

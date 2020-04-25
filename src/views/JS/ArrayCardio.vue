@@ -250,8 +250,16 @@ export default {
     },
     removeInvestor: function(name) {
       const index = this.findAdultIndex(name);
+<<<<<<< HEAD
       const inventors= this.inventors;
       return [...inventors.slice(0, index), ...inventors.slice(index+1,inventors.length)];
+=======
+      const inventors = this.inventors;
+      return [
+        ...inventors.slice(0, index),
+        ...inventors.slice(index + 1, inventors.length)
+      ];
+>>>>>>> JS-ScrollIn
     }
   }
 };
