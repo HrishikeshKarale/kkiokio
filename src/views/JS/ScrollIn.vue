@@ -41,7 +41,7 @@ export default {
   },
   mixins: [debounce],
   methods: {
-    checkScroll: function(e) {
+    checkScroll: function() {
       this.tag.forEach((section, index) => {
         const highlight = this.x.scrollTop;
         if (highlight > this.tagOffset[index] - this.windowBuffer) {
@@ -55,15 +55,15 @@ export default {
         } else if (highlight < this.tagOffset[index]) {
           section.classList.remove("bold");
         }
-        console.table(
-          section.innerText,
-          highlight,
-          this.tagOffset[index],
-          section.offsetHeight,
-          this.tag.length,
-          this.x.scrollHeight,
-          window.innerHeight
-        );
+        // console.log(
+        //   section.innerText,
+        //   highlight,
+        //   this.tagOffset[index],
+        //   section.offsetHeight,
+        //   this.tag.length,
+        //   this.x.scrollHeight,
+        //   window.innerHeight
+        // );
       });
     } //checkScroll
   },
