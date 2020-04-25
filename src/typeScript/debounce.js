@@ -1,6 +1,6 @@
 export const debounce = {
   data() {
-    const wait = 5;
+    const wait = 20;
     const immediate = true;
     return {
       wait,

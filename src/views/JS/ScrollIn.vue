@@ -29,10 +29,14 @@ export default {
     const x = null;
     const tag = [];
     const tagOffset = [];
+    const windowHeight = null;
+    const windowBuffer = null;
     return {
       x,
       tag,
-      tagOffset
+      tagOffset,
+      windowHeight,
+      windowBuffer
     };
   },
   mixins: [debounce],
@@ -40,9 +44,12 @@ export default {
     checkScroll: function(e) {
       this.tag.forEach((section, index) => {
         const highlight = this.x.scrollTop;
-        if (highlight > this.tagOffset[index]) {
+        if (highlight > this.tagOffset[index] - this.windowBuffer) {
           section.classList.add("bold");
-          if (index == this.tag.length - 1) {
+          if (
+            this.windowHeight - 1 == highlight &&
+            index == this.tag.length - 1
+          ) {
             section[index].classList.add("bold");
           }
         } else if (highlight < this.tagOffset[index]) {
@@ -53,7 +60,9 @@ export default {
           highlight,
           this.tagOffset[index],
           section.offsetHeight,
-          this.tag.length
+          this.tag.length,
+          this.x.scrollHeight,
+          window.innerHeight
         );
       });
     } //checkScroll
@@ -66,6 +75,9 @@ export default {
       return section.offsetTop - offsetHeader[0].offsetHeight;
     });
     this.x.addEventListener("scroll", this.debounce(this.checkScroll));
+    this.windowHeight = window.innerHeight - offsetHeader[0].offsetHeight;
+    this.windowBuffer = this.windowHeight * 0.5;
+    this.checkScroll();
   }
 };
 </script>
@@ -91,29 +103,7 @@ export default {
           margin: 32px;
           background-color: lightblue;
           &.bold {
-            font-weight: bold;
-          }
-        }
-        & > div {
-          padding: 16px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-content: center;
-          .boxShadow(@two);
-          background-color: @primaryColor;
-          width: 96px;
-          height: 96px;
-          & > span {
-            margin: auto;
-            font-size: 16px;
-            &:last-child {
-              font-size: 24px;
-              font-weight: bold;
-            }
-            &:first-child {
-              font-size: 18px;
-            }
+            background-color: lightcoral;
           }
         }
       }
