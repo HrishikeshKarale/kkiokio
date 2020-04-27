@@ -74,7 +74,7 @@ export default {
           display: flex;
           & > div {
             display: flex;
-            height: 100vh;
+            max-height: 100vh;
           }
         }
       }
@@ -89,28 +89,34 @@ export default {
       background-color: #333333;
       padding: 8px 16px;
       border-radius: 0 4px 4px 0;
+
       & > span {
         color: @white;
         text-align: center;
       }
+
       & > img {
         height: 32px;
         margin-bottom: 32px;
       }
+
       & > div {
         display: flex;
         height: 0vh;
         flex-direction: column;
         justify-content: space-around;
+
         & > div > a {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
-          width: auto;
+          // width: auto;
           color: white;
           text-align: center;
+
           & > span {
             font-size: 32px;
+
             & + div {
               padding: 2px;
             }
@@ -129,14 +135,17 @@ export default {
       color: @white;
       margin: auto;
       .boxShadow(@two);
+
       & > div {
         margin: auto 0;
+
         &.logo {
           & > a > img {
             height: 48px;
             padding: @spaceMd @spaceLg;
           }
         }
+
         &.nav {
           display: flex;
           flex-direction: row;
@@ -147,18 +156,22 @@ export default {
             margin: 0 2vw;
             padding: 8px;
             border-radius: 8px;
+
             &:hover {
               & > a {
                 color: @primaryColor;
                 text-decoration: none;
               }
             }
+
             & > a {
               width: 100%;
               color: white;
               text-align: center;
+
               & > span {
                 font-size: 32px;
+
                 & + div {
                   padding: 2px;
                 }

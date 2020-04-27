@@ -2,14 +2,6 @@
   <div class="about">
     <div class="title">
       <h1>Hrishikesh Karale</h1>
-      <p>
-        Hello, I am located in Upstate New York area.
-        <br />
-        Feel free to use the contact form below and reach out to me for any
-        questions yo might have.
-        <br />
-        You can also write to me the old fashion way.
-      </p>
     </div>
     <article>
       <div class="bio">
@@ -179,7 +171,6 @@ export default {
         flex-wrap: wrap;
         justify-content: space-evenly;
         & > div {
-          margin: 8vh 0 8vh 0;
           & > img {
             max-height: 60vh;
             min-height: 320px;

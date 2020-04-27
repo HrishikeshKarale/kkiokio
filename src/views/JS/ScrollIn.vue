@@ -52,7 +52,7 @@ export default {
           ) {
             section[index].classList.add("bold");
           }
-        } else if (highlight < this.tagOffset[index]) {
+        } else if (highlight < this.tagOffset[index] - this.windowBuffer) {
           section.classList.remove("bold");
         }
         // console.log(
@@ -72,11 +72,11 @@ export default {
     const offsetHeader = Array.from(document.getElementsByClassName("header"));
     this.tag = Array.from(document.getElementsByTagName("section"));
     this.tagOffset = this.tag.map(section => {
-      return section.offsetTop - offsetHeader[0].offsetHeight;
+      return section.offsetTop;
     });
     this.x.addEventListener("scroll", this.debounce(this.checkScroll));
     this.windowHeight = window.innerHeight - offsetHeader[0].offsetHeight;
-    this.windowBuffer = this.windowHeight * 0.5;
+    this.windowBuffer = this.windowHeight * 0.35;
     this.checkScroll();
   }
 };

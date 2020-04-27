@@ -73,15 +73,12 @@ const routes = [
       import(/* webpackChunkName: "about" */ "@/views/js/KonamiCode.vue")
   },
   {
-<<<<<<< HEAD
-=======
     path: "/Project/JS/ScrollIn",
     name: "scrollIn",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/js/ScrollIn.vue")
   },
   {
->>>>>>> JS-ScrollIn
     path: "/Project/web-UX/PackStation",
     name: "packStation",
     component: () =>

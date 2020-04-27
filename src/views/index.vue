@@ -1,13 +1,9 @@
 <template>
   <div class="index">
-    <div class="alert">
+    <!-- <div class="alert">
       <countdown-timer
         starttime="Feb 25, 2020 06:24:25"
-<<<<<<< HEAD
-        endtime="MAr 15, 2020 12:00:00"
-=======
-        endtime="Apr 10, 2020 12:00:00"
->>>>>>> JS-ScrollIn
+        endtime="May 15, 2020 12:00:00"
         trans='{  
           "day":"Day",
           "hours":"Hours",
@@ -22,8 +18,8 @@
             "upcoming":"Future"
           }
         }'
-      />
-    </div>
+      /> 
+    </div> -->
     <div class="welcomeText">
       <div>
         <vue-img :src="logo" alt="Kkiokio Logo" />
@@ -40,10 +36,8 @@
         </q>
       </div>
       <div>
-        <a href="#aboutMe">
-          <b>Scroll Down</b>
-          <span class="far fa-arrow-alt-circle-down fa-3x" />
-        </a>
+        <b>Scroll Down</b>
+        <span class="far fa-arrow-alt-circle-down fa-3x" />
       </div>
     </div>
     <div id="aboutMe">
@@ -68,21 +62,44 @@
           :onClickAction="() => this.$router.push({ path: `/About Me` })"
         />
       </div>
-      <div>
+      <div class="process">
+        <ol class="step-indicator">
+          <li
+            v-for="(step, index) in steps"
+            :key="index"
+            :class="{
+              active: index + 1 == d_currentStep,
+              complete: d_currentStep > index + 1 || d_completed
+            }"
+          >
+            <span class="step">
+              {{ step.title }}
+            </span>
+            <h4 class="step-title">{{ step.subTitle }}</h4>
+            <ol>
+              <li v-for="skill in step.skills" :key="skill">
+                {{ skill }}
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+      <!-- <div>
         <div v-for="skill in skills" :key="skill">
           <span class="fas fa-sitemap fa-2x" />
           <div>{{ skill }}</div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import CountdownTimer from "@/components/countdownTimer.vue";
+// import CountdownTimer from "@/components/countdownTimer.vue";
 import vueImg from "@/components/vueImg.vue";
 import vueButton from "@/components/vueButton.vue";
+
 export default {
   name: "index",
   data() {
@@ -90,6 +107,76 @@ export default {
     const profilePic = require("@/../public/img/profilePic.jpg");
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logo = require("@/assets/logo.svg");
+    const steps = [
+      {
+        id: 1,
+        subTitle: "Empathasize, Understand and Define the problem.",
+        skills: [
+          "Job Mapping",
+          "Mental Models",
+          "Buisness opportunities",
+          "Goals and Metrics"
+        ],
+        title: "Define"
+      },
+      {
+        id: 2,
+        subTitle: "Collect and Analyze pre-existing Solutions",
+        skills: ["User Reaseach and Analysis", "Competitive Analysis"],
+        title: "Research"
+      },
+      {
+        id: 3,
+        subTitle: "Brainstorm with Stakeholders",
+        skills: ["System Desing / IA", "User Flow", "Feature Mapping"],
+        title: "Ideate"
+      },
+      {
+        id: 4,
+        subTitle:
+          "Sketch Ideas and Develope Wireframes (exploring multiple approaches)",
+        skills: ["Concept Sketches", "Wireframes"],
+        title: "Design"
+      },
+      {
+        id: 5,
+        subTitle: "Create mocks and Test them with stakeholders",
+        skills: ["Concept Testing", "Content Inventory"],
+        title: "FeedBack"
+      },
+      {
+        id: 6,
+        subTitle:
+          "Refine the concepts and provide a detailed design for the best solution",
+        skills: [
+          "Visual Design",
+          "Prototype",
+          "Usability Testing",
+          "Copy Decks",
+          "Poisitioning"
+        ],
+        title: "Refine"
+      },
+      {
+        id: 7,
+        subTitle:
+          "Provide taskflows and other documentation to the developers and work alongside them to deliver",
+        skills: [],
+        title: "Build"
+      },
+      {
+        id: 7,
+        subTitle:
+          "Asses how delivered solution measures up to the initial goals and metrics",
+        skills: [
+          "teem feedback",
+          "Enhancements",
+          "Measure nd optimize",
+          "Feature Roadmap"
+        ],
+        title: "Test"
+      }
+    ];
     const skills = [
       "Information Architecture",
       " Wireframing",
@@ -136,13 +223,14 @@ export default {
       "Card Sorting"
     ];
     return {
+      steps,
       profilePic,
       logo,
       skills
     };
   },
   components: {
-    CountdownTimer,
+    // CountdownTimer,
     vueButton,
     vueImg
   }
@@ -152,36 +240,98 @@ export default {
 <style lang="less" scoped>
 @import (reference) "./../Less/customMixins.less";
 @import (reference) "./../Less/customVariables.less";
+
+@wizard-color-neutral: #ccc;
+@wizard-color-active: #4183d7;
+@wizard-color-complete: #87d37c;
+@wizard-step-width-height: 120px;
+@wizard-step-font-size: 20px;
+
 div {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+
   &.index {
     & > div {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
+
       &.alert {
         display: flex;
         flex-direction: column;
         background-color: red;
-        padding: 6px 16px;
+        padding: 8px 16px;
         position: absolute;
         border-radius: 8px;
-        .boxShadow(@one);
         top: 80px;
         width: 80vw;
         color: white;
         text-align: center;
+        .boxShadow(@one);
+
         & > div {
           display: flex;
           flex-direction: row;
         }
       }
+
       &#aboutMe {
-        height: 80vh;
+        display: flex;
+        min-height: 80vh;
+
         & > div {
           text-align: center;
+
+          &.process {
+            display: flex;
+            flex-direction: column;
+
+            & > ol.step-indicator {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              margin: 0 auto;
+
+              & > li {
+                display: flex;
+                flex-direction: column;
+                flex: 1 240px;
+                border-radius: 8px;
+                padding: 16px;
+                margin: 16px 32px;
+                .boxShadow(@two);
+
+                & > .step {
+                  border-radius: 50%;
+                  border: 2px solid @primaryColor;
+                  color: white;
+                  font-size: @wizard-step-font-size;
+                  line-height: @wizard-step-width-height;
+                  position: relative;
+                  width: @wizard-step-width-height;
+                  text-align: center;
+                  margin: 16px auto;
+                  background-color: @secondaryColor;
+
+                  & + .step-title {
+                    text-align: left;
+
+                    & + ol {
+                      list-style: none;
+                      padding: 0;
+
+                      & > li {
+                        margin-top: 8px;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
           & > img {
             margin: auto;
             height: 320px;
@@ -193,26 +343,28 @@ div {
       &.welcomeText {
         height: 100vh;
         & > div {
-          & > a {
-            text-decoration: none;
-            text-align: center;
-            & > b {
-              display: block;
-              color: @cometText;
-            }
-            & > span {
-              position: relative;
-              color: @secondaryColor;
-            }
+          text-align: center;
+
+          & > b {
+            display: block;
+            color: @cometText;
           }
+
+          & > span {
+            position: relative;
+            color: @secondaryColor;
+          }
+
           & > img {
             margin: 8vh 0 4vh 0;
             height: 40vh;
           }
+
           & > q {
             margin: 4vh 0;
             font-size: 4vw;
             text-align: center;
+
             & > abbr {
               color: #fbce51;
               text-decoration: none;

@@ -10,7 +10,7 @@
       <div class="content">
         <slot name="content" />
       </div>
-      <div class="footer">
+      <!-- <div class="footer">
         <a href="https://github.com/HrishikeshKarale">
           <span class="fab fa-github fa-2x" />
           <div>@HrishikeshKarale</div>
@@ -19,7 +19,7 @@
           <span class="fab fa-linkedin-in fa-2x" />
           <div>@hrishikesh-karale-6086071a</div>
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -37,24 +37,28 @@ export default {
 .enterpriseAppLayout {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-height: 100vh;
+  max-width: 100vw;
 
   & > div {
     display: flex;
     flex-direction: row;
     height: 100%;
 
-    // &.head {
-    //   background-color: #333333;
-    // }
+    &.head {
+      background-color: #333333;
+      max-width: 100vw;
+    }
 
     &.body {
       display: flex;
       flex-direction: column;
       z-index: 1000;
       height: 100vh;
-      width: 100vw;
+      max-width: 100vw;
+
       .scroll(100vh);
+
       > div {
         &.menu {
           display: flex;
@@ -74,10 +78,8 @@ export default {
           padding: @spaceLg @spaceXl;
           color: @cometText;
           margin: auto;
-          width: 80vw;
-          & > div {
-            margin-bottom: 240px;
-          }
+          max-width: 80vw;
+          min-width: 320px;
         }
         &.footer {
           display: flex;
@@ -88,16 +90,18 @@ export default {
           bottom: 16px;
           right: 0.5vw;
           height: 80px;
-          width: 99vw;
+          max-width: 100vw;
           background-color: #333333;
           border-radius: 4px;
           text-align: center;
           .boxShadow(@three);
+
           & > a {
             padding: 16px;
             color: white;
             font-weight: 24px;
             text-decoration: none;
+            
             &:hover {
               color: @primaryColor;
             }

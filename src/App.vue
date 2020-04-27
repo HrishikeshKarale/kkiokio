@@ -78,7 +78,6 @@ body {
   color: #0c090d; //#2c3e50;
   margin: 0;
   height: 100%;
-  overflow-y: hidden;
   font-size: 18px;
 }
 #app {

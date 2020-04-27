@@ -12,9 +12,9 @@
       </p>
     </div>
     <div class="body">
-      <template v-for="project in projectDescription">
+      <template v-for="(project, index) in projectDescription">
         <h2 :key="project.type">{{ project.type }}</h2>
-        <div :key="project">
+        <div :key="index">
           <div v-for="value in project.value" :key="value.id">
             <router-link :to="value.link">
               <showcase :title="value.title" :subtitle="value.subtitle">
@@ -166,8 +166,6 @@ export default {
             subtitle: "Konami Code",
             descritpion: "",
             link: "/Project/JS/KonamiCode"
-<<<<<<< HEAD
-=======
           },
           {
             id: 9,
@@ -175,7 +173,6 @@ export default {
             subtitle: "Scroll JS",
             descritpion: "",
             link: "/Project/JS/ScrollIn"
->>>>>>> JS-ScrollIn
           }
         ]
       }
