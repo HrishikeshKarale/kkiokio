@@ -20,6 +20,67 @@
         }'
       /> 
     </div> -->
+    <!-- <article>
+      
+      <section class="welcomeText">
+        <div>
+          <vue-img :src="logo" alt="Kkiokio Logo" />
+        </div>
+        <div>
+          <q
+            >A little
+            <abbr
+              title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
+            >
+              Empathy
+            </abbr>
+            goes a long way
+          </q>
+        </div>
+        <div>
+          <b>Scroll Down</b>
+          <span class="far fa-arrow-alt-circle-down fa-3x" />
+        </div>
+      </section>
+      <section id="aboutMe">
+        <div>
+          <vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
+        </div>
+        <div>
+          <h2>Hrishikesh Karale</h2>
+        </div>
+        <div>
+          <h3>UX Professional</h3>
+        </div>
+        <div>
+          <h4>Full Stack Designer</h4>
+        </div>
+        <div>
+          <vue-button
+            buttonName="gotoButton"
+            buttonText="Click here to know more about me"
+            buttonIcon="fas fa-link"
+            buttonStyle="text-sm"
+            :onClickAction="() => this.$router.push({ path: `/About Me` })"
+          />
+        </div>
+        <div class="process">
+          <ol class="step-indicator">
+            <li v-for="(step, index) in steps" :key="index">
+              <span class="step">
+                {{ step.title }}
+              </span>
+              <b class="step-title">{{ step.subTitle }}</b>
+              <ol>
+                <li v-for="skill in step.skills" :key="skill">
+                  {{ skill }}
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </article> -->
     <div class="welcomeText">
       <div>
         <vue-img :src="logo" alt="Kkiokio Logo" />
@@ -64,18 +125,11 @@
       </div>
       <div class="process">
         <ol class="step-indicator">
-          <li
-            v-for="(step, index) in steps"
-            :key="index"
-            :class="{
-              active: index + 1 == d_currentStep,
-              complete: d_currentStep > index + 1 || d_completed
-            }"
-          >
+          <li v-for="(step, index) in steps" :key="index">
             <span class="step">
               {{ step.title }}
             </span>
-            <h4 class="step-title">{{ step.subTitle }}</h4>
+            <b class="step-title">{{ step.subTitle }}</b>
             <ol>
               <li v-for="skill in step.skills" :key="skill">
                 {{ skill }}
@@ -134,34 +188,34 @@ export default {
       {
         id: 4,
         subTitle:
-          "Sketch Ideas and Develope Wireframes (exploring multiple approaches)",
-        skills: ["Concept Sketches", "Wireframes"],
+          "Sketch Ideas and exploring multiple approaches to solving the problem",
+        skills: ["Concept Sketches", "Wireframes", "Positioning"],
         title: "Design"
       },
       {
         id: 5,
         subTitle: "Create mocks and Test them with stakeholders",
-        skills: ["Concept Testing", "Content Inventory"],
+        skills: ["Concept Testing", "Content Inventory", "Prototype"],
         title: "FeedBack"
       },
       {
         id: 6,
         subTitle:
           "Refine the concepts and provide a detailed design for the best solution",
-        skills: [
-          "Visual Design",
-          "Prototype",
-          "Usability Testing",
-          "Copy Decks",
-          "Poisitioning"
-        ],
+        skills: ["Visual Design", "Usability Testing", "Copy Decks"],
         title: "Refine"
       },
       {
         id: 7,
         subTitle:
           "Provide taskflows and other documentation to the developers and work alongside them to deliver",
-        skills: [],
+        skills: [
+          "Eng and Design Build",
+          "Design QA",
+          "Measure Success",
+          "Customer Validation",
+          "Marketting Assets"
+        ],
         title: "Build"
       },
       {
@@ -169,9 +223,9 @@ export default {
         subTitle:
           "Asses how delivered solution measures up to the initial goals and metrics",
         skills: [
-          "teem feedback",
+          "Team Feedback",
           "Enhancements",
-          "Measure nd optimize",
+          "Measure and Optimize",
           "Feature Roadmap"
         ],
         title: "Test"
@@ -287,6 +341,7 @@ div {
           &.process {
             display: flex;
             flex-direction: column;
+            margin-top: 32px;
 
             & > ol.step-indicator {
               display: flex;
@@ -297,6 +352,7 @@ div {
               & > li {
                 display: flex;
                 flex-direction: column;
+                background-color: #fafbfc;
                 flex: 1 240px;
                 border-radius: 8px;
                 padding: 16px;
@@ -340,8 +396,10 @@ div {
           }
         }
       }
+
       &.welcomeText {
-        height: 100vh;
+        min-height: 100vh;
+
         & > div {
           text-align: center;
 

@@ -131,6 +131,7 @@ export default {
         if (kit.dataKey == keyCode) {
           kit.audio.currentTime = 10;
           kit.isPlaying = true;
+          console.log(kit);
           try {
             kit.audio.play().then(() => {
               //automatic playback started

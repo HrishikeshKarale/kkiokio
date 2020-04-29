@@ -54,7 +54,7 @@ export default {
       display: flex;
       flex-direction: column;
       z-index: 1000;
-      height: 100vh;
+      min-height: 100%;
       max-width: 100vw;
 
       .scroll(100vh);
@@ -101,7 +101,7 @@ export default {
             color: white;
             font-weight: 24px;
             text-decoration: none;
-            
+
             &:hover {
               color: @primaryColor;
             }
