@@ -1,9 +1,12 @@
 <template>
-  <div class="fitnessFriend">
+  <div class="culinarian">
     <router-link to="/Project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
-    <vue-img :src="dFitnessFriend" alt="Concept walkthroughfor a fitness app" />
+    <vue-img
+      :src="dCulinarian"
+      alt="Culinarian App walkthrough and styleguide"
+    />
   </div>
 </template>
 <script>
@@ -11,9 +14,9 @@ import vueImg from "@/components/vueImg.vue";
 export default {
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dFitnessFriend = require("@/assets/mobile/fitness friend.png");
+    const dCulinarian = require("@/assets/mobile/culinarian.png");
     return {
-      dFitnessFriend: dFitnessFriend
+      dCulinarian: dCulinarian
     };
   },
   components: {
@@ -22,9 +25,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../../Less/customMixins.less";
-@import (reference) "./../../Less/customVariables.less";
-.fitnessFriend {
+@import (reference) "./../../../Less/customMixins.less";
+@import (reference) "./../../../Less/customVariables.less";
+.culinarian {
   img {
     margin-top: 64px;
     width: 80vw;

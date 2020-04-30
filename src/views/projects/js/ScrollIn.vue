@@ -31,8 +31,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../../Less/customMixins.less";
-@import (reference) "./../../Less/customVariables.less";
+@import (reference) "./../../../Less/customMixins.less";
+@import (reference) "./../../../Less/customVariables.less";
 .scrollIn {
   width: 100%;
   height: 100%;

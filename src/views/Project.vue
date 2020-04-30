@@ -11,21 +11,23 @@
         You can also write to me the old fashion way.
       </p>
     </div>
-    <div class="body">
-      <template v-for="(project, index) in projectDescription">
-        <h2 :key="project.type">{{ project.type }}</h2>
-        <div :key="index">
-          <div v-for="value in project.value" :key="value.id">
-            <router-link :to="value.link">
-              <showcase :title="value.title" :subtitle="value.subtitle">
-                <p slot="description">
-                  <span v-html="value.description" />
-                </p>
-              </showcase>
-            </router-link>
+    <div class="content">
+      <article>
+        <section v-for="project in projectDescription" :key="project.type">
+          <h2>{{ project.type }}</h2>
+          <div>
+            <div v-for="value in project.value" :key="value.id">
+              <router-link :to="value.link">
+                <showcase :title="value.title" :subtitle="value.subtitle">
+                  <p slot="description">
+                    <span v-html="value.description" />
+                  </p>
+                </showcase>
+              </router-link>
+            </div>
           </div>
-        </div>
-      </template>
+        </section>
+      </article>
     </div>
   </div>
 </template>
@@ -203,11 +205,11 @@ export default {
       }
     }
   }
-  & > .body {
+  & > .content {
     display: flex;
     flex-direction: column;
 
-    & > div {
+    & > article > section > div {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;

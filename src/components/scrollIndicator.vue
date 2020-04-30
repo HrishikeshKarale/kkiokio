@@ -92,7 +92,7 @@ export default {
     display: flex;
     flex-direction: column;
 
-    &.scroll{
+    &.scroll {
       position: fixed;
       top: 40%;
       right: 64px;

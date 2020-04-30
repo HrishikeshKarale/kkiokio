@@ -1,11 +1,11 @@
 <template>
-  <div class="culinarian">
+  <div class="medco">
     <router-link to="/Project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <vue-img
-      :src="dCulinarian"
-      alt="Culinarian App walkthrough and styleguide"
+      :src="dMedco"
+      alt="Onboarding Screen ideas for a croudsource tree plntation app"
     />
   </div>
 </template>
@@ -14,9 +14,9 @@ import vueImg from "@/components/vueImg.vue";
 export default {
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dCulinarian = require("@/assets/mobile/culinarian.png");
+    const dMedco = require("@/assets/mobile/medical research.png");
     return {
-      dCulinarian: dCulinarian
+      dMedco: dMedco
     };
   },
   components: {
@@ -25,9 +25,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../../Less/customMixins.less";
-@import (reference) "./../../Less/customVariables.less";
-.culinarian {
+@import (reference) "./../../../Less/customMixins.less";
+@import (reference) "./../../../Less/customVariables.less";
+.medco {
   img {
     margin-top: 64px;
     width: 80vw;
