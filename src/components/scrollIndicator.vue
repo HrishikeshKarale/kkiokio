@@ -4,16 +4,20 @@
       <slot />
     </div>
     <div v-show="this.tag" class="scroll">
-      <span
+      <a
         v-for="indicator in this.tag"
         :key="indicator[0]"
-        :class="[indicator[1] ? 'active fas' : 'far', 'fa-circle']"
-      />
+        :href="'#' + indicator[3]"
+      >
+        <span :class="[indicator[1] ? 'active fas' : 'far', 'fa-circle']" />
+      </a>
     </div>
   </div>
 </template>
 <script>
 import { debounce } from "@/typeScript/debounce";
+// import { smoothScroll } from "@/typeScript/smoothScroll";
+
 export default {
   name: "scrollIndicator",
   data() {
@@ -38,25 +42,30 @@ export default {
         const browserScrollPosition = this.x.scrollTop;
         const tag = this.tag[index];
 
-        //if section is in load zone
-        if (browserScrollPosition > tag[0] - this.windowBuffer) {
-          scrollIndicator[index].classList.add("fas");
-          scrollIndicator[index].classList.add("active");
-          scrollIndicator[index].classList.remove("far");
+        let scrollClasslist = null;
+        if (scrollIndicator[index]) {
+          scrollClasslist = scrollIndicator[index].classList;
 
-          //if section is not in load zone
-          if (browserScrollPosition > tag[2] - this.windowBuffer) {
-            scrollIndicator[index].classList.remove("fas");
-            scrollIndicator[index].classList.remove("active");
-            scrollIndicator[index].classList.add("far");
+          //if section is in load zone
+          if (browserScrollPosition > tag[0] - this.windowBuffer) {
+            scrollClasslist.add("fas");
+            scrollClasslist.add("active");
+            scrollClasslist.remove("far");
+
+            //if section is not in load zone
+            if (browserScrollPosition > tag[2] - this.windowBuffer) {
+              scrollClasslist.remove("fas");
+              scrollClasslist.remove("active");
+              scrollClasslist.add("far");
+            }
+          } else if (
+            Math.round(browserScrollPosition) + this.windowHeight <
+            section[2]
+          ) {
+            scrollClasslist.remove("fas");
+            scrollClasslist.remove("active");
+            scrollClasslist.add("far");
           }
-        } else if (
-          Math.round(browserScrollPosition) + this.windowHeight <
-          section[2]
-        ) {
-          scrollIndicator[index].classList.remove("fas");
-          scrollIndicator[index].classList.remove("active");
-          scrollIndicator[index].classList.add("far");
         }
       });
     } //checkScroll
@@ -69,21 +78,26 @@ export default {
       return [
         section.offsetTop - offsetHeader[0].offsetHeight,
         false,
-        section.offsetTop + section.offsetHeight - offsetHeader[0].offsetHeight
+        section.offsetTop + section.offsetHeight - offsetHeader[0].offsetHeight,
+        section.getAttribute("id")
       ];
     });
+    console.log(this.tag);
     const temp = document.getElementsByClassName("scrollIndicator")[0];
     this.scrollIndicator = temp.getElementsByTagName("span");
     this.x.addEventListener("scroll", this.debounce(this.checkScroll));
     this.windowHeight = window.innerHeight - offsetHeader[0].offsetHeight;
     this.windowBuffer = this.windowHeight * 0.5;
-    this.checkScroll();
+    if (this.scrollIndicator) {
+      this.checkScroll();
+    }
   }
 };
 </script>
 <style lang="less" scoped>
 @import (reference) "./../Less/customMixins.less";
 @import (reference) "./../Less/customVariables.less";
+
 .scrollIndicator {
   width: 100%;
   height: 100%;

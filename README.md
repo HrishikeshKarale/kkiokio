@@ -1,6 +1,6 @@
 # kkiokio
 
-## Project setup
+## projects setup
 ```
 npm install
 ```

@@ -1,7 +1,7 @@
 <template>
   <div class="caseStudy">
     <div class="title">
-      <h1>Case Studies</h1>
+      <h1>Case Study</h1>
       <p>
         Hello, I am located in Upstate New York area.
         <br />

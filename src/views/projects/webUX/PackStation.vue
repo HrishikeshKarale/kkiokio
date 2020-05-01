@@ -1,7 +1,7 @@
 <template>
   <div class="packStation">
     <div>
-      <router-link to="/Project">
+      <router-link to="/projects">
         <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
       </router-link>
     </div>
@@ -13,7 +13,7 @@
         Tha pack station is web app that can be used by users to pack and ship
         fulfillment orders in a warehouse.
         <br />
-        This Project is a successful implementation of a grid which follows the
+        This projects is a successful implementation of a grid which follows the
         Golden Ratio.
       </p>
     </div>

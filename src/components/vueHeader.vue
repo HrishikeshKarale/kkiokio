@@ -6,19 +6,19 @@
           <vue-img :src="logoLink" alt="Logo" />
         </router-link>
       </div>
-      <div class="nav">
+      <nav>
         <slot name="nav" />
-      </div>
-      <div>
+      </nav>
+      <!-- <div>
         <slot />
-      </div>
+      </div> -->
     </div>
     <div class="navigation">
       <vue-img :src="logoLink" alt="Logo" />
       <span @click.prevent="toggle" class="fas fa-bars" />
-      <div v-if="show">
+      <nav v-if="show">
         <slot name="nav" />
-      </div>
+      </nav>
     </div>
   </div>
 </template>
@@ -26,14 +26,9 @@
 <script>
 import { toggle } from "@/typeScript/toggle";
 import vueImg from "./vueImg.vue";
+
 export default {
   name: "vueHeader",
-
-  data() {
-    return {
-      selected: null
-    }; //return
-  }, //data
 
   mixins: [toggle],
 
@@ -63,11 +58,22 @@ export default {
 @import (reference) "./../Less/customMixins.less";
 
 .vueHeader {
-  //0px 2px 4px 2px rgba(40, 40, 40, 0.5)
+  width: 100%;
+  nav {
+    display: flex;
+    flex-direction: row;
+    margin: auto 0;
+
+    & > a {
+      color: @backgroundColor;
+      margin-right: @fontSize + @fontSizeSm;
+    }
+  }
+
   @media screen {
-    @media (max-width: 800px) and (min-width: 100px), (max-height: 800px) {
+    @media (max-width: 1024px) {
       & > div {
-        &.header {
+        .header {
           display: none;
         }
         &.navigation {
@@ -80,13 +86,14 @@ export default {
       }
     }
   }
+
   & > div {
     &.navigation {
       display: none;
       flex-direction: column;
       flex-wrap: nowrap;
       width: fit-content;
-      background-color: #333333;
+      background-color: @cometText;
       padding: 8px 16px;
       border-radius: 0 4px 4px 0;
 
@@ -111,7 +118,7 @@ export default {
           flex-direction: column;
           justify-content: space-around;
           // width: auto;
-          color: white;
+          color: @backgroundColor;
           text-align: center;
 
           & > span {
@@ -124,15 +131,16 @@ export default {
         }
       }
     }
+
     &.header {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-between;
       padding: @spaceMd @spaceLg;
       height: 100%;
-      width: 100vw;
-      background-color: #333333;
-      color: @white;
+      width: 100%;
+      background-color: @cometText;
       margin: auto;
       .boxShadow(@two);
 
@@ -166,7 +174,7 @@ export default {
 
             & > a {
               width: 100%;
-              color: white;
+              color: @backgroundColor;
               text-align: center;
 
               & > span {

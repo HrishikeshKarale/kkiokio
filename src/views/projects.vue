@@ -1,9 +1,9 @@
 <template>
-  <div class="Project">
+  <div class="projects">
     <div class="title">
-      <h1>Project</h1>
+      <h1>projects</h1>
       <p>
-        Hello, I am located in Upstate New York area.
+        Currently My rojects
         <br />
         Feel free to use the contact form below and reach out to me for any
         questions yo might have.
@@ -12,11 +12,12 @@
       </p>
     </div>
     <div class="content">
+      <router-view />
       <article>
-        <section v-for="project in projectDescription" :key="project.type">
-          <h2>{{ project.type }}</h2>
+        <section v-for="projects in projectsDescription" :key="projects.type">
+          <h2>{{ projects.type }}</h2>
           <div>
-            <div v-for="value in project.value" :key="value.id">
+            <div v-for="value in projects.value" :key="value.id">
               <router-link :to="value.link">
                 <showcase :title="value.title" :subtitle="value.subtitle">
                   <p slot="description">
@@ -35,9 +36,9 @@
 <script>
 import showcase from "@/components/showcase.vue";
 export default {
-  name: "project",
+  name: "projects",
   data() {
-    const projectDescription = [
+    const projectsDescription = [
       {
         type: "Mobile UX",
         value: [
@@ -47,7 +48,7 @@ export default {
             subtitle: "Onboarding Screen for the Go Green App",
             descritpion:
               "GoGreen is online IOS app, where user can select from a list of flora, customize planters according to their needs and place order easily.",
-            link: "/Project/MobileUX//GoGreen"
+            link: "/projects/mobileUX//GoGreen"
           },
           {
             id: 2,
@@ -57,7 +58,7 @@ export default {
               "The Cullinarian App is an mobile aimed targetted towardsindividuals who like to cook.\
               <br />\
               The app walks users towards cooking home made cusines and thus promoting a healthy lifestyle.",
-            link: "/Project/MobileUX//Culinarian"
+            link: "/projects/mobileUX//Culinarian"
           },
           {
             id: 3,
@@ -67,7 +68,7 @@ export default {
               "The Go Green App is an mobile aimed towards the medical industry.\
               <br />\
               Users can look up details of services offered by various hospitals and the cost associated with those services.",
-            link: "/Project/MobileUX//MedCo"
+            link: "/projects/mobileUX//MedCo"
           },
           {
             id: 4,
@@ -77,14 +78,14 @@ export default {
               "A Fitness tracker app for smart watch.\
               <br />\
               It helps its users keep track of their daily activity and vitals.",
-            link: "/Project/MobileUX//FitnessFriend"
+            link: "/projects/mobileUX//FitnessFriend"
           },
           {
             id: 5,
-            title: "App Login/SignUp",
+            title: "AppSignUp",
             subtitle: "Login, SignUp Screens",
             descritpion: "Login/SignUp screen for a mobile app.",
-            link: "/Project/MobileUX//SignUpApp"
+            link: "/projects/mobileUX//AppSignUp"
           }
         ]
       },
@@ -96,17 +97,17 @@ export default {
             title: "Pack Station",
             subtitle: "Fulfillment Pack Station App",
             descritpion:
-              "The pack station is Projected to allow users to pack and ship orders.\
+              "The pack station is projectsed to allow users to pack and ship orders.\
               <br />\
               Simple Pack supports orders with original packaging and default box items.",
-            link: "/Project/web-UX/PackStation"
+            link: "/projects/WebUX/PackStation"
           },
           {
             id: 2,
             title: "RSVP",
             subtitle: "an interactive RSVP APP in progress..",
             descritpion: "details coming soon",
-            link: "/Project/web-UX/RSVPApp"
+            link: "/projects/WebUX/RSVPApp"
           }
         ]
       },
@@ -118,69 +119,69 @@ export default {
             title: "DrumKit",
             subtitle: "Drum-kit",
             descritpion: "",
-            link: "/Project/JS/DrumKit"
+            link: "/projects/JS/DrumKit"
           },
           {
             id: 2,
             title: "AnalogCLock",
             subtitle: "Analogue Clock",
             descritpion: "",
-            link: "/Project/JS/AnalogCLock"
+            link: "/projects/JS/AnalogCLock"
           },
           {
             id: 3,
             title: "Array Cardio",
             subtitle: "Array Cardio (filter, sory, map, reduce)",
             descritpion: "",
-            link: "/Project/JS/ArrayCardio"
+            link: "/projects/JS/ArrayCardio"
           },
           {
             id: 4,
             title: "Image Gallery",
             subtitle: "Langing page/Image galery",
             descritpion: "",
-            link: "/Project/JS/ImageGalery"
+            link: "/projects/JS/ImageGalery"
           },
           {
             id: 5,
             title: "Fetch API",
             subtitle: "Fetch API",
             descritpion: "",
-            link: "/Project/JS/FetchApi"
+            link: "/projects/JS/FetchApi"
           },
           {
             id: 6,
             title: "Canvas",
             subtitle: "HTML5 Canvas",
             descritpion: "",
-            link: "/Project/JS/CanvasExample"
+            link: "/projects/JS/CanvasExample"
           },
           {
             id: 7,
             title: "CheckboxChallange",
             subtitle: "Checkbox Challange",
             descritpion: "",
-            link: "/Project/JS/CheckboxChallange"
+            link: "/projects/JS/CheckboxChallange"
           },
           {
             id: 8,
             title: "KonamiCode",
             subtitle: "Konami Code",
             descritpion: "",
-            link: "/Project/JS/KonamiCode"
+            link: "/projects/JS/KonamiCode"
           },
           {
             id: 9,
             title: "ScrollIn",
             subtitle: "Scroll JS",
             descritpion: "",
-            link: "/Project/JS/ScrollIn"
+            link: "/projects/JS/ScrollIn"
           }
         ]
       }
     ];
     return {
-      projectDescription
+      projectsDescription
     };
   },
   components: {
@@ -190,7 +191,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.Project {
+.projects {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

@@ -46,7 +46,6 @@ export default {
     height: 100%;
 
     &.head {
-      background-color: #333333;
       max-width: 100vw;
     }
 
@@ -79,6 +78,8 @@ export default {
           color: @cometText;
           margin: auto;
           max-width: 80vw;
+          // background-color: #fafbfc;
+          // .boxShadow(@one);
           min-width: 320px;
         }
         &.footer {

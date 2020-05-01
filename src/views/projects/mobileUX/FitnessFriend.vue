@@ -1,6 +1,6 @@
 <template>
   <div class="fitnessFriend">
-    <router-link to="/Project">
+    <router-link to="/projects">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <vue-img :src="dFitnessFriend" alt="Concept walkthroughfor a fitness app" />
@@ -27,7 +27,6 @@ export default {
 .fitnessFriend {
   img {
     margin-top: 64px;
-    width: 80vw;
     .boxShadow(@two);
   }
 }

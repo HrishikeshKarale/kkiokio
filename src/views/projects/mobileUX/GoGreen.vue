@@ -1,6 +1,6 @@
 <template>
   <div class="goGreen">
-    <router-link to="/Project">
+    <router-link to="/projects">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <vue-img
@@ -30,7 +30,6 @@ export default {
 .goGreen {
   img {
     margin-top: 64px;
-    width: 80vw;
     .boxShadow(@two);
   }
 }

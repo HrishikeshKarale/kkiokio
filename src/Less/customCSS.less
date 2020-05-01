@@ -7,6 +7,18 @@ abbr[title] {
     border: none;
 }
 
+article {
+  & > section {
+    margin-bottom: 80px;
+    min-height: 80vh;
+    scroll-behavior: smooth;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 //buttons
 // Button Sizes
 // --------------------------------------------------

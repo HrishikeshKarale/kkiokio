@@ -8,6 +8,7 @@ html {
     --CMTeal:                #00B6A8;
     --offWhite:              #FAFBFC;
     --offBlack:              #0C090D;
+    scroll-behavior: smooth;
 }
 
 :root {

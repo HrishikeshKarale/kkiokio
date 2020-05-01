@@ -1,6 +1,6 @@
 <template>
   <div class="konamiCode">
-    <router-link to="/Project">
+    <router-link to="/projects">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div ref="KeyPressed" class="konami">
