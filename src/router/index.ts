@@ -91,7 +91,7 @@ const routes = [
         name: "scrollIn",
         component: () =>
           import(
-            /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIn.vue"
+            /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIndicator/index.vue"
           )
       },
       {

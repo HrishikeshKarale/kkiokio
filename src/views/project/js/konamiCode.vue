@@ -1,24 +1,9 @@
 <template>
-  <div class="konamiCode">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <div ref="KeyPressed" class="konami">
-      <div>
-        <h3>konami Code</h3>
-      </div>
-      <div>
-        keyPressed:
-        <div>
-          <span>{{ keyPressed.code }}</span>
-          <span>{{ keyPressed.key }}</span>
-        </div>
-      </div>
-      <div>
-        <div v-for="(uc, index) in userCode" :key="uc + '-' + index">
-          <span>{{ uc.code }}</span>
-          <span>{{ uc.key }}</span>
-        </div>
+  <div class="konamiCode" ref="KeyPressed">
+    <div>
+      <div v-for="(uc, index) in userCode" :key="uc + '-' + index">
+        <span>{{ uc.code }}</span>
+        <span>{{ uc.key }}</span>
       </div>
     </div>
   </div>
@@ -65,9 +50,17 @@ export default {
       });
       this.codes.forEach(element => {
         //something
-        if (element === codess.slice(-element.length, codess.length).join("")) {
-          alert(`DING DING DING! Konami code detected: ${element}`);
-          return;
+        try {
+          if (
+            element === codess.slice(-element.length, codess.length).join("")
+          ) {
+            alert(`DING DING DING! Konami code detected: ${element}`);
+            throw null;
+          }
+        } catch (e) {
+          if (e != null) {
+            console.log(e);
+          }
         }
       });
       // console.log(this.codes.indexOf(codess), codess);
@@ -83,37 +76,35 @@ export default {
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 .konamiCode {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-around;
   width: 100%;
   height: 100%;
+
   & > div {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    &.konami {
+    justify-content: space-evenly;
+
+    & > div {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      & > div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        & > div {
-          padding: @spaceLg;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-content: center;
-          .boxShadow(@two);
-          background-color: @primaryColor;
-          width: 96px;
-          height: 96px;
-          & > span {
-            margin: auto;
-            &:last-child {
-              font-size: @fontSizeSm * 2;
-              font-weight: bold;
-            }
-          }
+      justify-content: center;
+      align-content: center;
+      padding: @spaceLg;
+      border-radius: 8px;
+      background-color: @primaryColor;
+      width: 96px;
+      height: 96px;
+      .boxShadow(@four);
+
+      & > span {
+        margin: auto;
+
+        &:last-child {
+          font-size: @fontSizeSm * 2;
+          font-weight: bold;
         }
       }
     }

@@ -52,7 +52,7 @@ export const toggle = {
 
   mounted() {
     if (cookie.methods.checkCookie("theme")) {
-      const theme = cookie.methods.cookie.getCookie("theme");
+      const theme = cookie.methods.getCookie("theme");
 
       if (theme) {
         this.selected = theme;
@@ -61,19 +61,6 @@ export const toggle = {
         cookie.methods.setCookie("theme", "default", 100);
         document.documentElement.setAttribute("theme", "default");
       }
-      try {
-        console.log(this.selected);
-      } catch (e) {
-        console.log("computekdksjf");
-      }
     }
-    console.log("themtmeme");
   }
-  // let show= flase;
-
-  // const toggle= () => {
-  //     return show= !show
-  // }
-
-  // export { show, toggle}
 };

@@ -98,7 +98,7 @@
 
 <script>
 import vueImg from "@/components/vueImg.vue";
-import scrollIndicator from "@/components/scrollIndicator.vue";
+import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
 import { skills } from "@/store/skills";
 import { uxProcess } from "@/store/uxProcess";
 

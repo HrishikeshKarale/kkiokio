@@ -1,11 +1,7 @@
 <template>
   <div class="canvasExample">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <div class="canvas">
-      <canvas ref="draw" />
-    </div>
+    <input type="color" v-model="color" />
+    <canvas ref="draw" />
   </div>
 </template>
 <script>
@@ -15,16 +11,19 @@ export default {
     const isDrawing = false;
     const canvas = null;
     const ctx = null;
-    const lastX = 0;
-    const lastY = 0;
+    const color = null;
+    const lastX = new Number(0);
+    const lastY = new Number(0);
     return {
       canvas,
       ctx,
+      color,
       isDrawing,
       lastX,
       lastY
     };
   },
+
   methods: {
     draw: function(event) {
       if (!this.isDrawing) return;
@@ -34,7 +33,6 @@ export default {
       this.lastY = event.offsetY;
       this.ctx.lineTo(this.lastX, this.lastY);
       this.ctx.stroke();
-      console.log(this.lastX, this.lastY);
     }
   },
   mounted() {
@@ -57,23 +55,33 @@ export default {
     this.canvas.addEventListener("mousemove", event => {
       this.draw(event);
     });
+  },
+
+  watch: {
+    color: function(newValue, oldValue) {
+      if (oldValue != newValue) {
+        this.ctx.strokeStyle = newValue;
+      }
+    }
   }
 };
 </script>
 <style lang="less" scoped>
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
-@size: 320px;
+
 .canvasExample {
-  & > div {
-    display: flex;
-    flex-direction: row;
-    &.canvas {
-      & > canvas {
-        background-color: #fafbfc;
-        .boxShadow(@one);
-      }
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  & > canvas {
+    background-color: #fafbfc;
+    border-radius: 4px;
+    .boxShadow(@two);
   }
 }
 </style>

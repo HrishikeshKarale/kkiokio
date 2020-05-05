@@ -1,21 +1,16 @@
 <template>
   <div class="imageGalery">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <div class="panels">
-      <div
-        v-for="gal in gallery"
-        :key="gal.color"
-        :class="['panel', gal.color, gal.isActive ? 'active' : null]"
-        @click="gal.isActive = !gal.isActive"
-      >
-        <template v-for="k in Object.keys(gal)">
-          <div v-if="gal[k]" :key="k + '-' + gal.color">
-            {{ gal[k] | nameConvention.capitalize }}
-          </div>
-        </template>
-      </div>
+    <div
+      v-for="gal in gallery"
+      :key="gal.color"
+      :class="['panel', gal.color, gal.isActive ? 'active' : null]"
+      @click="gal.isActive = !gal.isActive"
+    >
+      <template v-for="k in Object.keys(gal)">
+        <div v-if="gal[k]" :key="k + '-' + gal.color">
+          {{ gal[k] }}
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -74,68 +69,64 @@ export default {
 @import (reference) "./../../../Less/customVariables.less";
 @size: 320px;
 .imageGalery {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  & > div {
+  & > .panel {
+    height: 64vh;
     display: flex;
-    flex-direction: row;
-    &.panels {
-      align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    animation: 2s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    flex: 1;
+    & > div {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      & > .panel {
-        cursor: pointer;
-        height: 64vh;
-        display: flex;
-        flex-direction: column;
-        animation: 2s all cubic-bezier(0.075, 0.82, 0.165, 1);
-        flex: 1;
-        & > div {
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-items: center;
-          align-items: center;
-          color: black;
-          font-weight: bold;
-          &:nth-child(1) {
-            transform: translateY(100vh);
-          }
-          &:nth-child(3) {
-            transform: translateY(-100vh);
-          }
-          &:last-child {
-            display: none;
-          }
+      align-self: center;
+      color: black;
+      font-weight: bold;
+      &:nth-child(1) {
+        transform: translateY(-100vh);
+      }
+      &:nth-child(3) {
+        transform: translateY(-100vh);
+      }
+      &:last-child {
+        display: none;
+      }
+    }
+    &.red {
+      background-color: red;
+    }
+    &.green {
+      background-color: green;
+    }
+    &.yellow {
+      background-color: yellow;
+    }
+    &.blue {
+      background-color: blue;
+    }
+    &.purple {
+      background-color: purple;
+    }
+    &.active {
+      flex: 5;
+      & > div {
+        &:nth-child(3) {
+          transform: translateY(0);
         }
-        &.red {
-          background-color: red;
+        &:nth-child(1) {
+          transform: translateY(0);
         }
-        &.green {
-          background-color: green;
-        }
-        &.yellow {
-          background-color: yellow;
-        }
-        &.blue {
-          background-color: blue;
-        }
-        &.purple {
-          background-color: purple;
-        }
-        &.active {
-          flex: 5;
-          & > div {
-            &:nth-child(3) {
-              transform: translateY(0);
-            }
-            &:nth-child(1) {
-              transform: translateY(0);
-            }
-            &:last-child {
-              display: none;
-            }
-          }
-        }
+        // &:last-child {
+        //   display: none;
+        // }
       }
     }
   }

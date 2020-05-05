@@ -1,6 +1,6 @@
 <template>
   <div class="scrollIndicator">
-    <div class="sample">
+    <div class="scrolContent">
       <slot />
     </div>
     <div v-show="this.tag" class="scroll">
@@ -83,7 +83,7 @@ export default {
         section.getAttribute("id")
       ];
     });
-    console.log(this.tag);
+    // console.log(this.tag);
     const temp = document.getElementsByClassName("scrollIndicator")[0];
     this.scrollIndicator = temp.getElementsByTagName("span");
     this.x.addEventListener("scroll", this.debounce(this.checkScroll));
@@ -96,8 +96,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../Less/customMixins.less";
-@import (reference) "./../Less/customVariables.less";
+@import (reference) "./../../../../Less/customMixins.less";
+@import (reference) "./../../../../Less/customVariables.less";
 
 .scrollIndicator {
   width: 100%;
@@ -122,9 +122,10 @@ export default {
       }
     }
 
-    &.sample {
+    &.scrolContent {
       display: flex;
       flex-direction: row;
+      justify-content: center;
     }
   }
 }

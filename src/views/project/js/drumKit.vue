@@ -1,99 +1,31 @@
 <template>
   <div class="drumKit">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <div>
-      <div
-        v-for="k in kit"
-        @click="clicked"
-        :class="['key', k.isPlaying ? 'playing' : '']"
-        :data-key="k.dataKey"
-        :key="k.dataKey"
-        @transitionend="endTransition(k.dataKey)"
-      >
-        <div class="keyboardKey" :data-key="k.dataKey">
-          {{ k.key | nameConvention.capitalize }}
-        </div>
-        <audio :src="k.audio" :data-key="k.dataKey"></audio>
-        <div class="instrument" :data-key="k.dataKey">
-          {{ k.name | nameConvention.capitalize }}
-        </div>
+    <div
+      v-for="k in kit"
+      @click="clicked"
+      :class="['key', k.isPlaying ? 'playing' : '']"
+      :data-key="k.dataKey"
+      :key="k.dataKey"
+      @transitionend="endTransition(k.dataKey)"
+    >
+      <div class="keyboardKey" :data-key="k.dataKey">
+        {{ k.key | nameConvention.capitalize }}
+      </div>
+      <audio :src="k.audio" :data-key="k.dataKey"></audio>
+      <div class="instrument" :data-key="k.dataKey">
+        {{ k.name | nameConvention.capitalize }}
       </div>
     </div>
   </div>
 </template>
 <script>
 import { nameConvention } from "@/typeScript/nameConvention";
+import { drumKit } from "@/store/drumKit";
 
 export default {
   name: "drumKit",
   data() {
-    const kit = [
-      {
-        name: "clap",
-        key: "A",
-        dataKey: "65",
-        audio: new Audio("@/assets/audio/clap.wav"),
-        isPlaying: false
-      },
-      {
-        name: "hihat",
-        key: "S",
-        dataKey: "83",
-        audio: new Audio("@/assets/audio/hihat.wav"),
-        isPlaying: false
-      },
-      {
-        name: "kick",
-        key: "D",
-        dataKey: "68",
-        audio: new Audio("@/assets/audio/kick.wav"),
-        isPlaying: false
-      },
-      {
-        name: "openhat",
-        key: "F",
-        dataKey: "70",
-        audio: new Audio("@/assets/audio/openhat.wav"),
-        isPlaying: false
-      },
-      {
-        name: "boom",
-        key: "G",
-        dataKey: "71",
-        audio: new Audio("@/assets/audio/boom.wav"),
-        isPlaying: false
-      },
-      {
-        name: "ride",
-        key: "h",
-        dataKey: "72",
-        audio: new Audio("@/assets/audio/ride.wav"),
-        isPlaying: false
-      },
-      {
-        name: "snare",
-        key: "J",
-        dataKey: "74",
-        audio: new Audio("@/assets/audio/snare.wav"),
-        isPlaying: false
-      },
-      {
-        name: "tom",
-        key: "K",
-        dataKey: "75",
-        audio: new Audio("@/assets/audio/tom.wav"),
-        isPlaying: false
-      },
-      {
-        name: "tink",
-        key: "L",
-        dataKey: "76",
-        audio: new Audio("@/assets/audio/tink.wav"),
-        isPlaying: false
-      }
-    ];
+    const kit = drumKit;
     return {
       kit
     };
@@ -131,7 +63,7 @@ export default {
         if (kit.dataKey == keyCode) {
           kit.audio.currentTime = 10;
           kit.isPlaying = true;
-          console.log(kit);
+          // console.log(kit);
           try {
             kit.audio.play().then(() => {
               //automatic playback started
@@ -167,31 +99,29 @@ export default {
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 .drumKit {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   & > div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
-    & > div {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      text-align: center;
-      padding: @spaceMd;
-      border-radius: 4px;
-      .boxShadow(@three);
-      width: 120px;
-      height: 120px;
-      cursor: pointer;
-      &.key {
-        border: 0px solid @primaryColor;
-        transition: 0.07s;
-      }
-      &.playing {
-        transform: scale(1.1);
-        border-width: 4px;
-      }
+    text-align: center;
+    padding: @spaceMd;
+    border-radius: 4px;
+    .boxShadow(@three);
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    &.key {
+      border: 0px solid @primaryColor;
+      transition: 0.07s;
+    }
+    &.playing {
+      transform: scale(1.1);
+      border-width: 4px;
     }
   }
 }

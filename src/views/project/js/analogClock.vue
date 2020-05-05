@@ -1,29 +1,24 @@
 <template>
   <div class="analogClock">
-    <span @click="$router.go(-1)" class="fas fa-angle-double-left fa-2x">
-      Go Back
-    </span>
-    <div>
-      <div class="digital">
-        <div>{{ hours }}</div>
-        <div>{{ minutes }}</div>
-        <div>{{ seconds }}</div>
-      </div>
-      <div class="date">
-        <div>{{ month }}</div>
-        <div>{{ date }}</div>
-        <div>{{ year }}</div>
-      </div>
-      <div class="analog">
-        <div ref="hour" class="hourHand" />
-        <div ref="minute" class="minuteHand" />
-        <div ref="second" class="secondHand" />
-        <div class="center" />
-        <section class="indicator"></section>
-        <section class="indicator"></section>
-        <section class="indicator"></section>
-        <section class="indicator"></section>
-      </div>
+    <div class="digital">
+      <div>{{ hours }}</div>
+      <div>{{ minutes }}</div>
+      <div>{{ seconds }}</div>
+    </div>
+    <div class="date">
+      <div>{{ month }}</div>
+      <div>{{ date }}</div>
+      <div>{{ year }}</div>
+    </div>
+    <div class="analog">
+      <div ref="hour" class="hourHand" />
+      <div ref="minute" class="minuteHand" />
+      <div ref="second" class="secondHand" />
+      <div class="center" />
+      <section class="indicator"></section>
+      <section class="indicator"></section>
+      <section class="indicator"></section>
+      <section class="indicator"></section>
     </div>
   </div>
 </template>
@@ -84,76 +79,78 @@ export default {
 @import (reference) "./../../../Less/customVariables.less";
 @size: 320px;
 .analogClock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
   & > div {
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    & > div {
-      &.date {
-        display: flex;
-        position: absolute;
-        bottom: @size / 4;
-        right: @size / 3;
-        div {
-          border-radius: 4px;
-          margin: @spaceSm;
-          padding: @spaceSm;
-          .boxShadow(inset @two);
-          min-width: 32px;
-          max-width: fit-conent;
-        }
+    &.date {
+      display: flex;
+      position: absolute;
+      bottom: @size / 4;
+      right: @size / 3;
+      div {
+        border-radius: 4px;
+        margin: @spaceSm;
+        padding: @spaceSm;
+        .boxShadow(inset @two);
+        min-width: 32px;
+        max-width: fit-conent;
       }
-      &.digital {
-        display: flex;
-        position: absolute;
-        top: @size / 4;
-        right: @size / 3;
-        div {
-          border-radius: 4px;
-          margin: @spaceSm;
-          padding: @spaceSm;
-          .boxShadow(inset @two);
-          width: 32px;
-        }
+    }
+    &.digital {
+      display: flex;
+      position: absolute;
+      top: @size / 4;
+      right: @size / 3;
+      div {
+        border-radius: 4px;
+        margin: @spaceSm;
+        padding: @spaceSm;
+        .boxShadow(inset @two);
+        width: 32px;
       }
-      &.analog {
-        position: relative;
-        border: 8px solid @secondaryColor;
-        border-radius: 50%;
-        height: @size+ 32;
-        width: @size+ 32;
-        .boxShadow(inset @three);
-        & > div {
-          position: absolute;
-          right: @size / 2;
-          top: @size / 2;
-          transform: rotate(90deg);
+    }
+    &.analog {
+      position: relative;
+      border: 8px solid @secondaryColor;
+      border-radius: 50%;
+      height: @size+ 32;
+      width: @size+ 32;
+      .boxShadow(inset @three);
+      & > div {
+        position: absolute;
+        right: @size / 2;
+        top: @size / 2;
+        transform: rotate(90deg);
+        transform-origin: 100%;
+        .boxShadow(@four);
+        &.hourHand {
+          height: 8px;
+          background-color: black;
+          border: 1px solid black;
+          width: 36%;
+        }
+        &.minuteHand {
+          height: 6px;
+          background-color: BLACK;
+          width: 45%;
+        }
+        &.secondHand {
+          height: 2px;
+          background-color: red;
+          border-color: red;
           transform-origin: 100%;
-          .boxShadow(@four);
-          &.hourHand {
-            height: 8px;
-            background-color: black;
-            border: 1px solid black;
-            width: 36%;
-          }
-          &.minuteHand {
-            height: 6px;
-            background-color: BLACK;
-            width: 45%;
-          }
-          &.secondHand {
-            height: 1px;
-            background-color: red;
-            border-color: red;
-            transform-origin: 100%;
-            width: 45%;
-          }
-          &.center {
-            background-color: @secondaryColor;
-            height: 32px;
-            width: 32px;
-            border-radius: 50%;
-          }
+          width: 45%;
+        }
+        &.center {
+          background-color: @secondaryColor;
+          height: 32px;
+          width: 32px;
+          border-radius: 50%;
         }
       }
     }

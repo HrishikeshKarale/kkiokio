@@ -1,8 +1,5 @@
 <template>
   <div class="checkboxChallange">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
     <div class="checkboxes">
       <div v-for="option in options" :key="option.id">
         <input
@@ -12,7 +9,7 @@
           v-model="option.checked"
           @click="check(option.id, $event)"
         />
-        <b>{{ option.label }}</b>
+        <label :for="option.label" class="noselect">{{ option.label }}</label>
       </div>
     </div>
   </div>
@@ -47,7 +44,7 @@ export default {
       const shiftKeyPressed = event.shiftKey;
       if (this.lastChecked && shiftKeyPressed) {
         //do something
-        console.log("select in between");
+        // console.log("select in between");
         for (let x = 0; x < this.options.length; x++) {
           if (
             this.options[x].id > this.lastChecked &&
@@ -68,31 +65,30 @@ export default {
 .checkboxChallange {
   width: 100%;
   height: 100%;
-  & > div {
+  & > .checkboxes {
+    background-color: yellow;
+    margin: auto;
+    background-color: #fafbfc;
+    .boxShadow(@one);
+    width: max-content;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    &.checkboxes {
-      background-color: yellow;
-      margin: auto;
-      background-color: #fafbfc;
-      .boxShadow(@one);
-      width: max-content;
+    flex-direction: column;
+    & > div {
+      padding: @spaceLg;
       display: flex;
-      flex-direction: column;
-      & > div {
-        padding: @spaceLg;
-        display: flex;
-        flex-direction: row;
-        border-bottom: 1px solid lightgrey;
-        & > input {
-          & + b {
-            font-weight: normal;
-            padding: 0 @spaceLg;
-          }
-          &:checked + b {
-            text-decoration: line-through;
-          }
+      flex-direction: row;
+      border-bottom: 1px solid lightgrey;
+      &:nth-child(2n) {
+        background-color: lightgrey;
+      }
+      & > input {
+        & + label {
+          font-weight: normal;
+          padding: 0 @spaceLg;
+          margin: 0;
+        }
+        &:checked + label {
+          text-decoration: line-through;
         }
       }
     }
