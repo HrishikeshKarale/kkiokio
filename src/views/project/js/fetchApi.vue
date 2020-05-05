@@ -1,6 +1,6 @@
 <template>
   <div class="fetchApi">
-    <router-link to="/projects">
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div class="apiResponse">

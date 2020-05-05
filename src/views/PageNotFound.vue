@@ -31,44 +31,7 @@ export default {
     return {
       Id
     }; //return
-  }, //data
-
-  props: {
-    errorCode: {
-      type: String,
-      required: true
-    },
-
-    errorMessage: {
-      type: String,
-      required: true
-    },
-
-    stackTrace: {
-      type: String,
-      required: false
-    },
-
-    url: {
-      type: String,
-      required: true
-    },
-
-    date: {
-      type: String,
-      required: true
-    },
-
-    app: {
-      type: String,
-      required: true
-    },
-
-    version: {
-      type: String,
-      required: true
-    }
-  }
+  } //data
 }; //default
 </script>
 
@@ -94,7 +57,7 @@ export default {
   max-height: @height;
 
   & > .top {
-    margin-top: 32px;
+    margin-top: @spaceXl;
     text-align: center;
   }
 

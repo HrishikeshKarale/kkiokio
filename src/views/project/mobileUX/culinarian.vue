@@ -1,22 +1,23 @@
 <template>
-  <div class="goGreen">
-    <router-link to="/projects">
+  <div class="culinarian">
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <vue-img
-      :src="dGoGreen"
-      alt="Onboarding Screen ideas for a croudsource tree plntation app"
+      :src="dCulinarian"
+      alt="Culinarian App walkthrough and styleguide"
     />
   </div>
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
 export default {
+  name: "culinarian",
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dGoGreen = require("@/assets/mobile/Go-Green Onboarding screen.png");
+    const dCulinarian = require("@/assets/mobile/culinarian.png");
     return {
-      dGoGreen: dGoGreen
+      dCulinarian
     };
   },
   components: {
@@ -27,9 +28,9 @@ export default {
 <style lang="less" scoped>
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
-.goGreen {
+.culinarian {
   img {
-    margin-top: 64px;
+    margin-top: @spaceXl*2;
     .boxShadow(@two);
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="rsvp">
-    <router-link to="/projects">
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div>
@@ -147,7 +147,7 @@ export default {
 
   methods: {
     updateInvited: function(pName, remove) {
-      console.log(pName, remove, this.dEdit);
+      // console.log(pName, remove, this.dEdit);
       if (pName) {
         const invited = this.dInvited;
         if (invited) {
@@ -215,7 +215,7 @@ export default {
         & > div {
           display: flex;
           flex-direction: row;
-          margin: 8px 16px;
+          margin: @spaceMd @spaceLg;
 
           &.details {
             justify-content: space-between;
@@ -231,7 +231,7 @@ export default {
       &.header {
         position: relative;
         & > img {
-          margin-top: 40px;
+          margin-top: @spaceXl;
           width: 100%;
         }
         & > div {
@@ -243,18 +243,17 @@ export default {
             margin: auto;
             background-color: #fafbfc;
             width: fit-content;
-            padding: 8px;
+            padding: @spaceMd;
             border-radius: 4px;
             height: 64px;
             .boxShadow(@two);
             & > input {
               background-color: #fafbfc;
               width: 400px;
-              font-size: 18px;
               height: 40px;
               border: none;
-              padding: 4px;
-              margin: auto 4px;
+              padding: @spaceSm;
+              margin: auto @spaceSm;
               &:focus,
               &:focus-within {
                 border: none;
@@ -270,11 +269,11 @@ export default {
             text-align: center;
             .textShadow(@five);
             & > b {
-              padding: 16px;
+              padding: @spaceLg;
               border-radius: 16px;
               opacity: 0.8;
               background-color: #333333;
-              font-size: 72px;
+              font-size: @fontSize * 4;
               color: white;
             }
           }

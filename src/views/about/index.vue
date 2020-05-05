@@ -2,13 +2,20 @@
   <div class="about">
     <scroll-indicator>
       <article>
+        <header>
+          <h1>About Us</h1>
+        </header>
         <section id="bio">
           <div>
             <vue-img
               :src="profilePic"
               alt="Hrishikesh Karale profile Picture"
             />
-            <h1>Hrishikesh Karale</h1>
+            <div>
+              <h1>Hrishikesh Karale</h1>
+              <h3>UX Professional</h3>
+              <h4>Full Stack Designer</h4>
+            </div>
           </div>
           <div>
             <p>
@@ -126,7 +133,7 @@ export default {
 @wizard-color-active: #4183d7;
 @wizard-color-complete: #87d37c;
 @wizard-step-width-height: 120px;
-@wizard-step-font-size: 20px;
+@wizard-step-font-size: @fontSize;
 
 .about {
   article {
@@ -154,7 +161,7 @@ export default {
         text-align: left;
 
         & > .process {
-          margin-top: 32px;
+          margin-top: @spaceXl;
 
           & > ol.steps {
             display: flex;
@@ -168,8 +175,8 @@ export default {
               background-color: #fafbfc;
               flex: 1 240px;
               border-radius: 8px;
-              padding: 16px;
-              margin: 16px 32px;
+              padding: @spaceLg;
+              margin: @spaceLg @spaceXl;
 
               .boxShadow(@two);
 
@@ -182,7 +189,7 @@ export default {
                 position: relative;
                 width: @wizard-step-width-height;
                 text-align: center;
-                margin: 16px auto;
+                margin: @spaceLg auto;
                 background-color: @secondaryColor;
 
                 & + .step-title {
@@ -193,7 +200,7 @@ export default {
                     padding: 0;
 
                     & > li {
-                      margin-top: 8px;
+                      margin-top: @spaceMd;
                     }
                   }
                 }
@@ -222,6 +229,16 @@ export default {
         & > div {
           margin: auto;
 
+          &:first-child {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            & > div {
+              margin: auto;
+            }
+          }
+
           & > img {
             height: 320px;
             width: 320px;
@@ -231,7 +248,6 @@ export default {
           & > p {
             max-width: 40vw;
             min-width: 480px;
-            font-size: 18px;
           }
         }
       }

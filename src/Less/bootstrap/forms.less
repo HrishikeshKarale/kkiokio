@@ -32,7 +32,7 @@ legend {
 label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
-  margin-bottom: 5px;
+  margin-bottom: @spaceLg;
   font-weight: bold;
 }
 
@@ -51,7 +51,7 @@ input[type= "search"] {
 // Position radios and checkboxes better
 input[type= "radio"],
 input[type= "checkbox"] {
-  margin: 4px 0 0;
+  margin: @spaceSm 0 0;
   margin-top: 1px \9; // IE8-9
   line-height: normal;
 }
@@ -216,12 +216,12 @@ input[type= "search"] {
 .checkbox {
   position: relative;
   display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: @spaceMd;
+  margin-bottom: @spaceMd;
 
   label {
     min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
-    padding-left: 20px;
+    padding-left: @spaceLg; //20px;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
@@ -232,13 +232,13 @@ input[type= "search"] {
 .checkbox input[type= "checkbox"],
 .checkbox-inline input[type= "checkbox"] {
   position: absolute;
-  margin-left: -20px;
-  margin-top: 4px \9;
+  margin-left: -@spaceLg;
+  margin-top: @spaceSm \9;
 }
 
 .radio + .radio,
 .checkbox + .checkbox {
-  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+  margin-top: -@spaceSm; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 // Radios and checkboxes on same line
@@ -246,7 +246,7 @@ input[type= "search"] {
 .checkbox-inline {
   position: relative;
   display: inline-block;
-  padding-left: 20px;
+  padding-left: @spaceLg; //20px;
   margin-bottom: 0;
   vertical-align: middle;
   font-weight: normal;
@@ -447,8 +447,8 @@ input[type= "checkbox"] {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: @spaceSm;
+  margin-bottom: @spaceMd;
   color: ~"lighten(@text-color, 25%)"; // ~"lighten the text some for contrast
 }
 

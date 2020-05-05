@@ -16,7 +16,7 @@
         background-color: black;
         color: @white;
         text-align: center;
-        padding: 5px 0;
+        padding: @spaceSm 0;
         border-radius: 6px;
        
         /* Position the tooltip text - see examples below! */
@@ -129,7 +129,7 @@
     &[type= "checkbox"],
     &[type= "radio"]  {
         transform: scale(1.5);
-        margin-right: 8px;
+        margin-right: @spaceMd;
     }
 }
 
@@ -171,7 +171,7 @@
     & > label {
         margin: auto 0px;
         font-weight: 400;
-        margin-bottom: 4px;
+        margin-bottom: @spaceSm;
         color: @cometText;
         
         & > abbr {
@@ -209,7 +209,7 @@
     display: flex;
     flex-flow: column;
     flex-wrap: wrap;
-    margin: 16px auto;
+    margin: @spaceLg auto;
     border-radius: @borderRadiusMd;
     width: 80%;
     min-width: 640px;
@@ -231,7 +231,7 @@
             position: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-            font-size: 16px;
+            font-size: @fontSize;
         }
         
         &:first-child {
@@ -248,7 +248,7 @@
 
                     span.fas {
                         color: @secondaryColor;
-                        font-size: 24px;
+                        font-size: @fontSizeSm * 2;
                     }
                 }
             }
@@ -261,7 +261,7 @@
             justify-content: space-evenly;
             flex-grow: 1;
             padding: @spaceMd @spaceLg;
-            font-size: 16px;
+            font-size: @fontSize;
             flex-grow: 2;
 
             &.interactiveCode {
@@ -270,12 +270,12 @@
                 & > div {
                     display: flex;
                     flex-direction: row;
-                    margin-left: 64px;
+                    margin-left: @spaceXl*2;
                     justify-content: space-between;
 
                     &:first-child,
                     &:last-child {
-                        margin-left: 16px;
+                        margin-left: @spaceLg;
                     }
 
                     & > div {
@@ -336,11 +336,11 @@
         flex-wrap: wrap;
 
         & > label {
-            margin-right: 16px;
+            margin-right: @spaceLg;
         }
 
         & > .inputResponse {
-            margin-left: 16px;
+            margin-left: @spaceLg;
         }
     }
 
@@ -409,16 +409,16 @@
                 color: ~"darken(@backgroundColor, 25%)"
             }
             & + span {
-                padding: 12px 8px 12px 4px;
+                padding: @spaceMd+@spaceSm @spaceMd @spaceMd+@spaceSm @spaceSm; //12px 8px 12px 4px;
                 color: @grayLighter;
             }
         }
         & > input[type= 'file'] {
-            padding-left: 18px;
+            padding-left: @spaceLg; //18px;
         }
 
         & > span {
-            padding: 12px 0 12px 16px;
+            padding: @spaceMd+@spaceSm 0 @spaceMd+@spaceSm @spaceMd*2;; //12px 0 12px 16px;
             color: @secondaryColor;
             border-right-width: 0px;
         }
@@ -441,7 +441,7 @@
                 border: 1px solid @secondaryColor;
                 padding: @spaceMd @spaceLg;
                 border-radius: @borderRadiusMd;
-                margin-top: 4px;
+                margin-top: @spaceSm;
                 min-width: 240px;
                 background-color: @white;
                 justify-content: space-between;
@@ -453,23 +453,21 @@
 
                     & > span {
                         display: flex;
-                        font-size: 16px;
+                        font-size: @fontSize;
                         font-weight: bold;
     
                         &.fas {
-                            padding: auto;
-                            padding-right: 16px;
-                            padding-left: 16px;
+                            padding: @spaceLg auto;
                         }
                     }
 
                     &:last-child {
 
                         & > span {
-                            font-size: 16px;
+                            font-size: @fontSize;
 
                             &:last-child {
-                                margin: auto 16px auto 32px;
+                                margin: auto @spaceLg auto @spaceLg*2;
                             }
                         }
                     } 
@@ -525,7 +523,7 @@
 
         &.inline {
             flex-direction: row;
-            margin-left: 16px;
+            margin-left: @spaceLg;
         }
 
         & + div {
@@ -547,7 +545,7 @@
 
             > input[type= 'checkbox'],
             > input[type='radio'] {
-                margin: auto 16px auto 18px;
+                margin: auto @spaceLg auto @spaceLg;
                 
                 .checkboxSize();
             }
@@ -560,22 +558,22 @@
 }
 
 .divide4 {
-    margin: 2px !important;
+    margin: @spaceXs  !important;
     display: inline;
 }
 
 .divide8 {
-    margin: 4px !important;
+    margin: @spaceSm  !important;
     display: inline;
 }
 
 .divide16 {
-    margin: 8px !important;
+    margin: @spaceMd  !important;
     display: inline;
 }
 
 .divide32 {
-    margin: 16px !important;
+    margin: @spaceLg  !important;
     display: inline;
 }
 

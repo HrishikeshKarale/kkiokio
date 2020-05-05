@@ -1,6 +1,6 @@
 <template>
   <div class="imageGalery">
-    <router-link to="/projects">
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div class="panels">
@@ -12,7 +12,7 @@
       >
         <template v-for="k in Object.keys(gal)">
           <div v-if="gal[k]" :key="k + '-' + gal.color">
-            {{ gal[k] | capitalize }}
+            {{ gal[k] | nameConvention.capitalize }}
           </div>
         </template>
       </div>
@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import { nameConvention } from "@/typeScript/nameConvention";
 export default {
   name: "imageGalery",
   data() {
@@ -64,14 +65,8 @@ export default {
       gallery
     };
   },
-  filters: {
-    capitalize: function(value) {
-      if (typeof value == "string") {
-        return value.toUpperCase();
-      }
-      return;
-    }
-  }
+
+  mixins: [nameConvention]
 };
 </script>
 <style lang="less" scoped>

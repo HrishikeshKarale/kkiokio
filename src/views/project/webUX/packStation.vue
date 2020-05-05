@@ -1,7 +1,7 @@
 <template>
   <div class="packStation">
     <div>
-      <router-link to="/projects">
+      <router-link to="/project">
         <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
       </router-link>
     </div>
@@ -96,7 +96,6 @@ export default {
       & > h1 {
         text-align: center;
         & + p {
-          font-size: 18px;
           text-align: center;
         }
       }
@@ -111,9 +110,9 @@ export default {
         justify-content: space-around;
         &:last-child {
           img {
-            margin: 8px 16px;
+            margin: @spaceMd @spaceLg;
             border-radius: 8px;
-            padding: 8px;
+            padding: @spaceMd;
             height: 16vw;
             .boxShadow(@two);
           }

@@ -1,9 +1,9 @@
 <template>
-  <div class="caseStudy">
+  <div class="projects">
     <div class="title">
-      <h1>Case Study</h1>
+      <h1>projects</h1>
       <p>
-        Hello, I am located in Upstate New York area.
+        Currently My projects
         <br />
         Feel free to use the contact form below and reach out to me for any
         questions yo might have.
@@ -11,12 +11,18 @@
         You can also write to me the old fashion way.
       </p>
     </div>
-    <h1>This is an CaseStudy page</h1>
+    <router-view :key="$route.path" />
   </div>
 </template>
 
+<script>
+export default {
+  name: "projects"
+};
+</script>
+
 <style lang="less" scoped>
-.caseStudy {
+.projects {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

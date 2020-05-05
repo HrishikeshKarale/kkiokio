@@ -1,30 +1,25 @@
 <template>
   <div class="vueHeader">
-    <div class="header">
-      <div class="logo">
-        <router-link :to="'/'" v-if="logoLink">
-          <vue-img :src="logoLink" alt="Logo" />
-        </router-link>
-      </div>
-      <nav>
-        <slot name="nav" />
-      </nav>
-      <!-- <div>
-        <slot />
-      </div> -->
-    </div>
-    <div class="navigation">
+    <router-link :to="{ name: 'app' }" class="logo">
       <vue-img :src="logoLink" alt="Logo" />
-      <span @click.prevent="toggle" class="fas fa-bars" />
-      <nav v-if="show">
-        <slot name="nav" />
-      </nav>
-    </div>
+    </router-link>
+    <span @click.prevent="toggle" class="fas fa-bars" />
+    <nav>
+      <slot name="nav" />
+    </nav>
+    <vue-button
+      class="themeToggle"
+      buttopName="themeToggle"
+      buttonStyle="icon-sm"
+      :buttonIcon="themeIcon"
+      :onClickAction="theme.bind(this)"
+    />
   </div>
 </template>
 
 <script>
 import { toggle } from "@/typeScript/toggle";
+import vueButton from "@/components/vueButton";
 import vueImg from "./vueImg.vue";
 
 export default {
@@ -32,7 +27,21 @@ export default {
 
   mixins: [toggle],
 
+  computed: {
+    themeIcon: function() {
+      if (this.selected) {
+        this.themes.forEach(element => {
+          if (element.name == this.selected) {
+            return element.icon;
+          }
+        });
+      }
+      return "fas fa-question-circle";
+    }
+  },
+
   components: {
+    vueButton,
     vueImg
   },
 
@@ -59,134 +68,58 @@ export default {
 
 .vueHeader {
   width: 100%;
-  nav {
-    display: flex;
-    flex-direction: row;
-    margin: auto 0;
+  display: flex;
+  align-items: center;
+  padding: @spaceMd @spaceXl;
+  background-color: @cometText;
+  width: 100%;
+  height: 64px;
+  // .boxShadow(@two);
 
-    & > a {
-      color: @backgroundColor;
-      margin-right: @fontSize + @fontSizeSm;
+  & > a.logo > img {
+    height: 32px;
+    flex: 1;
+  }
+
+  & > span {
+    display: none;
+  }
+
+  & > .themeToggle {
+    display: block;
+  }
+
+  & > nav {
+    flex: 1;
+
+    & > ul {
+      align-items: center;
+      margin: 0;
     }
   }
 
   @media screen {
     @media (max-width: 1024px) {
-      & > div {
-        .header {
-          display: none;
-        }
-        &.navigation {
-          display: flex;
-          & > div {
-            display: flex;
-            max-height: 100vh;
-          }
-        }
-      }
-    }
-  }
-
-  & > div {
-    &.navigation {
-      display: none;
       flex-direction: column;
-      flex-wrap: nowrap;
+      justify-content: flex-start;
+      height: 100vh;
+      position: relative;
       width: fit-content;
-      background-color: @cometText;
-      padding: 8px 16px;
-      border-radius: 0 4px 4px 0;
+      padding: @spaceMd @spaceXl;
+
+      & > a.logo > img {
+        height: 64px;
+      }
 
       & > span {
-        color: @white;
-        text-align: center;
+        display: block;
+        position: absolute;
+        right: @spaceXl;
+        top: @spaceMd;
       }
 
-      & > img {
-        height: 32px;
-        margin-bottom: 32px;
-      }
-
-      & > div {
-        display: flex;
-        height: 0vh;
+      & > nav > ul {
         flex-direction: column;
-        justify-content: space-around;
-
-        & > div > a {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          // width: auto;
-          color: @backgroundColor;
-          text-align: center;
-
-          & > span {
-            font-size: 32px;
-
-            & + div {
-              padding: 2px;
-            }
-          }
-        }
-      }
-    }
-
-    &.header {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: @spaceMd @spaceLg;
-      height: 100%;
-      width: 100%;
-      background-color: @cometText;
-      margin: auto;
-      .boxShadow(@two);
-
-      & > div {
-        margin: auto 0;
-
-        &.logo {
-          & > a > img {
-            height: 48px;
-            padding: @spaceMd @spaceLg;
-          }
-        }
-
-        &.nav {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          & > div {
-            display: flex;
-            flex-direction: column;
-            margin: 0 2vw;
-            padding: 8px;
-            border-radius: 8px;
-
-            &:hover {
-              & > a {
-                color: @primaryColor;
-                text-decoration: none;
-              }
-            }
-
-            & > a {
-              width: 100%;
-              color: @backgroundColor;
-              text-align: center;
-
-              & > span {
-                font-size: 32px;
-
-                & + div {
-                  padding: 2px;
-                }
-              }
-            }
-          }
-        }
       }
     }
   }

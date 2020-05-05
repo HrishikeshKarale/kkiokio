@@ -41,6 +41,7 @@ export default {
       this.tag.forEach((section, index) => {
         const browserScrollPosition = this.x.scrollTop;
         const tag = this.tag[index];
+        let toggleClass = false;
 
         let scrollClasslist = null;
         if (scrollIndicator[index]) {
@@ -48,23 +49,23 @@ export default {
 
           //if section is in load zone
           if (browserScrollPosition > tag[0] - this.windowBuffer) {
-            scrollClasslist.add("fas");
-            scrollClasslist.add("active");
-            scrollClasslist.remove("far");
+            toggleClass = !toggleClass;
 
             //if section is not in load zone
             if (browserScrollPosition > tag[2] - this.windowBuffer) {
-              scrollClasslist.remove("fas");
-              scrollClasslist.remove("active");
-              scrollClasslist.add("far");
+              toggleClass = !toggleClass;
             }
           } else if (
             Math.round(browserScrollPosition) + this.windowHeight <
             section[2]
           ) {
-            scrollClasslist.remove("fas");
-            scrollClasslist.remove("active");
-            scrollClasslist.add("far");
+            toggleClass = !toggleClass;
+          }
+
+          if (toggleClass) {
+            scrollClasslist.toggle("fas");
+            scrollClasslist.toggle("active");
+            scrollClasslist.toggle("far");
           }
         }
       });

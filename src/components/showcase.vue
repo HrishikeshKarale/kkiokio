@@ -23,29 +23,17 @@ export default {
 .showcase {
   display: flex;
   flex-direction: row;
-  font-size: 20px;
+  font-size: @fontSize;
   color: #fff;
   background-color: @primaryColor;
   text-align: center;
-  padding: 16px;
+  padding: @spaceLg;
   border-radius: 4px;
-  margin: 16px;
+  margin: @spaceLg;
   cursor: pointer;
   .boxShadow(@three);
   & > * {
     text-decoration: none;
-  }
-
-  &:hover {
-    background-color: @secondaryColor;
-    & > div {
-      &.name {
-        display: none;
-      }
-      &.description {
-        display: flex;
-      }
-    }
   }
 
   & > div {
@@ -58,11 +46,23 @@ export default {
 
       & > .title {
         font-weight: bold;
-        font-size: 32px;
+        font-size: @fontSizeSm * 2;
       }
     }
     &.description {
       display: none;
+    }
+  }
+
+  &:hover {
+    background-color: @secondaryColor;
+    & > div {
+      &.name {
+        display: none;
+      }
+      &.description {
+        display: flex;
+      }
     }
   }
 }

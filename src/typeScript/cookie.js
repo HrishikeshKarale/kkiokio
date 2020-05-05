@@ -26,8 +26,9 @@ export const cookie = {
     checkCookie: function(name) {
       const value = this.getCookie(name);
       if (value == "") {
-        alert('no cookie for "' + name + '" was found');
+        return false;
       }
+      return true;
       // else {
       //   username = prompt("Please enter your name:", "");
       //   if (username != "" && username != null) {

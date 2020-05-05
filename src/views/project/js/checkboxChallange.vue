@@ -1,6 +1,6 @@
 <template>
   <div class="checkboxChallange">
-    <router-link to="/projects">
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div class="checkboxes">
@@ -81,14 +81,14 @@ export default {
       display: flex;
       flex-direction: column;
       & > div {
-        padding: 16px;
+        padding: @spaceLg;
         display: flex;
         flex-direction: row;
         border-bottom: 1px solid lightgrey;
         & > input {
           & + b {
             font-weight: normal;
-            padding: 0 16px;
+            padding: 0 @spaceLg;
           }
           &:checked + b {
             text-decoration: line-through;

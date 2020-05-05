@@ -22,48 +22,17 @@
     </div> -->
     <article>
       <section class="welcomeText">
-        <div>
-          <vue-img :src="logo" alt="Kkiokio Logo" />
-        </div>
-        <div>
-          <q
-            >A little
-            <abbr
-              title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
-            >
-              Empathy
-            </abbr>
-            goes a long way
-          </q>
-        </div>
-        <!-- <div>
-          <b>Scroll Down</b>
-          <span class="far fa-arrow-alt-circle-down fa-3x" />
-        </div> -->
+        <vue-img :src="logo" alt="Kkiokio Logo" />
+        <q
+          >A little
+          <abbr
+            title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
+          >
+            Empathy
+          </abbr>
+          goes a long way
+        </q>
       </section>
-      <!-- <section id="aboutMe">
-        <div>
-          <vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
-        </div>
-        <div>
-          <h2>Hrishikesh Karale</h2>
-        </div>
-        <div>
-          <h3>UX Professional</h3>
-        </div>
-        <div>
-          <h4>Full Stack Designer</h4>
-        </div>
-        <div>
-          <vue-button
-            buttonName="gotoButton"
-            buttonText="Click here to know more about me"
-            buttonIcon="fas fa-link"
-            buttonStyle="text-sm"
-            :onClickAction="() => this.$router.push({ path: `/About Me` })"
-          />
-        </div>
-      </section> -->
     </article>
   </div>
 </template>
@@ -98,81 +67,44 @@ export default {
 @import (reference) "./../Less/customMixins.less";
 @import (reference) "./../Less/customVariables.less";
 
-div {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+.index {
+  & > article > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 
-  &.index {
-    & > article > section {
+    &.alert {
       display: flex;
       flex-direction: column;
-      flex-wrap: wrap;
+      background-color: red;
+      padding: @spaceMd @spaceLg; //8px 16px;
+      position: absolute;
+      border-radius: 8px;
+      top: 80px;
+      color: @white;
+      text-align: center;
+      .boxShadow(@one);
 
-      &.alert {
+      & > div {
         display: flex;
-        flex-direction: column;
-        background-color: red;
-        padding: 8px 16px;
-        position: absolute;
-        border-radius: 8px;
-        top: 80px;
-        color: @white;
+        flex-direction: row;
+      }
+    }
+
+    &.welcomeText {
+      & > img {
+        align-self: center;
+        height: 40vh;
+        width: 40vh;
+      }
+
+      & > q {
+        font-size: @fontSizeSm * 3;
         text-align: center;
-        .boxShadow(@one);
 
-        & > div {
-          display: flex;
-          flex-direction: row;
-        }
-      }
-
-      &#aboutMe {
-        display: flex;
-
-        & > div {
-          text-align: center;
-
-          & > img {
-            margin: auto;
-            margin-top: 160px;
-            height: 320px;
-            width: 320px;
-            clip-path: circle(120px at center);
-          }
-        }
-      }
-
-      &.welcomeText {
-        margin: auto;
-
-        & > div {
-          text-align: center;
-
-          & > b {
-            display: block;
-            color: @cometText;
-          }
-
-          & > span {
-            position: relative;
-            color: @secondaryColor;
-          }
-
-          & > img {
-            height: 40vh;
-          }
-
-          & > q {
-            margin: 4vh 0;
-            font-size: 4vw;
-            text-align: center;
-
-            & > abbr {
-              color: #fbce51;
-              text-decoration: none;
-            }
-          }
+        & > abbr {
+          color: #fbce51;
+          text-decoration: none;
         }
       }
     }

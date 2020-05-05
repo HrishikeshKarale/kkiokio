@@ -1,6 +1,6 @@
 <template>
   <div class="drumKit">
-    <router-link to="/projects">
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div>
@@ -13,17 +13,19 @@
         @transitionend="endTransition(k.dataKey)"
       >
         <div class="keyboardKey" :data-key="k.dataKey">
-          {{ k.key | capitalize }}
+          {{ k.key | nameConvention.capitalize }}
         </div>
         <audio :src="k.audio" :data-key="k.dataKey"></audio>
         <div class="instrument" :data-key="k.dataKey">
-          {{ k.name | capitalize }}
+          {{ k.name | nameConvention.capitalize }}
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { nameConvention } from "@/typeScript/nameConvention";
+
 export default {
   name: "drumKit",
   data() {
@@ -96,11 +98,9 @@ export default {
       kit
     };
   },
-  filters: {
-    capitalize: function(value) {
-      return value.toUpperCase();
-    }
-  },
+
+  mixins: [nameConvention],
+
   methods: {
     endTransition: function(value) {
       const kit = this.kit;
@@ -178,7 +178,7 @@ export default {
       flex-wrap: wrap;
       justify-content: space-around;
       text-align: center;
-      padding: 8px;
+      padding: @spaceMd;
       border-radius: 4px;
       .boxShadow(@three);
       width: 120px;

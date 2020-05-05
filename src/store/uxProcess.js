@@ -1,4 +1,5 @@
-export const uxProcess = [{
+export const uxProcess = [
+  {
     id: 1,
     subTitle: "Empathasize, Understand and Define the problem.",
     skills: [
@@ -23,7 +24,8 @@ export const uxProcess = [{
   },
   {
     id: 4,
-    subTitle: "Sketch Ideas and exploring multiple approaches to solving the problem",
+    subTitle:
+      "Sketch Ideas and exploring multiple approaches to solving the problem",
     skills: ["Concept Sketches", "Wireframes", "Positioning"],
     title: "Design"
   },
@@ -35,13 +37,15 @@ export const uxProcess = [{
   },
   {
     id: 6,
-    subTitle: "Refine the concepts and provide a detailed design for the best solution",
+    subTitle:
+      "Refine the concepts and provide a detailed design for the best solution",
     skills: ["Visual Design", "Usability Testing", "Copy Decks"],
     title: "Refine"
   },
   {
     id: 7,
-    subTitle: "Provide taskflows and other documentation to the developers and work alongside them to deliver",
+    subTitle:
+      "Provide taskflows and other documentation to the developers and work alongside them to deliver",
     skills: [
       "Eng and Design Build",
       "Design QA",
@@ -53,7 +57,8 @@ export const uxProcess = [{
   },
   {
     id: 7,
-    subTitle: "Asses how delivered solution measures up to the initial goals and metrics",
+    subTitle:
+      "Asses how delivered solution measures up to the initial goals and metrics",
     skills: [
       "Team Feedback",
       "Enhancements",

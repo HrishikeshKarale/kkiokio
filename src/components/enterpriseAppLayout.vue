@@ -4,9 +4,11 @@
       <slot name="header" />
     </div>
     <div class="body">
-      <div class="menu">
-        <slot name="menu" />
-      </div>
+      <template>
+        <div class="menu">
+          <slot name="menu" />
+        </div>
+      </template>
       <div class="content">
         <slot name="content" />
       </div>
@@ -37,7 +39,7 @@ export default {
 .enterpriseAppLayout {
   display: flex;
   flex-direction: column;
-  max-height: 100vh;
+  height: 100vh;
   max-width: 100vw;
 
   & > div {
@@ -47,13 +49,14 @@ export default {
 
     &.head {
       max-width: 100vw;
+      height: fit-content;
     }
 
     &.body {
       display: flex;
       flex-direction: column;
       z-index: 1000;
-      min-height: 100%;
+      min-height: calc(100vh-80px);
       max-width: 100vw;
 
       .scroll(100vh);
@@ -75,11 +78,12 @@ export default {
         }
         &.content {
           padding: @spaceLg @spaceXl;
+          background-color: @backgroundColor;
           color: @cometText;
           margin: auto;
           max-width: 80vw;
           // background-color: #fafbfc;
-          // .boxShadow(@one);
+          // .boxShadow(@two);
           min-width: 320px;
         }
         &.footer {
@@ -98,9 +102,9 @@ export default {
           .boxShadow(@three);
 
           & > a {
-            padding: 16px;
+            padding: @spaceLg;
             color: white;
-            font-weight: 24px;
+            font-weight: @fontSize;
             text-decoration: none;
 
             &:hover {

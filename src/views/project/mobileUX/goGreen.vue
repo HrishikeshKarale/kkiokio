@@ -1,10 +1,10 @@
 <template>
-  <div class="medco">
-    <router-link to="/projects">
+  <div class="goGreen">
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <vue-img
-      :src="dMedco"
+      :src="dGoGreen"
       alt="Onboarding Screen ideas for a croudsource tree plntation app"
     />
   </div>
@@ -14,9 +14,9 @@ import vueImg from "@/components/vueImg.vue";
 export default {
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dMedco = require("@/assets/mobile/medical research.png");
+    const dGoGreen = require("@/assets/mobile/Go-Green Onboarding screen.png");
     return {
-      dMedco: dMedco
+      dGoGreen: dGoGreen
     };
   },
   components: {
@@ -27,9 +27,9 @@ export default {
 <style lang="less" scoped>
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
-.medco {
+.goGreen {
   img {
-    margin-top: 64px;
+    margin-top: @spaceXl*2;
     .boxShadow(@two);
   }
 }

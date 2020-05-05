@@ -1,6 +1,7 @@
 <template>
   <div class="arrayCardio">
-    <router-link to="/projects">
+    {{ $route.params }}
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div>
@@ -222,9 +223,6 @@ export default {
     }
   },
   filters: {
-    capitalize: function(value) {
-      return value.toUpperCase();
-    },
     born: function(value, year, passed) {
       // eslint-disable-next-line prefer-const
       let temp = [];
@@ -274,20 +272,20 @@ export default {
       & > table {
         .boxShadow(@two);
         width: fit-content;
-        padding: 8px 16px;
+        padding: @spaceMd @spaceLg;
         border-radius: 8px;
         border: 1px solid black;
         background-color: #fafbfc;
         & > tbody,
         & > thead {
           & > tr {
-            margin: 4px;
+            margin: @spaceSm;
             & > th {
               text-align: left;
             }
             & > td {
               //do something
-              padding: 4px 8px;
+              padding: @spaceSm @spaceMd;
             }
           }
         }

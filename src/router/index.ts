@@ -11,89 +11,95 @@ const routes = [
     component: index
   },
   {
-    path: "/projects",
-    name: "projects",
+    path: "/project",
+    // name: "project",
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/projects.vue"),
+      import(/* webpackChunkName: "project */ "@/views/project.vue"),
     children: [
       {
-        path: "JS/DrumKit",
+        path: "",
+        name: "project",
+        component: () =>
+          import(/* webpackChunkName: "index" */ "@/views/project/index.vue")
+      },
+      {
+        path: "js/drumKit",
         name: "drumKit",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/DrumKit.vue"
+            /* webpackChunkName: "drumKit" */ "@/views/project/js/drumKit.vue"
           )
       },
       {
-        path: "JS/AnalogCLock",
+        path: "js/analogClock",
         name: "analogClock",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/AnalogClock.vue"
+            /* webpackChunkName: "analogClock" */ "@/views/project/js/analogClock.vue"
           )
       },
       {
-        path: "JS/ArrayCardio",
+        path: "js/arrayCardio",
         name: "arrayCardio",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/ArrayCardio.vue"
+            /* webpackChunkName: "arrayCardio" */ "@/views/project/js/arrayCardio.vue"
           )
       },
       {
-        path: "JS/ImageGalery",
+        path: "js/imageGalery",
         name: "imageGalery",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/ImageGalery.vue"
+            /* webpackChunkName: "imageGalery" */ "@/views/project/js/imageGalery.vue"
           )
       },
       {
-        path: "JS/FetchApi",
+        path: "js/fetchAPI",
         name: "fetchApi",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/FetchApi.vue"
+            /* webpackChunkName: "fetchApi" */ "@/views/project/js/fetchApi.vue"
           )
       },
       {
-        path: "JS/CanvasExample",
+        path: "js/canvasExample",
         name: "canvasExample",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/CanvasExample.vue"
+            /* webpackChunkName: "canvasExample" */ "@/views/project/js/canvasExample.vue"
           )
       },
       {
-        path: "JS/CheckboxChallange",
+        path: "js/checkboxChallange",
         name: "checkboxChallange",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/CheckboxChallange.vue"
+            /* webpackChunkName: "checkboxChallange" */ "@/views/project/js/checkboxChallange.vue"
           )
       },
       {
-        path: "JS/KonamiCode",
+        path: "js/konamiCode",
         name: "konamiCode",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/KonamiCode.vue"
+            /* webpackChunkName: "konamiCode" */ "@/views/project/js/konamiCode.vue"
           )
       },
       {
-        path: "JS/ScrollIn",
+        path: "js/scrollIn",
         name: "scrollIn",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/js/ScrollIn.vue"
+            /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIn.vue"
           )
       },
       {
-        path: "WebUX/PackStation",
+        path: "WebUX/packStation",
         name: "packStation",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/webUX/PackStation.vue"
+            /* webpackChunkName: "packStation" */ "@/views/project/webUX/packStation.vue"
           )
       },
       {
@@ -101,84 +107,109 @@ const routes = [
         name: "rsvpApp",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/webUX/RSVP.vue"
+            /* webpackChunkName: "about" */ "@/views/project/webUX/rsvpApp.vue"
           )
       },
       {
-        path: "AppSignUp",
+        path: "mobileUX/appSignUp",
         name: "appSignUp",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/mobileUX/AppSignUp.vue"
+            /* webpackChunkName: "appSignUp" */ "@/views/project/mobileUX/appSignUp.vue"
           )
       },
       {
-        path: "mobileUX//MedCo",
+        path: "mobileUX/medCo",
         name: "medCo",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/mobileUX/MedCo.vue"
+            /* webpackChunkName: "medCo" */ "@/views/project/mobileUX/medCo.vue"
           )
       },
       {
-        path: "mobileUX//FitnessFriend",
+        path: "mobileUX/fitnessFriend",
         name: "fitnessFriend",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/mobileUX/FitnessFriend.vue"
+            /* webpackChunkName: "fitnessFriend" */ "@/views/project/mobileUX/fitnessFriend.vue"
           )
       },
       {
-        path: "mobileUX//Culinarian",
-        name: "Culinarian",
+        path: "mobileUX/culinarian",
+        name: "culinarian",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/mobileUX/Culinarian.vue"
+            /* webpackChunkName: "culinarian" */ "@/views/project/mobileUX/culinarian.vue"
           )
       },
       {
-        path: "mobileUX//GoGreen",
+        path: "mobileUX/goGreen",
         name: "goGreen",
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "@/views/projects/mobileUX/GoGreen.vue"
+            /* webpackChunkName: "goGreen" */ "@/views/project/mobileUX/goGreen.vue"
           )
       }
     ]
   },
   {
-    path: "/Case Study",
+    path: "/caseStudy",
     name: "caseStudy",
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/CaseStudy.vue")
+      import(/* webpackChunkName: "caseStudy" */ "@/views/caseStudy.vue")
   },
   {
-    path: "/Contact Me",
+    path: "/contactMe",
     name: "contact",
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/Contact.vue")
+      import(/* webpackChunkName: "contact" */ "@/views/contact.vue")
   },
   {
-    path: "/About Me",
-    name: "About",
+    path: "/logo",
+    name: "logo",
+    component: () => import(/* webpackChunkName: "logo" */ "@/views/logo.vue")
+  },
+  {
+    path: "/aboutMe",
+    name: "about",
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/about/index.vue")
   },
   {
-    path: "*",
+    path: "/404PageNotFound",
+    alias: "*",
     name: "pageNotFound",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/views/PageNotFound.vue")
+      import(/* webpackChunkName: "pageNotFound" */ "@/views/pageNotFound.vue")
   }
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
+  linkExactActiveClass: "vue-school-active-class",
+
+  //guides the scroll behaviour for the page.
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    return { x: 0, y: 0 };
+  },
   routes
+});
+
+//user authentication using meta
+//helps check for any conditions before allowing user to go to the requested page
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireLogin) {
+    //user needs login
+  } else {
+    next();
+  }
 });
 
 export default router;

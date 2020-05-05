@@ -100,7 +100,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: @fontSize;
   color: #fff;
   width: 100%;
 
@@ -110,13 +110,13 @@ export default {
   .sec {
     display: flex;
     flex-direction: column;
-    font-size: 30px;
+    font-size: @fontSizeSm * 2;
     font-weight: 500;
     text-align: center;
-    margin: 0 5px;
+    margin: 0 @spaceSm;
     .format {
       font-weight: 300;
-      font-size: 14px;
+      font-size: @fontSizeSm;
       //@include margin-start(5);
       //display: inline-block;
       opacity: 0.8;
@@ -125,20 +125,20 @@ export default {
   }
   .number {
     background-color: @primaryColor;
-    padding: 0 5px;
+    padding: 0 @spaceSm;
     border-radius: 5px;
     width: 60px;
     text-align: center;
   }
   .message {
-    font-size: 14px;
+    font-size: @fontSizeSm;
     font-weight: 400;
-    margin-top: 5px;
+    margin-top: @spaceSm;
   }
   .status-tag {
     width: 270px;
-    margin: 10px 5vw;
-    padding: 8px 0;
+    margin: @spaceMd 5vw;
+    padding: @spaceMd 0;
     font-weight: 500;
     color: #000;
     text-align: center;

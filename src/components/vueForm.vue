@@ -146,7 +146,7 @@ export default {
 @wizard-color-active: #4183d7;
 @wizard-color-complete: #87d37c;
 @wizard-step-width-height: 48px;
-@wizard-step-font-size: 20px;
+@wizard-step-font-size: @fontSize;
 
 .vueForm {
   display: flex;
@@ -259,9 +259,7 @@ export default {
   }
 
   .wizardButtons {
-    margin-top: 16px;
-    // margin: 0 auto;
-    // padding: @spaceLg @spaceXl;
+    margin-top: @spaceLg;
     background-color: @backgroundColor;
 
     & > div {

@@ -199,7 +199,7 @@ export default {
       & > h1 {
         text-align: center;
         & + p {
-          font-size: 18px;
+          font-size: @fontSize;
           text-align: center;
         }
       }
@@ -214,9 +214,9 @@ export default {
         justify-content: space-around;
         &:last-child {
           img {
-            margin: 8px 16px;
+            margin: @spaceMd @spaceLg;
             border-radius: 8px;
-            padding: 8px;
+            padding: @spaceMd;
             max-width: 16vw;
             min-width: 320px;
             height: auto;

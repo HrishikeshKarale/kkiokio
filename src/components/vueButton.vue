@@ -221,7 +221,7 @@ export default {
 
       &.btn-lg {
         padding: @spaceSm;
-        font-size: @fontSizeSm*2;
+        font-size: @fontSizeSm * 2;
       }
     }
     &.btn-text {

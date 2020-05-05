@@ -1,8 +1,8 @@
 <template>
   <div class="analogClock">
-    <router-link to="/projects">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
+    <span @click="$router.go(-1)" class="fas fa-angle-double-left fa-2x">
+      Go Back
+    </span>
     <div>
       <div class="digital">
         <div>{{ hours }}</div>
@@ -45,11 +45,6 @@ export default {
       month,
       year
     };
-  },
-  filters: {
-    capitalize: function(value) {
-      return value.toUpperCase();
-    }
   },
   methods: {
     setTime: function() {
@@ -101,8 +96,8 @@ export default {
         right: @size / 3;
         div {
           border-radius: 4px;
-          margin: 4px;
-          padding: 4px;
+          margin: @spaceSm;
+          padding: @spaceSm;
           .boxShadow(inset @two);
           min-width: 32px;
           max-width: fit-conent;
@@ -115,8 +110,8 @@ export default {
         right: @size / 3;
         div {
           border-radius: 4px;
-          margin: 4px;
-          padding: 4px;
+          margin: @spaceSm;
+          padding: @spaceSm;
           .boxShadow(inset @two);
           width: 32px;
         }

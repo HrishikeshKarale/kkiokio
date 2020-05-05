@@ -196,7 +196,6 @@ export default {
       & > h1 {
         text-align: center;
         & + p {
-          font-size: 18px;
           text-align: center;
         }
       }
@@ -221,14 +220,14 @@ export default {
           display: flex;
           flex-direction: column;
           max-width: 40vw;
-          min-width: 24opx;
-          padding: 16px;
+          min-width: 240px;
+          padding: @spaceLg;
           background-color: #fafbfc;
           border-radius: 8px;
           .boxShadow(@one);
           & > form {
             & > div {
-              margin-top: 16px;
+              margin-top: @spaceLg;
             }
           }
         }

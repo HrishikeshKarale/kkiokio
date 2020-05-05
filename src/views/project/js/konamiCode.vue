@@ -1,6 +1,6 @@
 <template>
   <div class="konamiCode">
-    <router-link to="/projects">
+    <router-link to="/project">
       <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
     </router-link>
     <div ref="KeyPressed" class="konami">
@@ -98,7 +98,7 @@ export default {
         flex-direction: row;
         justify-content: space-around;
         & > div {
-          padding: 16px;
+          padding: @spaceLg;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -109,13 +109,9 @@ export default {
           height: 96px;
           & > span {
             margin: auto;
-            font-size: 16px;
             &:last-child {
-              font-size: 24px;
+              font-size: @fontSizeSm * 2;
               font-weight: bold;
-            }
-            &:first-child {
-              font-size: 18px;
             }
           }
         }
