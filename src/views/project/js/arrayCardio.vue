@@ -29,17 +29,14 @@
         {{ orderPeopleByFirst }}
       </div> -->
     <div class="data">
+      {{ inventors }}
       <vue-table
-        :tableData="paginatedData"
-        :columns="d_columns"
+        :tableData="inventors"
         :metadata="metadata"
-        :select="d_columns[0]"
-        :title="d_title"
-        :low="d_low"
-        @setPage="setPage"
-        @setSortKey="setSortKey"
-        @selectRow="selectRow"
-        @setRowElements="setRowElements"
+        @setPage="metadata.pageNumber"
+        @setSortKey="metadata.setSortKey"
+        @selectRow="metadata.selectRow"
+        @setRowElements="metadata.rowElements"
       />
       <table>
         <thead>
@@ -80,14 +77,21 @@
 </template>
 <script>
 import { arrayExercise } from "@/store/arrayExercise";
-import vueTable from "@/components/vueTable.vue";
+import { mapState } from "vuex";
+
+// import vueTable from "@/components/vueTable.vue";
 export default {
   name: "arrayCardio",
+
+  mapState,
+
   components: {
-    vueTable
+    // vueTable
   },
 
   computed: {
+    ...mapState(["metadata"]),
+
     isAdult: function() {
       return this.inventors.some(
         inv => new Date().getFullYear() - inv.year > 18

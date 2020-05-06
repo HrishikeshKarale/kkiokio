@@ -2,7 +2,7 @@ import { cookie } from "@/typeScript/cookie";
 
 export const toggle = {
   data() {
-    const show = false;
+    const show = new Array([]);
     const themes = [
       {
         name: "default",
@@ -22,8 +22,15 @@ export const toggle = {
   },
 
   methods: {
-    toggle: function() {
-      this.show = !this.show;
+    toggle: function(id) {
+      const show = this.show;
+      if (!show.includes(id)) {
+        this.show = [...show, id];
+        return true;
+      } else {
+        this.show = show.filter(e => e !== id);
+        return false;
+      }
     },
 
     trans: function() {

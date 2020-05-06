@@ -142,6 +142,7 @@ export default {
 
 .vueModal {
   display: inline-flex;
+  outline: 9999px solid rgba(0, 0, 0, 0.5);
 
   .modal-mask {
     position: fixed;

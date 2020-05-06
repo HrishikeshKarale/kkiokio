@@ -64,7 +64,7 @@ export default {
 @import (reference) "./Less/customMixins.less";
 
 body {
-  background-color: white; //#ececec;
+  background-color: @backgroundColor;
   color: @navText; //#2c3e50;
   margin: 0;
   height: 100%;
@@ -81,7 +81,7 @@ body {
       & > a {
         flex: 1;
         margin: 0 @spaceLg;
-        color: @backgroundColor;
+        color: @navText;
         text-decoration: none !important;
 
         &:hover {

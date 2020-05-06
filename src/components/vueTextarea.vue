@@ -17,7 +17,7 @@
       <textarea
         v-if="!mask"
         :name="name"
-        v-model="d_textareaValue"
+        v-model="dTextareaValue"
         :placeholder="placeholder"
         :maxlength="maxlength"
         :pattern="pattern"
@@ -182,7 +182,7 @@ export default {
       this.ddanger = null;
       this.dWarning = null;
       //loads current value stored from dTextValue(data) into val(temp) variable val for readability of code
-      const val = this.d_textareaValue;
+      const val = this.dTextareaValue;
       const maxlength = this.maxLength;
       const pattern = new RegExp(this.pattern);
 
@@ -214,7 +214,7 @@ export default {
   }, //methods
 
   created() {
-    //store values passed as props into d_textareaValue for future manipulation
+    //store values passed as props into dTextareaValue for future manipulation
     if (this.value) {
       this.dTextareaValue = this.value;
     }

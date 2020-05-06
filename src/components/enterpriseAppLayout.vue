@@ -41,27 +41,25 @@ export default {
   flex-direction: column;
   height: 100vh;
   max-width: 100vw;
-
   & > div {
     display: flex;
     flex-direction: row;
     height: 100%;
-
     &.head {
       max-width: 100vw;
       height: fit-content;
+      z-index: 2000;
     }
-
     &.body {
       display: flex;
       flex-direction: column;
       z-index: 1000;
       min-height: calc(100vh-80px);
       max-width: 100vw;
-
+      z-index: 100;
       .scroll(100vh);
-
       > div {
+        z-index: 200;
         &.menu {
           display: flex;
           justify-content: space-between;
@@ -69,7 +67,6 @@ export default {
           position: sticky;
           top: 0;
           left: 0;
-          z-index: 2000;
           background-color: @navBackground;
           .boxShadow(@one);
           & > div:last-child {
@@ -82,8 +79,6 @@ export default {
           color: @cometText;
           margin: auto;
           max-width: 80vw;
-          // background-color: #fafbfc;
-          // .boxShadow(@two);
           min-width: 320px;
         }
         &.footer {
@@ -99,16 +94,32 @@ export default {
           background-color: #333333;
           border-radius: 4px;
           text-align: center;
-          .boxShadow(@three);
-
+          // .boxShadow(@three);
           & > a {
             padding: @spaceLg;
             color: white;
             font-weight: @fontSize;
             text-decoration: none;
-
             &:hover {
               color: @primaryColor;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen {
+    @media (max-width: 1024px) {
+      // position: relative;
+      & > div {
+        &.head {
+          position: fixed;
+          left: 0;
+          top: 0;
+        }
+        &.body {
+          @media screen {
+            @media (max-width: 1024px) {
             }
           }
         }

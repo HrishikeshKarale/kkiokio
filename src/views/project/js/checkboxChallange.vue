@@ -1,16 +1,14 @@
 <template>
   <div class="checkboxChallange">
-    <div class="checkboxes">
-      <div v-for="option in options" :key="option.id">
-        <input
-          type="checkbox"
-          :name="option.label"
-          :id="option.label"
-          v-model="option.checked"
-          @click="check(option.id, $event)"
-        />
-        <label :for="option.label" class="noselect">{{ option.label }}</label>
-      </div>
+    <div v-for="option in options" :key="option.id">
+      <input
+        type="checkbox"
+        :name="option.label"
+        :id="option.label"
+        v-model="option.checked"
+        @click="check(option.id, $event)"
+      />
+      <label :for="option.label" class="noselect">{{ option.label }}</label>
     </div>
   </div>
 </template>
@@ -63,33 +61,28 @@ export default {
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 .checkboxChallange {
-  width: 100%;
-  height: 100%;
-  & > .checkboxes {
-    background-color: yellow;
-    margin: auto;
-    background-color: #fafbfc;
-    .boxShadow(@one);
-    width: max-content;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin: auto;
+  .boxShadow(@one);
+  & > div {
+    padding: @spaceLg;
     display: flex;
-    flex-direction: column;
-    & > div {
-      padding: @spaceLg;
-      display: flex;
-      flex-direction: row;
-      border-bottom: 1px solid lightgrey;
-      &:nth-child(2n) {
-        background-color: lightgrey;
+    flex-direction: row;
+    border-bottom: 1px solid lightgrey;
+    background-color: #fafbfc;
+    &:nth-child(2n) {
+      background-color: lightgrey;
+    }
+    & > input {
+      & + label {
+        font-weight: normal;
+        padding: 0 @spaceLg;
+        margin: 0;
       }
-      & > input {
-        & + label {
-          font-weight: normal;
-          padding: 0 @spaceLg;
-          margin: 0;
-        }
-        &:checked + label {
-          text-decoration: line-through;
-        }
+      &:checked + label {
+        text-decoration: line-through;
       }
     }
   }

@@ -18,9 +18,9 @@ html {
     --cometLogo:             var(--cometLogo);
     --cometText:             var(--offBlack);
     --backgroundColor:       var(--offWhite);
-    --navBackground:         var(--white);
-    --navText:               var(--secondaryColor);
-    --navType:               var(--cometLogo);
+    --navBackground:            var(--offBlack);
+    --navText: var(--offWhite);
+    --navBak:               var(--cometLogo);
     --shadowColor:          #3333337F;
 }
 
@@ -31,7 +31,7 @@ html[theme='darkMode'] {
     --cometLogo:             var(--cometLogo);
     --cometText:             var(--offWhite);
     --backgroundColor:       var(--offBlack);
-    --navBackground:         var(--cometBlue);
+    --navBackground: var(--offBlack);
     --navText:               var(--white);
     --navType:               var(--cometLogo);
     --shadowColor:            #ffffff7F;

@@ -220,7 +220,7 @@ export default {
           display: flex;
           flex-direction: column;
           max-width: 40vw;
-          min-width: 240px;
+          min-width: 320px;
           padding: @spaceLg;
           background-color: #fafbfc;
           border-radius: 8px;

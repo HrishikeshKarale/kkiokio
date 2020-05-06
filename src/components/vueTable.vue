@@ -48,40 +48,40 @@
                   }}
                 </div>
                 <!-- <div class= 'tableAction'>
-                                    <span 
-                                        class= 'fas fa-ellipsis-h'
-                                        @click.stop= 'tableAction= !tableAction'
-                                        :class= '{open: tableAction}'
-                                    />
-                                    <ul
-                                        :class= '{open: tableAction}'
-                                    >
-                                        <li>
-                                            <span class= "fas fa-trash fa-1x"/>
-                                            <span>
-                                                Delete
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span class= "fas fa-times fa-1x"/>
-                                            <span>
-                                                Remove
-                                            </span>        
-                                        </li>
-                                        <li>
-                                            <span class= "fas fa-pen fa-1x"/>
-                                            <span>
-                                                Edit
-                                            </span>        
-                                        </li>
-                                        <li>
-                                            <span class= "fas fa-check fa-1x"/>
-                                            <span>
-                                                Accept
-                                            </span>        
-                                        </li>
-                                    </ul>
-                                </div> -->
+									<span 
+										class= 'fas fa-ellipsis-h'
+										@click.stop= 'tableAction= !tableAction'
+										:class= '{open: tableAction}'
+									/>
+									<ul
+										:class= '{open: tableAction}'
+									>
+										<li>
+											<span class= "fas fa-trash fa-1x"/>
+											<span>
+												Delete
+											</span>
+										</li>
+										<li>
+											<span class= "fas fa-times fa-1x"/>
+											<span>
+												Remove
+											</span>        
+										</li>
+										<li>
+											<span class= "fas fa-pen fa-1x"/>
+											<span>
+												Edit
+											</span>        
+										</li>
+										<li>
+											<span class= "fas fa-check fa-1x"/>
+											<span>
+												Accept
+											</span>        
+										</li>
+									</ul>
+								</div> -->
                 <div
                   v-if="!subtableId"
                   @click.stop="textSelectAll()"
@@ -116,8 +116,8 @@
             </div>
 
             <!-- <div v-else-if= 'subtableId'>
-                            id: {{subtableId}}
-                        </div> -->
+							id: {{subtableId}}
+						</div> -->
           </th>
 
           <th
@@ -128,10 +128,10 @@
           >
             {{ col | capitalize }}
             <!-- <span 
-                            v-if= 'metadata.sortKey == col'
-                            class= 'fas .fa-stack-1x' 
-                            :class= 'metadata.sortOrders[col] > 0 ? "fa-sort-up" : "fa-sort-down"'
-                        /> -->
+							v-if= 'metadata.sortKey == col'
+							class= 'fas .fa-stack-1x' 
+							:class= 'metadata.sortOrders[col] > 0 ? "fa-sort-up" : "fa-sort-down"'
+						/> -->
             <span class="fa-stack">
               <i
                 class="fas fa-stack-1x"
@@ -165,15 +165,15 @@
                 :class="{ open: editColumns }"
               />
               <!-- <div
-                                :class= '{open: editColumns}'
-                            >
-                                <checkbox-input 
-                                    name= "editColumns"
-                                    v-model= "columns"
-                                    :options= 'columns'
-                                    :inline= '!d_booleanTrue'
-                                />
-                            </div> -->
+								:class= '{open: editColumns}'
+							>
+								<checkbox-input 
+									name= "editColumns"
+									v-model= "columns"
+									:options= 'columns'
+									:inline= '!d_booleanTrue'
+								/>
+							</div> -->
               <ul :class="{ open: editColumns }">
                 <li>
                   <label>Display Columns</label>
@@ -218,16 +218,16 @@
                 @click.self="toggleCheckbox(entry[select])"
               />
               <!-- <vue-button 
-                                :buttonType= 'buttonType'
-                                buttonName= "ExpandRow"
-                                :buttonText= "d_buttonText"
-                                :buttonIcon= 'entry.showSub? "fas fa-chevron-down":"fas fa-chevron-up"'
-                                :buttonStyle= 'd_buttonStyle[9]'
-                                :disabled= '!d_booleanTrue'
-                                :autofocus= '!d_booleanTrue'
-                                :formID= "d_form"
-                                :onClickAction= 'toggleSubTable.bind(this, entry)'
-                            />  -->
+								:buttonType= 'buttonType'
+								buttonName= "ExpandRow"
+								:buttonText= "d_buttonText"
+								:buttonIcon= 'entry.showSub? "fas fa-chevron-down":"fas fa-chevron-up"'
+								:buttonStyle= 'd_buttonStyle[9]'
+								:disabled= '!d_booleanTrue'
+								:autofocus= '!d_booleanTrue'
+								:formID= "d_form"
+								:onClickAction= 'toggleSubTable.bind(this, entry)'
+							/>  -->
             </td>
 
             <td v-for="(col, index) in columns" :key="index">
@@ -256,43 +256,43 @@
                 :onClickAction="toggleSubTable.bind(this, entry)"
               />
               <!-- <span 
-                                :class= 'entry? "fas fa-chevron-right":"fas fa-chevron-down"'
-                                @click.stop= 'toggleSubTable(entry)'
-                            /> -->
+								:class= 'entry? "fas fa-chevron-right":"fas fa-chevron-down"'
+								@click.stop= 'toggleSubTable(entry)'
+							/> -->
             </td>
           </tr>
           <!-- <tr 
-                        v-if= 'entry.subDetails && entry.showSub'
-                        :key= 'index'
-                        :id= 'entry[select]+ "expand"'
-                    >
-                        <td 
-                            class= 'subTable'
-                            :colspan= "columns.length+1"
-                        >
-                            <vue-table 
-                                :tableData= '(entry.subDetails).tableData'
-                                :columns= '(entry.subDetails).cols'
-                                :metadata= '{}'
-                                :title= '(entry.subDetails).title'
-                                :subtableId= 'entry[select]+ "-subtable"'
-                            />
-                        </td>
-                    </tr> -->
+						v-if= 'entry.subDetails && entry.showSub'
+						:key= 'index'
+						:id= 'entry[select]+ "expand"'
+					>
+						<td 
+							class= 'subTable'
+							:colspan= "columns.length+1"
+						>
+							<vue-table 
+								:tableData= '(entry.subDetails).tableData'
+								:columns= '(entry.subDetails).cols'
+								:metadata= '{}'
+								:title= '(entry.subDetails).title'
+								:subtableId= 'entry[select]+ "-subtable"'
+							/>
+						</td>
+					</tr> -->
         </template>
       </tbody>
     </table>
     <div class="paging">
       <div>
         <!-- <radio-input
-                    name= "rowElements"
-                    :value= 'showRecords'
-                    :options= 'metadata.recordsPerPage'
-                    :required= 'd_booleanTrue'
-                    :box= 'd_booleanTrue'
-                    :inline= 'd_booleanTrue'
-                    @selected= 'setRowElements'
-                /> -->
+					name= "rowElements"
+					:value= 'showRecords'
+					:options= 'metadata.recordsPerPage'
+					:required= 'd_booleanTrue'
+					:box= 'd_booleanTrue'
+					:inline= 'd_booleanTrue'
+					@selected= 'setRowElements'
+				/> -->
         <dropdown-list
           label="Show"
           name="showRecords"
@@ -309,10 +309,10 @@
         </div>
         <div>
           <!-- <span 
-                        class= 'fas fa-chevron-left'
-                        @click.stop= 'setPage(metadata.pageNumber-1)'
-                        v-show= 'metadata.pageNumber> 1'
-                    />                                -->
+						class= 'fas fa-chevron-left'
+						@click.stop= 'setPage(metadata.pageNumber-1)'
+						v-show= 'metadata.pageNumber> 1'
+					/>                                -->
           <vue-button
             v-show="metadata.pageNumber > 1"
             :buttonType="buttonType"
@@ -325,10 +325,10 @@
         <div>Page {{ metadata.pageNumber }}</div>
         <div>
           <!-- <span 
-                        class= 'fas fa-chevron-right'
-                        @click.stop= 'setPage(metadata.pageNumber+1)'
-                        v-show= 'metadata.pageNumber< metadata.pageCount'
-                    />                                 -->
+						class= 'fas fa-chevron-right'
+						@click.stop= 'setPage(metadata.pageNumber+1)'
+						v-show= 'metadata.pageNumber< metadata.pageCount'
+					/>                                 -->
           <vue-button
             v-show="metadata.pageNumber < metadata.pageCount"
             :buttonType="buttonType"
@@ -363,6 +363,19 @@ export default {
 
   mapMutations,
 
+  data() {
+    const rowElements = this.metadata.rowElements;
+    const dropdownValue = this.metadata.rowElements;
+    const editColumns = false;
+    const columns = null;
+    return {
+      columns,
+      rowElements,
+      dropdownValue,
+      editColumns
+    }; //return
+  }, //data
+
   props: {
     tableData: {
       required: true,
@@ -370,11 +383,11 @@ export default {
       default: null
     },
 
-    columns: {
-      required: true,
-      type: Array,
-      default: null
-    },
+    // columns: {
+    //   required: true,
+    //   type: Array,
+    //   default: null
+    // },
 
     metadata: {
       required: true,
@@ -394,16 +407,6 @@ export default {
       default: null
     },
 
-    low: {
-      required: false,
-      type: String,
-      default: null,
-      validator: function(value) {
-        // console.log(value)
-        return ["1", "2", "3", "4", "5", null].indexOf(value) != -1;
-      }
-    },
-
     select: {
       required: false,
       type: String,
@@ -417,17 +420,6 @@ export default {
     dropdownList,
     textInput
   }, //components
-
-  data() {
-    const rowElements = this.metadata.rowElements;
-    const dropdownValue = this.metadata.rowElements;
-    const editColumns = false;
-    return {
-      rowElements,
-      dropdownValue,
-      editColumns
-    }; //return
-  }, //data
 
   computed: {
     showRecords: function() {
@@ -461,12 +453,14 @@ export default {
       //do something
     }, //toggleSubTable
 
-    dataTablecolumns: function() {
-      //   let temp;
-      //   Object.keys(dataObject[0]).forEach(function eachKey(key) {
-      //     this.state.columns.push(key); // alerts key
-      //     // alert(foo[key]); // alerts value
-      //   });
+    dataTableColumns: function() {
+      this.column = Object.keys(this.tableData[0]).forEach(function eachKey(
+        key
+      ) {
+        return key; // alerts key
+        // alert(foo[key]); // alerts value
+      });
+      console.log(this.column);
     }, //dataTablecolumns
 
     consoleClickEdit: function() {
@@ -877,36 +871,36 @@ export default {
           }
 
           /* // &.subTable {
-                        //     display: flex;
-                        //     width: 100%;
-                        //     background-color: #e5e5e5;
+						//     display: flex;
+						//     width: 100%;
+						//     background-color: #e5e5e5;
 
-                        //     .vueTable.inner {
-                                
-                        //         table {
-                        //             border: 1px solid @backgroundColor;
+						//     .vueTable.inner {
+								
+						//         table {
+						//             border: 1px solid @backgroundColor;
 
-                        //             thead {
-                        //                 height: 32px;
-                        //                 tr {
-                        //                     background-color: #959595;
+						//             thead {
+						//                 height: 32px;
+						//                 tr {
+						//                     background-color: #959595;
 
-                        //                     th {
-                        //                         &:first-child {
-                        //                             div {
-                        //                                 border: none;
-                        //                             }
-                        //                         }
-                        //                     }
-                        //                 }
-                        //             }
-                        //         }
-                        //     }
+						//                     th {
+						//                         &:first-child {
+						//                             div {
+						//                                 border: none;
+						//                             }
+						//                         }
+						//                     }
+						//                 }
+						//             }
+						//         }
+						//     }
 
-                        //     div.paging {
-                        //         display: none;
-                        //     }
-                        // } */
+						//     div.paging {
+						//         display: none;
+						//     }
+						// } */
         }
       }
     }

@@ -3,7 +3,7 @@
     <scroll-indicator>
       <article>
         <header>
-          <h1>About Us</h1>
+          <h1>About Me</h1>
         </header>
         <section id="bio">
           <div>
@@ -246,7 +246,7 @@ export default {
           }
 
           & > p {
-            max-width: 40vw;
+            max-width: 60vw;
             min-width: 480px;
           }
         }
