@@ -1,8 +1,8 @@
 <template>
   <div class="projects">
-    <div class="title">
-      <h1>projects</h1>
-      <p>
+    <!-- <div class="title"> -->
+      <h1>My Projects</h1>
+      <!-- <p>
         Currently My rojects
         <br />
         Feel free to use the contact form below and reach out to me for any
@@ -10,7 +10,7 @@
         <br />
         You can also write to me the old fashion way.
       </p>
-    </div>
+    </div> -->
     <!-- <div class="content"> -->
     <!-- <span @click="$router.go(-1)" class="fas fa-angle-double-left fa-2x">
       Go Back

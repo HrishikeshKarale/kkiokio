@@ -59,7 +59,7 @@ export default {
           }
         } catch (e) {
           if (e != null) {
-            console.log(e);
+            console.error(e);
           }
         }
       });

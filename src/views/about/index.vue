@@ -25,9 +25,8 @@
             </p>
             <p>
               I have a Masters in HCI/Design and a Bachalors in Computer
-              Engineering. This allows me to not just balance the needs of the
-              end-user with the business goals but also lets me take development
-              into consideration.
+              Engineering, thus allowing me to take development into
+              consideration when designing a solution.
             </p>
             <p>
               As a UX Professional, I strive to use a constant end-user feedback
@@ -37,8 +36,7 @@
               process. This non-linear approach is integral to ensuring that my
               projects decisions lead to a massive improvement in the key
               metrics that are relevant to the user experience. In short, I like
-              to think like an engineer, data-scientist and marketer in addition
-              to being a UX Professional.
+              to think like an engineer in addition to being a UX Professional.
             </p>
             <p>
               I’m also a novice visual designer. I’ve designed over 30 working

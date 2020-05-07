@@ -110,7 +110,7 @@ export default {
         .then(data => {
           source.response[index] = data;
         })
-        .catch(error => console.log(error))
+        .catch(error => console.error(error))
         .finally(() => {
           console.log(`Fetch executed on ${source.baseURL}`);
         });
