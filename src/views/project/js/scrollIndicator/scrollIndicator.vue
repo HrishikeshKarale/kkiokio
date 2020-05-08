@@ -1,15 +1,15 @@
 <template>
   <div class="scrollIndicator">
-    <div class="scrolContent">
+    <div class="scrollContent">
       <slot />
     </div>
-    <div v-show="this.tag" class="scroll">
+    <div v-if="this.tagOffset.length > 1" class="scroll">
       <a
-        v-for="indicator in this.tag"
-        :key="indicator[0]"
-        :href="'#' + indicator[3]"
+        v-for="indicator in this.tagOffset"
+        :key="indicator.id"
+        :href="'#' + indicator.id"
       >
-        <span :class="[indicator[1] ? 'active fas' : 'far', 'fa-circle']" />
+        <span :class="[indicator.selected ? 'fas' : 'far', 'fa-circle']" />
       </a>
     </div>
   </div>
@@ -23,13 +23,13 @@ export default {
   data() {
     const x = null;
     const tag = [];
-    const scrollIndicator = [];
+    const tagOffset = [];
     const windowHeight = null;
     const windowBuffer = null;
     return {
       x,
       tag,
-      scrollIndicator,
+      tagOffset,
       windowHeight,
       windowBuffer
     };
@@ -37,59 +37,42 @@ export default {
   mixins: [debounce],
   methods: {
     checkScroll: function() {
-      const scrollIndicator = this.scrollIndicator;
-      this.tag.forEach((section, index) => {
-        const browserScrollPosition = this.x.scrollTop;
-        const tag = this.tag[index];
-        let toggleClass = false;
+      const highlight = Math.round(this.x.scrollTop);
 
-        let scrollClasslist = null;
-        if (scrollIndicator[index]) {
-          scrollClasslist = scrollIndicator[index].classList;
+      for (let i = 0; i < this.tag.length; i++) {
+        const tagOffset = this.tagOffset[i];
 
-          //if section is in load zone
-          if (browserScrollPosition > tag[0] - this.windowBuffer) {
-            toggleClass = !toggleClass;
-
-            //if section is not in load zone
-            if (browserScrollPosition > tag[2] - this.windowBuffer) {
-              toggleClass = !toggleClass;
-            }
-          } else if (
-            Math.round(browserScrollPosition) + this.windowHeight <
-            section[2]
-          ) {
-            toggleClass = !toggleClass;
-          }
-
-          if (toggleClass) {
-            scrollClasslist.toggle("fas");
-            scrollClasslist.toggle("active");
-            scrollClasslist.toggle("far");
-          }
+        if (
+          highlight + this.windowBuffer > tagOffset.top &&
+          highlight < tagOffset.bottom
+        ) {
+          tagOffset.selected = true;
+        } else {
+          tagOffset.selected = false;
         }
-      });
+      }
+      this.prevScrollValue = highlight;
     } //checkScroll
   },
   mounted() {
     this.x = document.getElementsByClassName("body")[0];
-    const offsetHeader = Array.from(document.getElementsByClassName("header"));
+    const offsetHeader = Array.from(
+      document.getElementsByClassName("vueHeader")
+    )[0];
     this.tag = Array.from(document.getElementsByTagName("section"));
-    this.tag = this.tag.map(section => {
-      return [
-        section.offsetTop - offsetHeader[0].offsetHeight,
-        false,
-        section.offsetTop + section.offsetHeight - offsetHeader[0].offsetHeight,
-        section.getAttribute("id")
-      ];
+    this.tagOffset = this.tag.map(section => {
+      return {
+        top: section.offsetTop - offsetHeader.offsetHeight,
+        bottom:
+          section.offsetTop + section.offsetHeight - offsetHeader.offsetHeight,
+        id: section.getAttribute("id"),
+        selected: false
+      };
     });
-    // console.log(this.tag);
-    const temp = document.getElementsByClassName("scrollIndicator")[0];
-    this.scrollIndicator = temp.getElementsByTagName("span");
-    this.x.addEventListener("scroll", this.debounce(this.checkScroll));
-    this.windowHeight = window.innerHeight - offsetHeader[0].offsetHeight;
-    this.windowBuffer = this.windowHeight * 0.5;
-    if (this.scrollIndicator) {
+    if (this.tag.length > 1) {
+      this.x.addEventListener("scroll", this.debounce(this.checkScroll));
+      this.windowHeight = this.x.offsetHeight;
+      this.windowBuffer = this.windowHeight * 0.3;
       this.checkScroll();
     }
   }

@@ -18,9 +18,7 @@
         </vue-header>
       </template>
       <template v-slot:content>
-        <!-- <scroll-indicator> -->
         <router-view :key="$route.path" />
-        <!-- </scroll-indicator> -->
       </template>
     </enterprise-app-layout>
   </div>
@@ -31,8 +29,6 @@
 import vueHeader from "@/components/vueHeader";
 import enterpriseAppLayout from "@/components/enterpriseAppLayout";
 import { nav } from "@/store/navigation";
-// import { nameConvention } from "@/typeScript/nameConvention";
-// import scrollIndicator from "@/components/scrollIndicator.vue";
 
 export default {
   name: "app",
@@ -47,12 +43,7 @@ export default {
     };
   },
 
-  mixins: [
-    // nameConvention,
-  ],
-
   components: {
-    // scrollIndicator,
     vueHeader,
     enterpriseAppLayout
   }

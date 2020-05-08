@@ -83,12 +83,6 @@ export default {
 
   mounted() {
     document.addEventListener("click", this.clickHandler);
-    // document.click(function(e) {
-    //   console.log(e.target);
-    //   if (!e.target.closest(".modal").length) {
-    //     alert("click outside!");
-    //   }
-    // });
   }
 }; //default
 </script>
@@ -108,7 +102,7 @@ export default {
   padding: @spaceMd @spaceXl;
   background-color: @navBackground;
   width: 100%;
-  height: @size * 2;
+  height: @header;
   .boxShadow(@one);
   & > div {
     position: relative;

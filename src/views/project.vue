@@ -1,30 +1,20 @@
 <template>
   <div class="projects">
-    <!-- <div class="title"> -->
-      <h1>My Projects</h1>
-      <!-- <p>
-        Currently My rojects
-        <br />
-        Feel free to use the contact form below and reach out to me for any
-        questions yo might have.
-        <br />
-        You can also write to me the old fashion way.
-      </p>
-    </div> -->
-    <!-- <div class="content"> -->
-    <!-- <span @click="$router.go(-1)" class="fas fa-angle-double-left fa-2x">
-      Go Back
-    </span> -->
-    <!-- <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link> -->
-    <router-view :key="$route.path" />
+    <h1>My Projects</h1>
+    <scroll-indicator>
+      <router-view :key="$route.path" />
+    </scroll-indicator>
   </div>
 </template>
 
 <script>
+import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
+
 export default {
-  name: "projects"
+  name: "projects",
+  components: {
+    scrollIndicator
+  }
 };
 </script>
 

@@ -3,12 +3,12 @@
   margin-left: @spaceLg;
 }
 
-//activeNavigation
-// .vue-school-active-class {
-//   &.router-link-active {
-//     color: @navText;
-//   }
-// }
+activeNavigation
+.vue-school-active-class {
+  &.router-link-active {
+    color: @navText;
+  }
+}
 
 .noselect {
   -webkit-touch-callout: none;
@@ -32,13 +32,8 @@ abbr[title] {
 
 article {
   & > section {
-    margin-bottom: @spaceXl *2;
-    min-height: 80vh;
+    min-height: @body;
     scroll-behavior: smooth;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 }
 

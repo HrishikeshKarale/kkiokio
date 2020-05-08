@@ -7,15 +7,10 @@
           <div v-for="project in projects.value" :key="project.id">
             <router-link
               :to="{
-                name: project.component,
-                params: '{ projects: 1 }'
+                name: project.component
               }"
             >
               <showcase :title="project.title" :subtitle="project.subtitle">
-                <!-- <template v-slot:description>
-                  <span v-html="project.description" />
-                  {{project.description}}
-                </template> -->
               </showcase>
             </router-link>
           </div>

@@ -54,7 +54,7 @@ export default {
       display: flex;
       flex-direction: column;
       z-index: 1000;
-      min-height: calc(100vh-80px);
+      min-height: @body;
       max-width: 100vw;
       z-index: 100;
       .scroll(100vh);
