@@ -32,7 +32,7 @@ export default {
   margin: @spaceLg;
   cursor: pointer;
   .boxShadow(@three);
-  & > * {
+  & * {
     text-decoration: none;
   }
 
@@ -62,6 +62,8 @@ export default {
       }
       &.description {
         display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

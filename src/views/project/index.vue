@@ -11,6 +11,9 @@
               }"
             >
               <showcase :title="project.title" :subtitle="project.subtitle">
+                <template slot="description">
+                  {{ project.descritpion }}
+                </template>
               </showcase>
             </router-link>
           </div>

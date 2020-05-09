@@ -35,8 +35,8 @@ export default {
 
   methods: {
     clickHandler: function(event) {
-      console.log("modal", !event.target.closest(".vueHeader").length);
-      if (!event.target.closest(".vueHeader").length) {
+      // console.log("modal", !event.target.closest(".vueHeader").length);
+      if (!event.target.closest(".vueHeader")) {
         this.toggleNavigation();
         // alert("click outside!");
       }
@@ -105,10 +105,10 @@ export default {
   height: @header;
   .boxShadow(@one);
   & > div {
-    position: relative;
     display: flex;
+    position: relative;
     & > a.logo > img {
-      height: 32px;
+      height: 48px;
     }
     & > .menuTrigger {
       display: none;

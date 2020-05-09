@@ -72,6 +72,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
 
     &.alert {
       display: flex;
@@ -93,13 +94,12 @@ export default {
 
     &.welcomeText {
       & > img {
-        align-self: center;
         height: 40vh;
         width: 40vh;
       }
 
       & > q {
-        font-size: @fontSizeSm * 3;
+        font-size: @fontSizeSm * 4;
         text-align: center;
 
         & > abbr {
