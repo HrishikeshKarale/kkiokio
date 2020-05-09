@@ -32,18 +32,19 @@ export default {
     const date = null;
     const month = null;
     const year = null;
+    const timer = null;
     return {
       hours,
       minutes,
       seconds,
       date,
       month,
-      year
+      year,
+      timer
     };
   },
   methods: {
     setTime: function() {
-      //do something
       const time = new Date();
       //date
       this.date = time.getDate() >= 10 ? time.getDate() : "0" + time.getDate();
@@ -70,7 +71,10 @@ export default {
     }
   },
   mounted() {
-    setInterval(this.setTime, 1000);
+    this.timer = setInterval(this.setTime, 1000);
+  },
+  destroyed() {
+    clearInterval(this.timer);
   }
 };
 </script>

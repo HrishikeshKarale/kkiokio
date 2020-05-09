@@ -1,9 +1,25 @@
 <template>
   <div class="fetchApi">
+    <div class="apiFilter">
+      <radio-input
+        label="Endpoint"
+        name="studioGhibliEndpoints"
+        v-model="selectedEndpoint"
+        :options="this.studioGhibli.endpoint"
+        :required="!booleanTrue"
+        :disabled="!booleanTrue"
+        :autofocus="!booleanTrue"
+        :inline="!booleanTrue"
+        :mask="!booleanTrue"
+        :box="!booleanTrue"
+        @selected="select"
+        @alerts="alerts"
+      />
+      {{ selectedEndpoint }}
+    </div>
     <div class="apiResponse">
-      {{ studioGhibli.response }}
-      <template v-if="studioGhibli.response[0]">
-        <template v-for="data in studioGhibli.response[0]">
+      <template v-if="studioGhibli.response">
+        <template v-for="data in studioGhibli.response">
           <div :key="data.id" :data-title="data.title">
             <h3>{{ data.title }}</h3>
             <div :class="{ description: true, show: show.includes(data.id) }">
@@ -12,43 +28,12 @@
             <div class="viewMore">
               <vue-button
                 buttopName="editButton"
-                buttonText="view more"
-                buttonStyle="text-sm"
-                :onClickAction="toggle.bind(this, data.id)"
-              />
-            </div>
-            <div class="info">
-              <div>
-                <label for="">director:</label>
-                <span>{{ data.director }}</span>
-              </div>
-              <div>
-                <label for="">producer:</label>
-                <span>{{ data.producer }}</span>
-              </div>
-              <div>
-                <label for="">release date:</label>
-                <span>{{ data.release_date }}</span>
-              </div>
-              <div>
-                <label for="">rt score:</label>
-                <span>{{ data.rt_score }}</span>
-              </div>
-            </div>
-          </div>
-        </template>
-      </template>
-      <template v-if="studioGhibli.response[0]">
-        <template v-for="data in studioGhibli.response[0]">
-          <div :key="data.id" :data-title="data.title">
-            <h3>{{ data.title }}</h3>
-            <div :class="{ description: true, show: show.includes(data.id) }">
-              {{ data.description }}
-            </div>
-            <div class="viewMore">
-              <vue-button
-                buttopName="editButton"
-                buttonText="view more"
+                :buttonText="show.includes(data.id) ? 'less' : 'more'"
+                :buttonIcon="
+                  show.includes(data.id)
+                    ? 'fas fa-angle-up'
+                    : 'fas fa-angle-down'
+                "
                 buttonStyle="text-sm"
                 :onClickAction="toggle.bind(this, data.id)"
               />
@@ -79,14 +64,17 @@
 </template>
 <script>
 import vueButton from "@/components/vueButton.vue";
+import radioInput from "@/components/radioInput.vue";
 import { toggle } from "@/typeScript/toggle.js";
 export default {
   name: "fetchApi",
   data() {
+    const selectedEndpoint = null;
+    const booleanTrue = true;
     const studioGhibli = {
       baseURL: "https://ghibliapi.herokuapp.com/",
       endpoint: ["films", "people", "locations", "species", "vehicles"],
-      response: []
+      response: {}
     };
     const locationSearch = {
       baseURL:
@@ -95,20 +83,39 @@ export default {
       response: {}
     };
     return {
+      selectedEndpoint,
+      booleanTrue,
       locationSearch,
       studioGhibli
     };
   },
   components: {
-    vueButton
+    vueButton,
+    radioInput
   },
   mixins: [toggle],
+
   methods: {
-    getApiData: function(source, index) {
-      return fetch(source.baseURL + source.endpoint[index])
+    select: function(value) {
+      // console.log("selected: ", value)
+      console.log(value);
+      this.selectedEndpoint = value;
+    }, //selected
+
+    //handels alerts thrown by the component
+    alerts: function(type, message) {
+      if (type == "error") {
+        this.danger = message;
+      } else {
+        this.warning = message;
+      }
+    }, //change
+
+    getApiData: function(source, endpoint) {
+      return fetch(source.baseURL + endpoint)
         .then(blob => blob.json())
         .then(data => {
-          source.response[index] = data;
+          source.response = data;
         })
         .catch(error => console.error(error))
         .finally(() => {
@@ -117,11 +124,8 @@ export default {
     }
   },
   mounted() {
-    this.getApiData(this.studioGhibli, 0);
-    this.getApiData(this.studioGhibli, 1);
-    this.getApiData(this.studioGhibli, 2);
-    this.getApiData(this.studioGhibli, 3);
-    this.getApiData(this.studioGhibli, 4);
+    this.selectedEndpoint = this.studioGhibli.endpoint[0];
+    this.getApiData(this.studioGhibli, this.selectedEndpoint);
   }
 };
 </script>
@@ -132,6 +136,12 @@ export default {
   width: 100%;
   height: 100%;
   & > div {
+    &.apiFilter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 160px;
+    }
     &.apiResponse {
       display: flex;
       flex-direction: row;

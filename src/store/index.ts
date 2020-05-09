@@ -18,7 +18,23 @@ export default new Vuex.Store({
       rowElements: 36,
       searchKey: null,
       groupBy: null
-    }
+    },
+    buttonStyle: [
+      "small",
+      "standard",
+      "large",
+      "fullWidth",
+      "border-sm",
+      "border",
+      "border-lg",
+      "border-fwidth",
+      "text-sm",
+      "text",
+      "text-lg",
+      "icon-sm",
+      "icon",
+      "icon-lg"
+    ]
   },
   mutations: {
     // setPage: function (state, newValue) {

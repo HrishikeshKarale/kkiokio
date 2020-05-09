@@ -12,16 +12,6 @@
       <div class="content">
         <slot name="content" />
       </div>
-      <!-- <div class="footer">
-        <a href="https://github.com/HrishikeshKarale">
-          <span class="fab fa-github fa-2x" />
-          <div>@HrishikeshKarale</div>
-        </a>
-        <a href="https://www.linkedin.com/in/hrishikesh-karale-6086071a">
-          <span class="fab fa-linkedin-in fa-2x" />
-          <div>@hrishikesh-karale-6086071a</div>
-        </a>
-      </div> -->
     </div>
   </div>
 </template>
@@ -46,28 +36,29 @@ export default {
     flex-direction: row;
     height: 100%;
     &.head {
-      max-width: 100vw;
       height: fit-content;
+      order: 1;
+      max-width: 100vw;
       z-index: 2000;
     }
     &.body {
       display: flex;
       flex-direction: column;
-      z-index: 1000;
+      order: 2;
       min-height: @body;
       max-width: 100vw;
-      z-index: 100;
+      z-index: 1000;
       .scroll(100vh);
       > div {
-        z-index: 200;
         &.menu {
           display: flex;
           justify-content: space-between;
           width: fit-content;
           position: sticky;
+          background-color: @navBackground;
           top: 0;
           left: 0;
-          background-color: @navBackground;
+          z-index: 1500;
           .boxShadow(@one);
           & > div:last-child {
             flex-direction: row-reverse;
@@ -80,30 +71,6 @@ export default {
           margin: auto;
           max-width: 80vw;
           min-width: 320px;
-        }
-        &.footer {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          justify-content: center;
-          position: absolute;
-          bottom: 16px;
-          right: 0.5vw;
-          height: 80px;
-          max-width: 100vw;
-          background-color: #333333;
-          border-radius: 4px;
-          text-align: center;
-          // .boxShadow(@three);
-          & > a {
-            padding: @spaceLg;
-            color: white;
-            font-weight: @fontSize;
-            text-decoration: none;
-            &:hover {
-              color: @primaryColor;
-            }
-          }
         }
       }
     }
