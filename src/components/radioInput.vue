@@ -35,19 +35,23 @@
           :key="index + '-' + option"
           :class="{
             errorLabel: danger,
-            checked: option == value
+            checked: option == checkedValue
           }"
           :style="{
             'color: #aaaaaa; cursor: not-allowed;': disabled
           }"
         >
           <input
+            :ref="option"
             type="radio"
             :name="name"
             :value="option"
             :disabled="disabled"
             v-model="checkedValue"
             :autofocus="index == 0 ? autofocus : false"
+          />
+          <span
+            :class="checkedValue == option ? 'fas fa-circle' : 'far fa-circle'"
           />
           {{ option }}
         </label>
@@ -113,10 +117,9 @@ export default {
     }, //clearSelection
 
     check: function(checkedValue) {
-    //   console.log("checked: ", checkedValue);
+      //   console.log("checked: ", checkedValue);
       this.$emit("select", checkedValue);
-      const table = document.getElementsByClassName("checked");
-      table.item(0).childNodes[0].checked = true;
+      this.$refs[checkedValue][0].checked = true;
     } //checked
   }, //methods
 
@@ -241,28 +244,5 @@ export default {
 
 .radioInput {
   .checkboxCss();
-
-  .box {
-    padding: 4px 8px;
-    margin-left: 8px;
-    width: fit-content;
-    background-color: @backgroundColor;
-    border-radius: @borderRadiusMd;
-
-    &.checked {
-      background-color: @secondaryColor;
-      color: @backgroundColor;
-
-      & > label {
-        font-weight: bold;
-      }
-    }
-
-    & > label {
-      & > input {
-        display: none;
-      }
-    }
-  }
 }
 </style>

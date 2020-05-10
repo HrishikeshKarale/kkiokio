@@ -12,7 +12,7 @@
         :inline="!booleanTrue"
         :mask="!booleanTrue"
         :box="!booleanTrue"
-        @selected="select"
+        @select="select"
         @alerts="alerts"
       />
       {{ selectedEndpoint }}
