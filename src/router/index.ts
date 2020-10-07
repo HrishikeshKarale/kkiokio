@@ -119,6 +119,14 @@ const routes = [
           )
       },
       {
+        path: "CSS/cardSlider",
+        name: "cardSlider",
+        component: () =>
+          import(
+            /* webpackChunkName: "cardSlider" */ "@/views/project/css/cardSlider.vue"
+          )
+      },
+      {
         path: "mobileUX/appSignUp",
         name: "appSignUp",
         component: () =>

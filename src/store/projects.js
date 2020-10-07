@@ -80,6 +80,13 @@ export const projects = [
         subtitle: "Pulse Animation",
         descritpion: "",
         component: "pulseAnimation"
+      },
+      {
+        id: 2,
+        title: "Card Slider",
+        subtitle: "Card Slider",
+        descritpion: "",
+        component: "cardSlider"
       }
     ]
   },
