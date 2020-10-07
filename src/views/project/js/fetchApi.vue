@@ -1,8 +1,9 @@
 <template>
   <div class="fetchApi">
-    <div class="apiFilter">
+    <!-- <div class="apiFilter">
       <radio-input
         label="Endpoint"
+        type="radio"
         name="studioGhibliEndpoints"
         v-model="selectedEndpoint"
         :options="this.studioGhibli.endpoint"
@@ -16,7 +17,7 @@
         @alerts="alerts"
       />
       {{ selectedEndpoint }}
-    </div>
+    </div> -->
     <div class="apiResponse">
       <template v-if="studioGhibli.response">
         <template v-for="data in studioGhibli.response">
@@ -64,7 +65,7 @@
 </template>
 <script>
 import vueButton from "@/components/vueButton.vue";
-import radioInput from "@/components/radioInput.vue";
+// import radioInput from "@/components/radioInput.vue";
 import { toggle } from "@/typeScript/toggle.js";
 export default {
   name: "fetchApi",
@@ -91,15 +92,19 @@ export default {
   },
   components: {
     vueButton,
-    radioInput
+    // radioInput
   },
   mixins: [toggle],
 
   methods: {
     select: function(value) {
       // console.log("selected: ", value)
-      console.log(value);
-      this.selectedEndpoint = value;
+      console.log("fetchApi: ", value);
+      if (Array.isArray(value)) {
+        this.selectedEndpoint = [...value];
+      } else {
+        this.selectedEndpoint = value;
+      }
     }, //selected
 
     //handels alerts thrown by the component

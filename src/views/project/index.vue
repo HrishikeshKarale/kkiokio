@@ -1,7 +1,11 @@
 <template>
   <div class="projectList">
     <article>
-      <section v-for="projects in projectsDescription" :key="projects.type">
+      <section
+        v-for="projects in projectsDescription"
+        :key="projects.type"
+        :id="projects.type"
+      >
         <h2>{{ projects.type }}</h2>
         <div>
           <div v-for="project in projects.value" :key="project.id">

@@ -1,15 +1,33 @@
 <template>
-  <div class="radioInput" :class="{ inline: inline }">
-    <label v-if="label" :class="{ maskField: mask }">
+  <div class="radioInput" :class="{ inline: inline, oneLiner: !options }">
+    <label
+      v-if="label"
+      :class="{ maskField: mask }"
+      @click.prevent="check(label)"
+    >
+      <template v-if="!options">
+        <input
+          :ref="name"
+          :type="type"
+          :name="name"
+          :value="label"
+          v-model="checkedValue"
+        />
+        <span
+          :class="
+            type == 'radio'
+              ? checkedValue == option
+                ? 'fas fa-circle'
+                : 'far fa-circle'
+              : checkedValue == label
+              ? 'fas fa-check-square'
+              : 'far fa-square'
+          "
+        />
+      </template>
       {{ label }}
       <abbr v-if="required" title="Required Field">*</abbr>
       <span v-else> - Optional field<abbr>*</abbr></span>
-      <input
-        :name="name"
-        type="hidden"
-        :value="checkedValue"
-        :required="required"
-      />
       <vue-button
         v-if="checkedValue && !required"
         id="clearSelection"
@@ -22,6 +40,7 @@
       />
     </label>
     <div
+      v-if="options"
       :class="{
         box: box,
         warningContainer: warning,
@@ -40,10 +59,11 @@
           :style="{
             'color: #aaaaaa; cursor: not-allowed;': disabled
           }"
+          @click.prevent="check(option)"
         >
           <input
-            :ref="option"
-            type="radio"
+            :ref="name"
+            :type="type"
             :name="name"
             :value="option"
             :disabled="disabled"
@@ -51,7 +71,15 @@
             :autofocus="index == 0 ? autofocus : false"
           />
           <span
-            :class="checkedValue == option ? 'fas fa-circle' : 'far fa-circle'"
+            :class="
+              type == 'radio'
+                ? checkedValue == option
+                  ? 'fas fa-circle'
+                  : 'far fa-circle'
+                : checkedValue == label
+                ? 'fas fa-check-square'
+                : 'far fa-square'
+            "
           />
           {{ option }}
         </label>
@@ -69,7 +97,7 @@ export default {
   name: "radioInput",
 
   data() {
-    const checkedValue = null;
+    const checkedValue = [];
     const buttonType = "button";
     const buttonName = "clearRadioSelection";
     const buttonText = "Clear";
@@ -101,29 +129,111 @@ export default {
   }, //data
 
   methods: {
-    clearSelection: function() {
-      const table = document.getElementsByClassName("checked");
+    arrDifference: function(a1, a2) {
+      const a = [],
+        diff = [];
 
-      table.item(0).childNodes[0].checked = false;
+      for (let i = 0; i < a1.length; i++) {
+        a[a1[i]] = true;
+      }
+
+      for (let i = 0; i < a2.length; i++) {
+        if (a[a2[i]]) {
+          delete a[a2[i]];
+        } else {
+          a[a2[i]] = true;
+        }
+      }
+
+      for (const k in a) {
+        diff.push(k);
+      }
+
+      return diff;
+    }, //arrDifference
+
+    clearSelection: function() {
+      this.$refs[this.name].forEach(element => {
+        if (element.checked) {
+          element.checked = false;
+        }
+      });
       this.checkedValue = null;
-      this.$emit("select", this.checkedValue);
-      // let status = cell.getAttribute('data-status');
-      // if (status === 'open') {
-      //     // Grab the data
-      // }
-      // const parent= document.getElementById('clearSelection').parentNode
-      // console.log('hi: ', parent.getElementsByTagName('input').checked)
-      // parent.getElementByTagName("input").checked=  false;
+      this.$emit("select", null);
     }, //clearSelection
 
     check: function(checkedValue) {
-      //   console.log("checked: ", checkedValue);
-      this.$emit("select", checkedValue);
-      this.$refs[checkedValue][0].checked = true;
+      const tempRef = this.$refs[this.name];
+      for (let i = 0; i < tempRef.length; i++) {
+        const element = tempRef[i];
+        //when correct element found, check for type and add value
+        //when element not found, remove
+        if (element.value == checkedValue) {
+          //radio
+          if (this.type == "radio") {
+            this.$emit("select", checkedValue);
+            break;
+          } else {
+            //checkbox
+            if (this.checkedValue.includes(checkedValue)) {
+              console.log(
+                ...this.checkedValue,
+                checkedValue,
+                this.checkedValue.includes(checkedValue)
+              );
+              this.checkedValue.splice(
+                this.checkedValue.indexOf(checkedValue),
+                1
+              );
+            } else {
+              // console.log(element.value, this.checkedValue.indexOf(checkedValue));
+              this.checkedValue = [checkedValue];
+            }
+            element.checked = !element.checked;
+            this.$emit("select", this.checkedValue);
+            break;
+          }
+        }
+      }
+
+      // this.$refs[this.name].forEach(element => {
+      //   //when correct element found, check for type and add value
+      //   //when element not found, remove
+      //   if (element.value == checkedValue) {
+      //     //radio
+      //     if (this.type == "radio") {
+      //       this.$emit("select", checkedValue);
+      //     } else {
+      //       //checkbox
+      //       this.checkedValue = [...Array.from(this.checkedValue)];
+      //       if (this.checkedValue.includes(checkedValue)) {
+      //         this.checkedValue.splice(
+      //           this.checkedValue.indexOf(checkedValue),
+      //           1
+      //         );
+      //       } else {
+      //         // console.log(element.value, this.checkedValue.indexOf(checkedValue));
+      //         this.checkedValue = [checkedValue];
+      //       }
+      //       element.checked = !element.checked;
+      //       this.$emit("select", checkedValue);
+      //     }
+      //   }
+      // });
     } //checked
   }, //methods
 
   props: {
+    //checkbox or radio button
+    type: {
+      required: true,
+      type: String,
+      default: "radio",
+      validator: function(value) {
+        return ["radio", "checkbox"].indexOf(value) !== -1;
+      }
+    },
+
     //sets heading for the checkboxes category
     //in case of single/no-option checkbox, label is used as checkbox text
     label: {
@@ -149,7 +259,7 @@ export default {
     //users can pass preset values for the input field
     value: {
       required: false,
-      type: [String, Array, Number, Boolean],
+      type: [String, Array, Number],
       default: function() {
         if (this.options) {
           return null;
@@ -225,9 +335,10 @@ export default {
 
   watch: {
     checkedValue: function(newValue, oldValue) {
-      if (newValue != oldValue) {
-        this.check(newValue);
+      if (Array.isArray(newValue) || Array.isArray(oldValue)) {
+        console.log("watch: ", this.arrDifference(newValue, oldValue));
       }
+      console.log(oldValue);
     } //checkedValue
   }, //watch
 

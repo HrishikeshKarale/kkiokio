@@ -197,12 +197,41 @@
     }
 
     & > input {
-      flex: 1 1 auto;
+      display: none;
       .checkboxSize();
     }
 
     & > .vueButton {
       margin-left: auto;
+    }
+
+    &.oneLiner {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      min-height: @spaceXl;
+      padding-right: @spaceLg;
+      margin: 0;
+      align-items: center;
+
+      & > input[type='checkbox'],
+      & > input[type='radio'] {
+        display: none;
+
+        & + span {
+          margin: 0 @spaceMd;
+          font-size: @fontSizeSm;
+          ;
+
+          &.fas {
+            color: @primaryColor;
+          }
+        }
+      }
+
+      &.errorLabel {
+        color: @dangerText;
+      }
     }
   }
 }
@@ -559,14 +588,10 @@
       padding-right: @spaceLg;
       margin: 0;
       align-items: center;
-      // width: 160px;
-      // flex: 1 0 80px;
 
       > input[type= 'checkbox'],
       > input[type='radio'] {
         display: none;
-        // margin: auto @spaceLg auto @spaceLg;
-        // .checkboxSize();
 
         & + span {
           margin: 0 @spaceMd;

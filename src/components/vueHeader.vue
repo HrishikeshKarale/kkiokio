@@ -179,6 +179,9 @@ export default {
       align-items: center;
       margin: 0;
       padding: 0;
+      & > li > a {
+        padding: 8px;
+      }
     }
   }
   @media screen {
