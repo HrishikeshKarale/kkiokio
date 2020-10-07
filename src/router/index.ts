@@ -95,6 +95,14 @@ const routes = [
           )
       },
       {
+        path: "js/userMedia",
+        name: "userMedia",
+        component: () =>
+          import(
+            /* webpackChunkName: "userMedia" */ "@/views/project/js/userMedia.vue"
+          )
+      },
+      {
         path: "WebUX/packStation",
         name: "packStation",
         component: () =>

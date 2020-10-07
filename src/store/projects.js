@@ -136,6 +136,13 @@ export const projects = [
         subtitle: "Scroll JS",
         descritpion: "",
         component: "scrollIn"
+      },
+      {
+        id: 10,
+        title: "UserMedia",
+        subtitle: "User Media",
+        descritpion: "",
+        component: "userMedia"
       }
     ]
   }

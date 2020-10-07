@@ -65,7 +65,7 @@ export default {
           }
         }
         &.content {
-          padding: @spaceLg @spaceXl;
+          // padding: @spaceLg @spaceXl;
           background-color: @backgroundColor;
           color: @cometText;
           margin: auto;
