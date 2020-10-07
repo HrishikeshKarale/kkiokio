@@ -72,6 +72,18 @@ export const projects = [
     ]
   },
   {
+    type: "CSS",
+    value: [
+      {
+        id: 1,
+        title: "Pulse Animation",
+        subtitle: "Pulse Animation",
+        descritpion: "",
+        component: "pulseAnimation"
+      }
+    ]
+  },
+  {
     type: "JS",
     value: [
       {

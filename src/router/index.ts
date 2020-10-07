@@ -111,6 +111,14 @@ const routes = [
           )
       },
       {
+        path: "CSS/pulseAnimation",
+        name: "pulseAnimation",
+        component: () =>
+          import(
+            /* webpackChunkName: "pulseAnimation" */ "@/views/project/css/pulseAnimation.vue"
+          )
+      },
+      {
         path: "mobileUX/appSignUp",
         name: "appSignUp",
         component: () =>
