@@ -91,7 +91,7 @@ export default {
     };
   },
   components: {
-    vueButton,
+    vueButton
     // radioInput
   },
   mixins: [toggle],
