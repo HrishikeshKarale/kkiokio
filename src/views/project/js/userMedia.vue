@@ -16,26 +16,50 @@
       <label for="videoSource">Video source: </label>
       <select ref="videoSource" id="videoSource"></select>
     </div>
-    <vue-button
-      buttopName="screenshot"
-      buttonStyle="icon-lg"
-      buttonIcon="fas fa-bullseye"
-      :onClickAction="toggleFilter.bind(this)"
-    />
-    <video ref="video" autoplay />
-    <vue-button
-      buttopName="screenshot"
-      buttonStyle="icon-lg"
-      buttonIcon="fas fa-camera"
-      :onClickAction="getScreenshot.bind(this)"
-    />
-    <vue-img
-      class="img"
-      ref="screenshot"
-      :src="screenshotImage"
-      alt="screenshot"
-    />
-    <canvas ref="canvas" style="display:none;" />
+    <div>
+      <vue-button
+        buttopName="screenshot"
+        buttonStyle="icon-lg"
+        buttonIcon="fas fa-bullseye"
+        :onClickAction="toggleFilter.bind(this)"
+      />
+      <vue-button
+        buttopName="stopMedia"
+        buttonStyle="icon-lg"
+        buttonIcon="fas fa-stop"
+        :onClickAction="stopBothVideoAndAudio.bind(this)"
+      />
+      <vue-button
+        buttopName="stopAudio"
+        buttonStyle="icon-lg"
+        :buttonIcon="
+          this.audio ? 'fas fa-microphone-slash' : 'fas fa-microphone'
+        "
+        :onClickAction="stopAudioOnly.bind(this)"
+      />
+      <vue-button
+        buttopName="stopVideo"
+        buttonStyle="icon-lg"
+        :buttonIcon="this.video ? 'fas fa-video-slash' : 'fas fa-video'"
+        :onClickAction="stopVideoOnly.bind(this)"
+      />
+      <vue-button
+        buttopName="screenshot"
+        buttonStyle="icon-lg"
+        buttonIcon="fas fa-camera"
+        :onClickAction="getScreenshot.bind(this)"
+      />
+    </div>
+    <div>
+      <video ref="html5Video" autoplay />
+      <vue-img
+        class="img"
+        ref="screenshot"
+        :src="screenshotImage"
+        alt="screenshot"
+      />
+      <canvas ref="canvas" style="display:none;" />
+    </div>
   </div>
 </template>
 <script>
@@ -52,8 +76,10 @@ export default {
     let audioSelect;
     let videoSelect;
     const screenshotImage = "";
-    let video;
+    let html5Video;
     let canvas;
+    const audio = false;
+    const video = false;
     let screenshot;
     const filterIndex = 0;
     const filters = [
@@ -81,6 +107,8 @@ export default {
     return {
       audioSelect,
       videoSelect,
+      html5Video,
+      audio,
       video,
       canvas,
       screenshot,
@@ -92,29 +120,38 @@ export default {
   },
   methods: {
     // stop both mic and camera
-    stopBothVideoAndAudio: function(stream) {
-      stream.getTracks().forEach(function(track) {
-        if (track.readyState == "live") {
-          track.stop();
-        }
+    stopBothVideoAndAudio: function() {
+      navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
+        stream.getTracks().forEach(function(track) {
+          if (track.readyState == "live") {
+            track.stop();
+          }
+        });
       });
     }, //stopBothVideoAndAudio
 
     // stop only camera
-    stopVideoOnly: function(stream) {
-      stream.getTracks().forEach(function(track) {
-        if (track.readyState == "live" && track.kind === "video") {
-          track.stop();
-        }
+    stopVideoOnly: function() {
+      this.video = !this.video;
+      navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
+        stream.getTracks().forEach(function(track) {
+          if (track.readyState == "live" && track.kind === "video") {
+            console.log(track);
+            track.stop();
+          }
+        });
       });
     }, //stopVideoOnly
 
     // stop only mic
-    stopAudioOnly: function(stream) {
-      stream.getTracks().forEach(function(track) {
-        if (track.readyState == "live" && track.kind === "audio") {
-          track.stop();
-        }
+    stopAudioOnly: function() {
+      this.audio = !this.audio;
+      navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
+        stream.getTracks().forEach(function(track) {
+          if (track.readyState == "live" && track.kind === "audio") {
+            track.stop();
+          }
+        });
       });
     }, //stopAudioOnly
 
@@ -122,15 +159,15 @@ export default {
     getScreenshot: function() {
       this.canvas = this.$refs.canvas;
       this.screenshot = this.$refs.screenshot;
-      this.canvas.height = this.video.videoHeight;
-      this.canvas.width = this.video.videoWidth;
-      this.canvas.getContext("2d").drawImage(this.video, 0, 0);
+      this.canvas.height = this.html5Video.videoHeight;
+      this.canvas.width = this.html5Video.videoWidth;
+      this.canvas.getContext("2d").drawImage(this.html5Video, 0, 0);
       // Other browsers will fall back to image/png
       this.screenshotImage = this.canvas.toDataURL("image/webp");
     }, //getScreenshot
 
     toggleFilter: function() {
-      this.video.className = this.filters[
+      this.html5Video.className = this.filters[
         this.filterIndex++ % this.filters.length
       ];
     }, //toggleFilter
@@ -151,6 +188,7 @@ export default {
             option.value = deviceInfo.deviceId;
             //checks for audio source
             if (deviceInfo.kind === "audioinput") {
+              this.audio = true;
               option.text =
                 deviceInfo.label ||
                 "microphone " + (this.audioSelect.length + 1);
@@ -158,6 +196,7 @@ export default {
             }
             //checks for video source
             else if (deviceInfo.kind === "videoinput") {
+              this.video = true;
               option.text =
                 deviceInfo.label || "camera " + (this.videoSelect.length + 1);
               this.videoSelect.appendChild(option);
@@ -202,9 +241,9 @@ export default {
       const hasMedia = this.hasGetUserMedia();
       if (hasMedia) {
         this.sortMedia();
-        this.video = this.$refs.video;
+        this.html5Video = this.$refs.html5Video;
         navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
-          this.video.srcObject = stream;
+          this.html5Video.srcObject = stream;
         });
       } else {
         console.error("media access not found");
@@ -228,47 +267,53 @@ export default {
   // justify-content: space-around;
   width: 100%;
   height: 100%;
-  & > video {
-    height: 480px;
-    &.grayscale {
-      filter: grayscale(50%);
+  & > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    & > video {
+      height: 480px;
+      &.grayscale {
+        filter: grayscale(50%);
+      }
+      &.sepia {
+        filter: sepia(60%);
+      }
+      &.blur {
+        filter: blur(8px);
+      }
+      &.brightness {
+        filter: brightness(0.4);
+      }
+      &.contrast {
+        filter: contrast(200%);
+      }
+      &.hue-rotate {
+        filter: hue-rotate(90deg);
+      }
+      &.hue-rotate2 {
+        filter: hue-rotate(190deg);
+      }
+      &.hue-rotate3 {
+        filter: hue-rotate(270deg);
+      }
+      &.saturate {
+        filter: saturate(30%);
+      }
+      &.invert {
+        filter: invert(75%);
+      }
+      &.dropShadow {
+        filter: drop-shadow(16px 16px 20px blue);
+      }
+      &.opacity {
+        filter: opacity(25%);
+      }
     }
-    &.sepia {
-      filter: sepia(60%);
+    & > .img {
+      width: 240px;
+      height: auto;
     }
-    &.blur {
-      filter: blur(8px);
-    }
-    &.brightness {
-      filter: brightness(0.4);
-    }
-    &.contrast {
-      filter: contrast(200%);
-    }
-    &.hue-rotate {
-      filter: hue-rotate(90deg);
-    }
-    &.hue-rotate2 {
-      filter: hue-rotate(190deg);
-    }
-    &.hue-rotate3 {
-      filter: hue-rotate(270deg);
-    }
-    &.saturate {
-      filter: saturate(30%);
-    }
-    &.invert {
-      filter: invert(75%);
-    }
-    &.dropShadow {
-      filter: drop-shadow(16px 16px 20px blue);
-    }
-    &.opacity {
-      filter: opacity(25%);
-    }
-  }
-  & > .img {
-    width: 240px;
   }
 }
 </style>
