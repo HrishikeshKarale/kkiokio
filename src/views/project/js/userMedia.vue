@@ -25,7 +25,12 @@
     />
 
     <!-- <img ref="screenshot" src="" /> -->
-        <vue-img class= "img" ref="screenshot" src="" alt="screenshot" />
+    <vue-img
+      class="img"
+      ref="screenshot"
+      :src="screenshotImage"
+      alt="screenshot"
+    />
     <canvas ref="canvas" style="display:none;" />
   </div>
 </template>
@@ -42,6 +47,7 @@ export default {
   data() {
     let audioSelect;
     let videoSelect;
+    const screenshotImage = "";
     let video;
     let canvas;
     let screenshot;
@@ -58,6 +64,7 @@ export default {
       video,
       canvas,
       screenshot,
+      screenshotImage,
       constraints
     };
   },
@@ -97,7 +104,7 @@ export default {
       this.canvas.width = this.video.videoWidth;
       this.canvas.getContext("2d").drawImage(this.video, 0, 0);
       // Other browsers will fall back to image/png
-      this.screenshot.src = this.canvas.toDataURL("image/webp");
+      this.screenshotImage = this.canvas.toDataURL("image/webp");
     }, //getScreenshot
 
     hasGetUserMedia: function() {
