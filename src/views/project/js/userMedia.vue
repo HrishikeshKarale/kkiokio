@@ -16,6 +16,12 @@
       <label for="videoSource">Video source: </label>
       <select ref="videoSource" id="videoSource"></select>
     </div>
+    <vue-button
+      buttopName="screenshot"
+      buttonStyle="icon-lg"
+      buttonIcon="fas fa-bullseye"
+      :onClickAction="toggleFilter.bind(this)"
+    />
     <video ref="video" autoplay />
     <vue-button
       buttopName="screenshot"
@@ -23,8 +29,6 @@
       buttonIcon="fas fa-camera"
       :onClickAction="getScreenshot.bind(this)"
     />
-
-    <!-- <img ref="screenshot" src="" /> -->
     <vue-img
       class="img"
       ref="screenshot"
@@ -51,6 +55,22 @@ export default {
     let video;
     let canvas;
     let screenshot;
+    const filterIndex = 0;
+    const filters = [
+      "grayscale",
+      "sepia",
+      "blur",
+      "brightness",
+      "contrast",
+      "hue-rotate",
+      "hue-rotate2",
+      "hue-rotate3",
+      "saturate",
+      "invert",
+      "opacity",
+      "dropShadow",
+      ""
+    ];
     const constraints = {
       audio: true,
       video: {
@@ -64,6 +84,8 @@ export default {
       video,
       canvas,
       screenshot,
+      filterIndex,
+      filters,
       screenshotImage,
       constraints
     };
@@ -106,6 +128,12 @@ export default {
       // Other browsers will fall back to image/png
       this.screenshotImage = this.canvas.toDataURL("image/webp");
     }, //getScreenshot
+
+    toggleFilter: function() {
+      this.video.className = this.filters[
+        this.filterIndex++ % this.filters.length
+      ];
+    }, //toggleFilter
 
     hasGetUserMedia: function() {
       return navigator.mediaDevices && navigator.mediaDevices.getUserMedia;
@@ -202,6 +230,42 @@ export default {
   height: 100%;
   & > video {
     height: 480px;
+    &.grayscale {
+      filter: grayscale(50%);
+    }
+    &.sepia {
+      filter: sepia(60%);
+    }
+    &.blur {
+      filter: blur(8px);
+    }
+    &.brightness {
+      filter: brightness(0.4);
+    }
+    &.contrast {
+      filter: contrast(200%);
+    }
+    &.hue-rotate {
+      filter: hue-rotate(90deg);
+    }
+    &.hue-rotate2 {
+      filter: hue-rotate(190deg);
+    }
+    &.hue-rotate3 {
+      filter: hue-rotate(270deg);
+    }
+    &.saturate {
+      filter: saturate(30%);
+    }
+    &.invert {
+      filter: invert(75%);
+    }
+    &.dropShadow {
+      filter: drop-shadow(16px 16px 20px blue);
+    }
+    &.opacity {
+      filter: opacity(25%);
+    }
   }
   & > .img {
     width: 240px;
