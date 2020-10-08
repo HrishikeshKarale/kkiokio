@@ -16,15 +16,35 @@
       <label for="videoSource">Video source: </label>
       <select ref="videoSource" id="videoSource"></select>
     </div>
-    <video autoplay />
+    <video ref="video" autoplay />
+    <vue-button
+      buttopName="screenshot"
+      buttonStyle="icon-lg"
+      buttonIcon="fas fa-camera"
+      :onClickAction="getScreenshot.bind(this)"
+    />
+
+    <!-- <img ref="screenshot" src="" /> -->
+        <vue-img class= "img" ref="screenshot" src="" alt="screenshot" />
+    <canvas ref="canvas" style="display:none;" />
   </div>
 </template>
 <script>
+import vueButton from "@/components/vueButton";
+import vueImg from "@/components/vueImg.vue";
 export default {
   name: "userMedia",
+
+  components: {
+    vueButton,
+    vueImg
+  },
   data() {
     let audioSelect;
     let videoSelect;
+    let video;
+    let canvas;
+    let screenshot;
     const constraints = {
       audio: true,
       video: {
@@ -35,6 +55,9 @@ export default {
     return {
       audioSelect,
       videoSelect,
+      video,
+      canvas,
+      screenshot,
       constraints
     };
   },
@@ -65,6 +88,17 @@ export default {
         }
       });
     }, //stopAudioOnly
+
+    //capture screenshot from webcam video
+    getScreenshot: function() {
+      this.canvas = this.$refs.canvas;
+      this.screenshot = this.$refs.screenshot;
+      this.canvas.height = this.video.videoHeight;
+      this.canvas.width = this.video.videoWidth;
+      this.canvas.getContext("2d").drawImage(this.video, 0, 0);
+      // Other browsers will fall back to image/png
+      this.screenshot.src = this.canvas.toDataURL("image/webp");
+    }, //getScreenshot
 
     hasGetUserMedia: function() {
       return navigator.mediaDevices && navigator.mediaDevices.getUserMedia;
@@ -133,9 +167,9 @@ export default {
       const hasMedia = this.hasGetUserMedia();
       if (hasMedia) {
         this.sortMedia();
-        const video = document.querySelector("video");
+        this.video = this.$refs.video;
         navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
-          video.srcObject = stream;
+          this.video.srcObject = stream;
         });
       } else {
         console.error("media access not found");
@@ -161,6 +195,9 @@ export default {
   height: 100%;
   & > video {
     height: 480px;
+  }
+  & > .img {
+    width: 240px;
   }
 }
 </style>
