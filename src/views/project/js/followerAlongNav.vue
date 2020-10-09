@@ -1,4 +1,3 @@
-//https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
 <template>
   <nav class="followerAlongNav" ref="followerAlongNav">
     <div class="dropdownBackground" ref="dropdownBackground">

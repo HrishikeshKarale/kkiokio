@@ -169,6 +169,13 @@ export const projects = [
         subtitle: "Link Follower",
         descritpion: "",
         component: "linkFollower"
+      },
+      {
+        id: 13,
+        title: "Follow Along Navigation Dropdown",
+        subtitle: "Follow Along Navigation Dropdown",
+        descritpion: "",
+        component: "followerAlongNav"
       }
     ]
   }

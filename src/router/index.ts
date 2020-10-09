@@ -111,6 +111,14 @@ const routes = [
           )
       },
       {
+        path: "js/followerAlongNav",
+        name: "followerAlongNav",
+        component: () =>
+          import(
+            /* webpackChunkName: "followerAlongNav" */ "@/views/project/js/followerAlongNav.vue"
+          )
+      },
+      {
         path: "WebUX/packStation",
         name: "packStation",
         component: () =>
