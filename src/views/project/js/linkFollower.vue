@@ -43,12 +43,13 @@ export default {
   },
   methods: {
     highlightLink: function(e) {
+      const buffer = 4;
       const linkCoords = e.target.getBoundingClientRect();
       const coords = {
-        width: Math.round(linkCoords.width) + 4,
-        height: Math.round(linkCoords.height) + 5,
-        top: Math.round(linkCoords.top + window.scrollY),
-        left: Math.round(linkCoords.left + window.scrollX)
+        width: Math.round(linkCoords.width) + buffer,
+        height: Math.round(linkCoords.height) + buffer,
+        top: Math.round(linkCoords.top + window.scrollY) - buffer/2,
+        left: Math.round(linkCoords.left + window.scrollX) - buffer/2
       };
       this.highlight.style.width = `${coords.width}px`;
       this.highlight.style.height = `${coords.height}px`;
