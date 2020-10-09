@@ -71,7 +71,7 @@ export default {
     });
     if (this.tag.length > 1) {
       this.x.addEventListener("scroll", this.debounce(this.checkScroll), {
-        capture: false,
+        capture: false, // top to bottom bubbling/propogation
         once: false //should work only once
       });
       this.windowHeight = this.x.offsetHeight;

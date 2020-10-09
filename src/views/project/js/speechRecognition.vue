@@ -51,11 +51,11 @@ export default {
 
     //eventlistner(s)
     recognition.addEventListener("result", this.detectSpeech, {
-      capture: false,
+      capture: false, // top to bottom bubbling/propogation
       once: false //should work only once
     });
     recognition.addEventListener("end", recognition.start, {
-      capture: false,
+      capture: false, // top to bottom bubbling/propogation
       once: false //should work only once
     });
     recognition.start();

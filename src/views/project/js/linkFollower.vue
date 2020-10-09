@@ -65,7 +65,7 @@ export default {
     this.highlight = this.$refs.highlight;
     this.linksFollowed.forEach(link => {
       link.addEventListener("mouseenter", this.highlightLink, {
-        capture: false,
+        capture: false, // top to bottom bubbling/propogation
         once: false //should work only once
       });
     });

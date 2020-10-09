@@ -84,7 +84,7 @@ export default {
 
   mounted() {
     document.addEventListener("click", this.clickHandler, {
-      capture: false,
+      capture: false, // top to bottom bubbling/propogation
       once: false //should work only once
     });
   }

@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     window.addEventListener("keydown", this.codeMatcher, {
-      capture: false,
+      capture: false, // top to bottom bubbling/propogation
       once: false //should work only once
     });
   }

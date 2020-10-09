@@ -48,7 +48,7 @@ export default {
         event.stopPropogation(); //stop event bubbling
       },
       {
-        capture: false,
+        capture: false, // top to bottom bubbling/propogation
         once: false //should work only once
       }
     );
@@ -61,7 +61,7 @@ export default {
         event.stopPropogation(); //stop event bubbling
       },
       {
-        capture: false,
+        capture: false, // top to bottom bubbling/propogation
         once: false //should work only once
       }
     );
@@ -72,7 +72,7 @@ export default {
         event.stopPropogation(); //stop event bubbling
       },
       {
-        capture: false,
+        capture: false, // top to bottom bubbling/propogation
         once: false //should work only once
       }
     );
@@ -83,7 +83,7 @@ export default {
         event.stopPropogation(); //stop event bubbling
       },
       {
-        capture: false,
+        capture: false, // top to bottom bubbling/propogation
         once: false //should work only once
       }
     );

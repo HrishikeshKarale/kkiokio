@@ -93,7 +93,7 @@ export default {
   },
   created() {
     window.addEventListener("keydown", this.keyPressed, {
-      capture: false,
+      capture: false, // top to bottom bubbling/propogation
       once: false //should work only once
     });
   }
