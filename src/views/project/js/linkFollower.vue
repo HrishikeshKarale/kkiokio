@@ -36,20 +36,21 @@ export default {
   data() {
     let linksFollowed;
     let highlight;
+    const buffer = 4;
     return {
       linksFollowed,
-      highlight
+      highlight,
+      buffer
     };
   },
   methods: {
     highlightLink: function(e) {
-      const buffer = 4;
       const linkCoords = e.target.getBoundingClientRect();
       const coords = {
-        width: Math.round(linkCoords.width) + buffer,
-        height: Math.round(linkCoords.height) + buffer,
-        top: Math.round(linkCoords.top + window.scrollY) - buffer/2,
-        left: Math.round(linkCoords.left + window.scrollX) - buffer/2
+        width: Math.round(linkCoords.width) + this.buffer,
+        height: Math.round(linkCoords.height) + this.buffer,
+        top: Math.round(linkCoords.top + window.scrollY) - this.buffer / 2,
+        left: Math.round(linkCoords.left + window.scrollX) - this.buffer / 2
       };
       this.highlight.style.width = `${coords.width}px`;
       this.highlight.style.height = `${coords.height}px`;
