@@ -162,6 +162,13 @@ export const projects = [
         subtitle: "Speech Recognition",
         descritpion: "",
         component: "speechRecognition"
+      },
+      {
+        id: 12,
+        title: "Geo Location",
+        subtitle: "Geo Location",
+        descritpion: "",
+        component: "geoLocation"
       }
     ]
   }

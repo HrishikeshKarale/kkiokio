@@ -103,6 +103,14 @@ const routes = [
           )
       },
       {
+        path: "js/geoLocation",
+        name: "geoLocation",
+        component: () =>
+          import(
+            /* webpackChunkName: "geoLocation" */ "@/views/project/js/geoLocation.vue"
+          )
+      },
+      {
         path: "WebUX/packStation",
         name: "packStation",
         component: () =>
