@@ -103,6 +103,14 @@ const routes = [
           )
       },
       {
+        path: "js/linkFollower",
+        name: "linkFollower",
+        component: () =>
+          import(
+            /* webpackChunkName: "linkFollower" */ "@/views/project/js/linkFollower.vue"
+          )
+      },
+      {
         path: "WebUX/packStation",
         name: "packStation",
         component: () =>
