@@ -70,7 +70,10 @@ export default {
       };
     });
     if (this.tag.length > 1) {
-      this.x.addEventListener("scroll", this.debounce(this.checkScroll));
+      this.x.addEventListener("scroll", this.debounce(this.checkScroll), {
+        capture: false,
+        once: false //should work only once
+      });
       this.windowHeight = this.x.offsetHeight;
       this.windowBuffer = this.windowHeight * 0.3;
       this.checkScroll();

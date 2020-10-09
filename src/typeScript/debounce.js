@@ -24,6 +24,6 @@ export const debounce = {
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
       };
-    }
+    } //debounce
   }
 };

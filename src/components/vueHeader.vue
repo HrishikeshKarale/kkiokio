@@ -40,6 +40,7 @@ export default {
         this.toggleNavigation();
         // alert("click outside!");
       }
+      event.stopPropogation(); //stop event bubbling
     }, //clickHandler
 
     toggleNavigation: function() {
@@ -82,7 +83,10 @@ export default {
   }, //props
 
   mounted() {
-    document.addEventListener("click", this.clickHandler);
+    document.addEventListener("click", this.clickHandler, {
+      capture: false,
+      once: false //should work only once
+    });
   }
 }; //default
 </script>

@@ -55,6 +55,7 @@ export default {
       this.highlight.style.width = `${coords.width}px`;
       this.highlight.style.height = `${coords.height}px`;
       this.highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+      e.stopPropogation(); //stop event bubbling
     } //highlightLink
   },
 
@@ -63,7 +64,10 @@ export default {
     this.linksFollowed = Array.from(triggers.querySelectorAll("a"));
     this.highlight = this.$refs.highlight;
     this.linksFollowed.forEach(link => {
-      link.addEventListener("mouseenter", this.highlightLink);
+      link.addEventListener("mouseenter", this.highlightLink, {
+        capture: false,
+        once: false //should work only once
+      });
     });
   }
 };

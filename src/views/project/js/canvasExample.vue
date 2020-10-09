@@ -41,20 +41,52 @@ export default {
     this.ctx.strokeStyle = "#BADA55";
     this.ctx.lineJoin = "round";
     this.ctx.lineCap = "round";
-    this.canvas.addEventListener("mouseup", () => {
-      this.isDrawing = false;
-    });
-    this.canvas.addEventListener("mousedown", event => {
-      this.isDrawing = true;
-      this.lastX = event.offsetX;
-      this.lastY = event.offsetY;
-    });
-    this.canvas.addEventListener("mouseout", () => {
-      this.isDrawing = false;
-    });
-    this.canvas.addEventListener("mousemove", event => {
-      this.draw(event);
-    });
+    this.canvas.addEventListener(
+      "mouseup",
+      () => {
+        this.isDrawing = false;
+        event.stopPropogation(); //stop event bubbling
+      },
+      {
+        capture: false,
+        once: false //should work only once
+      }
+    );
+    this.canvas.addEventListener(
+      "mousedown",
+      event => {
+        this.isDrawing = true;
+        this.lastX = event.offsetX;
+        this.lastY = event.offsetY;
+        event.stopPropogation(); //stop event bubbling
+      },
+      {
+        capture: false,
+        once: false //should work only once
+      }
+    );
+    this.canvas.addEventListener(
+      "mouseout",
+      () => {
+        this.isDrawing = false;
+        event.stopPropogation(); //stop event bubbling
+      },
+      {
+        capture: false,
+        once: false //should work only once
+      }
+    );
+    this.canvas.addEventListener(
+      "mousemove",
+      event => {
+        this.draw(event);
+        event.stopPropogation(); //stop event bubbling
+      },
+      {
+        capture: false,
+        once: false //should work only once
+      }
+    );
   },
 
   watch: {

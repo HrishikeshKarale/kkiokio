@@ -65,10 +65,14 @@ export default {
       });
       // console.log(this.codes.indexOf(codess), codess);
       this.userCode = userCode;
-    }
+      event.stopPropogation(); //stop event bubbling
+    } //codeMatcher
   },
   mounted() {
-    window.addEventListener("keydown", this.codeMatcher);
+    window.addEventListener("keydown", this.codeMatcher, {
+      capture: false,
+      once: false //should work only once
+    });
   }
 };
 </script>

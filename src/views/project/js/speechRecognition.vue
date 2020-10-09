@@ -30,6 +30,7 @@ export default {
         this.p = document.createElement("p");
         this.words.appendChild(this.p);
       }
+      event.stopPropogation(); //stop event bubbling
     } //detectSpeech
   },
 
@@ -49,8 +50,14 @@ export default {
     this.words.appendChild(this.p);
 
     //eventlistner(s)
-    recognition.addEventListener("result", this.detectSpeech);
-    recognition.addEventListener("end", recognition.start);
+    recognition.addEventListener("result", this.detectSpeech, {
+      capture: false,
+      once: false //should work only once
+    });
+    recognition.addEventListener("end", recognition.start, {
+      capture: false,
+      once: false //should work only once
+    });
     recognition.start();
   }
 };

@@ -88,10 +88,14 @@ export default {
     keyPressed: function() {
       const keyCode = event.keyCode;
       this.playAudio(keyCode);
+      event.stopPropogation(); //stop event bubbling
     }
   },
   created() {
-    window.addEventListener("keydown", this.keyPressed);
+    window.addEventListener("keydown", this.keyPressed, {
+      capture: false,
+      once: false //should work only once
+    });
   }
 };
 </script>
