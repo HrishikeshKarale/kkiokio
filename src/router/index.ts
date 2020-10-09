@@ -95,6 +95,14 @@ const routes = [
           )
       },
       {
+        path: "js/speechRecognition",
+        name: "speechRecognition",
+        component: () =>
+          import(
+            /* webpackChunkName: "speechRecognition" */ "@/views/project/js/speechRecognition.vue"
+          )
+      },
+      {
         path: "WebUX/packStation",
         name: "packStation",
         component: () =>

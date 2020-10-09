@@ -155,6 +155,13 @@ export const projects = [
         subtitle: "Scroll JS",
         descritpion: "",
         component: "scrollIn"
+      },
+      {
+        id: 11,
+        title: "Speech Recognition",
+        subtitle: "Speech Recognition",
+        descritpion: "",
+        component: "speechRecognition"
       }
     ]
   }
