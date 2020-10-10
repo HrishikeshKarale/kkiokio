@@ -1,7 +1,7 @@
 <template>
   <nav class="followerAlongNav" ref="followerAlongNav">
     <div class="dropdownBackground" ref="dropdownBackground">
-      <span class="fas fa-caret-up" />
+      <span class="fas fa-caret-up fa-2x" />
     </div>
     <ul class="cool">
       <li>
@@ -57,7 +57,6 @@
             <a href="#">Mastering Markdown</a>
           </li>
         </ul>
-        /li>
       </li>
 
       <li>
@@ -74,7 +73,6 @@
             <a class="button" href="#">Course Catalog</a>
           </li>
         </ul>
-        /li>
       </li>
     </ul>
   </nav>
@@ -86,32 +84,33 @@ export default {
     let background;
     let nav;
     let triggers;
+    const buffer = 4;
     return {
       background,
       nav,
-      triggers
+      triggers,
+      buffer
     };
   },
   methods: {
-    handleEnter: function() {
-      this.classList.add("trigger-enter");
-      setTimeout(
-        () =>
-          this.classList.contains("trigger-enter") &&
-          this.classList.add("trigger-enter-active"),
-        150
-      );
+    handleEnter: function(e) {
+      const element = e.target;
+      element.classList.add("trigger-enter");
+      setTimeout(() => {
+        element.classList.contains("trigger-enter");
+        element.classList.add("trigger-enter-active");
+      }, 150);
       this.background.classList.add("open");
 
-      const dropdown = this.querySelector(".dropdown");
+      const dropdown = element.querySelector(".dropdown");
       const dropdownCoords = dropdown.getBoundingClientRect();
       const navCoords = this.nav.getBoundingClientRect();
 
       const coords = {
-        height: dropdownCoords.height,
-        width: dropdownCoords.width,
-        top: dropdownCoords.top - navCoords.top,
-        left: dropdownCoords.left - navCoords.left
+        height: Math.round(dropdownCoords.height) + this.buffer,
+        width: Math.round(dropdownCoords.width) + this.buffer,
+        top: Math.round(dropdownCoords.top - navCoords.top) - this.buffer / 2,
+        left: Math.round(dropdownCoords.left - navCoords.left) - this.buffer / 2
       };
 
       this.background.style.setProperty("width", `${coords.width}px`);
@@ -120,13 +119,14 @@ export default {
         "transform",
         `translate(${coords.left}px, ${coords.top}px)`
       );
-      event.stopPropogation(); //stop event bubbling
+      // e.stopPropogation(); //stop event bubbling
     }, //handleEnter
 
-    handleLeave: function() {
-      this.classList.remove("trigger-enter", "trigger-enter-active");
+    handleLeave: function(e) {
+      const element = e.target;
+      element.classList.remove("trigger-enter", "trigger-enter-active");
       this.background.classList.remove("open");
-      event.stopPropogation(); //stop event bubbling
+      // e.stopPropogation(); //stop event bubbling
     } //handleLeave
   },
 
@@ -136,14 +136,14 @@ export default {
     this.triggers = this.nav.querySelectorAll(".cool > li");
     this.triggers.forEach(trigger =>
       trigger.addEventListener("mouseenter", this.handleEnter, {
-        capture: false,
-        once: false
+        capture: false, //bubbling hierarchu top to bottom
+        once: false //should work only once
       })
     );
     this.triggers.forEach(trigger =>
       trigger.addEventListener("mouseleave", this.handleLeave, {
-        capture: false,
-        once: false
+        capture: false, //bubbling hierarchu top to bottom
+        once: false //should work only once
       })
     );
   }
@@ -219,19 +219,17 @@ export default {
     display: flex;
     justify-content: center;
     opacity: 0;
-  }
+    &.open {
+      opacity: 1;
+      position: absolute;
+      .boxShadow(@three);
 
-  .dropdownBackground.open {
-    opacity: 1;
-  }
-
-  .arrow {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    display: block;
-    background: white;
-    transform: translateY(-50%) rotate(45deg);
+      & > span {
+        position: relative;
+        top: -24px;
+        color: grey;
+      }
+    }
   }
 
   .bio {
