@@ -192,7 +192,7 @@ export const projects = [
         component: "followerAlongNav"
       },
       {
-        id: 13,
+        id: 15,
         title: "Click and Drag",
         subtitle: "Click and Drag",
         descritpion: "",
