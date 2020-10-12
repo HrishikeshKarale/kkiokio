@@ -119,6 +119,14 @@ const routes = [
           )
       },
       {
+        path: "js/userMedia",
+        name: "userMedia",
+        component: () =>
+          import(
+            /* webpackChunkName: "userMedia" */ "@/views/project/js/userMedia.vue"
+          )
+      },
+      {
         path: "js/followerAlongNav",
         name: "followerAlongNav",
         component: () =>

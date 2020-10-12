@@ -35,3 +35,6 @@ export default {
   }
 }
 </style>
+/* to add a project, add project details to the store project file and then add
+the component to the route. links: 1. router: ../router/index.ts 2. store:
+../store/projects */

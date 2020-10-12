@@ -157,6 +157,13 @@ export const projects = [
         component: "scrollIn"
       },
       {
+        id: 10,
+        title: "UserMedia",
+        subtitle: "User Media",
+        descritpion: "",
+        component: "userMedia"
+      },
+      {
         id: 11,
         title: "Speech Recognition",
         subtitle: "Speech Recognition",
