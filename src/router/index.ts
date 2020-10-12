@@ -111,6 +111,14 @@ const routes = [
           )
       },
       {
+        path: "js/geoLocation",
+        name: "geoLocation",
+        component: () =>
+          import(
+            /* webpackChunkName: "geoLocation" */ "@/views/project/js/geoLocation.vue"
+          )
+      },
+      {
         path: "js/followerAlongNav",
         name: "followerAlongNav",
         component: () =>

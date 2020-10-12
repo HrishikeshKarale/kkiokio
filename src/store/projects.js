@@ -172,6 +172,13 @@ export const projects = [
       },
       {
         id: 13,
+        title: "Geo Location",
+        subtitle: "Geo Location",
+        descritpion: "",
+        component: "geoLocation"
+      },
+      {
+        id: 14,
         title: "Follow Along Navigation Dropdown",
         subtitle: "Follow Along Navigation Dropdown",
         descritpion: "",
