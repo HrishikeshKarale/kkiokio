@@ -190,6 +190,13 @@ export const projects = [
         subtitle: "Follow Along Navigation Dropdown",
         descritpion: "",
         component: "followerAlongNav"
+      },
+      {
+        id: 13,
+        title: "Click and Drag",
+        subtitle: "Click and Drag",
+        descritpion: "",
+        component: "clickDrag"
       }
     ]
   }
