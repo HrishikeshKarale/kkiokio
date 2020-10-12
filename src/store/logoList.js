@@ -1,4 +1,5 @@
-export const logoList = [{
+export const logoList = [
+  {
     id: 32,
     link: require("@/assets/logo/Artboard1.svg")
   },
