@@ -119,6 +119,14 @@ const routes = [
           )
       },
       {
+        path: "js/clickDrag",
+        name: "clickDrag",
+        component: () =>
+          import(
+            /* webpackChunkName: "clickDrag" */ "@/views/project/js/clickDrag.vue"
+          )
+      },
+      {
         path: "WebUX/packStation",
         name: "packStation",
         component: () =>
