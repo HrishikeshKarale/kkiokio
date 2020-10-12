@@ -197,6 +197,13 @@ export const projects = [
         subtitle: "Click and Drag",
         descritpion: "",
         component: "clickDrag"
+      },
+      {
+        id: 16,
+        title: "Control video speed",
+        subtitle: "Control video speed",
+        descritpion: "",
+        component: "videoControl"
       }
     ]
   }

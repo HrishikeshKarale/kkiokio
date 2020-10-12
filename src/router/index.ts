@@ -143,6 +143,14 @@ const routes = [
           )
       },
       {
+        path: "js/videoControl",
+        name: "videoControl",
+        component: () =>
+          import(
+            /* webpackChunkName: "videoControl" */ "@/views/project/js/videoControl.vue"
+          )
+      },
+      {
         path: "WebUX/packStation",
         name: "packStation",
         component: () =>
