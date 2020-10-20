@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Vue from "vue";
 import "@/registerServiceWorker";
 import router from "@/router";
 import store from "@/store";
 import "@/Less/fontAwesome/fontawesome.less";
 import "@/Less/bootstrap.less";
-import App from "@/App.vue";
+import app from "@/App.vue";
 
 Vue.config.productionTip = false;
 
@@ -30,5 +31,5 @@ Vue.prototype.$globalEventBus = new Vue(); // Global event bus
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(app)
 }).$mount("#app");

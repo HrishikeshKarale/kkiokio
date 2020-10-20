@@ -14,7 +14,7 @@
       :autofocus="autofocus"
       :disabled="disabled"
       form="formID"
-      @click.stop="onClickAction"
+      @click.stop.prevent="onClickAction"
     >
       <span v-if="buttonIcon" :class="buttonIcon" />
       <template

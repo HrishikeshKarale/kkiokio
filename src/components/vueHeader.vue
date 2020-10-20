@@ -5,8 +5,16 @@
       <router-link :to="{ name: 'app' }" class="logo">
         <vue-img :src="logoLink" alt="Logo" />
       </router-link>
-      <div class="menuTrigger" ref="navigation" @click="toggleNavigation">
+      <!-- <div  ref="navigation" @click="toggleNavigation">
         <span></span>
+      </div> -->
+      <div class="menuTrigger" ref="navigation">
+        <vue-button
+          buttopName="toggleNav"
+          buttonStyle="icon"
+          :buttonIcon="toggleNavIcon"
+          :onClickAction="toggleNavigation.bind(this)"
+        />
       </div>
     </div>
     <nav>
@@ -36,16 +44,18 @@ export default {
   methods: {
     clickHandler: function(event) {
       // console.log("modal", !event.target.closest(".vueHeader").length);
-      if (!event.target.closest(".vueHeader")) {
+      if (!event.target.closest(".vueHeader") && this.isOpen("nav")) {
         this.toggleNavigation();
         // alert("click outside!");
       }
-      event.stopPropogation(); //stop event bubbling
+      // event.stopPropogation(); //stop event bubbling
     }, //clickHandler
 
     toggleNavigation: function() {
       this.$refs["navigation"].classList.toggle("menuOpen");
       this.$refs["vueHeader"].classList.toggle("showNav");
+      this.toggle("nav");
+      console.log(this.isOpen("nav"));
     } //toggleNavigation
   },
 
@@ -60,7 +70,13 @@ export default {
         }
       }
       return "fas fa-question-circle";
-    }
+    }, //themeIcon
+    toggleNavIcon: function() {
+      if (this.isOpen("nav")) {
+        return "fas fa-times";
+      }
+      return "fas fa-bars";
+    } //toggleNavIcon
   },
 
   components: {
@@ -115,64 +131,11 @@ export default {
       height: 48px;
     }
     & > .menuTrigger {
+      margin-left: @spaceLg;
       display: none;
-      padding: @spaceLg;
-      width: @size;
-      height: @size / 2;
-      position: relative;
-      cursor: pointer;
-      & > span {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        display: block;
-        width: @size;
-        height: @size / 8;
-        background-color: @primaryColor;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        -webkit-transition: background-color 0.3s;
-        transition: background-color 0.3s;
-        &:after,
-        &:before {
-          position: absolute;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: @primaryColor;
-          content: "";
-          -webkit-transition: -webkit-transform 0.3s;
-          transition: transform 0.3s;
-        }
-        &:before {
-          -webkit-transform: translateY(-@size / 4);
-          transform: translateY(-@size / 4);
-        }
-        &:after {
-          -webkit-transform: translateY(@size / 4);
-          transform: translateY(@size / 4);
-        }
-      }
-      &.menuOpen {
-        & > span {
-          &:before {
-            -webkit-transform: translateY(-@size / 6) translateX(-@size / 3)
-              rotate(-45deg) scaleX(0.5);
-            transform: translateY(-@size / 6) translateX(-@size / 3)
-              rotate(-45deg) scaleX(0.5);
-          }
-          &:after {
-            -webkit-transform: translateY(@size / 6) translateX(-@size / 3)
-              rotate(45deg) scaleX(0.5);
-            transform: translateY(@size / 6) translateX(-@size / 3)
-              rotate(45deg) scaleX(0.5);
-          }
-        }
-      }
+    }
+    &:first-child {
+      justify-content: space-between;
     }
   }
   & > .themeToggle {
@@ -202,12 +165,9 @@ export default {
         width: 100%;
         & > a.logo > img {
           height: 32px;
-          margin-right: 32px;
         }
         & > .menuTrigger {
           display: block;
-          position: absolute;
-          right: -16px;
         }
       }
       & > nav {

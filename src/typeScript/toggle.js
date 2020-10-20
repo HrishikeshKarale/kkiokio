@@ -2,7 +2,7 @@ import { cookie } from "@/typeScript/cookie";
 
 export const toggle = {
   data() {
-    const show = new Array([]);
+    const show = [];
     const themes = [
       {
         name: "default",
@@ -26,12 +26,11 @@ export const toggle = {
       const show = this.show;
       if (!show.includes(id)) {
         this.show = [...show, id];
-        return true;
       } else {
+        //filter returns an array where id is not present
         this.show = show.filter(e => e !== id);
-        return false;
       }
-    },
+    }, //toggle
 
     trans: function() {
       document.documentElement.classList.add("transition");
@@ -54,7 +53,11 @@ export const toggle = {
         document.documentElement.setAttribute("theme", "default");
         this.selected = "default";
       }
-    }
+    }, //theme
+
+    isOpen: function(id) {
+      return this.show.includes(id);
+    } //isOpen
   },
 
   mounted() {
