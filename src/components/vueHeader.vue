@@ -55,21 +55,12 @@ export default {
       this.$refs["navigation"].classList.toggle("menuOpen");
       this.$refs["vueHeader"].classList.toggle("showNav");
       this.toggle("nav");
-      console.log(this.isOpen("nav"));
     } //toggleNavigation
   },
 
   computed: {
     themeIcon: function() {
-      const themes = this.themes;
-      if (this.selected) {
-        for (let i = 0; i < themes.length; i++) {
-          if (themes[i].name == this.selected) {
-            return themes[i].icon;
-          }
-        }
-      }
-      return "fas fa-question-circle";
+      return this.activeTheme.icon;
     }, //themeIcon
     toggleNavIcon: function() {
       if (this.isOpen("nav")) {

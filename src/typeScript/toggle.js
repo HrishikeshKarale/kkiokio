@@ -55,6 +55,18 @@ export const toggle = {
       }
     }, //theme
 
+    activeTheme: function() {
+      const themes = this.themes;
+      if (this.selected) {
+        for (let i = 0; i < themes.length; i++) {
+          if (themes[i].name == this.selected) {
+            return themes[i];
+          }
+        }
+      }
+      return "fas fa-question-circle";
+    }, //activeTheme
+
     isOpen: function(id) {
       return this.show.includes(id);
     } //isOpen
