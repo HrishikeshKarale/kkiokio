@@ -48,7 +48,7 @@ export default {
       min-height: @body;
       max-width: 100vw;
       z-index: 1000;
-          background-color: @backgroundColor;
+      background-color: @backgroundColor;
       .scroll(100vh);
       > div {
         &.menu {
