@@ -41,7 +41,7 @@ export default {
       video,
       bar,
       min,
-      max,
+      max
       // slider
     };
   },
@@ -56,7 +56,7 @@ export default {
       this.bar.style.height = height;
       this.bar.textContent = this.slider.toFixed(2) + "×";
       this.video.playbackRate = this.slider;
-    }, //handleMove
+    } //handleMove
 
     // playbackSpeed: function() {
     //   this.bar.style.height = (this.slider / this.mac) * 100;

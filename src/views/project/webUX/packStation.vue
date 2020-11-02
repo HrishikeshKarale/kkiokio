@@ -19,8 +19,8 @@
     </div>
     <div class="body">
       <div>
-        <template v-for="l in screens">
-          <vue-img :key="l.id" :src="l.link" :alt="l.id + ' - ' + l.link" />
+        <template v-for="l in screens" :key="l.id">
+          <vue-img :src="l.link" :alt="l.id + ' - ' + l.link" />
         </template>
       </div>
     </div>

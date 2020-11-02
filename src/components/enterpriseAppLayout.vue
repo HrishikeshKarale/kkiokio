@@ -48,6 +48,7 @@ export default {
       min-height: @body;
       max-width: 100vw;
       z-index: 1000;
+          background-color: @backgroundColor;
       .scroll(100vh);
       > div {
         &.menu {
@@ -66,7 +67,6 @@ export default {
         }
         &.content {
           // padding: @spaceLg @spaceXl;
-          background-color: @backgroundColor;
           color: @cometText;
           margin: auto;
           max-width: 80vw;

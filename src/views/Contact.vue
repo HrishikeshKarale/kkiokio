@@ -99,6 +99,7 @@ import phoneInput from "@/components/phoneInput.vue";
 import vueTextarea from "@/components/vueTextarea.vue";
 // import nodemailer from "nodemailer";
 export default {
+  name: "contact",
   data() {
     const name = null;
     const email = null;
@@ -131,7 +132,6 @@ export default {
       mailOptions
     };
   },
-  name: "contact",
   components: {
     vueButton,
     textInput,

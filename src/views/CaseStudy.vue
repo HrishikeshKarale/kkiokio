@@ -14,6 +14,11 @@
     <h1>This is an CaseStudy page</h1>
   </div>
 </template>
+<script>
+export default {
+  name: "caseStudy"
+};
+</script>
 
 <style lang="less" scoped>
 .caseStudy {

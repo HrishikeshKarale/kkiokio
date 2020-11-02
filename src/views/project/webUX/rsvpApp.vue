@@ -55,8 +55,8 @@
           </div>
         </div>
         <template v-if="dInvited">
-          <template v-for="(invited, index) in dInvited">
-            <div :key="index">
+          <template v-for="(invited, index) in dInvited" :key="index">
+            <div>
               <div>
                 {{ invited.name }}
               </div>
@@ -71,7 +71,7 @@
                 <label :for="invited.name">Confirmed</label>
               </div>
             </div>
-            <div :key="index + 'buttons'">
+            <div>
               <vue-button
                 buttopName="editButton"
                 buttonStyle="icon"

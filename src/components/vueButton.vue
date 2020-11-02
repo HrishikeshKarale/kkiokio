@@ -53,12 +53,13 @@ export default {
 
     buttonIcon: {
       required: function() {
-        if (this.buttonStyle == "icon") {
+        if (this.buttonStyle.includes("icon")) {
           return true;
         }
         return false;
       },
-      type: String
+      type: String,
+      default: false
     },
 
     buttonText: {
@@ -109,9 +110,29 @@ export default {
     buttonClass: {
       required: false,
       type: String,
-      default: function() {
-        let tempClass = "btn";
+      default: "btn"
+    },
 
+    formID: {
+      required: false,
+      type: String,
+      default: null
+    },
+
+    onClickAction: {
+      required: true,
+      type: Function,
+      default: function() {
+        alert(
+          "button undefined: Please send a function to execute when the button is clicked"
+        );
+      }
+    }
+  }, //props
+
+  methods: {
+    styleButton: function() {
+        let tempClass = "btn";
         switch (this.buttonStyle) {
           case "standard":
             tempClass += " btn-primary";
@@ -158,26 +179,13 @@ export default {
           default:
             tempClass += " btn-primary";
         }
-        return tempClass;
-      }
-    },
-
-    formID: {
-      required: false,
-      type: String,
-      default: null
-    },
-
-    onClickAction: {
-      required: true,
-      type: Function,
-      default: function() {
-        alert(
-          "button undefined: Please send a function to execute when the button is clicked"
-        );
-      }
-    }
-  } //props
+        this.buttonClass = tempClass;
+      }, //styleButton
+  }, //methods
+  
+  onBeforeMount() {
+    this.styleButton();    
+  } //mounted
 }; //default
 </script>
 

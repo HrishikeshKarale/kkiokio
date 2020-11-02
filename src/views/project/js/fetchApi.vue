@@ -20,8 +20,8 @@
     </div> -->
     <div class="apiResponse">
       <template v-if="studioGhibli.response">
-        <template v-for="data in studioGhibli.response">
-          <div :key="data.id" :data-title="data.title">
+        <template v-for="data in studioGhibli.response" :key="data.id">
+          <div :data-title="data.title">
             <h3>{{ data.title }}</h3>
             <div :class="{ description: true, show: show.includes(data.id) }">
               {{ data.description }}

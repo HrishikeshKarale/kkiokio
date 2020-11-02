@@ -1,10 +1,12 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    "browser": true,
+    "node": true,
+    "jasmine": true
   },
   extends: [
-    "plugin:vue/essential",
+    // "plugin:vue/essential",
     "eslint:recommended",
     "@vue/typescript/recommended",
     "@vue/prettier",
