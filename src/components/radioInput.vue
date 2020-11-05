@@ -8,10 +8,10 @@
       <template v-if="!options">
         <input
           :ref="name"
+          v-model="checkedValue"
           :type="type"
           :name="name"
           :value="label"
-          v-model="checkedValue"
         />
         <span
           :class="
@@ -31,12 +31,12 @@
       <vue-button
         v-if="checkedValue && !required"
         id="clearSelection"
-        :buttonType="buttonType"
-        :buttonName="buttonName"
-        :buttonText="buttonText"
-        :buttonIcon="buttonIcon"
-        :buttonStyle="buttonStyle[8]"
-        :onClickAction="onClickAction"
+        :button-type="buttonType"
+        :button-name="buttonName"
+        :button-text="buttonText"
+        :button-icon="buttonIcon"
+        :button-style="buttonStyle[8]"
+        :on-click-action="onClickAction"
       />
     </label>
     <div
@@ -63,11 +63,11 @@
         >
           <input
             :ref="name"
+            v-model="checkedValue"
             :type="type"
             :name="name"
             :value="option"
             :disabled="disabled"
-            v-model="checkedValue"
             :autofocus="index == 0 ? autofocus : false"
           />
           <span
@@ -94,7 +94,109 @@ import inputResponse from "@/components/inputResponse";
 import vueButton from "@/components/vueButton";
 
 export default {
-  name: "radioInput",
+  name: "RadioInput", //watch
+
+  components: {
+    inputResponse,
+    vueButton
+  }, //methods
+
+  props: {
+    //checkbox or radio button
+    type: {
+      required: true,
+      type: String,
+      default: "radio",
+      validator: function(value) {
+        return ["radio", "checkbox"].indexOf(value) !== -1;
+      }
+    },
+
+    //sets heading for the checkboxes category
+    //in case of single/no-option checkbox, label is used as checkbox text
+    label: {
+      required: false,
+      type: String,
+      default: null
+    },
+
+    //sets the name attribute for the input field (required field in case of forms)
+    name: {
+      required: false,
+      type: String,
+      default: "radioInput"
+    },
+
+    //Array of options/labels in case of multiple checkboxes.
+    options: {
+      required: false,
+      type: Array,
+      default: null
+    },
+
+    //users can pass preset values for the input field
+    value: {
+      required: false,
+      type: [String, Array, Number],
+      default: function(props) {
+        if (props.options) {
+          return null;
+        }
+        return null;
+      }
+    },
+
+    //sets the manual alerts
+    alertMessage: {
+      required: false,
+      type: Object,
+      default: null
+    },
+
+    //sets the required attribute for the input field
+    required: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+
+    //sets the disabled attribute for the input field
+    disabled: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+
+    //sets the autofocus attribute for the input field
+    autofocus: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+
+    //checks if label options should appear on the same line or not
+    inline: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+
+    //reserves space and created a mask if set to true
+    mask: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+
+    //checks if label options should appear on the same line or as buttons
+    box: {
+      required: false,
+      type: Boolean,
+      default: false
+    }
+  }, //data
+
+  emits: ["select"],
 
   data() {
     const checkedValue = [];
@@ -126,7 +228,32 @@ export default {
       success,
       info
     }; //return
-  }, //data
+  }, //beforeMount
+
+  watch: {
+    checkedValue: function(newValue, oldValue) {
+      if (Array.isArray(newValue) || Array.isArray(oldValue)) {
+        console.log("watch: ", this.arrDifference(newValue, oldValue));
+      }
+      console.log(oldValue);
+    } //checkedValue
+  }, //props
+
+  beforeMount() {
+    //handle pre existing alert messages
+    const alertMessage = this.alertMessage;
+    if (alertMessage) {
+      if (alertMessage["error"]) {
+        this.danger = alertMessage["error"];
+      } else if (alertMessage["warning"]) {
+        this.warning = alertMessage["warning"];
+      } else if (alertMessage["success"]) {
+        this.success = alertMessage["success"];
+      } else if (alertMessage["info"]) {
+        this.info = alertMessage["info"];
+      }
+    }
+  },
 
   methods: {
     arrDifference: function(a1, a2) {
@@ -221,130 +348,6 @@ export default {
       //   }
       // });
     } //checked
-  }, //methods
-
-  props: {
-    //checkbox or radio button
-    type: {
-      required: true,
-      type: String,
-      default: "radio",
-      validator: function(value) {
-        return ["radio", "checkbox"].indexOf(value) !== -1;
-      }
-    },
-
-    //sets heading for the checkboxes category
-    //in case of single/no-option checkbox, label is used as checkbox text
-    label: {
-      required: false,
-      type: String,
-      default: null
-    },
-
-    //sets the name attribute for the input field (required field in case of forms)
-    name: {
-      required: false,
-      type: String,
-      default: "radioInput"
-    },
-
-    //Array of options/labels in case of multiple checkboxes.
-    options: {
-      required: false,
-      type: Array,
-      default: null
-    },
-
-    //users can pass preset values for the input field
-    value: {
-      required: false,
-      type: [String, Array, Number],
-      default: function() {
-        if (this.options) {
-          return null;
-        }
-        return false;
-      }
-    },
-
-    //sets the manual alerts
-    alertMessage: {
-      required: false,
-      type: Object
-    },
-
-    //sets the required attribute for the input field
-    required: {
-      required: false,
-      type: Boolean,
-      default: false
-    },
-
-    //sets the disabled attribute for the input field
-    disabled: {
-      required: false,
-      type: Boolean,
-      default: false
-    },
-
-    //sets the autofocus attribute for the input field
-    autofocus: {
-      required: false,
-      type: Boolean,
-      default: false
-    },
-
-    //checks if label options should appear on the same line or not
-    inline: {
-      required: false,
-      type: Boolean,
-      default: false
-    },
-
-    //reserves space and created a mask if set to true
-    mask: {
-      required: false,
-      type: Boolean,
-      default: false
-    },
-
-    //checks if label options should appear on the same line or as buttons
-    box: {
-      required: false,
-      type: Boolean,
-      default: false
-    }
-  }, //props
-
-  beforeMount() {
-    //handle pre existing alert messages
-    const alertMessage = this.alertMessage;
-    if (alertMessage) {
-      if (alertMessage["error"]) {
-        this.danger = alertMessage["error"];
-      } else if (alertMessage["warning"]) {
-        this.warning = alertMessage["warning"];
-      } else if (alertMessage["success"]) {
-        this.success = alertMessage["success"];
-      } else if (alertMessage["info"]) {
-        this.info = alertMessage["info"];
-      }
-    }
-  }, //beforeMount
-
-  watch: {
-    checkedValue: function(newValue, oldValue) {
-      if (Array.isArray(newValue) || Array.isArray(oldValue)) {
-        console.log("watch: ", this.arrDifference(newValue, oldValue));
-      }
-      console.log(oldValue);
-    } //checkedValue
-  }, //watch
-
-  components: {
-    inputResponse,
-    vueButton
   } //components
 }; //default
 </script>

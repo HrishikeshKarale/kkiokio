@@ -100,10 +100,10 @@
   transform:rotate(@degree); /* Standard syntax */
 }
 
-.boxShadow(@val) {
-  box-shadow: @val;
-  -webkit-box-shadow: @val;
-  -moz-box-shadow: @val;
+.boxShadow(@val, @color: @shadowColor) {
+  box-shadow: @val @color;
+  -webkit-box-shadow: @val @color;
+  -moz-box-shadow: @val @color;
 }
 
 
@@ -114,12 +114,12 @@
         box-sizing: @boxmodel;
   }
 
-.textShadow(@val) {
-  text-shadow: @val;
-  -webkit-text-shadow: @val;
-  -moz-text-shadow: @val;
+.textShadow(@val, @color: @shadowColor) {
+  text-shadow: @val @color;
+  -webkit-text-shadow: @val @color;
+  -moz-text-shadow: @val @color;
 
-  .boxShadow(none);
+  .boxShadow(none) !important;
 }
 
 
@@ -537,8 +537,8 @@
     
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: @accentColor; 
-    border-radius: @width/2
+    background: @secondaryColor; 
+    // border-radius: @width;
   }
 }
 

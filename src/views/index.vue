@@ -22,8 +22,8 @@
     </div> -->
     <article>
       <section class="welcomeText">
-        <vue-img :src="logo" alt="Kkiokio Logo" />
-        <q
+        <!-- <vue-img :src="logo" alt="Kkiokio Logo" /> -->
+        <!-- <q
           >A little
           <abbr
             title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
@@ -31,7 +31,7 @@
             Empathy
           </abbr>
           goes a long way
-        </q>
+        </q> -->
       </section>
     </article>
   </div>
@@ -40,11 +40,16 @@
 <script>
 // @ is an alias to /src
 // import CountdownTimer from "@/components/countdownTimer.vue";
-import vueImg from "@/components/vueImg.vue";
+// import vueImg from "@/components/vueImg.vue";
 // import vueButton from "@/components/vueButton.vue";
 
 export default {
-  name: "index",
+  name: "Home",
+  components: {
+    // CountdownTimer,
+    // vueButton,
+    // vueImg
+  },
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const profilePic = require("@/../public/img/profilePic.jpg");
@@ -54,11 +59,6 @@ export default {
       profilePic,
       logo
     };
-  },
-  components: {
-    // CountdownTimer,
-    // vueButton,
-    vueImg
   }
 };
 </script>
@@ -98,15 +98,20 @@ export default {
         width: 40vh;
       }
 
-      & > q {
-        font-size: @fontSizeSm * 4;
-        text-align: center;
+      // & > q {
+      //   // font-size: @fontSizeSm * 4;
+      //   // text-align: center;
+      //   position: absolute;
+      //   font-size: @fontSizeSm;
+      //   font-weight: bold;
+      //   bottom: 16px;
+      //   right: 32px;
 
-        & > abbr {
-          color: #fbce51;
-          text-decoration: none;
-        }
-      }
+      //   & > abbr {
+      //     color: @secondaryColor;
+      //     text-decoration: none;
+      //   }
+      // }
     }
   }
 }

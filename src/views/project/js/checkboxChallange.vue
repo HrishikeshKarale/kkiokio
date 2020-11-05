@@ -2,10 +2,10 @@
   <div class="checkboxChallange">
     <div v-for="option in options" :key="option.id">
       <input
-        type="checkbox"
-        :name="option.label"
         :id="option.label"
         v-model="option.checked"
+        type="checkbox"
+        :name="option.label"
         @click="check(option.id, $event)"
       />
       <label :for="option.label" class="noselect">{{ option.label }}</label>
@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-  name: "checkboxChallange",
+  name: "CheckboxChallange",
   data() {
     const lastChecked = undefined;
     const options = [

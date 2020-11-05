@@ -189,7 +189,7 @@ export const projects = [
         title: "Follow Along Navigation Dropdown",
         subtitle: "Follow Along Navigation Dropdown",
         descritpion: "",
-        component: "followerAlongNav"
+        component: "FollowNav"
       },
       {
         id: 15,

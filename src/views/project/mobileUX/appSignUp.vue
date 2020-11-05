@@ -12,16 +12,16 @@
 <script>
 import vueImg from "@/components/vueImg.vue";
 export default {
-  name: "appSignUp",
+  name: "AppSignUp",
+  components: {
+    vueImg
+  },
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const dAppSignUp = require("@/assets/mobile/login screen.png");
     return {
       dAppSignUp
     };
-  },
-  components: {
-    vueImg
   }
 };
 </script>

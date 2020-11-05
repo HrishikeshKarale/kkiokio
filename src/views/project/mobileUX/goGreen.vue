@@ -12,15 +12,15 @@
 <script>
 import vueImg from "@/components/vueImg.vue";
 export default {
+  components: {
+    vueImg
+  },
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const dGoGreen = require("@/assets/mobile/Go-Green Onboarding screen.png");
     return {
       dGoGreen: dGoGreen
     };
-  },
-  components: {
-    vueImg
   }
 };
 </script>

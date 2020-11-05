@@ -1,18 +1,18 @@
 <template>
   <div class="inputResponse">
-    <div class="errorMessage" v-if="error">
+    <div v-if="error" class="errorMessage">
       <span class="fas fa-exclamation-circle" />
       <b>{{ error }}</b>
     </div>
-    <div class="warningMessage" v-else-if="warning">
+    <div v-else-if="warning" class="warningMessage">
       <span class="fas fa-exclamation-triangle" />
       <b>{{ warning }}</b>
     </div>
-    <div class="infoMessage" v-else-if="info">
+    <div v-else-if="info" class="infoMessage">
       <span class="fas fa-info-circle" />
       <b>{{ info }}</b>
     </div>
-    <div class="infoMessage" v-else-if="charLimitReached">
+    <div v-else-if="charLimitReached" class="infoMessage">
       <span class="fas fa-info-circle" />
       Character limit of {{ maxlength }} reached
     </div>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "inputResponse",
+  name: "InputResponse",
 
   props: {
     error: {

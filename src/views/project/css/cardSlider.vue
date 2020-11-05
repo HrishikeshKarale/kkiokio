@@ -1,12 +1,12 @@
 <template>
   <div class="cardSlider">
     <vue-button
-      buttopName="Previous"
-      buttonStyle="icon-lg"
-      buttonIcon="fas fa-chevron-left"
-      :onClickAction="handleScrollPrev.bind(this)"
+      buttop-name="Previous"
+      button-style="icon-lg"
+      button-icon="fas fa-chevron-left"
+      :on-click-action="handleScrollPrev.bind(this)"
     />
-    <div class="card" v-for="index in 10" :key="index">
+    <div v-for="index in 10" :key="index" class="card">
       <h3>4.6</h3>
       <span class="fa fa-heart" />
       <div class="image"></div>
@@ -16,17 +16,21 @@
       </div>
     </div>
     <vue-button
-      buttopName="Next"
-      buttonStyle="icon-lg"
-      buttonIcon="fas fa-chevron-right"
-      :onClickAction="handleScrollNext.bind(this)"
+      buttop-name="Next"
+      button-style="icon-lg"
+      button-icon="fas fa-chevron-right"
+      :on-click-action="handleScrollNext.bind(this)"
     />
   </div>
 </template>
 <script>
 import vueButton from "../../../components/vueButton.vue";
 export default {
-  name: "cardSlider",
+  name: "CardSlider",
+
+  components: {
+    vueButton
+  },
   data() {
     return {};
   },
@@ -45,10 +49,6 @@ export default {
           ? window.innerwidth / 2
           : window.innerWidth - 160;
     } //handleScrollPrev
-  },
-
-  components: {
-    vueButton
   }
 };
 </script>

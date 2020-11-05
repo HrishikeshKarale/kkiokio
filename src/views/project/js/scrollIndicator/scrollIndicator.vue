@@ -3,13 +3,15 @@
     <div class="scrollContent">
       <slot />
     </div>
-    <div v-if="this.tagOffset.length > 1" class="scroll">
+    <div v-if="tagOffset.length > 1" class="scroll">
       <a
-        v-for="indicator in this.tagOffset"
+        v-for="indicator in tagOffset"
         :key="indicator.id"
         :href="'#' + indicator.id"
+        :class="{ active: indicator.selected }"
       >
         <span :class="[indicator.selected ? 'fas' : 'far', 'fa-circle']" />
+        <span>{{ indicator.id }}</span>
       </a>
     </div>
   </div>
@@ -19,7 +21,8 @@ import { debounce } from "@/typeScript/debounce";
 // import { smoothScroll } from "@/typeScript/smoothScroll";
 
 export default {
-  name: "scrollIndicator",
+  name: "ScrollIndicator",
+  mixins: [debounce],
   data() {
     const x = null;
     const tag = [];
@@ -34,7 +37,9 @@ export default {
       windowBuffer
     };
   },
-  mixins: [debounce],
+  mounted() {
+    this.initialize();
+  },
   methods: {
     checkScroll: function() {
       const highlight = Math.round(this.x.scrollTop);
@@ -52,31 +57,33 @@ export default {
         }
       }
       this.prevScrollValue = highlight;
-    } //checkScroll
-  },
-  mounted() {
-    this.x = document.getElementsByClassName("body")[0];
-    const offsetHeader = Array.from(
-      document.getElementsByClassName("vueHeader")
-    )[0];
-    this.tag = Array.from(document.getElementsByTagName("section"));
-    this.tagOffset = this.tag.map(section => {
-      return {
-        top: section.offsetTop - offsetHeader.offsetHeight,
-        bottom:
-          section.offsetTop + section.offsetHeight - offsetHeader.offsetHeight,
-        id: section.getAttribute("id"),
-        selected: false
-      };
-    });
-    if (this.tag.length > 1) {
-      this.x.addEventListener("scroll", this.debounce(this.checkScroll), {
-        capture: false, // top to bottom bubbling/propogation
-        once: false //should work only once
+    }, //checkScroll
+    initialize: function() {
+      this.x = document.getElementsByClassName("body")[0];
+      const offsetHeader = Array.from(
+        document.getElementsByClassName("vueHeader")
+      )[0];
+      this.tag = Array.from(document.getElementsByTagName("section"));
+      this.tagOffset = this.tag.map(section => {
+        return {
+          top: section.offsetTop - offsetHeader.offsetHeight,
+          bottom:
+            section.offsetTop +
+            section.offsetHeight -
+            offsetHeader.offsetHeight,
+          id: section.getAttribute("id"),
+          selected: false
+        };
       });
-      this.windowHeight = this.x.offsetHeight;
-      this.windowBuffer = this.windowHeight * 0.3;
-      this.checkScroll();
+      if (this.tag.length > 1) {
+        this.x.addEventListener("scroll", this.debounce(this.checkScroll), {
+          capture: false, // top to bottom bubbling/propogation
+          once: false //should work only once
+        });
+        this.windowHeight = this.x.offsetHeight;
+        this.windowBuffer = this.windowHeight * 0.3;
+        this.checkScroll();
+      }
     }
   }
 };
@@ -92,18 +99,33 @@ export default {
   & > div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     &.scroll {
       position: fixed;
-      top: 40%;
+      top: 120px;
       right: 64px;
-      & > span {
-        margin-bottom: 32px;
-        color: lightgray;
+      & > a {
+        float: right;
+        display: flex;
+        flex-direction: row-reverse;
+        text-decoration: none;
+        padding: 8px;
+        margin: 4px 0;
+        height: 32px;
+        &:hover,
         &.active {
-          transform: scale(1.2);
-          border-width: 4px;
-          color: @primaryColor;
+          border-radius: 4px;
+          .boxShadow(@one);
+          & > span:last-child {
+            display: flex;
+            margin-right: 16px;
+          }
+        }
+        & > span {
+          &:last-child {
+            display: none;
+          }
         }
       }
     }
@@ -112,6 +134,7 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content: center;
+      align-items: center;
     }
   }
 }

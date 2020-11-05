@@ -2,7 +2,7 @@
   <div class="arrayCardio">
     <!-- <div class="result">
         <label for="">Filter</label>
-        {{ inventors | born(1800, 1900) }}
+        {{ born(inventors, 1800, 1900) }}
         <label for="">Computed (Map)</label>
         {{ firstName }}
         <label for="">Computed (sort by birth)</label>
@@ -31,7 +31,7 @@
     <div class="data">
       {{ inventors }}
       <vue-table
-        :tableData="inventors"
+        :table-data="inventors"
         :metadata="metadata"
         @setPage="metadata.pageNumber"
         @setSortKey="metadata.setSortKey"
@@ -81,7 +81,7 @@ import { mapState } from "vuex";
 
 // import vueTable from "@/components/vueTable.vue";
 export default {
-  name: "arrayCardio",
+  name: "ArrayCardio",
 
   mapState,
 
@@ -89,6 +89,7 @@ export default {
     // vueTable
   },
 
+  mixins: [arrayExercise],
   computed: {
     ...mapState(["metadata"]),
 
@@ -142,24 +143,6 @@ export default {
       });
     }
   },
-  mixins: [arrayExercise],
-  filters: {
-    born: function(value, year, passed) {
-      // eslint-disable-next-line prefer-const
-      let temp = [];
-      for (const v in value) {
-        if (value[v]["year"] >= year && value[v]["passed"] <= passed) {
-          temp.push(value[v]);
-        }
-      }
-      // eslint-disable-next-line no-var
-      // var temp = value.forEach(val => {
-      //   (val.year >= born && val.passed <= passed )? {return true} : {return false};
-      // });
-      // console.log(value);
-      return temp;
-    }
-  },
   methods: {
     findAdult: function(name) {
       return this.inventors.find(inv => inv.first === name);
@@ -175,7 +158,23 @@ export default {
         ...inventors.slice(index + 1, inventors.length)
       ];
     }
-  }
+  },
+
+  born: function(value, year, passed) {
+    // eslint-disable-next-line prefer-const
+    let temp = [];
+    for (const v in value) {
+      if (value[v]["year"] >= year && value[v]["passed"] <= passed) {
+        temp.push(value[v]);
+      }
+    }
+    // eslint-disable-next-line no-var
+    // var temp = value.forEach(val => {
+    //   (val.year >= born && val.passed <= passed )? {return true} : {return false};
+    // });
+    // console.log(value);
+    return temp;
+  } //born
 };
 </script>
 <style lang="less" scoped>

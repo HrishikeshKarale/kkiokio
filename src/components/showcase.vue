@@ -11,8 +11,17 @@
 </template>
 <script>
 export default {
-  name: "showcase",
-  props: ["title", "subtitle"]
+  name: "Showcase",
+  props: {
+    title: {
+      required: true,
+      type: String
+    },
+    subtitle: {
+      required: true,
+      type: String
+    }
+  }
 };
 </script>
 

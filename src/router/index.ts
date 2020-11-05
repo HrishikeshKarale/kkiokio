@@ -1,25 +1,53 @@
 import { createWebHistory, createRouter } from "vue-router";
-import index from "@/views/index.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: "/",
-      name: "app",
-      component: index
+      name: "home",
+      component: () =>
+        import(/* webpackChunkName: "home" */ "@/views/index.vue")
+    },
+    {
+      path: "/caseStudy",
+      name: "caseStudy",
+      component: () =>
+        import(
+          /* webpackChunkName: "caseStudy" */ "@/views/caseStudy/index.vue"
+        )
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: () =>
+        import(/* webpackChunkName: "contact" */ "@/views/contact/index.vue")
+    },
+    {
+      path: "/logo",
+      name: "logo",
+      component: () =>
+        import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue")
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "@/views/about/index.vue")
     },
     {
       path: "/project",
       // name: "project",
       component: () =>
-        import(/* webpackChunkName: "project */ "@/views/project.vue"),
+        import(/* webpackChunkName: "project" */ "@/views/project.vue"),
       children: [
         {
           path: "",
           name: "project",
           component: () =>
-            import(/* webpackChunkName: "index" */ "@/views/project/index.vue")
+            import(
+              /* webpackChunkName: "project" */ "@/views/project/index.vue"
+            )
         },
         {
           path: "js/drumKit",
@@ -127,10 +155,10 @@ const router = createRouter({
         },
         {
           path: "js/followerAlongNav",
-          name: "followerAlongNav",
+          name: "FollowNav",
           component: () =>
             import(
-              /* webpackChunkName: "followerAlongNav" */ "@/views/project/js/followerAlongNav.vue"
+              /* webpackChunkName: "FollowNav" */ "@/views/project/js/followerAlongNav/index.vue"
             )
         },
         {
@@ -222,29 +250,6 @@ const router = createRouter({
             )
         }
       ]
-    },
-    {
-      path: "/caseStudy",
-      name: "caseStudy",
-      component: () =>
-        import(/* webpackChunkName: "caseStudy" */ "@/views/caseStudy.vue")
-    },
-    {
-      path: "/contactMe",
-      name: "contact",
-      component: () =>
-        import(/* webpackChunkName: "contact" */ "@/views/contact.vue")
-    },
-    {
-      path: "/logo",
-      name: "logo",
-      component: () => import(/* webpackChunkName: "logo" */ "@/views/logo.vue")
-    },
-    {
-      path: "/aboutMe",
-      name: "about",
-      component: () =>
-        import(/* webpackChunkName: "about" */ "@/views/about/index.vue")
     }
     // {
     //   path: "/404PageNotFound",

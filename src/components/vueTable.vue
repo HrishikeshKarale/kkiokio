@@ -1,3 +1,5 @@
+/* eslint-disable vue/custom-event-name-casing */ /* eslint-disable
+vue/custom-event-name-casing */
 <template>
   <div class="vueTable" :class="{ inner: subtableId }">
     <table>
@@ -15,10 +17,10 @@
             </div>
             <div>
               <text-input
+                v-model="searchKey"
                 name="tableSearchField"
                 placeholder="Search..."
-                inputIcon="fas fa-search"
-                v-model="metadata.searchKey"
+                input-icon="fas fa-search"
               />
             </div>
           </th>
@@ -33,8 +35,8 @@
               <div>
                 <input
                   v-if="!subtableId"
-                  type="checkbox"
                   id="selectAllRows"
+                  type="checkbox"
                   @click="selectAllFromPage"
                 />
               </div>
@@ -84,8 +86,8 @@
 								</div> -->
                 <div
                   v-if="!subtableId"
-                  @click.stop="textSelectAll()"
                   class="smalltext"
+                  @click.stop="textSelectAll()"
                 >
                   <template
                     v-if="
@@ -99,8 +101,8 @@
                 </div>
                 <div
                   v-if="!subtableId"
-                  @click.stop="textSelectNone()"
                   class="smalltext"
+                  @click.stop="textSelectNone()"
                 >
                   <template
                     v-if="
@@ -123,10 +125,10 @@
           <th
             v-for="col in columns"
             :key="col.index"
-            @click.stop="setSortKey(col)"
             :class="{ active: metadata.sortKey == col }"
+            @click.stop="setSortKey(col)"
           >
-            {{ col | capitalize }}
+            {{ nameConvention.capitalize(col) }}
             <!-- <span 
 							v-if= 'metadata.sortKey == col'
 							class= 'fas .fa-stack-1x' 
@@ -161,8 +163,8 @@
             <div class="editColumns">
               <span
                 class="fas fa-cog"
-                @click.stop="editColumns = !editColumns"
                 :class="{ open: editColumns }"
+                @click.stop="editColumns = !editColumns"
               />
               <!-- <div
 								:class= '{open: editColumns}'
@@ -195,14 +197,17 @@
         </tr>
       </thead>
       <tbody>
-        <template v-for="(entry, index) in tableData" :entry="entry">
+        <template
+          v-for="(entry, index) in tableData"
+          :key="index"
+          :entry="entry"
+        >
           <tr
-            :key="index"
+            :id="entry[select]"
             :class="{
               selected:
                 metadata.selected && metadata.selected.includes(entry[select])
             }"
-            :id="entry[select]"
             @click.stop="SelectRow(entry[select])"
           >
             <td>
@@ -230,15 +235,15 @@
 							/>  -->
             </td>
 
-            <td v-for="(col, index) in columns" :key="index">
+            <td v-for="col in columns" :key="col">
               {{ entry[col] }}
             </td>
             <td>
               <vue-modal
-                :modalTitle="'Delete ' + entry[select]"
-                buttonName="toggleExpandButton"
-                buttonIcon="fas fa-trash-alt"
-                :onClickAction="consoleClickDelete"
+                :modal-title="'Delete ' + entry[select]"
+                button-name="toggleExpandButton"
+                button-icon="fas fa-trash-alt"
+                :on-click-action="consoleClickDelete"
               >
                 you can use custom content here to overwrite default content
 
@@ -247,13 +252,13 @@
                 </h3>
               </vue-modal>
               <vue-button
-                :buttonType="buttonType"
-                buttonName="ExpandRow"
-                :buttonIcon="
+                :button-type="buttonType"
+                button-name="ExpandRow"
+                :button-icon="
                   entry ? 'fas fa-chevron-left' : 'fas fa-chevron-up'
                 "
-                :buttonStyle="d_buttonStyle[9]"
-                :onClickAction="toggleSubTable.bind(this, entry)"
+                :button-style="d_buttonStyle[9]"
+                :on-click-action="toggleSubTable.bind(this, entry)"
               />
               <!-- <span 
 								:class= 'entry? "fas fa-chevron-right":"fas fa-chevron-down"'
@@ -294,9 +299,9 @@
 					@selected= 'setRowElements'
 				/> -->
         <dropdown-list
+          v-model="dropdownValue"
           label="Show"
           name="showRecords"
-          v-model="dropdownValue"
           :options="metadata.recordsPerPage"
           :required="d_booleanTrue"
           :inline="d_booleanTrue"
@@ -315,11 +320,11 @@
 					/>                                -->
           <vue-button
             v-show="metadata.pageNumber > 1"
-            :buttonType="buttonType"
-            buttonName="previousPage"
-            buttonIcon="fas fa-chevron-left"
-            :buttonStyle="d_buttonStyle[9]"
-            :onClickAction="setPage.bind(this, metadata.pageNumber - 1)"
+            :button-type="buttonType"
+            button-name="previousPage"
+            button-icon="fas fa-chevron-left"
+            :button-style="d_buttonStyle[9]"
+            :on-click-action="setPage.bind(this, metadata.pageNumber - 1)"
           />
         </div>
         <div>Page {{ metadata.pageNumber }}</div>
@@ -331,11 +336,11 @@
 					/>                                 -->
           <vue-button
             v-show="metadata.pageNumber < metadata.pageCount"
-            :buttonType="buttonType"
-            buttonName="nextPage"
-            buttonIcon="fas fa-chevron-right"
-            :buttonStyle="d_buttonStyle[9]"
-            :onClickAction="setPage.bind(this, metadata.pageNumber + 1)"
+            :button-type="buttonType"
+            button-name="nextPage"
+            button-icon="fas fa-chevron-right"
+            :button-style="d_buttonStyle[9]"
+            :on-click-action="setPage.bind(this, metadata.pageNumber + 1)"
           />
         </div>
       </div>
@@ -348,33 +353,30 @@ import vueButton from "@/components/vueButton";
 import dropdownList from "@/components/dropdownList";
 import textInput from "@/components/textInput";
 import vueModal from "@/components/vueModal";
+import { nameConvention } from "@/typeScript/nameConvention";
+import { computed } from "vue";
 
 // import { store } from '@/store/store'
 import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
-  name: "vueTable",
+  name: "VueTable", //props
+
+  components: {
+    vueButton,
+    vueModal,
+    dropdownList,
+    textInput
+  },
 
   // store,
+  mixins: [nameConvention],
 
   mapActions,
 
   mapState,
 
-  mapMutations,
-
-  data() {
-    const rowElements = this.metadata.rowElements;
-    const dropdownValue = this.metadata.rowElements;
-    const editColumns = false;
-    const columns = null;
-    return {
-      columns,
-      rowElements,
-      dropdownValue,
-      editColumns
-    }; //return
-  }, //data
+  mapMutations, //computed
 
   props: {
     tableData: {
@@ -412,13 +414,39 @@ export default {
       type: String,
       default: null
     }
-  }, //props
+  }, //filters
 
-  components: {
-    vueButton,
-    vueModal,
-    dropdownList,
-    textInput
+  emits: [
+    "toggle-cloumns",
+    "set-page",
+    "set-sort-key",
+    "set-row-elements",
+    "selected",
+    "metadata"
+  ],
+
+  setup(props, { emit }) {
+    const search = computed({
+      get: () => this.metadata.searchKey,
+      set: value => emit("metadata", value)
+    });
+
+    return {
+      search
+    };
+  }, //setup
+
+  data() {
+    const rowElements = this.metadata.rowElements;
+    const dropdownValue = this.metadata.rowElements;
+    const editColumns = false;
+    const columns = null;
+    return {
+      columns,
+      rowElements,
+      dropdownValue,
+      editColumns
+    }; //return
   }, //components
 
   computed: {
@@ -436,17 +464,28 @@ export default {
         return this.$store.state.metadata.searchKey;
       }
     } //metadata.searchKey
-  }, //computed
+  }, //methods
 
-  filters: {
-    capitalize: function(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    } //capitalize
-  }, //filters
+  //   watch: {
+  //     dropdownValue: function(newValue, oldValue) {
+  //       if (newValue != oldValue) {
+  //         this.setRowElements(newValue);
+  //       }
+  //     } //dropdownValue
+  //   }, //watch
+
+  created() {
+    const tempArray = [];
+
+    Object.keys(this.tableData[0]).forEach(function eachKey(key) {
+      tempArray.push(key); // alerts key
+    });
+    this.columns = tempArray;
+  }, //created
 
   methods: {
     toggleColumns: function(newValue) {
-      this.$emit("toggleCloumns", newValue);
+      this.$emit("toggle-cloumns", newValue);
     }, //toggleColumns
 
     toggleSubTable: function() {
@@ -460,16 +499,7 @@ export default {
         return key; // alerts key
         // alert(foo[key]); // alerts value
       });
-      console.log(this.column);
     }, //dataTablecolumns
-
-    consoleClickEdit: function() {
-      // console.log("TableClickEdit")
-    }, // consoleClick
-
-    consoleClickDelete: function() {
-      // console.log("TableClickDelete")
-    }, // consoleClick
 
     intermediateState: function(selected) {
       const selectAllrows = document.getElementById("selectAllRows");
@@ -478,11 +508,9 @@ export default {
         if (selected.length == 0) {
           selectAllrows.indeterminate = false;
           selectAllrows.checked = false;
-          // console.log('!intermediate', selectAllrows.checked)
         } else if (selected && selected.length < this.tableData.length) {
           selectAllrows.indeterminate = true;
           selectAllrows.checked = false;
-          // console.log('intermediate', selectAllrows.checked, typeof(selectAllrows.indeterminate))
         } else if (selected && selected.length == this.tableData.length) {
           selectAllrows.indeterminate = false;
           selectAllrows.checked = true;
@@ -502,7 +530,6 @@ export default {
     SelectRow: function(id) {
       const selected = this.metadata.selected;
       const tr = document.getElementById(id);
-      // console.log(event, id)
       const checkbox = tr.getElementsByClassName("selectRow")[0];
 
       //check if already exists
@@ -519,7 +546,7 @@ export default {
     }, //toggle
 
     textSelectNone: function() {
-      this.metadata.selected = [];
+      this.$emit("selected", null);
       const selectAllrows = document.getElementById("selectAllRows");
       selectAllrows.checked = false;
       selectAllrows.indeterminate = false;
@@ -527,7 +554,6 @@ export default {
 
     selectAllFromPage: function() {
       const selected = this.metadata.selected;
-      // console.log(selected)
       const selectAllrows = document.getElementById("selectAllRows");
       const inputs = document.getElementsByClassName("selectRow");
       const selectAll = selectAllrows.checked;
@@ -535,7 +561,6 @@ export default {
       for (const checkbox in inputs) {
         const td = inputs[checkbox].parentNode;
         const tr = td.parentNode;
-        // console.log(checkbox, td.parentNode, tr.id)
 
         //check if selectAll or selectNone
         if (!selectAll) {
@@ -552,38 +577,16 @@ export default {
     }, //selectAllFromPage
 
     setPage: function(newValue) {
-      // console.log('setPage: ', newValue, this.metadata.pageNumber)
-      this.$emit("setPage", newValue);
+      this.$emit("set-page", newValue);
     }, //setPage
 
     setSortKey: function(newValue) {
-      // console.log('setPage: ', newValue, this.metadata.pageNumber)
-      this.$emit("setSortKey", newValue);
+      this.$emit("set-sort-key", newValue);
     }, //setPage
 
     setRowElements: function(newValue) {
-      // console.log('setPage: ', newValue, this.metadata.rowElements)
-      this.$emit("setRowElements", newValue);
+      this.$emit("set-row-elements", newValue);
     } //setRowElements
-  }, //methods
-
-  //   watch: {
-  //     dropdownValue: function(newValue, oldValue) {
-  //       if (newValue != oldValue) {
-  //         // console.log(newValue, oldValue)
-  //         this.setRowElements(newValue);
-  //       }
-  //     } //dropdownValue
-  //   }, //watch
-
-  created() {
-    const tempArray = [];
-
-    Object.keys(this.tableData[0]).forEach(function eachKey(key) {
-      tempArray.push(key); // alerts key
-      // console.log(key); // alerts value
-    });
-    this.columns = tempArray;
   } //created
 }; //default
 </script>

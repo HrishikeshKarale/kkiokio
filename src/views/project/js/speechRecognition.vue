@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-  name: "speechRecognition",
+  name: "SpeechRecognition",
   data() {
     let p;
     let words;
@@ -15,23 +15,6 @@ export default {
       p,
       words
     };
-  },
-  methods: {
-    detectSpeech: function(e) {
-      const transcript = Array.from(e.results)
-        .map(result => result[0])
-        .map(result => result.transcript)
-        .join("");
-
-      const poopScript = transcript.replace(/poop|poo|shit|dump/gi, "💩");
-      this.p.textContent = poopScript;
-
-      if (e.results[0].isFinal) {
-        this.p = document.createElement("p");
-        this.words.appendChild(this.p);
-      }
-      event.stopPropogation(); //stop event bubbling
-    } //detectSpeech
   },
 
   mounted() {
@@ -59,6 +42,23 @@ export default {
       once: false //should work only once
     });
     recognition.start();
+  },
+  methods: {
+    detectSpeech: function(e) {
+      const transcript = Array.from(e.results)
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join("");
+
+      const poopScript = transcript.replace(/poop|poo|shit|dump/gi, "💩");
+      this.p.textContent = poopScript;
+
+      if (e.results[0].isFinal) {
+        this.p = document.createElement("p");
+        this.words.appendChild(this.p);
+      }
+      event.stopPropogation(); //stop event bubbling
+    } //detectSpeech
   }
 };
 </script>

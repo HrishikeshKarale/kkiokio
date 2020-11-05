@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "pageNotFound",
+  name: "PageNotFound",
 
   data() {
     const Id = "stackTrace";

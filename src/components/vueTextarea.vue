@@ -16,8 +16,8 @@
       <span v-if="inputIcon" :class="inputIcon" />
       <textarea
         v-if="!mask"
-        :name="name"
         v-model="dTextareaValue"
+        :name="name"
         :placeholder="placeholder"
         :maxlength="maxlength"
         :pattern="pattern"
@@ -31,7 +31,7 @@
     <input-response
       :warning="dWarning"
       :error="ddanger"
-      :charLimitReached="lengthDelta == 0"
+      :char-limit-reached="lengthDelta == 0"
       :maxlength="maxlength"
     />
   </div>
@@ -41,19 +41,10 @@
 import inputResponse from "@/components/inputResponse.vue";
 
 export default {
-  name: "vueTextarea",
+  name: "VueTextarea", //props
 
-  data() {
-    return {
-      //stores errors thrown by the input fields
-      ddanger: null,
-
-      //stores errors thrown by the input fields
-      dWarning: null,
-
-      //stores textareabox values
-      dTextareaValue: null
-    }; //return
+  components: {
+    inputResponse
   }, //data
 
   props: {
@@ -102,7 +93,8 @@ export default {
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: Object
+      type: Object,
+      default: null
     },
 
     //sets the required attribute for the input field
@@ -154,17 +146,28 @@ export default {
       type: Boolean,
       default: false
     }
-  }, //props
+  }, //computed
 
-  components: {
-    inputResponse
+  emits: ["alerts", "input"],
+
+  data() {
+    return {
+      //stores errors thrown by the input fields
+      ddanger: null,
+
+      //stores errors thrown by the input fields
+      dWarning: null,
+
+      //stores textareabox values
+      dTextareaValue: null
+    }; //return
   }, //components
 
   computed: {
     //returns the difference between maxlength and textboxValue.
     //a negative value indicates that we have exceeded the allowed maximum for the textbox and
     lengthDelta: function() {
-      const val = this.dTextValue;
+      const val = this.dTextareaValue;
       const maxLength = this.maxlength;
 
       if (maxLength && val) {
@@ -172,7 +175,46 @@ export default {
       }
       return null;
     } //lengthDelta
-  }, //computed
+  }, //beforeMount
+
+  watch: {
+    //send warning messages back to parent component
+    dWarning: function(newValue) {
+      this.$emit("alerts", "warning", newValue);
+    },
+
+    //send error messages back to parent component
+    ddanger: function(newValue) {
+      this.$emit("alerts", "error", newValue);
+    }
+  }, //methods
+
+  created() {
+    //store values passed as props into dTextareaValue for future manipulation
+    if (this.value) {
+      this.dTextareaValue = this.value;
+    }
+  }, //created
+
+  beforeMount() {
+    const alertMessage = this.alertMessage;
+
+    if (this.value) {
+      this.validate();
+    }
+
+    if (alertMessage) {
+      if (alertMessage["error"]) {
+        this.ddanger = alertMessage["error"];
+      } else if (alertMessage["warning"]) {
+        this.dWarning = alertMessage["warning"];
+      } else if (alertMessage["success"]) {
+        this.dSuccess = alertMessage["success"];
+      } else if (alertMessage["info"]) {
+        this.dInfo = alertMessage["info"];
+      }
+    }
+  },
 
   methods: {
     //validate the textbox input and set alert messages if required.
@@ -181,7 +223,7 @@ export default {
       //initialize warning and error messages to null to accomodate change in alert messages
       this.ddanger = null;
       this.dWarning = null;
-      //loads current value stored from dTextValue(data) into val(temp) variable val for readability of code
+      //loads current value stored from dTextareaValue(data) into val(temp) variable val for readability of code
       const val = this.dTextareaValue;
       const maxlength = this.maxLength;
       const pattern = new RegExp(this.pattern);
@@ -211,45 +253,6 @@ export default {
         }
       }
     } //validate
-  }, //methods
-
-  created() {
-    //store values passed as props into dTextareaValue for future manipulation
-    if (this.value) {
-      this.dTextareaValue = this.value;
-    }
-  }, //created
-
-  beforeMount() {
-    const alertMessage = this.alertMessage;
-
-    if (this.value) {
-      this.validate();
-    }
-
-    if (alertMessage) {
-      if (alertMessage["error"]) {
-        this.ddanger = alertMessage["error"];
-      } else if (alertMessage["warning"]) {
-        this.dWarning = alertMessage["warning"];
-      } else if (alertMessage["success"]) {
-        this.dSuccess = alertMessage["success"];
-      } else if (alertMessage["info"]) {
-        this.dInfo = alertMessage["info"];
-      }
-    }
-  }, //beforeMount
-
-  watch: {
-    //send warning messages back to parent component
-    dWarning: function(newValue) {
-      this.$emit("alerts", "warning", newValue);
-    },
-
-    //send error messages back to parent component
-    ddanger: function(newValue) {
-      this.$emit("alerts", "error", newValue);
-    }
   } //watch
 }; //default
 </script>

@@ -1,16 +1,16 @@
 <template>
   <div class="videoControl">
     <video
-      class="flex"
       ref="video"
+      class="flex"
       width="765"
       height="430"
       src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
       loop
       controls
     />
-    <div class="speed" ref="speed">
-      <div class="speed-bar" ref="bar">1×</div>
+    <div ref="speed" class="speed">
+      <div ref="bar" class="speed-bar">1×</div>
     </div>
     <!-- <div>
       <input
@@ -28,7 +28,7 @@
 </template>
 <script>
 export default {
-  name: "videoControl",
+  name: "VideoControl",
   data() {
     let speed;
     let bar;
@@ -44,6 +44,15 @@ export default {
       max
       // slider
     };
+  }, //methods
+
+  mounted() {
+    this.speed = this.$refs.speed;
+    this.video = this.$refs.video;
+    this.bar = this.$refs.bar;
+    // this.slider = 1;
+
+    this.speed.addEventListener("mousemove", this.handleMove);
   },
   methods: {
     // stop both mic and camera
@@ -63,15 +72,6 @@ export default {
     //   this.bar.textContent = this.slider.toFixed(2) + "×";
     //   this.video.playbackRate = this.slider;
     // } //playbackSpeed
-  }, //methods
-
-  mounted() {
-    this.speed = this.$refs.speed;
-    this.video = this.$refs.video;
-    this.bar = this.$refs.bar;
-    // this.slider = 1;
-
-    this.speed.addEventListener("mousemove", this.handleMove);
   }
 };
 </script>

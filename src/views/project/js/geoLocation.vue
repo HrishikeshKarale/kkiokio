@@ -3,8 +3,8 @@
   <div class="geoLocation">
     <!-- compass svg  -->
     <svg
-      class="compass"
       ref="compass"
+      class="compass"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       version="1.1"
@@ -45,14 +45,14 @@
     </svg>
 
     <h1 class="speed">
-      <span class="speed-value" ref="speed">0</span>
+      <span ref="speed" class="speed-value">0</span>
       <span class="units">Miles/H</span>
     </h1>
   </div>
 </template>
 <script>
 export default {
-  name: "geoLocation",
+  name: "GeoLocation",
   data() {
     let compass;
     let speed;

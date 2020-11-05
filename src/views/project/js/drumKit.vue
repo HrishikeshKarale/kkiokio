@@ -2,18 +2,18 @@
   <div class="drumKit">
     <div
       v-for="k in kit"
-      @click="clicked"
+      :key="k.dataKey"
       :class="['key', k.isPlaying ? 'playing' : '']"
       :data-key="k.dataKey"
-      :key="k.dataKey"
+      @click="clicked"
       @transitionend="endTransition(k.dataKey)"
     >
-      <div class="keyboardKey" :data-key="k.dataKey">
-        {{ k.key | nameConvention.capitalize }}
+      <div class="keyboardKey" :data-key="k.key">
+        {{ k.key }}
       </div>
-      <audio :src="k.audio" :data-key="k.dataKey"></audio>
+      <audio :src="k.audio" :data-key="k.dataKey" />
       <div class="instrument" :data-key="k.dataKey">
-        {{ k.name | nameConvention.capitalize }}
+        {{ k.name }}
       </div>
     </div>
   </div>
@@ -23,15 +23,21 @@ import { nameConvention } from "@/typeScript/nameConvention";
 import { drumKit } from "@/store/drumKit";
 
 export default {
-  name: "drumKit",
+  name: "DrumKit",
+
+  mixins: [nameConvention],
   data() {
     const kit = drumKit;
     return {
       kit
     };
   },
-
-  mixins: [nameConvention],
+  created() {
+    window.addEventListener("keydown", this.keyPressed, {
+      capture: false, // top to bottom bubbling/propogation
+      once: false //should work only once
+    });
+  },
 
   methods: {
     endTransition: function(value) {
@@ -62,14 +68,15 @@ export default {
       this.kit.forEach(kit => {
         if (kit.dataKey == keyCode) {
           kit.audio.currentTime = 10;
+          kit.audio.crossOrigin = "anonymous";
+          kit.audio.autoplay = true;
           kit.isPlaying = true;
-          // console.log(kit);
           try {
             kit.audio.play().then(() => {
               //automatic playback started
             });
           } catch (e) {
-            console.log(e);
+            console.error(e);
           }
         }
       });
@@ -88,14 +95,8 @@ export default {
     keyPressed: function() {
       const keyCode = event.keyCode;
       this.playAudio(keyCode);
-      event.stopPropogation(); //stop event bubbling
+      // event.stopPropogation(); //stop event bubbling
     }
-  },
-  created() {
-    window.addEventListener("keydown", this.keyPressed, {
-      capture: false, // top to bottom bubbling/propogation
-      once: false //should work only once
-    });
   }
 };
 </script>

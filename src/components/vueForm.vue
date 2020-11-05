@@ -5,15 +5,15 @@
     </div>
     <div class="formButtons">
       <vue-button
-        :buttonType="dButtonType"
-        buttonName="ConfirmDetailsButton"
-        :buttonText="dButtonTextConfirm"
-        :buttonIcon="dButtonIcon"
-        :buttonStyle="dButtonStyle[3]"
+        :button-type="dButtonType"
+        button-name="ConfirmDetailsButton"
+        :button-text="dButtonTextConfirm"
+        :button-icon="dButtonIcon"
+        :button-style="dButtonStyle[3]"
         :disabled="alerts"
         :autofocus="!dBooleanTrue"
-        :formID="dForm"
-        :onClickAction="d_onClickAction"
+        :form-i-d="dForm"
+        :on-click-action="d_onClickAction"
       />
     </div>
   </div>
@@ -23,7 +23,18 @@
 import vueButton from "@/components/vueButton";
 
 export default {
-  name: "vueForm",
+  name: "VueForm", //props
+
+  components: {
+    vueButton
+  }, //data
+
+  props: {
+    alerts: {
+      type: Object,
+      required: true
+    }
+  },
 
   data() {
     const dButtonType = "button";
@@ -73,17 +84,6 @@ export default {
 
       dCurrentStep: null
     };
-  }, //data
-
-  props: {
-    alerts: {
-      type: Object,
-      required: true
-    }
-  }, //props
-
-  components: {
-    vueButton
   }, //components
 
   computed: {
@@ -106,6 +106,12 @@ export default {
       }
       return false;
     } //validInput
+  }, //methods
+
+  created() {
+    // console.log(this.steps.length)
+    this.dTotalSteps = this.steps.length;
+    this.dCurrentStep = 1;
   }, //computed
 
   methods: {
@@ -128,12 +134,6 @@ export default {
       // console.log("Close")
       alert("form Submitted!");
     } // consoleClickConfirm
-  }, //methods
-
-  created() {
-    // console.log(this.steps.length)
-    this.dTotalSteps = this.steps.length;
-    this.dCurrentStep = 1;
   } //created
 }; //default
 </script>

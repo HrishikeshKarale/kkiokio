@@ -19,7 +19,7 @@
 <script>
 import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
 export default {
-  name: "scrollIn",
+  name: "ScrollIn",
   components: {
     scrollIndicator
   }

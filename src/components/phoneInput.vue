@@ -17,9 +17,9 @@
       <span v-if="inputIcon" :class="inputIcon" />
       <input
         v-if="!mask"
+        v-model="dTextValue"
         type="text"
         :name="name"
-        v-model="dTextValue"
         :placeholder="placeholder"
         :maxlength="maxlength"
         :minlength="minlength"
@@ -35,7 +35,7 @@
     <input-response
       :warning="dWarning"
       :error="ddanger"
-      :charLimitReached="lengthDelta == 0"
+      :char-limit-reached="lengthDelta == 0"
       :maxlength="maxlength"
     />
   </div>
@@ -45,19 +45,10 @@
 import inputResponse from "@/components/inputResponse.vue";
 
 export default {
-  name: "phoneInput",
+  name: "PhoneInput", //props
 
-  data() {
-    return {
-      //stores errors thrown by the input fields
-      ddanger: null,
-
-      //stores errors thrown by the input fields
-      dWarning: null,
-
-      //stores textbox values
-      dTextValue: null
-    }; //return
+  components: {
+    inputResponse
   }, //data
 
   props: {
@@ -118,7 +109,8 @@ export default {
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: Object
+      type: Object,
+      default: null
     },
 
     //sets the required attribute for the input field
@@ -170,10 +162,21 @@ export default {
       type: String,
       default: "fas fa-phone"
     }
-  }, //props
+  }, //computed
 
-  components: {
-    inputResponse
+  emits: ["alerts", "input"],
+
+  data() {
+    return {
+      //stores errors thrown by the input fields
+      ddanger: null,
+
+      //stores errors thrown by the input fields
+      dWarning: null,
+
+      //stores textbox values
+      dTextValue: null
+    }; //return
   }, //components
 
   computed: {
@@ -188,7 +191,46 @@ export default {
       }
       return null;
     } //lengthDelta
-  }, //computed
+  }, //beforeMount
+
+  watch: {
+    //send warning messages back to parent component
+    dWarning: function(newValue) {
+      this.$emit("alerts", "warning", newValue);
+    },
+
+    //send error messages back to parent component
+    ddanger: function(newValue) {
+      this.$emit("alerts", "error", newValue);
+    }
+  }, //methods
+
+  created() {
+    //store values passed as props into dTextValue for future manipulation
+    if (this.value) {
+      this.dTextValue = this.value;
+    }
+  }, //created
+
+  beforeMount() {
+    const alertMessage = this.alertMessage;
+
+    if (this.value) {
+      this.validate();
+    }
+
+    if (alertMessage) {
+      if (alertMessage["error"]) {
+        this.ddanger = alertMessage["error"];
+      } else if (alertMessage["warning"]) {
+        this.dWarning = alertMessage["warning"];
+      } else if (alertMessage["success"]) {
+        this.dSuccess = alertMessage["success"];
+      } else if (alertMessage["info"]) {
+        this.dInfo = alertMessage["info"];
+      }
+    }
+  },
 
   methods: {
     //validate the textbox input and set alert messages if required.
@@ -264,45 +306,6 @@ export default {
       }
       return r;
     } //mphone
-  }, //methods
-
-  created() {
-    //store values passed as props into dTextValue for future manipulation
-    if (this.value) {
-      this.dTextValue = this.value;
-    }
-  }, //created
-
-  beforeMount() {
-    const alertMessage = this.alertMessage;
-
-    if (this.value) {
-      this.validate();
-    }
-
-    if (alertMessage) {
-      if (alertMessage["error"]) {
-        this.ddanger = alertMessage["error"];
-      } else if (alertMessage["warning"]) {
-        this.dWarning = alertMessage["warning"];
-      } else if (alertMessage["success"]) {
-        this.dSuccess = alertMessage["success"];
-      } else if (alertMessage["info"]) {
-        this.dInfo = alertMessage["info"];
-      }
-    }
-  }, //beforeMount
-
-  watch: {
-    //send warning messages back to parent component
-    dWarning: function(newValue) {
-      this.$emit("alerts", "warning", newValue);
-    },
-
-    //send error messages back to parent component
-    ddanger: function(newValue) {
-      this.$emit("alerts", "error", newValue);
-    }
   } //watch
 }; //default
 </script>

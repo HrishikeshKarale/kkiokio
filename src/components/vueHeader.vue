@@ -1,32 +1,41 @@
 //https://codepen.io/pietvanzoen/pen/Ccjlt
 <template>
-  <div class="vueHeader" ref="vueHeader">
+  <div ref="vueHeader" class="vueHeader">
     <div>
-      <router-link :to="{ name: 'app' }" class="logo">
+      <router-link :to="{ name: 'home' }" class="logo">
         <vue-img :src="logoLink" alt="Logo" />
       </router-link>
       <!-- <div  ref="navigation" @click="toggleNavigation">
         <span></span>
       </div> -->
-      <div class="menuTrigger" ref="navigation">
+      <div ref="navigation" class="menuTrigger">
         <vue-button
-          buttopName="toggleNav"
-          buttonStyle="icon"
-          :buttonIcon="toggleNavIcon"
-          :onClickAction="toggleNavigation.bind(this)"
+          buttop-name="toggleNav"
+          button-style="icon"
+          :button-icon="toggleNavIcon"
+          :on-click-action="toggleNavigation.bind(this)"
         />
       </div>
     </div>
     <nav>
-      <slot name="nav" />
+      <ul>
+        <li
+          v-for="(navigation, index) in nav"
+          :key="index + '-' + navigation.name"
+        >
+          <router-link :to="{ name: navigation.component }">
+            {{ navigation.name }}
+          </router-link>
+        </li>
+      </ul>
     </nav>
     <vue-button
       class="themeToggle"
-      buttopName="themeToggle"
-      buttonStyle="text-sm"
-      buttonText="Theme"
-      :buttonIcon="themeIcon"
-      :onClickAction="theme.bind(this)"
+      buttop-name="themeToggle"
+      button-style="text-sm"
+      button-text="Theme"
+      :button-icon="themeIcon"
+      :on-click-action="theme.bind(this)"
     />
   </div>
 </template>
@@ -37,9 +46,47 @@ import vueButton from "@/components/vueButton";
 import vueImg from "./vueImg.vue";
 
 export default {
-  name: "vueHeader",
+  name: "VueHeader",
+
+  components: {
+    vueButton,
+    vueImg
+  },
 
   mixins: [toggle],
+
+  props: {
+    logoLink: {
+      required: false,
+      type: String,
+      default: null
+    },
+
+    nav: {
+      required: true,
+      type: Object,
+      default: null
+    }
+  },
+
+  computed: {
+    themeIcon: function() {
+      return this.activeTheme.icon;
+    }, //themeIcon
+    toggleNavIcon: function() {
+      if (this.isOpen("nav")) {
+        return "fas fa-times";
+      }
+      return "fas fa-bars";
+    } //toggleNavIcon
+  }, //props
+
+  mounted() {
+    document.addEventListener("click", this.clickHandler, {
+      capture: false, // top to bottom bubbling/propogation
+      once: false //should work only once
+    });
+  },
 
   methods: {
     clickHandler: function(event) {
@@ -56,44 +103,6 @@ export default {
       this.$refs["vueHeader"].classList.toggle("showNav");
       this.toggle("nav");
     } //toggleNavigation
-  },
-
-  computed: {
-    themeIcon: function() {
-      return this.activeTheme.icon;
-    }, //themeIcon
-    toggleNavIcon: function() {
-      if (this.isOpen("nav")) {
-        return "fas fa-times";
-      }
-      return "fas fa-bars";
-    } //toggleNavIcon
-  },
-
-  components: {
-    vueButton,
-    vueImg
-  },
-
-  props: {
-    logoLink: {
-      required: false,
-      type: String,
-      default: null
-    },
-
-    nav: {
-      required: false,
-      type: Function,
-      default: null
-    }
-  }, //props
-
-  mounted() {
-    document.addEventListener("click", this.clickHandler, {
-      capture: false, // top to bottom bubbling/propogation
-      once: false //should work only once
-    });
   }
 }; //default
 </script>
@@ -114,7 +123,7 @@ export default {
   background-color: @navBackground;
   width: 100%;
   height: @header;
-  .boxShadow(@one);
+  // .boxShadow(@one);
   & > div {
     display: flex;
     position: relative;
@@ -134,11 +143,48 @@ export default {
   }
   & > nav {
     & > ul {
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      & > li > a {
-        padding: 8px;
+      display: flex;
+      list-style-type: none;
+
+      & > li {
+        color: @primaryColor;
+
+        & > a {
+          flex: 1;
+          margin: 0 @spaceLg;
+          color: @navText;
+          text-decoration: none !important;
+          position: relative;
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            background-color: @secondaryColor;
+            bottom: -8px;
+            height: 1px;
+            transform: scale(0);
+            transition: all 0.3s ease-in-out;
+          }
+
+          &.router-link-active {
+            color: @secondaryColor;
+            &::before {
+              transform: scale(1);
+            }
+
+            &.router-link-exact-active {
+              color: @secondaryColor;
+            }
+          }
+
+          &:hover {
+            color: @primaryColor;
+            &::before {
+              transform: scale(1.2);
+            }
+          }
+        }
       }
     }
   }

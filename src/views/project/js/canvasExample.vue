@@ -1,12 +1,12 @@
 <template>
   <div class="canvasExample">
-    <input type="color" v-model="color" />
+    <input v-model="color" type="color" />
     <canvas ref="draw" />
   </div>
 </template>
 <script>
 export default {
-  name: "canvasExample",
+  name: "CanvasExample",
   data() {
     const isDrawing = false;
     const canvas = null;
@@ -24,15 +24,11 @@ export default {
     };
   },
 
-  methods: {
-    draw: function(event) {
-      if (!this.isDrawing) return;
-      this.ctx.beginPath();
-      this.ctx.moveTo(this.lastX, this.lastY);
-      this.lastX = event.offsetX;
-      this.lastY = event.offsetY;
-      this.ctx.lineTo(this.lastX, this.lastY);
-      this.ctx.stroke();
+  watch: {
+    color: function(newValue, oldValue) {
+      if (oldValue != newValue) {
+        this.ctx.strokeStyle = newValue;
+      }
     }
   },
   mounted() {
@@ -89,11 +85,15 @@ export default {
     );
   },
 
-  watch: {
-    color: function(newValue, oldValue) {
-      if (oldValue != newValue) {
-        this.ctx.strokeStyle = newValue;
-      }
+  methods: {
+    draw: function(event) {
+      if (!this.isDrawing) return;
+      this.ctx.beginPath();
+      this.ctx.moveTo(this.lastX, this.lastY);
+      this.lastX = event.offsetX;
+      this.lastY = event.offsetY;
+      this.ctx.lineTo(this.lastX, this.lastY);
+      this.ctx.stroke();
     }
   }
 };

@@ -1,24 +1,8 @@
 <template>
   <div id="app">
     <enterprise-app-layout>
-      <template v-slot:header>
-        <vue-header :logoLink="logoLink">
-          <template v-slot:nav>
-            <ul>
-              <li
-                v-for="(nav, index) in navigation"
-                :key="index + '-' + nav.name"
-              >
-                <router-link :to="{ name: nav.component }">
-                  {{ nav.name }}
-                </router-link>
-              </li>
-            </ul>
-          </template>
-        </vue-header>
-      </template>
-      <template v-slot:content>
-        <router-view :key="$route.path" />
+      <template #header>
+        <vue-header :logo-link="logoLink" :nav="navigation" />
       </template>
     </enterprise-app-layout>
   </div>
@@ -31,7 +15,12 @@ import enterpriseAppLayout from "@/components/enterpriseAppLayout";
 import { nav } from "@/store/navigation";
 
 export default {
-  name: "app",
+  name: "App",
+
+  components: {
+    vueHeader,
+    enterpriseAppLayout
+  },
 
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -41,11 +30,6 @@ export default {
       navigation,
       logoLink
     };
-  },
-
-  components: {
-    vueHeader,
-    enterpriseAppLayout
   }
 };
 </script>
@@ -61,26 +45,6 @@ body {
   height: 100%;
   width: 100%;
   font-size: @fontSize;
-
-  ul {
-    display: flex;
-    list-style-type: none;
-
-    & > li {
-      color: @primaryColor;
-
-      & > a {
-        flex: 1;
-        margin: 0 @spaceLg;
-        color: @navText;
-        text-decoration: none !important;
-
-        &:hover {
-          color: @primaryColor;
-        }
-      }
-    }
-  }
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

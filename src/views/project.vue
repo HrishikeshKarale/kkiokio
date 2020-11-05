@@ -1,20 +1,18 @@
 <template>
   <div class="projects">
-    <h1>My Projects</h1>
-    <scroll-indicator>
-      <router-view :key="$route.path" />
-    </scroll-indicator>
+    <p>
+      Here is a list of projects that I have worked on.
+      <br />
+      The projects have vbeen divided into categories to make it easy for
+      browsing.
+    </p>
+    <router-view :key="$route.path" />
   </div>
 </template>
 
 <script>
-import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
-
 export default {
-  name: "projects",
-  components: {
-    scrollIndicator
-  }
+  name: "Projects"
 };
 </script>
 
@@ -24,15 +22,6 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   min-width: 480px;
-  & > .title {
-    margin-bottom: 8vh;
-    & > h1 {
-      text-align: center;
-      & + p {
-        text-align: center;
-      }
-    }
-  }
 }
 </style>
 /* to add a project, add project details to the store project file and then add

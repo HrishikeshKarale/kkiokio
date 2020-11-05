@@ -9,15 +9,15 @@
 <script>
 import vueImg from "@/components/vueImg.vue";
 export default {
+  components: {
+    vueImg
+  },
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const dFitnessFriend = require("@/assets/mobile/fitness friend.png");
     return {
       dFitnessFriend: dFitnessFriend
     };
-  },
-  components: {
-    vueImg
   }
 };
 </script>

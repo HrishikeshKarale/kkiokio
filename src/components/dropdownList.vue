@@ -46,20 +46,10 @@
 import inputResponse from "@/components/inputResponse";
 
 export default {
-  name: "dropdownList",
+  name: "DropdownList", //props
 
-  data() {
-    return {
-      //stores errors thrown by the input fields
-      danger: null,
-
-      warning: null,
-
-      booleanTrue: true,
-
-      //stores dropdown values
-      selectedOption: null
-    }; //return
+  components: {
+    inputResponse
   }, //data
 
   props: {
@@ -81,8 +71,8 @@ export default {
     value: {
       required: false,
       type: [String, Number, Array],
-      default: function() {
-        if (this.multiple) {
+      default: function(props) {
+        if (props.multiple) {
           return [];
         }
         return null;
@@ -112,7 +102,8 @@ export default {
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: Object
+      type: Object,
+      default: null
     },
 
     //sets the required attribute for the input field
@@ -157,32 +148,29 @@ export default {
       type: String,
       default: null
     }
-  }, //props
+  },
 
-  components: {
-    inputResponse
-  }, //components
+  emits: ["alerts", "input"],
 
-  methods: {
-    //validate the textbox input and set alert messages if required.
-    //it also emits/send the current textbox value to  parent component as v-model attribute value
-    validate: function() {
-      //initialize warning and error messages to null to accomodate change in alert messages
-      this.danger = null;
-      //loads current value stored from selectedOption(data) into val(temp) variable val for readability of code
-      const val = this.selectedOption;
+  data() {
+    return {
+      //stores errors thrown by the input fields
+      danger: null,
 
-      //if value for val(temp) does not exists check if value is required
-      //if value is required then trigger alert and set error message
-      if (val) {
-        //emit/send new values to parent component v-model attribute
-        this.$emit("input", val);
-      } else {
-        if (this.required) {
-          this.danger = "Required field.";
-        }
-      }
-    } //validate
+      warning: null,
+
+      booleanTrue: true,
+
+      //stores dropdown values
+      selectedOption: null
+    }; //return
+  }, //beforeMount
+
+  watch: {
+    //send error messages back to parent component
+    danger: function(newValue) {
+      this.$emit("alerts", "error", newValue);
+    }
   }, //methods
 
   created() {
@@ -256,13 +244,28 @@ export default {
         this.info = alertMessage["info"];
       }
     }
-  }, //beforeMount
+  }, //components
 
-  watch: {
-    //send error messages back to parent component
-    danger: function(newValue) {
-      this.$emit("alerts", "error", newValue);
-    }
+  methods: {
+    //validate the textbox input and set alert messages if required.
+    //it also emits/send the current textbox value to  parent component as v-model attribute value
+    validate: function() {
+      //initialize warning and error messages to null to accomodate change in alert messages
+      this.danger = null;
+      //loads current value stored from selectedOption(data) into val(temp) variable val for readability of code
+      const val = this.selectedOption;
+
+      //if value for val(temp) does not exists check if value is required
+      //if value is required then trigger alert and set error message
+      if (val) {
+        //emit/send new values to parent component v-model attribute
+        this.$emit("input", val);
+      } else {
+        if (this.required) {
+          this.danger = "Required field.";
+        }
+      }
+    } //validate
   } //WATCH
 }; //default
 </script>

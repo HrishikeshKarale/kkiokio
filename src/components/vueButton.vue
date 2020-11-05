@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "vueButton",
+  name: "VueButton",
 
   props: {
     buttonType: {
@@ -52,14 +52,14 @@ export default {
     },
 
     buttonIcon: {
-      required: function() {
-        if (this.buttonStyle.includes("icon")) {
+      default: null,
+      required: function(props) {
+        if (props.buttonStyle.includes("icon")) {
           return true;
         }
         return false;
       },
-      type: String,
-      default: false
+      type: String
     },
 
     buttonText: {
@@ -110,7 +110,56 @@ export default {
     buttonClass: {
       required: false,
       type: String,
-      default: "btn"
+      default: function(props) {
+        let tempClass = "btn";
+        switch (props.buttonStyle) {
+          case "standard":
+            tempClass += " btn-primary";
+            break;
+          case "icon":
+            tempClass += " btn-icon";
+            break;
+          case "icon-sm":
+            tempClass += " btn-icon btn-sm";
+            break;
+          case "icon-lg":
+            tempClass += " btn-icon btn-lg";
+            break;
+          case "text":
+            tempClass += " btn-link btn-text";
+            break;
+          case "text-sm":
+            tempClass += " btn-text btn-sm";
+            break;
+          case "text-lg":
+            tempClass += " btn-text btn-lg";
+            break;
+          case "small":
+            tempClass += " btn-primary btn-sm";
+            break;
+          case "large":
+            tempClass += " btn-primary btn-lg";
+            break;
+          case "fullWidth":
+            tempClass += " btn-fullWidth btn-block";
+            break;
+          case "border":
+            tempClass += " btn-border";
+            break;
+          case "border-sm":
+            tempClass += " btn-border btn-sm";
+            break;
+          case "border-lg":
+            tempClass += " btn-border btn-lg";
+            break;
+          case "border-fwidth":
+            tempClass += " btn-border btn-fullWidth btn-block";
+            break;
+          default:
+            tempClass += " btn-primary";
+        }
+        return tempClass;
+      }
     },
 
     formID: {
@@ -129,59 +178,6 @@ export default {
       }
     }
   }, //props
-
-  methods: {
-    styleButton: function() {
-      let tempClass = "btn";
-      switch (this.buttonStyle) {
-        case "standard":
-          tempClass += " btn-primary";
-          break;
-        case "icon":
-          tempClass += " btn-icon";
-          break;
-        case "icon-sm":
-          tempClass += " btn-icon btn-sm";
-          break;
-        case "icon-lg":
-          tempClass += " btn-icon btn-lg";
-          break;
-        case "text":
-          tempClass += " btn-link btn-text";
-          break;
-        case "text-sm":
-          tempClass += " btn-text btn-sm";
-          break;
-        case "text-lg":
-          tempClass += " btn-text btn-lg";
-          break;
-        case "small":
-          tempClass += " btn-primary btn-sm";
-          break;
-        case "large":
-          tempClass += " btn-primary btn-lg";
-          break;
-        case "fullWidth":
-          tempClass += " btn-fullWidth btn-block";
-          break;
-        case "border":
-          tempClass += " btn-border";
-          break;
-        case "border-sm":
-          tempClass += " btn-border btn-sm";
-          break;
-        case "border-lg":
-          tempClass += " btn-border btn-lg";
-          break;
-        case "border-fwidth":
-          tempClass += " btn-border btn-fullWidth btn-block";
-          break;
-        default:
-          tempClass += " btn-primary";
-      }
-      this.buttonClass = tempClass;
-    } //styleButton
-  }, //methods
 
   onBeforeMount() {
     this.styleButton();

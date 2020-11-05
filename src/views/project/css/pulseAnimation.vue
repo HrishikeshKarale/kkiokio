@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-  name: "pulseAnimation",
+  name: "PulseAnimation",
   data() {
     return {};
   }

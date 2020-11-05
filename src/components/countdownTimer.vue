@@ -22,8 +22,28 @@
 </template>
 <script>
 export default {
-  name: "countdownTimer",
-  props: ["starttime", "endtime", "trans"],
+  name: "CountdownTimer",
+  props: {
+    startTime: {
+      required: true,
+      type: String,
+      default: function() {
+        return new Date().getTime();
+      }
+    }, // startTime
+    endTime: {
+      required: true,
+      type: String,
+      default: function() {
+        return new Date().getTime();
+      }
+    }, // endTime
+    trans: {
+      required: true,
+      type: String
+    } //trans
+  },
+  //["startTime", "endTime", "trans"],
   data: function() {
     return {
       timer: "",
@@ -44,8 +64,8 @@ export default {
     this.wordString = JSON.parse(this.trans);
   },
   mounted() {
-    this.start = new Date(this.starttime).getTime();
-    this.end = new Date(this.endtime).getTime();
+    this.start = new Date(this.startTime).getTime();
+    this.end = new Date(this.endTime).getTime();
     // Update the count down every 1 second
     this.timerCount(this.start, this.end);
     this.interval = setInterval(() => {

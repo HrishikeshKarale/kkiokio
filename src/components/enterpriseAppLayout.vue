@@ -4,21 +4,38 @@
       <slot name="header" />
     </div>
     <div class="body">
-      <template>
-        <div class="menu">
-          <slot name="menu" />
-        </div>
-      </template>
-      <div class="content">
-        <slot name="content" />
+      <div class="menu">
+        <slot name="menu" />
+      </div>
+      <div :key="$route.path" class="content">
+        <breadcrums />
+        <scroll-indicator>
+          <router-view :key="$route.path" />
+        </scroll-indicator>
+        <q>
+          A little
+          <abbr
+            title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
+          >
+            Empathy
+          </abbr>
+          goes a long way
+        </q>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
+import breadcrums from "@/components/breadcrums";
+
 export default {
-  name: "enterpriseAppLayout"
+  name: "EnterpriseAppLayout",
+  components: {
+    scrollIndicator,
+    breadcrums
+  }
 };
 </script>
 
@@ -50,7 +67,9 @@ export default {
       z-index: 1000;
       background-color: @backgroundColor;
       .scroll(100vh);
-      > div {
+
+      //scroll content
+      div {
         &.menu {
           display: flex;
           justify-content: space-between;
@@ -71,6 +90,37 @@ export default {
           margin: auto;
           max-width: 80vw;
           min-width: 320px;
+          & > .breadcrums {
+            margin: 16px 0;
+            & > .crums {
+              padding: 8px;
+              font-weight: bold;
+              color: @secondaryColor;
+              text-decoration: none;
+              & + span {
+                color: @cometText;
+              }
+            }
+          }
+
+          & > q {
+            // font-size: @fontSizeSm * 4;
+            // text-align: center;
+            position: absolute;
+            font-size: @fontSizeMd;
+            font-weight: bold;
+            bottom: 0;
+            right: 0;
+            padding: 16px 32px;
+            background-color: @backgroundColor;
+            // .boxShadow(@three);
+            border-radius: 4px 0 0 0;
+
+            & > abbr {
+              color: @secondaryColor;
+              text-decoration: none;
+            }
+          }
         }
       }
     }
@@ -85,9 +135,8 @@ export default {
           top: 0;
         }
         &.body {
-          @media screen {
-            @media (max-width: 1024px) {
-            }
+          .content {
+            margin-top: 80px;
           }
         }
       }

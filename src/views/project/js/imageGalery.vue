@@ -17,7 +17,9 @@
 <script>
 import { nameConvention } from "@/typeScript/nameConvention";
 export default {
-  name: "imageGalery",
+  name: "ImageGalery",
+
+  mixins: [nameConvention],
   data() {
     const gallery = [
       {
@@ -59,9 +61,7 @@ export default {
     return {
       gallery
     };
-  },
-
-  mixins: [nameConvention]
+  }
 };
 </script>
 <style lang="less" scoped>

@@ -24,7 +24,7 @@
 </template>
 <script>
 export default {
-  name: "analogClock",
+  name: "AnalogClock",
   data() {
     const hours = null;
     const minutes = null;
@@ -42,6 +42,12 @@ export default {
       year,
       timer
     };
+  },
+  mounted() {
+    this.timer = setInterval(this.setTime, 1000);
+  },
+  unmounted() {
+    clearInterval(this.timer);
   },
   methods: {
     setTime: function() {
@@ -69,12 +75,6 @@ export default {
       minuteHand.style.transform = "rotate(" + minuteAngle + "deg)";
       secondHand.style.transform = "rotate(" + secondAngle + "deg)";
     }
-  },
-  mounted() {
-    this.timer = setInterval(this.setTime, 1000);
-  },
-  destroyed() {
-    clearInterval(this.timer);
   }
 };
 </script>

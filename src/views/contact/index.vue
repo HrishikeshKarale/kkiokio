@@ -1,18 +1,15 @@
 <template>
   <div class="contact">
-    <div class="title">
-      <h1>Contact Me</h1>
-      <p>
-        Hello, I am located in Upstate New York area.
-        <br />
-        Feel free to use the contact form below and reach out to me for any
-        questions yo might have.
-        <br />
-        You can also write to me the old fashion way.
-      </p>
-    </div>
-    <div class="body">
-      <div class="contactDetails">
+    <p>
+      Hello, I am located in Upstate New York area.
+      <br />
+      Feel free to use the contact form below and reach out to me for any
+      questions yo might have.
+      <br />
+      You can also write to me the old fashion way.
+    </p>
+    <div class="details">
+      <div class="personal">
         <div class="address">
           <h3>Postal Address</h3>
           <p>
@@ -41,48 +38,48 @@
           >
         </div>
       </div>
-      <div class="contactForm">
+      <div class="form">
         <form
           action="mailto:hrishikesh.karale@gmail.com"
           method="post"
           enctype="text/plain"
         >
           <text-input
+            v-model="name"
             label="NAME"
             name="nameTextField"
-            v-model="name"
             placeholder="John Doe"
             :required="booleanTrue"
           />
           <email-input
+            v-model="email"
             label="E-MAIL"
             name="emailField"
-            v-model="email"
             placeholder="JDoe@email.com"
-            inputIcon="far fa-envelope"
+            input-icon="far fa-envelope"
             :required="booleanTrue"
           />
           <phone-input
+            v-model="phone"
             label="PHONE NUMBER"
             name="phoneInputField"
-            v-model="phone"
             placeholder="555 555 5555"
           />
           <vue-textarea
+            v-model="comment"
             label="MESSAGE"
             name="messageTextareaField"
-            v-model="comment"
             placeholder="message"
             :required="booleanTrue"
           />
           <div class="button">
             <vue-button
-              buttonType="submit"
-              buttonName="submitButton"
-              buttonText="SUBMIT"
-              buttonIcon="fas fa-comment-dots"
-              buttonStyle="small"
-              :onClickAction="sendMail"
+              button-type="submit"
+              button-name="submitButton"
+              button-text="SUBMIT"
+              button-icon="fas fa-comment-dots"
+              button-style="small"
+              :on-click-action="sendMail"
             />
           </div>
         </form>
@@ -99,7 +96,14 @@ import phoneInput from "@/components/phoneInput.vue";
 import vueTextarea from "@/components/vueTextarea.vue";
 // import nodemailer from "nodemailer";
 export default {
-  name: "contact",
+  name: "Contact",
+  components: {
+    vueButton,
+    textInput,
+    emailInput,
+    phoneInput,
+    vueTextarea
+  },
   data() {
     const name = null;
     const email = null;
@@ -131,13 +135,6 @@ export default {
       // transporter,
       mailOptions
     };
-  },
-  components: {
-    vueButton,
-    textInput,
-    emailInput,
-    phoneInput,
-    vueTextarea
   },
   methods: {
     sendMail: function() {
@@ -181,8 +178,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import (reference) "./../Less/customMixins.less";
-@import (reference) "./../Less/customVariables.less";
+@import (reference) "./../../Less/customMixins.less";
+@import (reference) "./../../Less/customVariables.less";
 
 .contact {
   display: flex;
@@ -190,44 +187,33 @@ export default {
   justify-content: space-around;
   height: 100%;
 
-  & > div {
-    &.title {
-      margin-bottom: 8vh;
-      & > h1 {
-        text-align: center;
-        & + p {
-          text-align: center;
-        }
-      }
-    }
-    &.body {
+  .details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    & > div {
       display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      & > div {
-        display: flex;
-        flex-direction: column;
-        max-width: 40vw;
-        min-width: 24opx;
-        &.contactDetails {
-          & > div {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-          }
-        }
-        &.contactForm {
+      flex-direction: column;
+      max-width: 40vw;
+      min-width: 24opx;
+      &.personal {
+        & > div {
           display: flex;
           flex-direction: column;
-          max-width: 40vw;
-          min-width: 320px;
-          padding: @spaceLg;
-          background-color: #fafbfc;
-          border-radius: 8px;
-          .boxShadow(@one);
-          & > form {
-            & > div {
-              margin-top: @spaceLg;
+          justify-content: space-around;
+        }
+      }
+      &.form {
+        min-width: 320px;
+        padding: @spaceLg;
+        background-color: @backgroundColor;
+        border-radius: 8px;
+        .boxShadow(@one);
+        & > form {
+          & > div {
+            margin-top: @spaceLg;
+            &:first-child {
+              margin-top: 0;
             }
           }
         }

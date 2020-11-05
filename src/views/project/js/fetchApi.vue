@@ -28,15 +28,15 @@
             </div>
             <div class="viewMore">
               <vue-button
-                buttopName="editButton"
-                :buttonText="show.includes(data.id) ? 'less' : 'more'"
-                :buttonIcon="
+                buttop-name="editButton"
+                :button-text="show.includes(data.id) ? 'less' : 'more'"
+                :button-icon="
                   show.includes(data.id)
                     ? 'fas fa-angle-up'
                     : 'fas fa-angle-down'
                 "
-                buttonStyle="text-sm"
-                :onClickAction="toggle.bind(this, data.id)"
+                button-style="text-sm"
+                :on-click-action="toggle.bind(this, data.id)"
               />
             </div>
             <div class="info">
@@ -68,7 +68,12 @@ import vueButton from "@/components/vueButton.vue";
 // import radioInput from "@/components/radioInput.vue";
 import { toggle } from "@/typeScript/toggle.js";
 export default {
-  name: "fetchApi",
+  name: "FetchApi",
+  components: {
+    vueButton
+    // radioInput
+  },
+  mixins: [toggle],
   data() {
     const selectedEndpoint = null;
     const booleanTrue = true;
@@ -90,11 +95,10 @@ export default {
       studioGhibli
     };
   },
-  components: {
-    vueButton
-    // radioInput
+  mounted() {
+    this.selectedEndpoint = this.studioGhibli.endpoint[0];
+    this.getApiData(this.studioGhibli, this.selectedEndpoint);
   },
-  mixins: [toggle],
 
   methods: {
     select: function(value) {
@@ -127,10 +131,6 @@ export default {
           console.log(`Fetch executed on ${source.baseURL}`);
         });
     }
-  },
-  mounted() {
-    this.selectedEndpoint = this.studioGhibli.endpoint[0];
-    this.getApiData(this.studioGhibli, this.selectedEndpoint);
   }
 };
 </script>

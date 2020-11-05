@@ -11,18 +11,18 @@
         </div>
         <div class="invite">
           <input
-            type="text"
             v-model="dPerson"
+            type="text"
             placeholder="Jon Doe"
             @keypress.enter.prevent="addPerson"
           />
           <vue-button
-            buttonType="button"
-            buttopName="inviteButton"
-            buttonText="INVITE"
-            buttonIcon="fas fa-user-check"
-            buttonStyle="standard"
-            :onClickAction="addPerson"
+            button-type="button"
+            buttop-name="inviteButton"
+            button-text="INVITE"
+            button-icon="fas fa-user-check"
+            button-style="standard"
+            :on-click-action="addPerson"
           />
         </div>
       </div>
@@ -50,7 +50,7 @@
             {{ dPerson }}
           </div>
           <div>
-            <input type="checkbox" :id="dPerson" :name="dPerson" />
+            <input :id="dPerson" type="checkbox" :name="dPerson" />
             <label :for="dPerson">Confirmed</label>
           </div>
         </div>
@@ -62,10 +62,10 @@
               </div>
               <div>
                 <input
-                  type="checkbox"
                   :id="invited.name"
-                  :name="invited.name"
                   v-model="invited.status"
+                  type="checkbox"
+                  :name="invited.name"
                   :checked="invited.status"
                 />
                 <label :for="invited.name">Confirmed</label>
@@ -73,16 +73,16 @@
             </div>
             <div>
               <vue-button
-                buttopName="editButton"
-                buttonStyle="icon"
-                buttonIcon="fas fa-pen"
-                :onClickAction="updateInvited.bind(this, invited.name, false)"
+                buttop-name="editButton"
+                button-style="icon"
+                button-icon="fas fa-pen"
+                :on-click-action="updateInvited.bind(this, invited.name, false)"
               />
               <vue-button
-                buttopName="deleteButton"
-                buttonStyle="icon"
-                buttonIcon="fas fa-eye"
-                :onClickAction="updateInvited.bind(this, invited.name, true)"
+                buttop-name="deleteButton"
+                button-style="icon"
+                button-icon="fas fa-eye"
+                :on-click-action="updateInvited.bind(this, invited.name, true)"
               />
             </div>
           </template>
@@ -97,7 +97,12 @@ import vueButton from "@/components/vueButton.vue";
 import vueImg from "@/components/vueImg.vue";
 import { toggle } from "@/typeScript/toggle";
 export default {
-  name: "rsvp",
+  name: "Rsvp",
+  components: {
+    vueButton,
+    vueImg
+  },
+  mixins: [toggle],
   data() {
     const dPerson = null;
     const dInvited = null;
@@ -111,11 +116,6 @@ export default {
       dEdit
     };
   },
-  components: {
-    vueButton,
-    vueImg
-  },
-  mixins: [toggle],
   computed: {
     attending: function() {
       const invited = this.dInvited;

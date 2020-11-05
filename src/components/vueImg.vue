@@ -5,15 +5,7 @@
 
 <script>
 export default {
-  name: "vueImg",
-
-  data() {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dImageSource = require("@/assets/default.svg");
-    return {
-      dImageSource: dImageSource
-    }; //return
-  }, //data
+  name: "VueImg", //data
 
   props: {
     src: {
@@ -37,6 +29,14 @@ export default {
         return "An image goes here";
       }
     }
+  },
+
+  data() {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const dImageSource = require("@/assets/default.svg");
+    return {
+      dImageSource: dImageSource
+    }; //return
   } //props
 }; //default
 </script>

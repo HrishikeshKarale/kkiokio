@@ -1,38 +1,32 @@
 export const nav = [
   {
     name: "Home",
-    component: "app",
-    icon: "fas fa-home",
-    link: ""
+    component: "home",
+    icon: "fas fa-home"
   },
   {
     name: "Project",
     component: "project",
-    icon: "fas fa-swatchbook",
-    link: "project"
+    icon: "fas fa-swatchbook"
   },
   {
     name: "Case Study",
     component: "caseStudy",
-    icon: "fas fa-coffee",
-    link: "caseStudy"
+    icon: "fas fa-coffee"
   },
   {
     name: "Logo",
     component: "logo",
-    icon: "fas fa-pencil-ruler",
-    link: "logo"
+    icon: "fas fa-pencil-ruler"
   },
   {
     name: "About Me",
     component: "about",
-    icon: "fas fa-user-graduate",
-    link: "aboutMe"
+    icon: "fas fa-user-graduate"
   },
   {
     name: "Contact Me",
     component: "contact",
-    icon: "fas fa-id-badge",
-    link: "contactMe"
+    icon: "fas fa-id-badge"
   }
 ];

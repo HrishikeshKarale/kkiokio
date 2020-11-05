@@ -16,8 +16,8 @@
       <span v-if="inputIcon" :class="inputIcon" />
       <input
         v-if="!mask"
-        :list="name"
         v-model="selectedOption"
+        :list="name"
         :placeholder="placeholder"
         :multiple="multiple"
         :required="required"
@@ -41,23 +41,10 @@
 import inputResponse from "@/components/Alerts/inputResponse";
 
 export default {
-  name: "searchableDropdownList",
+  name: "SearchableDropdownList",
 
   components: {
     inputResponse
-  }, //components
-
-  data() {
-    return {
-      //stores errors thrown by the input fields
-      danger: null,
-
-      //stores errors thrown by the input fields
-      warning: null,
-
-      //stores dropdown values
-      selectedOption: null
-    }; //return
   }, //data
 
   props: {
@@ -79,8 +66,8 @@ export default {
     value: {
       required: false,
       type: [String, Number, Array],
-      default: function() {
-        if (this.multiple) {
+      default: function(props) {
+        if (props.multiple) {
           return [];
         }
         return null;
@@ -113,8 +100,8 @@ export default {
     placeholder: {
       required: false,
       type: String,
-      default: function() {
-        if (this.strict) {
+      default: function(props) {
+        if (props.strict) {
           return "Select an option...";
         }
         return "Enter value or Select an option...";
@@ -138,7 +125,8 @@ export default {
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: Object
+      type: Object,
+      default: null
     },
 
     //sets the required attribute for the input field
@@ -185,36 +173,31 @@ export default {
     }
   }, //props
 
-  methods: {
-    //validate the textbox input and set alert messages if required.
-    //it also emits/send the current textbox value to  parent component as v-model attribute value
-    validate: function() {
-      //initialize warning and error messages to null to accomodate change in alert messages
-      this.danger = null;
-      this.warning = null;
-      //loads current value stored from selectedOption(data) into val(temp) variable val for readability of code
-      const val = this.selectedOption;
+  emits: ["alerts", "input"], //components
 
-      //if value for val(temp) exists check for warning triggers
-      if (val) {
-        //if an acceptable value exists,emit/send new values to parent component v-model attribute
-        //if not then trigger warning and set warning message
-        if (this.options.includes(val) || !this.strict) {
-          this.$emit("input", val);
-        }
-        //if options do not include the optio na dn user customized input is not acceptable then trigger alert and set warning message
-        else if (this.strict) {
-          this.warning =
-            "Invalid Input. Please select an option from the options below.";
-        }
-      }
-      //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
-      else {
-        if (this.required) {
-          this.danger = "Required field.";
-        }
-      }
-    } //validate
+  data() {
+    return {
+      //stores errors thrown by the input fields
+      danger: null,
+
+      //stores errors thrown by the input fields
+      warning: null,
+
+      //stores dropdown values
+      selectedOption: null
+    }; //return
+  }, //beforeMount
+
+  watch: {
+    //send warning messages back to parent component
+    warning: function(newValue) {
+      this.$emit("alerts", "warning", newValue);
+    },
+
+    //send error messages back to parent component
+    danger: function(newValue) {
+      this.$emit("alerts", "error", newValue);
+    }
   }, //methods
 
   created() {
@@ -289,18 +272,38 @@ export default {
         this.info = alertMessage["info"];
       }
     }
-  }, //beforeMount
+  },
 
-  watch: {
-    //send warning messages back to parent component
-    warning: function(newValue) {
-      this.$emit("alerts", "warning", newValue);
-    },
+  methods: {
+    //validate the textbox input and set alert messages if required.
+    //it also emits/send the current textbox value to  parent component as v-model attribute value
+    validate: function() {
+      //initialize warning and error messages to null to accomodate change in alert messages
+      this.danger = null;
+      this.warning = null;
+      //loads current value stored from selectedOption(data) into val(temp) variable val for readability of code
+      const val = this.selectedOption;
 
-    //send error messages back to parent component
-    danger: function(newValue) {
-      this.$emit("alerts", "error", newValue);
-    }
+      //if value for val(temp) exists check for warning triggers
+      if (val) {
+        //if an acceptable value exists,emit/send new values to parent component v-model attribute
+        //if not then trigger warning and set warning message
+        if (this.options.includes(val) || !this.strict) {
+          this.$emit("input", val);
+        }
+        //if options do not include the optio na dn user customized input is not acceptable then trigger alert and set warning message
+        else if (this.strict) {
+          this.warning =
+            "Invalid Input. Please select an option from the options below.";
+        }
+      }
+      //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
+      else {
+        if (this.required) {
+          this.danger = "Required field.";
+        }
+      }
+    } //validate
   } //watch
 }; //default
 </script>

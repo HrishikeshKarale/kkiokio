@@ -3,8 +3,8 @@
     <article>
       <section
         v-for="projects in projectsDescription"
-        :key="projects.type"
         :id="projects.type"
+        :key="projects.type"
       >
         <h2>{{ projects.type }}</h2>
         <div>
@@ -15,7 +15,7 @@
               }"
             >
               <showcase :title="project.title" :subtitle="project.subtitle">
-                <template slot="description">
+                <template #description>
                   {{ project.descritpion }}
                 </template>
               </showcase>
@@ -32,15 +32,15 @@ import showcase from "@/components/showcase.vue";
 import { projects } from "@/store/projects";
 
 export default {
-  name: "projectList",
+  name: "ProjectList",
+  components: {
+    showcase
+  },
   data() {
     const projectsDescription = projects;
     return {
       projectsDescription
     };
-  },
-  components: {
-    showcase
   }
 };
 </script>

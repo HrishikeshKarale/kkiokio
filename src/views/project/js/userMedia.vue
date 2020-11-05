@@ -9,52 +9,50 @@
     <input type="file" accept="audio/*;capture=microphone" /> -->
     <div class="select">
       <label for="audioSource">Audio source: </label>
-      <select ref="audioSource" id="audioSource"></select>
+      <select id="audioSource" ref="audioSource"></select>
     </div>
 
     <div class="select">
       <label for="videoSource">Video source: </label>
-      <select ref="videoSource" id="videoSource"></select>
+      <select id="videoSource" ref="videoSource"></select>
     </div>
     <div>
       <vue-button
-        buttopName="screenshot"
-        buttonStyle="icon-lg"
-        buttonIcon="fas fa-bullseye"
-        :onClickAction="toggleFilter.bind(this)"
+        buttop-name="screenshot"
+        button-style="icon-lg"
+        button-icon="fas fa-bullseye"
+        :on-click-action="toggleFilter.bind(this)"
       />
       <vue-button
-        buttopName="stopMedia"
-        buttonStyle="icon-lg"
-        buttonIcon="fas fa-stop"
-        :onClickAction="stopBothVideoAndAudio.bind(this)"
+        buttop-name="stopMedia"
+        button-style="icon-lg"
+        button-icon="fas fa-stop"
+        :on-click-action="stopBothVideoAndAudio.bind(this)"
       />
       <vue-button
-        buttopName="stopAudio"
-        buttonStyle="icon-lg"
-        :buttonIcon="
-          this.audio ? 'fas fa-microphone-slash' : 'fas fa-microphone'
-        "
-        :onClickAction="stopAudioOnly.bind(this)"
+        buttop-name="stopAudio"
+        button-style="icon-lg"
+        :button-icon="audio ? 'fas fa-microphone-slash' : 'fas fa-microphone'"
+        :on-click-action="stopAudioOnly.bind(this)"
       />
       <vue-button
-        buttopName="stopVideo"
-        buttonStyle="icon-lg"
-        :buttonIcon="this.video ? 'fas fa-video-slash' : 'fas fa-video'"
-        :onClickAction="stopVideoOnly.bind(this)"
+        buttop-name="stopVideo"
+        button-style="icon-lg"
+        :button-icon="video ? 'fas fa-video-slash' : 'fas fa-video'"
+        :on-click-action="stopVideoOnly.bind(this)"
       />
       <vue-button
-        buttopName="screenshot"
-        buttonStyle="icon-lg"
-        buttonIcon="fas fa-camera"
-        :onClickAction="getScreenshot.bind(this)"
+        buttop-name="screenshot"
+        button-style="icon-lg"
+        button-icon="fas fa-camera"
+        :on-click-action="getScreenshot.bind(this)"
       />
     </div>
     <div>
       <video ref="html5Video" autoplay />
       <vue-img
-        class="img"
         ref="screenshot"
+        class="img"
         :src="screenshotImage"
         alt="screenshot"
       />
@@ -66,7 +64,7 @@
 import vueButton from "@/components/vueButton";
 import vueImg from "@/components/vueImg.vue";
 export default {
-  name: "userMedia",
+  name: "UserMedia",
 
   components: {
     vueButton,
@@ -117,6 +115,11 @@ export default {
       screenshotImage,
       constraints
     };
+  }, //methods
+
+  mounted() {
+    // this.sortMedia();
+    this.getMedia();
   },
   methods: {
     // stop both mic and camera
@@ -250,11 +253,6 @@ export default {
         //do something here in case of media not found
       }
     } //getMedia
-  }, //methods
-
-  mounted() {
-    // this.sortMedia();
-    this.getMedia();
   }
 };
 </script>

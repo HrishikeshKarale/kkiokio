@@ -1,6 +1,6 @@
 //https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
 <template>
-  <div class="clickDrag" ref="clickDrag">
+  <div ref="clickDrag" class="clickDrag">
     <div class="item item1">01</div>
     <div class="item item2">02</div>
     <div class="item item3">03</div>
@@ -30,7 +30,7 @@
 </template>
 <script>
 export default {
-  name: "clickDrag",
+  name: "ClickDrag",
   data() {
     let slider;
     const isDown = false;
@@ -42,6 +42,29 @@ export default {
       startX,
       scrollLeft
     };
+  }, //methods
+
+  mounted() {
+    this.slider = this.$refs.clickDrag;
+    this.slider.addEventListener("mousedown", this.mouseClickEnter, {
+      catpure: false,
+      once: false
+    });
+
+    this.slider.addEventListener("mouseleave", this.mouseLeaveEvent, {
+      catpure: false,
+      once: false
+    });
+
+    this.slider.addEventListener("mouseup", this.mouseClickRelease, {
+      catpure: false,
+      once: false
+    });
+
+    this.slider.addEventListener("mousemove", this.mouseMoveEvent, {
+      catpure: false,
+      once: false
+    });
   }, //data
 
   methods: {
@@ -69,29 +92,6 @@ export default {
       slider.scrollLeft = this.scrollLeft - walk;
       // e.stopPropogation(); //stop event bubbling
     } //mouseMoveEvent
-  }, //methods
-
-  mounted() {
-    this.slider = this.$refs.clickDrag;
-    this.slider.addEventListener("mousedown", this.mouseClickEnter, {
-      catpure: false,
-      once: false
-    });
-
-    this.slider.addEventListener("mouseleave", this.mouseLeaveEvent, {
-      catpure: false,
-      once: false
-    });
-
-    this.slider.addEventListener("mouseup", this.mouseClickRelease, {
-      catpure: false,
-      once: false
-    });
-
-    this.slider.addEventListener("mousemove", this.mouseMoveEvent, {
-      catpure: false,
-      once: false
-    });
   } //mounted
 };
 </script>

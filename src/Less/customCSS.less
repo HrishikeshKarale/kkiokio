@@ -31,6 +31,10 @@ abbr[title] {
 }
 
 article {
+  & > header {
+    visibility: hidden;
+    height: 0;
+  }
   & > section {
     min-height: @body;
     scroll-behavior: smooth;

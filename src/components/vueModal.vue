@@ -3,31 +3,31 @@
     <div id="show-modal">
       <vue-button
         v-if="buttonText"
-        :buttonType="buttonType"
-        :buttonName="'open' + buttonName + 'Modal'"
-        :buttonText="buttonText"
-        :buttonIcon="buttonIcon"
-        :buttonStyle="buttonStyle[2]"
+        :button-type="buttonType"
+        :button-name="'open' + buttonName + 'Modal'"
+        :button-text="buttonText"
+        :button-icon="buttonIcon"
+        :button-style="buttonStyle[2]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
-        :formID="form"
-        :onClickAction="onClickAction"
+        :form-i-d="form"
+        :on-click-action="onClickAction"
       />
 
       <vue-button
         v-else
-        :buttonType="buttonType"
-        buttonName='"open"+buttonName+"Modal"'
-        :buttonText="buttonText"
-        :buttonIcon="buttonIcon"
-        :buttonStyle="buttonStyle[9]"
+        :button-type="buttonType"
+        button-name='"open"+buttonName+"Modal"'
+        :button-text="buttonText"
+        :button-icon="buttonIcon"
+        :button-style="buttonStyle[9]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
-        :formID="form"
-        :onClickAction="onClickAction"
+        :form-i-d="form"
+        :on-click-action="onClickAction"
       />
     </div>
-    <transition name="modal" :showModal="showModal" v-if="showModal">
+    <transition v-if="showModal" name="modal" :show-modal="showModal">
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="modal-container">
@@ -44,27 +44,27 @@
             <div class="modal-footer">
               <div v-if="onClickAction">
                 <vue-button
-                  :buttonType="buttonType"
-                  :buttonName="buttonName"
-                  buttonText="CONFIRM"
-                  :buttonIcon="buttonIcon"
-                  :buttonStyle="buttonStyle[2]"
+                  :button-type="buttonType"
+                  :button-name="buttonName"
+                  button-text="CONFIRM"
+                  :button-icon="buttonIcon"
+                  :button-style="buttonStyle[2]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
-                  :formID="form"
-                  :onClickAction="onClickAction"
+                  :form-i-d="form"
+                  :on-click-action="onClickAction"
                 />
               </div>
               <div>
                 <vue-button
-                  :buttonType="buttonType"
-                  buttonName="closeModal"
-                  buttonText="Close"
-                  :buttonStyle="buttonStyle[11]"
+                  :button-type="buttonType"
+                  button-name="closeModal"
+                  button-text="Close"
+                  :button-style="buttonStyle[11]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
-                  :formID="form"
-                  :onClickAction="onClickAction"
+                  :form-i-d="form"
+                  :on-click-action="onClickAction"
                 />
               </div>
             </div>
@@ -79,25 +79,17 @@
 import vueButton from "@/components/vueButton";
 
 export default {
-  name: "vueModal",
+  name: "VueModal", //props
 
-  data() {
-    const buttonType = "button";
-    const buttonStyle = this.$store.state.buttonStyle;
-    const booleanTrue = true;
-    const form = "";
-    return {
-      buttonType,
-      buttonStyle,
-      booleanTrue,
-      form
-    }; //return
+  components: {
+    vueButton
   }, //data
 
   props: {
     modalTitle: {
       required: false,
-      type: String
+      type: String,
+      default: null
     },
 
     buttonText: {
@@ -126,12 +118,22 @@ export default {
 
     onClickAction: {
       required: false,
-      type: Function
+      type: Function,
+      default: null
     }
-  }, //props
+  },
 
-  components: {
-    vueButton
+  data() {
+    const buttonType = "button";
+    const buttonStyle = this.$store.state.buttonStyle;
+    const booleanTrue = true;
+    const form = "";
+    return {
+      buttonType,
+      buttonStyle,
+      booleanTrue,
+      form
+    }; //return
   } //components
 }; //default
 </script>

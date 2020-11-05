@@ -29,7 +29,7 @@
 <script>
 import vueImg from "@/components/vueImg.vue";
 export default {
-  name: "packStation",
+  name: "PackStation",
   components: {
     vueImg
   },

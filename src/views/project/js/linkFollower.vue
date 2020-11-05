@@ -1,6 +1,6 @@
 //https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
 <template>
-  <div class="linkFollower" ref="linkFollower">
+  <div ref="linkFollower" class="linkFollower">
     <p>
       Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit.
       Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati
@@ -32,7 +32,7 @@
 </template>
 <script>
 export default {
-  name: "linkFollower",
+  name: "LinkFollower",
   data() {
     let linksFollowed;
     let highlight;
@@ -42,6 +42,18 @@ export default {
       highlight,
       buffer
     };
+  },
+
+  mounted() {
+    const triggers = this.$refs.linkFollower;
+    this.linksFollowed = Array.from(triggers.querySelectorAll("a"));
+    this.highlight = this.$refs.highlight;
+    this.linksFollowed.forEach(link => {
+      link.addEventListener("mouseenter", this.highlightLink, {
+        capture: false, // top to bottom bubbling/propogation
+        once: false //should work only once
+      });
+    });
   },
   methods: {
     highlightLink: function(e) {
@@ -57,18 +69,6 @@ export default {
       this.highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
       e.stopPropogation(); //stop event bubbling
     } //highlightLink
-  },
-
-  mounted() {
-    const triggers = this.$refs.linkFollower;
-    this.linksFollowed = Array.from(triggers.querySelectorAll("a"));
-    this.highlight = this.$refs.highlight;
-    this.linksFollowed.forEach(link => {
-      link.addEventListener("mouseenter", this.highlightLink, {
-        capture: false, // top to bottom bubbling/propogation
-        once: false //should work only once
-      });
-    });
   }
 };
 </script>

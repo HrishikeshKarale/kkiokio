@@ -12,16 +12,16 @@
 <script>
 import vueImg from "@/components/vueImg.vue";
 export default {
-  name: "culinarian",
+  name: "Culinarian",
+  components: {
+    vueImg
+  },
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const dCulinarian = require("@/assets/mobile/culinarian.png");
     return {
       dCulinarian
     };
-  },
-  components: {
-    vueImg
   }
 };
 </script>

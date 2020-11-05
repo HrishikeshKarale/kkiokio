@@ -1,5 +1,5 @@
 <template>
-  <div class="konamiCode" ref="KeyPressed">
+  <div ref="KeyPressed" class="konamiCode">
     <div>
       <div v-for="(uc, index) in userCode" :key="uc + '-' + index">
         <span>{{ uc.code }}</span>
@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-  name: "konamiCode",
+  name: "KonamiCode",
   data() {
     const codes = ["kkiokio", "qwerty"];
     const userCode = [];
@@ -28,6 +28,12 @@ export default {
       userCode,
       keyPressed
     };
+  },
+  mounted() {
+    window.addEventListener("keydown", this.codeMatcher, {
+      capture: false, // top to bottom bubbling/propogation
+      once: false //should work only once
+    });
   },
   methods: {
     codeMatcher: function(event) {
@@ -67,12 +73,6 @@ export default {
       this.userCode = userCode;
       event.stopPropogation(); //stop event bubbling
     } //codeMatcher
-  },
-  mounted() {
-    window.addEventListener("keydown", this.codeMatcher, {
-      capture: false, // top to bottom bubbling/propogation
-      once: false //should work only once
-    });
   }
 };
 </script>
