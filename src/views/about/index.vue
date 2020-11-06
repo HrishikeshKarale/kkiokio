@@ -162,7 +162,7 @@ export default {
             & > li {
               display: flex;
               flex-direction: column;
-              background-color: #fafbfc;
+              background-color: @backgroundColor;
               flex: 1 240px;
               border-radius: 8px;
               padding: @spaceLg;
@@ -173,7 +173,7 @@ export default {
               & > .step {
                 border-radius: 50%;
                 border: 2px solid @primaryColor;
-                color: white;
+                color: @white;
                 font-size: @wizard-step-font-size;
                 line-height: @wizard-step-width-height;
                 position: relative;
@@ -216,7 +216,7 @@ export default {
         flex-wrap: wrap;
 
         & > div {
-          margin: 32px auto;
+          margin: 0 auto;
 
           &:first-child {
             display: flex;

@@ -1,6 +1,6 @@
 <template>
   <div class="scrollIndicator">
-    <div class="scrollContent">
+    <div class="content">
       <slot />
     </div>
     <div v-if="tagOffset.length > 1" class="scroll">
@@ -24,17 +24,25 @@ export default {
   name: "ScrollIndicator",
   mixins: [debounce],
   data() {
-    const x = null;
+    //used to calculate the height of header/navigation
+    const headerOffset = null;
+    //saves the sectrion tags used to generate Sub Content navigation links.
     const tag = [];
+    //stores the tag (section) ad well as the top and bottom pixel location of the tag as well as if its selected or not.
     const tagOffset = [];
+    //stores height opf the current browser window
     const windowHeight = null;
+    //stores pixel value above which we select a tag.
     const windowBuffer = null;
+    //ratio used to calculate window buffer
+    const bufferRatio = 0.18;
     return {
-      x,
+      headerOffset,
       tag,
       tagOffset,
       windowHeight,
-      windowBuffer
+      windowBuffer,
+      bufferRatio
     };
   },
   mounted() {
@@ -42,24 +50,33 @@ export default {
   },
   methods: {
     checkScroll: function() {
-      const highlight = Math.round(this.x.scrollTop);
-
+      const highlight = Math.round(this.headerOffset.scrollTop);
       for (let i = 0; i < this.tag.length; i++) {
         const tagOffset = this.tagOffset[i];
 
+        //activate tags depending on the window scroll location and tag top/bottom pixel location within the page.
         if (
           highlight + this.windowBuffer > tagOffset.top &&
           highlight < tagOffset.bottom
         ) {
           tagOffset.selected = true;
         } else {
-          tagOffset.selected = false;
+          //keep last tag selected when scroll exceeds bottom pixel location
+          if (
+            i == this.tag.length &&
+            this.windowHeight + highlight >=
+              this.tagOffset[this.tagOffset.length - 1].bottom
+          ) {
+            tagOffset.selected = true;
+          } else {
+            tagOffset.selected = false;
+          }
         }
       }
       this.prevScrollValue = highlight;
     }, //checkScroll
     initialize: function() {
-      this.x = document.getElementsByClassName("body")[0];
+      this.headerOffset = document.getElementsByClassName("body")[0];
       const offsetHeader = Array.from(
         document.getElementsByClassName("vueHeader")
       )[0];
@@ -76,12 +93,16 @@ export default {
         };
       });
       if (this.tag.length > 1) {
-        this.x.addEventListener("scroll", this.debounce(this.checkScroll), {
-          capture: false, // top to bottom bubbling/propogation
-          once: false //should work only once
-        });
-        this.windowHeight = this.x.offsetHeight;
-        this.windowBuffer = this.windowHeight * 0.3;
+        this.headerOffset.addEventListener(
+          "scroll",
+          this.debounce(this.checkScroll),
+          {
+            capture: false, // top to bottom bubbling/propogation
+            once: false //should work only once
+          }
+        );
+        this.windowHeight = this.headerOffset.offsetHeight;
+        this.windowBuffer = this.windowHeight * this.bufferRatio;
         this.checkScroll();
       }
     }
@@ -100,11 +121,18 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
 
     &.scroll {
-      position: fixed;
+      position: absolute;
+      height: fit-content;
       top: 120px;
       right: 64px;
+      &::before {
+        content: "Page Content";
+        text-align: right;
+        font-weight: bold;
+      }
       & > a {
         float: right;
         display: flex;
@@ -113,18 +141,32 @@ export default {
         padding: 8px;
         margin: 4px 0;
         height: 32px;
+        background-color: transparent;
+        width: auto;
         &:hover,
         &.active {
           border-radius: 4px;
+          background-color: @secondaryColor;
           .boxShadow(@one);
           & > span:last-child {
-            display: flex;
+            display: block;
             margin-right: 16px;
           }
         }
         & > span {
+          .textShadow(@one);
           &:last-child {
+            .textShadow(none);
             display: none;
+          }
+        }
+      }
+      @media screen {
+        @media (max-width: 1024px) {
+          bottom: 0px;
+          right: 16px;
+          &::before {
+            content: "Content";
           }
         }
       }

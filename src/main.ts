@@ -11,4 +11,4 @@ import "@/Less/bootstrap.less";
 createApp(App)
   .use(router)
   .use(store)
-  .mount("#app");
+  .mount("#portfolio");

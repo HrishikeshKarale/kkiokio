@@ -33,7 +33,7 @@ export default {
   display: flex;
   flex-direction: row;
   font-size: @fontSize;
-  color: #fff;
+  color: @white;
   background-color: @primaryColor;
   text-align: center;
   padding: @spaceLg;

@@ -26,14 +26,14 @@ export default {
   props: {
     startTime: {
       required: true,
-      type: String,
+      type: [String, Number],
       default: function() {
         return new Date().getTime();
       }
     }, // startTime
     endTime: {
       required: true,
-      type: String,
+      type: [String, Number],
       default: function() {
         return new Date().getTime();
       }
