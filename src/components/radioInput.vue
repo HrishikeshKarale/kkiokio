@@ -233,9 +233,10 @@ export default {
   watch: {
     checkedValue: function(newValue, oldValue) {
       if (Array.isArray(newValue) || Array.isArray(oldValue)) {
-        console.log("watch: ", this.arrDifference(newValue, oldValue));
+        this.arrDifference(newValue, oldValue);
+        // console.log("watch: ", this.arrDifference(newValue, oldValue));
       }
-      console.log(oldValue);
+      // console.log(oldValue);
     } //checkedValue
   }, //props
 
@@ -303,11 +304,11 @@ export default {
           } else {
             //checkbox
             if (this.checkedValue.includes(checkedValue)) {
-              console.log(
-                ...this.checkedValue,
-                checkedValue,
-                this.checkedValue.includes(checkedValue)
-              );
+              // console.log(
+              //   ...this.checkedValue,
+              //   checkedValue,
+              //   this.checkedValue.includes(checkedValue)
+              // );
               this.checkedValue.splice(
                 this.checkedValue.indexOf(checkedValue),
                 1

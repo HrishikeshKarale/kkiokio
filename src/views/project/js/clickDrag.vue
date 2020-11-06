@@ -74,7 +74,7 @@ export default {
       slider.classList.add("active");
       this.startX = e.pageX - slider.offsetLeft;
       this.scrollLeft = slider.scrollLeft;
-      console.log(slider, e.pageX, slider.offsetLeft, slider.scrollLeft);
+      // console.log(slider, e.pageX, slider.offsetLeft, slider.scrollLeft);
     }, //mouseClickEnter
     mouseClickRelease: function() {
       this.isDown = false;

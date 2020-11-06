@@ -103,7 +103,7 @@ export default {
   methods: {
     select: function(value) {
       // console.log("selected: ", value)
-      console.log("fetchApi: ", value);
+      // console.log("fetchApi: ", value);
       if (Array.isArray(value)) {
         this.selectedEndpoint = [...value];
       } else {
@@ -128,7 +128,7 @@ export default {
         })
         .catch(error => console.error(error))
         .finally(() => {
-          console.log(`Fetch executed on ${source.baseURL}`);
+          // console.log(`Fetch executed on ${source.baseURL}`);
         });
     }
   }

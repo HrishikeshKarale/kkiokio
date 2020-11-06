@@ -139,7 +139,7 @@ export default {
       navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
         stream.getTracks().forEach(function(track) {
           if (track.readyState == "live" && track.kind === "video") {
-            console.log(track);
+            // console.log(track);
             track.stop();
           }
         });
@@ -204,14 +204,14 @@ export default {
                 deviceInfo.label || "camera " + (this.videoSelect.length + 1);
               this.videoSelect.appendChild(option);
             } else {
-              console.log(
-                deviceInfo.label
-                  ? "Found another device: " + deviceInfo.label
-                  : "Found another device of kind/type" +
-                      deviceInfo.kind +
-                      +" : " +
-                      deviceInfo
-              );
+              // console.log(
+              //   deviceInfo.label
+              //     ? "Found another device: " + deviceInfo.label
+              //     : "Found another device of kind/type" +
+              //         deviceInfo.kind +
+              //         +" : " +
+              //         deviceInfo
+              // );
             }
           }
           this.openStream();

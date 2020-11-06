@@ -57,7 +57,7 @@ export const toggle = {
 
     activeTheme: function() {
       const themes = this.themes;
-      console.log(themes, this.selected);
+      // console.log(themes, this.selected);
       if (this.selected) {
         for (let i = 0; i < themes.length; i++) {
           if (themes[i].name == this.selected) {
