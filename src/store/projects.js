@@ -5,16 +5,22 @@ export const projects = [
       {
         id: 1,
         title: "Go Green",
-        subtitle: "Onboarding Screen for the Go Green App",
-        descritpion:
+        tags: ["Adobe Illustrator", "Onboarding"],
+        description:
           "GoGreen is online IOS app, where user can select from a list of flora, customize planters according to their needs and place order easily.",
         component: "goGreen"
       },
       {
         id: 2,
         title: "Culinarian",
-        subtitle: "Food Recipie App",
-        descritpion:
+        tags: [
+          "Adobe Illustrator",
+          "Styleguide",
+          "Walkthrough",
+          "Personas",
+          "Design Guide"
+        ],
+        description:
           "The Cullinarian App is an mobile aimed targetted towardsindividuals who like to cook.\
               <br />\
               The app walks users towards cooking home made cusines and thus promoting a healthy lifestyle.",
@@ -23,8 +29,8 @@ export const projects = [
       {
         id: 3,
         title: "MedCo",
-        subtitle: "UI Walkthrough and style guide",
-        descritpion:
+        tags: ["Adobe Illustrator", "Styleguide"],
+        description:
           "The Go Green App is an mobile aimed towards the medical industry.\
               <br />\
               Users can look up details of services offered by various hospitals and the cost associated with those services.",
@@ -33,8 +39,8 @@ export const projects = [
       {
         id: 4,
         title: "Fitness Friend",
-        subtitle: "Concept idea, Styleguide",
-        descritpion:
+        tags: ["Adobe Illustrator", "Wearable"],
+        description:
           "A Fitness tracker app for smart watch.\
               <br />\
               It helps its users keep track of their daily activity and vitals.",
@@ -43,8 +49,8 @@ export const projects = [
       {
         id: 5,
         title: "AppSignUp",
-        subtitle: "Login, SignUp Screens",
-        descritpion: "Login/SignUp screen for a mobile app.",
+        tags: ["Adobe Illustrator", "Login Screen"],
+        description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp"
       }
     ]
@@ -55,8 +61,8 @@ export const projects = [
       {
         id: 1,
         title: "Pack Station",
-        subtitle: "Fulfillment Pack Station App",
-        descritpion:
+        tags: ["Golden Ratio", "WMS", "Enterprise", "Kiosk", "Standalone"],
+        description:
           "The pack station is projectsed to allow users to pack and ship orders.\
               <br />\
               Simple Pack supports orders with original packaging and default box items.",
@@ -65,8 +71,8 @@ export const projects = [
       {
         id: 2,
         title: "RSVP",
-        subtitle: "an interactive RSVP APP in progress..",
-        descritpion: "details coming soon",
+        tags: [],
+        description: "details coming soon",
         component: "rsvpApp"
       }
     ]
@@ -77,15 +83,15 @@ export const projects = [
       {
         id: 1,
         title: "Pulse Animation",
-        subtitle: "Pulse Animation",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "pulseAnimation"
       },
       {
         id: 2,
         title: "Card Slider",
-        subtitle: "Card Slider",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "cardSlider"
       }
     ]
@@ -96,113 +102,115 @@ export const projects = [
       {
         id: 1,
         title: "DrumKit",
-        subtitle: "Drum-kit",
-        descritpion: "",
+        tags: ["JS", "Less", "HTML5", "mixins", "audio playback"],
+        description:
+          "Play your favorite tune on our virtual drums.<br />\
+          The DrumKit lets you play your favorite tune ",
         component: "drumKit"
       },
       {
         id: 2,
         title: "AnalogCLock",
-        subtitle: "Analogue Clock",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "analogClock"
       },
       {
         id: 3,
         title: "Array Cardio",
-        subtitle: "Array Cardio (filter, sory, map, reduce)",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "arrayCardio"
       },
       {
         id: 4,
         title: "Image Gallery",
-        subtitle: "Langing page/Image galery",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "imageGalery"
       },
       {
         id: 5,
         title: "Fetch API",
-        subtitle: "Fetch API",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "fetchApi"
       },
       {
         id: 6,
         title: "Canvas",
-        subtitle: "HTML5 Canvas",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "canvasExample"
       },
       {
         id: 7,
         title: "CheckboxChallange",
-        subtitle: "Checkbox Challange",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "checkboxChallange"
       },
       {
         id: 8,
         title: "KonamiCode",
-        subtitle: "Konami Code",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "konamiCode"
       },
       {
         id: 9,
         title: "ScrollIn",
-        subtitle: "Scroll JS",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "scrollIn"
       },
       {
         id: 10,
         title: "UserMedia",
-        subtitle: "User Media",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "userMedia"
       },
       {
         id: 11,
         title: "Speech Recognition",
-        subtitle: "Speech Recognition",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "speechRecognition"
       },
       {
         id: 12,
         title: "Link Follower",
-        subtitle: "Link Follower",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "linkFollower"
       },
       {
         id: 13,
         title: "Geo Location",
-        subtitle: "Geo Location",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "geoLocation"
       },
       {
         id: 14,
         title: "Follow Along Navigation Dropdown",
-        subtitle: "Follow Along Navigation Dropdown",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "FollowNav"
       },
       {
         id: 15,
         title: "Click and Drag",
-        subtitle: "Click and Drag",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "clickDrag"
       },
       {
         id: 16,
         title: "Control video speed",
-        subtitle: "Control video speed",
-        descritpion: "",
+        tags: [],
+        description: "",
         component: "videoControl"
       }
     ]

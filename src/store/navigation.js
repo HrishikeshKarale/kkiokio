@@ -2,31 +2,37 @@ export const nav = [
   {
     name: "Home",
     component: "home",
-    icon: "fas fa-home"
+    icon: "fas fa-tree",
+    tagline: "is where we all want to be"
   },
   {
     name: "Project",
     component: "project",
-    icon: "fas fa-swatchbook"
+    icon: "fas fa-tree",
+    tagline: "puts my skills to test"
   },
   {
     name: "Case Study",
     component: "caseStudy",
-    icon: "fas fa-coffee"
+    icon: "fab fa-canadian-maple-leaf",
+    tagline: "your mom, she misses you"
   },
   {
     name: "Logo",
     component: "logo",
-    icon: "fas fa-pencil-ruler"
+    icon: "fab fa-pagelines",
+    tagline: "is where you see my creative side"
   },
   {
-    name: "About Me",
+    name: "About",
     component: "about",
-    icon: "fas fa-user-graduate"
+    icon: "fas fa-leaf",
+    tagline: "to know me better as a professional"
   },
   {
-    name: "Contact Me",
+    name: "Contact",
     component: "contact",
-    icon: "fas fa-id-badge"
+    icon: "fab fa-envira",
+    tagline: "will help you get in touch with me"
   }
 ];
