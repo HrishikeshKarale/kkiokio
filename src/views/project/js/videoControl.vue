@@ -83,14 +83,14 @@ export default {
   flex-direction: row;
 
   & > video {
-    .boxShadow(@one);
+    .boxShadow(@base @one);
 
     & + .speed {
       width: 32px;
       background: #efefef;
       margin: 16px;
       border-radius: 50px;
-      .boxShadow(@two);
+      .boxShadow(@base @two);
 
       & > .speed-bar {
         background: linear-gradient(0deg, red 0%, green 100%);

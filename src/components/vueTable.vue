@@ -602,7 +602,7 @@ export default {
 @backgroundColor: #ccd8e0;
 
 .vueTable {
-  .boxShadow(@one);
+  .boxShadow(@base @one);
   width: fit-content;
   font-size: 16px;
   color: @cometText;
@@ -685,7 +685,7 @@ export default {
                   overflow: hidden;
                   position: absolute;
                   background-color: @backgroundColor;
-                  .boxShadow(-2px 4px 16px rgba(0, 0, 0, 0.33));
+                  .boxShadow(@base @two);
 
                   &.open {
                     height: auto;
@@ -736,7 +736,7 @@ export default {
                   border-radius: @borderRadiusMd;
                   z-index: 100;
 
-                  .boxShadow(@one);
+                  .boxShadow(@base @one);
                 }
 
                 & > div {

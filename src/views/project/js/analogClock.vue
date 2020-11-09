@@ -100,7 +100,7 @@ export default {
         border-radius: 4px;
         margin: @spaceSm;
         padding: @spaceSm;
-        .boxShadow(inset @two);
+        .boxShadow(@base inset @two);
         min-width: 32px;
         max-width: fit-conent;
       }
@@ -114,7 +114,7 @@ export default {
         border-radius: 4px;
         margin: @spaceSm;
         padding: @spaceSm;
-        .boxShadow(inset @two);
+        .boxShadow(@base inset @two);
         width: 32px;
       }
     }
@@ -124,14 +124,14 @@ export default {
       border-radius: 50%;
       height: @size+ 32;
       width: @size+ 32;
-      .boxShadow(inset @three);
+      .boxShadow(@base inset @three);
       & > div {
         position: absolute;
         right: @size / 2;
         top: @size / 2;
         transform: rotate(90deg);
         transform-origin: 100%;
-        .boxShadow(@four);
+        .boxShadow(@base @four);
         &.hourHand {
           height: 8px;
           background-color: black;

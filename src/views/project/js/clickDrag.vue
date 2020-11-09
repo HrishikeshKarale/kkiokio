@@ -128,7 +128,7 @@ export default {
     justify-content: center;
     font-size: 80px;
     font-weight: 100;
-    .boxShadow(@two);
+    .boxShadow(@base @two);
     &:first-child {
       background-color: red;
       .boxShadow(none);

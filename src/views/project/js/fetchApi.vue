@@ -159,7 +159,7 @@ export default {
         border-radius: 4px;
         padding: @spaceMd @spaceLg;
         margin: @spaceMd @spaceLg;
-        .boxShadow(@two);
+        .boxShadow(@base @two);
         & > div {
           &.info {
             margin-top: @spaceXl;

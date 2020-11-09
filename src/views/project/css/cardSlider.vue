@@ -93,7 +93,7 @@ export default {
     margin: 32px;
     min-height: 360px;
     transition: all 0.25 ease;
-    .boxShadow(@one);
+    .boxShadow(@base @one);
     cursor: pointer;
     & > h3 {
       position: absolute;
@@ -128,7 +128,7 @@ export default {
     }
     &:hover {
       transform: translate(0 -8px);
-      .boxShadow(@three);
+      .boxShadow(@base @three);
       & > image {
         transform: translate(0, -16px);
       }

@@ -40,7 +40,7 @@ export default {
   border-radius: 4px;
   margin: @spaceLg;
   cursor: pointer;
-  .boxShadow(@three);
+  .boxShadow(@base @three);
   & * {
     text-decoration: none;
   }

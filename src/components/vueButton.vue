@@ -198,10 +198,10 @@ export default {
     letter-spacing: 2px;
     font-weight: bold;
 
-    .boxShadow(@three);
+    .boxShadow(@base @three);
 
     &:hover {
-      .boxShadow(@one);
+      .boxShadow(@base @one);
     }
 
     &.btn-icon {

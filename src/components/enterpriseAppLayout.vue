@@ -79,7 +79,7 @@ export default {
           top: 0;
           left: 0;
           z-index: 1500;
-          .boxShadow(@one);
+          .boxShadow(@base @one);
           & > div:last-child {
             flex-direction: row-reverse;
           }
@@ -113,7 +113,7 @@ export default {
             right: 0;
             padding: 16px 32px;
             background-color: @backgroundColor;
-            // .boxShadow(@three);
+            // .boxShadow(@base @three);
             border-radius: 4px 0 0 0;
 
             & > abbr {

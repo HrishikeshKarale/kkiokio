@@ -70,7 +70,7 @@ export default {
     top: 0px;
     color: @white;
     text-align: center;
-    .boxShadow(@one);
+    .boxShadow(@base @one);
 
     & > div {
       display: flex;
