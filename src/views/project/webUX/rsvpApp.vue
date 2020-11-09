@@ -13,14 +13,14 @@
           <input
             v-model="dPerson"
             type="text"
-            placeholder="Jon Doe"
+            placeholder="Enter name here"
             @keypress.enter.prevent="addPerson"
           />
           <vue-button
             button-type="button"
             buttop-name="inviteButton"
             button-text="INVITE"
-            button-icon="fas fa-user-check"
+            button-icon="fas fa-user-plus"
             button-style="standard"
             :on-click-action="addPerson"
           />
@@ -30,14 +30,6 @@
         <div class="details">
           <div>
             <h2>Invitees</h2>
-            <!-- <vue-button
-              buttonType="button"
-              buttopName="toggleButton"
-              :buttonText="show ? 'Attending' : 'ALL'"
-              buttonStyle="small"
-              buttonIcon="fas fa-eye"
-              :onClickAction="toggle.bind()"
-            /> -->
           </div>
           <div>
             <div>Attending: {{ attending }}</div>
@@ -46,47 +38,43 @@
           </div>
         </div>
         <div v-if="dPerson">
-          <div>
+          <h4>
             {{ dPerson }}
-          </div>
-          <div>
-            <input :id="dPerson" type="checkbox" :name="dPerson" />
-            <label :for="dPerson">Confirmed</label>
-          </div>
+          </h4>
         </div>
-        <template v-if="dInvited">
-          <template v-for="(invited, index) in dInvited" :key="index">
+        <div v-if="dInvited" class="invited">
+          <div v-for="(invited, index) in dInvited" :key="index" class="card">
+            <h4>
+              {{ invited.name }}
+            </h4>
             <div>
-              <div>
-                {{ invited.name }}
-              </div>
-              <div>
-                <input
-                  :id="invited.name"
-                  v-model="invited.status"
-                  type="checkbox"
-                  :name="invited.name"
-                  :checked="invited.status"
-                />
-                <label :for="invited.name">Confirmed</label>
-              </div>
+              <input
+                :id="invited.name"
+                v-model="invited.status"
+                type="checkbox"
+                :name="invited.name"
+                :checked="invited.status"
+              />
+              <label :for="invited.name">Confirmed</label>
             </div>
             <div>
               <vue-button
                 buttop-name="editButton"
-                button-style="icon"
-                button-icon="fas fa-pen"
+                button-style="small"
+                button-text="edit"
+                button-icon="fas fa-times"
                 :on-click-action="updateInvited.bind(this, invited.name, false)"
               />
               <vue-button
                 buttop-name="deleteButton"
-                button-style="icon"
-                button-icon="fas fa-eye"
+                button-style="small"
+                button-text="remove"
+                button-icon="fas fa-user-minus"
                 :on-click-action="updateInvited.bind(this, invited.name, true)"
               />
             </div>
-          </template>
-        </template>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -212,18 +200,38 @@ export default {
       &.body {
         display: flex;
         flex-direction: column;
+        min-height: 320px;
         & > div {
           display: flex;
           flex-direction: row;
           margin: @spaceMd @spaceLg;
+          &.invited {
+            display: flex;
+            flex-direction: row;
+            //individual invited cards
+            & > .card {
+              display: flex;
+              flex-direction: column;
+              margin: @spaceMd;
+              padding: @spaceMd @spaceLg;
+              border-radius: @borderRadiusMd;
+              .boxShadow(@one);
+              & > div:last-child {
+                justify-content: space-evenly;
+              }
+            }
+          }
 
           &.details {
             justify-content: space-between;
             & > div {
               display: flex;
-              flex-direction: column;
+              flex-direction: row;
               justify-content: space-around;
               text-align: right;
+              &:last-child {
+                flex-direction: column;
+              }
             }
           }
         }
@@ -232,7 +240,6 @@ export default {
         position: relative;
         & > img {
           margin-top: @spaceXl;
-          width: 100%;
         }
         & > div {
           &.invite {
@@ -241,14 +248,14 @@ export default {
             right: 0;
             bottom: -24px;
             margin: auto;
-            background-color: #fafbfc;
+            background-color: @backgroundColor;
             width: fit-content;
             padding: @spaceMd;
             border-radius: 4px;
             height: 64px;
             .boxShadow(@two);
             & > input {
-              background-color: #fafbfc;
+              background-color: @backgroundColor;
               width: 400px;
               height: 40px;
               border: none;
@@ -274,7 +281,7 @@ export default {
               opacity: 0.8;
               background-color: #333333;
               font-size: @fontSize * 4;
-              color: white;
+              color: @white;
             }
           }
         }

@@ -31,7 +31,7 @@ export default {
   display: flex;
   flex-direction: column;
   color: @cometText;
-  background-color: grey;
+  background-color: @backgroundColor;
   padding: @spaceLg;
   border-radius: 4px;
   margin: @spaceLg;
