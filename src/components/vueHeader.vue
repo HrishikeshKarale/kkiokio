@@ -1,15 +1,14 @@
 //https://codepen.io/pietvanzoen/pen/Ccjlt
 <template>
   <div ref="vueHeader" class="vueHeader">
-    <div v-if="toggleNavIcon" ref="navigation" class="menuTrigger">
-      <vue-button
-        v-if="toggleNavIcon"
-        buttop-name="toggleNav"
-        button-style="icon-lg"
-        :button-icon="toggleNavIcon"
-        :on-click-action="toggleNavigation.bind(this)"
-      />
-    </div>
+    <vue-button
+      v-if="toggleNavIcon"
+      class="menuTrigger"
+      buttop-name="toggleNav"
+      button-style="icon-lg"
+      :button-icon="toggleNavIcon"
+      :on-click-action="toggleNavigation.bind(this)"
+    />
     <nav>
       <ul>
         <li
@@ -33,7 +32,7 @@
       v-if="themeIcon"
       class="themeToggle"
       buttop-name="themeToggle"
-      button-style="small"
+      button-style="text-sm"
       button-text="Theme"
       :button-icon="themeIcon"
       :on-click-action="theme.bind(this)"
@@ -100,7 +99,6 @@ export default {
     }, //clickHandler
 
     toggleNavigation: function() {
-      this.$refs["navigation"].classList.toggle("menuOpen");
       this.$refs["vueHeader"].classList.toggle("showNav");
       this.toggle("nav");
     } //toggleNavigation
@@ -125,18 +123,8 @@ export default {
   width: 100%;
   height: @header;
   // .boxShadow(@one);
-  & > div {
-    display: flex;
-    position: relative;
-    & > a.logo > img {
-      height: 48px;
-    }
-    &.menuTrigger {
-      display: none;
-    }
-    &:first-child {
-      justify-content: space-between;
-    }
+  &.menuTrigger {
+    display: none;
   }
   & > .themeToggle {
     display: block;
@@ -239,7 +227,7 @@ export default {
       padding: @spaceMd @spaceLg;
       border-bottom-right-radius: 8px;
       height: auto;
-      & > div.menuTrigger {
+      & > .menuTrigger {
         display: flex;
         align-self: flex-end;
       }
