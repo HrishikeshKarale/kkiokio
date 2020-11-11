@@ -21,8 +21,6 @@ html {
 }
 
 :root {
-    --primaryColor:          var(--primaryColor);
-    --secondaryColor:        var(--secondaryColor);
     --cometText:             var(--offBlack);
     --backgroundColor:       var(--offWhite);
     --navBackground:         var(--offBlack);
