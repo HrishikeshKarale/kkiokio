@@ -1,40 +1,41 @@
 
 html {
-    --white:                 #FFFFFF;
-    --black:                 #000000;
-    --cometLogo:             #51A4DB;
-    --complemarBlue:         #FBCE51;
-    --cometBlue:             #F1BA45;
+    --primaryColor:          #FBCE51;
+    --secondaryColor:        #F1BA45;
     --CMTeal:                #00B6A8;
+
+    --white:                 #FFFFFF;
     --offWhite:              #FAFBFC;
+
+    /* dark colors */
+    --black:                 #000000;
     --offBlack:              #0C090D;
+    /* shades of grey */
+    --grayDarker: ~"lighten(--black, 13.5%)";
+    --grayDark: ~"lighten(--black, 20%)";
+    --gray: ~"lighten(--black, 33.5%)";
+    --grayLight: ~"lighten(--black, 46.7%)";
+    --grayLighter: ~"lighten(--black, 93.5%)";
+    
     scroll-behavior: smooth;
 }
 
 :root {
-    --primaryColor:          var(--complemarBlue);
-    --secondaryColor:        var(--cometBlue);
-    --accentColor:           var(--CMTeal);
-    --cometLogo:             var(--cometLogo);
+    --primaryColor:          var(--primaryColor);
+    --secondaryColor:        var(--secondaryColor);
     --cometText:             var(--offBlack);
     --backgroundColor:       var(--offWhite);
-    --navBackground:            var(--offBlack);
-    --navText: var(--offWhite);
-    --navBak:               var(--cometLogo);
+    --navBackground:         var(--offBlack);
+    --navText:               var(--offWhite);
     --shadowColor:          #3333337F;
 }
 
 html[theme='darkMode'] {
-    --primaryColor:          var(--cometLogo);
-    --secondaryColor:        var(--cometBlue);
-    --accentColor:           var(--accentColor);
-    --cometLogo:             var(--cometLogo);
     --cometText:             var(--offWhite);
     --backgroundColor:       var(--offBlack);
-    --navBackground: var(--offBlack);
+    --navBackground: var(--black);
     --navText:               var(--white);
-    --navType:               var(--cometLogo);
-    --shadowColor:            #ffffff7F;
+    --shadowColor:            var(--black);
 }
 
 

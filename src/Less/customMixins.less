@@ -40,9 +40,7 @@
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-name: placeholderSkeleton;
-  // background-image: -webkit-gradient(linear, left center, right center, from(@accentColor), color-stop(.4, @primaryColor), color-stop(.7, @secondaryColor), to(@accentColor));
-  // background-image: -webkit-linear-gradient(left, @accentColor 0%, @primaryColor 40%, @secondaryColor 70%, @accentColor 100%)";
-  //gray shades
+ //gray shades
   background-image: -webkit-gradient(linear, left center, right center, from(@grayLighter), color-stop(.4, @grayLight), color-stop(.7, @grayLight), to(@grayLighter));
   background-image: -webkit-linear-gradient(left, @grayLighter 0%, @grayLight 40%, @grayLight 70%, @grayLighter 100%);
   background-size: 800px 104px;
@@ -397,11 +395,11 @@
     border: 1px solid @secondaryColor;
 
     &:focus-within {
-      border-color: @accentColor;
+      border-color: @secondaryColor;
 
       &.iconPadding {
         span {
-          color: @accentColor;
+          color: @secondaryColor;
         }
       }
     }
