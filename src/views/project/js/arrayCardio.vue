@@ -1,33 +1,33 @@
 <template>
   <div class="arrayCardio">
-    <!-- <div class="result">
-        <label for="">Filter</label>
-        {{ born(inventors, 1800, 1900) }}
-        <label for="">Computed (Map)</label>
-        {{ firstName }}
-        <label for="">Computed (sort by birth)</label>
-        {{ orderedByBirth }}
-        <label for="">Computed (reduce)</label>
-        {{ yearsLived }}
-        <label for="">Computed (some inventors are Adult)</label>
-        {{ isAdult }}
-        <label for="">Computed (every inventors is Adult)</label>
-        {{ allAdult }}
-        <label for="">Computed (find inventors first name Albert)</label>
-        {{ findAdult("Albert") }}
-        <label for=""
-          >Computed (find inventors index for first name Albert)</label
-        >
-        {{ findAdultIndex("Albert") }}
-        <label for="">Computed (remove inventors with first name Albert)</label>
-        {{ removeInvestor("Albert") }}
-        <label for="">Computed (sort by age)</label>
-        {{ investorAge }}
-        <label for="">Computed (reduce car by instances)</label>
-        {{ carInstances }}
-        <label for="">Computed (sort people by firstName)</label>
-        {{ orderPeopleByFirst }}
-      </div> -->
+    <div class="result">
+      <label for="">Filter</label>
+      {{ born(inventors, 1800, 1900) }}
+      <label for="">Computed (Map)</label>
+      {{ firstName }}
+      <!-- <label for="">Computed (sort by birth)</label>
+      {{ orderedByBirth }} -->
+      <label for="">Computed (reduce)</label>
+      {{ yearsLived }}
+      <label for="">Computed (some inventors are Adult)</label>
+      {{ isAdult }}
+      <label for="">Computed (every inventors is Adult)</label>
+      {{ allAdult }}
+      <label for="">Computed (find inventors first name Albert)</label>
+      {{ findAdult("Albert") }}
+      <label for=""
+        >Computed (find inventors index for first name Albert)</label
+      >
+      {{ findAdultIndex("Albert") }}
+      <label for="">Computed (remove inventors with first name Albert)</label>
+      {{ removeInvestor("Albert") }}
+      <label for="">Computed (sort by age)</label>
+      {{ investorAge }}
+      <label for="">Computed (reduce car by instances)</label>
+      {{ carInstances }}
+      <label for="">Computed (sort people by firstName)</label>
+      {{ orderPeopleByFirst }}
+    </div>
     <div class="data">
       {{ inventors }}
       <vue-table
@@ -79,14 +79,14 @@
 import { arrayExercise } from "@/store/arrayExercise";
 import { mapState } from "vuex";
 
-// import vueTable from "@/components/vueTable.vue";
+import vueTable from "@/components/vueTable.vue";
 export default {
   name: "ArrayCardio",
 
   mapState,
 
   components: {
-    // vueTable
+    vueTable
   },
 
   mixins: [arrayExercise],
@@ -97,32 +97,32 @@ export default {
       return this.inventors.some(
         inv => new Date().getFullYear() - inv.year > 18
       );
-    },
+    }, //isAdult
     allAdult: function() {
       return this.inventors.every(
         inv => new Date().getFullYear() - inv.year > 18
       );
-    },
+    }, //allAdult
     firstName: function() {
       return this.inventors.map(inv => inv.first + " " + inv.last);
-    },
+    }, //firstName
     orderedByBirth: function() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       return this.inventors.sort((a, b) => (a.year > b.year ? 1 : -1));
-    },
+    }, //orderedByBirth
     yearsLived: function() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       return this.inventors.reduce(
         (lifeSpan, inv) => lifeSpan + (inv.passed - inv.year),
         0
       );
-    },
+    }, //yearsLived
     investorAge: function() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       return this.inventors.sort((a, b) =>
         a.passed - a.year > b.passed - b.year ? 1 : -1
       );
-    },
+    }, //investorAge
     carInstances: function() {
       return this.data.reduce((obj, item) => {
         if (!obj[item]) {
@@ -131,7 +131,7 @@ export default {
         obj[item]++;
         return obj;
       }, {});
-    },
+    }, //carInstances
     orderPeopleByFirst: function() {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       return this.people.sort((person1, person2) => {
@@ -141,15 +141,15 @@ export default {
         const [last2, first2] = person2.split(", ");
         return first1 > first2 ? 1 : -1;
       });
-    }
+    } //orderPeopleByFirst
   },
   methods: {
     findAdult: function(name) {
       return this.inventors.find(inv => inv.first === name);
-    },
+    }, //findAdult
     findAdultIndex: function(name) {
       return this.inventors.findIndex(inv => inv.first === name);
-    },
+    }, //findAdultIndex
     removeInvestor: function(name) {
       const index = this.findAdultIndex(name);
       const inventors = this.inventors;
@@ -157,24 +157,19 @@ export default {
         ...inventors.slice(0, index),
         ...inventors.slice(index + 1, inventors.length)
       ];
-    }
-  },
-
-  born: function(value, year, passed) {
-    // eslint-disable-next-line prefer-const
-    let temp = [];
-    for (const v in value) {
-      if (value[v]["year"] >= year && value[v]["passed"] <= passed) {
-        temp.push(value[v]);
+    }, //removeInvestor
+    born: function(value, year, passed) {
+      // eslint-disable-next-line prefer-const
+      let temp = [];
+      for (const v in value) {
+        if (value[v]["year"] >= year && value[v]["passed"] <= passed) {
+          temp.push(value[v]);
+        }
       }
-    }
-    // eslint-disable-next-line no-var
-    // var temp = value.forEach(val => {
-    //   (val.year >= born && val.passed <= passed )? {return true} : {return false};
-    // });
-    // console.log(value);
-    return temp;
-  } //born
+      // console.log(value);
+      return temp;
+    } //born
+  } //methods
 };
 </script>
 <style lang="less" scoped>

@@ -71,8 +71,9 @@ export const projects = [
       {
         id: 2,
         title: "RSVP",
-        tags: [],
-        description: "details coming soon",
+        tags: ["Standalone", "VUE"],
+        description:
+          "The RSVP app allows a user to kleep track of their invites that they have sent to their friend.",
         component: "rsvpApp"
       }
     ]
@@ -83,15 +84,17 @@ export const projects = [
       {
         id: 1,
         title: "Pulse Animation",
-        tags: [],
-        description: "",
+        tags: ["CSS"],
+        description:
+          "Pulse animation is a circle that pulses every few seconds.<br />\
+        It was a good exercise in writting css for the sake of eesthetics.",
         component: "pulseAnimation"
       },
       {
         id: 2,
         title: "Card Slider",
         tags: [],
-        description: "",
+        description: "does not work rite now.",
         component: "cardSlider"
       }
     ]
@@ -111,106 +114,131 @@ export const projects = [
       {
         id: 2,
         title: "AnalogCLock",
-        tags: [],
-        description: "",
+        tags: ["CSS", "JS"],
+        description:
+          "The analogue clock was a good way of putting my CSS skills to test.<br />\
+        The clock also has date and a digital timer in it.",
         component: "analogClock"
       },
       {
         id: 3,
         title: "Array Cardio",
-        tags: [],
-        description: "",
+        tags: ["Array functions"],
+        description:
+          "Playing with Array functions was a good way of getting acquaintanced with them.<br />\
+        functions used in this project were as follows: <ul>\
+        <li>Array.every</li>\
+        <li>Array.some</li>\
+        <li>Array.slice</li>\
+          <li>Array.pop</li>\
+          <li>Array.Map</li>\
+          <li>Array.push</li>\
+          <li>Array.findIndex</li>\
+          <li>Array.find</li>\
+          <li>Array.reduce</li>\
+          <li>Array.sort </li></ul> ",
         component: "arrayCardio"
       },
       {
         id: 4,
         title: "Image Gallery",
-        tags: [],
-        description: "",
+        tags: ["Landing Page"],
+        description:
+          "An image gallery is a way to display parts of an image or information. The users can click on the section to view more info on thje selecetd topic without having to scroll.",
         component: "imageGalery"
       },
       {
         id: 5,
         title: "Fetch API",
-        tags: [],
-        description: "",
+        tags: ["REST API"],
+        description:
+          "Fetch data from Sttudio Ghibli API and use it to simulatte an IMDB like data driven website.",
         component: "fetchApi"
       },
       {
         id: 6,
         title: "Canvas",
-        tags: [],
-        description: "",
+        tags: ["HTML Canvas"],
+        description: "Simulates an empty canvas where users can draw.",
         component: "canvasExample"
       },
       {
         id: 7,
         title: "CheckboxChallange",
-        tags: [],
-        description: "",
+        tags: ["keyboard Shortcuts", "Usability"],
+        description:
+          "Simulates a checkbox input field where users can use keyboard shortcuts to select/deselect multiple checkbox inputs at once. Pressing and holding shift while checking/unckecking checkboxes triggers the checkboxes in between.",
         component: "checkboxChallange"
       },
       {
         id: 8,
         title: "KonamiCode",
-        tags: [],
-        description: "",
+        tags: ["Gamification"],
+        description:
+          "A Konami code is a cheat code that appears in many konami video games and some non-Konami games. The user can press the following sequence of buttons/keyboard keys to enable a cheat or an effect.",
         component: "konamiCode"
       },
       {
         id: 9,
         title: "ScrollIn",
-        tags: [],
-        description: "",
+        tags: ["JS", "LESS", "Navigation"],
+        description:
+          "ScrollIn is a scroll indicator which segments the webpage into segments using the sections html tag and disp[lays a page content menu on the right so that yusers can jump between different sections of the page.",
         component: "scrollIn"
       },
       {
         id: 10,
         title: "UserMedia",
-        tags: [],
-        description: "",
+        tags: ["HTML5"],
+        description:
+          "Uses the video html5 tag to simulate a webcam, saves screenshots and applies different effects to the image",
         component: "userMedia"
       },
       {
         id: 11,
         title: "Speech Recognition",
-        tags: [],
-        description: "",
+        tags: ["Speech Recognition"],
+        description:
+          "Uses the built in speech recognition to convert user speech into text and displays it on the page.",
         component: "speechRecognition"
       },
       {
         id: 12,
         title: "Link Follower",
-        tags: [],
-        description: "",
+        tags: ["Gamification"],
+        description:
+          "The linkfollower is a way of styling links such that the style travels through the page ot the next link during mouise hover",
         component: "linkFollower"
       },
       {
         id: 13,
         title: "Geo Location",
-        tags: [],
-        description: "",
+        tags: ["Geo Location", "Gamification"],
+        description:
+          "the GeoLocation uses the geoLocation   browser functionality not jusdt to locate the device but also to calculate spee dif the device is travelling",
         component: "geoLocation"
       },
       {
         id: 14,
         title: "Follow Along Navigation Dropdown",
-        tags: [],
-        description: "",
+        tags: ["Modern", "JS"],
+        description:
+          "Building on the link follower, the Follow Along NAvigation simulates a navigation where the self adjusting navigtion background travels along different navigation links and displays the sub-content ion a fun way.",
         component: "FollowNav"
       },
       {
         id: 15,
         title: "Click and Drag",
-        tags: [],
-        description: "",
+        tags: ["Slider", "JS", "Mobile", "Gallery"],
+        description: "click and Drag simulates a slidable/draggable slider",
         component: "clickDrag"
       },
       {
         id: 16,
         title: "Control video speed",
-        tags: [],
-        description: "",
+        tags: ["HTML5", "Slider"],
+        description:
+          "Uses a range/slider bar to control the speed of the video being played.",
         component: "videoControl"
       }
     ]

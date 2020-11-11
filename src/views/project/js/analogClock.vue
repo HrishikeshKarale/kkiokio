@@ -15,10 +15,6 @@
       <div ref="minute" class="minuteHand" />
       <div ref="second" class="secondHand" />
       <div class="center" />
-      <section class="indicator"></section>
-      <section class="indicator"></section>
-      <section class="indicator"></section>
-      <section class="indicator"></section>
     </div>
   </div>
 </template>

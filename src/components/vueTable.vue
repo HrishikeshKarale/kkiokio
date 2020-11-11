@@ -49,41 +49,6 @@ vue/custom-event-name-casing */
                       : "Selected: " + metadata.selected.length
                   }}
                 </div>
-                <!-- <div class= 'tableAction'>
-									<span 
-										class= 'fas fa-ellipsis-h'
-										@click.stop= 'tableAction= !tableAction'
-										:class= '{open: tableAction}'
-									/>
-									<ul
-										:class= '{open: tableAction}'
-									>
-										<li>
-											<span class= "fas fa-trash fa-1x"/>
-											<span>
-												Delete
-											</span>
-										</li>
-										<li>
-											<span class= "fas fa-times fa-1x"/>
-											<span>
-												Remove
-											</span>        
-										</li>
-										<li>
-											<span class= "fas fa-pen fa-1x"/>
-											<span>
-												Edit
-											</span>        
-										</li>
-										<li>
-											<span class= "fas fa-check fa-1x"/>
-											<span>
-												Accept
-											</span>        
-										</li>
-									</ul>
-								</div> -->
                 <div
                   v-if="!subtableId"
                   class="smalltext"
@@ -128,7 +93,8 @@ vue/custom-event-name-casing */
             :class="{ active: metadata.sortKey == col }"
             @click.stop="setSortKey(col)"
           >
-            {{ nameConvention.capitalize(col) }}
+            <!-- {{ nameConvention.capitalize(col) }} -->
+            {{ col }}
             <!-- <span 
 							v-if= 'metadata.sortKey == col'
 							class= 'fas .fa-stack-1x' 
@@ -173,7 +139,7 @@ vue/custom-event-name-casing */
 									name= "editColumns"
 									v-model= "columns"
 									:options= 'columns'
-									:inline= '!d_booleanTrue'
+									:inline= '!dBooleanTrue'
 								/>
 							</div> -->
               <ul :class="{ open: editColumns }">
@@ -222,17 +188,6 @@ vue/custom-event-name-casing */
                 "
                 @click.self="toggleCheckbox(entry[select])"
               />
-              <!-- <vue-button 
-								:buttonType= 'buttonType'
-								buttonName= "ExpandRow"
-								:buttonText= "d_buttonText"
-								:buttonIcon= 'entry.showSub? "fas fa-chevron-down":"fas fa-chevron-up"'
-								:buttonStyle= 'd_buttonStyle[9]'
-								:disabled= '!d_booleanTrue'
-								:autofocus= '!d_booleanTrue'
-								:formID= "d_form"
-								:onClickAction= 'toggleSubTable.bind(this, entry)'
-							/>  -->
             </td>
 
             <td v-for="col in columns" :key="col">
@@ -257,54 +212,23 @@ vue/custom-event-name-casing */
                 :button-icon="
                   entry ? 'fas fa-chevron-left' : 'fas fa-chevron-up'
                 "
-                :button-style="d_buttonStyle[9]"
+                :button-style="dButtonStyle[12]"
                 :on-click-action="toggleSubTable.bind(this, entry)"
               />
-              <!-- <span 
-								:class= 'entry? "fas fa-chevron-right":"fas fa-chevron-down"'
-								@click.stop= 'toggleSubTable(entry)'
-							/> -->
             </td>
           </tr>
-          <!-- <tr 
-						v-if= 'entry.subDetails && entry.showSub'
-						:key= 'index'
-						:id= 'entry[select]+ "expand"'
-					>
-						<td 
-							class= 'subTable'
-							:colspan= "columns.length+1"
-						>
-							<vue-table 
-								:tableData= '(entry.subDetails).tableData'
-								:columns= '(entry.subDetails).cols'
-								:metadata= '{}'
-								:title= '(entry.subDetails).title'
-								:subtableId= 'entry[select]+ "-subtable"'
-							/>
-						</td>
-					</tr> -->
         </template>
       </tbody>
     </table>
     <div class="paging">
       <div>
-        <!-- <radio-input
-					name= "rowElements"
-					:value= 'showRecords'
-					:options= 'metadata.recordsPerPage'
-					:required= 'd_booleanTrue'
-					:box= 'd_booleanTrue'
-					:inline= 'd_booleanTrue'
-					@selected= 'setRowElements'
-				/> -->
         <dropdown-list
           v-model="dropdownValue"
           label="Show"
           name="showRecords"
           :options="metadata.recordsPerPage"
-          :required="d_booleanTrue"
-          :inline="d_booleanTrue"
+          :required="dBooleanTrue"
+          :inline="dBooleanTrue"
         />
       </div>
       <div>
@@ -313,33 +237,25 @@ vue/custom-event-name-casing */
           {{ metadata.totalRecords }} Results.
         </div>
         <div>
-          <!-- <span 
-						class= 'fas fa-chevron-left'
-						@click.stop= 'setPage(metadata.pageNumber-1)'
-						v-show= 'metadata.pageNumber> 1'
-					/>                                -->
+          -->
           <vue-button
             v-show="metadata.pageNumber > 1"
             :button-type="buttonType"
             button-name="previousPage"
             button-icon="fas fa-chevron-left"
-            :button-style="d_buttonStyle[9]"
+            :button-style="dButtonStyle[12]"
             :on-click-action="setPage.bind(this, metadata.pageNumber - 1)"
           />
         </div>
         <div>Page {{ metadata.pageNumber }}</div>
         <div>
-          <!-- <span 
-						class= 'fas fa-chevron-right'
-						@click.stop= 'setPage(metadata.pageNumber+1)'
-						v-show= 'metadata.pageNumber< metadata.pageCount'
-					/>                                 -->
+          -->
           <vue-button
             v-show="metadata.pageNumber < metadata.pageCount"
             :button-type="buttonType"
             button-name="nextPage"
             button-icon="fas fa-chevron-right"
-            :button-style="d_buttonStyle[9]"
+            :button-style="dButtonStyle[12]"
             :on-click-action="setPage.bind(this, metadata.pageNumber + 1)"
           />
         </div>
@@ -441,11 +357,32 @@ export default {
     const dropdownValue = this.metadata.rowElements;
     const editColumns = false;
     const columns = null;
+    const buttonType = "button";
+    const dBooleanTrue = true;
+    const dButtonStyle = [
+      "standard",
+      "large",
+      "small",
+      "fullWidth",
+      "border",
+      "border-sm",
+      "border-lg",
+      "border-fwidth",
+      "text",
+      "text-sm",
+      "text-lg",
+      "icon",
+      "icon-sm",
+      "icon-lg"
+    ];
     return {
       columns,
+      dBooleanTrue,
+      buttonType,
       rowElements,
       dropdownValue,
-      editColumns
+      editColumns,
+      dButtonStyle
     }; //return
   }, //components
 
@@ -465,14 +402,6 @@ export default {
       }
     } //metadata.searchKey
   }, //methods
-
-  //   watch: {
-  //     dropdownValue: function(newValue, oldValue) {
-  //       if (newValue != oldValue) {
-  //         this.setRowElements(newValue);
-  //       }
-  //     } //dropdownValue
-  //   }, //watch
 
   created() {
     const tempArray = [];
@@ -583,11 +512,13 @@ export default {
     setSortKey: function(newValue) {
       this.$emit("set-sort-key", newValue);
     }, //setPage
-
+    consoleClickDelete: function() {
+      console.log("del");
+    }, //consoleClickDelete
     setRowElements: function(newValue) {
       this.$emit("set-row-elements", newValue);
     } //setRowElements
-  } //created
+  } //methods
 }; //default
 </script>
 
@@ -595,17 +526,15 @@ export default {
 @import (reference) "./../Less/customMixins.less";
 @import (reference) "./../Less/customVariables";
 
-@cellWidth: 196px;
+@cellWidth: 116px;
 @lastCellWidth: 128px;
 @firstCellWidth: 64px;
-
-@backgroundColor: #ccd8e0;
 
 .vueTable {
   .boxShadow(@one);
   width: fit-content;
   font-size: 16px;
-  color: @cometText;
+  color: @white;
 
   table {
     display: flex;
@@ -614,16 +543,15 @@ export default {
     background-color: @backgroundColor;
 
     thead {
-      background-color: @backgroundColor;
-      max-height: 96px;
+      max-height: 116px;
 
       tr {
         &:first-child {
-          width: 100% !important;
+          width: 100%;
 
           &.searchRow {
             & > th {
-              margin: 8px 16px 0 16px;
+              margin: 8x 16px 0 16px;
               display: flex;
               flex-direction: row;
               justify-content: space-between;
@@ -685,7 +613,7 @@ export default {
                   overflow: hidden;
                   position: absolute;
                   background-color: @backgroundColor;
-                  .boxShadow(-2px 4px 16px rgba(0, 0, 0, 0.33));
+                  .boxShadow(@two);
 
                   &.open {
                     height: auto;
@@ -817,7 +745,7 @@ export default {
                     li {
                       div {
                         background: #1d1d1d;
-                        color: #fff;
+                        color: @white;
                         padding: 8px;
                         border-radius: 4px;
                         position: absolute;
@@ -837,10 +765,10 @@ export default {
       .scroll(64vh);
 
       & > tr {
-        background-color: #f9f9f9;
+        background-color: @backgroundColor;
 
         &:nth-child(2n) {
-          background-color: white;
+          background-color: @white;
         }
 
         &.selected {
@@ -872,41 +800,70 @@ export default {
               .opacity(0.5);
             }
           }
-
-          /* // &.subTable {
-						//     display: flex;
-						//     width: 100%;
-						//     background-color: #e5e5e5;
-
-						//     .vueTable.inner {
-								
-						//         table {
-						//             border: 1px solid @backgroundColor;
-
-						//             thead {
-						//                 height: 32px;
-						//                 tr {
-						//                     background-color: #959595;
-
-						//                     th {
-						//                         &:first-child {
-						//                             div {
-						//                                 border: none;
-						//                             }
-						//                         }
-						//                     }
-						//                 }
-						//             }
-						//         }
-						//     }
-
-						//     div.paging {
-						//         display: none;
-						//     }
-						// } */
         }
       }
     }
+  } /* 
+  Max width before this PARTICULAR table gets nasty
+  This query will take effect for any screen smaller than 760px
+  and also iPads specifically.
+  https://css-tricks.com/responsive-data-tables/
+  */
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+      position: absolute;
+      top: -1111px;
+      left: -1111px;
+    }
+
+    tr {
+      border: 1px solid #ccc;
+    }
+
+    td {
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+
+      &:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+      }
+    }
+
+    /*
+    Label the data
+    */
+    /* td:nth-of-type(1):before { content: "First Name"; }
+      td:nth-of-type(2):before { content: "Last Name"; }
+      td:nth-of-type(3):before { content: "Job Title"; }
+      td:nth-of-type(4):before { content: "Favorite Color"; }
+      td:nth-of-type(5):before { content: "Wars of Trek?"; }
+      td:nth-of-type(6):before { content: "Secret Alias"; }
+      td:nth-of-type(7):before { content: "Date of Birth"; }
+      td:nth-of-type(8):before { content: "Dream Vacation City"; }
+      td:nth-of-type(11):before { content: "GPA"; }
+      td:nth-of-type(10):before { content: "Arbitrary Data"; } */
   }
 }
 

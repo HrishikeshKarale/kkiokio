@@ -4,10 +4,12 @@
     <!-- eslint-disable-next-line vue/no-v-html -->
     <p v-html="project.description" />
     <ul v-if="project.tags">
-      <li v-for="tag in project.tags" :key="tag">
-        <span class="fas fa-circle" />
-        <span>{{ tag }}</span>
-      </li>
+      <template v-for="tag in project.tags" :key="tag">
+        <li v-if="tag">
+          <span class="fas fa-circle" />
+          <span>{{ tag }}</span>
+        </li>
+      </template>
     </ul>
   </div>
 </template>

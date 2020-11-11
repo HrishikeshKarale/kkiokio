@@ -70,7 +70,7 @@ export default {
 
   computed: {
     themeIcon: function() {
-      return this.activeTheme.icon;
+      return this.activeTheme().icon;
     }, //themeIcon
     toggleNavIcon: function() {
       if (this.isOpen("nav")) {
@@ -137,6 +137,7 @@ export default {
       & > li {
         display: flex;
         justify-content: space-evenly;
+        flex: 1 2 1;
         & > a {
           margin: 0 @spaceLg;
           color: @navText;
@@ -177,18 +178,19 @@ export default {
               color: @secondaryColor;
             }
             & > .navElement {
-              & > span,
-              img {
-                background-color: @white;
-                border-radius: 50%;
-                transform: scale(1.2);
-              }
+              // & > span,
+              // img {
+              // background-color: @white;
+              // border-radius: 50%;
+              //   transform: scale(1.2);
+              // }
               & > div {
                 & > h4 {
                   color: @secondaryColor;
+                  font-weight: bold;
                 }
                 & > span {
-                  color: lightgrey;
+                  color: @backgroundColor;
                 }
               }
             }
@@ -200,17 +202,17 @@ export default {
               transform: scale(1.2);
             }
             & > .navElement {
-              & > span,
-              img {
-                background-color: @white;
-                border-radius: 50%;
-              }
+              // & > span,
+              // img {
+              //   background-color: @white;
+              // //   border-radius: 50%;
+              // }
               & > div {
                 & > h4 {
                   color: @secondaryColor;
                 }
                 & > span {
-                  color: lightgrey;
+                  color: @backgroundColor;
                 }
               }
             }
