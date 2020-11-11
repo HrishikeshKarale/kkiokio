@@ -41,6 +41,28 @@ article {
   }
 }
 
+a {
+  text-decoration: none !important;
+}
+
+input {
+  & + label,
+  & > label {
+    margin-left: @spaceMd;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  & > li{
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
 //buttons
 // Button Sizes
 // --------------------------------------------------

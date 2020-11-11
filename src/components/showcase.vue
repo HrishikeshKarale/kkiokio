@@ -1,25 +1,25 @@
 <template>
   <div class="showcase">
-    <div class="name">
-      <span class="title">{{ title }}</span>
-      <div class="sub-title">{{ subtitle }}</div>
-    </div>
-    <div class="description">
-      <slot name="description" />
-    </div>
+    <h3>{{ project.title }}</h3>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <p v-html="project.description" />
+    <ul v-if="project.tags">
+      <template v-for="tag in project.tags" :key="tag">
+        <li v-if="tag">
+          <span class="fas fa-circle" />
+          <span>{{ tag }}</span>
+        </li>
+      </template>
+    </ul>
   </div>
 </template>
 <script>
 export default {
   name: "Showcase",
   props: {
-    title: {
+    project: {
       required: true,
-      type: String
-    },
-    subtitle: {
-      required: true,
-      type: String
+      type: Object
     }
   }
 };
@@ -31,11 +31,9 @@ export default {
 
 .showcase {
   display: flex;
-  flex-direction: row;
-  font-size: @fontSize;
-  color: @white;
-  background-color: @primaryColor;
-  text-align: center;
+  flex-direction: column;
+  color: @cometText;
+  background-color: @backgroundColor;
   padding: @spaceLg;
   border-radius: 4px;
   margin: @spaceLg;
@@ -62,17 +60,38 @@ export default {
       display: none;
     }
   }
-
-  &:hover {
-    background-color: @secondaryColor;
-    & > div {
-      &.name {
-        display: none;
+  ul {
+    //tag
+    & > li {
+      font-size: @fontSize;
+      position: relative;
+      margin-bottom: 8px;
+      margin-left: 16px;
+      padding: 0 10px 0 12px;
+      background-color: @secondaryColor;
+      border-radius: 0 4px 4px 0;
+      color: @cometText;
+      width: fit-content;
+      //triangle
+      &:before {
+        content: "";
+        position: absolute;
+        left: -@fontSizeSm;
+        border: solid @fontSizeSm transparent;
+        border-left-width: 0;
+        border-right-color: @secondaryColor;
       }
-      &.description {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      & > span {
+        margin: 0 8px;
+        //fontawesome circle
+        &.fas {
+          position: absolute;
+          top: 9px;
+          left: 0;
+          margin: 0;
+          font-size: 10px;
+          color: @white;
+        }
       }
     }
   }

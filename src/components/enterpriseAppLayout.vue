@@ -12,15 +12,18 @@
         <scroll-indicator>
           <router-view :key="$route.path" />
         </scroll-indicator>
-        <q>
-          A little
-          <abbr
-            title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
-          >
-            Empathy
-          </abbr>
-          goes a long way
-        </q>
+        <div class="moto">
+          <vue-img :src="logo" alt="Moto" />
+          <q>
+            A little
+            <abbr
+              title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
+            >
+              Empathy
+            </abbr>
+            goes a long way
+          </q>
+        </div>
       </div>
     </div>
   </div>
@@ -29,12 +32,21 @@
 <script>
 import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
 import breadcrums from "@/components/breadcrums";
+import vueImg from "./vueImg.vue";
 
 export default {
   name: "EnterpriseAppLayout",
   components: {
     scrollIndicator,
-    breadcrums
+    breadcrums,
+    vueImg
+  },
+  data() {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const logo = require("@/assets/logo.svg");
+    return {
+      logo
+    };
   }
 };
 </script>
@@ -103,12 +115,11 @@ export default {
             }
           }
 
-          & > q {
-            // font-size: @fontSizeSm * 4;
-            // text-align: center;
+          & > .moto {
+            display: flex;
+            flex-direction: column;
+            padding: @spaceMd;
             position: absolute;
-            font-size: @fontSizeMd;
-            font-weight: bold;
             bottom: 0;
             right: 0;
             padding: 16px 32px;
@@ -116,9 +127,17 @@ export default {
             // .boxShadow(@base @three);
             border-radius: 4px 0 0 0;
 
-            & > abbr {
-              color: @secondaryColor;
-              text-decoration: none;
+            & > q {
+              font-size: @fontSizeSm;
+              font-weight: bold;
+              background-color: @backgroundColor;
+              // .boxShadow(@three);
+              border-radius: 4px 0 0 0;
+
+              & > abbr {
+                color: @secondaryColor;
+                text-decoration: none;
+              }
             }
           }
         }

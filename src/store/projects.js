@@ -5,16 +5,22 @@ export const projects = [
       {
         id: 1,
         title: "Go Green",
-        subtitle: "Onboarding Screen for the Go Green App",
-        descritpion:
+        tags: ["Adobe Illustrator", "Onboarding"],
+        description:
           "GoGreen is online IOS app, where user can select from a list of flora, customize planters according to their needs and place order easily.",
         component: "goGreen"
       },
       {
         id: 2,
         title: "Culinarian",
-        subtitle: "Food Recipie App",
-        descritpion:
+        tags: [
+          "Adobe Illustrator",
+          "Styleguide",
+          "Walkthrough",
+          "Personas",
+          "Design Guide"
+        ],
+        description:
           "The Cullinarian App is an mobile aimed targetted towardsindividuals who like to cook.\
               <br />\
               The app walks users towards cooking home made cusines and thus promoting a healthy lifestyle.",
@@ -23,8 +29,8 @@ export const projects = [
       {
         id: 3,
         title: "MedCo",
-        subtitle: "UI Walkthrough and style guide",
-        descritpion:
+        tags: ["Adobe Illustrator", "Styleguide"],
+        description:
           "The Go Green App is an mobile aimed towards the medical industry.\
               <br />\
               Users can look up details of services offered by various hospitals and the cost associated with those services.",
@@ -33,8 +39,8 @@ export const projects = [
       {
         id: 4,
         title: "Fitness Friend",
-        subtitle: "Concept idea, Styleguide",
-        descritpion:
+        tags: ["Adobe Illustrator", "Wearable"],
+        description:
           "A Fitness tracker app for smart watch.\
               <br />\
               It helps its users keep track of their daily activity and vitals.",
@@ -43,8 +49,8 @@ export const projects = [
       {
         id: 5,
         title: "AppSignUp",
-        subtitle: "Login, SignUp Screens",
-        descritpion: "Login/SignUp screen for a mobile app.",
+        tags: ["Adobe Illustrator", "Login Screen"],
+        description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp"
       }
     ]
@@ -55,8 +61,8 @@ export const projects = [
       {
         id: 1,
         title: "Pack Station",
-        subtitle: "Fulfillment Pack Station App",
-        descritpion:
+        tags: ["Golden Ratio", "WMS", "Enterprise", "Kiosk", "Standalone"],
+        description:
           "The pack station is projectsed to allow users to pack and ship orders.\
               <br />\
               Simple Pack supports orders with original packaging and default box items.",
@@ -65,8 +71,9 @@ export const projects = [
       {
         id: 2,
         title: "RSVP",
-        subtitle: "an interactive RSVP APP in progress..",
-        descritpion: "details coming soon",
+        tags: ["Standalone", "VUE"],
+        description:
+          "The RSVP app allows a user to kleep track of their invites that they have sent to their friend.",
         component: "rsvpApp"
       }
     ]
@@ -77,15 +84,17 @@ export const projects = [
       {
         id: 1,
         title: "Pulse Animation",
-        subtitle: "Pulse Animation",
-        descritpion: "",
+        tags: ["CSS"],
+        description:
+          "Pulse animation is a circle that pulses every few seconds.<br />\
+        It was a good exercise in writting css for the sake of eesthetics.",
         component: "pulseAnimation"
       },
       {
         id: 2,
         title: "Card Slider",
-        subtitle: "Card Slider",
-        descritpion: "",
+        tags: [],
+        description: "does not work rite now.",
         component: "cardSlider"
       }
     ]
@@ -96,113 +105,140 @@ export const projects = [
       {
         id: 1,
         title: "DrumKit",
-        subtitle: "Drum-kit",
-        descritpion: "",
+        tags: ["JS", "Less", "HTML5", "mixins", "audio playback"],
+        description:
+          "Play your favorite tune on our virtual drums.<br />\
+          The DrumKit lets you play your favorite tune ",
         component: "drumKit"
       },
       {
         id: 2,
         title: "AnalogCLock",
-        subtitle: "Analogue Clock",
-        descritpion: "",
+        tags: ["CSS", "JS"],
+        description:
+          "The analogue clock was a good way of putting my CSS skills to test.<br />\
+        The clock also has date and a digital timer in it.",
         component: "analogClock"
       },
       {
         id: 3,
         title: "Array Cardio",
-        subtitle: "Array Cardio (filter, sory, map, reduce)",
-        descritpion: "",
+        tags: ["Array functions"],
+        description:
+          "Playing with Array functions was a good way of getting acquaintanced with them.<br />\
+        functions used in this project were as follows: <ul>\
+        <li>Array.every</li>\
+        <li>Array.some</li>\
+        <li>Array.slice</li>\
+          <li>Array.pop</li>\
+          <li>Array.Map</li>\
+          <li>Array.push</li>\
+          <li>Array.findIndex</li>\
+          <li>Array.find</li>\
+          <li>Array.reduce</li>\
+          <li>Array.sort </li></ul> ",
         component: "arrayCardio"
       },
       {
         id: 4,
         title: "Image Gallery",
-        subtitle: "Langing page/Image galery",
-        descritpion: "",
+        tags: ["Landing Page"],
+        description:
+          "An image gallery is a way to display parts of an image or information. The users can click on the section to view more info on thje selecetd topic without having to scroll.",
         component: "imageGalery"
       },
       {
         id: 5,
         title: "Fetch API",
-        subtitle: "Fetch API",
-        descritpion: "",
+        tags: ["REST API"],
+        description:
+          "Fetch data from Sttudio Ghibli API and use it to simulatte an IMDB like data driven website.",
         component: "fetchApi"
       },
       {
         id: 6,
         title: "Canvas",
-        subtitle: "HTML5 Canvas",
-        descritpion: "",
+        tags: ["HTML Canvas"],
+        description: "Simulates an empty canvas where users can draw.",
         component: "canvasExample"
       },
       {
         id: 7,
         title: "CheckboxChallange",
-        subtitle: "Checkbox Challange",
-        descritpion: "",
+        tags: ["keyboard Shortcuts", "Usability"],
+        description:
+          "Simulates a checkbox input field where users can use keyboard shortcuts to select/deselect multiple checkbox inputs at once. Pressing and holding shift while checking/unckecking checkboxes triggers the checkboxes in between.",
         component: "checkboxChallange"
       },
       {
         id: 8,
         title: "KonamiCode",
-        subtitle: "Konami Code",
-        descritpion: "",
+        tags: ["Gamification"],
+        description:
+          "A Konami code is a cheat code that appears in many konami video games and some non-Konami games. The user can press the following sequence of buttons/keyboard keys to enable a cheat or an effect.",
         component: "konamiCode"
       },
       {
         id: 9,
         title: "ScrollIn",
-        subtitle: "Scroll JS",
-        descritpion: "",
+        tags: ["JS", "LESS", "Navigation"],
+        description:
+          "ScrollIn is a scroll indicator which segments the webpage into segments using the sections html tag and disp[lays a page content menu on the right so that yusers can jump between different sections of the page.",
         component: "scrollIn"
       },
       {
         id: 10,
         title: "UserMedia",
-        subtitle: "User Media",
-        descritpion: "",
+        tags: ["HTML5"],
+        description:
+          "Uses the video html5 tag to simulate a webcam, saves screenshots and applies different effects to the image",
         component: "userMedia"
       },
       {
         id: 11,
         title: "Speech Recognition",
-        subtitle: "Speech Recognition",
-        descritpion: "",
+        tags: ["Speech Recognition"],
+        description:
+          "Uses the built in speech recognition to convert user speech into text and displays it on the page.",
         component: "speechRecognition"
       },
       {
         id: 12,
         title: "Link Follower",
-        subtitle: "Link Follower",
-        descritpion: "",
+        tags: ["Gamification"],
+        description:
+          "The linkfollower is a way of styling links such that the style travels through the page ot the next link during mouise hover",
         component: "linkFollower"
       },
       {
         id: 13,
         title: "Geo Location",
-        subtitle: "Geo Location",
-        descritpion: "",
+        tags: ["Geo Location", "Gamification"],
+        description:
+          "the GeoLocation uses the geoLocation   browser functionality not jusdt to locate the device but also to calculate spee dif the device is travelling",
         component: "geoLocation"
       },
       {
         id: 14,
         title: "Follow Along Navigation Dropdown",
-        subtitle: "Follow Along Navigation Dropdown",
-        descritpion: "",
+        tags: ["Modern", "JS"],
+        description:
+          "Building on the link follower, the Follow Along NAvigation simulates a navigation where the self adjusting navigtion background travels along different navigation links and displays the sub-content ion a fun way.",
         component: "FollowNav"
       },
       {
         id: 15,
         title: "Click and Drag",
-        subtitle: "Click and Drag",
-        descritpion: "",
+        tags: ["Slider", "JS", "Mobile", "Gallery"],
+        description: "click and Drag simulates a slidable/draggable slider",
         component: "clickDrag"
       },
       {
         id: 16,
         title: "Control video speed",
-        subtitle: "Control video speed",
-        descritpion: "",
+        tags: ["HTML5", "Slider"],
+        description:
+          "Uses a range/slider bar to control the speed of the video being played.",
         component: "videoControl"
       }
     ]

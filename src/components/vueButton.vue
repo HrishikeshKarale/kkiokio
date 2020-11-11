@@ -1,34 +1,22 @@
 <template>
-  <div
-    class="vueButton"
-    :class="
-      buttonStyle == 'fullWidth' || buttonStyle == 'border-fwidth'
-        ? 'fullWidth'
-        : null
-    "
+  <button
+    :class="[
+      'vueButton',
+      ['fullWidth', 'border-fwidth'].includes(buttonStyle) ? 'fullWidth' : null,
+      buttonClass
+    ]"
+    :type="buttonType"
+    :name="buttonName"
+    :autofocus="autofocus"
+    :disabled="disabled"
+    form="formID"
+    @click.stop.prevent="onClickAction"
   >
-    <button
-      :type="buttonType"
-      :class="buttonClass"
-      :name="buttonName"
-      :autofocus="autofocus"
-      :disabled="disabled"
-      form="formID"
-      @click.stop.prevent="onClickAction"
-    >
-      <span v-if="buttonIcon" :class="buttonIcon" />
-      <template
-        v-if="
-          buttonStyle != 'icon' &&
-            buttonStyle != 'icon-sm' &&
-            buttonStyle != 'icon-lg'
-        "
-      >
-        {{ buttonText }}
-      </template>
-    </button>
-  </div>
-  <!--div-->
+    <span v-if="buttonIcon" :class="buttonIcon" />
+    <template v-if="!['icon', 'icon-sm', 'icon-lg'].includes(buttonStyle)">
+      {{ buttonText }}
+    </template>
+  </button>
 </template>
 
 <script>
@@ -156,7 +144,7 @@ export default {
             tempClass += " btn-border btn-fullWidth btn-block";
             break;
           default:
-            tempClass += " btn-primary";
+            tempClass += "";
         }
         return tempClass;
       }
@@ -193,10 +181,23 @@ export default {
 
 .vueButton {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+  font-weight: bold;
 
-  & > button {
-    letter-spacing: 2px;
-    font-weight: bold;
+  .boxShadow(@three);
+
+  &:hover {
+    .boxShadow(@one);
+  }
+  //icon buttons
+  &.btn-icon {
+    background-color: transparent;
+    color: transparent;
+    color: @color;
+    padding: @spaceSm;
+    font-size: @fontSize;
 
     .boxShadow(@base @three);
 
@@ -204,57 +205,39 @@ export default {
       .boxShadow(@base @one);
     }
 
-    &.btn-icon {
-      background-color: transparent;
-      color: transparent;
-      .boxShadow(none);
-      color: @color;
+    &.btn-sm {
       padding: @spaceSm;
-      font-size: @fontSize;
-
-      .textShadow(@oneText);
-
-      &:hover {
-        .textShadow(@fourText);
-      }
-
-      &.btn-sm {
-        padding: @spaceSm;
-        font-size: @fontSizeSm;
-      }
-
-      &.btn-lg {
-        padding: @spaceSm;
-        font-size: @fontSizeSm * 2;
-      }
-    }
-    &.btn-text {
-      background-color: transparent;
-      color: transparent;
-      .boxShadow(none);
-      color: @color;
-      padding: @spaceSm @spaceMd;
-      border-radius: @borderRadiusMd;
-      text-decoration: none;
-      font-weight: bold;
-
-      &:hover {
-        border: 1px solid @color;
-        background-color: ~"lighten(@color, 78%)";
-      }
+      font-size: @fontSizeSm;
     }
 
-    &.btn-border {
-      border-radius: @borderRadiusMd;
-      background-color: @white;
+    &.btn-lg {
+      padding: @spaceSm;
+      font-size: @fontSizeSm * 2;
+    }
+  }
+
+  //text links or  text as buttons
+  &.btn-text {
+    background-color: transparent;
+    color: transparent;
+    color: @color;
+    padding: @spaceSm @spaceMd;
+    border-radius: @borderRadiusMd;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
       border: 1px solid @color;
-      color: @color;
-      font-weight: bold;
-
-      &:hover {
-        background-color: ~"lighten(@color, 60%)";
-      }
     }
+  }
+
+  //buttons with a border outline and transparent background
+  &.btn-border {
+    border-radius: @borderRadiusMd;
+    background-color: @white;
+    border: 1px solid @color;
+    color: @color;
+    font-weight: bold;
   }
 
   &.fullWidth,

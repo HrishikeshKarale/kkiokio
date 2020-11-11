@@ -1,21 +1,13 @@
 //https://codepen.io/pietvanzoen/pen/Ccjlt
 <template>
   <div ref="vueHeader" class="vueHeader">
-    <div>
-      <router-link :to="{ name: 'home' }" class="logo">
-        <vue-img :src="logoLink" alt="Logo" />
-      </router-link>
-      <!-- <div  ref="navigation" @click="toggleNavigation">
-        <span></span>
-      </div> -->
-      <div ref="navigation" class="menuTrigger">
-        <vue-button
-          buttop-name="toggleNav"
-          button-style="icon"
-          :button-icon="toggleNavIcon"
-          :on-click-action="toggleNavigation.bind(this)"
-        />
-      </div>
+    <div ref="navigation" class="menuTrigger">
+      <vue-button
+        buttop-name="toggleNav"
+        button-style="icon-lg"
+        :button-icon="toggleNavIcon"
+        :on-click-action="toggleNavigation.bind(this)"
+      />
     </div>
     <nav>
       <ul>
@@ -24,7 +16,14 @@
           :key="index + '-' + navigation.name"
         >
           <router-link :to="{ name: navigation.component }">
-            {{ navigation.name }}
+            <div class="navElement">
+              <span v-if="index > 0" :class="navigation.icon" />
+              <vue-img v-else :src="logoLink" alt="Logo" />
+              <div>
+                <h4>{{ navigation.name }}</h4>
+                <span> {{ navigation.tagline }}</span>
+              </div>
+            </div>
           </router-link>
         </li>
       </ul>
@@ -71,7 +70,7 @@ export default {
 
   computed: {
     themeIcon: function() {
-      return this.activeTheme.icon;
+      return this.activeTheme().icon;
     }, //themeIcon
     toggleNavIcon: function() {
       if (this.isOpen("nav")) {
@@ -144,27 +143,40 @@ export default {
   & > nav {
     & > ul {
       display: flex;
-      list-style-type: none;
+      flex-direction: row;
 
       & > li {
-        color: @primaryColor;
-
+        display: flex;
+        justify-content: space-evenly;
+        flex: 1 2 1;
         & > a {
-          flex: 1;
           margin: 0 @spaceLg;
           color: @navText;
-          text-decoration: none !important;
           position: relative;
 
-          &::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            background-color: @secondaryColor;
-            bottom: -8px;
-            height: 1px;
-            transform: scale(0);
-            transition: all 0.3s ease-in-out;
+          & > .navElement {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            & > span {
+              font-size: @fontSizeSm * 2;
+            }
+            & > img {
+              height: 48px;
+            }
+            & > div {
+              display: flex;
+              flex-direction: column;
+              margin-left: 16px;
+              & > h4 {
+                color: @navText;
+              }
+              & > span {
+                font-size: 12px;
+                color: grey;
+              }
+            }
           }
 
           &.router-link-active {
@@ -176,6 +188,23 @@ export default {
             &.router-link-exact-active {
               color: @secondaryColor;
             }
+            & > .navElement {
+              // & > span,
+              // img {
+              // background-color: @white;
+              // border-radius: 50%;
+              //   transform: scale(1.2);
+              // }
+              & > div {
+                & > h4 {
+                  color: @secondaryColor;
+                  font-weight: bold;
+                }
+                & > span {
+                  color: @backgroundColor;
+                }
+              }
+            }
           }
 
           &:hover {
@@ -183,6 +212,32 @@ export default {
             &::before {
               transform: scale(1.2);
             }
+            & > .navElement {
+              // & > span,
+              // img {
+              //   background-color: @white;
+              // //   border-radius: 50%;
+              // }
+              & > div {
+                & > h4 {
+                  color: @secondaryColor;
+                }
+                & > span {
+                  color: @backgroundColor;
+                }
+              }
+            }
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            background-color: @secondaryColor;
+            bottom: -8px;
+            height: 2px;
+            transform: scale(0);
+            transition: all 0.3s ease-in-out;
           }
         }
       }
@@ -191,24 +246,15 @@ export default {
   @media screen {
     @media (max-width: 1024px) {
       flex-direction: column;
-      justify-content: space-between;
-      padding: @spaceLg @spaceXl;
-      border-radius: 0 4px 4px 0;
-      & > div {
-        display: flex;
-        justify-content: space-between;
-        height: fit-content;
-        position: relative;
-        width: 100%;
-        & > a.logo > img {
-          height: 32px;
-        }
-        & > .menuTrigger {
-          display: block;
-        }
+      padding: @spaceMd @spaceLg;
+      border-bottom-right-radius: 8px;
+      height: auto;
+      & > .menuTrigger {
+        display: block;
+        align-self: flex-end;
       }
+      //hides navigation when toggled
       & > nav {
-        height: 100%;
         & > ul {
           display: none;
         }
@@ -216,36 +262,27 @@ export default {
           display: none;
         }
       }
-      &.menuOpen + nav > ul {
-        display: flex;
-        flex-direction: column;
-      }
+      //displays navigation
       &.showNav {
         height: 100vh;
-        width: fit-content;
         outline: 9999px solid rgba(0, 0, 0, 0.5);
-        & > div {
-          margin-bottom: @spaceXl;
-          & > a.logo > img {
-            height: @size * 2;
-            margin-left: @spaceLg;
-          }
-        }
+        border-bottom-right-radius: 0;
         & > nav {
+          height: 100%;
           & > ul {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             align-items: flex-start;
             & > li {
-              flex: 1 1 40px;
+              margin-top: 16px;
             }
           }
         }
         & > .themeToggle {
-          align-self: center;
-          padding: auto;
+          align-self: flex-end;
           margin: 0;
-          display: block;
+          display: flex;
         }
       }
     }

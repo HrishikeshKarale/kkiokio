@@ -126,7 +126,7 @@ export default {
     &.scroll {
       position: absolute;
       height: fit-content;
-      top: 120px;
+      top: @header + 32px;
       right: 64px;
       &::before {
         content: "Page Content";

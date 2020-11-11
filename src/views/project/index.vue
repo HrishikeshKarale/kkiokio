@@ -14,11 +14,7 @@
                 name: project.component
               }"
             >
-              <showcase :title="project.title" :subtitle="project.subtitle">
-                <template #description>
-                  {{ project.descritpion }}
-                </template>
-              </showcase>
+              <showcase :project="project" />
             </router-link>
           </div>
         </div>
@@ -53,10 +49,8 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    & > a,
-    & > a > * {
-      text-decoration: none;
-    }
+    align-items: flex-start;
+    align-content: flex-start;
   }
 }
 </style>
