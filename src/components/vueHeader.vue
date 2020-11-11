@@ -76,9 +76,9 @@ export default {
     }, //themeIcon
     toggleNavIcon: function() {
       if (this.isOpen("nav")) {
-        return "fas fa-bars";
+        return "fas fa-times";
       }
-      return "fas fa-times";
+      return "fas fa-bars";
     } //toggleNavIcon
   }, //props
 
@@ -132,7 +132,6 @@ export default {
       height: 48px;
     }
     &.menuTrigger {
-      margin-left: @spaceLg;
       display: none;
     }
     &:first-child {
@@ -150,7 +149,7 @@ export default {
       & > li {
         display: flex;
         justify-content: space-evenly;
-        flex: 1 2 1;
+        flex: 1;
         & > a {
           margin: 0 @spaceLg;
           color: @navText;
@@ -240,7 +239,7 @@ export default {
       padding: @spaceMd @spaceLg;
       border-bottom-right-radius: 8px;
       height: auto;
-      & > .menuTrigger {
+      & > div.menuTrigger {
         display: flex;
         align-self: flex-end;
       }
