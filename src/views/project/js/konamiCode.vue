@@ -65,7 +65,7 @@ export default {
           }
         } catch (e) {
           if (e != null) {
-            console.error(e);
+            // console.error(e);
           }
         }
       });

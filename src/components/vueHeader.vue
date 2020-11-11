@@ -1,8 +1,9 @@
 //https://codepen.io/pietvanzoen/pen/Ccjlt
 <template>
   <div ref="vueHeader" class="vueHeader">
-    <div ref="navigation" class="menuTrigger">
+    <div v-if="toggleNavIcon" ref="navigation" class="menuTrigger">
       <vue-button
+        v-if="toggleNavIcon"
         buttop-name="toggleNav"
         button-style="icon-lg"
         :button-icon="toggleNavIcon"
@@ -29,9 +30,10 @@
       </ul>
     </nav>
     <vue-button
+      v-if="themeIcon"
       class="themeToggle"
       buttop-name="themeToggle"
-      button-style="text-sm"
+      button-style="small"
       button-text="Theme"
       :button-icon="themeIcon"
       :on-click-action="theme.bind(this)"
@@ -74,9 +76,9 @@ export default {
     }, //themeIcon
     toggleNavIcon: function() {
       if (this.isOpen("nav")) {
-        return "fas fa-times";
+        return "fas fa-bars";
       }
-      return "fas fa-bars";
+      return "fas fa-times";
     } //toggleNavIcon
   }, //props
 
@@ -129,7 +131,7 @@ export default {
     & > a.logo > img {
       height: 48px;
     }
-    & > .menuTrigger {
+    &.menuTrigger {
       margin-left: @spaceLg;
       display: none;
     }
@@ -189,12 +191,6 @@ export default {
               color: @secondaryColor;
             }
             & > .navElement {
-              // & > span,
-              // img {
-              // background-color: @white;
-              // border-radius: 50%;
-              //   transform: scale(1.2);
-              // }
               & > div {
                 & > h4 {
                   color: @secondaryColor;
@@ -213,11 +209,6 @@ export default {
               transform: scale(1.2);
             }
             & > .navElement {
-              // & > span,
-              // img {
-              //   background-color: @white;
-              // //   border-radius: 50%;
-              // }
               & > div {
                 & > h4 {
                   color: @secondaryColor;
@@ -250,7 +241,7 @@ export default {
       border-bottom-right-radius: 8px;
       height: auto;
       & > .menuTrigger {
-        display: block;
+        display: flex;
         align-self: flex-end;
       }
       //hides navigation when toggled
@@ -280,9 +271,9 @@ export default {
           }
         }
         & > .themeToggle {
+          display: flex;
           align-self: flex-end;
           margin: 0;
-          display: flex;
         }
       }
     }
