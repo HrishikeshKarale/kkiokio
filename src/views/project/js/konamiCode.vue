@@ -101,7 +101,7 @@ export default {
       background-color: @primaryColor;
       width: 96px;
       height: 96px;
-      .boxShadow(@base @four);
+      .boxShadow(@four);
 
       & > span {
         margin: auto;

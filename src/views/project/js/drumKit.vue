@@ -116,7 +116,7 @@ export default {
     text-align: center;
     padding: @spaceMd;
     border-radius: 4px;
-    .boxShadow(@base @three);
+    .boxShadow(@three);
     width: 120px;
     height: 120px;
     cursor: pointer;

@@ -168,7 +168,7 @@ export default {
               padding: @spaceLg;
               margin: @spaceLg @spaceXl;
 
-              .boxShadow(@base @two);
+              .boxShadow(@two);
 
               & > .step {
                 border-radius: 50%;

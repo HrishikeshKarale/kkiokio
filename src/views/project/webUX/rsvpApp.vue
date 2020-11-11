@@ -253,7 +253,7 @@ export default {
             padding: @spaceMd;
             border-radius: 4px;
             height: 64px;
-            .boxShadow(@base @two);
+            .boxShadow(@two);
             & > input {
               background-color: @backgroundColor;
               width: 400px;

@@ -56,7 +56,7 @@ export default {
           max-width: 16vw;
           min-width: 320px;
           height: auto;
-          .boxShadow(@base @two);
+          .boxShadow(@two);
         }
       }
     }

@@ -78,7 +78,7 @@ export default {
     margin: 50px auto;
     background: white;
     border-radius: 5px;
-    .boxShadow(@base @base @two);
+    .boxShadow(@base @two);
     padding: 1rem 2rem 1rem 5rem;
     min-height: 600px;
     .scroll(64vh);

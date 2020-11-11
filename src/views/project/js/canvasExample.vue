@@ -113,7 +113,7 @@ export default {
   & > canvas {
     background-color: #fafbfc;
     border-radius: 4px;
-    .boxShadow(@base @two);
+    .boxShadow(@two);
   }
 }
 </style>

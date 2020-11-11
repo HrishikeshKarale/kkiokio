@@ -27,7 +27,7 @@ export default {
 .fitnessFriend {
   img {
     margin-top: @spaceXl*2;
-    .boxShadow(@base @two);
+    .boxShadow(@two);
   }
 }
 </style>

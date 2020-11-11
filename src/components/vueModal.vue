@@ -168,7 +168,7 @@ export default {
         margin: 0px auto;
         background-color: @backgroundColor;
         border-radius: @borderRadiusMd;
-        .boxShadow(@base @two);
+        .boxShadow(@two);
         transition: all 0.3s ease;
         font-family: Helvetica, Arial, sans-serif;
 

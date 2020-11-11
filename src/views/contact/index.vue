@@ -208,7 +208,7 @@ export default {
         padding: @spaceLg;
         background-color: @backgroundColor;
         border-radius: 8px;
-        .boxShadow(@base @one);
+        .boxShadow(@one);
         & > form {
           & > div {
             margin-top: @spaceLg;

@@ -181,7 +181,7 @@ export default {
   flex-direction: row;
   & > .data {
     & > table {
-      .boxShadow(@base @two);
+      .boxShadow(@two);
       width: fit-content;
       padding: @spaceMd @spaceLg;
       border-radius: 8px;

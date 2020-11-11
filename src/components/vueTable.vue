@@ -531,7 +531,7 @@ export default {
 @firstCellWidth: 64px;
 
 .vueTable {
-  .boxShadow(@base @one);
+  .boxShadow(@one);
   width: fit-content;
   font-size: 16px;
   color: @white;
@@ -613,7 +613,7 @@ export default {
                   overflow: hidden;
                   position: absolute;
                   background-color: @backgroundColor;
-                  .boxShadow(@base @two);
+                  .boxShadow(@two);
 
                   &.open {
                     height: auto;
@@ -664,7 +664,7 @@ export default {
                   border-radius: @borderRadiusMd;
                   z-index: 100;
 
-                  .boxShadow(@base @one);
+                  .boxShadow(@one);
                 }
 
                 & > div {

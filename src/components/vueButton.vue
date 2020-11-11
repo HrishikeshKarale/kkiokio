@@ -199,10 +199,10 @@ export default {
     padding: @spaceSm;
     font-size: @fontSize;
 
-    .boxShadow(@base @three);
+    .boxShadow(@three);
 
     &:hover {
-      .boxShadow(@base @one);
+      .boxShadow(@one);
     }
 
     &.btn-sm {

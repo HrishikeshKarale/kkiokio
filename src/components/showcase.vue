@@ -37,15 +37,15 @@ export default {
   padding: @spaceLg;
   border-radius: 4px;
   margin: @spaceLg;
+  min-width: 240px;
+  max-width: 15vw;
   cursor: pointer;
-  .boxShadow(@base @three);
+  .boxShadow(@three);
   & * {
     text-decoration: none;
   }
 
   & > div {
-    height: 240px;
-    width: 240px;
     &.name {
       display: flex;
       flex-direction: column;

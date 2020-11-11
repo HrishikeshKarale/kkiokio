@@ -122,7 +122,7 @@ export default {
   background-color: @navBackground;
   width: 100%;
   height: @header;
-  // .boxShadow(@base @one);
+  // .boxShadow(@one);
   & > div {
     display: flex;
     position: relative;

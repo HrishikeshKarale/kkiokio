@@ -114,7 +114,7 @@ export default {
             border-radius: 8px;
             padding: @spaceMd;
             height: 16vw;
-            .boxShadow(@base @two);
+            .boxShadow(@two);
           }
         }
       }
