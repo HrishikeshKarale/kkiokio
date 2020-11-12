@@ -1,7 +1,7 @@
 <template>
   <div class="contact">
     <p>
-      Hello, I am located in Upstate New York area.
+      Hello, My name is Hrishikesh Karale and I live in Upstate New York.
       <br />
       Feel free to use the contact form below and reach out to me for any
       questions yo might have.
@@ -22,7 +22,7 @@
         </div>
         <div class="email">
           <h3>Email</h3>
-          hrishikesh.karale@gmai.com
+          hrishikesh.karale@gmail.com
         </div>
         <div class="phone">
           <h3>Phone Number</h3>
@@ -33,27 +33,27 @@
             Text messages prefered.
           </p>
           <i>
-            *First time caller(s) are screened using virtual assistan<br />to
-            weed out spam calls</i
+            *First time caller(s) are screened using virtual assistan to weed
+            out spam calls</i
           >
         </div>
       </div>
       <div class="form">
-        <form
-          action="mailto:hrishikesh.karale@gmail.com"
-          method="post"
-          enctype="text/plain"
+        <vue-form
+          :d-on-click-action="sendMail.bind(this)"
+          d-form="contactForm"
+          :alerts="{ error: dDanger, warning: dWarning }"
         >
           <text-input
             v-model="name"
-            label="NAME"
+            label="Name"
             name="nameTextField"
             placeholder="John Doe"
             :required="booleanTrue"
           />
           <email-input
             v-model="email"
-            label="E-MAIL"
+            label="Email"
             name="emailField"
             placeholder="JDoe@email.com"
             input-icon="far fa-envelope"
@@ -61,64 +61,60 @@
           />
           <phone-input
             v-model="phone"
-            label="PHONE NUMBER"
+            label="Phone number"
             name="phoneInputField"
             placeholder="555 555 5555"
+            @alerts="alerts"
           />
           <vue-textarea
             v-model="comment"
-            label="MESSAGE"
+            label="message"
             name="messageTextareaField"
             placeholder="message"
             :required="booleanTrue"
           />
-          <div class="button">
+        </vue-form>
+        <!-- <div class="button">
             <vue-button
               button-type="submit"
               button-name="submitButton"
               button-text="SUBMIT"
-              button-icon="fas fa-comment-dots"
+              button-icon="fas fa-inbox"
               button-style="small"
               :on-click-action="sendMail"
             />
-          </div>
-        </form>
+          </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import vueButton from "@/components/vueButton.vue";
+// import vueButton from "@/components/vueButton.vue";
 import textInput from "@/components/textInput.vue";
 import emailInput from "@/components/emailInput.vue";
 import phoneInput from "@/components/phoneInput.vue";
 import vueTextarea from "@/components/vueTextarea.vue";
-// import nodemailer from "nodemailer";
+import vueForm from "@/components/vueForm";
+
 export default {
   name: "Contact",
   components: {
-    vueButton,
+    // vueButton,
     textInput,
     emailInput,
     phoneInput,
-    vueTextarea
+    vueTextarea,
+    vueForm
   },
   data() {
+    const dWarning = null;
+    const dDanger = null;
     const name = null;
     const email = null;
     const phone = null;
     const comment = null;
     const booleanTrue = true;
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    // const nodemailer = require("nodemailer");
-    // const transporter = nodemailer.createTransport({
-    //   service: "gmail",
-    //   auth: {
-    //     user: "hrishikesh.karale@gmail.com",
-    //     pass: "kkiokio6199"
-    //   }
-    // });
     const mailOptions = {
       from: "",
       to: "",
@@ -126,26 +122,27 @@ export default {
       text: ""
     };
     return {
+      dWarning,
+      dDanger,
       name,
       email,
       phone,
       comment,
       booleanTrue,
-      // nodemailer,
-      // transporter,
       mailOptions
     };
   },
   methods: {
+    alerts: function(type, message) {
+      if (type == "warning") {
+        this.dWarning = message;
+      } else if (type == "error") {
+        this.dDanger = message;
+      } else {
+        alert("error in input alert module");
+      }
+    }, //alerts
     sendMail: function() {
-      // this.mailOptions["from"] = this.email;
-      // this.mailOptions["to"] = "hrishikesh.karale@gmail.com";
-      // this.mailOptions["subject"] =
-      //   "FW: kkiokio.com" + " " + this.name + " " + this.phone;
-      // this.mailOptions["text"] = this.comment;
-      // this.transporter.sendMail(this.mailOptions, function(error, info) {
-      //   if (error) {
-      //     console.log(error);
       window.open(
         "mailto:hrishikesh.karale@gmail.com?subject=portfolio website (" +
           this.name +
@@ -156,24 +153,8 @@ export default {
           ")&body=" +
           this.comment
       );
-      // } else {
-      //   alert("Email sent: " + info.response);
-      //   this.mailOptions["from"] = "hrishikesh.karale@gmail.com";
-      //   this.mailOptions["to"] = this.email;
-      //   this.mailOptions["subject"] =
-      //     "FW: kkiokio.com" + " " + this.name + " " + this.phone;
-      //   this.mailOptions["text"] = this.comment;
-      //   this.transporter.sendMail(this.mailOptions, function(error, info) {
-      //     if (error) {
-      //       console.log(error);
-      //     } else {
-      //       console.log("Email sent: " + info.response);
-      //     }
-      //   });
-      //   }
-      // });
-    }
-  }
+    } //sendMAil
+  } //methods
 };
 </script>
 
@@ -190,12 +171,13 @@ export default {
   .details {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-self: center;
     & > div {
       display: flex;
       flex-direction: column;
-      max-width: 40vw;
-      min-width: 24opx;
+      max-width: 360px;
+      min-width: 240px;
       &.personal {
         & > div {
           display: flex;
@@ -211,7 +193,7 @@ export default {
         .boxShadow(@one);
         & > form {
           & > div {
-            margin-top: @spaceLg;
+            margin-top: @spaceMd;
             &:first-child {
               margin-top: 0;
             }

@@ -147,7 +147,8 @@ export default {
         &.active {
           border-radius: 4px;
           background-color: @secondaryColor;
-          .boxShadow(@one);
+          .boxShadow(@two);
+          color: @white;
           & > span:last-child {
             display: block;
             margin-right: 16px;

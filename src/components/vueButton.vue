@@ -6,11 +6,12 @@
       buttonClass
     ]"
     :type="buttonType"
+    :value="buttonType != 'button' ? buttonType : null"
     :name="buttonName"
     :autofocus="autofocus"
     :disabled="disabled"
     form="formID"
-    @click.stop.prevent="onClickAction"
+    @click.stop.prevent="buttonType == 'button' ? onClickAction : null"
   >
     <span v-if="buttonIcon" :class="buttonIcon" />
     <template v-if="!['icon', 'icon-sm', 'icon-lg'].includes(buttonStyle)">
@@ -42,12 +43,12 @@ export default {
     buttonIcon: {
       default: null,
       required: function(props) {
-        if (props.buttonStyle.includes("icon")) {
+        if (["icon", "icon-lg", "icon-sm"].includes(props.buttonStyle)) {
           return true;
         }
         return false;
       },
-      type: String
+      type: [String, null]
     },
 
     buttonText: {
@@ -157,7 +158,14 @@ export default {
     },
 
     onClickAction: {
-      required: true,
+      required: false,
+      // function(props) {
+      //   console.log(props.buttonType);
+      //   if (props.buttonType == "button") {
+      //     return true;
+      //   }
+      //   return false;
+      // },
       type: Function,
       default: function() {
         alert(
@@ -165,11 +173,7 @@ export default {
         );
       }
     }
-  }, //props
-
-  onBeforeMount() {
-    this.styleButton();
-  } //mounted
+  } //props
 }; //default
 </script>
 

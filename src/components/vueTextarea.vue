@@ -8,7 +8,7 @@
     <div
       :class="{
         warningContainer: dWarning,
-        errorContainer: ddanger,
+        errorContainer: dDanger,
         iconPadding: inputIcon,
         maskField: mask
       }"
@@ -30,7 +30,7 @@
     </div>
     <input-response
       :warning="dWarning"
-      :error="ddanger"
+      :error="dDanger"
       :char-limit-reached="lengthDelta == 0"
       :maxlength="maxlength"
     />
@@ -153,7 +153,7 @@ export default {
   data() {
     return {
       //stores errors thrown by the input fields
-      ddanger: null,
+      dDanger: null,
 
       //stores errors thrown by the input fields
       dWarning: null,
@@ -184,7 +184,7 @@ export default {
     },
 
     //send error messages back to parent component
-    ddanger: function(newValue) {
+    dDanger: function(newValue) {
       this.$emit("alerts", "error", newValue);
     }
   }, //methods
@@ -205,7 +205,7 @@ export default {
 
     if (alertMessage) {
       if (alertMessage["error"]) {
-        this.ddanger = alertMessage["error"];
+        this.dDanger = alertMessage["error"];
       } else if (alertMessage["warning"]) {
         this.dWarning = alertMessage["warning"];
       } else if (alertMessage["success"]) {
@@ -221,13 +221,12 @@ export default {
     //it also emits/send the current textbox value to  parent component as v-model attribute value
     validate: function() {
       //initialize warning and error messages to null to accomodate change in alert messages
-      this.ddanger = null;
+      this.dDanger = null;
       this.dWarning = null;
       //loads current value stored from dTextareaValue(data) into val(temp) variable val for readability of code
       const val = this.dTextareaValue;
       const maxlength = this.maxLength;
-      const pattern = new RegExp(this.pattern);
-
+      const pattern = this.pattern ? new RegExp(this.pattern) : null;
       //if value for val(temp) exists check for warning triggers
       if (val) {
         //if a patters for acceptable value exists, then trigger warning and set warning message if val (temp) does not follow the patter
@@ -249,7 +248,7 @@ export default {
       //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
       else {
         if (this.required) {
-          this.ddanger = "Required field.";
+          this.dDanger = "Required field.";
         }
       }
     } //validate
