@@ -155,7 +155,7 @@ export default {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: table;
-    transition: opacity 0.3s ease;
+    transition: @transition;
 
     .modal-wrapper {
       display: table-cell;
@@ -169,7 +169,7 @@ export default {
         background-color: @backgroundColor;
         border-radius: @borderRadiusMd;
         .boxShadow(@two);
-        transition: all 0.3s ease;
+        transition: @transition;
         font-family: Helvetica, Arial, sans-serif;
 
         .modal-header {

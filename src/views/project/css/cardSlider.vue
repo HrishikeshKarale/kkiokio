@@ -92,7 +92,7 @@ export default {
     z-index: 10;
     margin: 32px;
     min-height: 360px;
-    transition: all 0.25 ease;
+    transition: @transition;
     .boxShadow(@one);
     cursor: pointer;
     & > h3 {
@@ -122,7 +122,7 @@ export default {
         margin-top: -96px;
         display: flex;
         justify-content: center;
-        transition: all 0.25 ease-out;
+        transition: @transition;
         background-color: red;
       }
     }

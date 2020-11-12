@@ -108,7 +108,7 @@ export default {
   white-space: nowrap;
   user-select: none;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: @transition;
   transform: scale(0.99);
   will-change: transform;
   position: relative;

@@ -122,7 +122,7 @@ export default {
     cursor: pointer;
     &.key {
       border: 0px solid @primaryColor;
-      transition: 0.07s;
+      transition: @transition;
     }
     &.playing {
       transform: scale(1.1);

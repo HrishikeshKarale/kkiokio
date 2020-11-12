@@ -118,7 +118,7 @@ export default {
     padding: 20px;
     top: -20px;
     border-radius: 2px;
-    transition: all 0.5s;
+    transition: @transition;
     transform: translateY(100px);
     will-change: opacity;
     display: none;
@@ -158,7 +158,7 @@ export default {
     border-radius: 4px;
     box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
       0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s, opacity 0.1s, transform 0.2s;
+    transition: @transition;
     transform-origin: 50% 0;
     display: flex;
     justify-content: center;

@@ -94,7 +94,7 @@ export default {
   .compass {
     width: 250px;
     overflow: hidden;
-    transition: all 0.2s;
+    transition: @transition;
     transform: rotate(0deg);
     display: inline-block;
   }

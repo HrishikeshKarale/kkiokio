@@ -11,18 +11,25 @@
     />
     <nav>
       <ul>
+        <li>
+          <router-link :to="{ name: 'home' }">
+            <vue-img :src="logoLink" alt="Logo" />
+            <h3>
+              Hrishikesh Karale
+              <h5>Kkiokio.com</h5>
+            </h3>
+          </router-link>
+        </li>
         <li
           v-for="(navigation, index) in nav"
           :key="index + '-' + navigation.name"
         >
           <router-link :to="{ name: navigation.component }">
-            <div class="navElement">
-              <span v-if="index > 0" :class="navigation.icon" />
-              <vue-img v-else :src="logoLink" alt="Logo" />
-              <div>
-                <h4>{{ navigation.name }}</h4>
-                <span> {{ navigation.tagline }}</span>
-              </div>
+            <span v-if="index > 0" :class="navigation.icon" />
+            <vue-img v-else :src="logoLink" alt="Logo" />
+            <div>
+              <h4>{{ navigation.name }}</h4>
+              <span> {{ navigation.tagline }}</span>
             </div>
           </router-link>
         </li>
@@ -112,6 +119,8 @@ export default {
 @import (reference) "./../Less/customMixins.less";
 
 @size: @spaceXl;
+@lowOpacity: 0.64;
+@midOpacity: 0.84;
 
 .vueHeader {
   width: 100%;
@@ -123,11 +132,13 @@ export default {
   width: 100%;
   height: @header;
   // .boxShadow(@one);
-  &.menuTrigger {
+  & > .menuTrigger {
     display: none;
+    margin-left: auto;
   }
   & > .themeToggle {
-    display: block;
+    display: flex;
+    margin-left: auto;
   }
   & > nav {
     & > ul {
@@ -138,75 +149,80 @@ export default {
         display: flex;
         justify-content: space-evenly;
         flex: 1;
+        //hide website name and logo
+        &:first-child {
+          display: none;
+          & > a > img {
+            display: block;
+            height: 64px;
+            margin: auto;
+            & + h3 {
+              display: flex;
+              flex-direction: column;
+              & > h5 {
+                align-self: flex-end;
+                color: @white;
+              }
+            }
+          }
+        }
         & > a {
           margin: 0 @spaceLg;
           color: @navText;
           position: relative;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
 
-          & > .navElement {
+          & > span {
+            font-size: @fontSizeSm * 2;
+            opacity: @lowOpacity;
+          }
+          & > img {
+            height: 48px;
+          }
+          & > div {
             display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            align-items: center;
-            & > span {
-              font-size: @fontSizeSm * 2;
-            }
-            & > img {
-              height: 48px;
-            }
-            & > div {
-              display: flex;
-              flex-direction: column;
-              margin-left: 16px;
-              & > h4 {
-                color: @navText;
-              }
-              & > span {
+            flex-direction: column;
+            margin-left: 16px;
+            //nav Text
+            & > h4 {
+              color: @navText;
+              //nav subText
+              & + span {
                 font-size: 12px;
-                color: grey;
+                opacity: @midOpacity;
               }
             }
           }
 
+          //styling selected link
           &.router-link-active {
             color: @secondaryColor;
             &::before {
               transform: scale(1);
             }
-
             &.router-link-exact-active {
               color: @secondaryColor;
             }
-            & > .navElement {
-              & > div {
-                & > h4 {
-                  color: @secondaryColor;
-                  font-weight: bold;
-                }
-                & > span {
-                  color: @backgroundColor;
+
+            & > span {
+              opacity: 1;
+            }
+            & > div {
+              & > h4 {
+                color: @secondaryColor;
+                font-weight: bold;
+                & + span {
+                  color: @navText;
+                  opacity: 1;
                 }
               }
             }
           }
 
-          &:hover {
-            color: @primaryColor;
-            &::before {
-              transform: scale(1.2);
-            }
-            & > .navElement {
-              & > div {
-                & > h4 {
-                  color: @secondaryColor;
-                }
-                & > span {
-                  color: @backgroundColor;
-                }
-              }
-            }
-          }
-
+          //bottom line for nav
           &::before {
             content: "";
             position: absolute;
@@ -215,7 +231,27 @@ export default {
             bottom: -8px;
             height: 2px;
             transform: scale(0);
-            transition: all 0.3s ease-in-out;
+            transition: @transition;
+          }
+          //hover effect for li
+          &:hover {
+            color: @primaryColor;
+            &::before {
+              transform: scale(1.2);
+            }
+            & > span {
+              color: @navText;
+              opacity: 1;
+            }
+            & > div {
+              & > h4 {
+                color: @secondaryColor;
+                & + span {
+                  color: @navText;
+                  opacity: 1;
+                }
+              }
+            }
           }
         }
       }
@@ -224,18 +260,18 @@ export default {
   @media screen {
     @media (max-width: 1024px) {
       flex-direction: column;
+      flex-wrap: nowrap;
       padding: @spaceMd @spaceLg;
       border-bottom-right-radius: 8px;
       height: auto;
+      .scroll(100vh);
       & > .menuTrigger {
         display: flex;
         align-self: flex-end;
       }
       //hides navigation when toggled
       & > nav {
-        & > ul {
-          display: none;
-        }
+        display: none;
         & + .themeToggle {
           display: none;
         }
@@ -246,21 +282,38 @@ export default {
         outline: 9999px solid rgba(0, 0, 0, 0.5);
         border-bottom-right-radius: 0;
         & > nav {
+          display: flex;
+          flex-direction: column;
           height: 100%;
           & > ul {
-            display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
             & > li {
               margin-top: 16px;
+              & > a {
+                & > img {
+                  height: 32px;
+                }
+              }
+              &:first-child {
+                display: flex;
+                & > a {
+                  flex-direction: column;
+                  & > img {
+                    height: 96px;
+                  }
+                  &::before {
+                    display: none;
+                  }
+                }
+              }
             }
           }
         }
         & > .themeToggle {
           display: flex;
           align-self: flex-end;
-          margin: 0;
         }
       }
     }

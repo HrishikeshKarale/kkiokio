@@ -86,7 +86,7 @@ export default {
   }
 }
 .highlight {
-  transition: all 0.2s;
+  transition: @transition;
   border-bottom: 2px solid #ffc600;
   position: absolute;
   top: 0;
