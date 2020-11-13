@@ -11,7 +11,7 @@
     :autofocus="autofocus"
     :disabled="disabled"
     form="formID"
-    @click.stop.prevent="buttonType == 'button' ? onClickAction : null"
+    @click.stop.prevent="onClickAction"
   >
     <span v-if="buttonIcon" :class="buttonIcon" />
     <template v-if="!['icon', 'icon-sm', 'icon-lg'].includes(buttonStyle)">
@@ -158,14 +158,13 @@ export default {
     },
 
     onClickAction: {
-      required: false,
-      // function(props) {
-      //   console.log(props.buttonType);
-      //   if (props.buttonType == "button") {
-      //     return true;
-      //   }
-      //   return false;
-      // },
+      required: function(props) {
+        console.log(props.buttonType);
+        if (props.buttonType == "button") {
+          return true;
+        }
+        return false;
+      },
       type: Function,
       default: function() {
         alert(
