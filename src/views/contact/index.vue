@@ -21,12 +21,34 @@
           </p>
         </div>
         <div class="email">
-          <h3>Email</h3>
-          hrishikesh.karale@gmail.com
+          <h3>Email
+            <vue-clipboard
+              id="phoneNumber"
+              component-code="5855207382"
+              button-name="d_buttonName"
+              button-style="icon-sm"
+            /></h3>
+          <h5>
+            <a href="mailto:hrishikesh.karale@gmail.com"
+              >hrishikesh.karale@gmail.com</a
+            >
+          </h5>
+          <p>
+            Feel free to send me an email any time of the day and I should be
+            able to respond to you in a reasonable amoutn of time.
+          </p>
         </div>
         <div class="phone">
-          <h3>Phone Number</h3>
-          <h5><a href="tel:585-520-7382">(585) 520-7382</a></h5>
+          <h3>Phone Number
+            <vue-clipboard
+              id="phoneNumber"
+              component-code="5855207382"
+              button-name="d_buttonName"
+              button-style="icon-sm"
+            /></h3>
+          <h5>
+            <a href="tel:585-520-7382">(585) 520-7382</a>
+          </h5>
           <p>
             Hours: 8am - 4pm (EST), everyday
             <br />
@@ -98,6 +120,7 @@ import emailInput from "@/components/emailInput.vue";
 import phoneInput from "@/components/phoneInput.vue";
 import vueTextarea from "@/components/vueTextarea.vue";
 import vueForm from "@/components/vueForm";
+import vueClipboard from "@/components/vueClipboard.vue";
 
 export default {
   name: "Contact",
@@ -107,7 +130,8 @@ export default {
     emailInput,
     phoneInput,
     vueTextarea,
-    vueForm
+    vueForm,
+    vueClipboard
   },
   data() {
     const dWarning = null;
@@ -170,7 +194,7 @@ export default {
   justify-content: space-around;
   height: 100%;
 
-  .details {
+  & > .details {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -180,13 +204,18 @@ export default {
       flex-direction: column;
       max-width: 360px;
       min-width: 240px;
+      margin: auto;
       &.personal {
         & > div {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
           & > h3 {
+            display: flex;
             margin-bottom: 8px;
+            & > div {
+              margin-left: @spaceLg;
+            }
             & + h5 {
               margin-bottom: 4px;
             }
