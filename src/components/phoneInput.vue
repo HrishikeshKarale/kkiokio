@@ -43,6 +43,7 @@
 
 <script>
 import inputResponse from "@/components/inputResponse.vue";
+import { validator } from "@/typeScript/validator";
 
 export default {
   name: "PhoneInput", //props
@@ -50,6 +51,8 @@ export default {
   components: {
     inputResponse
   }, //data
+
+  mixins: [validator], //mixins
 
   props: {
     //sets heading/Label for the input field
@@ -80,10 +83,8 @@ export default {
     pattern: {
       required: false,
       type: RegExp,
-      // default: null
-      default: function() {
-        return new RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/);
-      }
+      // eslint-disable-next-line no-useless-escape
+      default: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})?[-. ]?([0-9]{4})$/
     },
 
     //sets the placeholder attribute for the input field
@@ -244,29 +245,18 @@ export default {
       const val = this.dTextValue;
       const maxlength = this.maxLength;
       const minlength = this.minLength;
-      const pattern = this.pattern ? new RegExp(this.pattern) : null;
+      const pattern = this.pattern;
 
       //if value for val(temp) exists check for warning triggers
+
       if (val) {
         //if a patters for acceptable value exists, then trigger warning and set warning message if val (temp) does not follow the patter
-        if (pattern && !val.match(pattern)) {
-          this.dWarning = "Wrong format: Please follow the pattern " + pattern;
-        }
-        //if a pattern does not exist or value matches the pattern, check if minlength exists and length of text entered is less than than maxlength
-        //if true trigger an alert and set warning message
-        else if (minlength && minlength > val.length) {
-          this.dWarning =
-            "Invalid Input: Allowed minlength for input is " +
-            minlength +
-            " characters.";
-        }
-        //if a pattern does not exist or value matches the pattern, check if maxlength exists and length of text entered is greater than maxlength
-        //if true trigger an alert and set warning message
-        else if (maxlength && maxlength < val.length) {
-          this.dWarning =
-            "Invalid Input: Allowed maxlength for input exceeded by -" +
-            this.lengthDelta +
-            " characters.";
+        if (pattern) {
+          this.dWarning = this.followsPattern(val, pattern);
+        } else if (minlength) {
+          this.dWarning = this.isTooShort(minlength, val);
+        } else if (maxlength) {
+          this.dWarning = this.isTooLong(maxlength, val);
         } else {
           //emit/send new values to parent component v-model attribute
           this.$emit("input", val);
@@ -274,19 +264,17 @@ export default {
       }
       //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
       else {
-        if (this.required) {
-          this.dDanger = "Required field.";
-        }
+        this.dDanger = this.isRequired();
       }
     }, //validate
 
-    phoneMask: function(f) {
+    phoneMask: function(func) {
       setTimeout(() => {
-        const v = f(this.dTextValue);
+        const v = func(this.dTextValue);
         if (v != this.dTextValue) {
           this.dTextValue = v;
         }
-      }, 0.5);
+      }, 1);
     }, //phoneMask
 
     mphone: function(v) {
@@ -295,10 +283,10 @@ export default {
       if (r.length > 10) {
         // 11+ digits. Format as 5+4.
         r = r.replace(/^(\d\d\d)(\d{3})(\d{0,4}).*/, "($1) $2-$3");
-      } else if (r.length > 5) {
+      } else if (r.length > 6) {
         // 6..10 digits. Format as 4+4
         r = r.replace(/^(\d\d\d)(\d{3})(\d{0,4}).*/, "($1) $2-$3");
-      } else if (r.length >= 3) {
+      } else if (r.length > 3) {
         // 3..5 digits. Add (0XX..)
         r = r.replace(/^(\d\d\d)(\d{3})(\d{0,4}).*/, "($1) $2");
       } else {

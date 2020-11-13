@@ -417,6 +417,8 @@
       .inputError();
     }
 
+    
+
     &.iconPadding {
 
       & > datalist, 
@@ -426,6 +428,12 @@
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
         border-left-width: 0px;
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+          background-color: none;
+          border-color: none;
+        }
       }
     }
   
@@ -433,7 +441,6 @@
     & > select, 
     & > input,
     & > textarea {
-      background-color: grey;
       padding: @spaceMd @spaceLg;
       border-radius: @borderRadiusMd;
       width: 100%;
@@ -441,7 +448,12 @@
       background-color: transparent;
       -webkit-appearance: none;
       outline: none;
-
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        background-color: none !important;
+        border-color: none !important;
+      }
       option:first {
         color: ~"darken(@backgroundColor, 25%)"
       }

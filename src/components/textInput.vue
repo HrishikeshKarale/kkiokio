@@ -41,13 +41,16 @@
 
 <script>
 import inputResponse from "@/components/inputResponse.vue";
+import { validator } from "@/typeScript/validator";
 
 export default {
-  name: "TextInput", //props
+  name: "TextInput",
 
   components: {
     inputResponse
-  }, //data
+  }, //components
+
+  mixins: [validator], //mixins
 
   props: {
     //sets heading/Label for the input field
@@ -158,7 +161,7 @@ export default {
       type: String,
       default: null
     }
-  }, //computed
+  }, //props
 
   emits: ["alerts", "input"],
 
@@ -173,7 +176,7 @@ export default {
       //stores textbox values
       dTextValue: null
     }; //return
-  }, //components
+  }, //data
 
   computed: {
     //returns the difference between maxlength and textboxValue.
@@ -241,9 +244,7 @@ export default {
       const minlength = this.minLength;
       let pattern = null;
 
-      if (this.pattern.constructor != RegExp) {
-        pattern = new RegExp(this.pattern);
-      } else {
+      if (this.pattern) {
         pattern = this.pattern;
       }
 

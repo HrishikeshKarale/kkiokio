@@ -91,9 +91,7 @@ export default {
     pattern: {
       required: false,
       type: [RegExp, String],
-      default: function() {
-        return new RegExp(/([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*/);
-      }
+      default: new RegExp(/([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*/)
     },
 
     //sets the placeholder attribute for the input field

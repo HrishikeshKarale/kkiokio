@@ -26,7 +26,7 @@
         </div>
         <div class="phone">
           <h3>Phone Number</h3>
-          <h5>(585) 520-7382</h5>
+          <h5><a href="tel:585-520-7382">(585) 520-7382</a></h5>
           <p>
             Hours: 8am - 4pm (EST), everyday
             <br />
@@ -43,6 +43,8 @@
           :d-on-click-action="sendMail.bind(this)"
           d-form="contactForm"
           :alerts="{ error: dDanger, warning: dWarning }"
+          :validate="booleanTrue"
+          :autocomplete="booleanTrue"
         >
           <text-input
             v-model="name"
@@ -183,6 +185,12 @@ export default {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
+          & > h3 {
+            margin-bottom: 8px;
+            & + h5 {
+              margin-bottom: 4px;
+            }
+          }
         }
       }
       &.form {
@@ -194,9 +202,6 @@ export default {
         & > form {
           & > div {
             margin-top: @spaceMd;
-            &:first-child {
-              margin-top: 0;
-            }
           }
         }
       }

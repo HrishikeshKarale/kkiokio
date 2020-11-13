@@ -41,6 +41,7 @@
 
 <script>
 import inputResponse from "@/components/inputResponse.vue";
+import { validator } from "@/typeScript/validator";
 
 export default {
   name: "EmailInput", //props
@@ -48,6 +49,8 @@ export default {
   components: {
     inputResponse
   }, //data
+
+  mixins: [validator], //mixins
 
   props: {
     //sets heading/Label for the input field
@@ -72,14 +75,12 @@ export default {
     },
 
     //sets the format/pattern for acceptable values for the input field
+    //[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$
+    ///^[^\s@]+@[^\s@]+\.[^\s@]+$/
     pattern: {
       required: false,
       type: RegExp,
-      default: function() {
-        return new RegExp(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        );
-      }
+      default: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/
     },
 
     //sets the placeholder attribute for the input field
@@ -239,22 +240,18 @@ export default {
       //loads current value stored from data variables into temp variable val for readability of code
       const val = this.dEmailValue;
       const maxlength = this.maxLength;
-      console.log(this.pattern);
-      const pattern = new RegExp(this.pattern);
+      const minlength = this.minLength;
+      const pattern = this.pattern;
 
       //if value for val(temp) exists check for warning triggers
       if (val) {
         //if a patters for acceptable value exists, then trigger warning and set warning message if val (temp) does not follow the patter
-        if (pattern && !val.match(pattern)) {
-          this.dWarning = "Wrong format: Please follow the pattern " + pattern;
-        }
-        //if a pattern does not exist or value matches the pattern, check if maxlength exists and length of email entered is greater than maxlength
-        //if true trigger an alert and set warning message
-        else if (maxlength && maxlength < val.length) {
-          this.dWarning =
-            "Invalid Input: Allowed maxlength for input exceeded by -" +
-            this.lengthDelta +
-            " characters.";
+        if (pattern) {
+          this.dWarning = this.followsPattern(val, pattern);
+        } else if (minlength) {
+          this.dWarning = this.isTooShort(minlength, val);
+        } else if (maxlength) {
+          this.dWarning = this.isTooLong(maxlength, val);
         } else {
           //emit/send new values to parent component v-model attribute
           this.$emit("input", val);
@@ -262,9 +259,7 @@ export default {
       }
       //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
       else {
-        if (this.required) {
-          this.dDanger = "Required field.";
-        }
+        this.dDanger = this.isRequired();
       }
     } //validate
   } //watch
