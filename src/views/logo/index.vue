@@ -1,19 +1,19 @@
 <template>
   <div class="logo">
     <p>
-      A collection of Logo's and other illustrator projects.
+      A collection of Logo's and other illustration projects.
       <br />
-      As a not so creative individual, this is an attept to explore illustrator
-      and try my hand it.
+      As a not so creative individual, this is an attept to explore Adobe
+      Illustrator and try my hand it.
       <br />
       Thee are either reproductions, modifications own own ideas and projects
       that I came up with.
     </p>
-    <div>
-      <template v-for="l in logos" :key="l.id">
-        <vue-img :src="l.link" :alt="l.id + ' - ' + l.link" />
+    <main>
+      <template v-for="logo in logos" :key="logo.id">
+        <vue-img :src="logo.link" :alt="logo.id + ' - ' + logo.link" />
       </template>
-    </div>
+    </main>
   </div>
 </template>
 <script>
@@ -40,24 +40,19 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  &.body {
+  & > main {
     display: flex;
-    flex-direction: column-reverse;
     flex-wrap: wrap;
-    & > div {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      &:last-child {
-        img {
-          margin: @spaceMd @spaceLg;
-          border-radius: 8px;
-          padding: @spaceMd;
-          max-width: 16vw;
-          min-width: 320px;
-          height: auto;
-          .boxShadow(@two);
-        }
+    justify-content: space-around;
+    &:last-child {
+      img {
+        margin: @spaceMd @spaceLg;
+        border-radius: 8px;
+        padding: @spaceMd;
+        max-width: 16vw;
+        min-width: 320px;
+        height: auto;
+        .boxShadow(@two);
       }
     }
   }
