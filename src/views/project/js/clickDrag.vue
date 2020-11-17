@@ -113,7 +113,7 @@ export default {
   will-change: transform;
   position: relative;
   font-size: 0;
-  perspective: 500px;
+  perspective: 400px;
   &.active {
     cursor: grabbing;
     cursor: -webkit-grabbing;

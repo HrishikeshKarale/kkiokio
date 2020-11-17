@@ -74,7 +74,8 @@ export default {
       }
     },
 
-    //users can pass preset values for the input field
+    //looks for exact match
+    //if set true wors like a dropdown list while if toggles between 
     strict: {
       required: false,
       type: Boolean,
@@ -196,7 +197,7 @@ export default {
     danger: function(newValue) {
       this.$emit("alerts", "error", newValue);
     }
-  }, //methods
+  }, //watch
 
   created() {
     //store value of prop in temp variable for code readability

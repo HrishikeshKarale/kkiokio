@@ -33,7 +33,9 @@
     <input-response
       :warning="dWarning"
       :error="dDanger"
-      :char-limit-reached="lengthDelta == 0"
+      :char-limit-reached="
+        dTextValue ? maxlength - dTextValue.length <= 0 : false
+      "
       :maxlength="maxlength"
     />
   </div>
@@ -202,7 +204,7 @@ export default {
     dDanger: function(newValue) {
       this.$emit("alerts", "error", newValue);
     }
-  }, //methods
+  }, //watch
 
   created() {
     //store values passed as props into dTextValue for future manipulation
@@ -235,51 +237,15 @@ export default {
     //validate the textbox input and set alert messages if required.
     //it also emits/send the current textbox value to  parent component as v-model attribute value
     validate: function() {
-      //initialize warning and error messages to null to accomodate change in alert messages
-      this.dDanger = null;
-      this.dWarning = null;
-      //loads current value stored from data variables into temp variable val for readability of code
-      const val = this.dTextValue;
-      const maxlength = this.maxLength;
-      const minlength = this.minLength;
-      let pattern = null;
-
-      if (this.pattern) {
-        pattern = this.pattern;
-      }
-
-      //if value for val(temp) exists check for warning triggers
-      if (val) {
-        //if a patters for acceptable value exists, then trigger warning and set warning message if val (temp) does not follow the patter
-        if (pattern && !val.match(pattern)) {
-          this.dWarning = "Wrong format: Please follow the pattern " + pattern;
-        }
-        //if a pattern does not exist or value matches the pattern, check if minlength exists and length of text entered is less than than maxlength
-        //if true trigger an alert and set warning message
-        else if (minlength && minlength > val.length) {
-          this.dWarning =
-            "Invalid Input: Allowed minlength for input is " +
-            minlength +
-            " characters.";
-        }
-        //if a pattern does not exist or value matches the pattern, check if maxlength exists and length of text entered is greater than maxlength
-        //if true trigger an alert and set warning message
-        else if (maxlength && maxlength < val.length) {
-          this.dWarning =
-            "Invalid Input: Allowed maxlength for input exceeded by -" +
-            this.lengthDelta +
-            " characters.";
-        } else {
-          //emit/send new values to parent component v-model attribute
-          this.$emit("input", val);
-        }
-      }
-      //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
-      else {
-        if (this.required) {
-          this.dDanger = "Required field.";
-        }
-      }
+      const object = {
+        value: this.dTextValue,
+        maxlength: this.maxLength,
+        minlength: this.minLength,
+        pattern: this.pattern
+      };
+      const response = this.validator(object);
+      this.dDanger = response.error;
+      this.dWarning = response.warning;
     } //validate
   } //watch
 }; //default

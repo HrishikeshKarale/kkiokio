@@ -3,14 +3,15 @@
   margin-left: @spaceLg;
 }
 
-activeNavigation
+//activeNavigation
 .vue-school-active-class {
   &.router-link-active {
-    color: @navText;
+    color: @secondaryColor;
   }
 }
 
 .noselect, * {
+  word-wrap: break-word !important;
   -webkit-touch-callout: none;
   /* iOS Safari */
   -webkit-user-select: none;
@@ -31,18 +32,28 @@ abbr[title] {
 }
 
 article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
   & > header {
     visibility: hidden;
     height: 0;
   }
   & > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     min-height: @body;
-    scroll-behavior: smooth;
   }
 }
 
 a {
   text-decoration: none !important;
+}
+p {
+  margin: 0 0 8px !important;
 }
 
 input {

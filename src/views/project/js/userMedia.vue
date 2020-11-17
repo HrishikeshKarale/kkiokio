@@ -270,7 +270,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     & > video {
-      height: 480px;
+      height: 400px;
       &.grayscale {
         filter: grayscale(50%);
       }

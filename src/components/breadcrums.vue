@@ -92,5 +92,10 @@ export default {
   & > span {
     color: @cometText;
   }
+  @media screen {
+    @media (max-width: 1024px) {
+      margin: 0 0 0 32px !important;
+    }
+  }
 }
 </style>

@@ -123,7 +123,7 @@ export default {
     will-change: opacity;
     display: none;
     &.bio {
-      min-width: 500px;
+      min-width: 400px;
       display: flex;
       justify-content: center;
       align-items: center;

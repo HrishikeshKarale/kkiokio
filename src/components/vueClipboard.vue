@@ -8,7 +8,6 @@
       :button-style="buttonStyle"
       :disabled="!dBooleanTrue"
       :autofocus="!dBooleanTrue"
-      :form-i-d="dForm"
       :on-click-action="copyToClipboard"
     />
     <!-- <input type= 'hidden' :id= "id" :value= 'componentCode'> -->

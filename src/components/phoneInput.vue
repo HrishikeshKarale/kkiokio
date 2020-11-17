@@ -35,7 +35,9 @@
     <input-response
       :warning="dWarning"
       :error="dDanger"
-      :char-limit-reached="lengthDelta == -1"
+      :char-limit-reached="
+        dTextValue ? maxlength - dTextValue.length <= 0 : false
+      "
       :maxlength="maxlength"
     />
   </div>
@@ -205,7 +207,7 @@ export default {
     dDanger: function(newValue) {
       this.$emit("alerts", "error", newValue);
     }
-  }, //methods
+  }, //watch
 
   created() {
     //store values passed as props into dTextValue for future manipulation
@@ -238,34 +240,15 @@ export default {
     //validate the textbox input and set alert messages if required.
     //it also emits/send the current textbox value to  parent component as v-model attribute value
     validate: function() {
-      //initialize warning and error messages to null to accomodate change in alert messages
-      this.dDanger = null;
-      this.dWarning = null;
-      //loads current value stored from data variables into temp variable val for readability of code
-      const val = this.dTextValue;
-      const maxlength = this.maxLength;
-      const minlength = this.minLength;
-      const pattern = this.pattern;
-
-      //if value for val(temp) exists check for warning triggers
-
-      if (val) {
-        //if a patters for acceptable value exists, then trigger warning and set warning message if val (temp) does not follow the patter
-        if (pattern) {
-          this.dWarning = this.followsPattern(val, pattern);
-        } else if (minlength) {
-          this.dWarning = this.isTooShort(minlength, val);
-        } else if (maxlength) {
-          this.dWarning = this.isTooLong(maxlength, val);
-        } else {
-          //emit/send new values to parent component v-model attribute
-          this.$emit("input", val);
-        }
-      }
-      //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
-      else {
-        this.dDanger = this.isRequired();
-      }
+      const object = {
+        value: this.dTextValue,
+        maxlength: this.maxLength,
+        minlength: this.minLength,
+        pattern: this.pattern
+      };
+      const response = this.validator(object);
+      this.dDanger = response.error;
+      this.dWarning = response.warning;
     }, //validate
 
     phoneMask: function(func) {

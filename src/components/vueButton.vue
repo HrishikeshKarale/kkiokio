@@ -10,7 +10,7 @@
     :name="buttonName"
     :autofocus="autofocus"
     :disabled="disabled"
-    form="formID"
+    :form="formID"
     @click.stop.prevent="onClickAction"
   >
     <span v-if="buttonIcon" :class="buttonIcon" />
@@ -154,7 +154,12 @@ export default {
     formID: {
       required: false,
       type: String,
-      default: null
+      default: function(props) {
+        if (props.buttonName) {
+          return props.buttonName;
+        }
+        return "form";
+      }
     },
 
     onClickAction: {
@@ -202,10 +207,10 @@ export default {
     padding: @spaceSm;
     font-size: @fontSize;
 
-    .boxShadow(@three);
+    .textShadow(@one);
 
     &:hover {
-      .boxShadow(@one);
+      .textShadow(@base);
     }
 
     &.btn-sm {

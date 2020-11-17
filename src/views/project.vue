@@ -21,7 +21,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-width: 480px;
+  min-width: 400px;
 }
 </style>
 /* to add a project, add project details to the store project file and then add

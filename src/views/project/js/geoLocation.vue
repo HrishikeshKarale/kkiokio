@@ -68,7 +68,7 @@ export default {
     //picks available speech recognition class for chrome or firefox
     navigator.geolocation.watchPosition(
       data => {
-        console.log(data);
+        // console.log(data);
         this.speed.textContent = data.coords.speed;
         this.compass.style.transform = `rotate(${
           data.coords.heading > 0 ? data.coords.heading * 0.621371 : 0

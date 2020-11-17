@@ -11,11 +11,14 @@
       <slot />
     </div>
     <div class="formButtons">
-      <input
-        class="btn"
+      <vue-button
+        button-type="submit"
+        button-text="Submit"
+        buttop-name="formSubmitButton"
+        button-style="small"
+        button-icon="fas fa-clipboard-check"
         :disabled="alerts.error || alerts.warning"
-        type="submit"
-        value="Send Message"
+        :on-click-action="dOnClickAction"
       />
       <input class="btn" type="reset" value="Reset" />
     </div>
@@ -23,13 +26,13 @@
 </template>
 
 <script>
-// import vueButton from "@/components/vueButton";
+import vueButton from "@/components/vueButton";
 
 export default {
   name: "VueForm", //props
 
   components: {
-    // vueButton
+    vueButton
   }, //data
 
   props: {
@@ -44,7 +47,7 @@ export default {
     dForm: {
       type: String,
       required: false,
-      default: "form"
+      default: null
     },
     autocomplete: {
       type: Boolean,
@@ -94,7 +97,7 @@ export default {
   }, //components
   methods: {
     formReset: function() {
-      console.log(this.$ref[this.dForm]);
+      // console.log(this.$ref[this.dForm]);
       this.$ref[this.dForm].reset();
     }
   } //methods
@@ -109,6 +112,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  margin: auto;
   & > div {
     display: flex;
     &.formElements {
@@ -119,6 +123,9 @@ export default {
       & > input {
         font-size: @fontSizeMd;
         margin-right: @spaceMd;
+        &:first-child {
+          margin-right: 0;
+        }
         &[type="reset"] {
           background-color: transparent;
         }

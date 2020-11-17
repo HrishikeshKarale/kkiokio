@@ -1,10 +1,10 @@
 <template>
   <div class="enterpriseAppLayout">
-    <div class="head">
+    <header v-if="$slots['header']" class="head">
       <slot name="header" />
-    </div>
+    </header>
     <div class="body">
-      <div class="menu">
+      <div v-if="$slots['menu']" class="menu">
         <slot name="menu" />
       </div>
       <div :key="$route.path" class="content">
@@ -12,7 +12,7 @@
         <scroll-indicator>
           <router-view :key="$route.path" />
         </scroll-indicator>
-        <div class="moto">
+        <aside class="moto">
           <vue-img :src="logo" alt="Moto" />
           <q>
             A little
@@ -23,7 +23,7 @@
             </abbr>
             goes a long way
           </q>
-        </div>
+        </aside>
       </div>
     </div>
   </div>
@@ -66,15 +66,12 @@ export default {
     height: 100%;
     &.head {
       height: fit-content;
-      order: 1;
       max-width: 100vw;
       z-index: 2000;
     }
     &.body {
       display: flex;
       flex-direction: column;
-      order: 2;
-      min-height: @body;
       max-width: 100vw;
       z-index: 1000;
       background-color: @backgroundColor;
@@ -97,34 +94,22 @@ export default {
           }
         }
         &.content {
-          // padding: @spaceLg @spaceXl;
+          align-items: center;
           color: @cometText;
           margin: auto;
           max-width: 80vw;
           min-width: 320px;
-          & > .breadcrums {
-            margin: 16px 0;
-            & > .crums {
-              padding: 8px;
-              font-weight: bold;
-              color: @secondaryColor;
-              text-decoration: none;
-              & + span {
-                color: @cometText;
-              }
-            }
-          }
 
           & > .moto {
             display: flex;
             flex-direction: column;
-            padding: @spaceMd;
             position: absolute;
             bottom: 0;
             right: 0;
-            padding: 16px 32px;
-            background-color: @backgroundColor;
+            padding: @spaceMd @spaceLg;
             border-radius: 4px 0 0 0;
+            // background-color: @backgroundColor;
+            height: fit-content;
 
             & > img {
               height: 48px;
@@ -156,8 +141,17 @@ export default {
           top: 0;
         }
         &.body {
-          .content {
-            margin-top: 80px;
+          & > div.content {
+            & > .moto {
+              padding: 0;
+
+              & > img {
+                display: none;
+              }
+              & > q {
+                padding: @spaceSm @spaceMd;
+              }
+            }
           }
         }
       }

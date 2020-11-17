@@ -25,7 +25,7 @@ html {
     --backgroundColor:       var(--offWhite);
     --navBackground:         var(--offBlack);
     --navText:               var(--offWhite);
-    --shadowColor: var(--grayDark);
+    --shadowColor: var(--black);
 }
 
 html[theme='darkMode'] {
@@ -33,7 +33,7 @@ html[theme='darkMode'] {
     --backgroundColor:       var(--offBlack);
     --navBackground: var(--black);
     --navText:               var(--white);
-    --shadowColor:            var(--black);
+    --shadowColor: var(--offBlack);
 }
 
 

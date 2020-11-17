@@ -10,7 +10,6 @@
         :button-style="buttonStyle[2]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
-        :form-i-d="form"
         :on-click-action="onClickAction"
       />
 
@@ -23,7 +22,6 @@
         :button-style="buttonStyle[9]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
-        :form-i-d="form"
         :on-click-action="onClickAction"
       />
     </div>
@@ -51,7 +49,6 @@
                   :button-style="buttonStyle[2]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
-                  :form-i-d="form"
                   :on-click-action="onClickAction"
                 />
               </div>
@@ -63,7 +60,6 @@
                   :button-style="buttonStyle[11]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
-                  :form-i-d="form"
                   :on-click-action="onClickAction"
                 />
               </div>

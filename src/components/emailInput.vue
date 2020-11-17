@@ -33,7 +33,9 @@
     <input-response
       :warning="dWarning"
       :error="dDanger"
-      :char-limit-reached="lengthDelta == 0"
+      :char-limit-reached="
+        dEmailValue ? maxlength - dEmailValue.length < 0 : false
+      "
       :maxlength="maxlength"
     />
   </div>
@@ -79,8 +81,8 @@ export default {
     ///^[^\s@]+@[^\s@]+\.[^\s@]+$/
     pattern: {
       required: false,
-      type: RegExp,
-      default: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/
+      type: [RegExp, String],
+      default: new RegExp("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$")
     },
 
     //sets the placeholder attribute for the input field
@@ -177,20 +179,6 @@ export default {
     }; //return
   }, //components
 
-  computed: {
-    //returns the difference between maxlength and textboxValue.
-    //a negative value indicates that we have exceeded the allowed maximum for the textbox and
-    lengthDelta: function() {
-      const val = this.dEmailValue;
-      const maxLength = this.maxlength;
-
-      if (maxLength && val) {
-        return maxLength - val.length;
-      }
-      return null;
-    } //lengthDelta
-  },
-
   watch: {
     //send warning messages back to parent component
     dWarning: function(newValue) {
@@ -234,33 +222,15 @@ export default {
     //validate the textbox input and set alert messages if required.
     //it also emits/send the current textbox value to  parent component as v-model attribute value
     validate: function() {
-      //initialize warning and error messages to null to accomodate change in alert messages
-      this.dDanger = null;
-      this.dWarning = null;
-      //loads current value stored from data variables into temp variable val for readability of code
-      const val = this.dEmailValue;
-      const maxlength = this.maxLength;
-      const minlength = this.minLength;
-      const pattern = this.pattern;
-
-      //if value for val(temp) exists check for warning triggers
-      if (val) {
-        //if a patters for acceptable value exists, then trigger warning and set warning message if val (temp) does not follow the patter
-        if (pattern) {
-          this.dWarning = this.followsPattern(val, pattern);
-        } else if (minlength) {
-          this.dWarning = this.isTooShort(minlength, val);
-        } else if (maxlength) {
-          this.dWarning = this.isTooLong(maxlength, val);
-        } else {
-          //emit/send new values to parent component v-model attribute
-          this.$emit("input", val);
-        }
-      }
-      //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
-      else {
-        this.dDanger = this.isRequired();
-      }
+      const object = {
+        value: this.dEmailValue,
+        maxlength: this.maxLength,
+        minlength: this.minLength,
+        pattern: this.pattern
+      };
+      const response = this.validator(object);
+      this.dDanger = response.error;
+      this.dWarning = response.warning;
     } //validate
   } //watch
 }; //default

@@ -80,7 +80,9 @@ export default {
       const offsetHeader = Array.from(
         document.getElementsByClassName("vueHeader")
       )[0];
+      // console.log(offsetHeader.offsetHeight, this.headerOffset.offsetHeight);
       this.tag = Array.from(document.getElementsByTagName("section"));
+      this.tag = this.tag.filter(tag => tag.id != "");
       this.tagOffset = this.tag.map(section => {
         return {
           top: section.offsetTop - offsetHeader.offsetHeight,
@@ -126,15 +128,14 @@ export default {
     &.scroll {
       position: absolute;
       height: fit-content;
-      top: @header + 32px;
-      right: 64px;
+      top: @header + @spaceLg;
+      right: @spaceLg*2;
       &::before {
         content: "Page Content";
         text-align: right;
         font-weight: bold;
       }
       & > a {
-        float: right;
         display: flex;
         flex-direction: row-reverse;
         text-decoration: none;
@@ -149,6 +150,7 @@ export default {
           background-color: @secondaryColor;
           .boxShadow(@two);
           color: @white;
+          //active block text;
           & > span:last-child {
             display: block;
             margin-right: 16px;
@@ -162,22 +164,51 @@ export default {
           }
         }
       }
-      @media screen {
-        @media (max-width: 1024px) {
-          bottom: 0px;
+    }
+
+    // &.scrolContent {
+    //   display: flex;
+    //   flex-direction: row;
+    //   justify-content: center;
+    //   align-items: center;
+    // }
+  }
+  @media screen {
+    @media (max-width: 1024px) {
+      & > div {
+        &.scroll {
+          background-color: @secondaryColor;
+          border-radius: 32px;
+          padding: @spaceXs;
+          top: 50%;
+          transform: translateY(-50%);
           right: 16px;
+          & > a {
+            width: fit-content;
+            &:hover,
+            &.active {
+              background-color: none;
+              .boxShadow(none);
+              & > span:last-child {
+                position: absolute;
+                width: max-content;
+                text-align: center;
+                color: @secondaryColor;
+                top: -32px;
+                right: -16px;
+                font-weight: bold;
+              }
+            }
+            & > span {
+              color: @backgroundColor;
+              .textShadow(@one);
+            }
+          }
           &::before {
-            content: "Content";
+            content: "";
           }
         }
       }
-    }
-
-    &.scrolContent {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
     }
   }
 }

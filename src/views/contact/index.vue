@@ -9,8 +9,8 @@
       You can also write to me the old fashion way.
     </p>
     <div class="details">
-      <div class="personal">
-        <div class="address">
+      <main class="personal">
+        <section class="address">
           <h3>Postal Address</h3>
           <p>
             44 Crittenden Way,
@@ -19,35 +19,43 @@
             <br />
             Rochester, NY 14623
           </p>
-        </div>
-        <div class="email">
-          <h3>Email
+        </section>
+        <section class="email">
+          <h3>
+            Email
             <vue-clipboard
-              id="phoneNumber"
-              component-code="5855207382"
-              button-name="d_buttonName"
+              id="emailId"
+              component-code="hrishikesh.karale@gmail.com"
               button-style="icon-sm"
-            /></h3>
+            />
+          </h3>
           <h5>
-            <a href="mailto:hrishikesh.karale@gmail.com"
-              >hrishikesh.karale@gmail.com</a
-            >
+            <address>
+              <a href="mailto:hrishikesh.karale@gmail.com">
+                hrishikesh.karale@gmail.com
+              </a>
+            </address>
           </h5>
           <p>
             Feel free to send me an email any time of the day and I should be
             able to respond to you in a reasonable amoutn of time.
           </p>
-        </div>
-        <div class="phone">
-          <h3>Phone Number
+        </section>
+        <section class="phone">
+          <h3>
+            Phone Number
             <vue-clipboard
               id="phoneNumber"
               component-code="5855207382"
-              button-name="d_buttonName"
               button-style="icon-sm"
-            /></h3>
+            />
+          </h3>
           <h5>
-            <a href="tel:585-520-7382">(585) 520-7382</a>
+            <address>
+              <a href="tel:585-520-7382">
+                (585) 520-7382
+              </a>
+            </address>
           </h5>
           <p>
             Hours: 8am - 4pm (EST), everyday
@@ -58,63 +66,53 @@
             *First time caller(s) are screened using virtual assistan to weed
             out spam calls</i
           >
-        </div>
-      </div>
-      <div class="form">
-        <vue-form
-          :d-on-click-action="sendMail.bind(this)"
-          d-form="contactForm"
-          :alerts="{ error: dDanger, warning: dWarning }"
-          :validate="booleanTrue"
-          :autocomplete="booleanTrue"
-        >
-          <text-input
-            v-model="name"
-            label="Name"
-            name="nameTextField"
-            placeholder="John Doe"
-            :required="booleanTrue"
-          />
-          <email-input
-            v-model="email"
-            label="Email"
-            name="emailField"
-            placeholder="JDoe@email.com"
-            input-icon="far fa-envelope"
-            :required="booleanTrue"
-          />
-          <phone-input
-            v-model="phone"
-            label="Phone number"
-            name="phoneInputField"
-            placeholder="555 555 5555"
-            @alerts="alerts"
-          />
-          <vue-textarea
-            v-model="comment"
-            label="message"
-            name="messageTextareaField"
-            placeholder="message"
-            :required="booleanTrue"
-          />
-        </vue-form>
-        <!-- <div class="button">
-            <vue-button
-              button-type="submit"
-              button-name="submitButton"
-              button-text="SUBMIT"
-              button-icon="fas fa-inbox"
-              button-style="small"
-              :on-click-action="sendMail"
-            />
-          </div> -->
-      </div>
+        </section>
+      </main>
+      <vue-form
+        :d-on-click-action="sendMail.bind(this)"
+        d-form="contactForm"
+        :alerts="{ error: dDanger, warning: dWarning }"
+        :validate="!booleanTrue"
+        :autocomplete="booleanTrue"
+      >
+        <text-input
+          v-model="name"
+          label="Name"
+          name="nameTextField"
+          placeholder="John Doe"
+          :required="booleanTrue"
+          @alerts="alerts"
+        />
+        <email-input
+          v-model="email"
+          label="Email"
+          name="emailField"
+          placeholder="JDoe@email.com"
+          input-icon="far fa-envelope"
+          :required="booleanTrue"
+          @alerts="alerts"
+        />
+        <phone-input
+          v-model="phone"
+          label="Phone number"
+          name="phoneInputField"
+          placeholder="555 555 5555"
+          @alerts="alerts"
+        />
+        <vue-textarea
+          v-model="comment"
+          label="message"
+          name="messageTextareaField"
+          placeholder="message"
+          :required="booleanTrue"
+          @alerts="alerts"
+        />
+      </vue-form>
     </div>
   </div>
 </template>
 
 <script>
-// import vueButton from "@/components/vueButton.vue";
 import textInput from "@/components/textInput.vue";
 import emailInput from "@/components/emailInput.vue";
 import phoneInput from "@/components/phoneInput.vue";
@@ -125,7 +123,6 @@ import vueClipboard from "@/components/vueClipboard.vue";
 export default {
   name: "Contact",
   components: {
-    // vueButton,
     textInput,
     emailInput,
     phoneInput,
@@ -197,16 +194,18 @@ export default {
   & > .details {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-self: center;
-    & > div {
+    max-width: 1024px;
+    & > main {
       display: flex;
       flex-direction: column;
       max-width: 360px;
       min-width: 240px;
       margin: auto;
       &.personal {
-        & > div {
+        & > section {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
@@ -218,19 +217,23 @@ export default {
             }
             & + h5 {
               margin-bottom: 4px;
+              & > address {
+                margin-bottom: 0px;
+              }
             }
           }
         }
       }
-      &.form {
-        min-width: 320px;
-        padding: @spaceLg;
-        background-color: @backgroundColor;
-        border-radius: 8px;
-        .boxShadow(@one);
-        & > form {
-          & > div {
-            margin-top: @spaceMd;
+    }
+  }
+
+  @media screen {
+    @media (max-width: 1024px) {
+      & > .details {
+        flex-direction: column-reverse;
+        & > main {
+          & > form {
+            width: min-content;
           }
         }
       }

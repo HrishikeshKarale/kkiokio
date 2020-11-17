@@ -24,6 +24,6 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-width: 480px;
+  min-width: 400px;
 }
 </style>
