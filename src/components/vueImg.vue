@@ -1,6 +1,12 @@
 // onerror= "this.onerror=null; this.src='image.png'"
 <template>
-  <img class="vueImg" :src="src ? src : dImageSource" :alt="alt" :title="alt" />
+  <img
+    v-once
+    class="vueImg"
+    :src="src ? src : dImageSource"
+    :alt="alt"
+    :title="alt"
+  />
 </template>
 
 <script>

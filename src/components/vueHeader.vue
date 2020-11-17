@@ -26,7 +26,10 @@
         >
           <router-link :to="{ name: navigation.component }">
             <span v-if="index > 0" :class="navigation.icon" />
-            <vue-img v-else :src="logoLink" alt="Logo" />
+            <template v-else>
+              <vue-img :src="logoLink" alt="Kkiokio.com" />
+              <!-- <small>kkiokio.com</small> -->
+            </template>
             <div>
               <h4>{{ navigation.name }}</h4>
               <span> {{ navigation.tagline }}</span>
@@ -181,6 +184,10 @@ export default {
           }
           & > img {
             height: 48px;
+            // & + small {
+            //   position: absolute;
+            //   bottom: -4px;
+            // }
           }
           & > div {
             display: flex;

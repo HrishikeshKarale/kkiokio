@@ -10,7 +10,15 @@
       <div :key="$route.path" class="content">
         <breadcrums />
         <scroll-indicator>
-          <router-view :key="$route.path" />
+          <transition
+            :name="transitionName"
+            mode="out-in"
+            @beforeLeave="beforeLeave"
+            @enter="enter"
+            @afterEnter="afterEnter"
+          >
+            <router-view :key="$route.path" />
+          </transition>
         </scroll-indicator>
         <aside class="moto">
           <vue-img :src="logo" alt="Moto" />
@@ -44,9 +52,50 @@ export default {
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logo = require("@/assets/logo.svg");
+    const DEFAULT_TRANSITION = "fade";
+    const prevHeight = 0;
     return {
-      logo
+      logo,
+      transitionName: DEFAULT_TRANSITION,
+      prevHeight
     };
+  },
+
+  created() {
+    this.$router.beforeEach((to, from, next) => {
+      if (to.meta.requiresAuth) {
+        //user needs login
+      }
+
+      let transitionName = to.meta.transitionName || from.meta.transitionName;
+
+      if (transitionName === "slide") {
+        const toDepth = to.path.split("/").length;
+        const fromDepth = from.path.split("/").length;
+        transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
+      }
+
+      this.transitionName = transitionName || "fade";
+
+      next();
+    });
+  }, //data
+  methods: {
+    beforeLeave(element) {
+      this.prevHeight = getComputedStyle(element).height;
+    }, //beforeLeave
+    enter(element) {
+      const { height } = getComputedStyle(element);
+
+      element.style.height = this.prevHeight;
+
+      setTimeout(() => {
+        element.style.height = height;
+      });
+    }, //enter
+    afterEnter(element) {
+      element.style.height = "auto";
+    } //afterEnter
   }
 };
 </script>
@@ -157,5 +206,40 @@ export default {
       }
     }
   }
+}
+//fade transition
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+//slide transition
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition-duration: 5s;
+  transition-property: height, opacity, transform;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  overflow: hidden;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(2em, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-2em, 0);
 }
 </style>

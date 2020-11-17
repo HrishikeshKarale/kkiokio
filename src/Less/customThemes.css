@@ -16,8 +16,6 @@ html {
     --gray: ~"lighten(--black, 33.5%)";
     --grayLight: ~"lighten(--black, 46.7%)";
     --grayLighter: ~"lighten(--black, 93.5%)";
-    
-    scroll-behavior: smooth;
 }
 
 :root {
