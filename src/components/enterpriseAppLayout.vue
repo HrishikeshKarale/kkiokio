@@ -7,32 +7,32 @@
       <div v-if="$slots['menu']" class="menu">
         <slot name="menu" />
       </div>
-      <div :key="$route.path" class="content">
-        <breadcrums />
-        <scroll-indicator>
-          <transition
-            :name="transitionName"
-            mode="out-in"
-            @beforeLeave="beforeLeave"
-            @enter="enter"
-            @afterEnter="afterEnter"
-          >
+      <transition
+        :name="transitionName"
+        mode="out-in"
+        @beforeLeave="beforeLeave"
+        @enter="enter"
+        @afterEnter="afterEnter"
+      >
+        <div :key="$route.path" class="content">
+          <breadcrums />
+          <scroll-indicator>
             <router-view :key="$route.path" />
-          </transition>
-        </scroll-indicator>
-        <aside class="moto">
-          <vue-img :src="logo" alt="Moto" />
-          <q>
-            A little
-            <abbr
-              title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
-            >
-              Empathy
-            </abbr>
-            goes a long way
-          </q>
-        </aside>
-      </div>
+          </scroll-indicator>
+          <aside class="moto">
+            <vue-img :src="logo" alt="Moto" />
+            <q>
+              A little
+              <abbr
+                title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
+              >
+                Empathy
+              </abbr>
+              goes a long way
+            </q>
+          </aside>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -61,7 +61,7 @@ export default {
     };
   },
 
-  created() {
+  beforeMount() {
     this.$router.beforeEach((to, from, next) => {
       if (to.meta.requiresAuth) {
         //user needs login
@@ -79,7 +79,7 @@ export default {
 
       next();
     });
-  }, //data
+  }, //beforeMount
   methods: {
     beforeLeave(element) {
       this.prevHeight = getComputedStyle(element).height;
@@ -210,7 +210,7 @@ export default {
 //fade transition
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: 3s;
+  transition-duration: 0.3s;
   transition-property: opacity;
   transition-timing-function: ease;
 }
@@ -225,7 +225,7 @@ export default {
 .slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition-duration: 5s;
+  transition-duration: 0.5s;
   transition-property: height, opacity, transform;
   transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
   overflow: hidden;
