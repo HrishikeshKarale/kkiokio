@@ -75,7 +75,7 @@ export default {
     },
 
     //looks for exact match
-    //if set true wors like a dropdown list while if toggles between 
+    //if set true wors like a dropdown list while if toggles between
     strict: {
       required: false,
       type: Boolean,
