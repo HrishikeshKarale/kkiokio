@@ -38,15 +38,24 @@
         </li>
       </ul>
     </nav>
-    <vue-button
-      v-if="themeIcon"
-      class="themeToggle"
-      buttop-name="themeToggle"
-      button-style="text-sm"
-      button-text="Theme"
-      :button-icon="themeIcon"
-      :on-click-action="theme.bind(this)"
-    />
+    <div class="themeToggle">
+      <vue-button
+        v-if="!authenticated"
+        buttop-name="loginButton"
+        button-style="text-sm"
+        button-text="LogIn"
+        button-icon="fas fa-sign-in-alt"
+        :on-click-action="login.bind(this)"
+      />
+      <vue-button
+        v-if="themeIcon"
+        buttop-name="themeToggle"
+        button-style="text-sm"
+        button-text="Theme"
+        :button-icon="themeIcon"
+        :on-click-action="theme.bind(this)"
+      />
+    </div>
   </div>
 </template>
 
@@ -61,7 +70,7 @@ export default {
   components: {
     vueButton,
     vueImg
-  },
+  }, //data
 
   mixins: [toggle],
 
@@ -77,6 +86,12 @@ export default {
       type: Object,
       default: null
     }
+  },
+  data() {
+    const authenticated = this.$router.currentRoute.value.meta.requiresAuth;
+    return {
+      authenticated
+    };
   },
 
   computed: {
@@ -96,6 +111,7 @@ export default {
       capture: false, // top to bottom bubbling/propogation
       once: false //should work only once
     });
+    console.log(this.$router.currentRoute.value.meta.requiresAuth);
   },
 
   methods: {
@@ -107,6 +123,10 @@ export default {
       }
       // event.stopPropogation(); //stop event bubbling
     }, //clickHandler
+
+    login: function() {
+      this.$router.push({ name: "login" });
+    }, //login
 
     toggleNavigation: function() {
       this.$refs["vueHeader"].classList.toggle("showNav");
@@ -126,7 +146,6 @@ export default {
 @midOpacity: 0.84;
 
 .vueHeader {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -184,10 +203,6 @@ export default {
           }
           & > img {
             height: 48px;
-            // & + small {
-            //   position: absolute;
-            //   bottom: -4px;
-            // }
           }
           & > div {
             display: flex;
@@ -271,6 +286,7 @@ export default {
       padding: @spaceMd @spaceLg;
       border-bottom-right-radius: 8px;
       height: auto;
+      width: fit-content;
       .scroll(100vh);
       & > .menuTrigger {
         display: flex;
@@ -320,7 +336,12 @@ export default {
         }
         & > .themeToggle {
           display: flex;
-          align-self: flex-end;
+          flex-direction: column;
+          justify-content: space-between;
+
+          & > button {
+            margin-bottom: @spaceLg;
+          }
         }
       }
     }

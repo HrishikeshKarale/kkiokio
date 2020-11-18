@@ -135,6 +135,13 @@ export default {
       default: false
     },
 
+    //sets the autocomplete attribute for the input field
+    autocomplete: {
+      required: false,
+      type: Boolean,
+      default: true
+    },
+
     //sets the readonly attribute for the input field
     readonly: {
       required: false,
@@ -179,20 +186,6 @@ export default {
       dTextValue: null
     }; //return
   }, //data
-
-  computed: {
-    //returns the difference between maxlength and textboxValue.
-    //a negative value indicates that we have exceeded the allowed maximum for the textbox and
-    lengthDelta: function() {
-      const val = this.dTextValue;
-      const maxLength = this.maxlength;
-
-      if (maxLength && val) {
-        return maxLength - val.length;
-      }
-      return null;
-    } //lengthDelta
-  }, //beforeMount
 
   watch: {
     //send warning messages back to parent component
@@ -247,7 +240,7 @@ export default {
       this.dDanger = response.error;
       this.dWarning = response.warning;
     } //validate
-  } //watch
+  } //methods
 }; //default
 </script>
 

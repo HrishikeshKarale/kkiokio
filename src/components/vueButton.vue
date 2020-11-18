@@ -96,6 +96,13 @@ export default {
       default: false
     },
 
+    //sets the autocomplete attribute for the input field
+    autocomplete: {
+      required: false,
+      type: Boolean,
+      default: true
+    },
+
     buttonClass: {
       required: false,
       type: String,
@@ -164,7 +171,7 @@ export default {
 
     onClickAction: {
       required: function(props) {
-        console.log(props.buttonType);
+        // console.log(props.buttonType);
         if (props.buttonType == "button") {
           return true;
         }
@@ -193,6 +200,11 @@ export default {
   align-items: center;
   letter-spacing: 2px;
   font-weight: bold;
+  width: fit-content;
+
+  & > span {
+    margin-right: @spaceMd;
+  }
 
   .boxShadow(@three);
 
@@ -206,6 +218,10 @@ export default {
     color: @color;
     padding: @spaceSm;
     font-size: @fontSize;
+
+    & > span {
+      margin-right: 0;
+    }
 
     .textShadow(@one);
 

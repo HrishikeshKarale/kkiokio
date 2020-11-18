@@ -127,6 +127,13 @@ export default {
       default: false
     },
 
+    //sets the autocomplete attribute for the input field
+    autocomplete: {
+      required: false,
+      type: Boolean,
+      default: true
+    },
+
     //checks if label options should appear on the same line or not
     inline: {
       required: false,

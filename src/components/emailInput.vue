@@ -134,6 +134,13 @@ export default {
       default: false
     },
 
+    //sets the autocomplete attribute for the input field
+    autocomplete: {
+      required: false,
+      type: Boolean,
+      default: true
+    },
+
     //sets the readonly attribute for the input field
     readonly: {
       required: false,

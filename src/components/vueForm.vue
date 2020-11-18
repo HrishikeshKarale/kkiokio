@@ -1,6 +1,7 @@
 <template>
   <form
     :id="dForm"
+    :ref="dForm"
     class="vueForm"
     :name="dForm"
     :novalidate="validate"
@@ -17,7 +18,7 @@
         buttop-name="formSubmitButton"
         button-style="small"
         button-icon="fas fa-clipboard-check"
-        :disabled="alerts.error || alerts.warning"
+        :disabled="!validInput"
         :on-click-action="dOnClickAction"
       />
       <input class="btn" type="reset" value="Reset" />
@@ -67,39 +68,52 @@ export default {
     const dButtonStyle = "small";
 
     const dBooleanTrue = true;
+    const dWarning = null;
+    const dDanger = null;
 
     return {
+      dWarning,
+      dDanger,
       dButtonType: dButtonType,
 
       dButtonStyle: dButtonStyle,
 
       dBooleanTrue: dBooleanTrue
     };
-  }, //methods
+  }, //data
 
   computed: {
     validInput: function() {
       const alerts = this.alerts;
-      const inputs = document.getElementsByTagName("input");
+      const form = this.$refs[this.dForm];
+      if (form && !alerts["error"] && !alerts["warning"]) {
+        const inputs = [
+          ...Array.from(form.getElementsByTagName("select")),
+          ...Array.from(form.getElementsByTagName("input"))
+        ];
 
-      for (let index = 0; index < inputs.length; ++index) {
-        if (
-          !alerts["error"] &&
-          !alerts["warning"] &&
-          inputs[index].required &&
-          !inputs[index].value
-        ) {
-          return true;
+        for (let index = 0; index < inputs.length; ++index) {
+          if (inputs[index].required && !inputs[index].value) {
+            return false;
+          }
         }
+        return true;
       }
       return false;
     } //validInput
-  }, //components
+  }, //mounted
+
   methods: {
-    formReset: function() {
-      // console.log(this.$ref[this.dForm]);
-      this.$ref[this.dForm].reset();
-    }
+    alert: function(type, message) {
+      console.log(message);
+      if (type == "warning") {
+        this.dWarning = message;
+      } else if (type == "error") {
+        this.dDanger = message;
+      } else {
+        alert("error in input alert module");
+      }
+    } //alerts
   } //methods
 }; //default
 </script>

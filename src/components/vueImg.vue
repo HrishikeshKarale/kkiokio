@@ -52,5 +52,6 @@ export default {
 
 .vueImg {
   display: inline-flex;
+  background-color: transparent;
 }
 </style>

@@ -8,7 +8,7 @@ const router = createRouter({
       name: "home",
       component: () =>
         import(/* webpackChunkName: "home" */ "@/views/index.vue"),
-      meta: { transitionName: 'slide', requiresAuth: false  }
+      meta: { transitionName: 'slide', requiresAuth: false }
     },
     {
       path: "/caseStudy",
@@ -284,9 +284,16 @@ const router = createRouter({
       ]
     },
     {
+      path: "/login",
+      name: "login",
+      component: () =>
+        import(/* webpackChunkName: "login" */ "@/views/login/index.vue"),
+      meta: { transitionName: 'fade', requiresAuth: false }
+    },
+    {
       // path: "/404PageNotFound",
       path: "/:catchAll(.*)",
-      alias: "/pageNotFound",
+      // alias: "/404pageNotFound",
       name: "pageNotFound",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
@@ -295,7 +302,7 @@ const router = createRouter({
         import(
           /* webpackChunkName: "pageNotFound" */ "@/views/pageNotFound.vue"
         ),
-      meta: { transitionName: 'slide', requiresAuth: false }
+      meta: { transitionName: 'slide', requiresAuth: false, name: 'pageNotFound'}
     }
   ]
 });
@@ -303,27 +310,36 @@ const router = createRouter({
 //user authentication using meta
 //helps check for any conditions before allowing user to go to the requested page
 // router.beforeEach((to, from, next) => {
-//   if (to.meta.requireLogin) {
-//     //user needs login
-//   } else {
-//     next();
+//   if (to.meta.requiresAuth) {
+//     this.$router.push({ name: 'login' });
 //   }
-// });
-// router.beforeEach((to, from, next) => {
-//   // if (to.meta.requiresAuth) {
-//   //   //user needs login
-//   // } else {
-//   //   next();
-//   // }
-//   let transitionName = to.meta.transitionName || from.meta.transitionName;
 
+//   let transitionName =
+//     to.meta.transitionName ||
+//     from.meta.transitionName;
 //   if (transitionName === "slide") {
 //     const toDepth = to.path.split("/").length;
 //     const fromDepth = from.path.split("/").length;
 //     transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
 //   }
+//   // this.transitionMode = DEFAULT_TRANSITION_MODE;
+//   this.transitionEnterActiveClass = `${transitionName}-enter-active`;
 
-// //   this.transitionName = transitionName || "fade";
+//   if (to.meta.transitionName === "zoom") {
+//     this.transitionMode = "in-out";
+//     this.transitionEnterActiveClass = "zoom-enter-active";
+//     // Disable scrolling in the background.
+//     document.body.style.overflow = "hidden";
+//   }
+
+//   if (from.meta.transitionName === "zoom") {
+//     this.transitionMode = null;
+//     this.transitionEnterActiveClass = null;
+//     // Enable scrolling again.
+//     document.body.style.overflow = null;
+//   }
+
+//   this.transitionName = transitionName;
 
 //   next();
 // });

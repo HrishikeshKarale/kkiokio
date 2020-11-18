@@ -1,5 +1,6 @@
+//https://markus.oberlehner.net/blog/replicating-the-twitter-tweet-box-with-vue/
 <template>
-  <div class="vueTextarea" :class="{ inline: inline }">
+  <div class="passwordInput" :class="{ inline: inline }">
     <label v-if="label" :class="{ maskField: mask }">
       {{ label }}
       <abbr v-if="required" title="Required Field">*</abbr>
@@ -14,9 +15,10 @@
       }"
     >
       <span v-if="inputIcon" :class="inputIcon" />
-      <textarea
+      <input
         v-if="!mask"
-        v-model="dTextareaValue"
+        v-model="dPasswordValue"
+        :type="dType"
         :name="name"
         :placeholder="placeholder"
         :maxlength="maxlength"
@@ -27,12 +29,16 @@
         :required="required"
         @input="validate"
       />
+      <span
+        :class="['fas', dType != 'text' ? 'fa-eye' : 'fa-eye-slash']"
+        @click="toggleType"
+      />
     </div>
     <input-response
       :warning="dWarning"
       :error="dDanger"
       :char-limit-reached="
-        dTextareaValue ? maxlength - dTextareaValue.length <= 0 : false
+        dPasswordValue ? maxlength - dPasswordValue.length < 0 : false
       "
       :maxlength="maxlength"
     />
@@ -41,13 +47,16 @@
 
 <script>
 import inputResponse from "@/components/inputResponse.vue";
+import { validator } from "@/typeScript/validator";
 
 export default {
-  name: "VueTextarea", //props
+  name: "PasswordInput", //props
 
   components: {
     inputResponse
-  }, //data
+  }, //components
+
+  mixins: [validator], //mixins
 
   props: {
     //sets heading/Label for the input field
@@ -57,11 +66,11 @@ export default {
       default: null
     },
 
-    //sets the name attribute for the input field (required field in case of forms)
+    //sets name attribute for the input field (required field in case of forms)
     name: {
       required: false,
       type: String,
-      default: "textareaInput"
+      default: "passwordInput"
     },
 
     //users can pass preset values for the input field
@@ -75,21 +84,23 @@ export default {
     pattern: {
       required: false,
       type: [RegExp, String],
-      default: null
+      default: new RegExp(
+        "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})"
+      )
     },
 
     //sets the placeholder attribute for the input field
     placeholder: {
       required: false,
       type: String,
-      default: "Click to enter"
+      default: "Enter passsword here..."
     },
 
     //sets the maxlength attribute for the input field
     maxlength: {
       required: false,
       type: Number,
-      default: 256
+      default: 50
     },
 
     //sets the manual alerts
@@ -120,22 +131,15 @@ export default {
       default: false
     },
 
-
     //sets the autocomplete attribute for the input field
     autocomplete: {
       required: false,
       type: Boolean,
       default: true
     },
+
     //sets the readonly attribute for the input field
     readonly: {
-      required: false,
-      type: Boolean,
-      default: false
-    },
-
-    //reserves space and created a mask if set to true
-    mask: {
       required: false,
       type: Boolean,
       default: false
@@ -154,10 +158,17 @@ export default {
       required: false,
       type: Boolean,
       default: false
-    }
-  }, //computed
+    },
 
-  emits: ["alerts", "input"],
+    //reserves space and created a mask if set to true
+    mask: {
+      required: false,
+      type: Boolean,
+      default: false
+    }
+  }, //props
+
+  emits: ["alerts", "input"], //emits
 
   data() {
     return {
@@ -167,24 +178,12 @@ export default {
       //stores errors thrown by the input fields
       dWarning: null,
 
-      //stores textareabox values
-      dTextareaValue: null
+      //stores textbox password values
+      dPasswordValue: null,
+
+      dType: "password"
     }; //return
   }, //components
-
-  computed: {
-    //returns the difference between maxlength and textboxValue.
-    //a negative value indicates that we have exceeded the allowed maximum for the textbox and
-    lengthDelta: function() {
-      const val = this.dTextareaValue;
-      const maxLength = this.maxlength;
-
-      if (maxLength && val) {
-        return maxLength - val.length;
-      }
-      return null;
-    } //lengthDelta
-  }, //beforeMount
 
   watch: {
     //send warning messages back to parent component
@@ -196,12 +195,12 @@ export default {
     dDanger: function(newValue) {
       this.$emit("alerts", "error", newValue);
     }
-  }, //watch
+  }, //methods
 
   created() {
-    //store values passed as props into dTextareaValue for future manipulation
+    //store values passed as props into dPasswordValue for future manipulation
     if (this.value) {
-      this.dTextareaValue = this.value;
+      this.dPasswordValue = this.value;
     }
   }, //created
 
@@ -223,14 +222,14 @@ export default {
         this.dInfo = alertMessage["info"];
       }
     }
-  },
+  }, //computed
 
   methods: {
     //validate the textbox input and set alert messages if required.
     //it also emits/send the current textbox value to  parent component as v-model attribute value
     validate: function() {
       const object = {
-        value: this.dTextareaValue,
+        value: this.dPasswordValue,
         maxlength: this.maxLength,
         minlength: this.minLength,
         pattern: this.pattern
@@ -238,7 +237,15 @@ export default {
       const response = this.validator(object);
       this.dDanger = response.error;
       this.dWarning = response.warning;
-    } //validate
+    }, //validate
+
+    toggleType: function() {
+      if (this.dType == "password") {
+        this.dType = "text";
+      } else {
+        this.dType = "password";
+      }
+    } //toggleType
   } //watch
 }; //default
 </script>
@@ -246,7 +253,7 @@ export default {
 <style lang="less" scoped>
 @import (reference) "../Less/customMixins.less";
 
-.vueTextarea {
+.passwordInput {
   min-width: 160px;
 
   .inputcss();

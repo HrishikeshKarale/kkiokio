@@ -9,7 +9,8 @@
       </div>
       <transition
         :name="transitionName"
-        mode="out-in"
+        :mode="transitionMode"
+        :enter-active-class="transitionEnterActiveClass"
         @beforeLeave="beforeLeave"
         @enter="enter"
         @afterEnter="afterEnter"
@@ -53,29 +54,52 @@ export default {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logo = require("@/assets/logo.svg");
     const DEFAULT_TRANSITION = "fade";
+    const DEFAULT_TRANSITION_MODE = "out-in";
+    const transitionEnterActiveClass = "";
     const prevHeight = 0;
     return {
       logo,
       transitionName: DEFAULT_TRANSITION,
+      transitionMode: DEFAULT_TRANSITION_MODE,
+      transitionEnterActiveClass,
       prevHeight
     };
   },
 
   beforeMount() {
     this.$router.beforeEach((to, from, next) => {
+      // console.log(to.meta.requiresAuth);
       if (to.meta.requiresAuth) {
-        //user needs login
+        this.$router.push({ name: "login" });
       }
 
-      let transitionName = to.meta.transitionName || from.meta.transitionName;
-
+      let transitionName =
+        to.meta.transitionName ||
+        from.meta.transitionName ||
+        this.transitionName;
       if (transitionName === "slide") {
         const toDepth = to.path.split("/").length;
         const fromDepth = from.path.split("/").length;
         transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
       }
+      // this.transitionMode = DEFAULT_TRANSITION_MODE;
+      this.transitionEnterActiveClass = `${transitionName}-enter-active`;
 
-      this.transitionName = transitionName || "fade";
+      if (to.meta.transitionName === "zoom") {
+        this.transitionMode = "in-out";
+        this.transitionEnterActiveClass = "zoom-enter-active";
+        // Disable scrolling in the background.
+        document.body.style.overflow = "hidden";
+      }
+
+      if (from.meta.transitionName === "zoom") {
+        this.transitionMode = null;
+        this.transitionEnterActiveClass = null;
+        // Enable scrolling again.
+        document.body.style.overflow = null;
+      }
+
+      this.transitionName = transitionName;
 
       next();
     });
@@ -207,6 +231,30 @@ export default {
     }
   }
 }
+
+//zoom transition
+.zoom-enter-active,
+.zoom-leave-active {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-name: zoom;
+}
+
+.zoom-leave-active {
+  animation-direction: reverse;
+}
+
+@keyframes zoom {
+  from {
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 //fade transition
 .fade-enter-active,
 .fade-leave-active {
