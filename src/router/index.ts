@@ -284,12 +284,6 @@ const router = createRouter({
       ]
     },
     {
-      path: "/googlecfd5c6a4ee616c84",
-      component: () =>
-        import(/* webpackChunkName: "login" */ "@/views/googlecfd5c6a4ee616c84.html"),
-      meta: { transitionName: 'fade', requiresAuth: false }
-    },
-    {
       path: "/login",
       name: "login",
       component: () =>
