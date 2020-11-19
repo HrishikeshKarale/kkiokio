@@ -82,7 +82,7 @@ import inputResponse from "@/components/inputResponse";
 import vueButton from "@/components/vueButton";
 
 export default {
-  name: "radioInput", //watch
+  name: "RadioInput", //watch
 
   components: {
     inputResponse,
