@@ -284,6 +284,12 @@ const router = createRouter({
       ]
     },
     {
+      path: "/googlecfd5c6a4ee616c84",
+      component: () =>
+        import(/* webpackChunkName: "login" */ "@/views/login/googlecfd5c6a4ee616c84.vue"),
+      meta: { transitionName: 'fade', requiresAuth: false }
+    },
+    {
       path: "/login",
       name: "login",
       component: () =>
