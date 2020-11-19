@@ -25,27 +25,32 @@ export default {
 
   props: {
     error: {
-      type: String,
+      required: false,
+      type: [String, null],
       default: null
     },
 
     warning: {
-      type: String,
+      required: false,
+      type: [String, null],
       default: null
     },
 
     info: {
-      type: String,
+      required: false,
+      type: [String, null],
       default: null
     },
 
     charLimitReached: {
-      type: Boolean,
+      required: false,
+      type: [Boolean, null],
       default: false
     },
 
     maxlength: {
-      type: Number,
+      required: false,
+      type: [Number, null],
       default: null
     }
   } //props

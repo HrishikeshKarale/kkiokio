@@ -235,7 +235,7 @@ export default {
 //zoom transition
 .zoom-enter-active,
 .zoom-leave-active {
-  animation-duration: 0.3s;
+  animation-duration: @transitionDuration;
   animation-fill-mode: both;
   animation-name: zoom;
 }
@@ -258,9 +258,9 @@ export default {
 //fade transition
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: 0.3s;
+  transition-duration: @transitionDuration;
   transition-property: opacity;
-  transition-timing-function: ease;
+  transition-timing-function: @transitionTimingFunction;
 }
 
 .fade-enter,
@@ -273,21 +273,21 @@ export default {
 .slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition-duration: 0.5s;
+  transition-duration: @transitionDuration;
   transition-property: height, opacity, transform;
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  transition-timing-function: @transitionTimingFunction;
   overflow: hidden;
 }
 
 .slide-left-enter,
 .slide-right-leave-active {
   opacity: 0;
-  transform: translate(2em, 0);
+  transform: translate(96px, 0);
 }
 
 .slide-left-leave-active,
 .slide-right-enter {
   opacity: 0;
-  transform: translate(-2em, 0);
+  transform: translate(-96px, 0);
 }
 </style>

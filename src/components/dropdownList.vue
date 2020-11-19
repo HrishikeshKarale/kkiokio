@@ -56,21 +56,21 @@ export default {
     //sets heading/Label for the input field
     label: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     //sets name attribute for the input field (required field in case of forms)
     name: {
       required: false,
-      type: String,
+      type: [String, null],
       default: "dropdownInput"
     },
 
     //users can pass preset values for the input field (v-model)
     value: {
       required: false,
-      type: [String, Number, Array],
+      type: [String, Number, Array, null],
       default: function(props) {
         if (props.multiple) {
           return [];
@@ -88,63 +88,63 @@ export default {
     //no of options  to display at a time.
     size: {
       required: false,
-      type: Number,
+      type: [Number, null],
       default: null
     },
 
     //sets the multiple attribute for the input field to accept multiple values
     multiple: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: Object,
+      type: [Object, null],
       default: null
     },
 
     //sets the required attribute for the input field
     required: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //sets the disabled attribute for the input field
     disabled: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //sets the autofocus attribute for the input field
     autofocus: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //sets the autocomplete attribute for the input field
     autocomplete: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: true
     },
 
     //checks if label options should appear on the same line or not
     inline: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //reserves space and created a mask if set to true
     mask: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
@@ -152,7 +152,7 @@ export default {
     //a valid fontawesome icons class string is a string which starts with fas/far/fab/fa
     inputIcon: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     }
   },

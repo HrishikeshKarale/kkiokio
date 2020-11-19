@@ -46,17 +46,17 @@ export default {
       required: true
     },
     dForm: {
-      type: String,
+      type: [String, null],
       required: false,
       default: null
     },
     autocomplete: {
-      type: Boolean,
+      type: [Boolean, null],
       required: false,
       default: true
     },
     validate: {
-      type: Boolean,
+      type: [Boolean, null],
       required: false,
       default: false
     }
@@ -105,7 +105,7 @@ export default {
 
   methods: {
     alert: function(type, message) {
-      console.log(message);
+      // console.log(message);
       if (type == "warning") {
         this.dWarning = message;
       } else if (type == "error") {

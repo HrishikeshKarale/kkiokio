@@ -77,7 +77,7 @@ export default {
   props: {
     logoLink: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
@@ -111,7 +111,7 @@ export default {
       capture: false, // top to bottom bubbling/propogation
       once: false //should work only once
     });
-    console.log(this.$router.currentRoute.value.meta.requiresAuth);
+    // console.log(this.$router.currentRoute.value.meta.requiresAuth);
   },
 
   methods: {

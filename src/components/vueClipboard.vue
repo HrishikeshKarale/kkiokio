@@ -27,25 +27,25 @@ export default {
   props: {
     buttonText: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     buttonName: {
       required: false,
-      type: String,
+      type: [String, null],
       default: "copyToClipboard"
     },
 
     buttonIcon: {
       required: false,
-      type: String,
+      type: [String, null],
       default: "fas fa-copy"
     },
 
     buttonStyle: {
       required: false,
-      type: String,
+      type: [String, null],
       default: "small"
     },
 

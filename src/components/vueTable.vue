@@ -315,19 +315,19 @@ export default {
 
     title: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     subtableId: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     select: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     }
   }, //filters

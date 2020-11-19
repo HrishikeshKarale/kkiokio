@@ -53,70 +53,70 @@ export default {
     //sets heading/Label for the input field
     label: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     //sets the name attribute for the input field (required field in case of forms)
     name: {
       required: false,
-      type: String,
+      type: [String, null],
       default: "textareaInput"
     },
 
     //users can pass preset values for the input field
     value: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     //sets the format/pattern for acceptable values for the input field
     pattern: {
       required: false,
-      type: [RegExp, String],
+      type: [RegExp, String, null],
       default: null
     },
 
     //sets the placeholder attribute for the input field
     placeholder: {
       required: false,
-      type: String,
+      type: [String, null],
       default: "Click to enter"
     },
 
     //sets the maxlength attribute for the input field
     maxlength: {
       required: false,
-      type: Number,
+      type: [Number, null],
       default: 256
     },
 
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: Object,
+      type: [Object, null],
       default: null
     },
 
     //sets the required attribute for the input field
     required: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //sets the disabled attribute for the input field
     disabled: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //sets the autofocus attribute for the input field
     autofocus: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
@@ -124,20 +124,20 @@ export default {
     //sets the autocomplete attribute for the input field
     autocomplete: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: true
     },
     //sets the readonly attribute for the input field
     readonly: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //reserves space and created a mask if set to true
     mask: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
@@ -145,14 +145,14 @@ export default {
     //a valid fontawesome icons class string is a string which starts with fas/far/fab/fa
     inputIcon: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     //checks if label options should appear on the same line or not
     inline: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     }
   }, //computed

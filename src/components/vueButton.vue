@@ -27,7 +27,7 @@ export default {
   props: {
     buttonType: {
       required: false,
-      type: String,
+      type: [String, null],
       default: "button",
       validator: function(value) {
         return ["button", "submit", "reset", null].indexOf(value) !== -1;
@@ -36,30 +36,27 @@ export default {
 
     buttonName: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     buttonIcon: {
       default: null,
       required: function(props) {
-        if (["icon", "icon-lg", "icon-sm"].includes(props.buttonStyle)) {
-          return true;
-        }
-        return false;
+        return ["icon", "icon-lg", "icon-sm"].indexOf(props.buttonStyle) !== -1;
       },
       type: [String, null]
     },
 
     buttonText: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     buttonStyle: {
       required: false,
-      type: String,
+      type: [String, null],
       default: "standard",
       validator: function(value) {
         return (
@@ -86,26 +83,26 @@ export default {
 
     disabled: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     autofocus: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     //sets the autocomplete attribute for the input field
     autocomplete: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: true
     },
 
     buttonClass: {
       required: false,
-      type: String,
+      type: [String, null],
       default: function(props) {
         let tempClass = "btn";
         switch (props.buttonStyle) {
@@ -160,7 +157,7 @@ export default {
 
     formID: {
       required: false,
-      type: String,
+      type: [String, null],
       default: function(props) {
         if (props.buttonName) {
           return props.buttonName;
@@ -177,7 +174,7 @@ export default {
         }
         return false;
       },
-      type: Function,
+      type: [Function, null],
       default: function() {
         alert(
           "button undefined: Please send a function to execute when the button is clicked"

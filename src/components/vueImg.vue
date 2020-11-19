@@ -15,19 +15,14 @@ export default {
 
   props: {
     src: {
-      required: false,
+      required: true,
       type: String,
-      default: function(value) {
-        if (value) {
-          return value;
-        }
-        return null;
-      }
+      default: null
     },
 
     alt: {
       required: false,
-      type: String,
+      type: [String, null],
       default: function(value) {
         if (value) {
           return value;

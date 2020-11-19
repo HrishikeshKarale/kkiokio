@@ -84,37 +84,37 @@ export default {
   props: {
     modalTitle: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     buttonText: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     buttonName: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     buttonIcon: {
       required: false,
-      type: String,
+      type: [String, null],
       default: null
     },
 
     showModal: {
       required: false,
-      type: Boolean,
+      type: [Boolean, null],
       default: false
     },
 
     onClickAction: {
       required: false,
-      type: Function,
+      type: [Function, null],
       default: null
     }
   },

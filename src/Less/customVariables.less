@@ -90,8 +90,11 @@
 @threeText: @three;
 @fourText: @four;
 @fiveText: @five;
+
 //transitions
-@transition: all 0.8s cubic-bezier(0.25,0.8,0.25,1);
+@transitionDuration: 0.3s;
+@transitionTimingFunction: cubic-bezier(0.55, 0, 0.1, 1);
+@transition: all @transitionDuration @transitionTimingFunction;
 
 
 //border radius bootstrap
