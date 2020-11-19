@@ -284,6 +284,13 @@ const router = createRouter({
       ]
     },
     {
+      path: "/privacyPolicy",
+      name: "privacyPolicy",
+      component: () =>
+        import(/* webpackChunkName: "login" */ "@/views/privacyPolicy.vue"),
+      meta: { transitionName: 'fade', requiresAuth: false }
+    },
+    {
       path: "/login",
       name: "login",
       component: () =>

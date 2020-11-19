@@ -39,6 +39,9 @@
       </ul>
     </nav>
     <div class="themeToggle">
+      <router-link :to="{ name: 'privacyPolicy' }">
+        privacy policy
+      </router-link>
       <vue-button
         v-if="!authenticated"
         buttop-name="loginButton"
