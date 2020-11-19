@@ -294,7 +294,7 @@ export default {
         }
       } else {
         //this.options does not exist
-        console.log(this.$refs["singleCheckbox"].checked);
+        // console.log(this.$refs["singleCheckbox"].checked);
         this.$emit("selected", this.$refs["singleCheckbox"].checked);
       }
     } //check

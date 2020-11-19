@@ -513,7 +513,7 @@ export default {
       this.$emit("set-sort-key", newValue);
     }, //setPage
     consoleClickDelete: function() {
-      console.log("del");
+      // console.log("del");
     }, //consoleClickDelete
     setRowElements: function(newValue) {
       this.$emit("set-row-elements", newValue);
