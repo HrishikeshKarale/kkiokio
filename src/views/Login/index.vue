@@ -100,6 +100,7 @@
         />
       </vue-form>
       <div>
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" />
         <vue-button
           buttop-name="themeToggle"
           button-style="small"
@@ -108,11 +109,20 @@
           :on-click-action="() => {}"
         />
         <vue-button
-          buttop-name="themeToggle"
-          button-style="border-lg"
-          button-text="border"
-          button-icon="fas fa-bars"
-          :on-click-action="() => {}"
+          v-if="!profile"
+          buttop-name="googleLoginButton"
+          button-style="border"
+          button-text="Google SignIn"
+          button-icon="fab fa-google"
+          :on-click-action="onGoogleSignIn"
+        />
+        <vue-button
+          v-else
+          buttop-name="googleLoginButton"
+          button-style="border"
+          button-text="Google SignOut"
+          button-icon="fab fa-google"
+          :on-click-action="onGoogleSignOut"
         />
       </div>
     </div>
@@ -127,6 +137,7 @@ import passwordInput from "@/components/passwordInput.vue";
 import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
 import vueButton from "@/components/vueButton";
+import { authentication } from "@/typeScript/authentication";
 
 export default {
   name: "Login",
@@ -140,6 +151,8 @@ export default {
     vueButton,
     radioInput
   }, //methods
+
+  mixins: [authentication], //mixins
 
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -176,14 +189,6 @@ export default {
     };
   },
   methods: {
-    login: function() {
-      //do something here
-    }, //login
-
-    signUp: function() {
-      //do something here
-    }, //signUp
-
     selected: function(value) {
       // console.log("selected: ", value);
       this.dRadioValue = value;
