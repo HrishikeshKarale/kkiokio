@@ -588,7 +588,7 @@ export default {
             padding-left: 16px;
             text-align: left;
             width: @cellWidth;
-            color: @cometText;
+            color: @textColor;
             cursor: pointer;
 
             &:last-child {
@@ -633,7 +633,7 @@ export default {
 
                       & > label {
                         font-size: @fontSizeSm;
-                        color: @cometText;
+                        color: @textColor;
 
                         & > input[type="checkbox"] {
                           margin-right: 4px;
@@ -904,7 +904,7 @@ div.paging {
     flex-direction: row;
     margin: auto 0px;
     font-size: @fontSizeMd;
-    color: @cometText;
+    color: @textColor;
 
     &:first-child {
       font-weight: normal;

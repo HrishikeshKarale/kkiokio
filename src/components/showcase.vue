@@ -32,7 +32,7 @@ export default {
 .showcase {
   display: flex;
   flex-direction: column;
-  color: @cometText;
+  color: @textColor;
   background-color: @backgroundColor;
   padding: @spaceLg;
   border-radius: 4px;
@@ -70,7 +70,7 @@ export default {
       padding: 0 10px 0 12px;
       background-color: @secondaryColor;
       border-radius: 0 4px 4px 0;
-      color: @cometText;
+      color: @textColor;
       width: fit-content;
       //triangle
       &:before {

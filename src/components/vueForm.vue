@@ -38,26 +38,26 @@ export default {
 
   props: {
     alerts: {
-      type: Object,
-      required: true
+      required: true,
+      type: Object
     },
     dOnClickAction: {
-      type: Function,
-      required: true
+      required: true,
+      type: Function
     },
     dForm: {
-      type: [String, null],
       required: false,
+      type: [String, null],
       default: null
     },
     autocomplete: {
-      type: [Boolean, null],
       required: false,
+      type: [Boolean, null],
       default: true
     },
     validate: {
-      type: [Boolean, null],
       required: false,
+      type: [Boolean, null],
       default: false
     }
   },

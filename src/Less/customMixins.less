@@ -99,9 +99,9 @@
 }
 
 .boxShadow(@val, @color: @shadowColor) {
-  box-shadow: @val @color;
-  -webkit-box-shadow: @val @color;
-  -moz-box-shadow: @val @color;
+  box-shadow: @base @color, @val @color;
+  -webkit-box-shadow: @base @color, @val @color;
+  -moz-box-shadow: @base @color, @val @color;
 }
 
 
@@ -175,7 +175,7 @@
     width: fit-content;
     height: @spaceXl;
     margin-bottom: @spaceSm;
-    color: @cometText;
+    color: @textColor;
     
     & > abbr {
       color: @dangerText;
@@ -251,14 +251,14 @@
   border-radius: @borderRadiusMd;
   width: 80%;
   min-width: 640px;
-  color: @cometText;
+  color: @textColor;
 
   & > div {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
     background-color: @navBackground;
-    color: @cometText;
+    color: @textColor;
     
     & > .syntaxCode {
       overflow-x: auto;
@@ -281,7 +281,7 @@
         flex-grow: 0;
 
         &.title {
-          color: @cometText;
+          color: @textColor;
           font-weight: bold;
 
           span.fas {
@@ -350,7 +350,7 @@
     > div {
 
       &.value {
-        color: @cometText;
+        color: @textColor;
       }
 
       &.error {
@@ -484,7 +484,7 @@
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
-      color: @cometText;
+      color: @textColor;
 
       & > div {
         display: flex;
@@ -559,6 +559,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   min-width: 240px;
+  height: fit-content;
 
   &.inline {
     flex-direction: row;
@@ -617,19 +618,32 @@
         color: @dangerText;
       }
     }
-    &.box {
+  }
+  & > .box {
+    padding: 4px 8px;
+    margin-left: 8px;
+    width: fit-content;
+    background-color: @backgroundColor;
+    border-radius: @borderRadiusMd;
 
-      & > .checked {
-        border-radius: @borderRadiusMd;
+    &>label {
+
+      // font-weight: bold;
+      &.checked {
         background-color: @secondaryColor;
         color: @backgroundColor;
-
-        & > span {
-          display: hidden;
-        }
       }
     }
-	}
+
+    &>label {
+      padding: @spaceSm @spaceMd;
+      margin-right: @spaceMd;
+
+      &>input {
+        display: none;
+      }
+    }
+  }
 }
 
 .divide4 {

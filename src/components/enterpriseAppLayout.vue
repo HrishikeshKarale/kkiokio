@@ -168,7 +168,7 @@ export default {
         }
         &.content {
           align-items: center;
-          color: @cometText;
+          color: @textColor;
           margin: auto;
           max-width: 80vw;
           min-width: 320px;

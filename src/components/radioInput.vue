@@ -82,7 +82,7 @@ import inputResponse from "@/components/inputResponse";
 import vueButton from "@/components/vueButton";
 
 export default {
-  name: "radioInput", //watch
+  name: "RadioInput", //watch
 
   components: {
     inputResponse,
@@ -308,29 +308,5 @@ export default {
 
 .radioInput {
   .checkboxCss();
-
-  .box {
-    padding: 4px 8px;
-    margin-left: 8px;
-    width: fit-content;
-    background-color: @backgroundColor;
-    border-radius: @borderRadiusMd;
-
-    & > label {
-      // font-weight: bold;
-      &.checked {
-        background-color: @secondaryColor;
-        color: @backgroundColor;
-      }
-    }
-
-    & > label {
-      padding: @spaceSm @spaceMd;
-      margin-right: @spaceMd;
-      & > input {
-        display: none;
-      }
-    }
-  }
 }
 </style>

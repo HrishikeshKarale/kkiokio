@@ -90,7 +90,7 @@ export default {
     margin: 0 !important;
   }
   & > span {
-    color: @cometText;
+    color: @textColor;
   }
   @media screen {
     @media (max-width: 1024px) {

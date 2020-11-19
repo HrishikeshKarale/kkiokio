@@ -148,7 +148,7 @@ export default {
         &.active {
           border-radius: 4px;
           background-color: @secondaryColor;
-          .boxShadow(@two);
+          .boxShadow(@one);
           color: @white;
           //active block text;
           & > span:last-child {
@@ -157,7 +157,7 @@ export default {
           }
         }
         & > span {
-          .textShadow(@one);
+          .textShadow(@base);
           &:last-child {
             .textShadow(none);
             display: none;
