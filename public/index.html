@@ -11,24 +11,27 @@
     <link rel="manifest" href="/site.webmanifest">
     <!-- authentication start -->
     <script type="text/javascript">
-      function triggerGoogleLoaded() {
-        window.dispatchEvent(new Event("google-loaded"));
+      function triggerGoogleLoaded(gapi) {
+        var event = new CustomEvent("google-loaded", {'detail': {
+        gapi: gapi
+    }});
+        window.dispatchEvent(event);
+        console.log("hello");
       }
     </script>
-    <script
+    <!-- <script
       src="https://apis.google.com/js/platform.js?onload=triggerGoogleLoaded"
       async
       defer
     ></script>
     <meta
       name="google-signin-client_id"
-      content="758507759739-qsqjadv7gr0sunj6mlkvuh8lc2h74hqn.apps.googleusercontent.com"
-    />
+      content="94699127686-nmek6a5nj88vq5vu03u0hoa3nh4jsr7g.apps.googleusercontent.com"
+    /> -->
     <!-- authentication end -->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body id="portfolio">
-    <script src="https://apis.google.com/js/platform.js" />
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>

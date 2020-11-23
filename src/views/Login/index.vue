@@ -23,107 +23,103 @@
     <div class="triangleTopLeft" />
     <div class="loginForm">
       <h1>{{ dRadioValue }}</h1>
-      <vue-form
-        v-if="dRadioValue == dOptions[0]"
-        :d-on-click-action="login.bind(this)"
-        d-form="loginForm"
-        :alerts="{ error: dDanger, warning: dWarning }"
-        :validate="!booleanTrue"
-        :autocomplete="booleanTrue"
-        @alerts="alerts"
-      >
-        <text-input
-          v-model="username"
-          label="Username"
-          name="usernameTextField"
-          placeholder="JohnDoe"
-          :required="booleanTrue"
-          input-icon="far fa-user"
-          @alerts="alerts"
-        />
-        <password-input
-          v-model="emailID"
-          label="Password"
-          name="usernameTextField"
-          placeholder="*************"
-          :required="booleanTrue"
-          input-icon="far fa-user"
-          :autocomplete="booleanTrue"
-          @alerts="alerts"
-        />
-      </vue-form>
-      <vue-form
-        v-else
-        :d-on-click-action="signUp.bind(this)"
-        d-form="SignUpForm"
-        :alerts="{ error: dDanger, warning: dWarning }"
-        :validate="!booleanTrue"
-        :autocomplete="booleanTrue"
-        @alerts="alerts"
-      >
-        <text-input
-          v-model="name"
-          label="Name"
-          name="nameTextField"
-          placeholder="John Doe"
-          :required="booleanTrue"
-          input-icon="far fa-user"
-          @alerts="alerts"
-        />
-        <email-input
-          v-model="username"
-          label="Email ID"
-          name="emailTextField"
-          placeholder="JohnDoe@email.com"
-          :required="booleanTrue"
-          input-icon="fas fa-at"
-          @alerts="alerts"
-        />
-        <text-input
-          v-model="username"
-          label="Username"
-          name="usernameTextField"
-          placeholder="John Doe"
-          :required="booleanTrue"
-          input-icon="far fa-user"
-          @alerts="alerts"
-        />
-        <password-input
-          v-model="password"
-          label="Password"
-          name="usernameTextField"
-          placeholder="*************"
-          :required="booleanTrue"
-          input-icon="far fa-user"
-          :autocomplete="booleanTrue"
-          @alerts="alerts"
-        />
-      </vue-form>
       <div>
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" />
-        <vue-button
-          buttop-name="themeToggle"
-          button-style="small"
-          button-text="Theme"
-          button-icon="fas fa-bars"
-          :on-click-action="() => {}"
-        />
-        <vue-button
-          v-if="!profile"
-          buttop-name="googleLoginButton"
-          button-style="border"
-          button-text="Google SignIn"
-          button-icon="fab fa-google"
-          :on-click-action="onGoogleSignIn"
-        />
-        <vue-button
+        <vue-form
+          v-if="dRadioValue == dOptions[0]"
+          :d-on-click-action="login.bind(this)"
+          d-form="loginForm"
+          :alerts="{ error: dDanger, warning: dWarning }"
+          :validate="!booleanTrue"
+          :autocomplete="booleanTrue"
+          @alerts="alerts"
+        >
+          <text-input
+            v-model="username"
+            label="Username"
+            name="usernameTextField"
+            placeholder="JohnDoe"
+            :required="booleanTrue"
+            input-icon="far fa-user"
+            @alerts="alerts"
+          />
+          <password-input
+            v-model="emailID"
+            label="Password"
+            name="usernameTextField"
+            placeholder="*************"
+            :required="booleanTrue"
+            input-icon="far fa-user"
+            :autocomplete="booleanTrue"
+            @alerts="alerts"
+          />
+        </vue-form>
+        <vue-form
           v-else
-          buttop-name="googleLoginButton"
-          button-style="border"
-          button-text="Google SignOut"
-          button-icon="fab fa-google"
-          :on-click-action="onGoogleSignOut"
-        />
+          :d-on-click-action="signUp.bind(this)"
+          d-form="SignUpForm"
+          :alerts="{ error: dDanger, warning: dWarning }"
+          :validate="!booleanTrue"
+          :autocomplete="booleanTrue"
+          @alerts="alerts"
+        >
+          <text-input
+            v-model="name"
+            label="Name"
+            name="nameTextField"
+            placeholder="John Doe"
+            :required="booleanTrue"
+            input-icon="far fa-user"
+            @alerts="alerts"
+          />
+          <email-input
+            v-model="username"
+            label="Email ID"
+            name="emailTextField"
+            placeholder="JohnDoe@email.com"
+            :required="booleanTrue"
+            input-icon="fas fa-at"
+            @alerts="alerts"
+          />
+          <text-input
+            v-model="username"
+            label="Username"
+            name="usernameTextField"
+            placeholder="John Doe"
+            :required="booleanTrue"
+            input-icon="far fa-user"
+            @alerts="alerts"
+          />
+          <password-input
+            v-model="password"
+            label="Password"
+            name="usernameTextField"
+            placeholder="*************"
+            :required="booleanTrue"
+            input-icon="far fa-user"
+            :autocomplete="booleanTrue"
+            @alerts="alerts"
+          />
+        </vue-form>
+        <div>
+          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+
+          <!-- <vue-button
+            v-if="!profile"
+            buttop-name="googleLoginButton"
+            button-style="border"
+            button-text="SignIn"
+            button-icon="fab fa-google"
+            :on-click-action="onGoogleSignIn"
+          />
+          <vue-button
+            v-else
+            buttop-name="googleLoginButton"
+            button-style="border"
+            button-text="Google SignOut"
+            button-icon="fab fa-google"
+            :on-click-action="onGoogleSignOut"
+          /> -->
+        </div>
       </div>
     </div>
   </div>
@@ -136,7 +132,7 @@ import emailInput from "@/components/emailInput.vue";
 import passwordInput from "@/components/passwordInput.vue";
 import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
-import vueButton from "@/components/vueButton";
+// import vueButton from "@/components/vueButton";
 import { authentication } from "@/typeScript/authentication";
 
 export default {
@@ -148,7 +144,7 @@ export default {
     emailInput,
     passwordInput,
     vueForm,
-    vueButton,
+    // vueButton,
     radioInput
   }, //methods
 
@@ -187,7 +183,8 @@ export default {
       username,
       password
     };
-  },
+  }, //methods
+
   methods: {
     selected: function(value) {
       // console.log("selected: ", value);
@@ -203,7 +200,7 @@ export default {
         alert("error in input alert module");
       }
     } //alerts
-  }
+  } //methods
 };
 </script>
 
@@ -256,33 +253,38 @@ export default {
     }
     &.loginForm {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
       align-content: center;
       position: absolute;
       bottom: 40%;
       left: 50%;
       transform: translate(-50%, 40%);
-      padding: @spaceLg @spaceXl;
-      background-color: @backgroundColor;
-      border: 1px solid @primaryColor;
-      border-radius: 4px;
-      .boxShadow(@one, @secondaryColor);
+      & > h1 {
+        margin: @spaceLg auto;
+        & + div {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: @spaceLg @spaceXl;
+          background-color: @backgroundColor;
+          border: 1px solid @primaryColor;
+          border-radius: 4px;
+          .boxShadow(@one, @secondaryColor);
 
-      & > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        margin: @spaceLg @spaceXl;
-        &:first-child > form {
-          width: 320px;
-          border-right: 1px solid @primaryColor;
-        }
-        &:last-child {
-          & > button {
-            margin-bottom: 32px;
+          & > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            margin: @spaceLg @spaceXl;
+            &:first-child > form {
+              width: 320px;
+              border-right: 1px solid @primaryColor;
+            }
+            &:last-child {
+              justify-content: space-evenly;
+            }
           }
         }
       }

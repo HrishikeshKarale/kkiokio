@@ -16,11 +16,19 @@ export const cookie = {
       return "";
     },
 
-    setCookie: function(name, value, exdays = 1) {
+    setCookie: function(name, value, exdays = 1, SameSite = "Secure") {
       const d = new Date();
       d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
       const expires = "expires=" + d.toUTCString();
-      document.cookie = name + "=" + value + ";" + expires + ";path=/";
+      document.cookie =
+        name +
+        "=" +
+        value +
+        ";" +
+        expires +
+        ";SameSite=" +
+        SameSite +
+        ";path=/";
     },
 
     checkCookie: function(name) {

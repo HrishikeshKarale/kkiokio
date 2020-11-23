@@ -75,15 +75,12 @@ export const toggle = {
 
   mounted() {
     if (cookie.methods.checkCookie("theme")) {
-      const theme = cookie.methods.getCookie("theme");
-
-      if (theme) {
-        this.selected = theme;
-        document.documentElement.setAttribute("theme", theme);
-      } else {
-        cookie.methods.setCookie("theme", "default", 100);
-        document.documentElement.setAttribute("theme", "default");
-      }
+      this.selected = cookie.methods.getCookie("theme");
+    } else {
+      this.selected = "default";
+      //set cookie to default for a week
+      cookie.methods.setCookie("theme", "default", 7);
     }
+    document.documentElement.setAttribute("theme", this.selected);
   }
 };
