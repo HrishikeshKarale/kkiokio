@@ -71,15 +71,6 @@ export default {
 
   beforeMount() {
     this.$router.beforeEach((to, from, next) => {
-      if (to.meta.requiresAuth) {
-        to.meta.redirect = from.fullPath;
-        console.log(this.$router.currentRoute.value.meta);
-        this.$router.push({
-          name: "login"
-        });
-        return;
-      }
-
       let transitionName =
         to.meta.transitionName ||
         from.meta.transitionName ||
@@ -107,10 +98,19 @@ export default {
       }
 
       this.transitionName = transitionName;
+      if (to.meta.requiresAuth) {
+        to.meta.redirect = from.fullPath;
+        // console.log(to.meta.redirect, to, this.$router);
+        next({
+          name: "login"
+        });
+        return;
+      }
 
       next();
     });
   }, //beforeMount
+
   methods: {
     beforeLeave(element) {
       this.prevHeight = getComputedStyle(element).height;

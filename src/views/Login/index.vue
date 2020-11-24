@@ -102,10 +102,7 @@
         </vue-form>
         <div>
           {{
-            gapi
-              ? gapi.isSignedIn()
-                ? "Signed In as " + gapi.getBasicProfile().Ad
-                : null
+            signedIn ? "Signed In as " + gapi.getBasicProfile().Ad
               : "Not sign in"
           }}
           <vue-button
@@ -186,10 +183,28 @@ export default {
       password,
       dBooleanTrue
     };
-  }, //methods
-  beforeUpdate() {
-    console.log("mounted ", this.$route);
-  }, //mounted
+  }, //data
+
+  computed: {
+    signedIn() {
+      return this.gapi && this.gapi.isSignedIn();
+    }
+  }, //computed
+
+  watch: {
+    signedIn: function(newValue, oldValue) {
+      if (newValue != oldValue) {
+        this.$router.push({
+          name: "home"
+        });
+      }
+    }
+  }, //watch
+  // beforeMount() {
+  //   if(this.gapi && this.gapi.isSignedIn()) {
+  //     console.log("beforeMount");
+  //   }
+  // }, //beforeMount
 
   methods: {
     selected: function(value) {

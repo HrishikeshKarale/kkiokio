@@ -8,7 +8,12 @@ const router = createRouter({
       name: "home",
       component: () =>
         import(/* webpackChunkName: "home" */ "@/views/index.vue"),
-      meta: { transitionName: 'fade', requiresAuth: true }
+      meta: {
+        transitionName: 'fade',
+        requiresAuth: true,
+        path: "/",
+        name: "home"
+      }
     },
     {
       path: "/caseStudy",
@@ -17,35 +22,60 @@ const router = createRouter({
         import(
           /* webpackChunkName: "caseStudy" */ "@/views/caseStudy/index.vue"
         ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+      meta: {
+        transitionName: 'fade',
+        requiresAuth: false,
+        path: "/caseStudy",
+        name: "caseStudy"
+      }
     },
     {
       path: "/contact",
       name: "contact",
       component: () =>
         import(/* webpackChunkName: "contact" */ "@/views/contact/index.vue"),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+      meta: {
+        transitionName: 'fade',
+        requiresAuth: false,
+        path: "/contact",
+        name: "contact"
+      }
     },
     {
       path: "/logo",
       name: "logo",
       component: () =>
         import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue"),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+      meta: {
+        transitionName: 'fade',
+        requiresAuth: false,
+        path: "/logo",
+        name: "logo"
+      }
     },
     {
       path: "/about",
       name: "about",
       component: () =>
         import(/* webpackChunkName: "about" */ "@/views/about/index.vue"),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+      meta: {
+        transitionName: 'fade',
+        requiresAuth: false,
+        path: "/about",
+        name: "about"
+      }
     },
     {
       path: "/project",
       // name: "project",
       component: () =>
         import(/* webpackChunkName: "project" */ "@/views/project.vue"),
-      meta: { transitionName: 'fade', requiresAuth: false  },
+      meta: {
+        transitionName: 'fade',
+        requiresAuth: false,
+        path: "/project",
+        // name: "project"  
+      },
       children: [
         {
           path: "",
@@ -54,7 +84,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "project" */ "@/views/project/index.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/drumKit",
@@ -63,7 +96,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "drumKit" */ "@/views/project/js/drumKit.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/analogClock",
@@ -72,7 +108,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "analogClock" */ "@/views/project/js/analogClock.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/arrayCardio",
@@ -81,7 +120,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "arrayCardio" */ "@/views/project/js/arrayCardio.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/imageGalery",
@@ -90,7 +132,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "imageGalery" */ "@/views/project/js/imageGalery.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/fetchAPI",
@@ -99,7 +144,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "fetchApi" */ "@/views/project/js/fetchApi.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/canvasExample",
@@ -108,7 +156,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "canvasExample" */ "@/views/project/js/canvasExample.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/checkboxChallange",
@@ -117,7 +168,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "checkboxChallange" */ "@/views/project/js/checkboxChallange.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/konamiCode",
@@ -126,7 +180,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "konamiCode" */ "@/views/project/js/konamiCode.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/scrollIn",
@@ -135,7 +192,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIndicator/index.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/speechRecognition",
@@ -144,7 +204,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "speechRecognition" */ "@/views/project/js/speechRecognition.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/linkFollower",
@@ -153,7 +216,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "linkFollower" */ "@/views/project/js/linkFollower.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/geoLocation",
@@ -162,7 +228,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "geoLocation" */ "@/views/project/js/geoLocation.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/userMedia",
@@ -171,7 +240,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "userMedia" */ "@/views/project/js/userMedia.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/followerAlongNav",
@@ -180,7 +252,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "FollowNav" */ "@/views/project/js/followerAlongNav/index.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/clickDrag",
@@ -189,7 +264,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "clickDrag" */ "@/views/project/js/clickDrag.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "js/videoControl",
@@ -198,7 +276,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "videoControl" */ "@/views/project/js/videoControl.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "WebUX/packStation",
@@ -207,7 +288,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "packStation" */ "@/views/project/webUX/packStation.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "WebUX/RSVPApp",
@@ -216,7 +300,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "about" */ "@/views/project/webUX/rsvpApp.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "CSS/pulseAnimation",
@@ -225,7 +312,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "pulseAnimation" */ "@/views/project/css/pulseAnimation.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "CSS/cardSlider",
@@ -234,7 +324,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "cardSlider" */ "@/views/project/css/cardSlider.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "mobileUX/appSignUp",
@@ -243,7 +336,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "appSignUp" */ "@/views/project/mobileUX/appSignUp.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "mobileUX/medCo",
@@ -252,7 +348,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "medCo" */ "@/views/project/mobileUX/medCo.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "mobileUX/fitnessFriend",
@@ -261,7 +360,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "fitnessFriend" */ "@/views/project/mobileUX/fitnessFriend.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "mobileUX/culinarian",
@@ -270,7 +372,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "culinarian" */ "@/views/project/mobileUX/culinarian.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         },
         {
           path: "mobileUX/goGreen",
@@ -279,7 +384,10 @@ const router = createRouter({
             import(
               /* webpackChunkName: "goGreen" */ "@/views/project/mobileUX/goGreen.vue"
             ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
+          meta: { 
+            transitionName: 'fade', 
+            requiresAuth: false  
+          }
         }
       ]
     },
@@ -288,7 +396,12 @@ const router = createRouter({
       name: "login",
       component: () =>
         import(/* webpackChunkName: "login" */ "@/views/login/index.vue"),
-      meta: { transitionName: 'fade', requiresAuth: false }
+      meta: {
+        transitionName: 'fade',
+        requiresAuth: false,
+        path: "/login",
+        name: "login"
+      }
     },
     {
       // path: "/404PageNotFound",
@@ -302,7 +415,11 @@ const router = createRouter({
         import(
           /* webpackChunkName: "pageNotFound" */ "@/views/pageNotFound.vue"
         ),
-      meta: { transitionName: 'fade', requiresAuth: false, name: 'pageNotFound'}
+      meta: {
+        transitionName: 'fade',
+        requiresAuth: false,
+        name: 'pageNotFound'
+      }
     }
   ],
 });

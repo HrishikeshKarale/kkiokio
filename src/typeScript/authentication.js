@@ -47,29 +47,13 @@ export const authentication = {
       }
     }, //init
 
-    onGoogleSignIn: function(user) {
-      const profile = user.getBasicProfile();
-      this.profile = profile;
-    }, //onGoogleSignIn
-
     onGoogleSignOut: function() {
       // eslint-disable-next-line no-undef
       this.gapi.disconnect();
       this.user = null;
       this.gapi = null;
+      location.reload(true);
     }, //onGoogleSignOut
-
-    // renderButtonGoogle: function() {
-    //   gapi.signin2.render("my-signin2", {
-    //     scope: "profile email",
-    //     width: 240,
-    //     height: 50,
-    //     longtitle: true,
-    //     theme: "dark",
-    //     onsuccess: this.onSuccessGoogle,
-    //     onfailure: this.onFailureGoogle
-    //   });
-    // }, //renderButtonGoogle
 
     login: function() {
       //do something here
@@ -100,8 +84,5 @@ export const authentication = {
     googleLoginMeta.content = this.GClientID;
     const s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(googleLoginMeta, s);
-    if (this.gapi) {
-      console.log(this.gapi);
-    }
   } //mounted
 };
