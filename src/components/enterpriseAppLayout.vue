@@ -42,6 +42,7 @@
 import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
 import breadcrums from "@/components/breadcrums";
 import vueImg from "./vueImg.vue";
+import { authentication } from "@/typeScript/authentication";
 
 export default {
   name: "EnterpriseAppLayout",
@@ -50,6 +51,8 @@ export default {
     breadcrums,
     vueImg
   },
+
+  mixins: [authentication],
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logo = require("@/assets/logo.svg");
@@ -64,13 +67,17 @@ export default {
       transitionEnterActiveClass,
       prevHeight
     };
-  },
+  }, //mixins
 
   beforeMount() {
     this.$router.beforeEach((to, from, next) => {
-      // console.log(to.meta.requiresAuth);
       if (to.meta.requiresAuth) {
-        this.$router.push({ name: "login" });
+        to.meta.redirect = from.fullPath;
+        console.log(this.$router.currentRoute.value.meta);
+        this.$router.push({
+          name: "login"
+        });
+        return;
       }
 
       let transitionName =

@@ -27,6 +27,7 @@
         :disabled="disabled"
         :readonly="readonly"
         :required="required"
+        :autocomplete="autocomplete"
         @input="validate"
       />
       <span

@@ -8,7 +8,7 @@ const router = createRouter({
       name: "home",
       component: () =>
         import(/* webpackChunkName: "home" */ "@/views/index.vue"),
-      meta: { transitionName: 'fade', requiresAuth: false }
+      meta: { transitionName: 'fade', requiresAuth: true }
     },
     {
       path: "/caseStudy",
@@ -304,7 +304,6 @@ const router = createRouter({
         ),
       meta: { transitionName: 'fade', requiresAuth: false, name: 'pageNotFound'}
     }
-  ]
+  ],
 });
-
 export default router;

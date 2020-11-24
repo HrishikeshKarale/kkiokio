@@ -101,24 +101,24 @@
           />
         </vue-form>
         <div>
-          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
-
-          <!-- <vue-button
-            v-if="!profile"
-            buttop-name="googleLoginButton"
-            button-style="border"
-            button-text="SignIn"
-            button-icon="fab fa-google"
-            :on-click-action="onGoogleSignIn"
-          />
+          {{
+            gapi
+              ? gapi.isSignedIn()
+                ? "Signed In as " + gapi.getBasicProfile().Ad
+                : null
+              : "Not sign in"
+          }}
           <vue-button
-            v-else
-            buttop-name="googleLoginButton"
+            v-if="gapi && gapi.isSignedIn()"
+            button-name="googleSignOutButton"
+            button-text="Sign out"
+            button-icon="fas fa-bar"
             button-style="border"
-            button-text="Google SignOut"
-            button-icon="fab fa-google"
-            :on-click-action="onGoogleSignOut"
-          /> -->
+            :disabled="!dBooleanTrue"
+            :autofocus="!dBooleanTrue"
+            :on-click-action="onGoogleSignOut.bind()"
+          />
+          <div v-else class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
         </div>
       </div>
     </div>
@@ -132,8 +132,9 @@ import emailInput from "@/components/emailInput.vue";
 import passwordInput from "@/components/passwordInput.vue";
 import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
-// import vueButton from "@/components/vueButton";
+import vueButton from "@/components/vueButton";
 import { authentication } from "@/typeScript/authentication";
+import VueButton from "@/components/vueButton.vue";
 
 export default {
   name: "Login",
@@ -144,8 +145,9 @@ export default {
     emailInput,
     passwordInput,
     vueForm,
-    // vueButton,
-    radioInput
+    vueButton,
+    radioInput,
+    VueButton
   }, //methods
 
   mixins: [authentication], //mixins
@@ -166,7 +168,7 @@ export default {
     const dNameRadio = "loginOrSignUp";
     const dOptions = [dLabelChecked, dLabelUnchecked];
     const dRadioValue = dOptions[0];
-
+    const dBooleanTrue = true;
     return {
       dNameRadio,
       dRadioValue,
@@ -181,9 +183,13 @@ export default {
       logoLink,
       booleanTrue,
       username,
-      password
+      password,
+      dBooleanTrue
     };
   }, //methods
+  beforeUpdate() {
+    console.log("mounted ", this.$route);
+  }, //mounted
 
   methods: {
     selected: function(value) {

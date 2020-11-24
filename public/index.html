@@ -12,11 +12,11 @@
     <!-- authentication start -->
     <script type="text/javascript">
       function triggerGoogleLoaded(gapi) {
-        var event = new CustomEvent("google-loaded", {'detail': {
-        gapi: gapi
-    }});
+          var event = new CustomEvent("google-loaded", {'detail': {
+          gapi: gapi
+        }
+      });
         window.dispatchEvent(event);
-        console.log("hello");
       }
     </script>
     <!-- <script

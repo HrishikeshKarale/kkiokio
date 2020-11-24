@@ -121,12 +121,12 @@ export default {
       required: true,
       type: function(props) {
         if (!props.options) {
-          return Boolean;
+          return [Boolean, null];
         } else if (props.type == "checkbox") {
-          return Array;
+          return [Array, null];
         } else {
           //type == radio
-          return [String, Number];
+          return [String, Number, null];
         }
       },
       default: function(props) {
@@ -136,7 +136,7 @@ export default {
           return [];
         } else {
           //type == radio
-          return "";
+          return null;
         }
       }
     },
