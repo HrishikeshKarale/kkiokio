@@ -166,11 +166,11 @@ export default {
           }
         }
         &.content {
-          align-items: center;
-          color: @cometText;
-          margin: auto;
+          align-content: center;
+          color: @textColor;
+          margin: 0 auto auto;
           max-width: 80vw;
-          min-width: 320px;
+          width: 1504px;
 
           & > .moto {
             display: flex;
@@ -179,7 +179,7 @@ export default {
             bottom: 0;
             right: 0;
             padding: @spaceMd @spaceLg;
-            border-radius: 4px 0 0 0;
+            border-radius: @borderRadius 0 0 0;
             // background-color: @backgroundColor;
             height: fit-content;
 
@@ -191,7 +191,7 @@ export default {
               font-size: @fontSizeSm;
               font-weight: bold;
               // background-color: @backgroundColor;
-              border-radius: 4px 0 0 0;
+              border-radius: @borderRadius 0 0 0;
 
               & > abbr {
                 color: @secondaryColor;
@@ -204,8 +204,7 @@ export default {
     }
   }
   @media screen {
-    @media (max-width: 1024px) {
-      // position: relative;
+    @media (max-width: 1540px) {
       & > div {
         &.head {
           position: fixed;
@@ -214,6 +213,7 @@ export default {
         }
         &.body {
           & > div.content {
+            min-width: 480px;
             & > .moto {
               padding: 0;
 

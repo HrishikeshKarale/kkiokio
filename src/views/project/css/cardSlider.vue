@@ -87,10 +87,10 @@ export default {
     min-width: 300px;
     height: auto;
     background: #fafbfc;
-    border-radius: @borderRadiusMd;
+    border-radius: @borderRadius;
     position: relative;
     z-index: 10;
-    margin: 32px;
+    margin: @spaceXl;
     min-height: 360px;
     transition: @transition;
     .boxShadow(@one);
@@ -99,26 +99,26 @@ export default {
       position: absolute;
       left: 0;
       top: 0;
-      padding: 16px;
+      padding: @spaceLg;
     }
     & > span {
       position: absolute;
       right: 0;
       top: 0;
-      padding: 16px;
+      padding: @spaceLg;
     }
     & > div {
       & > .content {
         padding: @spaceLg;
         & > p {
           opacity: 0.6;
-          margin-top: 8px;
+          margin-top: @spaceMd;
         }
       }
       & > .image {
         height: 240px;
         width: 240px;
-        margin: 0 32px;
+        margin: 0 @spaceXl;
         margin-top: -96px;
         display: flex;
         justify-content: center;

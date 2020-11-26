@@ -32,10 +32,10 @@ export default {
 .showcase {
   display: flex;
   flex-direction: column;
-  color: @cometText;
+  color: @textColor;
   background-color: @backgroundColor;
   padding: @spaceLg;
-  border-radius: 4px;
+  border-radius: @borderRadius;
   margin: @spaceLg;
   min-width: 240px;
   max-width: 15vw;
@@ -65,12 +65,12 @@ export default {
     & > li {
       font-size: @fontSize;
       position: relative;
-      margin-bottom: 8px;
-      margin-left: 16px;
+      margin-bottom: @spaceMd;
+      margin-left: @spaceLg;
       padding: 0 10px 0 12px;
       background-color: @secondaryColor;
-      border-radius: 0 4px 4px 0;
-      color: @cometText;
+      border-radius: 0 @borderRadius @borderRadius 0;
+      color: @textColor;
       width: fit-content;
       //triangle
       &:before {
@@ -82,7 +82,7 @@ export default {
         border-right-color: @secondaryColor;
       }
       & > span {
-        margin: 0 8px;
+        margin: 0 @spaceMd;
         //fontawesome circle
         &.fas {
           position: absolute;

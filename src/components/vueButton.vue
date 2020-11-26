@@ -242,7 +242,7 @@ export default {
     color: transparent;
     color: @color;
     padding: @spaceSm @spaceMd;
-    border-radius: @borderRadiusMd;
+    border-radius: @borderRadius;
     text-decoration: none;
     font-weight: bold;
 
@@ -253,7 +253,7 @@ export default {
 
   //buttons with a border outline and transparent background
   &.btn-border {
-    border-radius: @borderRadiusMd;
+    border-radius: @borderRadius;
     background-color: transparent;
     border: 1px solid @color;
     color: @color;

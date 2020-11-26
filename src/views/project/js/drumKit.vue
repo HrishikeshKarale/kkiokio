@@ -115,7 +115,7 @@ export default {
     justify-content: space-around;
     text-align: center;
     padding: @spaceMd;
-    border-radius: 4px;
+    border-radius: @borderRadius;
     .boxShadow(@three);
     width: 120px;
     height: 120px;
@@ -126,7 +126,7 @@ export default {
     }
     &.playing {
       transform: scale(1.1);
-      border-width: 4px;
+      border-width: @borderRadius;
     }
   }
 }

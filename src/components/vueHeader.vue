@@ -39,9 +39,6 @@
       </ul>
     </nav>
     <div class="themeToggle">
-      <router-link :to="{ name: 'privacyPolicy' }">
-        <h6>privacy policy</h6>
-      </router-link>
       <vue-button
         v-if="!authenticated"
         buttop-name="loginButton"
@@ -148,6 +145,11 @@ export default {
 @lowOpacity: 0.64;
 @midOpacity: 0.84;
 
+.navSubText() {
+  color: @navText;
+  opacity: @lowOpacity;
+}
+
 .vueHeader {
   display: flex;
   align-items: center;
@@ -202,8 +204,8 @@ export default {
           align-items: center;
 
           & > span {
+            .navSubText();
             font-size: @fontSizeSm * 2;
-            opacity: @lowOpacity;
           }
           & > img {
             height: 48px;
@@ -211,14 +213,14 @@ export default {
           & > div {
             display: flex;
             flex-direction: column;
-            margin-left: 16px;
+            margin-left: @spaceLg;
             //nav Text
             & > h4 {
               color: @navText;
               //nav subText
               & + span {
+                .navSubText();
                 font-size: 12px;
-                opacity: @midOpacity;
               }
             }
           }
@@ -284,11 +286,11 @@ export default {
     }
   }
   @media screen {
-    @media (max-width: 1024px) {
+    @media (max-width: 1540px) {
       flex-direction: column;
       flex-wrap: nowrap;
       padding: @spaceMd @spaceLg;
-      border-bottom-right-radius: 8px;
+      border-bottom-right-radius: @borderRadiusLg;
       height: auto;
       width: fit-content;
       .scroll(100vh);
@@ -317,10 +319,10 @@ export default {
             justify-content: space-between;
             align-items: flex-start;
             & > li {
-              margin-top: 16px;
+              margin-top: @spaceLg;
               & > a {
                 & > img {
-                  height: 32px;
+                  height: @spaceXl;
                 }
               }
               &:first-child {

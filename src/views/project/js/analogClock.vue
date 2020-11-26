@@ -93,11 +93,11 @@ export default {
       bottom: @size / 4;
       right: @size / 3;
       div {
-        border-radius: 4px;
+        border-radius: @borderRadius;
         margin: @spaceSm;
         padding: @spaceSm;
         .boxShadow(inset @two);
-        min-width: 32px;
+        min-width: @spaceXl;
         max-width: fit-conent;
       }
     }
@@ -107,16 +107,16 @@ export default {
       top: @size / 4;
       right: @size / 3;
       div {
-        border-radius: 4px;
+        border-radius: @borderRadius;
         margin: @spaceSm;
         padding: @spaceSm;
         .boxShadow(inset @two);
-        width: 32px;
+        width: @spaceXl;
       }
     }
     &.analog {
       position: relative;
-      border: 8px solid @secondaryColor;
+      border: @spaceMd solid @secondaryColor;
       border-radius: 50%;
       height: @size+ 32;
       width: @size+ 32;
@@ -129,7 +129,7 @@ export default {
         transform-origin: 100%;
         .boxShadow(@four);
         &.hourHand {
-          height: 8px;
+          height: @spaceMd;
           background-color: black;
           border: 1px solid black;
           width: 36%;
@@ -140,7 +140,7 @@ export default {
           width: 45%;
         }
         &.secondHand {
-          height: 2px;
+          height: @spaceXs;
           background-color: red;
           border-color: red;
           transform-origin: 100%;
@@ -148,8 +148,8 @@ export default {
         }
         &.center {
           background-color: @secondaryColor;
-          height: 32px;
-          width: 32px;
+          height: @spaceXl;
+          width: @spaceXl;
           border-radius: 50%;
         }
       }

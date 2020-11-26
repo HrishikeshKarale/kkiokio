@@ -111,7 +111,7 @@ export default {
         &:last-child {
           img {
             margin: @spaceMd @spaceLg;
-            border-radius: 8px;
+            border-radius: @borderRadiusLg;
             padding: @spaceMd;
             height: 16vw;
             .boxShadow(@two);

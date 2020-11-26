@@ -89,7 +89,7 @@ export default {
         from(#d9eaf3),
         color-stop(4%, #fff)
       )
-      0 4px;
+      0 @spaceSm;
     background-size: 100% 3rem;
     position: relative;
     line-height: 3rem;
@@ -101,7 +101,7 @@ export default {
   .words:before {
     content: "";
     position: absolute;
-    width: 4px;
+    width: @spaceSm;
     top: 0;
     left: 30px;
     bottom: 0;

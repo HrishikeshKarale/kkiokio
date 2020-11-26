@@ -145,7 +145,7 @@ export default {
     height: 100vh;
     background-image: url(../../assets/logo.svg);
     background-repeat: initial;
-    background-size: 32px 16px;
+    background-size: @spaceXl @spaceLg;
     filter: opacity(16%);
     opacity: 0.48;
   }
@@ -154,10 +154,10 @@ export default {
       display: flex;
       flex-direction: row;
       position: absolute;
-      top: 32px;
-      right: 32px;
+      top: @spaceXl;
+      right: @spaceXl;
       padding: @spaceLg @spaceXl;
-      border-radius: 4px;
+      border-radius: @borderRadius;
     }
     &.triangleTopLeft {
       border-top: 100vh solid black;
@@ -177,7 +177,7 @@ export default {
       transform: translate(-50%, -50%);
       & > img {
         height: 160px;
-        margin-bottom: 16px;
+        margin-bottom: @spaceLg;
       }
 
       & > form {
@@ -185,7 +185,7 @@ export default {
         padding: @spaceLg @spaceXl;
         background-color: @backgroundColor;
         border: 1px solid @primaryColor;
-        border-radius: 4px;
+        border-radius: @borderRadius;
         width: 320px;
         .boxShadow(@one, @secondaryColor);
       }
@@ -193,7 +193,7 @@ export default {
   }
 
   @media screen {
-    @media (max-width: 1024px) {
+    @media (max-width: 1540px) {
     }
   }
 }

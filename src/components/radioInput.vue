@@ -310,11 +310,11 @@ export default {
   .checkboxCss();
 
   .box {
-    padding: 4px 8px;
-    margin-left: 8px;
+    padding: @spaceSm @spaceMd;
+    margin-left: @spaceMd;
     width: fit-content;
     background-color: @backgroundColor;
-    border-radius: @borderRadiusMd;
+    border-radius: @borderRadius;
 
     & > label {
       // font-weight: bold;

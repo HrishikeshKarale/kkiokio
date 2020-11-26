@@ -47,7 +47,7 @@ export default {
     &:last-child {
       img {
         margin: @spaceMd @spaceLg;
-        border-radius: 8px;
+        border-radius: @spaceMd;
         padding: @spaceMd;
         max-width: 16vw;
         min-width: 320px;

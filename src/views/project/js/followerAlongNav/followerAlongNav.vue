@@ -117,7 +117,7 @@ export default {
     overflow: hidden;
     padding: 20px;
     top: -20px;
-    border-radius: 2px;
+    border-radius: @borderRadiusSm;
     transition: @transition;
     transform: translateY(100px);
     will-change: opacity;
@@ -155,7 +155,7 @@ export default {
     height: 100px;
     position: absolute;
     background: #fff;
-    border-radius: 4px;
+    border-radius: @borderRadius;
     box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
       0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: @transition;

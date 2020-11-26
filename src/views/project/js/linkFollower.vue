@@ -94,7 +94,7 @@ export default {
   // opacity: 0.5;
   left: 0;
   z-index: 1;
-  border-radius: 4px;
+  border-radius: @borderRadius;
   display: block;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

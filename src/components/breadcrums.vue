@@ -1,5 +1,5 @@
 <template>
-  <div class="breadcrums">
+  <div v-if="breadcrums.length > 1" class="breadcrums">
     <template v-for="(crums, index) in breadcrums" :key="crums">
       <template v-if="isComponent(crums)[0] && breadcrums.length > 1">
         <router-link
@@ -77,10 +77,10 @@ export default {
 .breadcrums {
   display: flex;
   flex-direction: row;
-  margin: 16px 0;
+  margin: @spaceLg 0;
   align-items: center;
   & > .crums {
-    padding: 8px;
+    padding: @spaceMd;
     text-decoration: none;
     & > h5 {
       margin: 0 !important;
@@ -90,11 +90,11 @@ export default {
     margin: 0 !important;
   }
   & > span {
-    color: @cometText;
+    color: @textColor;
   }
   @media screen {
-    @media (max-width: 1024px) {
-      margin: 0 0 0 32px !important;
+    @media (max-width: 1540px) {
+      margin: 0 0 0 @spaceXl !important;
     }
   }
 }

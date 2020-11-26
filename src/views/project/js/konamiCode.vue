@@ -97,7 +97,7 @@ export default {
       justify-content: center;
       align-content: center;
       padding: @spaceLg;
-      border-radius: 8px;
+      border-radius: @borderRadiusLg;
       background-color: @primaryColor;
       width: 96px;
       height: 96px;

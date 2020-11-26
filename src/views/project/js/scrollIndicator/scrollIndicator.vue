@@ -116,9 +116,6 @@ export default {
 @import (reference) "./../../../../Less/customVariables.less";
 
 .scrollIndicator {
-  width: 100%;
-  height: 100%;
-
   & > div {
     display: flex;
     flex-direction: column;
@@ -139,21 +136,23 @@ export default {
         display: flex;
         flex-direction: row-reverse;
         text-decoration: none;
-        padding: 8px;
-        margin: 4px 0;
-        height: 32px;
+        padding: @spaceMd;
+        margin: @spaceSm 0;
+        height: @spaceXl;
         background-color: transparent;
         width: auto;
         &:hover,
         &.active {
-          border-radius: 4px;
+          border-radius: @borderRadius;
           background-color: @secondaryColor;
           .boxShadow(@two);
           color: @white;
           //active block text;
           & > span:last-child {
             display: block;
-            margin-right: 16px;
+            color: @textColor;
+            font-weight: bold;
+            margin-right: @spaceLg;
           }
         }
         & > span {
@@ -174,15 +173,15 @@ export default {
     // }
   }
   @media screen {
-    @media (max-width: 1024px) {
+    @media (max-width: 1540px) {
       & > div {
         &.scroll {
           background-color: @secondaryColor;
-          border-radius: 32px;
+          border-radius: @spaceXl;
           padding: @spaceXs;
           top: 50%;
           transform: translateY(-50%);
-          right: 16px;
+          right: @spaceLg;
           & > a {
             width: fit-content;
             &:hover,

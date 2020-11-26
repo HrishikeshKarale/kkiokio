@@ -36,7 +36,7 @@
 
 .placeholder() {
   width: fit-content;
-  border-radius: @borderRadiusMd;
+  border-radius: @borderRadius;
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-name: placeholderSkeleton;
@@ -175,7 +175,7 @@
     width: fit-content;
     height: @spaceXl;
     margin-bottom: @spaceSm;
-    color: @cometText;
+    color: @textColor;
     
     & > abbr {
       color: @dangerText;
@@ -248,17 +248,17 @@
   flex-flow: column;
   flex-wrap: wrap;
   margin: @spaceLg auto;
-  border-radius: @borderRadiusMd;
+  border-radius: @borderRadius;
   width: 80%;
   min-width: 640px;
-  color: @cometText;
+  color: @textColor;
 
   & > div {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
     background-color: @navBackground;
-    color: @cometText;
+    color: @textColor;
     
     & > .syntaxCode {
       overflow-x: auto;
@@ -281,7 +281,7 @@
         flex-grow: 0;
 
         &.title {
-          color: @cometText;
+          color: @textColor;
           font-weight: bold;
 
           span.fas {
@@ -350,7 +350,7 @@
     > div {
 
       &.value {
-        color: @cometText;
+        color: @textColor;
       }
 
       &.error {
@@ -389,10 +389,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
     border: ~"1px solid darken(@backgroundColor, 10%)";
-    border-radius: @borderRadiusMd;
+    border-radius: @borderRadius;
     min-width: 160px;
     max-width: 240px;
-    min-height: 16px;
+    min-height: @spaceLg;
     border: 1px solid @secondaryColor;
 
     &:focus-within {
@@ -443,7 +443,7 @@
     & > input,
     & > textarea {
       padding: @spaceMd @spaceLg;
-      border-radius: @borderRadiusMd;
+      border-radius: @borderRadius;
       width: 100%;
       border: none;
       background-color: transparent;
@@ -459,7 +459,7 @@
         color: ~"darken(@backgroundColor, 25%)"
       }
       & + span {
-        padding: @spaceMd+@spaceSm @spaceMd @spaceMd+@spaceSm @spaceSm; //12px 8px 12px 4px;
+        padding: @spaceMd+@spaceSm @spaceMd @spaceMd+@spaceSm @spaceSm;
         color: @grayLighter;
       }
     }
@@ -468,7 +468,7 @@
     }
 
     & > span {
-      padding: @spaceMd+@spaceSm 0 @spaceMd+@spaceSm @spaceMd*2;; //12px 0 12px 16px;
+      padding: @spaceMd+@spaceSm 0 @spaceMd+@spaceSm @spaceMd*2;; //12px 0 12px @spaceLg;
       color: @secondaryColor;
       border-right-width: 0px;
     }
@@ -484,13 +484,13 @@
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
-      color: @cometText;
+      color: @textColor;
 
       & > div {
         display: flex;
         border: 1px solid @secondaryColor;
         padding: @spaceMd @spaceLg;
-        border-radius: @borderRadiusMd;
+        border-radius: @borderRadius;
         margin-top: @spaceSm;
         min-width: 240px;
         background-color: @white;
@@ -532,7 +532,7 @@
   }
 }
 
-.scroll (@height, @width: 8px) {
+.scroll (@height, @width: @spaceMd) {
   max-height: @height;
   overflow-y: auto;
 
@@ -618,7 +618,7 @@
     &.box {
 
       & > .checked {
-        border-radius: @borderRadiusMd;
+        border-radius: @borderRadius;
         background-color: @secondaryColor;
         color: @backgroundColor;
 
@@ -651,3 +651,13 @@
 }
 
 //https://codepen.io/origine/pen/KVzpYm
+
+
+
+// Button sizes
+.buttonSize(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}

@@ -89,7 +89,7 @@ export default {
   flex-direction: row;
   justify-content: space-around;
   background-color: orange;
-  padding: 32px;
+  padding: @spaceXl;
   max-width: 800px;
   .compass {
     width: 250px;

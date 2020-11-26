@@ -184,7 +184,7 @@ export default {
       .boxShadow(@two);
       width: fit-content;
       padding: @spaceMd @spaceLg;
-      border-radius: 8px;
+      border-radius: @borderRadiusLg;
       border: 1px solid black;
       background-color: #fafbfc;
       & > tbody,

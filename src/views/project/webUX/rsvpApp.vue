@@ -214,7 +214,7 @@ export default {
               flex-direction: column;
               margin: @spaceMd;
               padding: @spaceMd @spaceLg;
-              border-radius: @borderRadiusMd;
+              border-radius: @borderRadius;
               .boxShadow(@one);
               & > div:last-child {
                 justify-content: space-evenly;
@@ -251,7 +251,7 @@ export default {
             background-color: @backgroundColor;
             width: fit-content;
             padding: @spaceMd;
-            border-radius: 4px;
+            border-radius: @borderRadius;
             height: 64px;
             .boxShadow(@two);
             & > input {
@@ -277,7 +277,7 @@ export default {
             .textShadow(@five);
             & > b {
               padding: @spaceLg;
-              border-radius: 16px;
+              border-radius: 2 * @borderRadiusLg;
               opacity: 0.8;
               background-color: #333333;
               font-size: @fontSize * 4;

@@ -177,7 +177,7 @@ export default {
 <style lang="less" scoped>
 @import (reference) "../Less/customVariables.less";
 
-@round: 16px;
+@round: @spaceLg;
 
 .multiToggle {
   width: fit-content;
@@ -194,7 +194,7 @@ export default {
     .checkbox-slide {
       display: block;
       width: 64px;
-      height: 32px;
+      height: @spaceXl;
       border-radius: @round;
       cursor: pointer;
       border: 1px solid ~"darken(#e0e0e0, 10%)";
@@ -220,8 +220,8 @@ export default {
         display: block;
         padding: 0;
         margin: 0;
-        width: 32px;
-        height: 32px;
+        width: @spaceXl;
+        height: @spaceXl;
         border-radius: @round;
         background: @primaryColor;
         cursor: pointer;
@@ -245,7 +245,7 @@ export default {
     .checkbox-label {
       width: max-content;
       color: @primaryColor;
-      margin-left: 8px;
+      margin-left: @spaceMd;
       font-weight: bold;
     }
   }

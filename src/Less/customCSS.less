@@ -851,7 +851,7 @@
 }
 
 .lock {
-  font-size: 8px;
+  font-size: @fontSize/2;
   position: relative;
   width: 18em;
   height: 13em;
@@ -946,12 +946,17 @@ article {
 }
 
 a {
-  text-decoration: none !important;
+  &,
+  & > *,
+  & + * {
+    color: @primaryColor;
+    text-decoration: none !important;
+  }
 }
+
 p {
-  letter-spacing: 2px;
-  margin: 0 0 8px !important;
-  line-height: 32px !important;
+  margin: 0 0 @spaceLg !important;
+  line-height: @spaceXl  !important;
 }
 
 input {
@@ -972,31 +977,47 @@ ul {
 }
 
 
-//buttons
-// Button Sizes
+//
+// Buttons
 // --------------------------------------------------
 
-.btn-lg {
-    // line-height: ensure even-numbered height of button next to large input
-    .button-size(@spaceLg; @spaceXl; @font-size-large; @line-height-large; @borderRadiusLg);
+.btn {
+  display: inline-flex;
+  margin-bottom: 0; // For input.btn
+  font-weight: @btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  white-space: nowrap;
+  .buttonSize(@spaceMd; @spaceLg; @fontSize; @line-height-base; @borderRadius);
+  .user-select(none);
+
+  &:hover,
+  &:focus,
+  &.focus {
+    color: @btn-default-color;
+    text-decoration: none;
   }
-  .btn-sm {
-    // line-height: ensure proper height of button next to small input
-    .button-size(@spaceSm; @spaceMd; @font-size-small; @line-height-small; @borderRadiusSm);
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    .boxShadow(insert @two);
   }
-  .btn-xs {
-    .button-size(@spaceXs; @spaceSm; @font-size-small; @line-height-small; @borderRadiusSm);
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    .opacity(.65);
+    .boxShadow(none);
   }
-// Block button
-// --------------------------------------------------
-.btn-block {
-  display: block;
-  width: 100%;
 }
-// Vertically space out multiple block buttons
-.btn-block + .btn-block {
-  margin-top: @spaceSm;
-}
+
 // Specificity overrides
 input[type= "submit"],
 input[type= "reset"],
@@ -1005,3 +1026,198 @@ input[type= "button"] {
     width: 100%;
   }
 }
+
+
+
+//
+// Typography
+// --------------------------------------------------
+
+// Headings
+// -------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @headings-line-height;
+  color: @headings-color;
+
+  small,
+  .small {
+    font-weight: normal;
+    line-height: 1;
+    color: @headings-small-color;
+  }
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  margin-top: @line-height-computed;
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 65%;
+  }
+}
+
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  margin-top: (@line-height-computed / 2);
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 75%;
+  }
+}
+
+h1,
+.h1 {
+  font-size: @font-size-h1;
+}
+
+h2,
+.h2 {
+  font-size: @font-size-h2;
+}
+
+h3,
+.h3 {
+  font-size: @font-size-h3;
+}
+
+h4,
+.h4 {
+  font-size: @font-size-h4;
+}
+
+h5,
+.h5 {
+  font-size: @font-size-h5;
+}
+
+h6,
+.h6 {
+  font-size: @font-size-h6;
+}
+
+
+
+// Emphasis & misc
+// -------------------------
+
+// Ex: (12px small font / 14px base font) * 100% = about 85%
+small,
+.small {
+  font-size: floor((100% * @font-size-small / @font-size-base));
+}
+
+mark,
+.mark {
+  background-color: @state-warning-bg;
+  padding: .2em;
+}
+
+// Lists
+// -------------------------
+
+// Unordered and Ordered lists
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: (@line-height-computed / 2);
+
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+// Description Lists
+dl {
+  margin-top: 0; // Remove browser default
+  margin-bottom: @line-height-computed;
+}
+
+dt,
+dd {
+  line-height: @line-height-base;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0; // Undo browser default
+}
+
+// Misc
+// -------------------------
+
+// Abbreviations and acronyms
+abbr[title],
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted @abbr-border-color;
+}
+
+// Blockquotes
+blockquote {
+  padding: (@line-height-computed / 2) @line-height-computed;
+  margin: 0 0 @line-height-computed;
+  font-size: @blockquote-font-size;
+  border-left: 5px solid @blockquote-border-color;
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Note: Deprecated small and .small as of v3.1.0
+  // Context: https://github.com/twbs/bootstrap/issues/11660
+  footer,
+  small,
+  .small {
+    display: block;
+    font-size: 80%; // back to default font-size
+    line-height: @line-height-base;
+    color: @blockquote-small-color;
+
+    &:before {
+      content: '\2014 \00A0'; // em dash, nbsp
+    }
+  }
+}
+
+// Addresses
+address {
+  margin-bottom: @line-height-computed;
+  font-style: normal;
+  line-height: @line-height-base;
+}
+

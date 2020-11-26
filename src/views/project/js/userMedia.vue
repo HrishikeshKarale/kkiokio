@@ -302,7 +302,7 @@ export default {
         filter: invert(75%);
       }
       &.dropShadow {
-        filter: drop-shadow(16px 16px 20px blue);
+        filter: drop-shadow(16px @spaceLg 20px blue);
       }
       &.opacity {
         filter: opacity(25%);

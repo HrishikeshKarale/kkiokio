@@ -126,7 +126,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  margin: auto;
+  margin: 0 auto;
   & > div {
     display: flex;
     &.formElements {

@@ -86,9 +86,9 @@ export default {
     .boxShadow(@one);
 
     & + .speed {
-      width: 32px;
+      width: @spaceXl;
       background: #efefef;
-      margin: 16px;
+      margin: @spaceLg;
       border-radius: 50px;
       .boxShadow(@two);
 

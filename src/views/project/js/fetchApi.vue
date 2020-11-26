@@ -156,7 +156,7 @@ export default {
         min-height: 320px;
         max-height: fit-content;
         min-width: 320px;
-        border-radius: 4px;
+        border-radius: @borderRadius;
         padding: @spaceMd @spaceLg;
         margin: @spaceMd @spaceLg;
         .boxShadow(@two);

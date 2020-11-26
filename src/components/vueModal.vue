@@ -163,7 +163,7 @@ export default {
         height: fit-content;
         margin: 0px auto;
         background-color: @backgroundColor;
-        border-radius: @borderRadiusMd;
+        border-radius: @borderRadius;
         .boxShadow(@two);
         transition: @transition;
         font-family: Helvetica, Arial, sans-serif;
@@ -171,16 +171,16 @@ export default {
         .modal-header {
           color: @backgroundColor;
           background-color: #003a65;
-          border-top-left-radius: 4px;
-          border-top-right-radius: 4px;
+          border-top-left-radius: @borderRadius;
+          border-top-right-radius: @borderRadius;
           padding: @spaceMd @spaceLg;
-          font-size: 32px;
+          font-size: 2 * @fontSize;
           height: auto;
           text-align: left;
         }
 
         .modal-body {
-          margin: 8px 16px;
+          margin: @spaceMd @spaceLg;
           display: flex;
           flex-direction: row;
           flex-wrap: wrap;
@@ -193,7 +193,7 @@ export default {
           flex-wrap: nowrap;
 
           & > div {
-            margin: auto 0 auto 32px;
+            margin: auto 0 auto @spaceXl;
             justify-content: space-around;
 
             &:last-child {

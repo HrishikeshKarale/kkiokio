@@ -533,13 +533,13 @@ export default {
 .vueTable {
   .boxShadow(@one);
   width: fit-content;
-  font-size: 16px;
+  font-size: @fontSizeMd;
   color: @white;
 
   table {
     display: flex;
     flex-direction: column;
-    border-radius: @borderRadiusMd;
+    border-radius: @borderRadius;
     background-color: @backgroundColor;
 
     thead {
@@ -551,7 +551,7 @@ export default {
 
           &.searchRow {
             & > th {
-              margin: 8x 16px 0 16px;
+              margin: 8x @spaceLg 0 @spaceLg;
               display: flex;
               flex-direction: row;
               justify-content: space-between;
@@ -585,10 +585,10 @@ export default {
 
         &:last-child {
           & > th {
-            padding-left: 16px;
+            padding-left: @spaceLg;
             text-align: left;
             width: @cellWidth;
-            color: @cometText;
+            color: @textColor;
             cursor: pointer;
 
             &:last-child {
@@ -622,21 +622,21 @@ export default {
                     & > li {
                       display: flex;
                       flex-direction: row;
-                      padding: 8px 4px;
+                      padding: @spaceMd @spaceSm;
                       border-bottom: 1px solid #ccc;
 
                       &:first-child {
                         border-bottom: 0px solid transparent;
-                        margin: 8px 16px 0px 16px;
+                        margin: @spaceMd @spaceLg 0px @spaceLg;
                         padding-bottom: 0px;
                       }
 
                       & > label {
                         font-size: @fontSizeSm;
-                        color: @cometText;
+                        color: @textColor;
 
                         & > input[type="checkbox"] {
-                          margin-right: 4px;
+                          margin-right: @spaceSm;
                           transform: scale(1);
                         }
                       }
@@ -656,12 +656,12 @@ export default {
                 display: flex;
                 flex-direction: row;
                 cursor: default;
-                border-radius: 0 4px 4px 0;
+                border-radius: 0 @borderRadius @borderRadius 0;
 
                 &.showOptions {
                   position: absolute;
                   background-color: @backgroundColor;
-                  border-radius: @borderRadiusMd;
+                  border-radius: @borderRadius;
                   z-index: 100;
 
                   .boxShadow(@one);
@@ -671,14 +671,14 @@ export default {
                   width: max-content;
                   display: flex;
                   flex-direction: row;
-                  margin-right: 16px;
+                  margin-right: @spaceLg;
 
                   & > div {
-                    margin-top: 4px;
+                    margin-top: @spaceSm;
                   }
 
                   &:first-child {
-                    padding-bottom: 4px;
+                    padding-bottom: @spaceSm;
                   }
                 }
               }
@@ -710,12 +710,12 @@ export default {
             }
 
             &:first-child {
-              padding-right: 4px;
+              padding-right: @spaceSm;
 
               div {
                 &.smalltext {
                   font-size: 10px;
-                  margin-left: 8px;
+                  margin-left: @spaceMd;
                   text-decoration: underline;
                   color: @secondaryColor;
                 }
@@ -723,7 +723,7 @@ export default {
 
               & > div {
                 font-size: @fontSizeSm;
-                padding: 4px 0;
+                padding: @spaceSm 0;
 
                 div {
                   ul {
@@ -746,8 +746,8 @@ export default {
                       div {
                         background: #1d1d1d;
                         color: @white;
-                        padding: 8px;
-                        border-radius: 4px;
+                        padding: @spaceMd;
+                        border-radius: @borderRadius;
                         position: absolute;
                         display: none;
                       }
@@ -779,7 +779,7 @@ export default {
         & > td {
           display: flex;
           align-self: center;
-          padding-left: 16px;
+          padding-left: @spaceLg;
           vertical-align: middle;
           text-align: left;
           width: @cellWidth;
@@ -877,8 +877,8 @@ tr {
   & > th {
     height: inherit;
     border-left: 1px solid #ddd;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: @spaceSm;
+    padding-bottom: @spaceSm;
   }
 
   & > th {
@@ -888,7 +888,7 @@ tr {
 
 input[type="checkbox"] {
   transform: scale(1.2);
-  margin-left: 8px;
+  margin-left: @spaceMd;
 }
 
 div.paging {
@@ -896,7 +896,7 @@ div.paging {
   width: 100%;
   background-color: @backgroundColor;
   justify-content: space-between;
-  margin-right: 32px;
+  margin-right: @spaceXl;
   height: 48px;
 
   & > div {
@@ -904,22 +904,22 @@ div.paging {
     flex-direction: row;
     margin: auto 0px;
     font-size: @fontSizeMd;
-    color: @cometText;
+    color: @textColor;
 
     &:first-child {
       font-weight: normal;
-      margin-left: 4px;
+      margin-left: @spaceSm;
       justify-content: flex-start;
     }
 
     &:last-child {
-      margin-right: 16px;
+      margin-right: @spaceLg;
       justify-content: flex-end;
 
       & > div {
-        margin-right: 16px;
+        margin-right: @spaceLg;
         font-weight: bold;
-        margin: auto 16px;
+        margin: auto @spaceLg;
 
         &:first-child {
           font-weight: normal;

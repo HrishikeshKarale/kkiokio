@@ -51,10 +51,20 @@
         "
       />
     </div>
-    <div>
+    <div @click="this.$router.push({ name: 'project' })">
       <span>Designer</span>
       <span>&</span>
       <span>Developer</span>
+      <!-- <vue-button
+        buttop-name="loginButton"
+        button-style="icon-sm"
+        button-icon="fas fa-sign-in-alt"
+        :on-click-action="
+          () => {
+            this.$router.push();
+          }
+        "
+      /> -->
     </div>
   </div>
 </template>
@@ -93,14 +103,14 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  // justify-content: center;
-  // align-content: center;
+  justify-content: center;
+  height: @body;
   & > div {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: @spaceXl @spaceXl; //8px 16px;
-    margin: @spaceXl;
+    padding: @spaceXl @spaceXl;
+    margin: auto @spaceXl;
     & > h1,
     & > h2:first-child {
       margin-top: 0;
@@ -119,8 +129,8 @@ export default {
     }
     // &.alert {
     //   background-color: @dangerText;
-    //   padding: @spaceMd @spaceLg; //8px 16px;
-    //   border-radius: @borderRadiusMd;
+    //   padding: @spaceMd @spaceLg;
+    //   border-radius: @borderRadius;
     //   height: fit-content;
     //   width: fit-content;
     //   .boxShadow(@one);
@@ -128,10 +138,11 @@ export default {
 
     //designa dndevelop box
     &:last-child {
-      border: 4px dashed @secondaryColor;
+      border: @borderRadius dashed @secondaryColor;
       height: 480px;
       width: 480px;
       border-radius: 25%;
+      cursor: pointer;
       & > span {
         font-size: 64px;
         align-self: center;
@@ -152,7 +163,7 @@ export default {
     }
   }
   @media screen {
-    @media (max-width: 1024px) {
+    @media (max-width: 1540px) {
       flex-direction: column-reverse;
       & > div {
         &:last-child {
@@ -160,7 +171,7 @@ export default {
           width: 240px;
           align-self: center;
           & > span {
-            font-size: 32px;
+            font-size: 2 * @fontSize;
           }
         }
       }

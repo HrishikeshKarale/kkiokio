@@ -153,7 +153,7 @@ article {
               flex-direction: column;
               background-color: @backgroundColor;
               flex: 1 240px;
-              border-radius: 8px;
+              border-radius: @borderRadiusLg;
               padding: @spaceLg;
               margin: @spaceLg @spaceXl;
 
@@ -235,7 +235,7 @@ article {
     }
 
     @media screen {
-      @media (max-width: 1024px) {
+      @media (max-width: 1540px) {
         & > #bio {
           & > div:first-child {
             flex-wrap: wrap;

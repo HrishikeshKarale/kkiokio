@@ -10,16 +10,6 @@
     </p>
     <div class="details">
       <main class="personal">
-        <section class="address">
-          <h3>Postal Address</h3>
-          <p>
-            44 Crittenden Way,
-            <br />
-            Apartment 2,
-            <br />
-            Rochester, NY 14623
-          </p>
-        </section>
         <section class="email">
           <h3>
             Email
@@ -36,10 +26,10 @@
               </a>
             </address>
           </h5>
-          <p>
-            Feel free to send me an email any time of the day and I should be
-            able to respond to you in a reasonable amoutn of time.
-          </p>
+          <small>
+            *Feel free to send me an email any time of the day and I should be
+            able to respond in a reasonable amoutn of time.
+          </small>
         </section>
         <section class="phone">
           <h3>
@@ -58,56 +48,69 @@
             </address>
           </h5>
           <p>
-            Hours: 8am - 4pm (EST), everyday
-            <br />
-            Text messages prefered.
+            Hours: 8am - 4pm (EST), everyday.
           </p>
-          <i>
+          <small>
+            *Text messages prefered.
+            <br />
             *First time caller(s) are screened using virtual assistan to weed
-            out spam calls</i
-          >
+            out spam calls
+          </small>
+        </section>
+        <section class="address">
+          <h3>Postal Address</h3>
+          <p>
+            44 Crittenden Way,
+            <br />
+            Apartment 2,
+            <br />
+            Rochester, NY 14623
+          </p>
         </section>
       </main>
-      <vue-form
-        :d-on-click-action="sendMail.bind(this)"
-        d-form="contactForm"
-        :alerts="{ error: dDanger, warning: dWarning }"
-        :validate="!booleanTrue"
-        :autocomplete="booleanTrue"
-      >
-        <text-input
-          v-model="name"
-          label="Name"
-          name="nameTextField"
-          placeholder="John Doe"
-          :required="booleanTrue"
-          @alerts="alerts"
-        />
-        <email-input
-          v-model="email"
-          label="Email"
-          name="emailField"
-          placeholder="JDoe@email.com"
-          input-icon="far fa-envelope"
-          :required="booleanTrue"
-          @alerts="alerts"
-        />
-        <phone-input
-          v-model="phone"
-          label="Phone number"
-          name="phoneInputField"
-          placeholder="555 555 5555"
-          @alerts="alerts"
-        />
-        <vue-textarea
-          v-model="comment"
-          label="message"
-          name="messageTextareaField"
-          placeholder="message"
-          :required="booleanTrue"
-          @alerts="alerts"
-        />
-      </vue-form>
+      <div>
+        <h3>Contact Form</h3>
+        <vue-form
+          :d-on-click-action="sendMail.bind(this)"
+          d-form="contactForm"
+          :alerts="{ error: dDanger, warning: dWarning }"
+          :validate="!booleanTrue"
+          :autocomplete="booleanTrue"
+        >
+          <text-input
+            v-model="name"
+            label="Name"
+            name="nameTextField"
+            placeholder="John Doe"
+            :required="booleanTrue"
+            @alerts="alerts"
+          />
+          <email-input
+            v-model="email"
+            label="Email"
+            name="emailField"
+            placeholder="JDoe@email.com"
+            input-icon="far fa-envelope"
+            :required="booleanTrue"
+            @alerts="alerts"
+          />
+          <phone-input
+            v-model="phone"
+            label="Phone number"
+            name="phoneInputField"
+            placeholder="555 555 5555"
+            @alerts="alerts"
+          />
+          <vue-textarea
+            v-model="comment"
+            label="message"
+            name="messageTextareaField"
+            placeholder="message"
+            :required="booleanTrue"
+            @alerts="alerts"
+          />
+        </vue-form>
+      </div>
     </div>
   </div>
 </template>
@@ -188,8 +191,6 @@ export default {
 .contact {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
 
   & > .details {
     display: flex;
@@ -197,13 +198,18 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-self: center;
-    max-width: 1024px;
+    width: 1024px;
+    & > div {
+      max-width: 360px;
+      min-width: 240px;
+      margin: @spaceXl;
+    }
     & > main {
       display: flex;
       flex-direction: column;
       max-width: 360px;
       min-width: 240px;
-      margin: auto;
+      margin: @spaceXl;
       &.personal {
         & > section {
           display: flex;
@@ -211,12 +217,12 @@ export default {
           justify-content: space-around;
           & > h3 {
             display: flex;
-            margin-bottom: 8px;
+            margin-bottom: @spaceMd;
             & > div {
               margin-left: @spaceLg;
             }
             & + h5 {
-              margin-bottom: 4px;
+              margin-bottom: @spaceSm;
               & > address {
                 margin-bottom: 0px;
               }
@@ -228,12 +234,17 @@ export default {
   }
 
   @media screen {
-    @media (max-width: 1024px) {
+    @media (max-width: 1540px) {
       & > .details {
-        flex-direction: column-reverse;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: fit-content;
         & > main {
+          margin: @spaceXl;
+        }
+        & > div {
           & > form {
-            width: min-content;
+            margin: @spaceXl;
           }
         }
       }

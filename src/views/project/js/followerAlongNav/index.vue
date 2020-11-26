@@ -128,7 +128,7 @@ export default {
     overflow: hidden;
     padding: 20px;
     top: -20px;
-    border-radius: 2px;
+    border-radius: @borderRadiusSm;
     transition: @transition;
     transform: translateY(100px);
     will-change: opacity;
