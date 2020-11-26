@@ -533,7 +533,6 @@
 }
 
 .scroll (@height, @width: 8px) {
-  display: block;
   max-height: @height;
   overflow-y: auto;
 
@@ -544,13 +543,12 @@
   /* Track */
   &::-webkit-scrollbar-track {
     background: @backgroundColor;
-    opacity: 0.5;
   }
     
   /* Handle */
   &::-webkit-scrollbar-thumb {
     background: @secondaryColor; 
-    // border-radius: @width;
+    border-radius: @width;
   }
 }
 

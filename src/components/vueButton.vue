@@ -195,12 +195,21 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  letter-spacing: 2px;
   font-weight: bold;
   width: fit-content;
 
   & > span {
     margin-right: @spaceMd;
+  }
+
+  &.btn-sm {
+    padding: @spaceSm;
+    font-size: @fontSizeSm;
+  }
+
+  &.btn-lg {
+    padding: @spaceSm;
+    font-size: @fontSizeSm * 2;
   }
 
   .boxShadow(@three);
@@ -225,16 +234,6 @@ export default {
     &:hover {
       .textShadow(@base);
     }
-
-    &.btn-sm {
-      padding: @spaceSm;
-      font-size: @fontSizeSm;
-    }
-
-    &.btn-lg {
-      padding: @spaceSm;
-      font-size: @fontSizeSm * 2;
-    }
   }
 
   //text links or  text as buttons
@@ -255,7 +254,7 @@ export default {
   //buttons with a border outline and transparent background
   &.btn-border {
     border-radius: @borderRadiusMd;
-    background-color: @white;
+    background-color: transparent;
     border: 1px solid @color;
     color: @color;
     font-weight: bold;

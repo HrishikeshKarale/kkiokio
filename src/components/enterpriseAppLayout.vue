@@ -147,7 +147,6 @@ export default {
       flex-direction: column;
       max-width: 100vw;
       z-index: 1000;
-      background-color: @backgroundColor;
       .scroll(100vh);
 
       //scroll content
@@ -191,7 +190,7 @@ export default {
             & > q {
               font-size: @fontSizeSm;
               font-weight: bold;
-              background-color: @backgroundColor;
+              // background-color: @backgroundColor;
               border-radius: 4px 0 0 0;
 
               & > abbr {

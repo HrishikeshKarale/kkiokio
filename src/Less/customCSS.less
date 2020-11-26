@@ -891,17 +891,8 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
 .subSection {
-  margin-left: @spaceLg;
+  margin-left: s@spaceLg;
 }
 
 //activeNavigation
@@ -911,7 +902,10 @@
   }
 }
 
-.noselect, * {
+.noselect,
+* {
+  letter-spacing: 2px !important;
+  .boxSizing(border-box);
   word-wrap: break-word !important;
   scroll-behavior: smooth !important;
   -webkit-touch-callout: none;
@@ -955,7 +949,9 @@ a {
   text-decoration: none !important;
 }
 p {
+  letter-spacing: 2px;
   margin: 0 0 8px !important;
+  line-height: 32px !important;
 }
 
 input {

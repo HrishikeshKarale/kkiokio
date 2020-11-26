@@ -2,11 +2,16 @@
   <div class="pulseAnimation">
     pulseAnimation
     <div class="pulse" />
+    <spinner />
   </div>
 </template>
 <script>
+import spinner from "./spinner.vue";
 export default {
   name: "PulseAnimation",
+  components: {
+    spinner
+  }, //components
   data() {
     return {};
   }

@@ -40,7 +40,7 @@
     </nav>
     <div class="themeToggle">
       <router-link :to="{ name: 'privacyPolicy' }">
-        privacy policy
+        <h6>privacy policy</h6>
       </router-link>
       <vue-button
         v-if="!authenticated"
@@ -173,6 +173,7 @@ export default {
       & > li {
         display: flex;
         justify-content: space-evenly;
+        align-items: flex-start;
         flex: 1;
         //hide website name and logo
         &:first-child {
@@ -226,7 +227,7 @@ export default {
           &.router-link-active {
             color: @secondaryColor;
             &::before {
-              transform: scale(1);
+              transform: scale(0.8);
             }
             &.router-link-exact-active {
               color: @secondaryColor;
