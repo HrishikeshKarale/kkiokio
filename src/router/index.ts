@@ -237,6 +237,15 @@ const router = createRouter({
       meta: { transitionName: 'fade', requiresAuth: false  }
         },
         {
+          path: "CSS/infiniteScroll",
+          name: "infiniteScroll",
+          component: () =>
+            import(
+              /* webpackChunkName: "infiniteScroll" */ "@/views/project/css/infiniteScroll.vue"
+            ),
+          meta: { transitionName: 'fade', requiresAuth: false }
+        },
+        {
           path: "mobileUX/appSignUp",
           name: "appSignUp",
           component: () =>

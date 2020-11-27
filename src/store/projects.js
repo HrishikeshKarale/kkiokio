@@ -96,6 +96,13 @@ export const projects = [
         tags: [],
         description: "does not work rite now.",
         component: "cardSlider"
+      },
+      {
+        id: 3,
+        title: "Automated infinite Scroll",
+        tags: [],
+        description: "does not work rite now.",
+        component: "infiniteScroll"
       }
     ]
   },
