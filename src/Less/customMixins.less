@@ -11,27 +11,37 @@
 
   /* Tooltip text */
   .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: @white;
-  text-align: center;
-  padding: @spaceSm 0;
-  border-radius: 6px;
- 
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 1;
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: @white;
+    text-align: center;
+    padding: @spaceSm 0;
+    border-radius: 6px;
+  
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+  &:hover {
+
+    &.tooltiptext {
+      visibility: visible;
+    }
+  }
 }
 
+// User select
+// For selecting text on the page
 
-/* Show the tooltip text when you mouse over the tooltip container */
-&:hover {
-
-  &.tooltiptext {
-    visibility: visible;
-  }
-  }
+.user-select(@select) {
+  -webkit-user-select: @select;
+  -moz-user-select: @select;
+  -ms-user-select: @select; // IE10+
+  user-select: @select;
 }
 
 .placeholder() {
@@ -48,47 +58,47 @@
   &,
   div,
   * {
-  @value: transparent!important;
+    @value: transparent!important;
 
-  &, &::placeholder {
-    color: @value;
-    border-color: @value;
-    background-color: @value;
-  }
+    &, &::placeholder {
+      color: @value;
+      border-color: @value;
+      background-color: @value;
+    }
   }
 
   @-webkit-keyframes placeholderSkeleton {
-  0% {
-    background-position: -468px 0;
-  }
-  100% {
-    background-position: 468px 0;
-  }
-  }
-  @keyframes placeholderSkeleton {
-  0% {
-    background-position: -468px 0;
-  }
-  100% {
-    background-position: 468px 0;
-  }
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+    }
+    @keyframes placeholderSkeleton {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
   }
 
   @-webkit-keyframes skeletonAnimate {
-  from {
-    background-position: top left;
-  }
-  to {
-    background-position: top right;
-  }
-  }
-  @keyframes skeletonAnimate {
-  from {
-    background-position: top left;
-  }
-  to {
-    background-position: top right;
-  }
+    from {
+      background-position: top left;
+    }
+    to {
+      background-position: top right;
+    }
+    }
+    @keyframes skeletonAnimate {
+    from {
+      background-position: top left;
+    }
+    to {
+      background-position: top right;
+    }
   }
 }
 
@@ -108,16 +118,16 @@
 // Box sizing
 .boxSizing(@boxmodel) {
   -webkit-box-sizing: @boxmodel;
-    -moz-box-sizing: @boxmodel;
-        box-sizing: @boxmodel;
-  }
+  -moz-box-sizing: @boxmodel;
+  box-sizing: @boxmodel;
+}
 
 .textShadow(@val, @color: @shadowColor) {
   text-shadow: @val @color;
   -webkit-text-shadow: @val @color;
   -moz-text-shadow: @val @color;
 
-  .boxShadow(none) !important;
+  .boxShadow(none);
 }
 
 

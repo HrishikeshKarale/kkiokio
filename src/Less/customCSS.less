@@ -984,7 +984,7 @@ ul {
 .btn {
   display: inline-flex;
   margin-bottom: 0; // For input.btn
-  font-weight: @btn-font-weight;
+  font-weight: normal;
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
@@ -992,13 +992,13 @@ ul {
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
   white-space: nowrap;
-  .buttonSize(@spaceMd; @spaceLg; @fontSize; @line-height-base; @borderRadius);
+  .buttonSize(@spaceMd; @spaceLg; @fontSize; @lineHeight; @borderRadius);
   .user-select(none);
 
   &:hover,
   &:focus,
   &.focus {
-    color: @btn-default-color;
+    color: @secondaryColor;
     text-decoration: none;
   }
 
@@ -1012,7 +1012,7 @@ ul {
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
-    cursor: @cursor-disabled;
+    cursor: not-allowed;
     .opacity(.65);
     .boxShadow(none);
   }
@@ -1048,16 +1048,16 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: @headings-font-family;
-  font-weight: @headings-font-weight;
-  line-height: @headings-line-height;
-  color: @headings-color;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
 
   small,
   .small {
     font-weight: normal;
     line-height: 1;
-    color: @headings-small-color;
+    color: @grayLight;
   }
 }
 
@@ -1067,8 +1067,8 @@ h2,
 .h2,
 h3,
 .h3 {
-  margin-top: @line-height-computed;
-  margin-bottom: (@line-height-computed / 2);
+  margin-top: @lineHeight;
+  margin-bottom: (@lineHeight / 2);
 
   small,
   .small {
@@ -1082,8 +1082,8 @@ h5,
 .h5,
 h6,
 .h6 {
-  margin-top: (@line-height-computed / 2);
-  margin-bottom: (@line-height-computed / 2);
+  margin-top: (@lineHeight / 2);
+  margin-bottom: (@lineHeight / 2);
 
   small,
   .small {
@@ -1093,32 +1093,32 @@ h6,
 
 h1,
 .h1 {
-  font-size: @font-size-h1;
+  font-size: @fontSizeH1;
 }
 
 h2,
 .h2 {
-  font-size: @font-size-h2;
+  font-size: @fontSizeH2;
 }
 
 h3,
 .h3 {
-  font-size: @font-size-h3;
+  font-size: @fontSizeH3;
 }
 
 h4,
 .h4 {
-  font-size: @font-size-h4;
+  font-size: @fontSizeH4;
 }
 
 h5,
 .h5 {
-  font-size: @font-size-h5;
+  font-size: @fontSizeH5;
 }
 
 h6,
 .h6 {
-  font-size: @font-size-h6;
+  font-size: @fontSizeH6;
 }
 
 
@@ -1129,12 +1129,12 @@ h6,
 // Ex: (12px small font / 14px base font) * 100% = about 85%
 small,
 .small {
-  font-size: floor((100% * @font-size-small / @font-size-base));
+  font-size: floor((100% * @fontSizeSm / @fontSizeMd));
 }
 
 mark,
 .mark {
-  background-color: @state-warning-bg;
+  background-color: @primaryColor;
   padding: .2em;
 }
 
@@ -1145,7 +1145,7 @@ mark,
 ul,
 ol {
   margin-top: 0;
-  margin-bottom: (@line-height-computed / 2);
+  margin-bottom: (@lineHeight / 2);
 
   ul,
   ol {
@@ -1156,12 +1156,12 @@ ol {
 // Description Lists
 dl {
   margin-top: 0; // Remove browser default
-  margin-bottom: @line-height-computed;
+  margin-bottom: @lineHeight;
 }
 
 dt,
 dd {
-  line-height: @line-height-base;
+  line-height: @lineHeight;
 }
 
 dt {
@@ -1180,44 +1180,13 @@ abbr[title],
 // Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted @abbr-border-color;
-}
-
-// Blockquotes
-blockquote {
-  padding: (@line-height-computed / 2) @line-height-computed;
-  margin: 0 0 @line-height-computed;
-  font-size: @blockquote-font-size;
-  border-left: 5px solid @blockquote-border-color;
-
-  p,
-  ul,
-  ol {
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  // Note: Deprecated small and .small as of v3.1.0
-  // Context: https://github.com/twbs/bootstrap/issues/11660
-  footer,
-  small,
-  .small {
-    display: block;
-    font-size: 80%; // back to default font-size
-    line-height: @line-height-base;
-    color: @blockquote-small-color;
-
-    &:before {
-      content: '\2014 \00A0'; // em dash, nbsp
-    }
-  }
+  border-bottom: 1px dotted @grayLight;
 }
 
 // Addresses
 address {
-  margin-bottom: @line-height-computed;
+  margin-bottom: @lineHeight;
   font-style: normal;
-  line-height: @line-height-base;
+  line-height: @lineHeight;
 }
 

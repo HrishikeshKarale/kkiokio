@@ -33,10 +33,6 @@
     @dangerBackground:      #f2dede;
     @dangerBorder:          ~"darken(@dangerBackground, 5%)"; //#ebccd1
 
-    @hr-border:             @secondaryColor;
-    @headings-color:        @secondaryColor;
-    @link-color:            @secondaryColor;
-
     //## Gray and brand colors for use across
     @grayBase:              @black;
     @grayDarker:            ~"lighten(@grayBase, 13.5%)"; // #222
@@ -49,10 +45,21 @@
 @fontSizeMd:                16px;
 @fontSize:                  ceil((@fontSizeMd * 1.25));
 @fontSizeSm:                ceil((@fontSizeMd * 0.85));
+@fontSizeH1:            floor((@fontSizeMd * 2.6)); // ~36px
+@fontSizeH2:            floor((@fontSizeMd * 2.15)); // ~30px
+@fontSizeH3:            ceil((@fontSizeMd * 1.7)); // ~24px
+@fontSizeH4:            ceil((@fontSizeMd * 1.25)); // ~18px
+@fontSizeH5:            @fontSizeMd;
+@fontSizeH6:            ceil((@fontSizeMd * 0.85)); // ~12px
+
+@font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif: Georgia, "Times New Roman", Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+@font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 @fontFamily:                'Roboto', Arial, sans-serif;
 
-    //
-    @font-size-base: @fontSizeMd;
+@lineHeightBase: 1.428571429;
+@lineHeight: floor((@fontSize * @lineHeightBase));
 
 //spacing or sizing
 @spaceXs:                   2px;
