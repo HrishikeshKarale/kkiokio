@@ -123,14 +123,9 @@ export default {
     height: fit-content;
     width: 100%;
     margin: auto @spaceXl;
-    & > .skills {
-      display: flex;
-      flex-direction: column;
-      height: 40px;
-      width: 100%;
-    }
     &:first-child {
       justify-content: space-evenly;
+      margin-bottom: 0;
       & > div {
         display: flex;
         flex-direction: column;
@@ -186,6 +181,12 @@ export default {
           }
         }
       }
+    }
+    & > .skills {
+      display: flex;
+      flex-direction: column;
+      height: 40px;
+      width: 100%;
     }
   }
 

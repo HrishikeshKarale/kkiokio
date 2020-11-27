@@ -220,7 +220,6 @@ export default {
   //icon buttons
   &.btn-icon {
     background-color: transparent;
-    color: transparent;
     color: @color;
     padding: @spaceSm;
     font-size: @fontSize;
@@ -239,11 +238,8 @@ export default {
   //text links or  text as buttons
   &.btn-text {
     background-color: transparent;
-    color: transparent;
     color: @color;
     padding: @spaceSm @spaceMd;
-    border-radius: @borderRadius;
-    text-decoration: none;
     font-weight: bold;
 
     &:hover {
