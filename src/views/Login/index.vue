@@ -16,7 +16,7 @@
         :inline="booleanTrue"
         :box="booleanTrue"
         :mask="!booleanTrue"
-        @selected="selected"
+        @selected="val => (dRadioValue = val)"
         @alerts="alerts"
       />
     </div>
@@ -314,10 +314,6 @@ export default {
         return alert("Passwords do not match");
       }
     }, //handleSignUp
-    selected: function(value) {
-      // console.log("selected: ", value);
-      this.dRadioValue = value;
-    }, //selected
 
     alerts: function(type, message) {
       if (type == "warning") {

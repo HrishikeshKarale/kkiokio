@@ -23,12 +23,11 @@
       <vue-button
         v-if="options && value"
         id="clearSelection"
-        :button-type="dButtonType"
-        :button-name="dButtonName"
-        :button-text="dButtonText"
-        :button-icon="dButtonIcon"
-        :button-style="dButtonStyle"
-        :on-click-action="dOnClickAction"
+        button-name="resetValue"
+        button-text="Reset"
+        button-icon="fas fa-undo"
+        button-style="icon-sm"
+        :on-click-action="clearSelection.bind(this)"
       />
     </label>
     <div
@@ -120,16 +119,17 @@ export default {
     //users can pass preset values for the input field
     value: {
       required: true,
-      type: function(props) {
-        if (!props.options) {
-          return [Boolean, null];
-        } else if (props.type == "checkbox") {
-          return [Array, null];
-        } else {
-          //type == radio
-          return [String, Number, null];
-        }
-      },
+      type: [Boolean, Array, String, Number, null],
+      // type: function(props) {
+      //   if (!props.options) {
+      //     return [Boolean, null];
+      //   } else if (props.type != "radio") {
+      //     return [Array, null];
+      //   } else {
+      //     //type == radio
+      //     return [String, Number, null];
+      //   }
+      // },
       default: function(props) {
         if (!props.options) {
           return false;
@@ -202,26 +202,11 @@ export default {
   emits: ["selected"],
 
   data() {
-    const dButtonType = "button";
-    const dButtonName = "clearRadioSelection";
-    const dButtonText = "Clear";
-    const dButtonIcon = "fas fa-undo";
-    const dButtonStyle = "text-sm";
-    const dBooleanTrue = true;
-    const dOnClickAction = this.clearSelection;
     const dDanger = null;
     const dWarning = null;
     const dSuccess = null;
     const dInfo = null;
     return {
-      dButtonType: dButtonType,
-      dButtonName: dButtonName,
-      dButtonText: dButtonText,
-      dButtonIcon: dButtonIcon,
-      dButtonStyle: dButtonStyle,
-      dBooleanTrue: dBooleanTrue,
-      dOnClickAction: dOnClickAction,
-      cValue: null,
       //stores errors thrown by the input fields
       dDanger: dDanger,
       dWarning: dWarning,
@@ -261,22 +246,12 @@ export default {
 
     check: function(checkedValue) {
       let value = this.value;
-      // if (value) {
-      //   console.log("check: ", Array.from(value), typeof value);
-      // }
       if (this.options) {
         //checkbox
         if (this.type == "checkbox") {
           if (value) {
             value = [...value];
             const index = value.indexOf(checkedValue);
-            // console.log(
-            //   "check: ",
-            //   Array.from(value),
-            //   value.includes(checkedValue),
-            //   value.splice(value.indexOf(checkedValue), 1),
-            //   checkedValue
-            // );
             if (index != -1) {
               value = value.splice(index, 1);
               // console.log("check: ", Array.from(value), typeof value);
@@ -289,7 +264,7 @@ export default {
             this.$emit("selected", [checkedValue]);
           }
         } else {
-          //radio
+          // if type = radio
           // console.log(checkedValue, this.type);
           this.$emit("selected", checkedValue);
         }
