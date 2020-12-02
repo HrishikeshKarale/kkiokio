@@ -172,7 +172,7 @@ export default {
     }
   }, //props
 
-  emits: ["alerts", "input"],
+  emits: ["alerts"],
 
   data() {
     //stores errors thrown by the input fields

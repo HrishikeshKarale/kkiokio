@@ -12,8 +12,9 @@
     <!-- authentication start -->
     <script type="text/javascript">
       function triggerGoogleLoaded(gapi) {
+        const gapiObject = gapi;
           var event = new CustomEvent("google-loaded", {'detail': {
-          gapi: gapi
+          gapi: gapiObject
         }
       });
         window.dispatchEvent(event);

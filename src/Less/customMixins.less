@@ -364,6 +364,33 @@
   }
 }
 
+.condition() {
+  &:focus~.conditions {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    background-color: @backgroundColor;
+    .boxShadow(@base);
+    top: 100%;
+    &>div {
+      display: flex;
+      flex-direction: row;
+      padding: @spaceMd @spaceLg;
+      & > span {
+        margin-right: @spaceMd;
+      }
+    }
+  }
+
+  &~.conditions {
+    display: none;
+    z-index: 1000;
+    padding: @spaceMd @spaceLg;
+  }
+}
+
 .inputcss () {
   display: flex;
   flex-direction: column;
@@ -394,6 +421,7 @@
     max-width: 240px;
     min-height: 16px;
     border: 1px solid @secondaryColor;
+    position: relative;
 
     &:focus-within {
       border-color: @secondaryColor;
@@ -435,6 +463,7 @@
           background-color: none;
           border-color: none;
         }
+        .condition();
       }
     }
   
@@ -446,6 +475,7 @@
       border-radius: @borderRadiusMd;
       width: 100%;
       border: none;
+      position: relative;
       background-color: transparent;
       -webkit-appearance: none;
       outline: none;
@@ -458,11 +488,16 @@
       option:first {
         color: ~"darken(@backgroundColor, 25%)"
       }
+
       & + span {
         padding: @spaceMd+@spaceSm @spaceMd @spaceMd+@spaceSm @spaceSm; //12px 8px 12px 4px;
         color: @grayLighter;
       }
+
+      .condition();
     }
+
+    
     & > input[type= 'file'] {
       padding-left: @spaceLg; //18px;
     }

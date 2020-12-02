@@ -1,4 +1,5 @@
 export const validator = {
+  emits: ["input"], //emits
   methods: {
     initializeValidator: function(pattern) {
       this.pattern = pattern;

@@ -43,6 +43,7 @@ import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.
 import breadcrums from "@/components/breadcrums";
 import vueImg from "./vueImg.vue";
 import { authentication } from "@/typeScript/authentication";
+import { cookie } from "@/typeScript/cookie";
 
 export default {
   name: "EnterpriseAppLayout",
@@ -52,7 +53,7 @@ export default {
     vueImg
   },
 
-  mixins: [authentication],
+  mixins: [authentication, cookie],
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logo = require("@/assets/logo.svg");
@@ -98,18 +99,40 @@ export default {
       }
 
       this.transitionName = transitionName;
-      if (to.meta.requiresAuth) {
+
+      let user = null;
+      // console.log(authentication.data());
+      if (this.checkCookie("user")) {
+        user = JSON.parse(this.getCookie("user"));
+        if (user.IsSignedIn) {
+          next();
+          return;
+        }
+      }
+      console.log(to.name, from.name);
+      if (user != null && user.IsSignedIn && to.meta.requiresAuth) {
+        this.$router.options.routes[6].meta.redirect = from.name;
         to.meta.redirect = from.fullPath;
-        // console.log(to.meta.redirect, to, this.$router);
+        // console.log(to.meta.redirect, to, this.$router.options.routes[6].meta);
         next({
           name: "login"
         });
         return;
-      }
+      } else {
+        console.log("thulla", from.name == undefined ? "home" : to.name);
+        next();
 
-      next();
+        // this.$router.push({
+        //   name: to.name == undefined ? "home" : to.name
+        // });
+      }
     });
   }, //beforeMount
+  beforeUnmount() {
+    const user = JSON.parse(this.getCookie("user"));
+    user.isLoggedIn = false;
+    this.setCookie("user", user);
+  }, //beforeUnmount
 
   methods: {
     beforeLeave(element) {

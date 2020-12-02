@@ -34,6 +34,62 @@
         :class="['fas', dType != 'text' ? 'fa-eye' : 'fa-eye-slash']"
         @click="toggleType"
       />
+      <div v-if="dPasswordValue" class="conditions">
+        <div>
+          <span
+            :class="
+              dPasswordValue.match(/(?=.*[A-Z])(?=.*[0-9])/g)
+                ? 'fas fa-check'
+                : 'fas fa-times'
+            "
+          />
+          Numbers present
+        </div>
+        <div>
+          <span
+            :class="
+              dPasswordValue.match(/\S{1,}/g) ? 'fas fa-check' : 'fas fa-times'
+            "
+          />
+          No Spaces
+        </div>
+        <div>
+          <span
+            :class="
+              dPasswordValue.match(/(?=.*[A-Z])/g)
+                ? 'fas fa-check'
+                : 'fas fa-times'
+            "
+          />
+          Capital Letter
+        </div>
+        <div>
+          <span
+            :class="
+              dPasswordValue.match(/(?=.*[a-z])/g)
+                ? 'fas fa-check'
+                : 'fas fa-times'
+            "
+          />
+          Snall letters
+        </div>
+        <div>
+          <span
+            :class="dPasswordValue.length > 7 ? 'fas fa-check' : 'fas fa-times'"
+          />
+          More than 8 characters
+        </div>
+        <div>
+          <span
+            :class="
+              dPasswordValue.match(/(?=.*[!@#\\$%\\^&\\*])/g)
+                ? 'fas fa-check'
+                : 'fas fa-times'
+            "
+          />
+          Special character
+        </div>
+      </div>
     </div>
     <input-response
       :warning="dWarning"
@@ -169,7 +225,7 @@ export default {
     }
   }, //props
 
-  emits: ["alerts", "input"], //emits
+  emits: ["alerts"], //emits
 
   data() {
     return {

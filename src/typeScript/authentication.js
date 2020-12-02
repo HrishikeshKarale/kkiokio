@@ -1,6 +1,6 @@
 //https://developers.google.com/identity/sign-in/web/build-button
 
-// import { cookie } from "@/typeScript/cookie";
+import { cookie } from "@/typeScript/cookie";
 
 export const authentication = {
   data() {
@@ -24,15 +24,33 @@ export const authentication = {
       user
     };
   }, //data
+  mixins: [cookie], //mixins
   methods: {
     init: function(response) {
-      if (this.gapi && response.detail.gapi.ca == this.gapi.ca) {
-        console.log("already signed In");
-      } else {
-        this.gapi = response.detail.gapi;
-        // console.log("init", this.gapi, this.$router.currentRoute.value.meta);
+      // if (this.gapi && response.detail.gapi.ca == this.gapi.ca) {
+      //   console.log("already signed In");
+      // } else {
+      //   this.gapi = response.detail.gapi;
+      //   // console.log("init", this.gapi, this.$router.currentRoute.value.meta);
 
-        if (this.gapi.isSignediN) {
+      //   if (this.gapi.isSignedIn()) {
+      //     this.googleUserProfile = this.gapi.getBasicProfile();
+      //     this.user = {
+      //       ID: this.googleUserProfile.getId(),
+      //       "Full Name": this.googleUserProfile.getName(),
+      //       "Given Name": this.googleUserProfile.getGivenName(),
+      //       "Family Name": this.googleUserProfile.getFamilyName(),
+      //       "Image URL": this.googleUserProfile.getImageUrl(),
+      //       Email: this.googleUserProfile.getEmail(),
+      //       Token: this.gapi.getAuthResponse().id_token
+      //     };
+      //   }
+      // }
+      if (response) {
+        this.gapi = response.detail.gapi;
+        // console.log("init", this.gapi, "\n\n", (this.gapi.getBasicProfile()).getName(), "\n\n", this.$router.currentRoute.value.meta);
+
+        if (this.gapi.isSignedIn()) {
           this.googleUserProfile = this.gapi.getBasicProfile();
           this.user = {
             ID: this.googleUserProfile.getId(),
@@ -41,17 +59,21 @@ export const authentication = {
             "Family Name": this.googleUserProfile.getFamilyName(),
             "Image URL": this.googleUserProfile.getImageUrl(),
             Email: this.googleUserProfile.getEmail(),
-            Token: this.gapi.getAuthResponse().id_token
+            Token: this.gapi.getAuthResponse().id_token,
+            isLoggedIn: this.gapi.isSignedIn()
           };
+          this.setCookie("gapi", JSON.stringify(this.gapi));
+          this.setCookie("user", JSON.stringify(this.user));
         }
       }
     }, //init
 
     onGoogleSignOut: function() {
       // eslint-disable-next-line no-undef
-      this.gapi.disconnect();
-      this.user = null;
-      this.gapi = null;
+      const diss = this.gapi.disconnect();
+      console.log(diss);
+      this.user.isLoggedIn = false;
+      this.setCookie("user", JSON.stringify(this.user));
       location.reload(true);
     }, //onGoogleSignOut
 

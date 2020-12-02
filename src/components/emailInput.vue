@@ -171,7 +171,7 @@ export default {
     }
   }, //beforeMount
 
-  emits: ["alerts", "input"],
+  emits: ["alerts"],
 
   data() {
     return {

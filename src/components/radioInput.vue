@@ -1,3 +1,4 @@
+// https://tympanus.net/Development/AnimatedCheckboxes/
 <template>
   <div class="radioInput" :class="{ inline: inline }">
     <label
@@ -198,7 +199,7 @@ export default {
     }
   }, //methods
 
-  emits: ["input", "selected"],
+  emits: ["selected"],
 
   data() {
     const dButtonType = "button";
