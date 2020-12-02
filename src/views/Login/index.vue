@@ -150,12 +150,7 @@ export default {
     VueButton
   }, //methods
 
-  mixins: [authentication], //watch
-  // beforeMount() {
-  //   if(this.gapi && this.gapi.isSignedIn()) {
-  //     console.log("beforeMount");
-  //   }
-  // }, //beforeMount
+  mixins: [authentication],
 
   emits: ["loggedIn"], //emits
 
@@ -183,6 +178,7 @@ export default {
     const dOptions = [dLabelChecked, dLabelUnchecked];
     const dRadioValue = dOptions[0];
     const dBooleanTrue = true;
+    const isAdmin = 0;
     return {
       dNameRadio,
       dRadioValue,
@@ -202,7 +198,8 @@ export default {
       signupPassword,
       passwordConfirmation,
       password,
-      dBooleanTrue
+      dBooleanTrue,
+      isAdmin
     };
   }, //data
 
@@ -246,7 +243,7 @@ export default {
               } else if (isAdmin == 1) {
                 this.$router.push("admin");
               } else {
-                this.$router.push("dashboard");
+                this.$router.push("home");
               }
             }
           })
@@ -267,9 +264,9 @@ export default {
         .post(url, {
           name: this.signupName,
           email: this.signupEmail,
-          password: this.signupPassword,
           username: this.signupUsername,
-          isAdmin: 0
+          password: this.signupPassword,
+          isAdmin: this.isAdmin
         })
         .then(response => {
           localStorage.setItem("user", JSON.stringify(response.data.user));

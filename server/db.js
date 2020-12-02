@@ -3,18 +3,40 @@ const sqlite3 = require("sqlite3").verbose();
 class Db {
   constructor(file) {
     this.db = new sqlite3.Database(file);
-    this.createTable();
+    this.createUserTable();
+    this.createCommentsTable();
   }
 
-  createTable() {
+  createUserTable() {
     const sql = `
             CREATE TABLE IF NOT EXISTS user (
-                id integer PRIMARY KEY,
-                name text,
-                email text UNIQUE,
-                username text UNIQUE,
-                user_pass text,
-                is_admin integer)`;
+              id integer,
+              name text NOT NULL,
+              email text NOT NULL,
+              username text NOT NULL CHECK (length(username) >= 8),
+              phone_number text CHECK (length(username) >= 10),
+              image blob,
+              user_pass text NOT NULL,
+              is_admin integer DEFAULT 0,
+              PRIMARY KEY(id),
+              UNIQUE(email, phone_number, username)
+            )`;
+    return this.db.run(sql);
+  }
+
+  createCommentsTable() {
+    const sql = `
+            CREATE TABLE IF NOT EXISTS comment (
+              id integer,
+              user_id integer NOT NULL,
+              comment text NOT NULL,
+              likes text,
+              dislikes text,
+              date integer NOT NULL,
+              time integer NOT NULL,
+              PRIMARY KEY(id),
+              FOREIGN KEY(user_id) REFERENCES user(id)
+            )`;
     return this.db.run(sql);
   }
 
@@ -40,7 +62,7 @@ class Db {
 
   insertAdmin(user, callback) {
     return this.db.run(
-      "INSERT INTO user (name,email, username, user_pass, is_admin) VALUES (?,?,?,?)",
+      "INSERT INTO user (name, email, username, user_pass, is_admin) VALUES (?,?,?,?,?)",
       user,
       err => {
         callback(err);
@@ -56,7 +78,7 @@ class Db {
 
   insert(user, callback) {
     return this.db.run(
-      "INSERT INTO user (name,email, username, user_pass, is_admin) VALUES (?,?,?,?)",
+      "INSERT INTO user (name, email, username, user_pass, is_admin) VALUES (?,?,?,?,?)",
       user,
       err => {
         callback(err);

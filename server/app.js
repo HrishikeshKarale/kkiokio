@@ -31,10 +31,13 @@ app.use(allowCrossDomain);
 
 // defining router for registering a new user
 router.post("/register", (req, res) => {
+  console.log("pretneder");
   const name = req.body.name;
   const email = req.body.email;
+  const username = req.body.username;
   const password = req.body.password;
-  db.insert([name, email, bcrypt.hashSync(password, 10)], err => {
+  console.error("register password", password);
+  db.insert([name, email, username, bcrypt.hashSync(password, 8), 0], err => {
     if (err) {
       console.error("register user", err);
       return res.status(500).send("There was a problem registering the user.");
@@ -63,29 +66,35 @@ router.post("/register", (req, res) => {
 router.post("/register-admin", (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
+  const username = req.body.username;
   const password = req.body.password;
-  const admin = req.body.isAdmin;
-  db.insertAdmin([name, email, bcrypt.hashSync(password, 8), admin], err => {
-    if (err)
-      return res.status(500).send("There was a problem registering the user.");
-    db.selectByEmail(email, (err, user) => {
-      if (err) return res.status(500).send("There was a problem getting user");
-      const token = jwt.sign(
-        {
-          id: user.id
-        },
-        config.secret,
-        {
-          expiresIn: 86400 // expires in 24 hours
-        }
-      );
-      res.status(200).send({
-        auth: true,
-        token,
-        user
+  db.insertAdmin(
+    [name, email, username, bcrypt.hashSync(password, 8), 1],
+    err => {
+      if (err)
+        return res
+          .status(500)
+          .send("There was a problem registering the user.");
+      db.selectByEmail(email, (err, user) => {
+        if (err)
+          return res.status(500).send("There was a problem getting user");
+        const token = jwt.sign(
+          {
+            id: user.id
+          },
+          config.secret,
+          {
+            expiresIn: 86400 // expires in 24 hours
+          }
+        );
+        res.status(200).send({
+          auth: true,
+          token,
+          user
+        });
       });
-    });
-  });
+    }
+  );
 });
 
 // define the route for logging in an administrator

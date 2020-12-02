@@ -109,7 +109,7 @@ export default {
           return;
         }
       }
-      console.log(from.name, "->", to.name);
+      // console.log(from.name, "->", to.name);
       if (user != null && user.IsSignedIn && to.meta.requiresAuth) {
         this.$router.options.routes[6].meta.redirect = from.name;
         to.meta.redirect = from.fullPath;

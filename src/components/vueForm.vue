@@ -76,7 +76,6 @@ export default {
     validInput: function() {
       const alerts = this.alerts;
       const form = this.$refs[this.dForm];
-      console.log(form);
       if (form && !alerts["error"] && !alerts["warning"]) {
         const inputs = [
           ...Array.from(form.getElementsByTagName("select")),
@@ -84,9 +83,7 @@ export default {
         ];
 
         for (let index = 0; index < inputs.length; ++index) {
-          console.log(inputs[index].name);
           if (inputs[index].required && !inputs[index].value) {
-            console.log("required: ", inputs[index].name, inputs[index].value);
             return false;
           }
           //skipPAsswordMatch value check
