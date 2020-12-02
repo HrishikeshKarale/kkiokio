@@ -70,6 +70,9 @@ export default {
     font-size: @fontSizeSm;
     font-family: monospace;
     font-weight: 700;
+    & > span {
+      margin-right: @spaceMd;
+    }
 
     &.infoMessage {
       color: @infoText;

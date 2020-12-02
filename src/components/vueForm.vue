@@ -63,22 +63,12 @@ export default {
   },
 
   data() {
-    const dButtonType = "submit";
-
-    const dButtonStyle = "small";
-
-    const dBooleanTrue = true;
     const dWarning = null;
     const dDanger = null;
 
     return {
       dWarning,
-      dDanger,
-      dButtonType: dButtonType,
-
-      dButtonStyle: dButtonStyle,
-
-      dBooleanTrue: dBooleanTrue
+      dDanger
     };
   }, //data
 
@@ -86,6 +76,7 @@ export default {
     validInput: function() {
       const alerts = this.alerts;
       const form = this.$refs[this.dForm];
+      console.log(form);
       if (form && !alerts["error"] && !alerts["warning"]) {
         const inputs = [
           ...Array.from(form.getElementsByTagName("select")),
@@ -93,8 +84,14 @@ export default {
         ];
 
         for (let index = 0; index < inputs.length; ++index) {
+          console.log(inputs[index].name);
           if (inputs[index].required && !inputs[index].value) {
+            console.log("required: ", inputs[index].name, inputs[index].value);
             return false;
+          }
+          //skipPAsswordMatch value check
+          if (inputs[index].type === "password") {
+            index++;
           }
         }
         return true;

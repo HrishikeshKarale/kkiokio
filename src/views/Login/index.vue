@@ -26,8 +26,8 @@
       <div>
         <vue-form
           v-if="dRadioValue == dOptions[0]"
-          :d-on-click-action="handleLogin.bind(this)"
-          d-form="loginForm"
+          :dOnClickAction="handleLogin.bind(this)"
+          dForm="loginForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
@@ -57,8 +57,8 @@
         </vue-form>
         <vue-form
           v-else
-          :d-on-click-action="handleSignUp.bind(this)"
-          d-form="SignUpForm"
+          :dOnClickAction="handleSignUp.bind(this)"
+          dForm="SignUpForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
@@ -97,24 +97,14 @@
           <password-input
             :value="signupPassword"
             label="Password"
-            name="usernameTextField"
+            name="paswordTextField"
             placeholder="*************"
             :required="booleanTrue"
+            :match="booleanTrue"
             input-icon="far fa-user"
             :autocomplete="booleanTrue"
             @alerts="alerts"
             @input="val => (signupPassword = val)"
-          />
-          <password-input
-            :value="passwordConfirmation"
-            label="Confirm Password"
-            name="usernameTextField"
-            placeholder="*************"
-            :required="booleanTrue"
-            input-icon="far fa-user"
-            :autocomplete="booleanTrue"
-            @alerts="alerts"
-            @input="val => (passwordConfirmation = val)"
           />
         </vue-form>
         <div>
@@ -239,7 +229,7 @@ export default {
       e.preventDefault();
       if (this.password.length > 0) {
         this.axios
-          .post("http://localhost:8000/login", {
+          .post("http://localhost:8001/login", {
             email: this.emailID,
             password: this.password
           })
@@ -268,51 +258,36 @@ export default {
 
     handleSignUp(e) {
       e.preventDefault();
-      // console.log(
-      //   this.signupPassword,
-      //   this.passwordConfirmation,
-      //   this.signUpEmail
-      // );
-      if (
-        this.signupPassword === this.passwordConfirmation &&
-        this.signupPassword.length > 0
-      ) {
-        let url = "http://localhost:8000/register";
-        if (this.isAdmin != null || this.isAdmin == 1) {
-          url = "http://localhost:8000/register-admin";
-        }
-        //POST request
-        this.axios
-          .post(url, {
-            name: this.signupName,
-            email: this.signupEmail,
-            password: this.signupPassword,
-            username: this.signupUsername,
-            isAdmin: 0
-          })
-          .then(response => {
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            localStorage.setItem("jwt", response.data.token);
-
-            if (localStorage.getItem("jwt") != null) {
-              // eslint-disable-next-line vue/custom-event-name-casing
-              this.$emit("loggedIn");
-              if (this.$route.params.nextUrl != null) {
-                this.$router.push(this.$route.params.nextUrl);
-              } else {
-                this.$router.push("/");
-              }
-            }
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      } else {
-        this.password = "";
-        this.passwordConfirm = "";
-
-        return alert("Passwords do not match");
+      let url = "http://localhost:8001/register";
+      if (this.isAdmin != null || this.isAdmin == 1) {
+        url = "http://localhost:8001/register-admin";
       }
+      //POST request
+      this.axios
+        .post(url, {
+          name: this.signupName,
+          email: this.signupEmail,
+          password: this.signupPassword,
+          username: this.signupUsername,
+          isAdmin: 0
+        })
+        .then(response => {
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+          localStorage.setItem("jwt", response.data.token);
+
+          if (localStorage.getItem("jwt") != null) {
+            // eslint-disable-next-line vue/custom-event-name-casing
+            this.$emit("loggedIn");
+            if (this.$route.params.nextUrl != null) {
+              this.$router.push(this.$route.params.nextUrl);
+            } else {
+              this.$router.push("/");
+            }
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
     }, //handleSignUp
 
     alerts: function(type, message) {
