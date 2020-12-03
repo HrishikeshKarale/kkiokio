@@ -1,3 +1,4 @@
+<!-- //login google https://stackoverflow.com/questions/31144874/gapi-is-not-defined-google-sign-in-issue-with-gapi-auth2-init -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +10,27 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <!-- authentication start -->
+    <script type="text/javascript">
+      function triggerGoogleLoaded(gapi) {
+        const gapiObject = gapi;
+          var event = new CustomEvent("google-loaded", {'detail': {
+          gapi: gapiObject
+        }
+      });
+        window.dispatchEvent(event);
+      }
+    </script>
+    <!-- <script
+      src="https://apis.google.com/js/platform.js?onload=triggerGoogleLoaded"
+      async
+      defer
+    ></script>
+    <meta
+      name="google-signin-client_id"
+      content="94699127686-nmek6a5nj88vq5vu03u0hoa3nh4jsr7g.apps.googleusercontent.com"
+    /> -->
+    <!-- authentication end -->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body id="portfolio">

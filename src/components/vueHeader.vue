@@ -38,29 +38,46 @@
         </li>
       </ul>
     </nav>
-    <div class="themeToggle">
-      <vue-button
-        v-if="!authenticated"
-        buttop-name="loginButton"
-        button-style="text-sm"
-        button-text="LogIn"
-        button-icon="fas fa-sign-in-alt"
-        :on-click-action="login.bind(this)"
-      />
-      <vue-button
-        v-if="themeIcon"
-        buttop-name="themeToggle"
-        button-style="text-sm"
-        button-text="Theme"
-        :button-icon="themeIcon"
-        :on-click-action="theme.bind(this)"
-      />
+    <div>
+      <span class="fas fa-user" />
+        <div class='user'>
+          <template v-if="signedIn" >
+          <vue-img  :src="this.user.image" alt="Logo" />
+          <!-- {{ this.user }} -->
+          </template>
+          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+          <vue-button
+            v-if="!signedIn"
+            buttop-name="loginButton"
+            button-style="text-sm"
+            button-text="LogIn"
+            button-icon="fas fa-sign-in-alt"
+            :on-click-action="login.bind(this)"
+          />
+          <vue-button
+            v-else
+            button-name="googleSignOutButton"
+            button-text="logout"
+            button-icon="fas fa-sign-out-alt"
+            button-style="text-sm"
+            :on-click-action="onGoogleSignOut.bind()"
+          />
+          <vue-button
+            v-if="themeIcon"
+            buttop-name="themeToggle"
+            button-style="text-sm"
+            button-text="Theme"
+            :button-icon="themeIcon"
+            :on-click-action="theme.bind(this)"
+          />
+        </div>
     </div>
   </div>
 </template>
 
 <script>
 import { toggle } from "@/typeScript/toggle";
+import { authentication } from "@/typeScript/authentication";
 import vueButton from "@/components/vueButton";
 import vueImg from "./vueImg.vue";
 
@@ -72,7 +89,7 @@ export default {
     vueImg
   }, //data
 
-  mixins: [toggle],
+  mixins: [toggle, authentication],
 
   props: {
     logoLink: {
@@ -88,7 +105,7 @@ export default {
     }
   },
   data() {
-    const authenticated = this.$router.currentRoute.value.meta.requiresAuth;
+    const authenticated = this.$router.currentRoute.value.meta.requiresAuth && localStorage.getItem('jwt');
     return {
       authenticated
     };
@@ -161,10 +178,6 @@ export default {
   // .boxShadow(@one);
   & > .menuTrigger {
     display: none;
-    margin-left: auto;
-  }
-  & > .themeToggle {
-    display: flex;
     margin-left: auto;
   }
   & > nav {
@@ -284,6 +297,48 @@ export default {
         }
       }
     }
+    //user account
+    & + div {
+      display: flex;
+      margin-left: auto;
+      position: relative;
+      & > span {
+        color: @secondaryColor;
+        padding: @spaceMd;
+        border: 1px solid @secondaryColor;
+        border-radius: 50%;
+        cursor: pointer;
+        & + .user {
+          display: none;
+          position: absolute;
+          z-index: inherit;
+          & > .g-signin2 {
+            display: none;
+          }
+        }
+      }
+      &:hover {
+        
+        & > span {
+            border-radius: 50% 50% 0 50%;
+            background-color: @secondaryColor;
+            color: @navBackground;
+            .boxShadow(@one, @shadowColor, 1001);
+          & + .user {
+            display: flex;
+            flex-direction: column;
+            background-color: @backgroundColor;
+            top: 100%;
+            right: 0;
+            height: fit-content;
+            width: fit-content;
+            border-radius: @borderRadius; 
+            padding: @spaceLg @spaceXl;
+            .boxShadow(@one, @shadowColor, 1001);
+          }
+        }
+      }
+    }
   }
   @media screen {
     @media (max-width: 1540px) {
@@ -301,7 +356,7 @@ export default {
       //hides navigation when toggled
       & > nav {
         display: none;
-        & + .themeToggle {
+        & + div {
           display: none;
         }
       }
@@ -339,14 +394,14 @@ export default {
               }
             }
           }
-        }
-        & > .themeToggle {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+          & + div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-          & > button {
-            margin-bottom: @spaceLg;
+            & > button {
+              margin-bottom: @spaceLg;
+            }
           }
         }
       }

@@ -1,47 +1,180 @@
 //https://markus.oberlehner.net/blog/replicating-the-twitter-tweet-box-with-vue/
 <template>
-  <div class="passwordInput" :class="{ inline: inline }">
-    <label v-if="label" :class="{ maskField: mask }">
-      {{ label }}
-      <abbr v-if="required" title="Required Field">*</abbr>
-      <span v-else> - Optional field<abbr>*</abbr></span>
-    </label>
-    <div
-      :class="{
-        warningContainer: dWarning,
-        errorContainer: dDanger,
-        iconPadding: inputIcon,
-        maskField: mask
-      }"
-    >
-      <span v-if="inputIcon" :class="inputIcon" />
-      <input
-        v-if="!mask"
-        v-model="dPasswordValue"
-        :type="dType"
-        :name="name"
-        :placeholder="placeholder"
+  <div class="passwordInput">
+    <div :class="{ inline: inline }">
+      <label v-if="label" :class="{ maskField: mask }">
+        {{ label }}
+        <abbr v-if="required" title="Required Field">*</abbr>
+        <span v-else> - Optional field<abbr>*</abbr></span>
+      </label>
+      <div
+        :class="{
+          warningContainer: dWarning,
+          errorContainer: dDanger,
+          iconPadding: inputIcon,
+          maskField: mask
+        }"
+      >
+        <span v-if="inputIcon" :class="inputIcon" />
+        <input
+          v-if="!mask"
+          v-model="dPasswordValue"
+          :type="dType"
+          :name="name"
+          :placeholder="placeholder"
+          :maxlength="maxlength"
+          :pattern="pattern"
+          :autofocus="autofocus"
+          :disabled="disabled"
+          :readonly="readonly"
+          :required="required"
+          :autocomplete="autocomplete"
+          @input="validate"
+        />
+        <span
+          :class="['fas', dType != 'text' ? 'fa-eye' : 'fa-eye-slash']"
+          @click="peek(1)"
+        />
+        <div v-if="dPasswordValue" class="conditions">
+          <div>
+            <span
+              :class="
+                dPasswordValue.match(/(?=.*[A-Z])(?=.*[0-9])/g)
+                  ? 'fas fa-check'
+                  : 'fas fa-times'
+              "
+            />
+            Numbers present
+          </div>
+          <div>
+            <span
+              :class="
+                dPasswordValue.match(/\S{1,}/g)
+                  ? 'fas fa-check'
+                  : 'fas fa-times'
+              "
+            />
+            No Spaces
+          </div>
+          <div>
+            <span
+              :class="
+                dPasswordValue.match(/(?=.*[A-Z])/g)
+                  ? 'fas fa-check'
+                  : 'fas fa-times'
+              "
+            />
+            Capital Letter
+          </div>
+          <div>
+            <span
+              :class="
+                dPasswordValue.match(/(?=.*[a-z])/g)
+                  ? 'fas fa-check'
+                  : 'fas fa-times'
+              "
+            />
+            Snall letters
+          </div>
+          <div>
+            <span
+              :class="
+                dPasswordValue.length > 7 ? 'fas fa-check' : 'fas fa-times'
+              "
+            />
+            More than 8 characters
+          </div>
+          <div>
+            <span
+              :class="
+                dPasswordValue.match(/(?=.*[!@#\\$%\\^&\\*])/g)
+                  ? 'fas fa-check'
+                  : 'fas fa-times'
+              "
+            />
+            Special character
+          </div>
+        </div>
+      </div>
+      <input-response
+        :warning="dWarning"
+        :error="dDanger"
+        :char-limit-reached="
+          dPasswordValue ? maxlength - dPasswordValue.length < 0 : false
+        "
         :maxlength="maxlength"
-        :pattern="pattern"
-        :autofocus="autofocus"
-        :disabled="disabled"
-        :readonly="readonly"
-        :required="required"
-        @input="validate"
-      />
-      <span
-        :class="['fas', dType != 'text' ? 'fa-eye' : 'fa-eye-slash']"
-        @click="toggleType"
       />
     </div>
-    <input-response
-      :warning="dWarning"
-      :error="dDanger"
-      :char-limit-reached="
-        dPasswordValue ? maxlength - dPasswordValue.length < 0 : false
-      "
-      :maxlength="maxlength"
-    />
+    <div v-if="match" :class="{ inline: inline }">
+      <label v-if="label" :class="{ maskField: mask }">
+        Confirm {{ label }}
+        <abbr v-if="required" title="Required Field">*</abbr>
+        <span v-else> - Optional field<abbr>*</abbr></span>
+      </label>
+      <div
+        :class="{
+          warningContainer: dPasswordValue
+            ? dPasswordMatch
+              ? dPasswordValue === dPasswordMatch
+                ? null
+                : 'Passwords does not match'
+              : null
+            : null,
+          errorContainer: dPasswordValue
+            ? dPasswordMatch
+              ? null
+              : 'Required Field'
+            : null,
+          iconPadding: inputIcon,
+          maskField: mask
+        }"
+      >
+        <span v-if="inputIcon" :class="inputIcon" />
+        <input
+          v-if="!mask"
+          v-model="dPasswordMatch"
+          :type="dTypeMatch"
+          :name="name + 'Match'"
+          :placeholder="placeholder"
+          :maxlength="maxlength"
+          :autofocus="autofocus"
+          :disabled="disabled"
+          :readonly="readonly"
+          :autocomplete="!dBooleanTrue"
+          @input="validate"
+        />
+        <span
+          :class="['fas', dTypeMatch != 'text' ? 'fa-eye' : 'fa-eye-slash']"
+          @click="peek(0)"
+        />
+        <div v-if="dPasswordValue" class="conditions">
+          <div>
+            <span
+              :class="
+                dPasswordValue && dPasswordValue === dPasswordMatch
+                  ? 'fas fa-check'
+                  : 'fas fa-times'
+              "
+            />
+            {{ label }} Match
+          </div>
+        </div>
+      </div>
+      <input-response
+        :warning="
+          dPasswordValue
+            ? dPasswordMatch
+              ? dPasswordValue === dPasswordMatch
+                ? null
+                : 'Passwords does not match'
+              : null
+            : null
+        "
+        :error="
+          dPasswordValue ? (dPasswordMatch ? null : 'Required Field') : null
+        "
+      />
+    </div>
   </div>
 </template>
 
@@ -153,6 +286,13 @@ export default {
       default: null
     },
 
+    //if true, the component generates a confirmation password box in order to check the password matches the original box password
+    match: {
+      required: false,
+      type: [Boolean, null],
+      default: false
+    },
+
     //checks if label options should appear on the same line or not
     inline: {
       required: false,
@@ -168,20 +308,30 @@ export default {
     }
   }, //props
 
-  emits: ["alerts", "input"], //emits
+  emits: ["alerts"], //emits
 
   data() {
+    const dBooleanTrue = true;
+    //stores errors thrown by the input fields
+    const dDanger = undefined;
+    //stores errors thrown by the input fields
+    const dWarning = undefined;
+    //stores textbox password values
+    const dPasswordValue = undefined;
+    //stores textbox password values to match with dPasswordValue
+    const dPasswordMatch = undefined;
+    //type defaulted to password.
+    const dType = "password";
+    //type defaulted to password.
+    const dTypeMatch = "password";
     return {
-      //stores errors thrown by the input fields
-      dDanger: null,
-
-      //stores errors thrown by the input fields
-      dWarning: null,
-
-      //stores textbox password values
-      dPasswordValue: null,
-
-      dType: "password"
+      dDanger,
+      dWarning,
+      dPasswordValue,
+      dPasswordMatch,
+      dType,
+      dTypeMatch,
+      dBooleanTrue
     }; //return
   }, //components
 
@@ -239,13 +389,22 @@ export default {
       this.dWarning = response.warning;
     }, //validate
 
-    toggleType: function() {
-      if (this.dType == "password") {
-        this.dType = "text";
-      } else {
-        this.dType = "password";
+    //
+    peek: function(val) {
+      if (val === 0) {
+        if (this.dTypeMatch === "password") {
+          this.dTypeMatch = "text";
+        } else {
+          this.dTypeMatch = "password";
+        }
+      } else if (val === 1) {
+        if (this.dType === "password") {
+          this.dType = "text";
+        } else {
+          this.dType = "password";
+        }
       }
-    } //toggleType
+    } //peek
   } //watch
 }; //default
 </script>
@@ -256,6 +415,11 @@ export default {
 .passwordInput {
   min-width: 160px;
 
-  .inputcss();
+  & > div {
+    .inputcss();
+    &:last-child {
+      margin-bottom: @spaceXl;
+    }
+  }
 }
 </style>

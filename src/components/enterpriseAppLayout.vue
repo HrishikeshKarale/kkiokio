@@ -42,6 +42,8 @@
 import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
 import breadcrums from "@/components/breadcrums";
 import vueImg from "./vueImg.vue";
+import { authentication } from "@/typeScript/authentication";
+import { cookie } from "@/typeScript/cookie";
 
 export default {
   name: "EnterpriseAppLayout",
@@ -50,6 +52,8 @@ export default {
     breadcrums,
     vueImg
   },
+
+  mixins: [authentication, cookie],
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const logo = require("@/assets/logo.svg");
@@ -64,15 +68,10 @@ export default {
       transitionEnterActiveClass,
       prevHeight
     };
-  },
+  }, //mixins
 
   beforeMount() {
     this.$router.beforeEach((to, from, next) => {
-      // console.log(to.meta.requiresAuth);
-      if (to.meta.requiresAuth) {
-        this.$router.push({ name: "login" });
-      }
-
       let transitionName =
         to.meta.transitionName ||
         from.meta.transitionName ||
@@ -101,9 +100,85 @@ export default {
 
       this.transitionName = transitionName;
 
-      next();
+      //check if matched route requires authentication
+      if (to.matched.some(record => record.meta.requiresAuth)) {
+        //if matched route requires authentication then check for absence of token
+        if (localStorage.getItem('jwt') == null && !this.checkCookie("token")) {
+          //when no token is found redirect to login page and set redirec
+          next({
+            name: 'login',
+            query: { nextUrl: to.name }
+          })
+        }
+        //if matched route requires authentication and has token
+        else {
+          let user = {};
+          if(localStorage.getItem('user')) {
+            user = localStorage.getItem('user');
+          }
+          else if (JSON.parse(this.getCookie('user'))){
+            user = JSON.parse(this.getCookie('user'));
+          }
+          // const user = JSON.parse(localStorage.getItem('user') || JSON.parse(this.getCookie('user')) ||{});
+          //when token is present check if user is an Admin
+          if (to.matched.some(record => record.meta.isAdmin)) {
+            //If user is an admin, proceed
+            if (user.isAdmin == 1) {
+              next()
+            }
+            //if user is not admin then redirect to  about page
+            else {
+              next({ path: 'about' })
+            }
+          } else {
+            next()
+          }
+        }
+      }
+      // did not match any record where authentication was required.
+      //check if guest access is required to matched route
+      else if (to.matched.some(record => record.meta.guest)) {
+        if (localStorage.getItem('jwt') == null) {
+          next()
+        }
+        else {
+          next({ name: 'about' })
+        }
+      } else {
+        next()
+      }
+
+      // let user = null;
+      // let token = null;
+      // // console.log(authentication.data());
+      // if (this.checkCookie("user")) {
+      //   user = JSON.parse(this.getCookie("user"));
+      //   token = this.getCookie("token");
+      // } else {
+      //   user = JSON.parse(localStorage.getItem("user"));
+      //   token = localStorage.getItem("token");
+      // }
+      // // console.log(from.name, "->", to.name);
+      // if (to.meta.requiresAuth) {
+      //   if (user != null && token) {
+      //     next();
+      //   }
+      //   else {
+      //     this.$router.options.routes[6].meta.redirect = from.name;
+      //     to.meta.redirect = from.fullPath;
+      //     // console.log(to.meta.redirect, to, this.$router.options.routes[6].meta);
+      //     next({
+      //       name: "login",
+      //       params: { nextUrl: to.fullPath }
+      //     });
+      //   }
+      // }
+      // else {
+      //   next();
+      // }
     });
   }, //beforeMount
+
   methods: {
     beforeLeave(element) {
       this.prevHeight = getComputedStyle(element).height;
@@ -166,9 +241,9 @@ export default {
           }
         }
         &.content {
-          align-content: center;
+          align-items: center;
           color: @textColor;
-          margin: 0 auto auto;
+          margin: auto;
           max-width: 80vw;
           width: 1504px;
 

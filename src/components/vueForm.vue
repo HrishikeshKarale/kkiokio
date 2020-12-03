@@ -38,47 +38,37 @@ export default {
 
   props: {
     alerts: {
-      type: Object,
-      required: true
+      required: true,
+      type: Object
     },
     dOnClickAction: {
-      type: Function,
-      required: true
+      required: true,
+      type: Function
     },
     dForm: {
-      type: [String, null],
       required: false,
+      type: [String, null],
       default: null
     },
     autocomplete: {
-      type: [Boolean, null],
       required: false,
+      type: [Boolean, null],
       default: true
     },
     validate: {
-      type: [Boolean, null],
       required: false,
+      type: [Boolean, null],
       default: false
     }
   },
 
   data() {
-    const dButtonType = "submit";
-
-    const dButtonStyle = "small";
-
-    const dBooleanTrue = true;
     const dWarning = null;
     const dDanger = null;
 
     return {
       dWarning,
-      dDanger,
-      dButtonType: dButtonType,
-
-      dButtonStyle: dButtonStyle,
-
-      dBooleanTrue: dBooleanTrue
+      dDanger
     };
   }, //data
 
@@ -95,6 +85,10 @@ export default {
         for (let index = 0; index < inputs.length; ++index) {
           if (inputs[index].required && !inputs[index].value) {
             return false;
+          }
+          //skipPAsswordMatch value check
+          if (inputs[index].type === "password") {
+            index++;
           }
         }
         return true;
