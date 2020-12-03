@@ -244,7 +244,7 @@ export default {
         &.content {
           align-items: center;
           color: @textColor;
-          margin: auto;
+          margin:  0 auto;
           max-width: 80vw;
           width: 1504px;
 

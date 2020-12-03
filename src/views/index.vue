@@ -130,6 +130,7 @@ export default {
         display: flex;
         flex-direction: column;
         padding: @spaceXl @spaceXl;
+        margin: @spaceXl;
         & > h1,
         & > h2:first-child {
           margin-top: 0;
