@@ -203,17 +203,15 @@ export default {
     };
   }, //data
 
-  // watch: {
-  //   signedIn: function(newValue, oldValue) {
-  //     if (newValue != oldValue) {
-  //       // console.log(this.$router.options.routes[6].meta.redirect);
-  //       this.$router.push({
-  //         name: this.$router.options.routes[6].meta.redirect
-  //       });
-  //       // this.$router.back();3
-  //     }
-  //   }
-  // }, //watch
+  watch: {
+    signedIn: function(newValue, oldValue) {
+      if (newValue != oldValue) {
+        this.$router.push({
+          name: this.$router.currentRoute.value.query.nextUrl
+        });
+      }
+    }
+  }, //watch
 
   methods: {
     handleLogin(e) {

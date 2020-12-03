@@ -41,6 +41,10 @@
     <div>
       <span class="fas fa-user" />
         <div class='user'>
+          <template v-if="signedIn" >
+          <vue-img  :src="this.user.image" alt="Logo" />
+          <!-- {{ this.user }} -->
+          </template>
           <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
           <vue-button
             v-if="!signedIn"

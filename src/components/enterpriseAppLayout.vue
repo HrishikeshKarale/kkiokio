@@ -107,7 +107,7 @@ export default {
           //when no token is found redirect to login page and set redirec
           next({
             name: 'login',
-            query: { nextUrl: to.fullPath }
+            query: { nextUrl: to.name }
           })
         }
         //if matched route requires authentication and has token

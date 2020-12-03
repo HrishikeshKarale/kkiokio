@@ -43,12 +43,10 @@ export const authentication = {
           this.googleUserProfile = this.gapi.getBasicProfile();
           this.user = {
             ID: this.googleUserProfile.getId(),
-            "Full Name": this.googleUserProfile.getName(),
-            "Given Name": this.googleUserProfile.getGivenName(),
-            "Family Name": this.googleUserProfile.getFamilyName(),
-            "Image URL": this.googleUserProfile.getImageUrl(),
-            Email: this.googleUserProfile.getEmail(),
-            Token: this.gapi.getAuthResponse().id_token,
+            name: this.googleUserProfile.getName(),
+            image: this.googleUserProfile.getImageUrl(),
+            email: this.googleUserProfile.getEmail(),
+            token: this.gapi.getAuthResponse().id_token,
             isLoggedIn: this.gapi.isSignedIn(),
             isAdmin: 0
           };
