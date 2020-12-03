@@ -56,16 +56,6 @@
         <span>Designer</span>
         <span>&</span>
         <span>Developer</span>
-        <!-- <vue-button
-        buttop-name="loginButton"
-        button-style="icon-sm"
-        button-icon="fas fa-sign-in-alt"
-        :on-click-action="
-          () => {
-            this.$router.push();
-          }
-        "
-      /> -->
       </div>
     </div>
     <div>
@@ -80,7 +70,6 @@
 <script>
 // @ is an alias to /src
 // import CountdownTimer from "@/components/countdownTimer.vue";
-// import vueImg from "@/components/vueImg.vue";
 import vueButton from "@/components/vueButton.vue";
 import infiniteScroll from "@/views/project/css/infiniteScroll.vue";
 import { skills } from "@/store/skills";
@@ -90,7 +79,6 @@ export default {
   components: {
     vueButton,
     infiniteScroll
-    // vueImg,
     // CountdownTimer
   },
   data() {
@@ -155,7 +143,7 @@ export default {
         //   .boxShadow(@one);
         // }
 
-        //designa dndevelop box
+        //design and develop box
         &:last-child {
           border: @borderRadius dashed @secondaryColor;
           height: 480px;
@@ -165,7 +153,7 @@ export default {
           & > span {
             font-size: 64px;
             align-self: center;
-            // padding: @spaceMd @spaceLg;
+            padding: @spaceMd @spaceLg;
             font-weight: bold;
             transform: rotate(-45deg);
             &:first-child {
@@ -182,11 +170,13 @@ export default {
         }
       }
     }
-    & > .skills {
+    &:last-child {
+      & > .skills {
       display: flex;
       flex-direction: column;
       height: 40px;
       width: 100%;
+    }
     }
   }
 
