@@ -223,7 +223,7 @@ export default {
         width: @spaceXl;
         height: @spaceXl;
         border-radius: @round;
-        background: @primaryColor;
+        background: @secondaryColor;
         cursor: pointer;
 
         &.checked {
@@ -244,7 +244,7 @@ export default {
 
     .checkbox-label {
       width: max-content;
-      color: @primaryColor;
+      color: @secondaryColor;
       margin-left: @spaceMd;
       font-weight: bold;
     }

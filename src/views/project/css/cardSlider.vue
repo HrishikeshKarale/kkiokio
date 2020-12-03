@@ -123,7 +123,7 @@ export default {
         display: flex;
         justify-content: center;
         transition: @transition;
-        background-color: red;
+        background-color: @secondaryColor;
       }
     }
     &:hover {

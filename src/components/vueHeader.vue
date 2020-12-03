@@ -276,7 +276,7 @@ export default {
           }
           //hover effect for li
           &:hover {
-            color: @primaryColor;
+            color: @secondaryColor;
             &::before {
               transform: scale(1.2);
             }
