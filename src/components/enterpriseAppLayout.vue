@@ -100,38 +100,84 @@ export default {
 
       this.transitionName = transitionName;
 
-      let user = null;
-      // console.log(authentication.data());
-      if (this.checkCookie("user")) {
-        user = JSON.parse(this.getCookie("user"));
-        if (user.IsSignedIn) {
-          next();
-          return;
+      //check if matched route requires authentication
+      if (to.matched.some(record => record.meta.requiresAuth)) {
+        //if matched route requires authentication then check for absence of token
+        if (localStorage.getItem('jwt') == null && !this.checkCookie("token")) {
+          //when no token is found redirect to login page and set redirec
+          next({
+            name: 'login',
+            query: { nextUrl: to.fullPath }
+          })
+        }
+        //if matched route requires authentication and has token
+        else {
+          let user = {};
+          if(localStorage.getItem('user')) {
+            user = localStorage.getItem('user');
+          }
+          else if (JSON.parse(this.getCookie('user'))){
+            user = JSON.parse(this.getCookie('user'));
+          }
+          // const user = JSON.parse(localStorage.getItem('user') || JSON.parse(this.getCookie('user')) ||{});
+          //when token is present check if user is an Admin
+          if (to.matched.some(record => record.meta.isAdmin)) {
+            //If user is an admin, proceed
+            if (user.isAdmin == 1) {
+              next()
+            }
+            //if user is not admin then redirect to  about page
+            else {
+              next({ path: 'about' })
+            }
+          } else {
+            next()
+          }
         }
       }
-      // console.log(from.name, "->", to.name);
-      if (user != null && user.IsSignedIn && to.meta.requiresAuth) {
-        this.$router.options.routes[6].meta.redirect = from.name;
-        to.meta.redirect = from.fullPath;
-        // console.log(to.meta.redirect, to, this.$router.options.routes[6].meta);
-        next({
-          name: "login"
-        });
-        return;
+      // did not match any record where authentication was required.
+      //check if guest access is required to matched route
+      else if (to.matched.some(record => record.meta.guest)) {
+        if (localStorage.getItem('jwt') == null) {
+          next()
+        }
+        else {
+          next({ name: 'about' })
+        }
       } else {
-        next();
-
-        // this.$router.push({
-        //   name: to.name == undefined ? "home" : to.name
-        // });
+        next()
       }
+
+      // let user = null;
+      // let token = null;
+      // // console.log(authentication.data());
+      // if (this.checkCookie("user")) {
+      //   user = JSON.parse(this.getCookie("user"));
+      //   token = this.getCookie("token");
+      // } else {
+      //   user = JSON.parse(localStorage.getItem("user"));
+      //   token = localStorage.getItem("token");
+      // }
+      // // console.log(from.name, "->", to.name);
+      // if (to.meta.requiresAuth) {
+      //   if (user != null && token) {
+      //     next();
+      //   }
+      //   else {
+      //     this.$router.options.routes[6].meta.redirect = from.name;
+      //     to.meta.redirect = from.fullPath;
+      //     // console.log(to.meta.redirect, to, this.$router.options.routes[6].meta);
+      //     next({
+      //       name: "login",
+      //       params: { nextUrl: to.fullPath }
+      //     });
+      //   }
+      // }
+      // else {
+      //   next();
+      // }
     });
   }, //beforeMount
-  beforeUnmount() {
-    const user = JSON.parse(this.getCookie("user"));
-    user.isLoggedIn = false;
-    this.setCookie("user", user);
-  }, //beforeUnmount
 
   methods: {
     beforeLeave(element) {

@@ -25,31 +25,20 @@ export const authentication = {
     };
   }, //data
   mixins: [cookie], //mixins
-  methods: {
-    init: function(response) {
-      // if (this.gapi && response.detail.gapi.ca == this.gapi.ca) {
-      //   console.log("already signed In");
-      // } else {
-      //   this.gapi = response.detail.gapi;
-      //   // console.log("init", this.gapi, this.$router.currentRoute.value.meta);
 
-      //   if (this.gapi.isSignedIn()) {
-      //     this.googleUserProfile = this.gapi.getBasicProfile();
-      //     this.user = {
-      //       ID: this.googleUserProfile.getId(),
-      //       "Full Name": this.googleUserProfile.getName(),
-      //       "Given Name": this.googleUserProfile.getGivenName(),
-      //       "Family Name": this.googleUserProfile.getFamilyName(),
-      //       "Image URL": this.googleUserProfile.getImageUrl(),
-      //       Email: this.googleUserProfile.getEmail(),
-      //       Token: this.gapi.getAuthResponse().id_token
-      //     };
-      //   }
-      // }
+  computed: {
+    signedIn() {
+      return this.gapi && this.gapi.isSignedIn();
+    }
+  }, //computed
+
+  methods: {
+    //initialize user data when signedIn via Google
+    init: function(response) {
       if (response) {
         this.gapi = response.detail.gapi;
-        // console.log("init", this.gapi, "\n\n", (this.gapi.getBasicProfile()).getName(), "\n\n", this.$router.currentRoute.value.meta);
 
+        //if signedIn
         if (this.gapi.isSignedIn()) {
           this.googleUserProfile = this.gapi.getBasicProfile();
           this.user = {
@@ -60,10 +49,18 @@ export const authentication = {
             "Image URL": this.googleUserProfile.getImageUrl(),
             Email: this.googleUserProfile.getEmail(),
             Token: this.gapi.getAuthResponse().id_token,
-            isLoggedIn: this.gapi.isSignedIn()
+            isLoggedIn: this.gapi.isSignedIn(),
+            isAdmin: 0
           };
           this.setCookie("gapi", JSON.stringify(this.gapi));
+          localStorage.setItem("gapi", JSON.stringify(this.gapi));
           this.setCookie("user", JSON.stringify(this.user));
+          localStorage.setItem("user", JSON.stringify(this.user));
+          this.setCookie("token", JSON.stringify(this.user.Token));
+          localStorage.setItem("token", JSON.stringify(this.user.Token));
+        }
+        else {
+//do something
         }
       }
     }, //init
@@ -74,6 +71,7 @@ export const authentication = {
       console.log(diss);
       this.user.isLoggedIn = false;
       this.setCookie("user", JSON.stringify(this.user));
+      localStorage.setItem("user", JSON.stringify(this.user));
       location.reload(true);
     }, //onGoogleSignOut
 

@@ -98,10 +98,11 @@
   transform:rotate(@degree); /* Standard syntax */
 }
 
-.boxShadow(@val, @color: @shadowColor) {
+.boxShadow(@val, @color: @shadowColor, @zIndex: inherit) {
   box-shadow: @base @color, @val @color;
   -webkit-box-shadow: @base @color, @val @color;
   -moz-box-shadow: @base @color, @val @color;
+  z-index: @zIndex;
 }
 
 
@@ -112,12 +113,13 @@
         box-sizing: @boxmodel;
   }
 
-.textShadow(@val, @color: @shadowColor) {
+.textShadow(@val, @color: @shadowColor, @zIndex: inherit)  {
   text-shadow: @val @color;
   -webkit-text-shadow: @val @color;
   -moz-text-shadow: @val @color;
+  z-index: @zIndex;
 
-  .boxShadow(none) !important;
+  .boxShadow(none) !important ;
 }
 
 

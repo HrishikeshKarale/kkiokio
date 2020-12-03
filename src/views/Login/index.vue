@@ -109,11 +109,11 @@
         </vue-form>
         <div>
           <vue-button
-            v-if="gapi && gapi.isSignedIn()"
+            v-if="signedIn"
             button-name="googleSignOutButton"
             button-text="Sign out"
             button-icon="fas fa-bar"
-            button-style="border"
+            button-style="standard"
             :disabled="!dBooleanTrue"
             :autofocus="!dBooleanTrue"
             :on-click-action="onGoogleSignOut.bind()"
@@ -203,23 +203,17 @@ export default {
     };
   }, //data
 
-  computed: {
-    signedIn() {
-      return this.gapi && this.gapi.isSignedIn();
-    }
-  }, //computed
-
-  watch: {
-    signedIn: function(newValue, oldValue) {
-      if (newValue != oldValue) {
-        // console.log(this.$router.options.routes[6].meta.redirect);
-        this.$router.push({
-          name: this.$router.options.routes[6].meta.redirect
-        });
-        // this.$router.back();3
-      }
-    }
-  }, //watch
+  // watch: {
+  //   signedIn: function(newValue, oldValue) {
+  //     if (newValue != oldValue) {
+  //       // console.log(this.$router.options.routes[6].meta.redirect);
+  //       this.$router.push({
+  //         name: this.$router.options.routes[6].meta.redirect
+  //       });
+  //       // this.$router.back();3
+  //     }
+  //   }
+  // }, //watch
 
   methods: {
     handleLogin(e) {

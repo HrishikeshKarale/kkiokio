@@ -16,7 +16,7 @@ class Db {
               username text NOT NULL CHECK (length(username) >= 8),
               phone_number text CHECK (length(username) >= 10),
               image blob,
-              user_pass text NOT NULL,
+              user_pass text NOT NULL CHECK (length(username) >= 8),
               is_admin integer DEFAULT 0,
               PRIMARY KEY(id),
               UNIQUE(email, phone_number, username)
