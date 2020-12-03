@@ -27,7 +27,7 @@ export const authentication = {
   mixins: [cookie], //mixins
 
   computed: {
-    signedIn() {
+    signedIn: function() {
       return this.gapi && this.gapi.isSignedIn();
     }
   }, //computed
