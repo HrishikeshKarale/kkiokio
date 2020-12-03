@@ -14,6 +14,10 @@ export const cookie = {
         }
       }
       return "";
+      // alternate implementation
+      // return document.cookie.split(';').some(c => {
+      //   return c.trim().startsWith(name + '=');
+      // });
     },
 
     setCookie: function(name, value, exdays = 1, SameSite = "Secure") {
@@ -30,6 +34,15 @@ export const cookie = {
         SameSite +
         ";path=/";
     },
+
+    deleteCookie: function( name, path, domain ) {
+    if( this.getCookie( name ) ) {
+      document.cookie = name + "=" +
+        ((path) ? ";path="+path:"")+
+        ((domain)?";domain="+domain:"") +
+        ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+      }
+    }, //deleteCookie
 
     checkCookie: function(name) {
       const value = this.getCookie(name);

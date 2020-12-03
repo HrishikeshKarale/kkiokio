@@ -54,8 +54,6 @@ export const authentication = {
           localStorage.setItem("gapi", JSON.stringify(this.gapi));
           this.setCookie("user", JSON.stringify(this.user));
           localStorage.setItem("user", JSON.stringify(this.user));
-          this.setCookie("token", JSON.stringify(this.user.Token));
-          localStorage.setItem("token", JSON.stringify(this.user.Token));
         }
         else {
 //do something
@@ -68,8 +66,10 @@ export const authentication = {
       const diss = this.gapi.disconnect();
       console.log(diss);
       this.user.isLoggedIn = false;
-      this.setCookie("user", JSON.stringify(this.user));
-      localStorage.setItem("user", JSON.stringify(this.user));
+      this.deleteCookie("user");
+      localStorage.removeItem("jwt");
+      this.deleteCookie("user");
+      localStorage.removeItem("user");
       location.reload(true);
     }, //onGoogleSignOut
 

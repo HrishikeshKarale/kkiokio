@@ -960,6 +960,7 @@ p {
 }
 
 input {
+  min-height: @spaceMd + @spaceXl;
   & + label,
   & > label {
     margin-left: @spaceMd;
@@ -988,6 +989,7 @@ ul {
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
+  color: @secondaryColor;
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
@@ -1012,6 +1014,7 @@ ul {
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
+    color: @textColor;
     cursor: not-allowed;
     .opacity(.65);
     .boxShadow(none);
@@ -1041,13 +1044,7 @@ h2,
 h3,
 h4,
 h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
+h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
@@ -1062,11 +1059,8 @@ h6,
 }
 
 h1,
-.h1,
 h2,
-.h2,
-h3,
-.h3 {
+h3 {
   margin-top: @lineHeight;
   margin-bottom: (@lineHeight / 2);
 
@@ -1077,11 +1071,8 @@ h3,
 }
 
 h4,
-.h4,
 h5,
-.h5,
-h6,
-.h6 {
+h6 {
   margin-top: (@lineHeight / 2);
   margin-bottom: (@lineHeight / 2);
 

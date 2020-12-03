@@ -208,12 +208,12 @@ export default {
   }
 
   &.btn-sm {
-    padding: @spaceSm;
+    padding: @spaceSm @spaceMd;
     font-size: @fontSizeSm;
   }
 
   &.btn-lg {
-    padding: @spaceSm;
+    padding: @spaceMd @spaceLg;
     font-size: @fontSizeSm * 2;
   }
 
