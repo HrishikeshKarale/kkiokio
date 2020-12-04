@@ -961,10 +961,20 @@ p {
 
 input {
   min-height: @spaceMd + @spaceXl;
+  color: @textColor;
   & + label,
   & > label {
     margin-left: @spaceMd;
   }
+  &:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px @backgroundColor inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: @textColor;
+  }
+
+  &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0 50px @backgroundColor inset;/*your box-shadow*/
+      -webkit-text-fill-color: @textColor;
+  } 
 }
 
 ul {

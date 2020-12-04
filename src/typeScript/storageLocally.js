@@ -1,4 +1,4 @@
-export const localStorage = {
+export const storageLocally = {
   methods: {
     getLocalStorage: function(name) {
       return localStorage.getItem(name);

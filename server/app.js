@@ -36,7 +36,6 @@ router.post("/register", (req, res) => {
   const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
-  console.error("register password", password);
   db.insert([name, email, username, bcrypt.hashSync(password, 8), 0], err => {
     if (err) {
       console.error("register user", err);

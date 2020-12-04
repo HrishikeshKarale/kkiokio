@@ -134,6 +134,7 @@ import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
 import vueButton from "@/components/vueButton";
 import { authentication } from "@/typeScript/authentication";
+import { storageLocally } from "@/typeScript/storageLocally";
 import VueButton from "@/components/vueButton.vue";
 
 export default {
@@ -150,9 +151,7 @@ export default {
     VueButton
   }, //methods
 
-  mixins: [authentication],
-
-  emits: ["loggedIn"], //emits
+  mixins: [authentication, storageLocally],
 
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -243,7 +242,7 @@ export default {
               } else if (isAdmin == 1) {
                 this.$router.push("admin");
               } else {
-                this.$router.push("home");
+                this.$router.push("/");
               }
             }
           })
@@ -256,7 +255,7 @@ export default {
     handleSignUp(e) {
       e.preventDefault();
       let url = "http://localhost:8001/register";
-      if (this.isAdmin != null || this.isAdmin == 1) {
+      if (this.isAdmin == 1) {
         url = "http://localhost:8001/register-admin";
       }
       //POST request
@@ -272,6 +271,10 @@ export default {
           localStorage.setItem("user", JSON.stringify(response.data.user));
           localStorage.setItem("jwt", response.data.token);
 
+          // this.sqliteUser = response.data.user;
+          // this.sqliteToken = response.data.token;
+          // console.log(this.sqliteUser, this.sqliteToken);
+          
           if (localStorage.getItem("jwt") != null) {
             // eslint-disable-next-line vue/custom-event-name-casing
             // this.$emit("loggedIn");

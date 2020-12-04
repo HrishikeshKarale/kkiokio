@@ -459,14 +459,11 @@
     &.errorContainer {
       .inputError();
     }
-
-    
-  
     & > datalist, 
     & > select, 
     & > input,
     & > textarea {
-      padding: @spaceMd @spaceLg;
+      padding: @spaceMd @spaceLg @spaceMd 2*@spaceLg;
       border-radius: @borderRadius;
       width: 100%;
       border: none;
@@ -483,18 +480,22 @@
       option:first {
         color: ~"darken(@backgroundColor, 25%)"
       }
-
+      //password peek functionality
       & + span {
-        padding: @spaceMd+@spaceSm @spaceMd @spaceMd+@spaceSm @spaceSm;
-        color: @grayLighter;
+        position: absolute;
+        cursor: pointer;
+        left: calc(100% - 3*@spaceMd);
+        top: 50%;
+        transform: translate(0, -50%);
+        z-index: 100;
+        color: @secondaryColor;
       }
-
       .condition();
     }
 
     &.iconPadding {
 
-      & > span:first-child {
+      & > span {
         position: absolute;
         z-index: 100;
         left: @spaceMd;
@@ -503,28 +504,27 @@
         // padding: @spaceMd+@spaceSm 0 @spaceMd+@spaceSm @spaceMd*2;; //12px 0 12px @spaceLg;
         color: @secondaryColor;
         // border-right-width: 0px;
-      }
-
-      & > datalist, 
-      & > select, 
-      & > input,
-      & > textarea {
-        padding: @spaceMd @spaceLg @spaceMd 2*@spaceLg;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-        border-left-width: 0px;
-        &:-webkit-autofill,
-        &:-webkit-autofill:hover,
-        &:-webkit-autofill:focus {
-          background-color: none !;
-          border-color: none;
+        & + datalist, 
+        & + select, 
+        & + input,
+        & + textarea {
+          padding: @spaceMd 2*@spaceLg;
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
+          border-left-width: 0px;
+          &:-webkit-autofill,
+          &:-webkit-autofill:hover,
+          &:-webkit-autofill:focus {
+            background-color: none !;
+            border-color: none;
+          }
+          //password peak functionality
+          & + span {
+            cursor: pointer;
+            left: calc(100% - 3*@spaceMd);
+          }
+          .condition();
         }
-        .condition();
-      }
-      & + span {
-        position: absolute;
-        z-index: 100;
-        color: @secondaryColor;
       }
     }
     

@@ -13,6 +13,8 @@ export const authentication = {
       "94699127686-kq6vksueuk2rne078alt4pv2951hvq13.apps.googleusercontent.com";
     const gapi = null;
     const user = null;
+    const sqliteUser = null;
+    const sqliteToken = null;
     return {
       token,
       googleUserProfile,
@@ -21,18 +23,28 @@ export const authentication = {
       Gname,
       GClientID,
       gapi,
-      user
+      user,
+      sqliteUser,
+      sqliteToken
     };
   }, //data
   mixins: [cookie], //mixins
 
   computed: {
-    signedIn: function() {
-      return this.gapi && this.gapi.isSignedIn();
+    signedIn: function () {
+      let signedIn = false;
+      if (this.gapi) {
+        signedIn = this.gapi && this.gapi.isSignedIn();
+      }
+      else if (localStorage.getItem("user")) {
+        signedIn = localStorage.getItem("jwt")!= null;
+      }
+      return signedIn;
     }
   }, //computed
 
   methods: {
+
     //initialize user data when signedIn via Google
     init: function(response) {
       if (response) {
