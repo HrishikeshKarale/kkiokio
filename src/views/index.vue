@@ -117,15 +117,17 @@ export default {
       & > div {
         display: flex;
         flex-direction: column;
-        padding: @spaceXl @spaceXl;
         margin: @spaceXl;
+
+        & > h2 {
+          color: @textColor;
+        }
         & > h1,
         & > h2:first-child {
           margin-top: 0;
           margin-bottom: 0;
           &:not(h2) {
             font-weight: bold;
-            color: @secondaryColor;
           }
         }
         & > p {

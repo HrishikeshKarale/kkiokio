@@ -67,31 +67,20 @@ export const authentication = {
           this.setCookie("user", JSON.stringify(this.user));
           localStorage.setItem("user", JSON.stringify(this.user));
         }
-        else {
-//do something
-        }
       }
     }, //init
 
-    onGoogleSignOut: function() {
-      // eslint-disable-next-line no-undef
-      const diss = this.gapi.disconnect();
-      console.log(diss);
-      this.user.isLoggedIn = false;
+    signOut: function () {
+      if (this.gapi) {
+        this.gapi.disconnect();
+        this.user.isLoggedIn = false;  
+      }
       this.deleteCookie("user");
       localStorage.removeItem("jwt");
       this.deleteCookie("user");
       localStorage.removeItem("user");
       location.reload(true);
-    }, //onGoogleSignOut
-
-    login: function() {
-      //do something here
-    }, //login
-
-    signUp: function() {
-      //do something here
-    } //signUp
+    }, //signOut
   }, //methods
 
   beforeCreate() {

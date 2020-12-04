@@ -1,12 +1,14 @@
 {
-  "name": "hrishikesh-karale",
+  "name": "hrishikesh_karale",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run serve\" \"npm run server\"",
     "serve": "vue-cli-service serve --fix",
     "server": "nodemon server/app",
+    "deploy": "concurrently \"npm run build\" \"npm run firebase\"",
     "build": "vue-cli-service build",
+    "firebase": "firebase deploy",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint"

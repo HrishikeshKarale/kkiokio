@@ -651,67 +651,54 @@ export default {
               position: relative;
               display: flex;
               flex-direction: row;
-
               & > div {
                 display: flex;
                 flex-direction: row;
                 cursor: default;
                 border-radius: 0 @borderRadius @borderRadius 0;
-
                 &.showOptions {
                   position: absolute;
                   background-color: @backgroundColor;
                   border-radius: @borderRadius;
-                  z-index: 100;
-
+                  z-index: @bodyZ + 5;
                   .boxShadow(@one);
                 }
-
                 & > div {
                   width: max-content;
                   display: flex;
                   flex-direction: row;
                   margin-right: @spaceLg;
-
                   & > div {
                     margin-top: @spaceSm;
                   }
-
                   &:first-child {
                     padding-bottom: @spaceSm;
                   }
                 }
               }
             }
-
             & > div {
               cursor: pointer;
             }
-
             & > span {
               & > i.fa-sort {
                 .opacity(0.3);
               }
-
               & > .asc,
               & > .dsc {
                 color: @secondaryColor;
               }
             }
-
             &.active {
               &.asc {
                 border-bottom: none;
               }
-
               &.dsc {
                 border-top: none;
               }
             }
-
             &:first-child {
               padding-right: @spaceSm;
-
               div {
                 &.smalltext {
                   font-size: 10px;
@@ -720,11 +707,9 @@ export default {
                   color: @secondaryColor;
                 }
               }
-
               & > div {
                 font-size: @fontSizeSm;
                 padding: @spaceSm 0;
-
                 div {
                   ul {
                     display: inline;

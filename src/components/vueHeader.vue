@@ -1,6 +1,6 @@
 //https://codepen.io/pietvanzoen/pen/Ccjlt
 <template>
-  <div ref="vueHeader" class="vueHeader">
+  <header ref="vueHeader" class="vueHeader">
     <vue-button
       v-if="toggleNavIcon"
       class="menuTrigger"
@@ -40,44 +40,44 @@
     </nav>
     <div>
       <span class="fas fa-user" />
-      <div class='user'>
-        <template v-if="signedIn" >
-        <vue-img :src="this.user? this.user.image: null" alt="Logo" />
-        <!-- <h3 v-if="this.user">
-          {{this.user? this.user: "guest"}}
-        </h3>
-        <span v-else>
-          Guest
-        </span> -->
-        </template>
-        <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
-        <vue-button
-          v-if="!signedIn"
-          buttop-name="loginButton"
-          button-style="text-sm"
-          button-text="LogIn"
-          button-icon="fas fa-sign-in-alt"
-          :on-click-action="login.bind(this)"
-        />
-        <vue-button
-          v-else
-          button-name="googleSignOutButton"
-          button-text="logout"
-          button-icon="fas fa-sign-out-alt"
-          button-style="text-sm"
-          :on-click-action="onGoogleSignOut.bind()"
-        />
-        <vue-button
-          v-if="themeIcon"
-          buttop-name="themeToggle"
-          button-style="text-sm"
-          button-text="Theme"
-          :button-icon="themeIcon"
-          :on-click-action="theme.bind(this)"
-        />
-      </div>
+        <div class='user'>
+          <template v-if="signedIn" >
+            <vue-img :src="this.user? this.user.image: null" alt="Logo" />
+            <h5 v-if="this.user">
+              {{this.user? this.user.name: null}}
+            </h5>
+            <h5 v-else>
+              Guest
+            </h5>
+          </template>
+          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+          <vue-button
+            v-if="!signedIn"
+            buttop-name="loginButton"
+            button-style="text-sm"
+            button-text="LogIn"
+            button-icon="fas fa-sign-in-alt"
+            :on-click-action="login.bind(this)"
+          />
+          <vue-button
+            v-else
+            button-name="googleSignOutButton"
+            button-text="logout"
+            button-icon="fas fa-sign-out-alt"
+            button-style="text-sm"
+            :on-click-action="signOut.bind()"
+          />
+          <vue-button
+            v-if="themeIcon"
+            buttop-name="themeToggle"
+            button-style="text-sm"
+            button-text="Theme"
+            :button-icon="themeIcon"
+            :on-click-action="theme.bind(this)"
+          />
+        </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -108,12 +108,6 @@ export default {
       type: Object,
       default: null
     }
-  },
-  data() {
-    const authenticated = this.$router.currentRoute.value.meta.requiresAuth && localStorage.getItem('jwt');
-    return {
-      authenticated
-    };
   },
 
   computed: {
@@ -163,258 +157,264 @@ export default {
 @import (reference) "./../Less/customVariables.less";
 @import (reference) "./../Less/customMixins.less";
 
-@size: @spaceXl;
 @lowOpacity: 0.64;
 @midOpacity: 0.84;
 
+//nav sub text
 .navSubText() {
   color: @navText;
   opacity: @lowOpacity;
 }
 
-.vueHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: @spaceMd @spaceXl;
-  background-color: @navBackground;
-  width: 100%;
-  height: @header;
-  // .boxShadow(@one);
-  & > .menuTrigger {
-    display: none;
-    margin-left: auto;
-  }
-  & > nav {
-    & > ul {
-      display: flex;
-      flex-direction: row;
-
-      & > li {
+header {
+  &.vueHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: @spaceMd @spaceXl;
+    background-color: @navBackground;
+    max-width: 100vw;
+    z-index: @headerZ;
+    height: @header;
+    // .boxShadow(@one);
+    & > .menuTrigger {
+      display: none;
+      margin-left: auto;
+    }
+    & > nav {
+      & > ul {
         display: flex;
-        justify-content: space-evenly;
-        align-items: flex-start;
-        flex: 1;
-        //hide website name and logo
-        &:first-child {
-          display: none;
-          & > a > img {
-            display: block;
-            height: 64px;
-            margin: auto;
-            & + h3 {
-              display: flex;
-              flex-direction: column;
-              & > h5 {
-                align-self: flex-end;
-                color: @white;
-              }
-            }
-          }
-        }
-        & > a {
-          margin: 0 @spaceLg;
-          color: @navText;
-          position: relative;
+        flex-direction: row;
+
+        & > li {
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          align-items: center;
-
-          & > span {
-            .navSubText();
-            font-size: @fontSizeSm * 2;
-          }
-          & > img {
-            height: 48px;
-          }
-          & > div {
-            display: flex;
-            flex-direction: column;
-            margin-left: @spaceLg;
-            //nav Text
-            & > h4 {
-              color: @navText;
-              //nav subText
-              & + span {
-                .navSubText();
-                font-size: 12px;
-              }
-            }
-          }
-
-          //styling selected link
-          &.router-link-active {
-            color: @secondaryColor;
-            &::before {
-              transform: scale(0.8);
-            }
-            &.router-link-exact-active {
-              color: @secondaryColor;
-            }
-
-            & > span {
-              opacity: 1;
-            }
-            & > div {
-              & > h4 {
-                color: @secondaryColor;
-                font-weight: bold;
-                & + span {
-                  color: @navText;
-                  opacity: 1;
+          justify-content: space-evenly;
+          align-items: flex-start;
+          flex: 1;
+          //hide website name and logo
+          &:first-child {
+            display: none;
+            & > a > img {
+              display: block;
+              height: 64px;
+              margin: auto;
+              & + h3 {
+                display: flex;
+                flex-direction: column;
+                & > h5 {
+                  align-self: flex-end;
+                  color: @white;
                 }
               }
             }
           }
+          & > a {
+            margin: 0 @spaceLg;
+            color: @navText;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
 
-          //bottom line for nav
-          &::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            background-color: @secondaryColor;
-            bottom: -8px;
-            height: 2px;
-            transform: scale(0);
-            transition: @transition;
-          }
-          //hover effect for li
-          &:hover {
-            color: @primaryColor;
-            &::before {
-              transform: scale(1.2);
-            }
             & > span {
-              color: @navText;
-              opacity: 1;
+              font-size: @fontSizeSm * 2;
+              .navSubText();
+            }
+            & > img {
+              height: 48px;
             }
             & > div {
+              display: flex;
+              flex-direction: column;
+              margin-left: @spaceLg;
+              //nav Text
               & > h4 {
-                color: @secondaryColor;
+                color: @navText;
+                //nav subText
                 & + span {
-                  color: @navText;
-                  opacity: 1;
+                  font-size: 12px;
+                  .navSubText();
+                }
+              }
+            }
+
+            //styling selected link
+            &.router-link-active {
+              color: @secondaryColor;
+              &::before {
+                transform: scale(0.8);
+              }
+              &.router-link-exact-active {
+                color: @secondaryColor;
+              }
+
+              & > span {
+                opacity: 1;
+              }
+              & > div {
+                & > h4 {
+                  color: @secondaryColor;
+                  font-weight: bold;
+                  & + span {
+                    color: @navText;
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+
+            //bottom line for nav
+            &::before {
+              content: "";
+              position: absolute;
+              width: 100%;
+              background-color: @secondaryColor;
+              bottom: -8px;
+              height: 2px;
+              transform: scale(0);
+              transition: @transition;
+            }
+            //hover effect for li
+            &:hover {
+              color: @primaryColor;
+              &::before {
+                transform: scale(1.2);
+              }
+              & > span {
+                color: @navText;
+                opacity: 1;
+              }
+              & > div {
+                & > h4 {
+                  color: @secondaryColor;
+                  & + span {
+                    color: @navText;
+                    opacity: 1;
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-    //user account
-    & + div {
-      display: flex;
-      margin-left: auto;
-      position: relative;
-      & > span {
-        color: @secondaryColor;
-        padding: @spaceMd;
-        border: 1px solid @secondaryColor;
-        border-radius: 50%;
-        cursor: pointer;
-        & + .user {
-          display: none;
-          position: absolute;
-          z-index: inherit;
+      //user account
+      & + div {
+        display: flex;
+        margin-left: auto;
+        position: relative;
+        & > span {
+          color: @secondaryColor;
+          padding: @spaceMd;
           border: 1px solid @secondaryColor;
-          & > img {
-            width: 80px;
+          border-radius: 50%;
+          cursor: pointer;
+          & + .user {
+            display: none;
+            position: absolute;
+            border: 1px solid @secondaryColor;
+            & > img {
+              width: 80px;
+            }
+            & > .g-signin2 {
+              display: none;
+            }
           }
-          & > .g-signin2 {
+        }
+        &:hover {
+          
+          & > span {
+              border-radius: 50% 50% 0 50%;
+              background-color: @secondaryColor;
+              color: @navBackground;
+              .boxShadow(@one, @shadowColor, 1001);
+            & + .user {
+              display: flex;
+              flex-direction: column;
+              background-color: @backgroundColor;
+              top: 100%;
+              right: 0;
+              height: fit-content;
+              width: fit-content;
+              border-radius: @borderRadius; 
+              padding: @spaceLg @spaceXl;
+              .boxShadow(@one, @shadowColor, 1001);
+            }
+          }
+        }
+      }
+    }
+    @media screen {
+      @media (max-width: 1540px) {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: @spaceMd @spaceLg;
+        border-bottom-right-radius: @borderRadiusLg;
+        height: auto;
+        width: fit-content;
+          position: fixed;
+          left: 0;
+          top: 0;
+        .scroll(100vh);
+        & > .menuTrigger {
+          display: flex;
+          align-self: flex-end;
+        }
+        //hides navigation when toggled
+        & > nav {
+          display: none;
+          & + div {
             display: none;
           }
         }
-      }
-      &:hover {
-        
-        & > span {
-            border-radius: 50% 50% 0 50%;
-            background-color: @secondaryColor;
-            color: @navBackground;
-            .boxShadow(@one, @shadowColor, 1001);
-          & + .user {
+        //displays navigation
+        &.showNav {
+          height: 100vh;
+          outline: 9999px solid rgba(0, 0, 0, 0.5);
+          border-bottom-right-radius: 0;
+          & > nav {
             display: flex;
             flex-direction: column;
-            background-color: @backgroundColor;
-            top: 100%;
-            right: 0;
-            height: fit-content;
-            width: fit-content;
-            border-radius: @borderRadius; 
-            padding: @spaceLg @spaceXl;
-            .boxShadow(@one, @shadowColor, 1001);
-          }
-        }
-      }
-    }
-  }
-  @media screen {
-    @media (max-width: 1540px) {
-      flex-direction: column;
-      flex-wrap: nowrap;
-      padding: @spaceMd @spaceLg;
-      border-bottom-right-radius: @borderRadiusLg;
-      height: auto;
-      width: fit-content;
-      .scroll(100vh);
-      & > .menuTrigger {
-        display: flex;
-        align-self: flex-end;
-      }
-      //hides navigation when toggled
-      & > nav {
-        display: none;
-        & + div {
-          display: none;
-        }
-      }
-      //displays navigation
-      &.showNav {
-        height: 100vh;
-        outline: 9999px solid rgba(0, 0, 0, 0.5);
-        border-bottom-right-radius: 0;
-        & > nav {
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-          & > ul {
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-            & > li {
-              margin-top: @spaceLg;
-              & > a {
-                & > img {
-                  height: @spaceXl;
-                }
-              }
-              &:first-child {
-                display: flex;
+            height: 100%;
+            & > ul {
+              flex-direction: column;
+              justify-content: space-between;
+              align-items: flex-start;
+              & > li {
+                margin-top: @spaceLg;
                 & > a {
-                  flex-direction: column;
                   & > img {
-                    height: 96px;
+                    height: @spaceXl;
                   }
-                  &::before {
-                    display: none;
+                }
+                &:first-child {
+                  display: flex;
+                  & > a {
+                    flex-direction: column;
+                    & > img {
+                      height: 96px;
+                    }
+                    &::before {
+                      display: none;
+                    }
                   }
                 }
               }
             }
-          }
-          & + div {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            & + div {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
 
-            & > button {
-              margin-bottom: @spaceLg;
+              & > button {
+                margin-bottom: @spaceLg;
+              }
             }
           }
         }
       }
     }
   }
+
 }
 </style>

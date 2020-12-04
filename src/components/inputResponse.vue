@@ -72,7 +72,6 @@ export default {
     font-weight: 700;
     & > span {
       margin-right: @spaceMd;
-      z-index: inherit;
     }
 
     &.infoMessage {

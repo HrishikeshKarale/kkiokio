@@ -70,7 +70,7 @@ export default {
     height: 100%;
     position: absolute;
     width: 150px;
-    z-index: 100;
+    z-index: @bodyZ + 10;
     pointer-events: none;
   }
   &:before {
@@ -79,7 +79,7 @@ export default {
     height: 100%;
     position: absolute;
     width: 150px;
-    z-index: 100;
+    z-index: @bodyZ + 10;
     pointer-events: none;
   }
   & > .card {
@@ -89,7 +89,7 @@ export default {
     background: #fafbfc;
     border-radius: @borderRadius;
     position: relative;
-    z-index: 10;
+    z-index: @bodyZ + 5;
     margin: @spaceXl;
     min-height: 360px;
     transition: @transition;

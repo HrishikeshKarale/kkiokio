@@ -21,7 +21,6 @@
   
     /* Position the tooltip text - see examples below! */
     position: absolute;
-    z-index: 1;
   }
 
 
@@ -389,7 +388,7 @@
     background-color: @backgroundColor;
     border-radius: @borderRadius;
     padding: @spaceMd @spaceLg;
-    z-index: 1000;
+    z-index: @bodyZ + 10;
     .boxShadow(@base);
     &>div {
       display: flex;
@@ -487,7 +486,7 @@
         left: calc(100% - 3*@spaceMd);
         top: 50%;
         transform: translate(0, -50%);
-        z-index: 100;
+        z-index: @bodyZ + 5;
         color: @secondaryColor;
       }
       .condition();
@@ -497,7 +496,7 @@
 
       & > span {
         position: absolute;
-        z-index: 100;
+        z-index: @bodyZ + 10;
         left: @spaceMd;
         top: 50%;
         transform: translate(0, -50%);
