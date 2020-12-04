@@ -1,8 +1,8 @@
 <template>
   <div class="enterpriseAppLayout">
-    <header v-if="$slots['header']" class="head">
+    <template v-if="$slots['header']">
       <slot name="header" />
-    </header>
+    </template>
     <div class="body">
       <div v-if="$slots['menu']" class="menu">
         <slot name="menu" />
@@ -129,14 +129,14 @@ export default {
             }
             //if user is not admin then redirect to  about page
             else {
-              next({ path: 'about' })
+              next({ path: 'home' })
             }
           } else {
             next()
           }
         }
       }
-      // did not match any record where authentication was required.
+      //authentication was not required.
       //check if guest access is required to matched route
       else if (to.matched.some(record => record.meta.guest)) {
         if (localStorage.getItem('jwt') == null) {
@@ -148,35 +148,6 @@ export default {
       } else {
         next()
       }
-
-      // let user = null;
-      // let token = null;
-      // // console.log(authentication.data());
-      // if (this.checkCookie("user")) {
-      //   user = JSON.parse(this.getCookie("user"));
-      //   token = this.getCookie("token");
-      // } else {
-      //   user = JSON.parse(localStorage.getItem("user"));
-      //   token = localStorage.getItem("token");
-      // }
-      // // console.log(from.name, "->", to.name);
-      // if (to.meta.requiresAuth) {
-      //   if (user != null && token) {
-      //     next();
-      //   }
-      //   else {
-      //     this.$router.options.routes[6].meta.redirect = from.name;
-      //     to.meta.redirect = from.fullPath;
-      //     // console.log(to.meta.redirect, to, this.$router.options.routes[6].meta);
-      //     next({
-      //       name: "login",
-      //       params: { nextUrl: to.fullPath }
-      //     });
-      //   }
-      // }
-      // else {
-      //   next();
-      // }
     });
   }, //beforeMount
 
@@ -207,40 +178,21 @@ export default {
 .enterpriseAppLayout {
   display: flex;
   flex-direction: column;
+  position: relative;
   height: 100vh;
   max-width: 100vw;
   & > div {
     display: flex;
     flex-direction: row;
     height: 100%;
-    &.head {
-      height: fit-content;
-      max-width: 100vw;
-      z-index: 2000;
-    }
     &.body {
       display: flex;
       flex-direction: column;
       max-width: 100vw;
-      z-index: 1000;
       .scroll(100vh);
 
       //scroll content
       div {
-        &.menu {
-          display: flex;
-          justify-content: space-between;
-          width: fit-content;
-          position: sticky;
-          background-color: @navBackground;
-          top: 0;
-          left: 0;
-          z-index: 1500;
-          .boxShadow(@one);
-          & > div:last-child {
-            flex-direction: row-reverse;
-          }
-        }
         &.content {
           align-items: center;
           color: @textColor;
@@ -282,11 +234,6 @@ export default {
   @media screen {
     @media (max-width: 1540px) {
       & > div {
-        &.head {
-          position: fixed;
-          left: 0;
-          top: 0;
-        }
         &.body {
           & > div.content {
             min-width: 480px;

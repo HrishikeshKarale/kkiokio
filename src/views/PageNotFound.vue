@@ -139,7 +139,7 @@ export default {
       border: 1px solid @ghostBorder;
       border-bottom: none;
       animation: float 2s ease-out infinite;
-      z-index: 0;
+      z-index: @bodyZ + 10;
 
       & > .one,
       & > .two,
@@ -151,7 +151,7 @@ export default {
         width: 25%;
         height: 23%;
         border: 1px solid @ghostBorder;
-        z-index: 0;
+        z-index: @bodyZ + 10;
       }
 
       & > .one {

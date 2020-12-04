@@ -4,7 +4,10 @@
     <div class="tempNav">
       <router-link :to="{ name: 'home' }">
         <vue-img :src="logoLink" alt="Logo" />
-        <h5>Kkiokio.com</h5>
+        <h4>
+          Hrishikesh Karale
+          <h5>Kkiokio.com</h5>
+        </h4>
       </router-link>
       <radio-input
         type="radio"
@@ -110,13 +113,13 @@
         <div>
           <vue-button
             v-if="signedIn"
-            button-name="googleSignOutButton"
+            button-name="signOutButton"
             button-text="Sign out"
-            button-icon="fas fa-bar"
+            button-icon="fas fa-sign-out-alt"
             button-style="standard"
             :disabled="!dBooleanTrue"
             :autofocus="!dBooleanTrue"
-            :on-click-action="onGoogleSignOut.bind()"
+            :on-click-action="signOut.bind()"
           />
           <div v-else class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
         </div>
@@ -134,7 +137,6 @@ import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
 import vueButton from "@/components/vueButton";
 import { authentication } from "@/typeScript/authentication";
-import { storageLocally } from "@/typeScript/storageLocally";
 import VueButton from "@/components/vueButton.vue";
 
 export default {
@@ -151,7 +153,7 @@ export default {
     VueButton
   }, //methods
 
-  mixins: [authentication, storageLocally],
+  mixins: [authentication],
 
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -234,17 +236,17 @@ export default {
             localStorage.setItem("user", JSON.stringify(response.data.user));
             localStorage.setItem("jwt", response.data.token);
 
-            if (localStorage.getItem("jwt") != null) {
-              // eslint-disable-next-line vue/custom-event-name-casing
-              this.$emit("loggedIn");
-              if (this.$route.params.nextUrl != null) {
-                this.$router.push(this.$route.params.nextUrl);
-              } else if (isAdmin == 1) {
-                this.$router.push("admin");
-              } else {
-                this.$router.push("/");
-              }
-            }
+            // if (localStorage.getItem("jwt") != null) {
+            //   const redirectRoute = this.$router.currentRoute.value.query.nextUrl;
+              // if (redirectRoute != null) {
+              //   this.$router.push({name : redirectRoute});
+              // } 
+              // else if (isAdmin == 1) {
+              //   this.$router.push({name : "admin"});
+              // } else {
+                // this.$router.push({name : "home"});
+              // }
+            // }
           })
           .catch(error => {
             console.error(error.response);
@@ -271,19 +273,16 @@ export default {
           localStorage.setItem("user", JSON.stringify(response.data.user));
           localStorage.setItem("jwt", response.data.token);
 
-          // this.sqliteUser = response.data.user;
-          // this.sqliteToken = response.data.token;
-          // console.log(this.sqliteUser, this.sqliteToken);
+          this.sqliteUser = response.data.user;
+          this.sqliteToken = response.data.token;
           
-          if (localStorage.getItem("jwt") != null) {
-            // eslint-disable-next-line vue/custom-event-name-casing
-            // this.$emit("loggedIn");
-            if (this.$route.params.nextUrl != null) {
-              this.$router.push(this.$route.params.nextUrl);
-            } else {
-              this.$router.push("/");
-            }
-          }
+          // if (localStorage.getItem("jwt") != null) {
+          //   if (this.$route.params.nextUrl != null) {
+          //     this.$router.push({name : this.$router.currentRoute.value.query.nextUrl});
+          //   } else {
+          //     this.$router.push({name : "home"});
+          //   }
+          // }
         })
         .catch(error => {
           console.error(error);
@@ -317,7 +316,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1001;
+  z-index: @modalZ + 10;
   &::before {
     content: "";
     position: fixed;
@@ -344,6 +343,16 @@ export default {
         flex-direction: column;
         & > img {
           height: 80px;
+        }
+        & > h4 {
+          display: flex;
+          flex-direction: column;
+          font-weight: bold;
+          & > h5 {
+            align-self: flex-end;
+            font-weight: bold;
+            color: @textColor;
+          }
         }
       };
       & > .radioInput {

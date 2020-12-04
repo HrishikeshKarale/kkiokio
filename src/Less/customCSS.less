@@ -447,7 +447,7 @@
 
   &::before {
     content: '';
-    z-index: 1;
+    z-index: @bodyZ + 5;
     display: block;
     height: 5em;
     width: 5em;
@@ -1058,7 +1058,7 @@ h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
-  color: inherit;
+  color: @secondaryColor;
 
   small,
   .small {
@@ -1189,5 +1189,19 @@ address {
   margin-bottom: @lineHeight;
   font-style: normal;
   line-height: @lineHeight;
+}
+
+//body
+body {
+  background-color: @backgroundColor;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  z-index: @bodyZ;
+  &#portfolio {
+    font-family: @fontFamily, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 

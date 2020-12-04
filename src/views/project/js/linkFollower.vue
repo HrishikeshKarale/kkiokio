@@ -82,7 +82,7 @@ export default {
   font-weight: 200;
   font-size: 20px;
   & > p {
-    z-index: 2;
+    z-index: @bodyZ + 5;
   }
 }
 .highlight {
@@ -93,7 +93,7 @@ export default {
   background: #ffc600;
   // opacity: 0.5;
   left: 0;
-  z-index: 1;
+  z-index: @bodyZ + 5;
   border-radius: @borderRadius;
   display: block;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

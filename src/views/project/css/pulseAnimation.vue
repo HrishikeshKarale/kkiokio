@@ -47,7 +47,7 @@ export default {
         position: absolute;
         width: @fontSize;
         height: @fontSize;
-        z-index: 1;
+        z-index: @bodyZ + 5;
         border-radius: 50%;
         background: @secondaryColor;
         animation: pulse 1s ease infinite;
