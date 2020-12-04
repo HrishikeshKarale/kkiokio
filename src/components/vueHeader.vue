@@ -40,36 +40,42 @@
     </nav>
     <div>
       <span class="fas fa-user" />
-        <div class='user'>
-          <template v-if="signedIn" >
-          <vue-img  v-if="this.user" :src="this.user.image" alt="Logo" />
-          </template>
-          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
-          <vue-button
-            v-if="!signedIn"
-            buttop-name="loginButton"
-            button-style="text-sm"
-            button-text="LogIn"
-            button-icon="fas fa-sign-in-alt"
-            :on-click-action="login.bind(this)"
-          />
-          <vue-button
-            v-else
-            button-name="googleSignOutButton"
-            button-text="logout"
-            button-icon="fas fa-sign-out-alt"
-            button-style="text-sm"
-            :on-click-action="onGoogleSignOut.bind()"
-          />
-          <vue-button
-            v-if="themeIcon"
-            buttop-name="themeToggle"
-            button-style="text-sm"
-            button-text="Theme"
-            :button-icon="themeIcon"
-            :on-click-action="theme.bind(this)"
-          />
-        </div>
+      <div class='user'>
+        <template v-if="signedIn" >
+        <vue-img :src="this.user? this.user.image: null" alt="Logo" />
+        <!-- <h3 v-if="this.user">
+          {{this.user? this.user: "guest"}}
+        </h3>
+        <span v-else>
+          Guest
+        </span> -->
+        </template>
+        <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+        <vue-button
+          v-if="!signedIn"
+          buttop-name="loginButton"
+          button-style="text-sm"
+          button-text="LogIn"
+          button-icon="fas fa-sign-in-alt"
+          :on-click-action="login.bind(this)"
+        />
+        <vue-button
+          v-else
+          button-name="googleSignOutButton"
+          button-text="logout"
+          button-icon="fas fa-sign-out-alt"
+          button-style="text-sm"
+          :on-click-action="onGoogleSignOut.bind()"
+        />
+        <vue-button
+          v-if="themeIcon"
+          buttop-name="themeToggle"
+          button-style="text-sm"
+          button-text="Theme"
+          :button-icon="themeIcon"
+          :on-click-action="theme.bind(this)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -311,6 +317,10 @@ export default {
           display: none;
           position: absolute;
           z-index: inherit;
+          border: 1px solid @secondaryColor;
+          & > img {
+            width: 80px;
+          }
           & > .g-signin2 {
             display: none;
           }

@@ -238,11 +238,11 @@ export default {
               // eslint-disable-next-line vue/custom-event-name-casing
               this.$emit("loggedIn");
               if (this.$route.params.nextUrl != null) {
-                this.$router.push(this.$route.params.nextUrl);
+                this.$router.push({ name: this.$route.params.nextUrl });
               } else if (isAdmin == 1) {
-                this.$router.push("admin");
+                this.$router.push({ name: "admin" });
               } else {
-                this.$router.push("/");
+                this.$router.push({ name: "home" });
               }
             }
           })
@@ -279,9 +279,9 @@ export default {
             // eslint-disable-next-line vue/custom-event-name-casing
             // this.$emit("loggedIn");
             if (this.$route.params.nextUrl != null) {
-              this.$router.push(this.$route.params.nextUrl);
+                this.$router.push({ name: this.$route.params.nextUrl });
             } else {
-              this.$router.push("/");
+                this.$router.push({ name: "home" });
             }
           }
         })

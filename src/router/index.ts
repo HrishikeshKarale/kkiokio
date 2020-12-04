@@ -8,7 +8,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "home" */ "@/views/index.vue"),
     meta: {
       transitionName: 'fade',
-      requiresAuth: true
+      requiresAuth: false
     }
   },
   {
