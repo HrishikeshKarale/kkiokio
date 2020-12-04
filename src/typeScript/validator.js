@@ -17,7 +17,7 @@ export const validator = {
           this.followsPattern(object.pattern, object.value)
         ) {
           dWarning =
-            "Wrong format: Please follow the pattern " + object.pattern;
+            "Wrong format: Please follow the pattern.";
         } else if (object.minlength) {
           dWarning = this.isTooShort(object.minlength, object.value);
         } else if (object.maxlength) {

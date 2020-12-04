@@ -8,9 +8,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "home" */ "@/views/index.vue"),
     meta: {
       transitionName: 'fade',
-      requiresAuth: true,
-      path: "/",
-      name: "home"
+      requiresAuth: true
     }
   },
   {
@@ -22,9 +20,7 @@ const routes: Array<RouteRecordRaw> = [
       ),
     meta: {
       transitionName: 'fade',
-      requiresAuth: true,
-      path: "/caseStudy",
-      name: "caseStudy"
+      requiresAuth: true
     }
   },
   {
@@ -34,9 +30,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "contact" */ "@/views/contact/index.vue"),
     meta: {
       transitionName: 'fade',
-      requiresAuth: false,
-      path: "/contact",
-      name: "contact"
+      requiresAuth: false
     }
   },
   {
@@ -46,9 +40,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue"),
     meta: {
       transitionName: 'fade',
-      requiresAuth: true,
-      path: "/logo",
-      name: "logo"
+      requiresAuth: true
     }
   },
   {
@@ -58,9 +50,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "about" */ "@/views/about/index.vue"),
     meta: {
       transitionName: 'fade',
-      requiresAuth: false,
-      path: "/about",
-      name: "about"
+      requiresAuth: false
     }
   },
   {
@@ -70,9 +60,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "project" */ "@/views/project.vue"),
     meta: {
       transitionName: 'fade',
-      requiresAuth: true,
-      path: "/project",
-      // name: "project"  
+      requiresAuth: true
     },
     children: [
       {

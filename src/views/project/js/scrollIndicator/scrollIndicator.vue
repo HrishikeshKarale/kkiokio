@@ -18,7 +18,6 @@
 </template>
 <script>
 import { debounce } from "@/typeScript/debounce";
-// import { smoothScroll } from "@/typeScript/smoothScroll";
 
 export default {
   name: "ScrollIndicator",

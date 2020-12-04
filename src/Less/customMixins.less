@@ -147,16 +147,17 @@
   border-color: @dangerText;
   background-color: @dangerBackground;
 
-  &:focus-within {
+  &:focus-within,
+  &:focus {
     border-color: @secondaryColor;
 
     & > span {
-      color: @secondaryColor;
+    color: @dangerText ;
     }
   }
 
   & > span {
-    color: @dangerText;
+    color: @dangerText !important;
   }
 }
 
@@ -164,16 +165,17 @@
   border-color: @warningText;
   background-color: @warningBackground;
 
-  &:focus-within {
+  &:focus-within,
+  &:focus  {
     border-color: @secondaryColor;
 
     & > span {
-      color: @secondaryColor;
+      color: @warningText;
     }
   }
 
   & > span {
-    color: @warningText;
+    color: @warningText !important;
   }
 }
 
@@ -190,6 +192,7 @@
     color: @textColor;
     
     & > abbr {
+      padding: @spaceSm;
       color: @dangerText;
       font-weight: bold;
       text-decoration: none;  
@@ -235,7 +238,7 @@
           ;
 
           &.fas {
-            color: @primaryColor;
+            color: @secondaryColor;
           }
         }
       }
@@ -337,7 +340,6 @@
               font-weight: normal;
 
               input {
-
                 .checkboxSize();
               }
             }
@@ -381,11 +383,14 @@
     display: flex;
     flex-direction: column;
     position: absolute;
+    top: 100%;
     height: fit-content;
     width: fit-content;
     background-color: @backgroundColor;
+    border-radius: @borderRadius;
+    padding: @spaceMd @spaceLg;
+    z-index: 1000;
     .boxShadow(@base);
-    top: 100%;
     &>div {
       display: flex;
       flex-direction: row;
@@ -398,8 +403,6 @@
 
   &~.conditions {
     display: none;
-    z-index: 1000;
-    padding: @spaceMd @spaceLg;
   }
 }
 
@@ -407,6 +410,15 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  
+  &:focus-within,
+  &:focus  {
+    border-color: @secondaryColor;
+
+    & > span {
+      color: @secondaryColor;
+    }
+  }
 
   &.inline {
     flex-direction: row;
@@ -435,16 +447,6 @@
     border: 1px solid @secondaryColor;
     position: relative;
 
-    &:focus-within {
-      border-color: @secondaryColor;
-
-      &.iconPadding {
-        span {
-          color: @secondaryColor;
-        }
-      }
-    }
-
     &.inputResponse {
       width: 100%;
       border: none;
@@ -457,38 +459,16 @@
     &.errorContainer {
       .inputError();
     }
-
-    
-
-    &.iconPadding {
-
-      & > datalist, 
-      & > select, 
-      & > input,
-      & > textarea {
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-        border-left-width: 0px;
-        &:-webkit-autofill,
-        &:-webkit-autofill:hover,
-        &:-webkit-autofill:focus {
-          background-color: none;
-          border-color: none;
-        }
-        .condition();
-      }
-    }
-  
     & > datalist, 
     & > select, 
     & > input,
     & > textarea {
-      padding: @spaceMd @spaceLg;
+      padding: @spaceMd @spaceLg @spaceMd 2*@spaceLg;
       border-radius: @borderRadius;
       width: 100%;
       border: none;
       position: relative;
-      background-color: transparent;
+      background-color: transparent !important;
       -webkit-appearance: none;
       outline: none;
       &:-webkit-autofill,
@@ -500,24 +480,56 @@
       option:first {
         color: ~"darken(@backgroundColor, 25%)"
       }
-
+      //password peek functionality
       & + span {
-        padding: @spaceMd+@spaceSm @spaceMd @spaceMd+@spaceSm @spaceSm;
-        color: @grayLighter;
+        position: absolute;
+        cursor: pointer;
+        left: calc(100% - 3*@spaceMd);
+        top: 50%;
+        transform: translate(0, -50%);
+        z-index: 100;
+        color: @secondaryColor;
       }
-
       .condition();
     }
 
+    &.iconPadding {
+
+      & > span {
+        position: absolute;
+        z-index: 100;
+        left: @spaceMd;
+        top: 50%;
+        transform: translate(0, -50%);
+        // padding: @spaceMd+@spaceSm 0 @spaceMd+@spaceSm @spaceMd*2;; //12px 0 12px @spaceLg;
+        color: @secondaryColor;
+        // border-right-width: 0px;
+        & + datalist, 
+        & + select, 
+        & + input,
+        & + textarea {
+          padding: @spaceMd 2*@spaceLg;
+          border-top-left-radius: 0px;
+          border-bottom-left-radius: 0px;
+          border-left-width: 0px;
+          &:-webkit-autofill,
+          &:-webkit-autofill:hover,
+          &:-webkit-autofill:focus {
+            background-color: none !;
+            border-color: none;
+          }
+          //password peak functionality
+          & + span {
+            cursor: pointer;
+            left: calc(100% - 3*@spaceMd);
+          }
+          .condition();
+        }
+      }
+    }
     
     & > input[type= 'file'] {
       padding-left: @spaceLg; //18px;
-    }
-
-    & > span {
-      padding: @spaceMd+@spaceSm 0 @spaceMd+@spaceSm @spaceMd*2;; //12px 0 12px @spaceLg;
-      color: @secondaryColor;
-      border-right-width: 0px;
     }
   
     & > select {
@@ -603,7 +615,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  min-width: 240px;
+  min-width: 200px;
   height: fit-content;
 
   &.inline {
@@ -645,6 +657,7 @@
       padding-right: @spaceLg;
       margin: 0;
       align-items: center;
+      cursor: pointer;
 
       > input[type= 'checkbox'],
       > input[type='radio'] {
@@ -654,7 +667,7 @@
           margin: 0 @spaceMd;
           font-size: @fontSizeSm;;
           &.fas {
-            color: @primaryColor;
+            color: @secondaryColor;
           }
         }
       }
@@ -665,17 +678,22 @@
     }
   }
   & > .box {
-    padding: 4px 8px;
     margin-left: 8px;
     width: fit-content;
     background-color: @backgroundColor;
     border-radius: @borderRadius;
+    border: 1px solid @secondaryColor;
 
-    & > .checked {
-      border-radius: @borderRadius;
-      background-color: @secondaryColor;
-      color: @backgroundColor;
+    & > label {
+      padding: @spaceLg;
+      &.checked {
+        border-radius: @borderRadius;
+        background-color: @secondaryColor;
+        color: @backgroundColor;
+        font-weight: bold;
+      }
     }
+
   }
 
   &>label {

@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <div class="triangleTopLeft" />
     <div class="tempNav">
       <router-link :to="{ name: 'home' }">
         <vue-img :src="logoLink" alt="Logo" />
@@ -20,7 +21,6 @@
         @alerts="alerts"
       />
     </div>
-    <div class="triangleTopLeft" />
     <div class="loginForm">
       <h1>{{ dRadioValue }}</h1>
       <div>
@@ -134,6 +134,7 @@ import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
 import vueButton from "@/components/vueButton";
 import { authentication } from "@/typeScript/authentication";
+import { storageLocally } from "@/typeScript/storageLocally";
 import VueButton from "@/components/vueButton.vue";
 
 export default {
@@ -150,9 +151,7 @@ export default {
     VueButton
   }, //methods
 
-  mixins: [authentication],
-
-  emits: ["loggedIn"], //emits
+  mixins: [authentication, storageLocally],
 
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -206,9 +205,17 @@ export default {
   watch: {
     signedIn: function(newValue, oldValue) {
       if (newValue != oldValue) {
-        this.$router.push({
-          name: this.$router.currentRoute.value.query.nextUrl
-        });
+        const route = this.$router.currentRoute.value.query.nextUrl;
+        if(route){
+          this.$router.push({
+            name: this.$router.currentRoute.value.query.nextUrl
+          });
+        }
+        else {
+          this.$router.push({
+            name: 'home'
+          })
+        }
       }
     }
   }, //watch
@@ -235,7 +242,7 @@ export default {
               } else if (isAdmin == 1) {
                 this.$router.push("admin");
               } else {
-                this.$router.push("home");
+                this.$router.push("/");
               }
             }
           })
@@ -248,7 +255,7 @@ export default {
     handleSignUp(e) {
       e.preventDefault();
       let url = "http://localhost:8001/register";
-      if (this.isAdmin != null || this.isAdmin == 1) {
+      if (this.isAdmin == 1) {
         url = "http://localhost:8001/register-admin";
       }
       //POST request
@@ -264,9 +271,13 @@ export default {
           localStorage.setItem("user", JSON.stringify(response.data.user));
           localStorage.setItem("jwt", response.data.token);
 
+          // this.sqliteUser = response.data.user;
+          // this.sqliteToken = response.data.token;
+          // console.log(this.sqliteUser, this.sqliteToken);
+          
           if (localStorage.getItem("jwt") != null) {
             // eslint-disable-next-line vue/custom-event-name-casing
-            this.$emit("loggedIn");
+            // this.$emit("loggedIn");
             if (this.$route.params.nextUrl != null) {
               this.$router.push(this.$route.params.nextUrl);
             } else {
@@ -306,7 +317,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1001;
   &::before {
     content: "";
     position: fixed;
@@ -323,13 +334,20 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      padding: @spaceXl  2*@spaceXl;
+      align-content: center;
       position: absolute;
       top: 0;
       width: 100vw;
-      padding: @spaceLg @spaceXl;
-      border-radius: 4px;
-      & > a > img {
-        height: 80px;
+      & > a {
+        display: flex;
+        flex-direction: column;
+        & > img {
+          height: 80px;
+        }
+      };
+      & > .radioInput {
+        align-self: center;
       }
     }
     &.triangleTopLeft {
@@ -345,34 +363,31 @@ export default {
       justify-content: center;
       align-content: center;
       position: absolute;
-      bottom: 40%;
-      left: 50%;
-      transform: translate(-50%, 40%);
+      bottom: 50%;
+      right: 50%;
+      transform: translate(50%, 50%);
       & > h1 {
         margin: @spaceLg auto;
         & + div {
           display: flex;
           flex-direction: row;
+          justify-content: center;
+          align-content: center;
           flex-wrap: wrap;
-          padding: @spaceLg @spaceXl;
+          padding: @spaceMd @spaceLg;
           background-color: @backgroundColor;
-          border: 1px solid @primaryColor;
-          border-radius: 4px;
+          border: 1px solid @secondaryColor;
+          border-radius: @borderRadius;
           .boxShadow(@one, @secondaryColor);
-
-          & > div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-content: center;
-            margin: @spaceLg @spaceXl;
-            &:first-child > form {
-              width: 320px;
-              border-right: 1px solid @primaryColor;
-            }
-            &:last-child {
-              justify-content: space-evenly;
-            }
+          transition: @transition;
+          & > form {
+            width: 320px;
+            padding: @spaceMd @spaceLg;
+          }
+          & > div  {
+            border-left: 1px solid @secondaryColor;
+            align-self: center;
+            padding: @spaceMd @spaceLg;
           }
         }
       }

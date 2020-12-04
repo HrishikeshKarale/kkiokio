@@ -417,9 +417,6 @@ export default {
 
   & > div {
     .inputcss();
-    &:last-child {
-      margin-bottom: @spaceXl;
-    }
   }
 }
 </style>

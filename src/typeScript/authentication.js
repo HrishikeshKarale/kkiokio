@@ -13,6 +13,8 @@ export const authentication = {
       "94699127686-kq6vksueuk2rne078alt4pv2951hvq13.apps.googleusercontent.com";
     const gapi = null;
     const user = null;
+    const sqliteUser = null;
+    const sqliteToken = null;
     return {
       token,
       googleUserProfile,
@@ -21,18 +23,28 @@ export const authentication = {
       Gname,
       GClientID,
       gapi,
-      user
+      user,
+      sqliteUser,
+      sqliteToken
     };
   }, //data
   mixins: [cookie], //mixins
 
   computed: {
-    signedIn() {
-      return this.gapi && this.gapi.isSignedIn();
+    signedIn: function () {
+      let signedIn = false;
+      if (this.gapi) {
+        signedIn = this.gapi && this.gapi.isSignedIn();
+      }
+      else if (localStorage.getItem("user")) {
+        signedIn = localStorage.getItem("jwt")!= null;
+      }
+      return signedIn;
     }
   }, //computed
 
   methods: {
+
     //initialize user data when signedIn via Google
     init: function(response) {
       if (response) {
@@ -54,8 +66,6 @@ export const authentication = {
           localStorage.setItem("gapi", JSON.stringify(this.gapi));
           this.setCookie("user", JSON.stringify(this.user));
           localStorage.setItem("user", JSON.stringify(this.user));
-          this.setCookie("token", JSON.stringify(this.user.Token));
-          localStorage.setItem("token", JSON.stringify(this.user.Token));
         }
         else {
 //do something
@@ -68,8 +78,10 @@ export const authentication = {
       const diss = this.gapi.disconnect();
       console.log(diss);
       this.user.isLoggedIn = false;
-      this.setCookie("user", JSON.stringify(this.user));
-      localStorage.setItem("user", JSON.stringify(this.user));
+      this.deleteCookie("user");
+      localStorage.removeItem("jwt");
+      this.deleteCookie("user");
+      localStorage.removeItem("user");
       location.reload(true);
     }, //onGoogleSignOut
 

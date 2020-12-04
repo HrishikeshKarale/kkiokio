@@ -130,7 +130,7 @@ export default {
     font-weight: 100;
     .boxShadow(@two);
     &:first-child {
-      background-color: red;
+      background-color: @secondaryColor;
       .boxShadow(none);
       // display: none;
     }

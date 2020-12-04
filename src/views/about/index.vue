@@ -161,7 +161,7 @@ article {
 
               & > .step {
                 border-radius: 50%;
-                border: 2px solid @primaryColor;
+                border: 2px solid @secondaryColor;
                 color: @white;
                 font-size: @wizard-step-font-size;
                 line-height: @wizard-step-width-height;

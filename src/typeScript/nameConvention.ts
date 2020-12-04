@@ -1,11 +1,11 @@
 export const nameConvention = {
   methods: {
-    capitalize: function(str) {
+    capitalize: function (str: string): string  {
       return str.toUpperCase();
     }
   },
 
-  camelCase: function(str) {
+  camelCase: function (str : string) : string {
     return str
       .replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
         return index === 0 ? word.toLowerCase() : word.toUpperCase();

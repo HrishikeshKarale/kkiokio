@@ -31,12 +31,11 @@ app.use(allowCrossDomain);
 
 // defining router for registering a new user
 router.post("/register", (req, res) => {
-  console.log("pretneder");
+  //console.log("pretneder");
   const name = req.body.name;
   const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
-  console.error("register password", password);
   db.insert([name, email, username, bcrypt.hashSync(password, 8), 0], err => {
     if (err) {
       console.error("register user", err);
@@ -135,5 +134,5 @@ const port = process.env.PORT || 8001;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const server = app.listen(port, () => {
-  console.log(`Express server listening on port ${port}`);
+  //console.log(`Express server listening on port ${port}`);
 });
