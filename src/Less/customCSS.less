@@ -903,7 +903,9 @@
 }
 
 .noselect,
-* {
+*,
+*::before,
+*::after {
   letter-spacing: 2px !important;
   .boxSizing(border-box);
   word-wrap: break-word !important;
@@ -920,7 +922,7 @@
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently
-                                  supported by Chrome, Opera and Firefox */
+  supported by Chrome, Opera and Firefox */
 }
 
 abbr[title] {
@@ -959,20 +961,23 @@ p {
   line-height: @spaceXl  !important;
 }
 
-input {
-  min-height: @spaceMd + @spaceXl;
+input,
+select,
+datalist,
+textarea {
+  min-height: @inputHeight;
   color: @textColor;
   & + label,
   & > label {
     margin-left: @spaceMd;
   }
   &:-webkit-autofill {
-    .boxShadow(0 0 0 50px @backgroundColor inset); /* Change the color to your own background color */
+    .boxShadow(0 0 0 50px transparent inset); /* Change the color to your own background color */
     -webkit-text-fill-color: @textColor;
   }
 
   &:-webkit-autofill:focus {
-      .boxShadow(0 0 0 50px @backgroundColor inset);/*your box-shadow*/
+      .boxShadow(0 0 0 50px transparent inset);/*your box-shadow*/
       -webkit-text-fill-color: @textColor;
   } 
 }
@@ -1194,6 +1199,7 @@ address {
 //body
 body {
   background-color: @backgroundColor;
+  color: @textColor;
   margin: 0;
   height: 100%;
   width: 100%;

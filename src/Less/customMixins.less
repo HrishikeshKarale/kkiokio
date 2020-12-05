@@ -128,7 +128,7 @@
   -moz-text-shadow: @val @color;
   z-index: @zIndex;
 
-  .boxShadow(none) !important ;
+  .boxShadow(none);
 }
 
 
@@ -355,7 +355,7 @@
   flex-direction: column;
   min-width: 480px;
   max-width: 1440px;
-  margin: 0 auto;
+  align-self: center;
   overflow-wrap: break-word;
 
   .FormElementsTitle {
@@ -462,7 +462,7 @@
     & > select, 
     & > input,
     & > textarea {
-      padding: @spaceMd @spaceLg @spaceMd 2*@spaceLg;
+      padding: @spaceMd 2*@spaceLg @spaceMd @spaceLg;
       border-radius: @borderRadius;
       width: 100%;
       border: none;
@@ -526,12 +526,24 @@
         }
       }
     }
-    
     & > input[type= 'file'] {
       padding-left: @spaceLg; //18px;
     }
-  
     & > select {
+      // A reset of styles, including removing the default dropdown arrow
+      appearance: none;
+      cursor: pointer;
+      line-height: inherit;
+      outline: none;
+      //remove array from IE
+      &::-ms-expand {
+        display: none;
+      }
+      & > option {
+        height: @inputHeight;
+        background-color: @backgroundColor; 
+        .boxShadow(@base);
+      }
       
       & + span {
         left: 40px;

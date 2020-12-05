@@ -34,7 +34,7 @@ export default {
     //stores pixel value above which we select a tag.
     const windowBuffer = null;
     //ratio used to calculate window buffer
-    const bufferRatio = 0.18;
+    const bufferRatio = 0.16;
     return {
       headerOffset,
       tag,

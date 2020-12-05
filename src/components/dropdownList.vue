@@ -282,7 +282,18 @@ export default {
 
 .dropdownList {
   min-width: 160px;
-
   .inputcss();
+  & > div:first-child::after {
+    content: "";
+    align-self: center;
+    position: absolute;
+    margin-right: 8px;
+    right: 0;
+    border-left: @fontSize/3 solid transparent;
+    border-right: @fontSize/3 solid transparent;
+    border-top: @fontSizeSm solid @secondaryColor;
+    width: 0;
+    height: 0;
+  }
 }
 </style>

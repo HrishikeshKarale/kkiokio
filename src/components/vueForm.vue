@@ -120,7 +120,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  margin: 0 auto;
+  align-self: center;
   & > div {
     display: flex;
     &.formElements {

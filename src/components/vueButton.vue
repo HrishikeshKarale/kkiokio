@@ -244,21 +244,19 @@ export default {
   &.btn-text {
     background-color: transparent;
     color: @color;
-    padding: @spaceSm @spaceMd;
+    padding: 0 !important;
     font-weight: bold;
+    border-radius: 0 !important;
 
     &:hover {
-      border: 1px solid @color;
+      border-bottom: 1px solid @color;
     }
   }
 
   //buttons with a border outline and transparent background
   &.btn-border {
-    border-radius: @borderRadius;
-    background-color: transparent;
+    background-color: @backgroundColor;
     border: 1px solid @color;
-    color: @color;
-    font-weight: bold;
   }
 
   &.fullWidth,

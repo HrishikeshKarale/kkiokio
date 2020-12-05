@@ -62,7 +62,7 @@ export default {
   }
 
   & > .container {
-    margin: 0 auto;
+    align-self: center;
     position: relative;
     width: 240px;
     height: 240px;

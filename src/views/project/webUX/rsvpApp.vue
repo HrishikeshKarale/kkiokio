@@ -247,7 +247,7 @@ export default {
             left: 0;
             right: 0;
             bottom: -24px;
-            margin: auto;
+            align-self: center;
             background-color: @backgroundColor;
             width: fit-content;
             padding: @spaceMd;

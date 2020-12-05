@@ -238,13 +238,14 @@ export default {
           & > div.content {
             min-width: 480px;
             & > .moto {
-              padding: 0;
+              margin: @spaceXs;
 
               & > img {
                 display: none;
               }
               & > q {
                 padding: @spaceSm @spaceMd;
+                background-color: @backgroundColor;
               }
             }
           }

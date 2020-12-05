@@ -42,7 +42,7 @@
       <span class="fas fa-user" />
         <div class='user'>
           <template v-if="signedIn" >
-            <vue-img :src="this.user? this.user.image: null" alt="Logo" />
+            <vue-img :src="this.user? this.user.image: false" alt="Logo" />
             <h5 v-if="this.user">
               {{this.user? this.user.name: null}}
             </h5>
@@ -51,6 +51,17 @@
             </h5>
           </template>
           <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+          <dropdown-list
+          label="Theme"
+            name="themeSelector"
+            :value="selected"
+            :options="themes.map(theme =>theme.name)"
+            @input="val=>this.selected = val"
+          />
+          settings
+          <br />
+          account
+          <br />
           <vue-button
             v-if="!signedIn"
             buttop-name="loginButton"
@@ -67,14 +78,6 @@
             button-style="text-sm"
             :on-click-action="signOut.bind()"
           />
-          <vue-button
-            v-if="themeIcon"
-            buttop-name="themeToggle"
-            button-style="text-sm"
-            button-text="Theme"
-            :button-icon="themeIcon"
-            :on-click-action="theme.bind(this)"
-          />
         </div>
     </div>
   </header>
@@ -85,13 +88,22 @@ import { toggle } from "@/typeScript/toggle";
 import { authentication } from "@/typeScript/authentication";
 import vueButton from "@/components/vueButton";
 import vueImg from "./vueImg.vue";
+import dropdownList from "@/components/dropdownList";
 
 export default {
   name: "VueHeader",
 
   components: {
+    dropdownList,
     vueButton,
     vueImg
+  }, //components
+
+  data() {
+    const dbooleanTrue = true;
+    return {
+      dbooleanTrue
+    };
   }, //data
 
   mixins: [toggle, authentication],
@@ -111,9 +123,6 @@ export default {
   },
 
   computed: {
-    themeIcon: function() {
-      return this.activeTheme().icon;
-    }, //themeIcon
     toggleNavIcon: function() {
       if (this.isOpen("nav")) {
         return "fas fa-times";
@@ -176,10 +185,9 @@ header {
     max-width: 100vw;
     z-index: @headerZ;
     height: @header;
-    // .boxShadow(@one);
+    .boxShadow(@one, @shadowColor, @headerZ + 10);
     & > .menuTrigger {
       display: none;
-      margin-left: auto;
     }
     & > nav {
       & > ul {
@@ -197,7 +205,7 @@ header {
             & > a > img {
               display: block;
               height: 64px;
-              margin: auto;
+              align-self: center;
               & + h3 {
                 display: flex;
                 flex-direction: column;
@@ -238,7 +246,6 @@ header {
                 }
               }
             }
-
             //styling selected link
             &.router-link-active {
               color: @secondaryColor;
@@ -248,7 +255,6 @@ header {
               &.router-link-exact-active {
                 color: @secondaryColor;
               }
-
               & > span {
                 opacity: 1;
               }
@@ -263,7 +269,6 @@ header {
                 }
               }
             }
-
             //bottom line for nav
             &::before {
               content: "";
@@ -312,7 +317,8 @@ header {
           & + .user {
             display: none;
             position: absolute;
-            border: 1px solid @secondaryColor;
+            
+            .boxShadow(@one, @shadowColor, @header + 10);
             & > img {
               width: 80px;
             }
@@ -322,23 +328,22 @@ header {
           }
         }
         &:hover {
-          
           & > span {
-              border-radius: 50% 50% 0 50%;
+            color: @textColor;
               background-color: @secondaryColor;
-              color: @navBackground;
-              .boxShadow(@one, @shadowColor, 1001);
+              border-radius: 50% 50% 0 50%;
+              .boxShadow(@one, @shadowColor, @header + 10);
             & + .user {
-              display: flex;
-              flex-direction: column;
-              background-color: @backgroundColor;
-              top: 100%;
-              right: 0;
-              height: fit-content;
-              width: fit-content;
-              border-radius: @borderRadius; 
-              padding: @spaceLg @spaceXl;
-              .boxShadow(@one, @shadowColor, 1001);
+              display: flex;flex-direction: column;
+            border: 1px solid @secondaryColor;
+            background-color: @backgroundColor;
+            top: 100%;
+            right: 0;
+            height: fit-content;
+            width: fit-content;
+            border-radius: @borderRadius; 
+            padding: @spaceLg @spaceXl;
+            z-index: inherit;
             }
           }
         }
@@ -346,74 +351,110 @@ header {
     }
     @media screen {
       @media (max-width: 1540px) {
-        flex-direction: column;
-        flex-wrap: nowrap;
-        padding: @spaceMd @spaceLg;
-        border-bottom-right-radius: @borderRadiusLg;
-        height: auto;
-        width: fit-content;
+        .scroll(100vh);
+        &.vueHeader {
+          flex-direction: column;
+          flex-wrap: nowrap;
           position: fixed;
           left: 0;
           top: 0;
-        .scroll(100vh);
-        & > .menuTrigger {
-          display: flex;
-          align-self: flex-end;
-        }
-        //hides navigation when toggled
-        & > nav {
-          display: none;
-          & + div {
-            display: none;
-          }
-        }
-        //displays navigation
-        &.showNav {
-          height: 100vh;
-          outline: 9999px solid rgba(0, 0, 0, 0.5);
-          border-bottom-right-radius: 0;
-          & > nav {
+          padding: @spaceMd @spaceLg;
+          border-bottom-right-radius: @borderRadiusLg;
+          height: auto;
+          width: fit-content;
+          & > .menuTrigger {
             display: flex;
-            flex-direction: column;
-            height: 100%;
-            & > ul {
-              flex-direction: column;
-              justify-content: space-between;
-              align-items: flex-start;
-              & > li {
-                margin-top: @spaceLg;
-                & > a {
+            align-self: flex-end;
+          }
+          //hides navigation when toggled
+          & > nav {
+            display: none;
+            //user account
+            & + div {
+              position: fixed;
+              bottom: @spaceXl;
+              right: @spaceXl;
+              & > span {
+                color: @secondaryColor;
+                padding: @spaceMd;
+                font-size: 2* @fontSizeSm;
+                border: 4px solid @secondaryColor;
+                border-radius: 50%;
+                .textShadow(@one);
+                .boxShadow(@one);
+                cursor: pointer;
+                & + .user {
+                  display: none;
+                  flex-direction: column;
+                  border: 1px solid @secondaryColor;
+                  background-color: @backgroundColor;
+                  position: absolute;
+                  top: -672%; //328px
+                  right: 0;
+                  height: fit-content;
+                  width: fit-content;
+                  border-radius: @borderRadius; 
+                  padding: @spaceLg @spaceXl;
                   & > img {
-                    height: @spaceXl;
+                    width: 80px;
+                  }
+                  & > .g-signin2 {
+                    display: none;
                   }
                 }
-                &:first-child {
-                  display: flex;
-                  & > a {
-                    flex-direction: column;
-                    & > img {
-                      height: 96px;
-                    }
-                    &::before {
-                      display: none;
-                    }
+              }
+              &:hover {
+                & > span {
+                    border-radius: 50% 0 50% 50%;
+                    background-color: @secondaryColor;
+                    color: @navBackground;
+                  & + .user {
+                    display: flex;
+                    // .boxShadow(@one, @shadowColor, @header + 10);
                   }
                 }
               }
             }
-            & + div {
+          }
+          //displays navigation
+          &.showNav {
+            height: 100vh;
+            outline: 9999px solid rgba(0, 0, 0, 0.5);
+            border-bottom-right-radius: 0;
+            & > nav {
               display: flex;
               flex-direction: column;
-              justify-content: space-between;
-
-              & > button {
-                margin-bottom: @spaceLg;
+              height: 100%;
+              & > ul {
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                & > li {
+                  margin-top: @spaceLg;
+                  & > a {
+                    & > img {
+                      height: @spaceXl;
+                    }
+                  }
+                  &:first-child {
+                    display: flex;
+                    & > a {
+                      flex-direction: column;
+                      & > img {
+                        height: 96px;
+                      }
+                      &::before {
+                        display: none;
+                      }
+                    }
+                  }
+                }
               }
             }
           }
         }
       }
-    }
+        }
   }
 
 }

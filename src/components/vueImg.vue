@@ -16,8 +16,8 @@ export default {
   props: {
     src: {
       required: true,
-      type: String,
-      default: null
+      type: [String, Boolean],
+      default: false
     },
 
     alt: {

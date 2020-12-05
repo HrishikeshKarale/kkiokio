@@ -64,7 +64,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: max-content;
-  margin: auto;
+  align-self: center;
   .boxShadow(@one);
   & > div {
     padding: @spaceLg;

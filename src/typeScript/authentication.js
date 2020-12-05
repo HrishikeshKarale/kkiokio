@@ -1,4 +1,7 @@
 //https://developers.google.com/identity/sign-in/web/build-button
+//https://developer.twitter.com/en/docs/authentication/guides/log-in-with-twitter
+//https://developers.facebook.com/docs/facebook-login/web/
+//
 
 import { cookie } from "@/typeScript/cookie";
 

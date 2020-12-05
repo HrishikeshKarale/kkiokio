@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import inputResponse from "@/components/Alerts/inputResponse";
+import inputResponse from "@/components/inputResponse";
 
 export default {
   name: "SearchableDropdownList",
@@ -312,6 +312,7 @@ export default {
         //if not then trigger warning and set warning message
         if (this.options.includes(val) || !this.strict) {
           this.$emit("input", val);
+          console.log("val", val);
         }
         //if options do not include the optio na dn user customized input is not acceptable then trigger alert and set warning message
         else if (this.strict) {
@@ -331,7 +332,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import (reference) "./../../Less/customMixins.less";
+@import (reference) "../Less/customMixins.less";
 
 .searchableDropdownList {
   min-width: 160px;

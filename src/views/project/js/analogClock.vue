@@ -82,7 +82,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  align-self: center;
   width: fit-content;
   height: fit-content;
   position: relative;

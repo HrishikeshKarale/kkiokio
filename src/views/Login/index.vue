@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="triangleTopLeft" />
-    <div class="tempNav">
+    <div class="header">
       <router-link :to="{ name: 'home' }">
         <vue-img :src="logoLink" alt="Logo" />
         <h4>
@@ -329,7 +329,7 @@ export default {
     opacity: 0.48;
   }
   & > div {
-    &.tempNav {
+    &.header {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -352,9 +352,12 @@ export default {
             align-self: flex-end;
             font-weight: bold;
             color: @textColor;
+            background-color: @backgroundColor;
+            padding: @spaceSm;
+            border-radius: @borderRadius;
           }
         }
-      };
+      }
       & > .radioInput {
         align-self: center;
       }
@@ -376,7 +379,7 @@ export default {
       right: 50%;
       transform: translate(50%, 50%);
       & > h1 {
-        margin: @spaceLg auto;
+      align-self: center;
         & + div {
           display: flex;
           flex-direction: row;
@@ -405,6 +408,19 @@ export default {
 
   @media screen {
     @media (max-width: 1540px) {
+      & > div {
+        &.header {
+          padding: @spaceMd  2*@spaceMd;
+          & > .radioInput {
+            align-self: flex-start;
+          }
+        }    
+        &.loginForm {
+          bottom: 25%;
+          right: 50%;
+          transform: translate(50%, 25%);
+        }
+      }
     }
   }
 }

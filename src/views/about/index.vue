@@ -124,7 +124,7 @@ article {
     & > section {
       &#objective {
         & > q {
-          margin: auto;
+          align-self: center;
           font-size: @fontSize * 2;
           text-align: center;
 
@@ -146,7 +146,7 @@ article {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            margin: 0 auto;
+            align-self: center;
 
             & > li {
               display: flex;

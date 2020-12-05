@@ -13,7 +13,7 @@ export const toggle = {
         icon: "fas fa-moon"
       }
     ];
-    const selected = null;
+    const selected = themes[1].name;
     return {
       show,
       themes,
@@ -39,41 +39,22 @@ export const toggle = {
       }, 300);
     }, //trans
 
-    theme: function() {
-      const theme = this.selected;
-      // this.cookie = new cookie();
-      if (theme != "darkMode") {
-        cookie.methods.setCookie("theme", "darkMode", 100);
-        this.trans();
-        document.documentElement.setAttribute("theme", "darkMode");
-        this.selected = "darkMode";
-      } else {
-        cookie.methods.setCookie("theme", "default", 100);
-        this.trans();
-        document.documentElement.setAttribute("theme", "default");
-        this.selected = "default";
-      }
-    }, //theme
-
-    activeTheme: function() {
-      const themes = this.themes;
-      // console.log(themes, this.selected);
-      if (this.selected) {
-        for (let i = 0; i < themes.length; i++) {
-          if (themes[i].name == this.selected) {
-            return themes[i];
-          }
-        }
-      }
-      return "fas fa-question-circle";
-    }, //activeTheme
-
     isOpen: function(id) {
       return this.show.includes(id);
     } //isOpen
   },
 
-  mounted() {
+  watch: {
+    selected: function (newValue, oldValue) {
+      if (newValue != oldValue) {
+        cookie.methods.setCookie("theme", newValue, 100);
+        this.trans();
+        document.documentElement.setAttribute("theme", newValue);
+      }
+    }
+  }, //watch
+
+  created() {
     if (cookie.methods.checkCookie("theme")) {
       this.selected = cookie.methods.getCookie("theme");
     } else {
