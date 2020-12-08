@@ -5,35 +5,111 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="google-signin-client_id" content="758507759739-qsqjadv7gr0sunj6mlkvuh8lc2h74hqn.apps.googleusercontent.com">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <!-- authentication start -->
-    <script type="text/javascript">
+    <!-- this script waits for authentication to inotialise agapi object and then triggers a custom event to be pssed to init() --><script type="text/javascript">
       function triggerGoogleLoaded(gapi) {
         const gapiObject = gapi;
-          var event = new CustomEvent("google-loaded", {'detail': {
-          gapi: gapiObject
-        }
-      });
+        var event = new CustomEvent("google-loaded", {
+          'detail': {
+            gapi: gapiObject
+          }
+        });
+        window.dispatchEvent(event);
+      }
+    </script><script type="text/javascript">
+      function triggerFbLoaded(abc) {
+        var event = new CustomEvent("fb-loaded", {
+          'detail': {
+            gapi: null
+          }
+        });
         window.dispatchEvent(event);
       }
     </script>
-    <!-- <script
-      src="https://apis.google.com/js/platform.js?onload=triggerGoogleLoaded"
-      async
-      defer
-    ></script>
-    <meta
-      name="google-signin-client_id"
-      content="94699127686-nmek6a5nj88vq5vu03u0hoa3nh4jsr7g.apps.googleusercontent.com"
-    /> -->
-    <!-- authentication end -->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body id="portfolio">
+    Loading...
+  <!-- FB SDK fo rjavascript -->
+  <!-- <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '215219326652376',
+        xfbml: true,
+        version: 'v9.0'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+      // auto authenticate with the api if already logged in with facebook
+      FB.getLoginStatus(({ authResponse }) => {
+        if (authResponse) {
+          accountService.apiAuthenticate(authResponse.accessToken).then(resolve);
+        } else {
+          resolve();
+        }
+      }); -->
+    <!-- // (function (d, s, id) {
+    //   var js, fjs = d.getElementsByTagName(s)[0];
+    //   if (d.getElementById(id)) { return; }
+    //   js = d.createElement(s); js.id = id;
+    //   js.src = "https://connect.facebook.net/en_US/sdk.js";
+    //   fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk')); -->
+  <!-- </script> -->
+  <!-- <script>
+
+    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+      console.log('statusChangeCallback');
+      console.log(response);                   // The current login status of the person.
+      if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+        testAPI();
+      } else {                                 // Not logged into your webpage or we are unable to tell.
+        document.getElementById('status').innerHTML = 'Please log ' +
+          'into this webpage.';
+      }
+    }
+    //check if user is already loggein
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    }), //getLoginStatus
+
+    function checkLoginState() {               // Called when a person is finished with the Login Button.
+      FB.getLoginStatus(function (response) {   // See the onlogin handler
+        statusChangeCallback(response);
+      });
+    }
+
+
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '215219326652376',
+        cookie: true,                     // Enable cookies to allow the server to access the session.
+        xfbml: true,                     // Parse social plugins on this webpage.
+        version: 'v9.0'           // Use this Graph API version for this call.
+      });
+
+
+      FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+        statusChangeCallback(response);        // Returns the login status.
+      });
+    };
+
+    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+      console.log('Welcome!  Fetching your information.... ');
+      FB.api('/me', function (response) {
+        console.log('Successful login for: ' + response.name);
+        document.getElementById('status').innerHTML =
+          'Thanks for logging in, ' + response.name + '!';
+      });
+    }
+
+  </script> -->
+  
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>

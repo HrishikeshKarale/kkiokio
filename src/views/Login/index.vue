@@ -7,6 +7,7 @@
         <h4>
           Hrishikesh Karale
           <h5>Kkiokio.com</h5>
+          ul>li.chapter{Chapter 4 of 5}
         </h4>
       </router-link>
       <radio-input
@@ -119,9 +120,24 @@
             button-style="standard"
             :disabled="!dBooleanTrue"
             :autofocus="!dBooleanTrue"
-            :on-click-action="signOut.bind()"
+            :onClickAction="signOut.bind()"
           />
-          <div v-else class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+          <template  v-else>
+          <vue-button
+            button-name="fbButton"
+            button-text="Log In"
+            button-icon="fab fa-facebook"
+            button-style="standard"
+            :disabled="!dBooleanTrue"
+            :autofocus="!dBooleanTrue"
+            :onClickAction="logInWithFacebook.bind()"
+          />
+          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+            <!-- <fb:login-button 
+              scope="public_profile,email"
+              onlogin="checkLoginState();">
+            </fb:login-button>   -->
+          </template>
         </div>
       </div>
     </div>
@@ -180,6 +196,7 @@ export default {
     const dRadioValue = dOptions[0];
     const dBooleanTrue = true;
     const isAdmin = 0;
+    const port = process.env.PORT || 8001;
     return {
       dNameRadio,
       dRadioValue,
@@ -200,7 +217,8 @@ export default {
       passwordConfirmation,
       password,
       dBooleanTrue,
-      isAdmin
+      isAdmin,
+      port
     };
   }, //data
 
@@ -227,7 +245,7 @@ export default {
       e.preventDefault();
       if (this.password.length > 0) {
         this.axios
-          .post("http://localhost:8001/login", {
+          .post(`https://localhost:${port}/login`, {
             email: this.emailID,
             password: this.password
           })
@@ -256,9 +274,9 @@ export default {
 
     handleSignUp(e) {
       e.preventDefault();
-      let url = "http://localhost:8001/register";
+      let url = `https://localhost:${port}/register`;
       if (this.isAdmin == 1) {
-        url = "http://localhost:8001/register-admin";
+        url = `https://localhost:${port}/register-admin`;
       }
       //POST request
       this.axios

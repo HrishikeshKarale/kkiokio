@@ -387,7 +387,14 @@ const routes: Array<RouteRecordRaw> = [
     path: "/privacyPolicy",
     name: "privacyPolicy",
     component: () =>
-      import(/* webpackChunkName: "login" */ "@/views/privacyPolicy.vue"),
+      import(/* webpackChunkName: "privacyPolicy" */ "@/views/privacyPolicy.vue"),
+    meta: { transitionName: 'fade', requiresAuth: false }
+  },
+  {
+    path: "/termsOfService",
+    name: "termsOfService",
+    component: () =>
+      import(/* webpackChunkName: "termsOfService" */ "@/views/termsOfService.vue"),
     meta: { transitionName: 'fade', requiresAuth: false }
   },
   {
@@ -398,8 +405,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       transitionName: 'fade',
       requiresAuth: false,
-      path: "/login",
-      name: "login"
     }
   },
   {
