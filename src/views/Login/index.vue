@@ -7,7 +7,6 @@
         <h4>
           Hrishikesh Karale
           <h5>Kkiokio.com</h5>
-          ul>li.chapter{Chapter 4 of 5}
         </h4>
       </router-link>
       <radio-input
@@ -30,8 +29,8 @@
       <div>
         <vue-form
           v-if="dRadioValue == dOptions[0]"
-          :dOnClickAction="handleLogin.bind(this)"
-          dForm="loginForm"
+          :on-click-action="handleLogin.bind(this)"
+          d-form="loginForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
@@ -61,8 +60,8 @@
         </vue-form>
         <vue-form
           v-else
-          :dOnClickAction="handleSignUp.bind(this)"
-          dForm="SignUpForm"
+          :on-click-action="handleSignUp.bind(this)"
+          d-form="SignUpForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
@@ -112,6 +111,7 @@
           />
         </vue-form>
         <div>
+          signedIn: {{ signedIn }}
           <vue-button
             v-if="signedIn"
             button-name="signOutButton"
@@ -120,23 +120,24 @@
             button-style="standard"
             :disabled="!dBooleanTrue"
             :autofocus="!dBooleanTrue"
-            :onClickAction="signOut.bind()"
+            :on-click-action="signOut.bind()"
           />
-          <template  v-else>
-          <vue-button
-            button-name="fbButton"
-            button-text="Log In"
-            button-icon="fab fa-facebook"
-            button-style="standard"
-            :disabled="!dBooleanTrue"
-            :autofocus="!dBooleanTrue"
-            :onClickAction="logInWithFacebook.bind()"
-          />
-          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
-            <!-- <fb:login-button 
+          <template v-else>
+            <!-- <vue-button
+              button-name="fbButton"
+              button-text="Log In"
+              button-icon="fab fa-facebook"
+              button-style="standard"
+              :disabled="!dBooleanTrue"
+              :autofocus="!dBooleanTrue"
+              :on-click-action="logInWithFacebook.bind()"
+            /> -->
+            <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+            <fb:login-button
               scope="public_profile,email"
-              onlogin="checkLoginState();">
-            </fb:login-button>   -->
+              onlogin="checkLoginState();"
+            >
+            </fb:login-button>
           </template>
         </div>
       </div>
@@ -196,7 +197,6 @@ export default {
     const dRadioValue = dOptions[0];
     const dBooleanTrue = true;
     const isAdmin = 0;
-    const port = process.env.PORT || 8001;
     return {
       dNameRadio,
       dRadioValue,
@@ -217,8 +217,7 @@ export default {
       passwordConfirmation,
       password,
       dBooleanTrue,
-      isAdmin,
-      port
+      isAdmin
     };
   }, //data
 
@@ -226,16 +225,20 @@ export default {
     signedIn: function(newValue, oldValue) {
       if (newValue != oldValue) {
         const route = this.$router.currentRoute.value.query.nextUrl;
-        if(route){
-          this.$router.push({
-            name: this.$router.currentRoute.value.query.nextUrl
-          });
+        if (newValue) {
+          console.log("signedIn: in route ", newValue, oldValue, route);
+          if (route) {
+            this.$router.push({
+              name: route
+            });
+          } else {
+            this.$router.push({
+              name: "home"
+            });
+          }
         }
-        else {
-          this.$router.push({
-            name: 'home'
-          })
-        }
+      } else {
+        console.log(newValue);
       }
     }
   }, //watch
@@ -244,27 +247,16 @@ export default {
     handleLogin(e) {
       e.preventDefault();
       if (this.password.length > 0) {
+        console.log(this.emailID, this.password);
         this.axios
-          .post(`https://localhost:${port}/login`, {
+          .post("https://localhost:8001/login", {
             email: this.emailID,
             password: this.password
           })
           .then(response => {
-            const isAdmin = response.data.user.isAdmin;
+            // const isAdmin = response.data.user.isAdmin;
             localStorage.setItem("user", JSON.stringify(response.data.user));
             localStorage.setItem("jwt", response.data.token);
-
-            // if (localStorage.getItem("jwt") != null) {
-            //   const redirectRoute = this.$router.currentRoute.value.query.nextUrl;
-              // if (redirectRoute != null) {
-              //   this.$router.push({name : redirectRoute});
-              // } 
-              // else if (isAdmin == 1) {
-              //   this.$router.push({name : "admin"});
-              // } else {
-                // this.$router.push({name : "home"});
-              // }
-            // }
           })
           .catch(error => {
             console.error(error.response);
@@ -274,9 +266,9 @@ export default {
 
     handleSignUp(e) {
       e.preventDefault();
-      let url = `https://localhost:${port}/register`;
+      let url = "https://localhost:8001/register";
       if (this.isAdmin == 1) {
-        url = `https://localhost:${port}/register-admin`;
+        url = "https://localhost:8001/register-admin";
       }
       //POST request
       this.axios
@@ -293,14 +285,6 @@ export default {
 
           this.sqliteUser = response.data.user;
           this.sqliteToken = response.data.token;
-          
-          // if (localStorage.getItem("jwt") != null) {
-          //   if (this.$route.params.nextUrl != null) {
-          //     this.$router.push({name : this.$router.currentRoute.value.query.nextUrl});
-          //   } else {
-          //     this.$router.push({name : "home"});
-          //   }
-          // }
         })
         .catch(error => {
           console.error(error);
@@ -351,7 +335,7 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: @spaceXl  2*@spaceXl;
+      padding: @spaceXl 2 * @spaceXl;
       align-content: center;
       position: absolute;
       top: 0;
@@ -397,7 +381,7 @@ export default {
       right: 50%;
       transform: translate(50%, 50%);
       & > h1 {
-      align-self: center;
+        align-self: center;
         & + div {
           display: flex;
           flex-direction: row;
@@ -414,7 +398,10 @@ export default {
             width: 320px;
             padding: @spaceMd @spaceLg;
           }
-          & > div  {
+          //social login
+          & > div {
+            display: flex;
+            flex-direction: column;
             border-left: 1px solid @secondaryColor;
             align-self: center;
             padding: @spaceMd @spaceLg;
@@ -428,11 +415,11 @@ export default {
     @media (max-width: 1540px) {
       & > div {
         &.header {
-          padding: @spaceMd  2*@spaceMd;
+          padding: @spaceMd 2 * @spaceMd;
           & > .radioInput {
             align-self: flex-start;
           }
-        }    
+        }
         &.loginForm {
           bottom: 25%;
           right: 50%;

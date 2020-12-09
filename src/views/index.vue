@@ -206,7 +206,7 @@ export default {
               height: 240px;
               width: 240px;
               align-self: center;
-              margin-top: 2*@spaceXl;
+              margin-top: 2 * @spaceXl;
               & > span {
                 font-size: 2 * @fontSize;
               }

@@ -45,7 +45,7 @@ export const toggle = {
   },
 
   watch: {
-    selected: function (newValue, oldValue) {
+    selected: function(newValue, oldValue) {
       if (newValue != oldValue) {
         cookie.methods.setCookie("theme", newValue, 100);
         this.trans();

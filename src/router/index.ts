@@ -1,25 +1,23 @@
-import { createWebHistory, createRouter, RouteRecordRaw} from "vue-router";
+import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
-    component: () =>
-      import(/* webpackChunkName: "home" */ "@/views/index.vue"),
+    component: () => import(/* webpackChunkName: "home" */ "@/views/index.vue"),
     meta: {
-      transitionName: 'fade',
-      requiresAuth: false
+      transitionName: "fade",
+      requiresAuth: false,
+      guest: false
     }
   },
   {
     path: "/caseStudy",
     name: "caseStudy",
     component: () =>
-      import(
-          /* webpackChunkName: "caseStudy" */ "@/views/caseStudy/index.vue"
-      ),
+      import(/* webpackChunkName: "caseStudy" */ "@/views/caseStudy/index.vue"),
     meta: {
-      transitionName: 'fade',
+      transitionName: "fade",
       requiresAuth: true
     }
   },
@@ -29,8 +27,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "contact" */ "@/views/contact/index.vue"),
     meta: {
-      transitionName: 'fade',
-      requiresAuth: false
+      transitionName: "fade",
+      requiresAuth: false,
+      guest: false
     }
   },
   {
@@ -39,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue"),
     meta: {
-      transitionName: 'fade',
+      transitionName: "fade",
       requiresAuth: true
     }
   },
@@ -49,8 +48,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "about" */ "@/views/about/index.vue"),
     meta: {
-      transitionName: 'fade',
-      requiresAuth: false
+      transitionName: "fade",
+      requiresAuth: false,
+      guest: false
     }
   },
   {
@@ -59,7 +59,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "project" */ "@/views/project.vue"),
     meta: {
-      transitionName: 'fade',
+      transitionName: "fade",
       requiresAuth: true
     },
     children: [
@@ -67,12 +67,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "",
         name: "project",
         component: () =>
-          import(
-              /* webpackChunkName: "project" */ "@/views/project/index.vue"
-          ),
+          import(/* webpackChunkName: "project" */ "@/views/project/index.vue"),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -80,11 +79,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "drumKit",
         component: () =>
           import(
-              /* webpackChunkName: "drumKit" */ "@/views/project/js/drumKit.vue"
+            /* webpackChunkName: "drumKit" */ "@/views/project/js/drumKit.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -92,11 +92,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "analogClock",
         component: () =>
           import(
-              /* webpackChunkName: "analogClock" */ "@/views/project/js/analogClock.vue"
+            /* webpackChunkName: "analogClock" */ "@/views/project/js/analogClock.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -104,11 +105,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "arrayCardio",
         component: () =>
           import(
-              /* webpackChunkName: "arrayCardio" */ "@/views/project/js/arrayCardio.vue"
+            /* webpackChunkName: "arrayCardio" */ "@/views/project/js/arrayCardio.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -116,11 +118,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "imageGalery",
         component: () =>
           import(
-              /* webpackChunkName: "imageGalery" */ "@/views/project/js/imageGalery.vue"
+            /* webpackChunkName: "imageGalery" */ "@/views/project/js/imageGalery.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -128,11 +131,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "fetchApi",
         component: () =>
           import(
-              /* webpackChunkName: "fetchApi" */ "@/views/project/js/fetchApi.vue"
+            /* webpackChunkName: "fetchApi" */ "@/views/project/js/fetchApi.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -140,11 +144,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "canvasExample",
         component: () =>
           import(
-              /* webpackChunkName: "canvasExample" */ "@/views/project/js/canvasExample.vue"
+            /* webpackChunkName: "canvasExample" */ "@/views/project/js/canvasExample.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -152,11 +157,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "checkboxChallange",
         component: () =>
           import(
-              /* webpackChunkName: "checkboxChallange" */ "@/views/project/js/checkboxChallange.vue"
+            /* webpackChunkName: "checkboxChallange" */ "@/views/project/js/checkboxChallange.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -164,11 +170,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "konamiCode",
         component: () =>
           import(
-              /* webpackChunkName: "konamiCode" */ "@/views/project/js/konamiCode.vue"
+            /* webpackChunkName: "konamiCode" */ "@/views/project/js/konamiCode.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -176,11 +183,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "scrollIn",
         component: () =>
           import(
-              /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIndicator/index.vue"
+            /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIndicator/index.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -188,11 +196,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "speechRecognition",
         component: () =>
           import(
-              /* webpackChunkName: "speechRecognition" */ "@/views/project/js/speechRecognition.vue"
+            /* webpackChunkName: "speechRecognition" */ "@/views/project/js/speechRecognition.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -200,11 +209,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "linkFollower",
         component: () =>
           import(
-              /* webpackChunkName: "linkFollower" */ "@/views/project/js/linkFollower.vue"
+            /* webpackChunkName: "linkFollower" */ "@/views/project/js/linkFollower.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -212,11 +222,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "geoLocation",
         component: () =>
           import(
-              /* webpackChunkName: "geoLocation" */ "@/views/project/js/geoLocation.vue"
+            /* webpackChunkName: "geoLocation" */ "@/views/project/js/geoLocation.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -224,11 +235,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "userMedia",
         component: () =>
           import(
-              /* webpackChunkName: "userMedia" */ "@/views/project/js/userMedia.vue"
+            /* webpackChunkName: "userMedia" */ "@/views/project/js/userMedia.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -236,11 +248,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "FollowNav",
         component: () =>
           import(
-              /* webpackChunkName: "FollowNav" */ "@/views/project/js/followerAlongNav/index.vue"
+            /* webpackChunkName: "FollowNav" */ "@/views/project/js/followerAlongNav/index.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -248,11 +261,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "clickDrag",
         component: () =>
           import(
-              /* webpackChunkName: "clickDrag" */ "@/views/project/js/clickDrag.vue"
+            /* webpackChunkName: "clickDrag" */ "@/views/project/js/clickDrag.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -260,11 +274,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "videoControl",
         component: () =>
           import(
-              /* webpackChunkName: "videoControl" */ "@/views/project/js/videoControl.vue"
+            /* webpackChunkName: "videoControl" */ "@/views/project/js/videoControl.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -272,11 +287,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "packStation",
         component: () =>
           import(
-              /* webpackChunkName: "packStation" */ "@/views/project/webUX/packStation.vue"
+            /* webpackChunkName: "packStation" */ "@/views/project/webUX/packStation.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -284,11 +300,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "rsvpApp",
         component: () =>
           import(
-              /* webpackChunkName: "about" */ "@/views/project/webUX/rsvpApp.vue"
+            /* webpackChunkName: "about" */ "@/views/project/webUX/rsvpApp.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -296,11 +313,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "pulseAnimation",
         component: () =>
           import(
-              /* webpackChunkName: "pulseAnimation" */ "@/views/project/css/pulseAnimation.vue"
+            /* webpackChunkName: "pulseAnimation" */ "@/views/project/css/pulseAnimation.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -308,29 +326,30 @@ const routes: Array<RouteRecordRaw> = [
         name: "cardSlider",
         component: () =>
           import(
-              /* webpackChunkName: "cardSlider" */ "@/views/project/css/cardSlider.vue"
-            ),
-      meta: { transitionName: 'fade', requiresAuth: false  }
-        },
-        {
-          path: "CSS/infiniteScroll",
-          name: "infiniteScroll",
-          component: () =>
-            import(
-              /* webpackChunkName: "infiniteScroll" */ "@/views/project/css/infiniteScroll.vue"
-            ),
-          meta: { transitionName: 'fade', requiresAuth: false }
-        },
-        {
-          path: "mobileUX/appSignUp",
-          name: "appSignUp",
-          component: () =>
-            import(
-              /* webpackChunkName: "appSignUp" */ "@/views/project/mobileUX/appSignUp.vue"
+            /* webpackChunkName: "cardSlider" */ "@/views/project/css/cardSlider.vue"
+          ),
+        meta: { transitionName: "fade", requiresAuth: false, guest: false }
+      },
+      {
+        path: "CSS/infiniteScroll",
+        name: "infiniteScroll",
+        component: () =>
+          import(
+            /* webpackChunkName: "infiniteScroll" */ "@/views/project/css/infiniteScroll.vue"
+          ),
+        meta: { transitionName: "fade", requiresAuth: false, guest: false }
+      },
+      {
+        path: "mobileUX/appSignUp",
+        name: "appSignUp",
+        component: () =>
+          import(
+            /* webpackChunkName: "appSignUp" */ "@/views/project/mobileUX/appSignUp.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -338,11 +357,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "medCo",
         component: () =>
           import(
-              /* webpackChunkName: "medCo" */ "@/views/project/mobileUX/medCo.vue"
+            /* webpackChunkName: "medCo" */ "@/views/project/mobileUX/medCo.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -350,11 +370,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "fitnessFriend",
         component: () =>
           import(
-              /* webpackChunkName: "fitnessFriend" */ "@/views/project/mobileUX/fitnessFriend.vue"
+            /* webpackChunkName: "fitnessFriend" */ "@/views/project/mobileUX/fitnessFriend.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -362,11 +383,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "culinarian",
         component: () =>
           import(
-              /* webpackChunkName: "culinarian" */ "@/views/project/mobileUX/culinarian.vue"
+            /* webpackChunkName: "culinarian" */ "@/views/project/mobileUX/culinarian.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       },
       {
@@ -374,11 +396,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "goGreen",
         component: () =>
           import(
-              /* webpackChunkName: "goGreen" */ "@/views/project/mobileUX/goGreen.vue"
+            /* webpackChunkName: "goGreen" */ "@/views/project/mobileUX/goGreen.vue"
           ),
         meta: {
-          transitionName: 'fade',
-          requiresAuth: false
+          transitionName: "fade",
+          requiresAuth: false,
+          guest: false
         }
       }
     ]
@@ -387,15 +410,19 @@ const routes: Array<RouteRecordRaw> = [
     path: "/privacyPolicy",
     name: "privacyPolicy",
     component: () =>
-      import(/* webpackChunkName: "privacyPolicy" */ "@/views/privacyPolicy.vue"),
-    meta: { transitionName: 'fade', requiresAuth: false }
+      import(
+        /* webpackChunkName: "privacyPolicy" */ "@/views/privacyPolicy.vue"
+      ),
+    meta: { transitionName: "fade", requiresAuth: false, guest: false }
   },
   {
     path: "/termsOfService",
     name: "termsOfService",
     component: () =>
-      import(/* webpackChunkName: "termsOfService" */ "@/views/termsOfService.vue"),
-    meta: { transitionName: 'fade', requiresAuth: false }
+      import(
+        /* webpackChunkName: "termsOfService" */ "@/views/termsOfService.vue"
+      ),
+    meta: { transitionName: "fade", requiresAuth: false, guest: false }
   },
   {
     path: "/login",
@@ -403,8 +430,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "login" */ "@/views/login/index.vue"),
     meta: {
-      transitionName: 'fade',
+      transitionName: "fade",
       requiresAuth: false,
+      guest: false
     }
   },
   {
@@ -416,13 +444,12 @@ const routes: Array<RouteRecordRaw> = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(
-          /* webpackChunkName: "pageNotFound" */ "@/views/pageNotFound.vue"
-      ),
+      import(/* webpackChunkName: "pageNotFound" */ "@/views/pageNotFound.vue"),
     meta: {
-      transitionName: 'fade',
+      transitionName: "fade",
       requiresAuth: false,
-      name: 'pageNotFound'
+      guest: false,
+      name: "pageNotFound"
     }
   }
 ];

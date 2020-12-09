@@ -6,7 +6,7 @@
     :name="dForm"
     :novalidate="validate"
     :autocomplete="autocomplete"
-    @submit="dOnClickAction"
+    @submit="onClickAction"
   >
     <div class="formElements">
       <slot />
@@ -19,7 +19,7 @@
         button-style="small"
         button-icon="fas fa-clipboard-check"
         :disabled="!validInput"
-        :on-click-action="dOnClickAction"
+        :on-click-action="onClickAction"
       />
       <input class="btn" type="reset" value="Reset" />
     </div>
@@ -41,7 +41,7 @@ export default {
       required: true,
       type: Object
     },
-    dOnClickAction: {
+    onClickAction: {
       required: true,
       type: Function
     },

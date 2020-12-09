@@ -289,8 +289,8 @@ export default {
     position: absolute;
     margin-right: 8px;
     right: 0;
-    border-left: @fontSize/3 solid transparent;
-    border-right: @fontSize/3 solid transparent;
+    border-left: @fontSize / 3 solid transparent;
+    border-right: @fontSize / 3 solid transparent;
     border-top: @fontSizeSm solid @secondaryColor;
     width: 0;
     height: 0;

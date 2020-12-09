@@ -70,7 +70,7 @@ export default {
 
     const dForm = "";
 
-    const dOnClickAction = this.consoleClick;
+    const onClickAction = this.consoleClick;
 
     return {
       dButtonType,
@@ -81,7 +81,7 @@ export default {
 
       dForm,
 
-      dOnClickAction
+      onClickAction
     }; //return
   }, //components
 

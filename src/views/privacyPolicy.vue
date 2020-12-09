@@ -2,11 +2,11 @@
 <template>
   <h1>Privacy Policy</h1>
   <div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
+    class="fb-like"
+    data-share="true"
+    data-width="450"
+    data-show-faces="true"
+  ></div>
   <p>Last updated: November 19, 2020</p>
   <p>
     This Privacy Policy describes Our policies and procedures on the collection,

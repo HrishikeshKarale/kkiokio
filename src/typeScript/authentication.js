@@ -1,26 +1,8 @@
 //https://developers.google.com/identity/sign-in/web/build-button
 //https://developer.twitter.com/en/docs/authentication/guides/log-in-with-twitter
 //https://developers.facebook.com/apps/215219326652376/settings/basic/
-//
-
-
-
-// response
-// {
-//     status: 'connected',
-//     authResponse: {
-//         accessToken: '...',
-//         expiresIn:'...',
-//         signedRequest:'...',
-//         userID:'...'
-//     }
-// }
-
-
-
 
 import { cookie } from "@/typeScript/cookie";
-import { onBeforeMount } from "vue";
 
 export const authentication = {
   data() {
@@ -35,6 +17,8 @@ export const authentication = {
     const user = null;
     const sqliteUser = null;
     const sqliteToken = null;
+    const fbUser = null;
+    const fbToken = null;
     return {
       token,
       googleUserProfile,
@@ -45,74 +29,85 @@ export const authentication = {
       gapi,
       user,
       sqliteUser,
-      sqliteToken
+      sqliteToken,
+      fbUser,
+      fbToken
     };
   }, //data
   mixins: [cookie], //mixins
 
   computed: {
-    signedIn: function () {
-      let signedIn = false;
-      if (this.gapi) {
-        signedIn = this.gapi && this.gapi.isSignedIn();
+    signedIn: {
+      get: function() {
+        let signedIn = false;
+        if (this.gapi) {
+          signedIn = this.gapi && this.gapi.isSignedIn();
+        } else if (localStorage.getItem("user")) {
+          signedIn = localStorage.getItem("jwt") != null;
+        } else if (localStorage.getItem("fbUser")) {
+          signedIn = localStorage.getItem("fbToken") != null;
+        }
+        return signedIn;
       }
-      else if (localStorage.getItem("user")) {
-        signedIn = localStorage.getItem("jwt")!= null;
-      }
-      return signedIn;
     }
   }, //computed
 
   methods: {
+    // logInWithFacebook: async function() {
+    //   // await this.loadFacebookSDK(document, "script", "facebook-jssdk");
+    //   await this.initFacebook();
+    //   window.FB.login(function(response) {
+    //     if (response.authResponse) {
+    //       this.fbToken = response.authResponse.accessToken;
+    //       this.fbUser = {
+    //         ID: response.authResponse.userID,
+    //         signedRequest: response.authResponse.signedRequest,
+    //         isLoggedIn: response.status === "connected",
+    //         isAdmin: 0
+    //       };
+    //       // this.setCookie("fbToken", JSON.stringify(this.fbToken));
+    //       localStorage.setItem("fbToken", JSON.stringify(this.fbToken));
+    //       // this.setCookie("fbUser", JSON.stringify(this.fbUser));
+    //       localStorage.setItem("fbUser", JSON.stringify(this.fbUser));
+    //       // alert("User loggedIn.");
 
-    logInWithFacebook: async function() {
-      // await this.loadFacebookSDK(document, "script", "facebook-jssdk");
-      await this.initFacebook();
-      window.FB.login(function(response) {
-        if (response.authResponse) {
-          alert("You are logged in &amp; cookie set!");
-          // Now you can redirect the user or do an AJAX request to
-          // a PHP script that grabs the signed request from the cookie.
-        } else {
-          alert("User cancelled login or did not fully authorize.");
-        }
-      });
-      return false;
-    }, //logInWithFacebook
+    //       // Now you can redirect the user or do an AJAX request to
+    //       // a PHP script that grabs the signed request from the cookie.
+    //     }
+    //     // else {
+    //     //   alert("User cancelled login or did not fully authorize.");
+    //     // }
+    //   });
+    // }, //logInWithFacebook
 
-    initFacebook: async function() {
-      window.fbAsyncInit = function() {
-        window.FB.init({
-        appId: '215219326652376',
-        cookie: true,                     // Enable cookies to allow the server to access the session.
-        xfbml: false,                     // Parse social plugins on this webpage.
-        version: 'v9.0' 
-        });
-      };
-    }, //initFacebook
+    // initFacebook: async function() {
+    //   window.fbAsyncInit = function() {
+    //     window.FB.init({
+    //       appId: "215219326652376",
+    //       cookie: true, // Enable cookies to allow the server to access the session.
+    //       xfbml: false, // Parse social plugins on this webpage.
+    //       version: "v9.0"
+    //     });
+    //   };
+    // }, //initFacebook
 
-    loadFacebookSDK: async function(d, s, id) {
-      let js = null;
-      const fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {
-        return;
-      }
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }, //loadFacebookSDK
-    // //check if user is already loggein
-    // FB.getLoginStatus(function(response) {
-    //     statusChangeCallback(response);
-    // }), //getLoginStatus
-
-    //fb login
+    // // fb login
     // checkLoginState: function () {
-      // FB.getLoginStatus(function(response) {
-      //   statusChangeCallback(response);
-      // });
+    //   window.FB.getLoginStatus(function(response) {
+    //     statusChangeCallback(response);
+    //   });
     // }, //checkLoginState
+    // loadFacebookSDK: async function(d, s, id) {
+    //   let js = null;
+    //   const fjs = d.getElementsByTagName(s)[0];
+    //   if (d.getElementById(id)) {
+    //     return;
+    //   }
+    //   js = d.createElement(s);
+    //   js.id = id;
+    //   js.src = "https://connect.facebook.net/en_US/sdk.js";
+    //   fjs.parentNode.insertBefore(js, fjs);
+    // }, //loadFacebookSDK
 
     //initialize user data when signedIn via Google
     init: function(response) {
@@ -139,64 +134,56 @@ export const authentication = {
       }
     }, //init
 
-    signOut: function () {
+    signOut: function() {
       if (this.gapi) {
         this.gapi.disconnect();
-        this.user.isLoggedIn = false;  
+        this.user.isLoggedIn = false;
       }
       this.deleteCookie("user");
       localStorage.removeItem("jwt");
       this.deleteCookie("user");
       localStorage.removeItem("user");
+      localStorage.removeItem("fbUser");
+      localStorage.removeItem("fbToken");
       location.reload(true);
-    }, //signOut
+    } //signOut
   }, //methods
 
-// <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
   beforeCreate() {
-    const fbId = "facebook-jssdk";
     const googleId = "google-oauth";
-    const fbScript = document.getElementById(fbId);
     const googleScript = document.getElementById(googleId);
-    
-    
-    // googleScript.remove();
-    // fbScript.remove();
-    
-    // remove any scripts already loaded for google and fb
-    if (!fbScript) {
-      // load fb if not already present
-      const fbLoginScript = document.createElement("script");
-      fbLoginScript.type = "text/javascript";
-      fbLoginScript.async = true;
-      fbLoginScript.defer = true;
-      fbLoginScript.id = fbId;
-      fbLoginScript.src =
-      "https://connect.facebook.net/en_US/sdk.js?onLoad=triggerFbLoaded";
-        document.head.appendChild(fbLoginScript);
-      console.log(document.getElementById(fbId));
+    if (googleScript) {
+      googleScript.remove();
     }
-    if (!googleScript) {
-      //load google if not already present
-      const googleLoginScript = document.createElement("script");
-      googleLoginScript.type = "text/javascript";
-      googleLoginScript.async = true;
-      googleLoginScript.defer = true;
-      googleLoginScript.id = googleId;
-      googleLoginScript.src =
+    //load google if not already present
+    const googleLoginScript = document.createElement("script");
+    googleLoginScript.type = "text/javascript";
+    googleLoginScript.async = true;
+    googleLoginScript.defer = true;
+    googleLoginScript.id = googleId;
+    googleLoginScript.src =
       "https://apis.google.com/js/platform.js?onLoad=triggerGoogleLoaded";
-      document.head.appendChild(googleLoginScript);
-      console.log(document.getElementById(googleId));
-    }
-      
+    document.head.appendChild(googleLoginScript);
+
+    // const fbId = "facebook-jssdk";
+    // const fbScript = document.getElementById(fbId);
+    // if (fbScript) {
+    //   fbScript.remove();
+    // }
+    // //load fb if not already present
+    // const fbLoginScript = document.createElement("script");
+    // fbLoginScript.type = "text/javascript";
+    // fbLoginScript.async = true;
+    // fbLoginScript.defer = true;
+    // fbLoginScript.id = fbId;
+    // fbLoginScript.src = "https://connect.facebook.net/en_US/sdk.js";
+    // document.head.appendChild(fbLoginScript);
   }, //beforeCreate
-  
+
   created() {
     //add eventlistner to catch the gapi after the platform.js loads
     window.addEventListener("google-loaded", this.init);
-    window.addEventListener("fb-loaded", ()=>{console.log("fbloaded")});
-    
+
     //load google meta for google autnentication if not already present
     if (!document.getElementById(this.Gname)) {
       const googleLoginMeta = document.createElement("meta");
@@ -204,11 +191,6 @@ export const authentication = {
       googleLoginMeta.content = this.GClientID;
       googleLoginMeta.id = this.Gname;
       document.head.appendChild(googleLoginMeta);
-    } 
-  }, //created
-        // onBeforeMount() {
-          
-        //   //fb login check
-        //   this.logInWithFacebook();
-        // }
+    }
+  } //created
 };

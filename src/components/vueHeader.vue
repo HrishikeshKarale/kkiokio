@@ -40,45 +40,45 @@
     </nav>
     <div>
       <span class="fas fa-user" />
-        <div class='user'>
-          <template v-if="signedIn" >
-            <vue-img :src="this.user? this.user.image: false" alt="Logo" />
-            <h5 v-if="this.user">
-              {{this.user? this.user.name: null}}
-            </h5>
-            <h5 v-else>
-              Guest
-            </h5>
-          </template>
-          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
-          <dropdown-list
+      <div class="user">
+        <template v-if="signedIn">
+          <vue-img :src="user ? user.image : false" alt="Logo" />
+          <!-- <h5 v-if="user">
+            {{ this.user ? this.user.name : null }}
+          </h5>
+          <h5 v-else>
+            Guest
+          </h5> -->
+        </template>
+        <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+        <dropdown-list
           label="Theme"
-            name="themeSelector"
-            :value="selected"
-            :options="themes.map(theme =>theme.name)"
-            @input="val=>this.selected = val"
-          />
-          settings
-          <br />
-          account
-          <br />
-          <vue-button
-            v-if="!signedIn"
-            buttop-name="loginButton"
-            button-style="text-sm"
-            button-text="LogIn"
-            button-icon="fas fa-sign-in-alt"
-            :on-click-action="login.bind(this)"
-          />
-          <vue-button
-            v-else
-            button-name="googleSignOutButton"
-            button-text="logout"
-            button-icon="fas fa-sign-out-alt"
-            button-style="text-sm"
-            :on-click-action="signOut.bind()"
-          />
-        </div>
+          name="themeSelector"
+          :value="selected"
+          :options="themes.map(theme => theme.name)"
+          @input="val => (selected = val)"
+        />
+        settings
+        <br />
+        account
+        <br />
+        <vue-button
+          v-if="!signedIn"
+          buttop-name="loginButton"
+          button-style="text-sm"
+          button-text="LogIn"
+          button-icon="fas fa-sign-in-alt"
+          :on-click-action="login.bind(this)"
+        />
+        <vue-button
+          v-else
+          button-name="googleSignOutButton"
+          button-text="logout"
+          button-icon="fas fa-sign-out-alt"
+          button-style="text-sm"
+          :on-click-action="signOut.bind()"
+        />
+      </div>
     </div>
   </header>
 </template>
@@ -97,13 +97,6 @@ export default {
     dropdownList,
     vueButton,
     vueImg
-  }, //components
-
-  data() {
-    const dbooleanTrue = true;
-    return {
-      dbooleanTrue
-    };
   }, //data
 
   mixins: [toggle, authentication],
@@ -120,6 +113,13 @@ export default {
       type: Object,
       default: null
     }
+  }, //components
+
+  data() {
+    const dbooleanTrue = true;
+    return {
+      dbooleanTrue
+    };
   },
 
   computed: {
@@ -317,7 +317,7 @@ header {
           & + .user {
             display: none;
             position: absolute;
-            
+
             .boxShadow(@one, @shadowColor, @header + 10);
             & > img {
               width: 80px;
@@ -330,20 +330,21 @@ header {
         &:hover {
           & > span {
             color: @textColor;
-              background-color: @secondaryColor;
-              border-radius: 50% 50% 0 50%;
-              .boxShadow(@one, @shadowColor, @header + 10);
+            background-color: @secondaryColor;
+            border-radius: 50% 50% 0 50%;
+            .boxShadow(@one, @shadowColor, @header + 10);
             & + .user {
-              display: flex;flex-direction: column;
-            border: 1px solid @secondaryColor;
-            background-color: @backgroundColor;
-            top: 100%;
-            right: 0;
-            height: fit-content;
-            width: fit-content;
-            border-radius: @borderRadius; 
-            padding: @spaceLg @spaceXl;
-            z-index: inherit;
+              display: flex;
+              flex-direction: column;
+              border: 1px solid @secondaryColor;
+              background-color: @backgroundColor;
+              top: 100%;
+              right: 0;
+              height: fit-content;
+              width: fit-content;
+              border-radius: @borderRadius;
+              padding: @spaceLg @spaceXl;
+              z-index: inherit;
             }
           }
         }
@@ -377,7 +378,7 @@ header {
               & > span {
                 color: @secondaryColor;
                 padding: @spaceMd;
-                font-size: 2* @fontSizeSm;
+                font-size: 2 * @fontSizeSm;
                 border: 4px solid @secondaryColor;
                 border-radius: 50%;
                 .textShadow(@one);
@@ -393,7 +394,7 @@ header {
                   right: 0;
                   height: fit-content;
                   width: fit-content;
-                  border-radius: @borderRadius; 
+                  border-radius: @borderRadius;
                   padding: @spaceLg @spaceXl;
                   & > img {
                     width: 80px;
@@ -405,9 +406,9 @@ header {
               }
               &:hover {
                 & > span {
-                    border-radius: 50% 0 50% 50%;
-                    background-color: @secondaryColor;
-                    color: @navBackground;
+                  border-radius: 50% 0 50% 50%;
+                  background-color: @secondaryColor;
+                  color: @navBackground;
                   & + .user {
                     display: flex;
                     // .boxShadow(@one, @shadowColor, @header + 10);
@@ -454,8 +455,7 @@ header {
           }
         }
       }
-        }
+    }
   }
-
 }
 </style>
