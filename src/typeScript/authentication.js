@@ -44,7 +44,6 @@ export const authentication = {
   }, //computed
 
   methods: {
-
     //initialize user data when signedIn via Google
     init: function(response) {
       if (response) {

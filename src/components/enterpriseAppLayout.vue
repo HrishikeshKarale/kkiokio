@@ -112,13 +112,12 @@ export default {
         }
         //if matched route requires authentication and has token
         else {
-          let user = "{}";
+          let user = {};
           if(localStorage.getItem('user')) {
             user = localStorage.getItem('user');
           }
-          else if (this.checkCookie('user')){
-            //console.log(this.getCookie('user'));
-            user = this.getCookie('user');
+          else if (JSON.parse(this.getCookie('user'))){
+            user = JSON.parse(this.getCookie('user'));
           }
           // const user = JSON.parse(localStorage.getItem('user') || JSON.parse(this.getCookie('user')) ||{});
           //when token is present check if user is an Admin
