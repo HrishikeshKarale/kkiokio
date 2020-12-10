@@ -209,8 +209,11 @@ export default {
       if (newValue != oldValue) {
         const route = this.$router.currentRoute.value.query.nextUrl;
         if(route){
+        console.log(route, oldValue, "=>", newValue, this.$router.push({
+            name: route
+          }));
           this.$router.push({
-            name: this.$router.currentRoute.value.query.nextUrl
+            name: route
           });
         }
         else {

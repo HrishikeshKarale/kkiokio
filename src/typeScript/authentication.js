@@ -65,6 +65,8 @@ export const authentication = {
           localStorage.setItem("gapi", JSON.stringify(this.gapi));
           this.setCookie("user", JSON.stringify(this.user));
           localStorage.setItem("user", JSON.stringify(this.user));
+          this.setCookie("token", JSON.stringify(this.user.token));
+          localStorage.setItem("token", JSON.stringify(this.user.token));
         }
       }
     }, //init
@@ -78,6 +80,8 @@ export const authentication = {
       localStorage.removeItem("jwt");
       this.deleteCookie("user");
       localStorage.removeItem("user");
+      this.deleteCookie("token");
+      localStorage.removeItem("token");
       location.reload(true);
     }, //signOut
   }, //methods

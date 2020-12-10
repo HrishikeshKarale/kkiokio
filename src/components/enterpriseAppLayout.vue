@@ -114,9 +114,9 @@ export default {
         else {
           let user = {};
           if(localStorage.getItem('user')) {
-            user = localStorage.getItem('user');
+            user = JSON.parse(localStorage.getItem('user'));
           }
-          else if (JSON.parse(this.getCookie('user'))){
+          else if (this.getCookie('user')){
             user = JSON.parse(this.getCookie('user'));
           }
           // const user = JSON.parse(localStorage.getItem('user') || JSON.parse(this.getCookie('user')) ||{});
@@ -142,7 +142,7 @@ export default {
           next()
         }
         else {
-          next({ name: 'about' })
+          next({ name: 'home' })
         }
       } else {
         next()
