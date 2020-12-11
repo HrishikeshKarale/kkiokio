@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run serve\" \"npm run server\"",
-    "serve": "vue-cli-service serve --fix --https true",
+    "serve": "vue-cli-service serve --fix --https true --config ./vue-config.js",
     "server": "nodemon server/app",
     "deploy": "concurrently \"npm run build\" \"npm run firebase\"",
     "build": "vue-cli-service build",

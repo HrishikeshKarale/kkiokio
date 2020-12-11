@@ -112,7 +112,7 @@
         </vue-form>
         <div>
           signedIn: {{ signedIn }}
-          <vue-button
+          <!-- <vue-button
             v-if="signedIn"
             button-name="signOutButton"
             button-text="Sign out"
@@ -121,24 +121,22 @@
             :disabled="!dBooleanTrue"
             :autofocus="!dBooleanTrue"
             :on-click-action="signOut.bind()"
+          /> -->
+          <h5>
+            You can also login using your
+            <br />
+            social media account.
+          </h5>
+          <vue-button
+            button-name="fbButton"
+            button-text="Log In"
+            button-icon="fab fa-facebook"
+            button-style="standard"
+            :disabled="!dBooleanTrue"
+            :autofocus="!dBooleanTrue"
+            :on-click-action="fbLogin.bind()"
           />
-          <template v-else>
-            <!-- <vue-button
-              button-name="fbButton"
-              button-text="Log In"
-              button-icon="fab fa-facebook"
-              button-style="standard"
-              :disabled="!dBooleanTrue"
-              :autofocus="!dBooleanTrue"
-              :on-click-action="logInWithFacebook.bind()"
-            /> -->
-            <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
-            <fb:login-button
-              scope="public_profile,email"
-              onlogin="checkLoginState();"
-            >
-            </fb:login-button>
-          </template>
+          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
         </div>
       </div>
     </div>
@@ -152,7 +150,6 @@ import emailInput from "@/components/emailInput.vue";
 import passwordInput from "@/components/passwordInput.vue";
 import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
-import vueButton from "@/components/vueButton";
 import { authentication } from "@/typeScript/authentication";
 import VueButton from "@/components/vueButton.vue";
 
@@ -165,9 +162,8 @@ export default {
     emailInput,
     passwordInput,
     vueForm,
-    vueButton,
-    radioInput,
-    VueButton
+    VueButton,
+    radioInput
   }, //methods
 
   mixins: [authentication],
@@ -221,28 +217,6 @@ export default {
     };
   }, //data
 
-  watch: {
-    signedIn: function(newValue, oldValue) {
-      if (newValue != oldValue) {
-        const route = this.$router.currentRoute.value.query.nextUrl;
-        if (newValue) {
-          console.log("signedIn: in route ", newValue, oldValue, route);
-          if (route) {
-            this.$router.push({
-              name: route
-            });
-          } else {
-            this.$router.push({
-              name: "home"
-            });
-          }
-        }
-      } else {
-        console.log(newValue);
-      }
-    }
-  }, //watch
-
   methods: {
     handleLogin(e) {
       e.preventDefault();
@@ -259,7 +233,7 @@ export default {
             localStorage.setItem("jwt", response.data.token);
           })
           .catch(error => {
-            console.error(error.response);
+            console.error(error);
           });
       }
     }, //handleLogin

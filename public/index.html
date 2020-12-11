@@ -9,23 +9,22 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <script defer async type= "text/javascript" src="https://connect.facebook.net/en_US/sdk.js" />
-    <!-- authentication start -->
-    <!-- this script waits for authentication to inotialise agapi object and then triggers a custom event to be pssed to init() --><script type="text/javascript">
+    <script type="text/javascript">
       function triggerGoogleLoaded(gapi) {
-        const gapiObject = gapi;
-        var event = new CustomEvent("google-loaded", {
-          'detail': {
-            gapi: gapiObject
-          }
-        });
-        window.dispatchEvent(event);
-      }
+          const gapiObject = gapi;
+          var event = new CustomEvent("google-loaded", {
+            'detail': {
+              gapi: gapiObject
+            }
+          });
+          window.dispatchEvent(event);
+        };
     </script>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body id="portfolio">
     Loading...
+    <img src="../src/assets/logoBg.svg" crossorigin="anonymous" width="500" alt="">
       <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>

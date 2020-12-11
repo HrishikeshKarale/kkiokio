@@ -71,7 +71,7 @@
       <div>
         <h3>Contact Form</h3>
         <vue-form
-          :d-on-click-action="sendMail.bind(this)"
+          :on-click-action="sendMail.bind(this)"
           d-form="contactForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"

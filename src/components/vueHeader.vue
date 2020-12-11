@@ -68,7 +68,11 @@
           button-style="text-sm"
           button-text="LogIn"
           button-icon="fas fa-sign-in-alt"
-          :on-click-action="login.bind(this)"
+          :on-click-action="
+            () => {
+              this.$router.push({ name: 'login' });
+            }
+          "
         />
         <vue-button
           v-else
@@ -148,10 +152,6 @@ export default {
       }
       // event.stopPropogation(); //stop event bubbling
     }, //clickHandler
-
-    login: function() {
-      this.$router.push({ name: "login" });
-    }, //login
 
     toggleNavigation: function() {
       this.$refs["vueHeader"].classList.toggle("showNav");

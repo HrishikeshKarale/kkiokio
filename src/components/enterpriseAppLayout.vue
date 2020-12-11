@@ -70,7 +70,7 @@ export default {
     };
   }, //mixins
 
-  beforeMount() {
+  created() {
     this.$router.beforeEach((to, from, next) => {
       let transitionName =
         to.meta.transitionName ||
@@ -101,24 +101,27 @@ export default {
       this.transitionName = transitionName;
 
       const user =
-        JSON.parse(localStorage.getItem("user")) ||
-        JSON.parse(localStorage.getItem("fbUser")) ||
+        localStorage.getItem("user") ||
+        localStorage.getItem("fbUser") ||
+        localStorage.getItem("gUser") ||
         this.checkCookie("user")
-          ? JSON.parse(this.checkCookie("user"))
+          ? this.getCookie("user")
           : null || "{}";
       const token =
+        localStorage.getItem("gToken") ||
         localStorage.getItem("fbToken") ||
         localStorage.getItem("jwt") ||
         this.checkCookie("token")
-          ? this.checkCookie("token")
+          ? this.getCookie("token")
           : null || null;
+
       //route redirection
       //requires authentication
       if (to.matched.some(record => record.meta.requiresAuth)) {
-        console.log("authentication required: ", this.signedIn);
+        console.log("authentication required. User signed in?", this.signedIn, from, "->", to);
         //If user token exists,
         //check if admin access is required
-        if (this.signedIn) {
+        if (this.signedIn || token) {
           //when token is present check if user is an Admin
           if (to.matched.some(record => record.meta.isAdmin)) {
             //If user is an admin, proceed
@@ -127,7 +130,7 @@ export default {
             }
             //if user is not admin then redirect to home page
             else {
-              next({ path: "home" });
+              next({ name: "home" });
             }
           } else {
             next();
@@ -136,12 +139,13 @@ export default {
           //when no token is found redirect to login page and set redirect route
           next({
             name: "login",
-            query: { nextUrl: to.name }
+            query: { returnUrl: to.name }
           });
         }
       }
       //authentication was not required.
       else {
+        console.log("authentication NOT required.", this.signedIn, from, "->", to);
         //check if guest access is required to matched route
         if (to.matched.some(record => record.meta.guest)) {
           if (user.guest == 1) {
