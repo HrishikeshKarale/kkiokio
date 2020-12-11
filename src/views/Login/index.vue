@@ -227,7 +227,7 @@ export default {
       e.preventDefault();
       if (this.password.length > 0) {
         this.axios
-          .post("http://localhost:8001/login", {
+          .post("https://localhost:8001/login", {
             email: this.emailID,
             password: this.password
           })
@@ -244,9 +244,9 @@ export default {
 
     handleSignUp(e) {
       e.preventDefault();
-      let url = "http://localhost:8001/register";
+      let url = "https://localhost:8001/register";
       if (this.isAdmin == 1) {
-        url = "http://localhost:8001/register-admin";
+        url = "https://localhost:8001/register-admin";
       }
       //POST request
       this.axios

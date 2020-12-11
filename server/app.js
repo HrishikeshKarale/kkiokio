@@ -1,11 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // defined the database, and created an Express server and router
+//use JOI for validation of JSON object schema
+
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const DB = require("./db");
 const config = require("./config");
+const https = require('https');
+const fs = require('fs')
 
 const db = new DB("sqlitedb");
 const app = express();
@@ -132,7 +136,12 @@ app.use(router);
 
 const port = process.env.PORT || 8001;
 
+const httpsOptions = {
+    key: fs.readFileSync('@/../server/ssl/cert.key'),
+    cert: fs.readFileSync('@/../server/ssl/cert.pem')
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const server = app.listen(port, () => {
+const server = https.createServer(httpsOptions, app).listen(port, () => {
   //console.log(`Express server listening on port ${port}`);
 });
