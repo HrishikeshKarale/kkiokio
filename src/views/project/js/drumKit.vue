@@ -75,8 +75,8 @@ export default {
             kit.audio.play().then(() => {
               //automatic playback started
             });
-          } catch (e) {
-            console.error(e);
+          } catch (error) {
+            // console.error(error);
           }
         }
       });

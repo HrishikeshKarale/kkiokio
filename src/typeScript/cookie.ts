@@ -1,8 +1,8 @@
 export const cookie = {
   methods: {
-    getCookie: function(name : string) : string {
-      const cname : string = name + "=";
-      const decodedCookie : string = decodeURIComponent(document.cookie);
+    getCookie: function(name: string): string {
+      const cname: string = name + "=";
+      const decodedCookie: string = decodeURIComponent(document.cookie);
       const ca: string[] = decodedCookie.split(";");
       //alternate imlementation for returning value of requested cookie.
       // ca.some(c => {
@@ -24,10 +24,15 @@ export const cookie = {
       return "";
     },
 
-    setCookie: function (name : string, value : string, exdays = 1, SameSite = "Secure") : void {
-      const d : Date = new Date();
+    setCookie: function(
+      name: string,
+      value: string,
+      exdays = 1,
+      SameSite = "Secure"
+    ): void {
+      const d: Date = new Date();
       d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-      const expires : string = "expires=" + d.toUTCString();
+      const expires: string = "expires=" + d.toUTCString();
       document.cookie =
         name +
         "=" +
@@ -39,21 +44,25 @@ export const cookie = {
         ";path=/";
     },
 
-    deleteCookie: function (name : string, path : string, domain : string) : boolean {
-      if (this.checkCookie( name ) ) {
+    deleteCookie: function(
+      name: string,
+      path: string,
+      domain: string
+    ): boolean {
+      if (this.checkCookie(name)) {
         document.cookie =
           name +
           "=" +
-        ((path) ? ";path="+path:"") +
-        ((domain)?";domain="+domain:"") +
+          (path ? ";path=" + path : "") +
+          (domain ? ";domain=" + domain : "") +
           ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
         return true;
       }
       return false;
     }, //deleteCookie
 
-    checkCookie: function(name : string) : boolean {
-      const value : string = this.getCookie(name);
+    checkCookie: function(name: string): boolean {
+      const value: string = this.getCookie(name);
       if (value == "") {
         return false;
       }

@@ -120,7 +120,6 @@ export default {
       default: false
     },
 
-
     //sets the autocomplete attribute for the input field
     autocomplete: {
       required: false,

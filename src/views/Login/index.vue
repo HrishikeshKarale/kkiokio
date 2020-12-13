@@ -29,8 +29,8 @@
       <div>
         <vue-form
           v-if="dRadioValue == dOptions[0]"
-          :dOnClickAction="handleLogin.bind(this)"
-          dForm="loginForm"
+          :d-on-click-action="handleLogin.bind(this)"
+          d-form="loginForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
@@ -60,8 +60,8 @@
         </vue-form>
         <vue-form
           v-else
-          :dOnClickAction="handleSignUp.bind(this)"
-          dForm="SignUpForm"
+          :d-on-click-action="handleSignUp.bind(this)"
+          d-form="SignUpForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
@@ -180,6 +180,7 @@ export default {
     const dRadioValue = dOptions[0];
     const dBooleanTrue = true;
     const isAdmin = 0;
+    const port = process.env.PORT || 8001;
     return {
       dNameRadio,
       dRadioValue,
@@ -200,7 +201,8 @@ export default {
       passwordConfirmation,
       password,
       dBooleanTrue,
-      isAdmin
+      isAdmin,
+      port
     };
   }, //data
 
@@ -208,15 +210,14 @@ export default {
     signedIn: function(newValue, oldValue) {
       if (newValue != oldValue) {
         const route = this.$router.currentRoute.value.query.nextUrl;
-        if(route){
+        if (route) {
           this.$router.push({
             name: route
           });
-        }
-        else {
+        } else {
           this.$router.push({
-            name: 'home'
-          })
+            name: "home"
+          });
         }
       }
     }
@@ -227,26 +228,25 @@ export default {
       e.preventDefault();
       if (this.password.length > 0) {
         this.axios
-          .post("https://localhost:8001/login", {
+          .post(`https://localhost:${this.port}/login`, {
             email: this.emailID,
             password: this.password
           })
           .then(response => {
-            const isAdmin = response.data.user.isAdmin;
+            // const isAdmin = response.data.user.isAdmin;
             localStorage.setItem("user", JSON.stringify(response.data.user));
             localStorage.setItem("jwt", response.data.token);
           })
-          .catch(error => {
-            console.error(error.response);
-          });
+          .catch(error => console.error(error.response));
       }
     }, //handleLogin
 
     handleSignUp(e) {
       e.preventDefault();
-      let url = "https://localhost:8001/register";
+
+      let url = `https://localhost:${this.port}/register`;
       if (this.isAdmin == 1) {
-        url = "https://localhost:8001/register-admin";
+        url = `https://localhost:${this.port}/register-admin`;
       }
       //POST request
       this.axios
@@ -264,9 +264,7 @@ export default {
           this.sqliteUser = response.data.user;
           this.sqliteToken = response.data.token;
         })
-        .catch(error => {
-          console.error(error);
-        });
+        .catch(error => console.error(error));
     }, //handleSignUp
 
     alerts: function(type, message) {
@@ -313,7 +311,7 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: @spaceXl  2*@spaceXl;
+      padding: @spaceXl 2 * @spaceXl;
       align-content: center;
       position: absolute;
       top: 0;
@@ -334,7 +332,7 @@ export default {
             color: @textColor;
           }
         }
-      };
+      }
       & > .radioInput {
         align-self: center;
       }
@@ -373,7 +371,7 @@ export default {
             width: 320px;
             padding: @spaceMd @spaceLg;
           }
-          & > div  {
+          & > div {
             border-left: 1px solid @secondaryColor;
             align-self: center;
             padding: @spaceMd @spaceLg;

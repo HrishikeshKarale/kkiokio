@@ -175,11 +175,11 @@ export default {
     }
     &:last-child {
       & > .skills {
-      display: flex;
-      flex-direction: column;
-      height: 40px;
-      width: 100%;
-    }
+        display: flex;
+        flex-direction: column;
+        height: 40px;
+        width: 100%;
+      }
     }
   }
 

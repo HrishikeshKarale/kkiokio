@@ -31,13 +31,12 @@ export const authentication = {
   mixins: [cookie], //mixins
 
   computed: {
-    signedIn: function () {
+    signedIn: function() {
       let signedIn = false;
       if (this.gapi) {
         signedIn = this.gapi && this.gapi.isSignedIn();
-      }
-      else if (localStorage.getItem("user")) {
-        signedIn = localStorage.getItem("jwt")!= null;
+      } else if (localStorage.getItem("user")) {
+        signedIn = localStorage.getItem("jwt") != null;
       }
       return signedIn;
     }
@@ -71,10 +70,10 @@ export const authentication = {
       }
     }, //init
 
-    signOut: function () {
+    signOut: function() {
       if (this.gapi) {
         this.gapi.disconnect();
-        this.user.isLoggedIn = false;  
+        this.user.isLoggedIn = false;
       }
       this.deleteCookie("user");
       localStorage.removeItem("jwt");
@@ -83,7 +82,7 @@ export const authentication = {
       this.deleteCookie("token");
       localStorage.removeItem("token");
       location.reload(true);
-    }, //signOut
+    } //signOut
   }, //methods
 
   beforeCreate() {

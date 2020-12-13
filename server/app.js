@@ -9,11 +9,35 @@ const bodyParser = require("body-parser");
 const DB = require("./db");
 const config = require("./config");
 const https = require('https');
-const fs = require('fs')
+const fs = require('fs');
+const contentSecurityPolicy = require("helmet-csp");
+import cspMiddleware from './cspMiddleware';
 
 const db = new DB("sqlitedb");
 const app = express();
 const router = express.Router();
+// app.use(express.static('routes');
+  
+app.use(cspMiddleware);
+
+// app.use(contentSecurityPolicy({
+//   directives: {
+//     defaultSrc: ["'self'", "default.example"],
+//     scriptSrc: ["'self'", "'unsafe-inline'"],
+//     objectSrc: ["'none'"],
+//     upgradeInsecureRequests: [],
+//   },
+//   reportOnly: false,
+// }));
+
+// app.use(contentSecurityPolicy.getDefaultDirectives());
+// app.use(express.static(__dirname + '/'));
+
+
+// app.use(function(request, response, next) {
+//     response.setHeader("Content-Security-Policy", "script-src 'self' https://apis.google.com");
+//     return next();
+// });
 
 router.use(
   bodyParser.urlencoded({
@@ -143,5 +167,5 @@ const httpsOptions = {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const server = https.createServer(httpsOptions, app).listen(port, () => {
-  //console.log(`Express server listening on port ${port}`);
+  console.log(`Express server listening on port ${port}`);
 });

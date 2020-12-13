@@ -30,40 +30,41 @@
         @input="validate"
       />
       <!-- [A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$ -->
-        <div v-if="dEmailValue" class="conditions">
-          <div>
-            <span
-              :class="
-                dEmailValue.match(/^[A-Za-z0-9._%+-]/g)
-                  ? 'fas fa-check'
-                  : 'fas fa-times'
-              "
-            />
-            Has account name consisting of alphabets and/or numbers and/or special characters(%.-+_).
-          </div>
-          <div>
-            <span
-              :class="
-                dEmailValue.match(/(?=@[A-Za-z0-9.-])/g)
-                  ? 'fas fa-check'
-                  : 'fas fa-times'
-              "
-            />
-            Has a domain name consisting of alphabets, numbersm . and -.
-            Ex: @google, @yahoo, @facebook etc.
-          </div>
-          <div>
-            <span
-              :class="
-                dEmailValue.match(/(?=.[A-Za-z]{2,3}$)/)
-                  ? 'fas fa-check'
-                  : 'fas fa-times'
-              "
-            />
-            Ends with a 2-3 character To plevel domain (TLD).
-            Ex: .net, .com, .edu, .co etc...
-          </div>
+      <div v-if="dEmailValue" class="conditions">
+        <div>
+          <span
+            :class="
+              dEmailValue.match(/^[A-Za-z0-9._%+-]/g)
+                ? 'fas fa-check'
+                : 'fas fa-times'
+            "
+          />
+          Has account name consisting of alphabets and/or numbers and/or special
+          characters(%.-+_).
         </div>
+        <div>
+          <span
+            :class="
+              dEmailValue.match(/(?=@[A-Za-z0-9.-])/g)
+                ? 'fas fa-check'
+                : 'fas fa-times'
+            "
+          />
+          Has a domain name consisting of alphabets, numbersm . and -. Ex:
+          @google, @yahoo, @facebook etc.
+        </div>
+        <div>
+          <span
+            :class="
+              dEmailValue.match(/(?=.[A-Za-z]{2,3}$)/)
+                ? 'fas fa-check'
+                : 'fas fa-times'
+            "
+          />
+          Ends with a 2-3 character To plevel domain (TLD). Ex: .net, .com,
+          .edu, .co etc...
+        </div>
+      </div>
     </div>
     <input-response
       :warning="dWarning"

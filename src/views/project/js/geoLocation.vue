@@ -74,8 +74,8 @@ export default {
           data.coords.heading > 0 ? data.coords.heading * 0.621371 : 0
         }deg)`;
       },
-      err => {
-        console.error(err);
+      error => {
+        console.error(error);
       }
     );
   }

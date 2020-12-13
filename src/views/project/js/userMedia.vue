@@ -249,7 +249,7 @@ export default {
           this.html5Video.srcObject = stream;
         });
       } else {
-        console.error("media access not found");
+        // console.error("media access not found\n", error);
         //do something here in case of media not found
       }
     } //getMedia
