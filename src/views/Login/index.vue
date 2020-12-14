@@ -25,6 +25,7 @@
       />
     </div>
     <div class="loginForm">
+      <dice-load />
       <h1>{{ dRadioValue }}</h1>
       <div>
         <vue-form
@@ -137,7 +138,7 @@ import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
 import vueButton from "@/components/vueButton";
 import { authentication } from "@/typeScript/authentication";
-import VueButton from "@/components/vueButton.vue";
+import diceLoad from "../project/css/diceLoad.vue"
 
 export default {
   name: "Login",
@@ -150,7 +151,7 @@ export default {
     vueForm,
     vueButton,
     radioInput,
-    VueButton
+    diceLoad
   }, //methods
 
   mixins: [authentication],
