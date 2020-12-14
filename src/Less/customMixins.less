@@ -155,6 +155,11 @@
     }
   }
 
+  input {
+    color: @dangerText;
+    background-color: @dangerBackground;
+  }
+
   & > span {
     color: @dangerText !important;
   }
@@ -171,6 +176,11 @@
     & > span {
       color: @warningText;
     }
+  }
+
+  input {
+    color: @warningText;
+    background-color: @warningBackground;
   }
 
   & > span {
@@ -378,19 +388,20 @@
 }
 
 .condition() {
-  &:focus~.conditions {
+  &:focus ~ .conditions {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 100%;
     height: fit-content;
     width: fit-content;
+    border: 1px solid @secondaryColor;
     background-color: @backgroundColor;
-    border-radius: @borderRadius;
+    border-radius:  0 0 @borderRadius @borderRadius;
     padding: @spaceMd @spaceLg;
-    z-index: @bodyZ + 10;
-    .boxShadow(@base);
-    &>div {
+    z-index: @modalZ + 15;
+    .boxShadow(@base, @shadowColor, @modalZ + 15);
+    & > div {
       display: flex;
       flex-direction: row;
       padding: @spaceMd @spaceLg;
@@ -400,8 +411,24 @@
     }
   }
 
-  &~.conditions {
+  & ~ .conditions {
     display: none;
+  }
+}
+
+.autocompleteInput(@bgColor: @backgroundColor, @color: @textColor) {
+  //background-color on autocomplete
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover, 
+  &:-webkit-autofill:focus, 
+  &:-webkit-autofill:active  {
+    box-shadow: inset 0 0 0 30px @bgColor;
+    -webkit-box-shadow: inset 0 0 0 30px @bgColor;
+    -moz-box-shadow: inset 0 0 0 30px @bgColor;
+  }
+  /*Change text in autofill textbox*/
+  &:-webkit-autofill {
+      -webkit-text-fill-color: @color !important;
   }
 }
 
@@ -458,6 +485,7 @@
     &.errorContainer {
       .inputError();
     }
+    
     & > datalist, 
     & > select, 
     & > input,
@@ -470,12 +498,6 @@
       background-color: transparent !important;
       -webkit-appearance: none;
       outline: none;
-      &:-webkit-autofill,
-      &:-webkit-autofill:hover,
-      &:-webkit-autofill:focus {
-        background-color: none !important;
-        border-color: none !important;
-      }
       option:first {
         color: ~"darken(@backgroundColor, 25%)"
       }
@@ -488,6 +510,11 @@
         transform: translate(0, -50%);
         z-index: @bodyZ + 5;
         color: @secondaryColor;
+      }
+      //background-color on autocomplete
+      .autocompleteInput();
+      &:focus {
+        border-radius: @borderRadius @borderRadius 0 0;
       }
       .condition();
     }
@@ -511,16 +538,14 @@
           border-top-left-radius: 0px;
           border-bottom-left-radius: 0px;
           border-left-width: 0px;
-          &:-webkit-autofill,
-          &:-webkit-autofill:hover,
-          &:-webkit-autofill:focus {
-            background-color: none !;
-            border-color: none;
-          }
+          .autocompleteInput();
           //password peak functionality
           & + span {
             cursor: pointer;
             left: calc(100% - 3*@spaceMd);
+          }
+          &:focus {
+            border-radius: @borderRadius @borderRadius 0 0;
           }
           .condition();
         }

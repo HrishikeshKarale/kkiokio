@@ -37,6 +37,10 @@
         />
         <div v-if="dPasswordValue" class="conditions">
           <div>
+            <span class="fas fa-spinner" />
+            A valid input meets the following criteria.
+          </div>
+          <div>
             <span
               :class="
                 dPasswordValue.match(/(?=.*[A-Z])(?=.*[0-9])/g)

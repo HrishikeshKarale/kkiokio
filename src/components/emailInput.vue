@@ -32,6 +32,10 @@
       <!-- [A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$ -->
         <div v-if="dEmailValue" class="conditions">
           <div>
+            <span class="fas fa-spinner" />
+            A valid input meets the following criteria.
+          </div>
+          <div>
             <span
               :class="
                 dEmailValue.match(/^[A-Za-z0-9._%+-]/g)
