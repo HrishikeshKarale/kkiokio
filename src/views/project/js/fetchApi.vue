@@ -36,7 +36,7 @@
                     : 'fas fa-angle-down'
                 "
                 button-style="text-sm"
-                :on-click-action="toggle.bind(this, data.id)"
+                :ctx="toggle.bind(this, data.id)"
               />
             </div>
             <div class="info">

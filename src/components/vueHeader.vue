@@ -7,7 +7,7 @@
       buttop-name="toggleNav"
       button-style="icon-lg"
       :button-icon="toggleNavIcon"
-      :on-click-action="toggleNavigation.bind(this)"
+      :ctx="toggleNavigation.bind(this)"
     />
     <nav>
       <ul>
@@ -40,42 +40,42 @@
     </nav>
     <div>
       <span class="fas fa-user" />
-        <div class='user'>
-          <template v-if="signedIn" >
-            <vue-img :src="this.user? this.user.image: null" alt="Logo" />
-            <h5 v-if="this.user">
-              {{this.user? this.user.name: null}}
-            </h5>
-            <h5 v-else>
-              Guest
-            </h5>
-          </template>
-          <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
-          <vue-button
-            v-if="!signedIn"
-            buttop-name="loginButton"
-            button-style="text-sm"
-            button-text="LogIn"
-            button-icon="fas fa-sign-in-alt"
-            :on-click-action="login.bind(this)"
-          />
-          <vue-button
-            v-else
-            button-name="googleSignOutButton"
-            button-text="logout"
-            button-icon="fas fa-sign-out-alt"
-            button-style="text-sm"
-            :on-click-action="signOut.bind()"
-          />
-          <vue-button
-            v-if="themeIcon"
-            buttop-name="themeToggle"
-            button-style="text-sm"
-            button-text="Theme"
-            :button-icon="themeIcon"
-            :on-click-action="theme.bind(this)"
-          />
-        </div>
+      <div class="user">
+        <template v-if="signedIn">
+          <vue-img :src="user ? user.image : null" alt="Logo" />
+          <h5 v-if="user">
+            {{ user ? user.name : null }}
+          </h5>
+          <h5 v-else>
+            Guest
+          </h5>
+        </template>
+        <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
+        <vue-button
+          v-if="!signedIn"
+          buttop-name="loginButton"
+          button-style="text-sm"
+          button-text="LogIn"
+          button-icon="fas fa-sign-in-alt"
+          :ctx="login.bind(this)"
+        />
+        <vue-button
+          v-else
+          button-name="googleSignOutButton"
+          button-text="logout"
+          button-icon="fas fa-sign-out-alt"
+          button-style="text-sm"
+          :ctx="signOut.bind()"
+        />
+        <vue-button
+          v-if="themeIcon"
+          buttop-name="themeToggle"
+          button-style="text-sm"
+          button-text="Theme"
+          :button-icon="themeIcon"
+          :ctx="theme.bind(this)"
+        />
+      </div>
     </div>
   </header>
 </template>
@@ -322,12 +322,11 @@ header {
           }
         }
         &:hover {
-          
           & > span {
-              border-radius: 50% 50% 0 50%;
-              background-color: @secondaryColor;
-              color: @navBackground;
-              .boxShadow(@one, @shadowColor, 1001);
+            border-radius: 50% 50% 0 50%;
+            background-color: @secondaryColor;
+            color: @navBackground;
+            .boxShadow(@one, @shadowColor, 1001);
             & + .user {
               display: flex;
               flex-direction: column;
@@ -336,7 +335,7 @@ header {
               right: 0;
               height: fit-content;
               width: fit-content;
-              border-radius: @borderRadius; 
+              border-radius: @borderRadius;
               padding: @spaceLg @spaceXl;
               .boxShadow(@one, @shadowColor, 1001);
             }
@@ -352,9 +351,9 @@ header {
         border-bottom-right-radius: @borderRadiusLg;
         height: auto;
         width: fit-content;
-          position: fixed;
-          left: 0;
-          top: 0;
+        position: fixed;
+        left: 0;
+        top: 0;
         .scroll(100vh);
         & > .menuTrigger {
           display: flex;
@@ -415,6 +414,5 @@ header {
       }
     }
   }
-
 }
 </style>

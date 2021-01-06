@@ -3,31 +3,38 @@
 </template>
 <script>
 export default {
-  name: "Spinner",
-  data() {
-    return {};
-  }
+  name: "Spinner"
 };
 </script>
 <style lang="less" scoped>
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 .spinner {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
-  width: @fontSize*2;
-  height: @fontSize*2;
+  width: @fontSize*4;
+  height: @fontSize*4;
   border: @spaceMd solid #eee;
-  border-left-color: @secondaryColor;
-  animation: spin 1s ease-in-out infinite;
+  border-right-color: @secondaryColor;
+  border-left-color: @primaryColor;
+  animation: spin 2s ease-in-out infinite;
   .boxShadow(@base);
+  &::after {
+    content: "Loading";
+    color: @textColor;
+    font-weight: bold;
+    background-color: @secondaryColor;
+  }
 }
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
   from {
     transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>

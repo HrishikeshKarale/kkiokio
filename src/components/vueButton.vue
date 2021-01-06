@@ -1,8 +1,8 @@
-// https://tympanus.net/Development/CreativeButtons/
-// https://tympanus.net/Development/ButtonStylesInspiration/
-// https://tympanus.net/Development/DistortedButtonEffects/
-// https://tympanus.net/Development/ProgressButtonStyles/
-// https://tympanus.net/Development/ButtonStylesInspiration/
+// https://tympanus.net/Development/CreativeButtons/ //
+https://tympanus.net/Development/ButtonStylesInspiration/ //
+https://tympanus.net/Development/DistortedButtonEffects/ //
+https://tympanus.net/Development/ProgressButtonStyles/ //
+https://tympanus.net/Development/ButtonStylesInspiration/
 <template>
   <button
     :class="[
@@ -16,7 +16,7 @@
     :autofocus="autofocus"
     :disabled="disabled"
     :form="formID"
-    @click.stop.prevent="onClickAction"
+    @click.stop.prevent="ctx"
   >
     <span v-if="buttonIcon" :class="buttonIcon" />
     <template v-if="!['icon', 'icon-sm', 'icon-lg'].includes(buttonStyle)">
@@ -171,7 +171,7 @@ export default {
       }
     },
 
-    onClickAction: {
+    ctx: {
       required: function(props) {
         // console.log(props.buttonType);
         if (props.buttonType == "button") {
