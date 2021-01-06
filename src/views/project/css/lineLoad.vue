@@ -1,117 +1,115 @@
 <template>
   <div class="lineLoad">
-     <div class="preloader-1">
-  <div>Loading</div>
-  <span class="line line-1"></span>
-  <span class="line line-2"></span>
-  <span class="line line-3"></span>
-  <span class="line line-4"></span>
-  <span class="line line-5"></span>
-  <span class="line line-6"></span>
-  <span class="line line-7"></span>
-  <span class="line line-8"></span>
-  <span class="line line-9"></span>
-</div>
-
-<div class="preloader-2">
-  <span class="line line-1"></span>
-  <span class="line line-2"></span>
-  <span class="line line-3"></span>
-  <span class="line line-4"></span>
-  <span class="line line-5"></span>
-  <span class="line line-6"></span>
-  <span class="line line-7"></span>
-  <span class="line line-8"></span>
-  <span class="line line-9"></span>
-  <div>Loading</div>
-</div>
+    <div>
+      <span class="line line-1"></span>
+      <span class="line line-2"></span>
+      <span class="line line-3"></span>
+      <span class="line line-4"></span>
+      <span class="line line-5"></span>
+      <span class="line line-6"></span>
+      <span class="line line-7"></span>
+      <span class="line line-8"></span>
+      <span class="line line-9"></span>
+      <span class="line line-10"></span>
+    </div>
+    <h4>Loading...</h4>
   </div>
 </template>
 <script>
 export default {
-  name: "lineLoad",
-  data() {
-    return {};
-  }
+  name: "LineLoad"
 };
 </script>
 <style lang="less" scoped>
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
+
 .lineLoad {
-  
-.preloader-1 {
-  margin: 100px auto 0;
-  width: 66px;
-  height: 12px;
-}
-
-.preloader-2 {
-  margin: 120px auto 0;
-}
-
-div {
-  color: #333;
-  margin: 5px 0;
-  text-transform: uppercase;
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.preloader-1 .line {
-  width: 1px;
-  height: 12px;
-  background: #000;
-  margin: 0 1px;
-  display: inline-block;
-  animation: opacity-1 1000ms infinite ease-in-out;
-}
-
-.preloader-2 .line {
-  width: 1px;
-  height: 12px;
-  background: #000;
-  margin: 0 1px;
-  display: inline-block;
-  animation: opacity-2 1000ms infinite ease-in-out;
-}
-
-.preloader-1 .line-1, .preloader-2 .line-1 { animation-delay: 800ms; }
-.preloader-1 .line-2, .preloader-2 .line-2 { animation-delay: 600ms; }
-.preloader-1 .line-3, .preloader-2 .line-3 { animation-delay: 400ms; }
-.preloader-1 .line-4, .preloader-2 .line-4 { animation-delay: 200ms; }
-.preloader-1 .line-6, .preloader-2 .line-6 { animation-delay: 200ms; }
-.preloader-1 .line-7, .preloader-2 .line-7 { animation-delay: 400ms; }
-.preloader-1 .line-8, .preloader-2 .line-8 { animation-delay: 600ms; }
-.preloader-1 .line-9, .preloader-2 .line-9 { animation-delay: 800ms; }
-
-@keyframes opacity-1 { 
-  0% { 
-    opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  & > div {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    width: fit-content;
+    & > span {
+      align-self: center;
+      &.line {
+        display: inline-flex;
+        width: 8px;
+        height: 32px;
+        border-radius: @borderRadius;
+        background: @secondaryColor;
+        animation: opacity-2 1000ms infinite ease-in-out;
+        margin: 0 @spaceSm;
+        &.line-1 {
+          animation-delay: 800ms;
+        }
+        &.line-2 {
+          animation-delay: 600ms;
+        }
+        &.line-3 {
+          animation-delay: 400ms;
+        }
+        &.line-4 {
+          animation-delay: 200ms;
+        }
+        &.line-6 {
+          animation-delay: 200ms;
+        }
+        &.line-7 {
+          animation-delay: 400ms;
+        }
+        &.line-8 {
+          animation-delay: 600ms;
+        }
+        &.line-9 {
+          animation-delay: 800ms;
+        }
+        &.line-9 {
+          animation-delay: 900ms;
+        }
+      }
+    }
   }
-  50% { 
-    opacity: 0;
+  & > h4 {
+    margin: 0;
+    align-self: center;
+    text-transform: uppercase;
+    width: fit-content;
   }
-  100% { 
-    opacity: 1;
-  }  
 }
 
-@keyframes opacity-2 { 
-  0% { 
+@keyframes opacity-2 {
+  0% {
     opacity: 1;
-    height: 15px;
+    height: 32px;
   }
-  50% { 
-    opacity: 0;
-    height: 12px;
+  20% {
+    opacity: 0.2;
+    height: 24px;
   }
-  100% { 
+  40% {
+    opacity: 0.4;
+    height: 16px;
+  }
+  50% {
+    opacity: 0.5;
+    height: 8px;
+  }
+  60% {
+    opacity: 0.6;
+    height: 16px;
+  }
+  80% {
+    opacity: 0.8;
+    height: 24px;
+  }
+  100% {
     opacity: 1;
-    height: 15px;
-  }  
-}
+    height: 32px;
+  }
 }
 </style>

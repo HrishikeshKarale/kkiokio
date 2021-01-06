@@ -1,12 +1,12 @@
 <template>
   <form
-    :id="dForm"
-    :ref="dForm"
+    :id="form"
+    :ref="form"
     class="vueForm"
-    :name="dForm"
+    :name="form"
     :novalidate="validate"
     :autocomplete="autocomplete"
-    @submit="dOnClickAction"
+    @submit="dctx"
   >
     <div class="formElements">
       <slot />
@@ -19,7 +19,7 @@
         button-style="small"
         button-icon="fas fa-clipboard-check"
         :disabled="!validInput"
-        :on-click-action="dOnClickAction"
+        :ctx="dctx"
       />
       <input class="btn" type="reset" value="Reset" />
     </div>
@@ -41,11 +41,11 @@ export default {
       required: true,
       type: Object
     },
-    dOnClickAction: {
+    dctx: {
       required: true,
       type: Function
     },
-    dForm: {
+    form: {
       required: false,
       type: [String, null],
       default: null
@@ -62,20 +62,20 @@ export default {
     }
   },
 
-  data() {
-    const dWarning = null;
-    const dDanger = null;
+  // data() {
+  //   const dWarning = null;
+  //   const dDanger = null;
 
-    return {
-      dWarning,
-      dDanger
-    };
-  }, //data
+  //   return {
+  //     dWarning,
+  //     dDanger
+  //   };
+  // }, //data
 
   computed: {
     validInput: function() {
       const alerts = this.alerts;
-      const form = this.$refs[this.dForm];
+      const form = this.$refs[this.form];
       if (form && !alerts["error"] && !alerts["warning"]) {
         const inputs = [
           ...Array.from(form.getElementsByTagName("select")),
@@ -95,20 +95,20 @@ export default {
       }
       return false;
     } //validInput
-  }, //mounted
+  } //computed
 
-  methods: {
-    alert: function(type, message) {
-      // console.log(message);
-      if (type == "warning") {
-        this.dWarning = message;
-      } else if (type == "error") {
-        this.dDanger = message;
-      } else {
-        alert("error in input alert module");
-      }
-    } //alerts
-  } //methods
+  // methods: {
+  //   alert: function(type, message) {
+  //     // console.log(message);
+  //     if (type == "warning") {
+  //       this.dWarning = message;
+  //     } else if (type == "error") {
+  //       this.dDanger = message;
+  //     } else {
+  //       alert("error in input alert module");
+  //     }
+  //   } //alerts
+  // } //methods
 }; //default
 </script>
 

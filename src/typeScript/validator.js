@@ -16,15 +16,14 @@ export const validator = {
           object.pattern &&
           this.followsPattern(object.pattern, object.value)
         ) {
-          dWarning =
-            "Wrong format: Please follow the pattern.";
+          dWarning = "Wrong format: Please follow the pattern.";
         } else if (object.minlength) {
           dWarning = this.isTooShort(object.minlength, object.value);
         } else if (object.maxlength) {
           dWarning = this.isTooLong(object.maxlength, object.value);
         } else {
           //emit/send new values to parent component v-model attribute
-          this.$emit("input", object.value);
+          this.$emit("value", object.value);
         }
       }
       //if a value for val(temp) does not exists  and is required, thentrigger error and set error message

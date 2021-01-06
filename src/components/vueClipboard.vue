@@ -8,7 +8,7 @@
       :button-style="buttonStyle"
       :disabled="!dBooleanTrue"
       :autofocus="!dBooleanTrue"
-      :on-click-action="copyToClipboard"
+      :ctx="copyToClipboard"
     />
     <!-- <input type= 'hidden' :id= "id" :value= 'componentCode'> -->
     <textarea :id="id" :value="componentCode"></textarea>
@@ -68,9 +68,9 @@ export default {
 
     const dBooleanTrue = true;
 
-    const dForm = "";
+    const form = "";
 
-    const dOnClickAction = this.consoleClick;
+    const dctx = this.consoleClick;
 
     return {
       dButtonType,
@@ -79,9 +79,9 @@ export default {
 
       dBooleanTrue,
 
-      dForm,
+      form,
 
-      dOnClickAction
+      dctx
     }; //return
   }, //components
 

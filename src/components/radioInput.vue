@@ -27,7 +27,7 @@
         button-text="Reset"
         button-icon="fas fa-undo"
         button-style="icon-sm"
-        :on-click-action="clearSelection.bind(this)"
+        :ctx="clearSelection.bind(this)"
       />
     </label>
     <div
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import inputResponse from "@/components/inputResponse";
+import inputResponse from "@/components/alert/inputResponse";
 import vueButton from "@/components/vueButton";
 
 export default {
@@ -199,7 +199,7 @@ export default {
     }
   }, //methods
 
-  emits: ["selected"],
+  emits: ["selected", "value"],
 
   data() {
     const dDanger = null;
@@ -241,7 +241,7 @@ export default {
           tag = false;
         }
       });
-      this.$emit("selected", null);
+      this.$emit("value", null);
     }, //clearSelection
 
     check: function(checkedValue) {
@@ -255,23 +255,23 @@ export default {
             if (index != -1) {
               value = value.splice(index, 1);
               // console.log("check: ", Array.from(value), typeof value);
-              this.$emit("selected", value);
+              this.$emit("value", value);
             } else {
               value = [...this.value, checkedValue];
-              this.$emit("selected", value);
+              this.$emit("value", value);
             }
           } else {
-            this.$emit("selected", [checkedValue]);
+            this.$emit("value", [checkedValue]);
           }
         } else {
           // if type = radio
           // console.log(checkedValue, this.type);
-          this.$emit("selected", checkedValue);
+          this.$emit("value", checkedValue);
         }
       } else {
         //this.options does not exist
         // console.log(this.$refs["singleCheckbox"].checked);
-        this.$emit("selected", this.$refs["singleCheckbox"].checked);
+        this.$emit("value", this.$refs["singleCheckbox"].checked);
       }
     } //check
   } //components

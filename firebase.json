@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist",
+    "site": "kkiokio",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -14,3 +15,4 @@
     ]
   }
 }
+//firebase deploy --only hosting:kkiokio

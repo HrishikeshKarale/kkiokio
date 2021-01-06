@@ -35,11 +35,14 @@
         </div>
       </transition>
     </div>
+    <template v-if="$slots['footer']">
+      <slot name="footer" />
+    </template>
   </div>
 </template>
 
 <script>
-import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
+import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator";
 import breadcrums from "@/components/breadcrums";
 import vueImg from "./vueImg.vue";
 import { authentication } from "@/typeScript/authentication";
@@ -103,50 +106,48 @@ export default {
       //check if matched route requires authentication
       if (to.matched.some(record => record.meta.requiresAuth)) {
         //if matched route requires authentication then check for absence of token
-        if (localStorage.getItem('jwt') == null && !this.checkCookie("token")) {
+        if (localStorage.getItem("jwt") == null && !this.checkCookie("token")) {
           //when no token is found redirect to login page and set redirec
           next({
-            name: 'login',
+            name: "login",
             query: { nextUrl: to.name }
-          })
+          });
         }
         //if matched route requires authentication and has token
         else {
           let user = "{}";
-          if(localStorage.getItem('user')) {
-            user = localStorage.getItem('user');
-          }
-          else if (this.checkCookie('user')){
+          if (localStorage.getItem("user")) {
+            user = localStorage.getItem("user");
+          } else if (this.checkCookie("user")) {
             //console.log(this.getCookie('user'));
-            user = this.getCookie('user');
+            user = this.getCookie("user");
           }
           // const user = JSON.parse(localStorage.getItem('user') || JSON.parse(this.getCookie('user')) ||{});
           //when token is present check if user is an Admin
           if (to.matched.some(record => record.meta.isAdmin)) {
             //If user is an admin, proceed
             if (user.isAdmin == 1) {
-              next()
+              next();
             }
             //if user is not admin then redirect to  about page
             else {
-              next({ path: 'home' })
+              next({ path: "home" });
             }
           } else {
-            next()
+            next();
           }
         }
       }
       //authentication was not required.
       //check if guest access is required to matched route
       else if (to.matched.some(record => record.meta.guest)) {
-        if (localStorage.getItem('jwt') == null) {
-          next()
-        }
-        else {
-          next({ name: 'about' })
+        if (localStorage.getItem("jwt") == null) {
+          next();
+        } else {
+          next({ name: "about" });
         }
       } else {
-        next()
+        next();
       }
     });
   }, //beforeMount
@@ -196,7 +197,7 @@ export default {
         &.content {
           align-items: center;
           color: @textColor;
-          margin:  0 auto;
+          margin: 0 auto;
           max-width: 80vw;
           width: 1504px;
 

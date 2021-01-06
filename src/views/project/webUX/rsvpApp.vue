@@ -22,7 +22,7 @@
             button-text="INVITE"
             button-icon="fas fa-user-plus"
             button-style="standard"
-            :on-click-action="addPerson"
+            :ctx="addPerson"
           />
         </div>
       </div>
@@ -63,14 +63,14 @@
                 button-style="small"
                 button-text="edit"
                 button-icon="fas fa-times"
-                :on-click-action="updateInvited.bind(this, invited.name, false)"
+                :ctx="updateInvited.bind(this, invited.name, false)"
               />
               <vue-button
                 buttop-name="deleteButton"
                 button-style="small"
                 button-text="remove"
                 button-icon="fas fa-user-minus"
-                :on-click-action="updateInvited.bind(this, invited.name, true)"
+                :ctx="updateInvited.bind(this, invited.name, true)"
               />
             </div>
           </div>

@@ -198,7 +198,7 @@ vue/custom-event-name-casing */
                 :modal-title="'Delete ' + entry[select]"
                 button-name="toggleExpandButton"
                 button-icon="fas fa-trash-alt"
-                :on-click-action="consoleClickDelete"
+                :ctx="consoleClickDelete"
               >
                 you can use custom content here to overwrite default content
 
@@ -213,7 +213,7 @@ vue/custom-event-name-casing */
                   entry ? 'fas fa-chevron-left' : 'fas fa-chevron-up'
                 "
                 :button-style="dButtonStyle[12]"
-                :on-click-action="toggleSubTable.bind(this, entry)"
+                :ctx="toggleSubTable.bind(this, entry)"
               />
             </td>
           </tr>
@@ -244,7 +244,7 @@ vue/custom-event-name-casing */
             button-name="previousPage"
             button-icon="fas fa-chevron-left"
             :button-style="dButtonStyle[12]"
-            :on-click-action="setPage.bind(this, metadata.pageNumber - 1)"
+            :ctx="setPage.bind(this, metadata.pageNumber - 1)"
           />
         </div>
         <div>Page {{ metadata.pageNumber }}</div>
@@ -256,7 +256,7 @@ vue/custom-event-name-casing */
             button-name="nextPage"
             button-icon="fas fa-chevron-right"
             :button-style="dButtonStyle[12]"
-            :on-click-action="setPage.bind(this, metadata.pageNumber + 1)"
+            :ctx="setPage.bind(this, metadata.pageNumber + 1)"
           />
         </div>
       </div>
@@ -475,7 +475,7 @@ export default {
     }, //toggle
 
     textSelectNone: function() {
-      this.$emit("selected", null);
+      this.$emit("value", null);
       const selectAllrows = document.getElementById("selectAllRows");
       selectAllrows.checked = false;
       selectAllrows.indeterminate = false;

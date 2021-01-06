@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator.vue";
+import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator";
 export default {
   name: "ScrollIn",
   components: {

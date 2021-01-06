@@ -4,7 +4,7 @@
       buttop-name="Previous"
       button-style="icon-lg"
       button-icon="fas fa-chevron-left"
-      :on-click-action="handleScrollPrev.bind(this)"
+      :ctx="handleScrollPrev.bind(this)"
     />
     <div v-for="index in 10" :key="index" class="card">
       <h3>4.6</h3>
@@ -19,7 +19,7 @@
       buttop-name="Next"
       button-style="icon-lg"
       button-icon="fas fa-chevron-right"
-      :on-click-action="handleScrollNext.bind(this)"
+      :ctx="handleScrollNext.bind(this)"
     />
   </div>
 </template>

@@ -20,7 +20,7 @@
         :inline="booleanTrue"
         :box="booleanTrue"
         :mask="!booleanTrue"
-        @selected="val => (dRadioValue = val)"
+        @value="val => (dRadioValue = val)"
         @alerts="alerts"
       />
     </div>
@@ -29,8 +29,8 @@
       <div>
         <vue-form
           v-if="dRadioValue == dOptions[0]"
-          :dOnClickAction="handleLogin.bind(this)"
-          dForm="loginForm"
+          :dctx="handleLogin.bind(this)"
+          form="loginForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
@@ -44,7 +44,7 @@
             :required="booleanTrue"
             input-icon="fas fa-at"
             @alerts="alerts"
-            @input="val => (emailID = val)"
+            @value="val => (emailID = val)"
           />
           <password-input
             :value="password"
@@ -55,13 +55,13 @@
             input-icon="far fa-user"
             :autocomplete="booleanTrue"
             @alerts="alerts"
-            @input="val => (password = val)"
+            @value="val => (password = val)"
           />
         </vue-form>
         <vue-form
           v-else
-          :dOnClickAction="handleSignUp.bind(this)"
-          dForm="SignUpForm"
+          :dctx="handleSignUp.bind(this)"
+          form="SignUpForm"
           :alerts="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
@@ -75,7 +75,7 @@
             :required="booleanTrue"
             input-icon="far fa-user"
             @alerts="alerts"
-            @input="val => (signupName = val)"
+            @value="val => (signupName = val)"
           />
           <email-input
             :value="signupEmail"
@@ -85,7 +85,7 @@
             :required="booleanTrue"
             input-icon="fas fa-at"
             @alerts="alerts"
-            @input="val => (signupEmail = val)"
+            @value="val => (signupEmail = val)"
           />
           <text-input
             :value="signupUsername"
@@ -95,7 +95,7 @@
             :required="booleanTrue"
             input-icon="far fa-user"
             @alerts="alerts"
-            @input="val => (signupUsername = val)"
+            @value="val => (signupUsername = val)"
           />
           <password-input
             :value="signupPassword"
@@ -107,7 +107,7 @@
             input-icon="far fa-user"
             :autocomplete="booleanTrue"
             @alerts="alerts"
-            @input="val => (signupPassword = val)"
+            @value="val => (signupPassword = val)"
           />
         </vue-form>
         <div>
@@ -119,7 +119,7 @@
             button-style="standard"
             :disabled="!dBooleanTrue"
             :autofocus="!dBooleanTrue"
-            :on-click-action="signOut.bind()"
+            :ctx="signOut.bind()"
           />
           <div v-else class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
         </div>
@@ -137,7 +137,6 @@ import vueForm from "@/components/vueForm";
 import radioInput from "@/components/radioInput.vue";
 import vueButton from "@/components/vueButton";
 import { authentication } from "@/typeScript/authentication";
-import VueButton from "@/components/vueButton.vue";
 
 export default {
   name: "Login",
@@ -149,9 +148,8 @@ export default {
     passwordInput,
     vueForm,
     vueButton,
-    radioInput,
-    VueButton
-  }, //methods
+    radioInput
+  }, //components
 
   mixins: [authentication],
 
@@ -208,15 +206,14 @@ export default {
     signedIn: function(newValue, oldValue) {
       if (newValue != oldValue) {
         const route = this.$router.currentRoute.value.query.nextUrl;
-        if(route){
+        if (route) {
           this.$router.push({
             name: this.$router.currentRoute.value.query.nextUrl
           });
-        }
-        else {
+        } else {
           this.$router.push({
-            name: 'home'
-          })
+            name: "home"
+          });
         }
       }
     }
@@ -232,7 +229,7 @@ export default {
             password: this.password
           })
           .then(response => {
-            const isAdmin = response.data.user.isAdmin;
+            // const isAdmin = response.data.user.isAdmin;
             localStorage.setItem("user", JSON.stringify(response.data.user));
             localStorage.setItem("jwt", response.data.token);
           })
@@ -313,7 +310,7 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: @spaceXl  2*@spaceXl;
+      padding: @spaceXl 2 * @spaceXl;
       align-content: center;
       position: absolute;
       top: 0;
@@ -334,7 +331,7 @@ export default {
             color: @textColor;
           }
         }
-      };
+      }
       & > .radioInput {
         align-self: center;
       }
@@ -373,7 +370,7 @@ export default {
             width: 320px;
             padding: @spaceMd @spaceLg;
           }
-          & > div  {
+          & > div {
             border-left: 1px solid @secondaryColor;
             align-self: center;
             padding: @spaceMd @spaceLg;

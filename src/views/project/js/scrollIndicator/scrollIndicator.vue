@@ -1,6 +1,6 @@
 <template>
   <div class="scrollIndicator">
-    <div class="content">
+    <div class="scrolContent">
       <slot />
     </div>
     <div v-if="tagOffset.length > 1" class="scroll">
@@ -79,16 +79,16 @@ export default {
       const offsetHeader = Array.from(
         document.getElementsByClassName("vueHeader")
       )[0];
-      // console.log(offsetHeader.offsetHeight, this.headerOffset.offsetHeight);
       this.tag = Array.from(document.getElementsByTagName("section"));
       this.tag = this.tag.filter(tag => tag.id != "");
+      const headerOffset= offsetHeader? offsetHeader.offsetHeight: 0
       this.tagOffset = this.tag.map(section => {
         return {
-          top: section.offsetTop - offsetHeader.offsetHeight,
+          top: section.offsetTop - headerOffset,
           bottom:
             section.offsetTop +
             section.offsetHeight -
-            offsetHeader.offsetHeight,
+            headerOffset,
           id: section.getAttribute("id"),
           selected: false
         };
@@ -111,8 +111,8 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../../../../Less/customMixins.less";
-@import (reference) "./../../../../Less/customVariables.less";
+@import (reference) "../../../../Less/customMixins.less";
+@import (reference) "../../../../Less/customVariables.less";
 
 .scrollIndicator {
   & > div {
@@ -164,12 +164,11 @@ export default {
       }
     }
 
-    // &.scrolContent {
-    //   display: flex;
-    //   flex-direction: row;
-    //   justify-content: center;
-    //   align-items: center;
-    // }
+    &.scrolContent {
+      display: flex;
+      margin: 0 auto;
+      max-width: 1024px;
+    }
   }
   @media screen {
     @media (max-width: 1540px) {

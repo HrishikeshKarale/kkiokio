@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import inputResponse from "@/components/inputResponse.vue";
+import inputResponse from "@/components/alert/inputResponse.vue";
 
 export default {
   name: "VueTextarea", //props
@@ -119,7 +119,6 @@ export default {
       type: [Boolean, null],
       default: false
     },
-
 
     //sets the autocomplete attribute for the input field
     autocomplete: {

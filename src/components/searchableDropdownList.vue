@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import inputResponse from "@/components/Alerts/inputResponse";
+import inputResponse from "@/components/alert/inputResponse";
 
 export default {
   name: "SearchableDropdownList",
@@ -311,7 +311,7 @@ export default {
         //if an acceptable value exists,emit/send new values to parent component v-model attribute
         //if not then trigger warning and set warning message
         if (this.options.includes(val) || !this.strict) {
-          this.$emit("input", val);
+          this.$emit("value", val);
         }
         //if options do not include the optio na dn user customized input is not acceptable then trigger alert and set warning message
         else if (this.strict) {

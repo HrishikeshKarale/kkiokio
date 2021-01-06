@@ -1,89 +1,75 @@
 <template>
-  <div class="circleLoad">
-    <div id="loader" />
-  </div>
+  <div class="loader" />
 </template>
 <script>
 export default {
-  name: "circleLoad",
-  data() {
-    return {};
-  }
+  name: "CircleLoad"
 };
 </script>
 <style lang="less" scoped>
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 
-.circleLoad {
-  position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-#loader {
-    display: block;
-    position: relative;
-    left: 50%;
-    top: 50%;
-    width: 150px;
-    height: 150px;
-    margin: -75px 0 0 -75px;
-    border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #9370DB;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-}
-#loader:before {
+@wt: 4px;
+.loader {
+  display: flex;
+  width: 20 * @wt;
+  height: 20 * @wt;
+  border-radius: 50%;
+  border: @wt solid transparent;
+  border-top-color: @primaryColor;
+  background-color: transparent;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  &:before {
     content: "";
     position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
+    top: @wt;
+    left: @wt;
+    right: @wt;
+    bottom: @wt;
     border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #BA55D3;
+    border: @wt solid transparent;
+    border-top-color: @secondaryColor;
     -webkit-animation: spin 3s linear infinite;
     animation: spin 3s linear infinite;
-}
-#loader:after {
+  }
+  &:after {
     content: "";
     position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
+    top: 3 * @wt;
+    left: 3 * @wt;
+    right: 3 * @wt;
+    bottom: 3 * @wt;
     border-radius: 50%;
-    border: 3px solid transparent;
-    border-top-color: #FF00FF;
-    -webkit-animation: spin 1.5s linear infinite;
-    animation: spin 1.5s linear infinite;
+    border: @wt solid transparent;
+    border-top-color: @primaryColor;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+  }
 }
 @-webkit-keyframes spin {
-    0%   {
-        -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 @keyframes spin {
-    0%   {
-        -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 </style>

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import inputResponse from "@/components/inputResponse.vue";
+import inputResponse from "@/components/alert/inputResponse.vue";
 import { validator } from "@/typeScript/validator";
 
 export default {

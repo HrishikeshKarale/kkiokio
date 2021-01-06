@@ -168,7 +168,7 @@ export default {
         return;
       }
       this.dToggled = !this.dToggled;
-      this.$emit("input", !this.dToggled);
+      this.$emit("value", !this.dToggled);
     } //toggle
   } //beforeMount
 }; //default

@@ -10,7 +10,7 @@
         :button-style="buttonStyle[2]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
-        :on-click-action="onClickAction"
+        :ctx="ctx"
       />
 
       <vue-button
@@ -22,7 +22,7 @@
         :button-style="buttonStyle[9]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
-        :on-click-action="onClickAction"
+        :ctx="ctx"
       />
     </div>
     <transition v-if="showModal" name="modal" :show-modal="showModal">
@@ -40,7 +40,7 @@
             </div>
 
             <div class="modal-footer">
-              <div v-if="onClickAction">
+              <div v-if="ctx">
                 <vue-button
                   :button-type="buttonType"
                   :button-name="buttonName"
@@ -49,7 +49,7 @@
                   :button-style="buttonStyle[2]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
-                  :on-click-action="onClickAction"
+                  :ctx="ctx"
                 />
               </div>
               <div>
@@ -60,7 +60,7 @@
                   :button-style="buttonStyle[11]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
-                  :on-click-action="onClickAction"
+                  :ctx="ctx"
                 />
               </div>
             </div>
@@ -112,7 +112,7 @@ export default {
       default: false
     },
 
-    onClickAction: {
+    ctx: {
       required: false,
       type: [Function, null],
       default: null
