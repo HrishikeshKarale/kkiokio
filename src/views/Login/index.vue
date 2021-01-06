@@ -25,6 +25,7 @@
       />
     </div>
     <div class="loginForm">
+      <dice-load />
       <h1>{{ dRadioValue }}</h1>
       <div>
         <vue-form
