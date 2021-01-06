@@ -75,6 +75,16 @@
           :button-icon="themeIcon"
           :ctx="theme.bind(this)"
         />
+        <router-link to="/termsOfService">
+          <h5>
+            Terms Of Service
+        </h5>
+        </router-link>
+        <router-link to="/privacyPolicy">
+          <h5>
+            Privacy Policy
+          </h5>
+        </router-link>
       </div>
     </div>
   </header>
