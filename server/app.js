@@ -156,7 +156,6 @@ router.post("/login", (req, res) => {
   });
 });
 
-
 // define the route for logging in an administrator
 router.get("/", (req, res) => {
   res.status(200).send("Welcome to our API");
