@@ -95,9 +95,9 @@ vue/custom-event-name-casing */
           >
             <!-- {{ nameConvention.capitalize(col) }} -->
             {{ col }}
-            <!-- <span 
+            <!-- <span
 							v-if= 'metadata.sortKey == col'
-							class= 'fas .fa-stack-1x' 
+							class= 'fas .fa-stack-1x'
 							:class= 'metadata.sortOrders[col] > 0 ? "fa-sort-up" : "fa-sort-down"'
 						/> -->
             <span class="fa-stack">
@@ -135,7 +135,7 @@ vue/custom-event-name-casing */
               <!-- <div
 								:class= '{open: editColumns}'
 							>
-								<checkbox-input 
+								<checkbox-input
 									name= "editColumns"
 									v-model= "columns"
 									:options= 'columns'
@@ -196,8 +196,8 @@ vue/custom-event-name-casing */
             <td>
               <vue-modal
                 :modal-title="'Delete ' + entry[select]"
-                button-name="toggleExpandButton"
-                button-icon="fas fa-trash-alt"
+                tag="toggleExpandButton"
+                icon="fas fa-trash-alt"
                 :ctx="consoleClickDelete"
               >
                 you can use custom content here to overwrite default content
@@ -207,12 +207,12 @@ vue/custom-event-name-casing */
                 </h3>
               </vue-modal>
               <vue-button
-                :button-type="buttonType"
-                button-name="ExpandRow"
-                :button-icon="
+                :type="buttonType"
+                tag="ExpandRow"
+                :icon="
                   entry ? 'fas fa-chevron-left' : 'fas fa-chevron-up'
                 "
-                :button-style="dButtonStyle[12]"
+                :category="dButtonStyle[12]"
                 :ctx="toggleSubTable.bind(this, entry)"
               />
             </td>
@@ -240,10 +240,10 @@ vue/custom-event-name-casing */
           -->
           <vue-button
             v-show="metadata.pageNumber > 1"
-            :button-type="buttonType"
-            button-name="previousPage"
-            button-icon="fas fa-chevron-left"
-            :button-style="dButtonStyle[12]"
+            :type="buttonType"
+            tag="previousPage"
+            icon="fas fa-chevron-left"
+            :category="dButtonStyle[12]"
             :ctx="setPage.bind(this, metadata.pageNumber - 1)"
           />
         </div>
@@ -252,10 +252,10 @@ vue/custom-event-name-casing */
           -->
           <vue-button
             v-show="metadata.pageNumber < metadata.pageCount"
-            :button-type="buttonType"
-            button-name="nextPage"
-            button-icon="fas fa-chevron-right"
-            :button-style="dButtonStyle[12]"
+            :type="buttonType"
+            tag="nextPage"
+            icon="fas fa-chevron-right"
+            :category="dButtonStyle[12]"
             :ctx="setPage.bind(this, metadata.pageNumber + 1)"
           />
         </div>
@@ -573,7 +573,7 @@ export default {
                         position: relative;
                         left: 0px;
                         right: -24px;
-                        color: @secondaryColor;
+                        color: @accentColor;
                       }
                     }
                   }
@@ -602,7 +602,7 @@ export default {
                 cursor: pointer;
 
                 &:hover {
-                  color: @secondaryColor;
+                  color: @accentColor;
                 }
 
                 & > ul {
@@ -686,7 +686,7 @@ export default {
               }
               & > .asc,
               & > .dsc {
-                color: @secondaryColor;
+                color: @accentColor;
               }
             }
             &.active {
@@ -704,7 +704,7 @@ export default {
                   font-size: 10px;
                   margin-left: @spaceMd;
                   text-decoration: underline;
-                  color: @secondaryColor;
+                  color: @accentColor;
                 }
               }
               & > div {
@@ -779,7 +779,7 @@ export default {
           }
 
           & > span {
-            color: @secondaryColor;
+            color: @accentColor;
 
             &.disabled {
               .opacity(0.5);
@@ -788,7 +788,7 @@ export default {
         }
       }
     }
-  } /* 
+  } /*
   Max width before this PARTICULAR table gets nasty
   This query will take effect for any screen smaller than 760px
   and also iPads specifically.
@@ -916,7 +916,7 @@ div.paging {
       }
 
       & span {
-        color: @secondaryColor;
+        color: @accentColor;
         font-size: 20px;
       }
     }

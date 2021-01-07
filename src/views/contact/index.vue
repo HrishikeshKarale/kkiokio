@@ -16,7 +16,7 @@
             <vue-clipboard
               id="emailId"
               component-code="hrishikesh.karale@gmail.com"
-              button-style="icon-sm"
+              category="icon-sm"
             />
           </h3>
           <h5>
@@ -37,7 +37,7 @@
             <vue-clipboard
               id="phoneNumber"
               component-code="5855207382"
-              button-style="icon-sm"
+              category="icon-sm"
             />
           </h3>
           <h5>
@@ -71,9 +71,9 @@
       <div>
         <h3>Contact Form</h3>
         <vue-form
-          :d-ctx="sendMail.bind(this)"
+          :ctx="sendMail.bind(this)"
           d-form="contactForm"
-          :alerts="{ error: dDanger, warning: dWarning }"
+          :alert="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
         >
@@ -234,7 +234,7 @@ export default {
   }
 
   @media screen {
-    @media (max-width: 1540px) {
+    @media (max-width: @maxWidth) {
       & > .details {
         flex-direction: row;
         flex-wrap: wrap;

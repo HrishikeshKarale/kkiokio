@@ -2,6 +2,10 @@
   <div v-if="breadcrums.length > 1" class="breadcrums">
     <template v-for="(crums, index) in breadcrums" :key="crums">
       <template v-if="isComponent(crums)[0] && breadcrums.length > 1">
+        <span
+          v-if="index > 0 && isComponent(crums)[0]['comp']"
+          class="fas fa-angle-right"
+        />
         <router-link
           v-if="breadcrums.length - 1 > index"
           class="crums"
@@ -10,7 +14,6 @@
           <h5>{{ isComponent(crums)[0]["name"] }}</h5>
         </router-link>
         <h1 v-else class="crums">{{ isComponent(crums)[0]["name"] }}</h1>
-        <span v-if="breadcrums.length - 1 > index" class="fas fa-angle-right" />
       </template>
     </template>
   </div>
@@ -93,7 +96,7 @@ export default {
     color: @textColor;
   }
   @media screen {
-    @media (max-width: 1540px) {
+    @media (max-width: @maxWidth) {
       margin: 0 0 0 @spaceXl !important;
     }
   }

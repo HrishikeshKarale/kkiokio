@@ -1,9 +1,9 @@
 <template>
   <div class="cardSlider">
     <vue-button
-      buttop-name="Previous"
-      button-style="icon-lg"
-      button-icon="fas fa-chevron-left"
+      tag="Previous"
+      category="icon-lg"
+      icon="fas fa-chevron-left"
       :ctx="handleScrollPrev.bind(this)"
     />
     <div v-for="index in 10" :key="index" class="card">
@@ -16,9 +16,9 @@
       </div>
     </div>
     <vue-button
-      buttop-name="Next"
-      button-style="icon-lg"
-      button-icon="fas fa-chevron-right"
+      tag="Next"
+      category="icon-lg"
+      icon="fas fa-chevron-right"
       :ctx="handleScrollNext.bind(this)"
     />
   </div>
@@ -123,7 +123,7 @@ export default {
         display: flex;
         justify-content: center;
         transition: @transition;
-        background-color: @secondaryColor;
+        background-color: @accentColor;
       }
     }
     &:hover {

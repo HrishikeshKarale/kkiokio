@@ -18,33 +18,33 @@
     </div>
     <div>
       <vue-button
-        buttop-name="screenshot"
-        button-style="icon-lg"
-        button-icon="fas fa-bullseye"
+        tag="screenshot"
+        category="icon-lg"
+        icon="fas fa-bullseye"
         :ctx="toggleFilter.bind(this)"
       />
       <vue-button
-        buttop-name="stopMedia"
-        button-style="icon-lg"
-        button-icon="fas fa-stop"
+        tag="stopMedia"
+        category="icon-lg"
+        icon="fas fa-stop"
         :ctx="stopBothVideoAndAudio.bind(this)"
       />
       <vue-button
-        buttop-name="stopAudio"
-        button-style="icon-lg"
-        :button-icon="audio ? 'fas fa-microphone-slash' : 'fas fa-microphone'"
+        tag="stopAudio"
+        category="icon-lg"
+        :icon="audio ? 'fas fa-microphone-slash' : 'fas fa-microphone'"
         :ctx="stopAudioOnly.bind(this)"
       />
       <vue-button
-        buttop-name="stopVideo"
-        button-style="icon-lg"
-        :button-icon="video ? 'fas fa-video-slash' : 'fas fa-video'"
+        tag="stopVideo"
+        category="icon-lg"
+        :icon="video ? 'fas fa-video-slash' : 'fas fa-video'"
         :ctx="stopVideoOnly.bind(this)"
       />
       <vue-button
-        buttop-name="screenshot"
-        button-style="icon-lg"
-        button-icon="fas fa-camera"
+        tag="screenshot"
+        category="icon-lg"
+        icon="fas fa-camera"
         :ctx="getScreenshot.bind(this)"
       />
     </div>

@@ -4,9 +4,9 @@
     <vue-button
       v-if="toggleNavIcon"
       class="menuTrigger"
-      buttop-name="toggleNav"
-      button-style="icon-lg"
-      :button-icon="toggleNavIcon"
+      tag="toggleNav"
+      category="icon-lg"
+      :icon="toggleNavIcon"
       :ctx="toggleNavigation.bind(this)"
     />
     <nav>
@@ -53,32 +53,32 @@
         <div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
         <vue-button
           v-if="!signedIn"
-          buttop-name="loginButton"
-          button-style="text-sm"
-          button-text="LogIn"
-          button-icon="fas fa-sign-in-alt"
+          tag="loginButton"
+          category="text-sm"
+          text="LogIn"
+          icon="fas fa-sign-in-alt"
           :ctx="login.bind(this)"
         />
         <vue-button
           v-else
-          button-name="googleSignOutButton"
-          button-text="logout"
-          button-icon="fas fa-sign-out-alt"
-          button-style="text-sm"
+          tag="googleSignOutButton"
+          text="logout"
+          icon="fas fa-sign-out-alt"
+          category="text-sm"
           :ctx="signOut.bind()"
         />
         <vue-button
           v-if="themeIcon"
-          buttop-name="themeToggle"
-          button-style="text-sm"
-          button-text="Theme"
-          :button-icon="themeIcon"
+          tag="themeToggle"
+          category="text-sm"
+          text="Theme"
+          :icon="themeIcon"
           :ctx="theme.bind(this)"
         />
         <router-link to="/termsOfService">
           <h5>
             Terms Of Service
-        </h5>
+          </h5>
         </router-link>
         <router-link to="/privacyPolicy">
           <h5>
@@ -170,6 +170,8 @@ export default {
 @lowOpacity: 0.64;
 @midOpacity: 0.84;
 
+@text: @accentColor;
+
 //nav sub text
 .navSubText() {
   color: @navText;
@@ -251,12 +253,12 @@ header {
 
             //styling selected link
             &.router-link-active {
-              color: @secondaryColor;
+              color: @text;
               &::before {
                 transform: scale(0.8);
               }
               &.router-link-exact-active {
-                color: @secondaryColor;
+                color: @text;
               }
 
               & > span {
@@ -264,7 +266,7 @@ header {
               }
               & > div {
                 & > h4 {
-                  color: @secondaryColor;
+                  color: @text;
                   font-weight: bold;
                   & + span {
                     color: @navText;
@@ -279,7 +281,7 @@ header {
               content: "";
               position: absolute;
               width: 100%;
-              background-color: @secondaryColor;
+              background-color: @text;
               bottom: -8px;
               height: 2px;
               transform: scale(0);
@@ -297,7 +299,7 @@ header {
               }
               & > div {
                 & > h4 {
-                  color: @secondaryColor;
+                  color: @text;
                   & + span {
                     color: @navText;
                     opacity: 1;
@@ -314,15 +316,15 @@ header {
         margin-left: auto;
         position: relative;
         & > span {
-          color: @secondaryColor;
+          color: @text;
           padding: @spaceMd;
-          border: 1px solid @secondaryColor;
+          border: 1px solid @text;
           border-radius: 50%;
           cursor: pointer;
           & + .user {
             display: none;
             position: absolute;
-            border: 1px solid @secondaryColor;
+            border: 1px solid @text;
             & > img {
               width: 80px;
             }
@@ -334,7 +336,7 @@ header {
         &:hover {
           & > span {
             border-radius: 50% 50% 0 50%;
-            background-color: @secondaryColor;
+            background-color: @text;
             color: @navBackground;
             .boxShadow(@one, @shadowColor, 1001);
             & + .user {
@@ -354,7 +356,7 @@ header {
       }
     }
     @media screen {
-      @media (max-width: 1540px) {
+      @media (max-width: @maxWidth) {
         flex-direction: column;
         flex-wrap: nowrap;
         padding: @spaceMd @spaceLg;

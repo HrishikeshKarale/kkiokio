@@ -2,44 +2,50 @@
 
 //== Colors
 //
-
 @white: var(--white);
 @black: var(--black);
+@offWhite: var(--offWhite);
+@offBlack: var(--offBlack);
+
 @primaryColor: var(--primaryColor);
 @secondaryColor: var(--secondaryColor);
+@accentColor: var(--accentColor);
+
 @textColor: var(--textColor);
 @backgroundColor: var(--backgroundColor);
+
 @navBackground: var(--navBackground);
 @navText: var(--navText);
+
 @shadowColor: var(--shadowColor);
 
 //success
 @successText: #3c763d;
 @successBackground: #dff0d8;
-@successBorder: ~"darken(@successBackground, 5%)"; //#d6e9c6
+@successBorder: #d6e9c6;
 
 //info
 @infoText: #31708f;
 @infoBackground: #d9edf7;
-@infoBorder: ~"darken(@infoBackground, 7%)"; //#bce8f1
+@infoBorder: #bce8f1;
 
 //warning
 @warningText: #8a6d3b;
 @warningBackground: #fcf8e3;
-@warningBorder: ~"darken(@warningBackground, 5%)"; //#faebcc
+@warningBorder: #faebcc;
 
 //danger
 @dangerText: #a94442;
 @dangerBackground: #f2dede;
-@dangerBorder: ~"darken(@dangerBackground, 5%)"; //#ebccd1
+@dangerBorder: #ebccd1;
 
 //## Gray and brand colors for use across
 @grayBase: @black;
-@grayDarker: ~"lighten(@grayBase, 13.5%)"; // #222
-@grayDark: ~"lighten(@grayBase, 20%)"; // #333
-@gray: ~"lighten(@grayBase, 33.5%)"; // #555
-@grayLight: ~"lighten(@grayBase, 46.7%)"; // #777
-@grayLighter: ~"lighten(@grayBase, 93.5%)"; // #eee
+@grayDarker: #222;
+@grayDark: #333;
+@gray: #555;
+@grayLight: #777;
+@grayLighter: #eee;
 
 //font
 @fontSizeMd: 16px;
@@ -56,7 +62,7 @@
 @font-family-serif: Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
-@fontFamily: 'Roboto', Arial, sans-serif;
+@fontFamily: 'Roboto', sans-serif;
 
 @lineHeightBase: 1.428571429;
 @lineHeight: floor((@fontSize * @lineHeightBase));
@@ -110,18 +116,22 @@
 @headerZ: 200;
 @contentZ: 100;
 @modalZ: 300;
-// @zindex-navbar:            1000;
-// @zindex-dropdown:          1000;
-// @zindex-popover:           1060;
-// @zindex-tooltip:           1070;
-// @zindex-navbar-fixed:      1030;
-// @zindex-modal-background:  1040;
-// @zindex-modal:             1050;
+// @zindex-navbar:    1000;
+// @zindex-dropdown:   1000;
+// @zindex-popover:    1060;
+// @zindex-tooltip:    1070;
+// @zindex-navbar-fixed:   1030;
+// @zindex-modal-background: 1040;
+// @zindex-modal:     1050;
+
+
+//breakpoints
+@maxWidth: 1540px; //1540 //1024px
 
 
 
 
 /*
-    codepen website shadows values were used for material design
-    link: https://codepen.io/sdthornton/pen/wBZdXq
+  codepen website shadows values were used for material design
+  link: https://codepen.io/sdthornton/pen/wBZdXq
 */

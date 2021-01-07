@@ -67,7 +67,7 @@ export default {
       align-content: center;
       height: max-content;
       width: max-content;
-      border: 2px dotted @secondaryColor;
+      border: 2px dotted @accentColor;
       padding: @spaceMd @spaceXl;
       height: max-content;
       width: max-content;

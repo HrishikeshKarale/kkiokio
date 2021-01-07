@@ -32,7 +32,7 @@
           v-if="dRadioValue == dOptions[0]"
           :dctx="handleLogin.bind(this)"
           form="loginForm"
-          :alerts="{ error: dDanger, warning: dWarning }"
+          :alert="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
           @alerts="alerts"
@@ -63,7 +63,7 @@
           v-else
           :dctx="handleSignUp.bind(this)"
           form="SignUpForm"
-          :alerts="{ error: dDanger, warning: dWarning }"
+          :alert="{ error: dDanger, warning: dWarning }"
           :validate="!booleanTrue"
           :autocomplete="booleanTrue"
           @alerts="alerts"
@@ -114,10 +114,10 @@
         <div>
           <vue-button
             v-if="signedIn"
-            button-name="signOutButton"
-            button-text="Sign out"
-            button-icon="fas fa-sign-out-alt"
-            button-style="standard"
+            tag="signOutButton"
+            text="Sign out"
+            icon="fas fa-sign-out-alt"
+            category="standard"
             :disabled="!dBooleanTrue"
             :autofocus="!dBooleanTrue"
             :ctx="signOut.bind()"
@@ -267,7 +267,7 @@ export default {
         });
     }, //handleSignUp
 
-    alerts: function(type, message) {
+    alert: function(type, message) {
       if (type == "warning") {
         this.dWarning = message;
       } else if (type == "error") {
@@ -363,16 +363,16 @@ export default {
           flex-wrap: wrap;
           padding: @spaceMd @spaceLg;
           background-color: @backgroundColor;
-          border: 1px solid @secondaryColor;
+          border: 1px solid @accentColor;
           border-radius: @borderRadius;
-          .boxShadow(@one, @secondaryColor);
+          .boxShadow(@one, @accentColor);
           transition: @transition;
           & > form {
             width: 320px;
             padding: @spaceMd @spaceLg;
           }
           & > div {
-            border-left: 1px solid @secondaryColor;
+            border-left: 1px solid @accentColor;
             align-self: center;
             padding: @spaceMd @spaceLg;
           }
@@ -382,7 +382,7 @@ export default {
   }
 
   @media screen {
-    @media (max-width: 1540px) {
+    @media (max-width: @maxWidth) {
     }
   }
 }

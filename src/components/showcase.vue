@@ -68,7 +68,7 @@ export default {
       margin-bottom: @spaceMd;
       margin-left: @spaceLg;
       padding: 0 10px 0 12px;
-      background-color: @secondaryColor;
+      background-color: @accentColor;
       border-radius: 0 @borderRadius @borderRadius 0;
       color: @textColor;
       width: fit-content;
@@ -79,7 +79,7 @@ export default {
         left: -@fontSizeSm;
         border: solid @fontSizeSm transparent;
         border-left-width: 0;
-        border-right-color: @secondaryColor;
+        border-right-color: @accentColor;
       }
       & > span {
         margin: 0 @spaceMd;

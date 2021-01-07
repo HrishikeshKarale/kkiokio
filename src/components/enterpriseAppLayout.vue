@@ -20,18 +20,9 @@
           <scroll-indicator>
             <router-view :key="$route.path" />
           </scroll-indicator>
-          <aside class="moto">
-            <vue-img :src="logo" alt="Moto" />
-            <q>
-              A little
-              <abbr
-                title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
-              >
-                Empathy
-              </abbr>
-              goes a long way
-            </q>
-          </aside>
+          <template v-if="$slots['moto']">
+            <slot name="moto" />
+          </template>
         </div>
       </transition>
     </div>
@@ -44,7 +35,6 @@
 <script>
 import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator";
 import breadcrums from "@/components/breadcrums";
-import vueImg from "./vueImg.vue";
 import { authentication } from "@/typeScript/authentication";
 import { cookie } from "@/typeScript/cookie";
 
@@ -52,20 +42,16 @@ export default {
   name: "EnterpriseAppLayout",
   components: {
     scrollIndicator,
-    breadcrums,
-    vueImg
+    breadcrums
   },
 
   mixins: [authentication, cookie],
   data() {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const logo = require("@/assets/logo.svg");
     const DEFAULT_TRANSITION = "fade";
     const DEFAULT_TRANSITION_MODE = "out-in";
     const transitionEnterActiveClass = "";
     const prevHeight = 0;
     return {
-      logo,
       transitionName: DEFAULT_TRANSITION,
       transitionMode: DEFAULT_TRANSITION_MODE,
       transitionEnterActiveClass,
@@ -199,41 +185,13 @@ export default {
           color: @textColor;
           margin: 0 auto;
           max-width: 80vw;
-          width: 1504px;
-
-          & > .moto {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            padding: @spaceMd @spaceLg;
-            border-radius: @borderRadius 0 0 0;
-            // background-color: @backgroundColor;
-            height: fit-content;
-
-            & > img {
-              height: 48px;
-            }
-
-            & > q {
-              font-size: @fontSizeSm;
-              font-weight: bold;
-              // background-color: @backgroundColor;
-              border-radius: @borderRadius 0 0 0;
-
-              & > abbr {
-                color: @secondaryColor;
-                text-decoration: none;
-              }
-            }
-          }
+          width: @maxWidth;
         }
       }
     }
   }
   @media screen {
-    @media (max-width: 1540px) {
+    @media (max-width: @maxWidth) {
       & > div {
         &.body {
           & > div.content {

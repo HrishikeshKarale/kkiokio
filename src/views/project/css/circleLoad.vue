@@ -30,7 +30,7 @@ export default {
     bottom: @wt;
     border-radius: 50%;
     border: @wt solid transparent;
-    border-top-color: @secondaryColor;
+    border-top-color: @accentColor;
     -webkit-animation: spin 3s linear infinite;
     animation: spin 3s linear infinite;
   }

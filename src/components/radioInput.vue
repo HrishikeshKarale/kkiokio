@@ -23,10 +23,10 @@
       <vue-button
         v-if="options && value"
         id="clearSelection"
-        button-name="resetValue"
-        button-text="Reset"
-        button-icon="fas fa-undo"
-        button-style="icon-sm"
+        tag="resetValue"
+        text="Reset"
+        icon="fas fa-undo"
+        category="icon-sm"
         :ctx="clearSelection.bind(this)"
       />
     </label>

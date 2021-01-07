@@ -46,7 +46,7 @@ export default {
 
 @white: #ededed;
 @ghostBorder: #bfc0c0;
-@dark: @secondaryColor;
+@dark: @accentColor;
 @light: red;
 
 .systemError {

@@ -4,7 +4,7 @@
         class="alert"
         start-time="Oct 25, 2020 06:24:25"
         end-time="Dec 01, 2020 12:00:01"
-        trans='{  
+        trans='{
           "day":"Day",
           "hours":"Hours",
           "minutes":"Minuts",
@@ -41,10 +41,10 @@
           workflows, visual design language and solving problems.
         </p>
         <vue-button
-          buttop-name="loginButton"
-          button-style="border-sm"
-          button-text="About me"
-          button-icon="fas fa-sign-in-alt"
+          tag="loginButton"
+          category="border-sm"
+          text="About me"
+          icon="fas fa-sign-in-alt"
           :ctx="
             () => {
               this.$router.push({ name: 'about' });
@@ -104,13 +104,15 @@ export default {
   display: flex;
   flex-direction: column;
   min-height: @body;
+  justify-content: center;
+  align-content: center;
   & > div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     height: fit-content;
+    flex-wrap: nowrap;
     width: 100%;
-    margin: auto @spaceXl;
     &:first-child {
       justify-content: space-evenly;
       margin-bottom: 0;
@@ -145,14 +147,14 @@ export default {
         //   width: fit-content;
         //   .boxShadow(@one);
         // }
-
         //design and develop box
         &:last-child {
-          border: @borderRadius dashed @secondaryColor;
-          height: 480px;
-          width: 480px;
+          border: @borderRadius dashed @accentColor;
+          height: 320px;
+          width: 320px;
           border-radius: 25%;
           cursor: pointer;
+          align-self: center;
           & > span {
             font-size: 64px;
             align-self: center;
@@ -174,25 +176,33 @@ export default {
       }
     }
     &:last-child {
+      flex-direction: column;
       & > .skills {
         display: flex;
         flex-direction: column;
         height: 40px;
         width: 100%;
+        background-color: @backgroundColor;
+        &:first-child {
+          background-color: red;
+        }
+        &:last-child {
+          background-color: blue;
+        }
       }
     }
   }
 
   @media screen {
-    @media (max-width: 1540px) {
+    @media (max-width: @maxWidth) {
       flex-direction: column;
       & > div {
         flex-direction: column-reverse;
         margin-bottom: @spaceXl;
         &:first-child {
-          margin-bottom: 0;
           & > div {
             &:last-child {
+              margin-top: 2 * @spaceXl;
               height: 240px;
               width: 240px;
               align-self: center;

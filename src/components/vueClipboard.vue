@@ -1,11 +1,11 @@
 <template>
   <div class="copyClipboard">
     <vue-button
-      :button-type="dButtonType"
-      button-name="togglecode"
-      :button-text="buttonText"
-      :button-icon="buttonIcon"
-      :button-style="buttonStyle"
+      :type="dButtonType"
+      tag="togglecode"
+      :text="buttonText"
+      :icon="buttonIcon"
+      :category="buttonStyle"
       :disabled="!dBooleanTrue"
       :autofocus="!dBooleanTrue"
       :ctx="copyToClipboard"

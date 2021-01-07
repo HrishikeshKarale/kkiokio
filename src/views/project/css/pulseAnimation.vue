@@ -41,7 +41,7 @@ export default {
       border-radius: 50%;
       width: @fontSize;
       height: @fontSize;
-      background: @secondaryColor;
+      background: @accentColor;
       &::after {
         content: "";
         position: absolute;
@@ -49,7 +49,7 @@ export default {
         height: @fontSize;
         z-index: @bodyZ + 5;
         border-radius: 50%;
-        background: @secondaryColor;
+        background: @accentColor;
         animation: pulse 1s ease infinite;
       }
     }

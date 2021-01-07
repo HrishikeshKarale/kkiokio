@@ -2,25 +2,26 @@
 .square {
   width: 100px;
   height: 100px;
-  background: @secondaryColor;
+  background: @primaryColor;
 }
 
 .rectangle {
   width: 200px;
   height: 100px;
-  background: @secondaryColor;
+  background: @primaryColor;
 }
+
 .circle {
   width: 100px;
   height: 100px;
-  background: @secondaryColor;
+  background: @primaryColor;
   border-radius: 50%
 }
 
 .oval {
   width: 200px;
   height: 100px;
-  background: @secondaryColor;
+  background: @primaryColor;
   border-radius: 100px / 50px;
 }
 
@@ -29,7 +30,7 @@
   height: 0;
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  border-bottom: 100px solid @secondaryColor;
+  border-bottom: 100px solid @primaryColor;
 }
 
 .triangle-down {
@@ -37,14 +38,14 @@
   height: 0;
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  border-top: 100px solid @secondaryColor;
+  border-top: 100px solid @primaryColor;
 }
 
 .triangle-left {
   width: 0;
   height: 0;
   border-top: 50px solid transparent;
-  border-right: 100px solid @secondaryColor;
+  border-right: 100px solid @primaryColor;
   border-bottom: 50px solid transparent;
 }
 
@@ -52,35 +53,35 @@
   width: 0;
   height: 0;
   border-top: 50px solid transparent;
-  border-left: 100px solid @secondaryColor;
+  border-left: 100px solid @primaryColor;
   border-bottom: 50px solid transparent;
 }
 
 .triangle-topleft {
   width: 0;
   height: 0;
-  border-top: 100px solid @secondaryColor;
+  border-top: 100px solid @primaryColor;
   border-right: 100px solid transparent;
 }
 
 .triangle-topright {
   width: 0;
   height: 0;
-  border-top: 100px solid @secondaryColor;
+  border-top: 100px solid @primaryColor;
   border-left: 100px solid transparent;
 }
 
 .triangle-bottomleft {
   width: 0;
   height: 0;
-  border-bottom: 100px solid @secondaryColor;
+  border-bottom: 100px solid @primaryColor;
   border-right: 100px solid transparent;
 }
 
 .triangle-bottomright {
   width: 0;
   height: 0;
-  border-bottom: 100px solid @secondaryColor;
+  border-bottom: 100px solid @primaryColor;
   border-left: 100px solid transparent;
 }
 
@@ -89,13 +90,14 @@
   width: 0;
   height: 0;
   border-top: 9px solid transparent;
-  border-right: 9px solid @secondaryColor;
+  border-right: 9px solid @primaryColor;
   transform: rotate(10deg);
+
   &::after {
     content: "";
     position: absolute;
     border: 0 solid transparent;
-    border-top: 3px solid @secondaryColor;
+    border-top: 3px solid @primaryColor;
     border-radius: 20px 0 0 0;
     top: -12px;
     left: -9px;
@@ -106,18 +108,18 @@
 }
 
 .trapezoid {
-  border-bottom: 100px solid @secondaryColor;
+  border-bottom: 100px solid @primaryColor;
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   height: 0;
-  width: 100px; 
+  width: 100px;
 }
 
 .parallelogram {
   width: 150px;
   height: 100px;
   transform: skew(20deg);
-  background: @secondaryColor;
+  background: @primaryColor;
 }
 
 .star-six {
@@ -125,14 +127,15 @@
   height: 0;
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  border-bottom: 100px solid @secondaryColor;
+  border-bottom: 100px solid @primaryColor;
   position: relative;
+
   &::after {
     width: 0;
     height: 0;
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
-    border-top: 100px solid @secondaryColor;
+    border-top: 100px solid @primaryColor;
     position: absolute;
     content: "";
     top: 30px;
@@ -144,29 +147,31 @@
   margin: 50px 0;
   position: relative;
   display: block;
-  color: @secondaryColor;
+  color: @primaryColor;
   width: 0px;
   height: 0px;
   border-right: 100px solid transparent;
-  border-bottom: 70px solid @secondaryColor;
+  border-bottom: 70px solid @primaryColor;
   border-left: 100px solid transparent;
   transform: rotate(35deg);
+
   &::after {
     position: absolute;
     display: block;
-    color: @secondaryColor;
+    color: @primaryColor;
     top: 3px;
     left: -105px;
     width: 0px;
     height: 0px;
     border-right: 100px solid transparent;
-    border-bottom: 70px solid @secondaryColor;
+    border-bottom: 70px solid @primaryColor;
     border-left: 100px solid transparent;
     transform: rotate(-70deg);
     content: '';
   }
+
   &::before {
-    border-bottom: 80px solid @secondaryColor;
+    border-bottom: 80px solid @primaryColor;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
     position: absolute;
@@ -186,7 +191,8 @@
   box-sizing: content-box;
   border-width: 50px 18px 0;
   border-style: solid;
-  border-color: @secondaryColor transparent;
+  border-color: @primaryColor transparent;
+
   &::before {
     content: "";
     position: absolute;
@@ -196,15 +202,16 @@
     left: -18px;
     border-width: 0 45px 35px;
     border-style: solid;
-    border-color: transparent transparent @secondaryColor;
+    border-color: transparent transparent @primaryColor;
   }
 }
 
 .hexagon {
   width: 100px;
   height: 57.735px;
-  background: @secondaryColor;
+  background: @primaryColor;
   position: relative;
+
   &::after {
     content: "";
     position: absolute;
@@ -214,8 +221,9 @@
     height: 0;
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
-    border-top: 28.8675px solid @secondaryColor;
+    border-top: 28.8675px solid @primaryColor;
   }
+
   &::before {
     content: "";
     position: absolute;
@@ -225,15 +233,16 @@
     height: 0;
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
-    border-bottom: 28.8675px solid @secondaryColor;
+    border-bottom: 28.8675px solid @primaryColor;
   }
 }
 
 .octagon {
   width: 100px;
   height: 100px;
-  background: @secondaryColor;
+  background: @primaryColor;
   position: relative;
+
   &::before {
     content: "";
     width: 100px;
@@ -241,10 +250,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    border-bottom: 29px solid @secondaryColor;
+    border-bottom: 29px solid @primaryColor;
     border-left: 29px solid #eee;
     border-right: 29px solid #eee;
   }
+
   &::after {
     content: "";
     width: 100px;
@@ -252,7 +262,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    border-top: 29px solid @secondaryColor;
+    border-top: 29px solid @primaryColor;
     border-left: 29px solid #eee;
     border-right: 29px solid #eee;
   }
@@ -263,6 +273,7 @@
   position: relative;
   width: 100px;
   height: 90px;
+
   &::before,
   &::after {
     position: absolute;
@@ -271,7 +282,7 @@
     top: 0;
     width: 50px;
     height: 80px;
-    background: @secondaryColor;
+    background: @primaryColor;
     border-radius: 50px 50px 0 0;
     transform: rotate(-45deg);
     transform-origin: 0 100%;
@@ -299,7 +310,7 @@
     left: 0;
     width: 60px;
     height: 60px;
-    border: 20px solid @secondaryColor;
+    border: 20px solid @primaryColor;
     border-radius: 50px 50px 0 50px;
     transform: rotate(-45deg);
   }
@@ -316,7 +327,7 @@
   width: 0;
   height: 0;
   border: 50px solid transparent;
-  border-bottom-color: @secondaryColor;
+  border-bottom-color: @primaryColor;
   position: relative;
   top: -50px;
 
@@ -328,7 +339,7 @@
     width: 0;
     height: 0;
     border: 50px solid transparent;
-    border-top-color: @secondaryColor;
+    border-top-color: @primaryColor;
   }
 }
 
@@ -336,7 +347,7 @@
   width: 0;
   height: 0;
   border: 50px solid transparent;
-  border-bottom: 20px solid @secondaryColor;
+  border-bottom: 20px solid @primaryColor;
   position: relative;
   top: -50px;
 
@@ -348,7 +359,7 @@
     width: 0;
     height: 0;
     border: 50px solid transparent;
-    border-top: 70px solid @secondaryColor;
+    border-top: 70px solid @primaryColor;
   }
 }
 
@@ -356,7 +367,7 @@
   width: 0;
   height: 0;
   border: 50px solid transparent;
-  border-bottom: 70px solid @secondaryColor;
+  border-bottom: 70px solid @primaryColor;
   position: relative;
   top: -50px;
 
@@ -368,13 +379,13 @@
     width: 0;
     height: 0;
     border: 50px solid transparent;
-    border-top: 70px solid @secondaryColor;
+    border-top: 70px solid @primaryColor;
   }
 }
 
 .cut-diamond {
   border-style: solid;
-  border-color: transparent transparent @secondaryColor transparent;
+  border-color: transparent transparent @primaryColor transparent;
   border-width: 0 25px 25px 25px;
   height: 0;
   width: 50px;
@@ -390,7 +401,7 @@
     width: 0;
     height: 0;
     border-style: solid;
-    border-color: @secondaryColor transparent transparent transparent;
+    border-color: @primaryColor transparent transparent transparent;
     border-width: 70px 50px 0 50px;
   }
 }
@@ -399,7 +410,7 @@
   display: block;
   width: 126px;
   height: 180px;
-  background-color: @secondaryColor;
+  background-color: @primaryColor;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
 }
 
@@ -407,9 +418,9 @@
   width: 0px;
   height: 0px;
   border-right: 60px solid transparent;
-  border-top: 60px solid @secondaryColor;
-  border-left: 60px solid @secondaryColor;
-  border-bottom: 60px solid @secondaryColor;
+  border-top: 60px solid @primaryColor;
+  border-left: 60px solid @primaryColor;
+  border-bottom: 60px solid @primaryColor;
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
   border-bottom-left-radius: 60px;
@@ -419,7 +430,7 @@
 .talkbubble {
   width: 120px;
   height: 80px;
-  background: @secondaryColor;
+  background: @primaryColor;
   position: relative;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -433,7 +444,7 @@
     width: 0;
     height: 0;
     border-top: 13px solid transparent;
-    border-right: 26px solid @secondaryColor;
+    border-right: 26px solid @primaryColor;
     border-bottom: 13px solid transparent;
   }
 }
@@ -476,7 +487,7 @@
 }
 
 .burst-12 {
-  background: @secondaryColor;
+  background: @primaryColor;
   width: 80px;
   height: 80px;
   position: relative;
@@ -490,7 +501,7 @@
     left: 0;
     height: 80px;
     width: 80px;
-    background: @secondaryColor;
+    background: @primaryColor;
   }
 
   &::before {
@@ -503,7 +514,7 @@
 }
 
 .burst-8 {
-  background: @secondaryColor;
+  background: @primaryColor;
   width: 80px;
   height: 80px;
   position: relative;
@@ -517,7 +528,7 @@
     left: 0;
     height: 80px;
     width: 80px;
-    background: @secondaryColor;
+    background: @primaryColor;
     transform: rotate(135deg);
   }
 }
@@ -527,7 +538,7 @@
   box-sizing: content-box;
   height: 48px;
   background: @backgroundColor;
-  border-color: @secondaryColor;
+  border-color: @primaryColor;
   border-style: solid;
   border-width: 2px 2px 50px 2px;
   border-radius: 100%;
@@ -539,7 +550,7 @@
     top: 50%;
     left: 0;
     background: @backgroundColor;
-    border: 18px solid @secondaryColor;
+    border: 18px solid @primaryColor;
     border-radius: 100%;
     width: 12px;
     height: 12px;
@@ -551,7 +562,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    background: @secondaryColor;
+    background: @primaryColor;
     border: 18px solid @backgroundColor;
     border-radius: 100%;
     width: 12px;
@@ -562,7 +573,7 @@
 
 .badge-ribbon {
   position: relative;
-  background: @secondaryColor;
+  background: @primaryColor;
   height: 100px;
   width: 100px;
   border-radius: 50px;
@@ -571,13 +582,14 @@
   &::after {
     content: '';
     position: absolute;
-    border-bottom: 70px solid @secondaryColor;
+    border-bottom: 70px solid @primaryColor;
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
     top: 70px;
     left: -10px;
     transform: rotate(-140deg);
   }
+
   &::after {
     left: auto;
     right: -10px;
@@ -586,37 +598,37 @@
 }
 
 .space-invader {
-  box-shadow: 0 0 0 1em @secondaryColor,
-    0 1em 0 1em @secondaryColor,
-    -2.5em 1.5em 0 .5em @secondaryColor,
-    2.5em 1.5em 0 .5em @secondaryColor,
-    -3em -3em 0 0 @secondaryColor,
-    3em -3em 0 0 @secondaryColor,
-    -2em -2em 0 0 @secondaryColor,
-    2em -2em 0 0 @secondaryColor,
-    -3em -1em 0 0 @secondaryColor,
-    -2em -1em 0 0 @secondaryColor,
-    2em -1em 0 0 @secondaryColor,
-    3em -1em 0 0 @secondaryColor,
-    -4em 0 0 0 @secondaryColor,
-    -3em 0 0 0 @secondaryColor,
-    3em 0 0 0 @secondaryColor,
-    4em 0 0 0 @secondaryColor,
-    -5em 1em 0 0 @secondaryColor,
-    -4em 1em 0 0 @secondaryColor,
-    4em 1em 0 0 @secondaryColor,
-    5em 1em 0 0 @secondaryColor,
-    -5em 2em 0 0 @secondaryColor,
-    5em 2em 0 0 @secondaryColor,
-    -5em 3em 0 0 @secondaryColor,
-    -3em 3em 0 0 @secondaryColor,
-    3em 3em 0 0 @secondaryColor,
-    5em 3em 0 0 @secondaryColor,
-    -2em 4em 0 0 @secondaryColor,
-    -1em 4em 0 0 @secondaryColor,
-    1em 4em 0 0 @secondaryColor,
-    2em 4em 0 0 @secondaryColor;
-  background: @secondaryColor;
+  box-shadow: 0 0 0 1em @primaryColor,
+    0 1em 0 1em @primaryColor,
+    -2.5em 1.5em 0 .5em @primaryColor,
+    2.5em 1.5em 0 .5em @primaryColor,
+    -3em -3em 0 0 @primaryColor,
+    3em -3em 0 0 @primaryColor,
+    -2em -2em 0 0 @primaryColor,
+    2em -2em 0 0 @primaryColor,
+    -3em -1em 0 0 @primaryColor,
+    -2em -1em 0 0 @primaryColor,
+    2em -1em 0 0 @primaryColor,
+    3em -1em 0 0 @primaryColor,
+    -4em 0 0 0 @primaryColor,
+    -3em 0 0 0 @primaryColor,
+    3em 0 0 0 @primaryColor,
+    4em 0 0 0 @primaryColor,
+    -5em 1em 0 0 @primaryColor,
+    -4em 1em 0 0 @primaryColor,
+    4em 1em 0 0 @primaryColor,
+    5em 1em 0 0 @primaryColor,
+    -5em 2em 0 0 @primaryColor,
+    5em 2em 0 0 @primaryColor,
+    -5em 3em 0 0 @primaryColor,
+    -3em 3em 0 0 @primaryColor,
+    3em 3em 0 0 @primaryColor,
+    5em 3em 0 0 @primaryColor,
+    -2em 4em 0 0 @primaryColor,
+    -1em 4em 0 0 @primaryColor,
+    1em 4em 0 0 @primaryColor,
+    2em 4em 0 0 @primaryColor;
+  background: @primaryColor;
   width: 1em;
   height: 1em;
   overflow: hidden;
@@ -628,7 +640,7 @@
   width: 200px;
   height: 150px;
   margin: 20px 0;
-  background: @secondaryColor;
+  background: @primaryColor;
   border-radius: 50% / 10%;
   color: white;
   text-align: center;
@@ -661,7 +673,7 @@
     left: 0;
     height: 100%;
     width: 51%;
-    background: @secondaryColor;
+    background: @primaryColor;
     transform: skew(0deg, 6deg);
   }
 
@@ -672,7 +684,7 @@
     right: 0;
     height: 100%;
     width: 50%;
-    background: @secondaryColor;
+    background: @primaryColor;
     transform: skew(0deg, -6deg);
   }
 }
@@ -683,7 +695,7 @@
   width: 0.4em;
   box-sizing: content-box;
   height: 0.4em;
-  border: 0.1em solid @secondaryColor;
+  border: 0.1em solid @primaryColor;
   position: relative;
   border-radius: 0.35em;
 
@@ -694,7 +706,7 @@
     right: -0.25em;
     bottom: -0.1em;
     border-width: 0;
-    background: @secondaryColor;
+    background: @primaryColor;
     width: 0.35em;
     height: 0.08em;
     transform: rotate(45deg);
@@ -702,7 +714,7 @@
 }
 
 .facebook-icon {
-  background: @secondaryColor;
+  background: @primaryColor;
   text-indent: -999em;
   width: 100px;
   height: 110px;
@@ -710,13 +722,13 @@
   border-radius: 5px;
   position: relative;
   overflow: hidden;
-  border: 15px solid @secondaryColor;
+  border: 15px solid @primaryColor;
   border-bottom: 0;
 
   &::before {
     content: "/20";
     position: absolute;
-    background: @secondaryColor;
+    background: @primaryColor;
     width: 40px;
     height: 90px;
     bottom: -30px;
@@ -742,7 +754,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  box-shadow: 15px 15px 0 0 @secondaryColor;
+  box-shadow: 15px 15px 0 0 @primaryColor;
 }
 
 .flag {
@@ -751,7 +763,7 @@
   box-sizing: content-box;
   padding-top: 15px;
   position: relative;
-  background: @secondaryColor;
+  background: @primaryColor;
   color: @backgroundColor;
   font-size: 11px;
   letter-spacing: 0.2em;
@@ -776,18 +788,18 @@
   height: 0;
   border-left: 70px solid transparent;
   border-right: 70px solid transparent;
-  border-top: 100px solid @secondaryColor;
+  border-top: 100px solid @primaryColor;
   border-radius: 50%;
 }
 
 .cross {
-  background: @secondaryColor;
+  background: @primaryColor;
   height: 100px;
   position: relative;
   width: 20px;
 
   &::after {
-    background: @secondaryColor;
+    background: @primaryColor;
     content: "";
     height: 20px;
     left: -40px;
@@ -798,7 +810,7 @@
 }
 
 .base {
-  background: @secondaryColor;
+  background: @primaryColor;
   display: inline-block;
   height: 55px;
   margin-left: 20px;
@@ -807,7 +819,7 @@
   width: 100px;
 
   &::before {
-    border-bottom: 35px solid @secondaryColor;
+    border-bottom: 35px solid @primaryColor;
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     content: "";
@@ -823,7 +835,7 @@
   width: 200px;
   height: 40px;
   position: relative;
-  background: @secondaryColor;
+  background: @primaryColor;
 
   &::after {
     content: "";
@@ -844,7 +856,7 @@
     bottom: 0;
     width: 0;
     height: 0;
-    border-left: 20px solid @secondaryColor;
+    border-left: 20px solid @primaryColor;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
   }
@@ -858,7 +870,7 @@
   border-radius: 2em;
   top: 10em;
   box-sizing: border-box;
-  border: 3.5em solid @secondaryColor;
+  border: 3.5em solid @primaryColor;
   border-right-width: 7.5em;
   border-left-width: 7.5em;
   margin: 0 0 6rem 0;
@@ -867,7 +879,7 @@
     content: "";
     box-sizing: border-box;
     position: absolute;
-    border: 2.5em solid @secondaryColor;
+    border: 2.5em solid @primaryColor;
     width: 14em;
     height: 12em;
     left: 50%;
@@ -881,7 +893,7 @@
     content: "";
     box-sizing: border-box;
     position: absolute;
-    border: 1em solid @secondaryColor;
+    border: 1em solid @primaryColor;
     width: 5em;
     height: 8em;
     border-radius: 2.5em;
@@ -891,14 +903,15 @@
   }
 }
 
-.subSection {
-  margin-left: s@spaceLg;
-}
+
+
+
+// =============================================================
 
 //activeNavigation
 .vue-school-active-class {
   &.router-link-active {
-    color: @secondaryColor;
+    color: @primaryColor;
   }
 }
 
@@ -924,7 +937,7 @@
 }
 
 abbr[title] {
-    border: none;
+  border: none;
 }
 
 article {
@@ -932,11 +945,13 @@ article {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  & > header {
+
+  &>header {
     visibility: hidden;
     height: 0;
   }
-  & > section {
+
+  &>section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -946,42 +961,48 @@ article {
 }
 
 a {
+
   &,
-  & > *,
-  & + * {
-    color: @secondaryColor;
+  &>*,
+  &+* {
+    color: @accentColor;
     text-decoration: none !important;
   }
 }
 
 p {
-  margin: 0 0 @spaceLg !important;
+  margin: 0 0 @spaceLg  !important;
   line-height: @spaceXl  !important;
 }
 
 input {
   min-height: @spaceMd + @spaceXl;
   color: @textColor;
-  & + label,
-  & > label {
+
+  &+label,
+  &>label {
     margin-left: @spaceMd;
   }
+
   &:-webkit-autofill {
-    .boxShadow(0 0 0 50px @backgroundColor inset); /* Change the color to your own background color */
+    .boxShadow(0 0 0 50px @backgroundColor inset);
+    /* Change the color to your own background color */
     -webkit-text-fill-color: @textColor;
   }
 
   &:-webkit-autofill:focus {
-      .boxShadow(0 0 0 50px @backgroundColor inset);/*your box-shadow*/
-      -webkit-text-fill-color: @textColor;
-  } 
+    .boxShadow(0 0 0 50px @backgroundColor inset);
+    /*your box-shadow*/
+    -webkit-text-fill-color: @textColor;
+  }
 }
 
 ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
-  & > li{
+
+  &>li {
     margin: 0;
     padding: 0;
   }
@@ -999,7 +1020,7 @@ ul {
   text-align: center;
   vertical-align: middle;
   touch-action: manipulation;
-  color: @secondaryColor;
+  color: @accentColor;
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
@@ -1010,7 +1031,7 @@ ul {
   &:hover,
   &:focus,
   &.focus {
-    color: @secondaryColor;
+    color: @accentColor;
     text-decoration: none;
   }
 
@@ -1032,9 +1053,9 @@ ul {
 }
 
 // Specificity overrides
-input[type= "submit"],
-input[type= "reset"],
-input[type= "button"] {
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
   &.btn-block {
     width: 100%;
   }
@@ -1058,7 +1079,7 @@ h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
-  color: @secondaryColor;
+  color: @primaryColor;
 
   small,
   .small {
@@ -1135,7 +1156,7 @@ small,
 
 mark,
 .mark {
-  background-color: @secondaryColor;
+  background-color: @primaryColor;
   padding: .2em;
 }
 
@@ -1198,10 +1219,10 @@ body {
   height: 100%;
   width: 100%;
   z-index: @bodyZ;
+
   &#portfolio {
     font-family: @fontFamily, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
-

@@ -28,14 +28,14 @@
             </div>
             <div class="viewMore">
               <vue-button
-                buttop-name="editButton"
-                :button-text="show.includes(data.id) ? 'less' : 'more'"
-                :button-icon="
+                tag="editButton"
+                :text="show.includes(data.id) ? 'less' : 'more'"
+                :icon="
                   show.includes(data.id)
                     ? 'fas fa-angle-up'
                     : 'fas fa-angle-down'
                 "
-                button-style="text-sm"
+                category="text-sm"
                 :ctx="toggle.bind(this, data.id)"
               />
             </div>
@@ -112,7 +112,7 @@ export default {
     }, //selected
 
     //handels alerts thrown by the component
-    alerts: function(type, message) {
+    alert: function(type, message) {
       if (type == "error") {
         this.danger = message;
       } else {

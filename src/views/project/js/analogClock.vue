@@ -116,7 +116,7 @@ export default {
     }
     &.analog {
       position: relative;
-      border: @spaceMd solid @secondaryColor;
+      border: @spaceMd solid @accentColor;
       border-radius: 50%;
       height: @size+ 32;
       width: @size+ 32;
@@ -147,7 +147,7 @@ export default {
           width: 45%;
         }
         &.center {
-          background-color: @secondaryColor;
+          background-color: @accentColor;
           height: @spaceXl;
           width: @spaceXl;
           border-radius: 50%;

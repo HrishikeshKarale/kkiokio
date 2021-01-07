@@ -3,11 +3,11 @@
     <div id="show-modal">
       <vue-button
         v-if="buttonText"
-        :button-type="buttonType"
-        :button-name="'open' + buttonName + 'Modal'"
-        :button-text="buttonText"
-        :button-icon="buttonIcon"
-        :button-style="buttonStyle[2]"
+        :type="buttonType"
+        :tag="'open' + buttonName + 'Modal'"
+        :text="buttonText"
+        :icon="buttonIcon"
+        :category="buttonStyle[2]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
         :ctx="ctx"
@@ -15,11 +15,11 @@
 
       <vue-button
         v-else
-        :button-type="buttonType"
-        button-name='"open"+buttonName+"Modal"'
-        :button-text="buttonText"
-        :button-icon="buttonIcon"
-        :button-style="buttonStyle[9]"
+        :type="buttonType"
+        tag='"open"+buttonName+"Modal"'
+        :text="buttonText"
+        :icon="buttonIcon"
+        :category="buttonStyle[9]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
         :ctx="ctx"
@@ -42,11 +42,11 @@
             <div class="modal-footer">
               <div v-if="ctx">
                 <vue-button
-                  :button-type="buttonType"
-                  :button-name="buttonName"
-                  button-text="CONFIRM"
-                  :button-icon="buttonIcon"
-                  :button-style="buttonStyle[2]"
+                  :type="buttonType"
+                  :tag="buttonName"
+                  text="CONFIRM"
+                  :icon="buttonIcon"
+                  :category="buttonStyle[2]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
                   :ctx="ctx"
@@ -54,10 +54,10 @@
               </div>
               <div>
                 <vue-button
-                  :button-type="buttonType"
-                  button-name="closeModal"
-                  button-text="Close"
-                  :button-style="buttonStyle[11]"
+                  :type="buttonType"
+                  tag="closeModal"
+                  text="Close"
+                  :category="buttonStyle[11]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
                   :ctx="ctx"

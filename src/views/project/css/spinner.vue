@@ -18,7 +18,7 @@ export default {
   width: @fontSize*4;
   height: @fontSize*4;
   border: @spaceMd solid #eee;
-  border-right-color: @secondaryColor;
+  border-right-color: @accentColor;
   border-left-color: @primaryColor;
   animation: spin 2s ease-in-out infinite;
   .boxShadow(@base);
@@ -26,7 +26,7 @@ export default {
     content: "Loading";
     color: @textColor;
     font-weight: bold;
-    background-color: @secondaryColor;
+    background-color: @accentColor;
   }
 }
 @keyframes spin {

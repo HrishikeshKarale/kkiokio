@@ -161,7 +161,7 @@ article {
 
               & > .step {
                 border-radius: 50%;
-                border: 2px solid @secondaryColor;
+                border: 2px solid @accentColor;
                 color: @white;
                 font-size: @wizard-step-font-size;
                 line-height: @wizard-step-width-height;
@@ -169,7 +169,7 @@ article {
                 width: @wizard-step-width-height;
                 text-align: center;
                 margin: @spaceLg auto;
-                background-color: @secondaryColor;
+                background-color: @accentColor;
 
                 & + .step-title {
                   text-align: left;
@@ -235,7 +235,7 @@ article {
     }
 
     @media screen {
-      @media (max-width: 1540px) {
+      @media (max-width: @maxWidth) {
         & > #bio {
           & > div:first-child {
             flex-wrap: wrap;

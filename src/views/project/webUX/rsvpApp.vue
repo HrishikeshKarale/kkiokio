@@ -17,11 +17,11 @@
             @keypress.enter.prevent="addPerson"
           />
           <vue-button
-            button-type="button"
-            buttop-name="inviteButton"
-            button-text="INVITE"
-            button-icon="fas fa-user-plus"
-            button-style="standard"
+            type="button"
+            tag="inviteButton"
+            text="INVITE"
+            icon="fas fa-user-plus"
+            category="standard"
             :ctx="addPerson"
           />
         </div>
@@ -59,17 +59,17 @@
             </div>
             <div>
               <vue-button
-                buttop-name="editButton"
-                button-style="small"
-                button-text="edit"
-                button-icon="fas fa-times"
+                tag="editButton"
+                category="small"
+                text="edit"
+                icon="fas fa-times"
                 :ctx="updateInvited.bind(this, invited.name, false)"
               />
               <vue-button
-                buttop-name="deleteButton"
-                button-style="small"
-                button-text="remove"
-                button-icon="fas fa-user-minus"
+                tag="deleteButton"
+                category="small"
+                text="remove"
+                icon="fas fa-user-minus"
                 :ctx="updateInvited.bind(this, invited.name, true)"
               />
             </div>
