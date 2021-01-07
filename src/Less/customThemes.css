@@ -1,22 +1,5 @@
-/*              dark                        light
-navigation      --primaryColor(003a65)      --secondaryColor(c7e8f3)
-  text          --                          --offWhite
-    :hover      --
-    selected    --
-  background    --
-  icon          --
-
-popup background-color: D4E0D7
-
-
-
-*/
-
-
-
-
 html {
-  /* nav background, headlines or other text  */
+  /* base colors */
   --primaryColor: #F1BA45;
   --secondaryColor: #FBCE51;
   --accentColor: #E38B24;
@@ -24,16 +7,6 @@ html {
   --offWhite: #FAFBFC;
   --black: #000000;
   --offBlack: #0C090D;
-
-
-
-  --textColor: var(--offBlack);
-  --backgroundColor: var(--offWhite);
-  --navText: var(--secondaryColor);
-  --navBackground: var(--primaryColor);
-
-
-  /* dark colors */
 
   /* shades of grey */
   --grayDarker: ~"lighten(--black, 13.5%)";
@@ -51,15 +24,34 @@ html {
   --shadowColor: var(--offBlack);
 }
 
-html[theme='darkMode'] {
-  --primaryColor: #588157;
-  --secondaryColor: #ff5e5b;
-  --accentColor: #3a5a40;
+html[theme='India'] {
+  --primaryColor: #000080;
+  --secondaryColor: #138808;
+  --accentColor: #FF9933;
   --textColor: var(--offWhite);
   --backgroundColor: var(--black);
-  --navBackground: #3a5a40;
+  --navBackground: var(--primaryColor);
   --navText: #d8d8d8;
-  --shadowColor: var(--offBlack);
+}
+
+html[theme='darkMode'] {
+  --primaryColor: #3a5a40;
+  --secondaryColor: #588157;
+  --accentColor: #ff5e5b;
+  --textColor: var(--offWhite);
+  --backgroundColor: var(--black);
+  --navBackground: var(--primaryColor);
+  --navText: #d8d8d8;
+}
+
+html[theme='USA'] {
+  --primaryColor: #002868;
+  --secondaryColor: #bf0a30;
+  --accentColor: #ff5e5b;
+  --textColor: var(--offBlack);
+  --backgroundColor: var(--offWhite);
+  --navText: var(--secondaryColor);
+  --navBackground: var(--offBlack);
 }
 
 html[theme='blueMode'] {

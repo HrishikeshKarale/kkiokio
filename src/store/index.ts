@@ -15,7 +15,7 @@ const store = createStore({
       searchKey: null,
       groupBy: null
     },
-    buttonStyle: [
+    category: [
       "small",
       "standard",
       "large",

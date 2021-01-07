@@ -184,10 +184,12 @@ export default {
         width: 100%;
         background-color: @backgroundColor;
         &:first-child {
-          background-color: red;
+          background-color: #bf0a30;
+          color: @offWhite;
         }
         &:last-child {
-          background-color: blue;
+          background-color: #002868;
+          color: @offWhite;
         }
       }
     }

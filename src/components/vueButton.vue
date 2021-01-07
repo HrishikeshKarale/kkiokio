@@ -1,8 +1,8 @@
 // https://tympanus.net/Development/CreativeButtons/ //
-https://tympanus.net/Development/ButtonStylesInspiration/ //
+https://tympanus.net/Development/categorysInspiration/ //
 https://tympanus.net/Development/DistortedButtonEffects/ //
-https://tympanus.net/Development/ProgressButtonStyles/ //
-https://tympanus.net/Development/ButtonStylesInspiration/
+https://tympanus.net/Development/Progresscategorys/ //
+https://tympanus.net/Development/categorysInspiration/
 <template>
   <button
     :class="[

@@ -1,17 +1,14 @@
 <template>
   <div class="copyClipboard">
     <vue-button
-      :type="dButtonType"
       tag="togglecode"
-      :text="buttonText"
-      :icon="buttonIcon"
-      :category="buttonStyle"
-      :disabled="!dBooleanTrue"
-      :autofocus="!dBooleanTrue"
-      :ctx="copyToClipboard"
+      :text="text"
+      :icon="icon"
+      :category="category"
+      :ctx="copyToClipboard.bind(this)"
     />
-    <!-- <input type= 'hidden' :id= "id" :value= 'componentCode'> -->
-    <textarea :id="id" :value="componentCode"></textarea>
+    <!-- <input type= 'hidden' :id= "id" :value= 'copy'> -->
+    <textarea :id="id" :value="copy"></textarea>
   </div>
 </template>
 <script>
@@ -25,32 +22,32 @@ export default {
   }, //data
 
   props: {
-    buttonText: {
+    text: {
       required: false,
       type: [String, null],
       default: null
     },
 
-    buttonName: {
+    tag: {
       required: false,
       type: [String, null],
       default: "copyToClipboard"
     },
 
-    buttonIcon: {
+    icon: {
       required: false,
       type: [String, null],
       default: "fas fa-copy"
     },
 
-    buttonStyle: {
+    category: {
       required: false,
       type: [String, null],
       default: "small"
     },
 
     //content to be copied
-    componentCode: {
+    copy: {
       type: String,
       required: true
     },
@@ -60,30 +57,6 @@ export default {
       type: String
     }
   },
-
-  data() {
-    const dButtonType = "button";
-
-    const dButtonStyle = this.$store.state.buttonStyle;
-
-    const dBooleanTrue = true;
-
-    const form = "";
-
-    const dctx = this.consoleClick;
-
-    return {
-      dButtonType,
-
-      dButtonStyle,
-
-      dBooleanTrue,
-
-      form,
-
-      dctx
-    }; //return
-  }, //components
 
   methods: {
     copyToClipboard: function() {

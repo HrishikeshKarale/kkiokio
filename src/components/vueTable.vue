@@ -212,7 +212,7 @@ vue/custom-event-name-casing */
                 :icon="
                   entry ? 'fas fa-chevron-left' : 'fas fa-chevron-up'
                 "
-                :category="dButtonStyle[12]"
+                :category="dcategory[12]"
                 :ctx="toggleSubTable.bind(this, entry)"
               />
             </td>
@@ -243,7 +243,7 @@ vue/custom-event-name-casing */
             :type="buttonType"
             tag="previousPage"
             icon="fas fa-chevron-left"
-            :category="dButtonStyle[12]"
+            :category="dcategory[12]"
             :ctx="setPage.bind(this, metadata.pageNumber - 1)"
           />
         </div>
@@ -255,7 +255,7 @@ vue/custom-event-name-casing */
             :type="buttonType"
             tag="nextPage"
             icon="fas fa-chevron-right"
-            :category="dButtonStyle[12]"
+            :category="dcategory[12]"
             :ctx="setPage.bind(this, metadata.pageNumber + 1)"
           />
         </div>
@@ -359,7 +359,7 @@ export default {
     const columns = null;
     const buttonType = "button";
     const dBooleanTrue = true;
-    const dButtonStyle = [
+    const dcategory = [
       "standard",
       "large",
       "small",
@@ -382,7 +382,7 @@ export default {
       rowElements,
       dropdownValue,
       editColumns,
-      dButtonStyle
+      dcategory
     }; //return
   }, //components
 

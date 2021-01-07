@@ -2,12 +2,12 @@
   <div class="vueModal">
     <div id="show-modal">
       <vue-button
-        v-if="buttonText"
+        v-if="text"
         :type="buttonType"
-        :tag="'open' + buttonName + 'Modal'"
-        :text="buttonText"
-        :icon="buttonIcon"
-        :category="buttonStyle[2]"
+        :tag="'open' + tag + 'Modal'"
+        :text="text"
+        :icon="icon"
+        :category="category[2]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
         :ctx="ctx"
@@ -16,10 +16,10 @@
       <vue-button
         v-else
         :type="buttonType"
-        tag='"open"+buttonName+"Modal"'
-        :text="buttonText"
-        :icon="buttonIcon"
-        :category="buttonStyle[9]"
+        tag='"open"+tag+"Modal"'
+        :text="text"
+        :icon="icon"
+        :category="category[9]"
         :disabled="!booleanTrue"
         :autofocus="!booleanTrue"
         :ctx="ctx"
@@ -43,10 +43,10 @@
               <div v-if="ctx">
                 <vue-button
                   :type="buttonType"
-                  :tag="buttonName"
+                  :tag="tag"
                   text="CONFIRM"
-                  :icon="buttonIcon"
-                  :category="buttonStyle[2]"
+                  :icon="icon"
+                  :category="category[2]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
                   :ctx="ctx"
@@ -57,7 +57,7 @@
                   :type="buttonType"
                   tag="closeModal"
                   text="Close"
-                  :category="buttonStyle[11]"
+                  :category="category[11]"
                   :disabled="!booleanTrue"
                   :autofocus="!booleanTrue"
                   :ctx="ctx"
@@ -88,19 +88,19 @@ export default {
       default: null
     },
 
-    buttonText: {
+    text: {
       required: false,
       type: [String, null],
       default: null
     },
 
-    buttonName: {
+    tag: {
       required: false,
       type: [String, null],
       default: null
     },
 
-    buttonIcon: {
+    icon: {
       required: false,
       type: [String, null],
       default: null
@@ -121,12 +121,12 @@ export default {
 
   data() {
     const buttonType = "button";
-    const buttonStyle = this.$store.state.buttonStyle;
+    const category = this.$store.state.category;
     const booleanTrue = true;
     const form = "";
     return {
       buttonType,
-      buttonStyle,
+      category,
       booleanTrue,
       form
     }; //return

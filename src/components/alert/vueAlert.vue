@@ -91,11 +91,11 @@ export default {
     const alertIcon = "";
     const booleanTrue = true;
     const close = false;
-    const buttonName = "closeAlertButton";
+    const tag = "closeAlertButton";
     return {
       alertIcon,
       close,
-      buttonName,
+      tag,
       booleanTrue
     }; //return
   }, //methods
