@@ -8,8 +8,8 @@ module.exports = {
     port: 8085, // CHANGE YOUR PORT HERE!
     hotOnly: false,
     https: {
-      key: fs.readFileSync("@/ssl/cert.key"),
-      cert: fs.readFileSync("@/ssl/cert.pem")
+      key: fs.readFileSync("./src/ssl/cert.key"),
+      cert: fs.readFileSync("./src/ssl/cert.pem")
     }
   }
 };

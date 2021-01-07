@@ -8,31 +8,32 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const DB = require("./db");
 const config = require("./config");
-const https = require('https');
-const fs = require('fs');
+const https = require("https");
+const fs = require("fs");
 const contentSecurityPolicy = require("helmet-csp");
-import cspMiddleware from './cspMiddleware';
+// const cspMiddleware = require("./cspMiddleware");
 
 const db = new DB("sqlitedb");
 const app = express();
 const router = express.Router();
 // app.use(express.static('routes');
-  
-app.use(cspMiddleware);
 
-// app.use(contentSecurityPolicy({
-//   directives: {
-//     defaultSrc: ["'self'", "default.example"],
-//     scriptSrc: ["'self'", "'unsafe-inline'"],
-//     objectSrc: ["'none'"],
-//     upgradeInsecureRequests: [],
-//   },
-//   reportOnly: false,
-// }));
+// app.use(cspMiddleware);
+
+app.use(
+  contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", "default.example"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: []
+    },
+    reportOnly: false
+  })
+);
 
 // app.use(contentSecurityPolicy.getDefaultDirectives());
 // app.use(express.static(__dirname + '/'));
-
 
 // app.use(function(request, response, next) {
 //     response.setHeader("Content-Security-Policy", "script-src 'self' https://apis.google.com");
@@ -155,15 +156,21 @@ router.post("/login", (req, res) => {
   });
 });
 
+
+// define the route for logging in an administrator
+router.get("/", (req, res) => {
+  res.status(200).send("Welcome to our API");
+});
+
 // use the Express server to make our application accessible
 app.use(router);
 
 const port = process.env.PORT || 8001;
 
 const httpsOptions = {
-    key: fs.readFileSync('@/../server/ssl/cert.key'),
-    cert: fs.readFileSync('@/../server/ssl/cert.pem')
-}
+  key: fs.readFileSync("@/../server/ssl/cert.key"),
+  cert: fs.readFileSync("@/../server/ssl/cert.pem")
+};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const server = https.createServer(httpsOptions, app).listen(port, () => {
