@@ -4,7 +4,7 @@
         class="alert"
         start-time="Oct 25, 2020 06:24:25"
         end-time="Dec 01, 2020 12:00:01"
-        trans='{  
+        trans='{
           "day":"Day",
           "hours":"Hours",
           "minutes":"Minuts",
@@ -175,11 +175,11 @@ export default {
     }
     &:last-child {
       & > .skills {
-      display: flex;
-      flex-direction: column;
-      height: 40px;
-      width: 100%;
-    }
+        display: flex;
+        flex-direction: column;
+        height: 40px;
+        width: 100%;
+      }
     }
   }
 
