@@ -389,7 +389,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     name: "login",
     component: () =>
-      import(/* webpackChunkName: "login" */ "@/views/login/index.vue"),
+      import(/* webpackChunkName: "login" */ "@/views/Login/index.vue"),
     meta: {
       transitionName: "fade",
       requiresAuth: false
