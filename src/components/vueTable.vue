@@ -795,7 +795,7 @@ export default {
   https://css-tricks.com/responsive-data-tables/
   */
   @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+    (min-device-width: 768px) and (max-device-width: @maxWidth) {
     /* Force table to not be like tables anymore */
     table,
     thead,

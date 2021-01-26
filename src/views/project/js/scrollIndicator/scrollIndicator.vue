@@ -161,8 +161,8 @@ export default {
 
     &.scrolContent {
       display: flex;
-      margin: 0 auto;
-      max-width: 1024px;
+      align-self: center;
+      max-width: @maxWidth;
     }
   }
   @media screen {

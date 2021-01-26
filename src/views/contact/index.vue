@@ -198,7 +198,7 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-self: center;
-    width: 1024px;
+    width: @maxWidth;
     & > div {
       max-width: 360px;
       min-width: 240px;
