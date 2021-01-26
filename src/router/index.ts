@@ -17,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "caseStudy" */ "@/views/caseStudy/index.vue"),
     meta: {
       transitionName: "fade",
-      requiresAuth: true
+      requiresAuth: false //true
     }
   },
   {
@@ -37,7 +37,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue"),
     meta: {
       transitionName: "fade",
-      requiresAuth: true
+      requiresAuth: false //true
     }
   },
   {
@@ -57,7 +57,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "project" */ "@/views/project.vue"),
     meta: {
       transitionName: "fade",
-      requiresAuth: true
+      requiresAuth: false //true
     },
     children: [
       {

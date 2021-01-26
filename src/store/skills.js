@@ -1,5 +1,27 @@
 export const skills = [
   {
+    type: "UX skills",
+    value: [
+      "User Experience Design (UxD)",
+      "User Interface Design (UID)",
+      "Interaction Design (IxD)",
+      "User-centered Design (UCD)",
+      "User Experience Testing",
+      "Usability Testing",
+      "Case Study",
+      "User Stories",
+      "User Journeys",
+      "User Interaction",
+      "User Flows",
+      "Task Flows",
+      "Card Sorting",
+      "Mockups",
+      "User Research",
+      "Qualitative & Quantitative Research Methodologies",
+      "Conjoint Analysis"
+    ]
+  },
+  {
     type: "Industry Knowledge",
     value: [
       "Pair Programming",
@@ -34,28 +56,6 @@ export const skills = [
       "React.js",
       "C#",
       "Java"
-    ]
-  },
-  {
-    type: "UX skills",
-    value: [
-      "User Experience Design (UxD)",
-      "User Interface Design (UID)",
-      "Interaction Design (IxD)",
-      "User-centered Design (UCD)",
-      "User Experience Testing",
-      "Usability Testing",
-      "Case Study",
-      "User Stories",
-      "User Journeys",
-      "User Interaction",
-      "User Flows",
-      "Task Flows",
-      "Card Sorting",
-      "Mockups",
-      "User Research",
-      "Qualitative & Quantitative Research Methodologies",
-      "Conjoint Analysis"
     ]
   }
 ];

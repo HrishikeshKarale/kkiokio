@@ -77,7 +77,7 @@ export const toggle = {
     if (cookie.methods.checkCookie("theme")) {
       this.selected = cookie.methods.getCookie("theme");
     } else {
-      this.selected = this.themes[1].name;
+      this.selected = this.themes[0].name;
       cookie.methods.setCookie("theme", this.selected, 100);
     }
     document.documentElement.setAttribute("theme", this.selected);

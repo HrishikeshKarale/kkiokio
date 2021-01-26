@@ -15,7 +15,7 @@
             Email
             <vue-clipboard
               id="emailId"
-              component-code="hrishikesh.karale@gmail.com"
+              copy="hrishikesh.karale@gmail.com"
               category="icon-sm"
             />
           </h3>
@@ -36,7 +36,7 @@
             Phone Number
             <vue-clipboard
               id="phoneNumber"
-              component-code="5855207382"
+              copy="5855207382"
               category="icon-sm"
             />
           </h3>

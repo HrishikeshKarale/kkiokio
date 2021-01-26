@@ -38,7 +38,7 @@
         </li>
       </ul>
     </nav>
-    <div>
+    <div class="user">
       <span class="fas fa-user" />
       <div class="user">
         <template v-if="signedIn">
@@ -311,10 +311,9 @@ header {
         }
       }
       //user account
-      & + div {
+      & + div.user {
         display: flex;
         margin-left: auto;
-        position: relative;
         & > span {
           color: @text;
           padding: @spaceMd;
@@ -375,7 +374,9 @@ header {
         & > nav {
           display: none;
           & + div {
-            display: none;
+            position: fixed;
+            right: 32px;
+            top: 32px;
           }
         }
         //displays navigation

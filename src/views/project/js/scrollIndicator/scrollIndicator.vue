@@ -34,7 +34,7 @@ export default {
     //stores pixel value above which we select a tag.
     const windowBuffer = null;
     //ratio used to calculate window buffer
-    const bufferRatio = 0.18;
+    const bufferRatio = 0.25;
     return {
       headerOffset,
       tag,
@@ -64,7 +64,7 @@ export default {
           if (
             i == this.tag.length &&
             this.windowHeight + highlight >=
-              this.tagOffset[this.tagOffset.length - 1].bottom
+              this.tagOffset[this.tagOffset.length - 1].bottom + 32
           ) {
             tagOffset.selected = true;
           } else {
@@ -81,14 +81,11 @@ export default {
       )[0];
       this.tag = Array.from(document.getElementsByTagName("section"));
       this.tag = this.tag.filter(tag => tag.id != "");
-      const headerOffset= offsetHeader? offsetHeader.offsetHeight: 0
+      const headerOffset = offsetHeader ? offsetHeader.offsetHeight : 0;
       this.tagOffset = this.tag.map(section => {
         return {
           top: section.offsetTop - headerOffset,
-          bottom:
-            section.offsetTop +
-            section.offsetHeight -
-            headerOffset,
+          bottom: section.offsetTop + section.offsetHeight - headerOffset,
           id: section.getAttribute("id"),
           selected: false
         };
@@ -143,7 +140,6 @@ export default {
         &:hover,
         &.active {
           border-radius: @borderRadius;
-          background-color: @accentColor;
           .boxShadow(@one);
           color: @white;
           //active block text;
@@ -157,7 +153,6 @@ export default {
         & > span {
           .textShadow(@base);
           &:last-child {
-            .textShadow(none);
             display: none;
           }
         }

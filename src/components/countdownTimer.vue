@@ -121,7 +121,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   font-size: @fontSize;
-  color: #fff;
+  color: @backgroundColor;
   width: 100%;
 
   .day,
@@ -130,17 +130,16 @@ export default {
   .sec {
     display: flex;
     flex-direction: column;
+    align-self: center;
     font-size: @fontSizeSm * 2;
     font-weight: 500;
     text-align: center;
     margin: 0 @spaceSm;
     .format {
-      font-weight: 300;
+      font-weight: 500;
       font-size: @fontSizeSm;
-      //@include margin-start(5);
-      //display: inline-block;
       opacity: 0.8;
-      width: 60px;
+      min-width: 64px;
     }
   }
   .number {
@@ -151,13 +150,14 @@ export default {
     text-align: center;
   }
   .message {
+    display: flex;
+    align-self: center;
     font-size: @fontSizeSm;
     font-weight: 400;
     margin-top: @spaceSm;
   }
   .status-tag {
-    width: 270px;
-    margin: @spaceMd 5vw;
+    min-width: 270px;
     padding: @spaceMd 0;
     font-weight: 500;
     color: #000;
