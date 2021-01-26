@@ -38,9 +38,9 @@ export default {
   border-radius: @borderRadius;
   margin: @spaceLg;
   min-width: 240px;
-  max-width: 15vw;
+  max-width: 24vw;
   cursor: pointer;
-  .boxShadow(@three);
+  .boxShadow(@one);
   & * {
     text-decoration: none;
   }

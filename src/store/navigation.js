@@ -15,7 +15,7 @@ export const nav = [
     name: "Case Study",
     component: "caseStudy",
     icon: "fab fa-canadian-maple-leaf",
-    tagline: "your mom, she misses you"
+    tagline: "of some existing projects."
   },
   {
     name: "Logo",

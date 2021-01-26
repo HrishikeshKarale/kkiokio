@@ -1,25 +1,6 @@
 <template>
   <div class="profileOverview">
-    <countdown-timer
-      class="alert"
-      start-time="January 24, 2021 23:59:99"
-      end-time="Feb 01, 2021 00:00:01"
-      trans='{
-          "day":"Day",
-          "hours":"Hours",
-          "minutes":"Minuts",
-          "seconds":"Seconds",
-          "expired":"Please contact the administrator (hrishirich619@gmail.com).",
-          "running":"You may experience gliteches in th e website due to it being constantly updated in the next few days. Please report any bugs to site administrator (hrishirich619@gmail.com).",
-          "upcoming":"Till start of event.",
-          "status": {
-            "expired":"We apologise fior the delay, Please come back tomorrow.",
-            "running":"Site is being currently updated.",
-            "upcoming":"Future"
-          }
-        }'
-    />
-    <div class="introduction">
+    <div>
       <div>
         <span>HELLO THERE</span>
         <h2>
@@ -68,7 +49,6 @@
 
 <script>
 // @ is an alias to /src
-import CountdownTimer from "@/components/countdownTimer.vue";
 import vueButton from "@/components/vueButton.vue";
 import infiniteScroll from "@/views/project/css/infiniteScroll.vue";
 import { skills } from "@/store/skills";
@@ -76,7 +56,6 @@ import { skills } from "@/store/skills";
 export default {
   name: "Home",
   components: {
-    CountdownTimer,
     vueButton,
     infiniteScroll
   },
@@ -112,17 +91,7 @@ export default {
     height: fit-content;
     flex-wrap: nowrap;
     width: 100%;
-    //countdown timer
-    &.alert {
-      flex-direction: row;
-      background-color: @dangerText;
-      padding: @spaceMd @spaceLg;
-      border-radius: @borderRadius;
-      height: fit-content;
-      width: fit-content;
-      .boxShadow(@one);
-    }
-    &.introduction {
+    &:first-child {
       justify-content: space-evenly;
       margin-bottom: 0;
       & > div {

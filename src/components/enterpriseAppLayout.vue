@@ -16,6 +16,25 @@
         @afterEnter="afterEnter"
       >
         <div :key="$route.path" class="content">
+    <countdown-timer
+      class="alert"
+      start-time="January 24, 2021 23:59:99"
+      end-time="Feb 01, 2021 00:00:01"
+      trans='{
+          "day":"Day",
+          "hours":"Hours",
+          "minutes":"Minuts",
+          "seconds":"Seconds",
+          "expired":"Please contact the administrator (hrishirich619@gmail.com).",
+          "running":"You may experience gliteches in th e website due to it being constantly updated in the next few days. Please report any bugs to site administrator (hrishirich619@gmail.com).",
+          "upcoming":"Till start of event.",
+          "status": {
+            "expired":"We apologise fior the delay, Please come back tomorrow.",
+            "running":"Site is being currently updated.",
+            "upcoming":"Future"
+          }
+        }'
+    />
           <breadcrums />
           <scroll-indicator>
             <router-view :key="$route.path" />
@@ -34,6 +53,7 @@
 
 <script>
 import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator";
+import CountdownTimer from "@/components/countdownTimer.vue";
 import breadcrums from "@/components/breadcrums";
 import { authentication } from "@/typeScript/authentication";
 import { cookie } from "@/typeScript/cookie";
@@ -41,6 +61,7 @@ import { cookie } from "@/typeScript/cookie";
 export default {
   name: "EnterpriseAppLayout",
   components: {
+    CountdownTimer,
     scrollIndicator,
     breadcrums
   },
@@ -186,6 +207,16 @@ export default {
           margin: 0 auto;
           max-width: 80vw;
           width: @maxWidth;
+          //countdown timer
+          & > .alert {
+            flex-direction: row;
+            background-color: @dangerText;
+            padding: @spaceMd @spaceLg;
+            border-radius: @borderRadius;
+            height: fit-content;
+            width: fit-content;
+            .boxShadow(@one);
+          }
         }
       }
     }
