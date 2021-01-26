@@ -9,13 +9,13 @@
         <h2>{{ projects.type }}</h2>
         <div>
           <div v-for="project in projects.value" :key="project.id">
-            <router-link
+            <!-- <router-link
               :to="{
                 name: project.component
               }"
-            >
-              <showcase :project="project" />
-            </router-link>
+            > -->
+            <showcase :project="project" :component="project.component" />
+            <!-- </router-link> -->
           </div>
         </div>
       </section>

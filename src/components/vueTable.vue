@@ -209,9 +209,7 @@ vue/custom-event-name-casing */
               <vue-button
                 :type="buttonType"
                 tag="ExpandRow"
-                :icon="
-                  entry ? 'fas fa-chevron-left' : 'fas fa-chevron-up'
-                "
+                :icon="entry ? 'fas fa-chevron-left' : 'fas fa-chevron-up'"
                 :category="dcategory[12]"
                 :ctx="toggleSubTable.bind(this, entry)"
               />
@@ -338,7 +336,8 @@ export default {
     "set-sort-key",
     "set-row-elements",
     "selected",
-    "metadata"
+    "metadata",
+    "value"
   ],
 
   setup(props, { emit }) {

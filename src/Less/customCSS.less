@@ -917,7 +917,7 @@
 
 .noselect,
 * {
-  letter-spacing: 2px !important;
+  letter-spacing: @letterSpacing  !important;
   .boxSizing(border-box);
   word-wrap: break-word !important;
   scroll-behavior: smooth !important;
@@ -963,8 +963,7 @@ article {
 a {
 
   &,
-  &>*,
-  &+* {
+  &>* {
     color: @accentColor;
     text-decoration: none !important;
   }
@@ -972,7 +971,7 @@ a {
 
 p {
   margin: 0 0 @spaceLg  !important;
-  line-height: @spaceXl  !important;
+  line-height: @lineHeight  !important;
 }
 
 input {
@@ -1224,5 +1223,8 @@ body {
     font-family: @fontFamily, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: @fontSizeMd;
+    font-style: normal;
+    line-height: @lineHeight;
   }
 }

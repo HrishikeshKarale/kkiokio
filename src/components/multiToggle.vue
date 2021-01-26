@@ -103,7 +103,7 @@ export default {
     }
   }, //computed
 
-  emits: ["input", "alerts"],
+  emits: ["value", "alerts"], //props
 
   data() {
     //stores errors thrown by the input fields
@@ -117,7 +117,7 @@ export default {
       dWarning,
       dToggled
     }; //return
-  }, //props
+  },
 
   computed: {
     //triggers and returns class values depending on the toggle state

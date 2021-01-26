@@ -25,8 +25,8 @@
         :disabled="disabled"
         :readonly="readonly"
         :required="required"
-        v-on:keyup[0]="validate"
-        v-on:keyup[1]="validate"
+        @keyup[0]="validate"
+        @keyup[1]="validate"
         @input="validate"
         @blur="followsPattern"
       />

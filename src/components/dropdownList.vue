@@ -157,7 +157,7 @@ export default {
     }
   },
 
-  emits: ["alerts", "input"],
+  emits: ["alerts", "value"],
 
   data() {
     return {

@@ -195,7 +195,7 @@ export default {
     }
   }, //props
 
-  emits: ["alerts", "input"], //components
+  emits: ["alerts", "value"], //components
 
   data() {
     return {

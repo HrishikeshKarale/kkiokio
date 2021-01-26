@@ -16,11 +16,11 @@
         @afterEnter="afterEnter"
       >
         <div :key="$route.path" class="content">
-    <countdown-timer
-      class="alert"
-      start-time="January 24, 2021 23:59:99"
-      end-time="Feb 01, 2021 00:00:01"
-      trans='{
+          <countdown-timer
+            class="alert"
+            start-time="January 24, 2021 23:59:99"
+            end-time="Feb 01, 2021 00:00:01"
+            trans='{
           "day":"Day",
           "hours":"Hours",
           "minutes":"Minuts",
@@ -34,7 +34,7 @@
             "upcoming":"Future"
           }
         }'
-    />
+          />
           <breadcrums />
           <scroll-indicator>
             <router-view :key="$route.path" />
