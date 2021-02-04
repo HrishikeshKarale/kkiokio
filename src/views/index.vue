@@ -125,6 +125,7 @@ export default {
           border-radius: 25%;
           cursor: pointer;
           align-self: center;
+          justify-content: space-evenly;
           & > span {
             font-size: 64px;
             align-self: center;
