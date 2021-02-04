@@ -1,8 +1,3 @@
-// https://tympanus.net/Development/CreativeButtons/ //
-https://tympanus.net/Development/categorysInspiration/ //
-https://tympanus.net/Development/DistortedButtonEffects/ //
-https://tympanus.net/Development/Progresscategorys/ //
-https://tympanus.net/Development/categorysInspiration/
 <template>
   <button
     :class="[
@@ -195,11 +190,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import (reference) "../less/customVariables.less";
+@import (reference) "../Less/customVariables.less";
 @import (reference) "../less/customMixins.less";
 
 @color: @accentColor;
-@text: @textColor;
 @scale: 1.1;
 
 .vueButton {
@@ -212,6 +206,7 @@ export default {
   color: @backgroundColor;
   border: 1px solid @color;
   height: fit-content;
+  border-radius: @borderRadius;
   &:hover {
     & > span {
       transform: scale(@scale);
@@ -239,10 +234,10 @@ export default {
       margin-right: 0;
     }
 
-    .textShadow(none);
+    .textShadow(@baseText);
 
     &:hover {
-      .textShadow(@oneText, @color);
+      .textShadow(@oneText);
     }
   }
 
@@ -257,7 +252,7 @@ export default {
 
     &:not([disabled]):hover {
       border-color: transparent;
-      transform: scale(@scale);
+      transform: scale(1.2);
     }
   }
 

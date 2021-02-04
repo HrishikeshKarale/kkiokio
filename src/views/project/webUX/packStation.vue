@@ -1,28 +1,17 @@
 <template>
   <div class="packStation">
+    <p>
+      Sample Screens for a Pack Station Kiosk.
+    </p>
+    <p>
+      Tha pack station is web app that can be used by users to pack and ship
+      fulfillment orders in a warehouse. This projects is a successful
+      implementation of a grid which follows the Golden Ratio.
+    </p>
     <div>
-      <router-link to="/project">
-        <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-      </router-link>
-    </div>
-    <div class="title">
-      <h1>Pack Station</h1>
-      <p>
-        Sample Screens for a Mobile Pack Station.
-        <br />
-        Tha pack station is web app that can be used by users to pack and ship
-        fulfillment orders in a warehouse.
-        <br />
-        This projects is a successful implementation of a grid which follows the
-        Golden Ratio.
-      </p>
-    </div>
-    <div class="body">
-      <div>
-        <template v-for="l in screens" :key="l.id">
-          <vue-img :src="l.link" :alt="l.id + ' - ' + l.link" />
-        </template>
-      </div>
+      <template v-for="l in screens" :key="l.id">
+        <vue-img :src="l.link" :alt="l.id + ' - ' + l.link" />
+      </template>
     </div>
   </div>
 </template>
@@ -91,32 +80,16 @@ export default {
   flex-direction: column;
   flex-wrap: wrap;
   & > div {
-    &.title {
-      margin-bottom: 8vh;
-      & > h1 {
-        text-align: center;
-        & + p {
-          text-align: center;
-        }
-      }
-    }
-    &.body {
-      display: flex;
-      flex-direction: column-reverse;
-      flex-wrap: wrap;
-      & > div {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        &:last-child {
-          img {
-            margin: @spaceMd @spaceLg;
-            border-radius: @borderRadiusLg;
-            padding: @spaceMd;
-            height: 16vw;
-            .boxShadow(@two);
-          }
-        }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    &:last-child {
+      img {
+        margin: @spaceMd @spaceLg;
+        border-radius: @borderRadius;
+        .boxShadow(@one);
+        max-height: 16vw;
+        min-height: 480px;
       }
     }
   }

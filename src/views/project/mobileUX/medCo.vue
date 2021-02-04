@@ -1,13 +1,9 @@
 <template>
-  <div class="medco">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <vue-img
-      :src="dMedco"
-      alt="Onboarding Screen ideas for a croudsource tree plntation app"
-    />
-  </div>
+  <vue-img
+    class="medco"
+    :src="dMedco"
+    alt="Onboarding Screen ideas for a croudsource tree plntation app"
+  />
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
@@ -28,9 +24,9 @@ export default {
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 .medco {
-  img {
-    margin-top: @spaceXl*2;
-    .boxShadow(@two);
-  }
+  margin-top: @spaceXl*2;
+  .boxShadow(@one);
+  max-width: 80vw;
+  min-width: 480px;
 }
 </style>

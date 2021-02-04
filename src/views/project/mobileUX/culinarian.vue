@@ -1,13 +1,9 @@
 <template>
-  <div class="culinarian">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <vue-img
-      :src="dCulinarian"
-      alt="Culinarian App walkthrough and styleguide"
-    />
-  </div>
+  <vue-img
+    class="culinarian"
+    :src="dCulinarian"
+    alt="Culinarian App walkthrough and styleguide"
+  />
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
@@ -29,9 +25,9 @@ export default {
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 .culinarian {
-  img {
-    margin-top: @spaceXl*2;
-    .boxShadow(@two);
-  }
+  margin-top: @spaceXl*2;
+  .boxShadow(@one);
+  max-width: 80vw;
+  min-width: 480px;
 }
 </style>

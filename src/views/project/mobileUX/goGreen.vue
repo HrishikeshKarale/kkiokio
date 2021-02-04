@@ -1,13 +1,9 @@
 <template>
-  <div class="goGreen">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <vue-img
-      :src="dGoGreen"
-      alt="Onboarding Screen ideas for a croudsource tree plntation app"
-    />
-  </div>
+  <vue-img
+    class="goGreen"
+    :src="dGoGreen"
+    alt="Onboarding Screen ideas for a croudsource tree plntation app"
+  />
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
@@ -28,9 +24,9 @@ export default {
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 .goGreen {
-  img {
-    margin-top: @spaceXl*2;
-    .boxShadow(@two);
-  }
+  margin-top: @spaceXl*2;
+  .boxShadow(@one);
+  max-width: 80vw;
+  min-width: 480px;
 }
 </style>

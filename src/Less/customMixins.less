@@ -159,16 +159,11 @@
 
   &:focus-within,
   &:focus {
-    border-color: @accentColor;
+    border-color: @primaryColor;
 
     &>span {
       color: @dangerText ;
     }
-  }
-
-  input {
-    color: @dangerText;
-    background-color: @dangerBackground;
   }
 
   &>span {
@@ -182,16 +177,11 @@
 
   &:focus-within,
   &:focus {
-    border-color: @accentColor;
+    border-color: @primaryColor;
 
     &>span {
       color: @warningText;
     }
-  }
-
-  input {
-    color: @warningText;
-    background-color: @warningBackground;
   }
 
   &>span {
@@ -231,7 +221,6 @@
     }
 
     &>input {
-      display: none;
       .checkboxSize();
     }
 
@@ -258,7 +247,7 @@
           ;
 
           &.fas {
-            color: @accentColor;
+            color: @primaryColor;
           }
         }
       }
@@ -283,49 +272,49 @@
   display: flex;
   flex-flow: column;
   flex-wrap: wrap;
-  margin: @spaceLg auto;
+  align-self: center;
   border-radius: @borderRadius;
-  width: 80%;
+  // width: 80%;
   min-width: 640px;
+  max-width: 100%;
   color: @textColor;
 
   &>div {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    background-color: @navBackground;
+    background-color: @secondaryColor;
     color: @textColor;
-
-    &>.syntaxCode {
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-
-    &>.contentImport {
-      position: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      font-size: @fontSize;
-    }
 
     &:first-child {
       flex-wrap: nowrap;
       justify-content: space-between;
-      background-color: @black;
+      background-color: @navBackground;
 
-      &>div {
-        flex-grow: 0;
 
-        &.title {
-          color: @textColor;
-          font-weight: bold;
+      &.title {
+        color: @backgroundColor;
+        font-weight: bold;
+        align-items: center;
 
-          span.fas {
-            color: @accentColor;
-            font-size: @fontSizeSm * 2;
-          }
+        span.fas {
+          color: @primaryColor;
+          font-size: @fontSizeSm * 2;
         }
       }
+    }
+
+    &.syntaxCode {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    &.import {
+      position: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
     }
 
     &>div {
@@ -333,13 +322,14 @@
       flex-flow: column;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      flex-grow: 1;
       padding: @spaceMd @spaceLg;
       font-size: @fontSize;
-      flex-grow: 2;
+
+      &.reactiveComponent {
+        margin: auto;
+      }
 
       &.interactiveCode {
-        flex-grow: 1;
 
         &>div {
           display: flex;
@@ -353,12 +343,14 @@
           }
 
           &>div {
-            margin-top: auto;
-            margin-bottom: auto;
+            display: flex;
+            margin-top: @spaceMd;
             font-weight: bold;
+            align-self: center;
 
             &:last-child {
               font-weight: normal;
+              margin-left: @spaceSm;
 
               input {
                 .checkboxSize();
@@ -380,7 +372,7 @@
   margin: 0 auto;
   overflow-wrap: break-word;
 
-  .FormElementsTitle {
+  .formElementsTitle {
 
     >div {
 
@@ -407,12 +399,11 @@
     top: 100%;
     height: fit-content;
     width: fit-content;
-    border: 1px solid @secondaryColor;
     background-color: @backgroundColor;
-    border-radius: 0 0 @borderRadius @borderRadius;
+    border-radius: @borderRadius;
     padding: @spaceMd @spaceLg;
-    z-index: @modalZ + 15;
-    .boxShadow(@base, @shadowColor, @modalZ + 15);
+    z-index: @bodyZ + 10;
+    .boxShadow(@base);
 
     &>div {
       display: flex;
@@ -430,24 +421,6 @@
   }
 }
 
-.autocompleteInput(@bgColor: @backgroundColor, @color: @textColor) {
-
-  //background-color on autocomplete
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    box-shadow: inset 0 0 0 30px @bgColor;
-    -webkit-box-shadow: inset 0 0 0 30px @bgColor;
-    -moz-box-shadow: inset 0 0 0 30px @bgColor;
-  }
-
-  /*Change text in autofill textbox*/
-  &:-webkit-autofill {
-    -webkit-text-fill-color: @color  !important;
-  }
-}
-
 .inputcss () {
   display: flex;
   flex-direction: column;
@@ -455,10 +428,10 @@
 
   &:focus-within,
   &:focus {
-    border-color: @accentColor;
+    border-color: @primaryColor;
 
     &>span {
-      color: @accentColor;
+      color: @primaryColor;
     }
   }
 
@@ -486,7 +459,7 @@
     min-width: 160px;
     max-width: 240px;
     min-height: @spaceLg;
-    border: 1px solid @accentColor;
+    border: 1px solid @primaryColor;
     position: relative;
 
     &.inputResponse {
@@ -506,14 +479,21 @@
     &>select,
     &>input,
     &>textarea {
-      padding: @spaceMd @spaceLg @spaceMd 2*@spaceLg;
+      padding: @spaceMd;
       border-radius: @borderRadius;
       width: 100%;
       border: none;
       position: relative;
-      background-color: transparent !important;
+      background-color: @backgroundColor  !important;
       -webkit-appearance: none;
       outline: none;
+
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus {
+        background-color: none !important;
+        border-color: none !important;
+      }
 
       option:first {
         color: ~"darken(@backgroundColor, 25%)"
@@ -523,18 +503,12 @@
       &+span {
         position: absolute;
         cursor: pointer;
-        left: calc(100% - 3*@spaceMd);
+        left: calc(100% + @spaceMd);
+        font-size: @fontSizeMd;
         top: 50%;
         transform: translate(0, -50%);
         z-index: @bodyZ + 5;
         color: @accentColor;
-      }
-
-      //background-color on autocomplete
-      .autocompleteInput();
-
-      &:focus {
-        border-radius: @borderRadius @borderRadius 0 0;
       }
 
       .condition();
@@ -549,27 +523,31 @@
         top: 50%;
         transform: translate(0, -50%);
         // padding: @spaceMd+@spaceSm 0 @spaceMd+@spaceSm @spaceMd*2;; //12px 0 12px @spaceLg;
-        color: @accentColor;
+        color: @primaryColor;
 
         // border-right-width: 0px;
         &+datalist,
         &+select,
         &+input,
         &+textarea {
-          padding: @spaceMd 2*@spaceLg;
+          padding: @spaceMd @spaceLg @spaceMd 2*@spaceLg+@spaceMd ;
           border-top-left-radius: 0px;
           border-bottom-left-radius: 0px;
           border-left-width: 0px;
-          .autocompleteInput();
 
-          //password peak functionality
-          &+span {
-            cursor: pointer;
-            left: calc(100% - 3*@spaceMd);
+          &:-webkit-autofill,
+          &:-webkit-autofill:hover,
+          &:-webkit-autofill:focus {
+            background-color: none !;
+            border-color: none;
           }
 
-          &:focus {
-            border-radius: @borderRadius @borderRadius 0 0;
+          // password peak functionality
+          &+span {
+            cursor: pointer;
+            font-size: @fontSizeMd;
+            left: calc(100% + @spaceMd);
+            color: @accentColor;
           }
 
           .condition();
@@ -593,41 +571,40 @@
       flex-direction: column;
       flex-wrap: nowrap;
       color: @textColor;
+      border: none;
 
       &>div {
         display: flex;
-        border: 1px solid @accentColor;
-        padding: @spaceMd @spaceLg;
+        margin-top: @spaceMd;
+        padding: @spaceLg @spaceMd;
         border-radius: @borderRadius;
-        margin-top: @spaceSm;
-        min-width: 240px;
-        background-color: @white;
-        justify-content: space-between;
+        background-color: @secondaryColor;
+        position: relative;
+        .boxShadow(@one);
 
         &>div {
           display: flex;
           flex-direction: row;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
 
           &>span {
-            display: flex;
-            font-size: @fontSize;
-            font-weight: bold;
-
-            &.fas {
-              padding: @spaceLg auto;
-            }
+            align-self: center;
+            padding: @spaceLg auto;
+            font-size: @fontSizeMd;
+            margin-right: @spaceMd;
           }
 
-          &:last-child {
+          &>.fileSize {
+            position: absolute;
+            right: @spaceMd;
+            bottom: @spaceMd;
+            font-size: @fontSizeSm;
+          }
 
-            &>span {
-              font-size: @fontSize;
-
-              &:last-child {
-                margin: auto @spaceLg auto @spaceLg*2;
-              }
-            }
+          &>.removeFile {
+            position: absolute;
+            right: @spaceMd;
+            top: @spaceMd;
           }
         }
       }
@@ -655,7 +632,7 @@
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: @accentColor;
+    background: @primaryColor;
     border-radius: @width;
   }
 }
@@ -703,24 +680,15 @@
       flex-direction: row;
       flex-wrap: nowrap;
       min-height: @spaceXl;
-      padding-right: @spaceLg;
+      // padding: @spaceMd @spaceLg;
       margin: 0;
       align-items: center;
       cursor: pointer;
 
       >input[type='checkbox'],
       >input[type='radio'] {
-        display: none;
-
-        &+span {
-          margin: 0 @spaceMd;
-          font-size: @fontSizeSm;
-          ;
-
-          &.fas {
-            color: @accentColor;
-          }
-        }
+        min-height: auto;
+        margin-right: @spaceMd;
       }
 
       &.errorLabel {
@@ -734,27 +702,22 @@
     width: fit-content;
     background-color: @backgroundColor;
     border-radius: @borderRadius;
-    border: 1px solid @accentColor;
+    border: 1px solid @primaryColor;
 
     &>label {
       padding: @spaceLg;
+      background-color: @secondaryColor;
+
+      &>input {
+        display: none;
+      }
 
       &.checked {
-        border-radius: @borderRadius;
-        background-color: @accentColor;
+        // border-radius: @borderRadius;
+        background-color: @primaryColor;
         color: @backgroundColor;
         font-weight: bold;
       }
-    }
-
-  }
-
-  &>label {
-    padding: @spaceSm @spaceMd;
-    margin-right: @spaceMd;
-
-    &>input {
-      display: none;
     }
   }
 }

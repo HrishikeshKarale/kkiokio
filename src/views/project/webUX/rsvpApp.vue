@@ -1,79 +1,62 @@
 <template>
   <div class="rsvp">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <div>
-      <div class="header">
-        <vue-img :src="dRSVPImage" alt="RSVP Landing Image" />
+    <div class="header">
+      <vue-img :src="dRSVPImage" alt="RSVP Landing Image" />
+      <div>
+        <b>RSVP App</b>
+      </div>
+      <div class="invite">
+        <input
+          v-model="dPerson"
+          type="text"
+          placeholder="Enter name here"
+          @keypress.enter.prevent="addPerson"
+        />
+        <vue-button
+          tag="inviteButton"
+          text="INVITE"
+          icon="fas fa-user-plus"
+          category="large"
+          :ctx="addPerson"
+        />
+      </div>
+    </div>
+    <div class="body">
+      <div class="details">
         <div>
-          <b>RSVP App</b>
+          <h2>Invitees</h2>
         </div>
-        <div class="invite">
-          <input
-            v-model="dPerson"
-            type="text"
-            placeholder="Enter name here"
-            @keypress.enter.prevent="addPerson"
-          />
-          <vue-button
-            type="button"
-            tag="inviteButton"
-            text="INVITE"
-            icon="fas fa-user-plus"
-            category="standard"
-            :ctx="addPerson"
-          />
+        <div>
+          <div><b>Attending: </b>{{ attending }}</div>
+          <div><b>Unconfirmed: </b>{{ unconfirmed }}</div>
+          <div><b>total: </b>{{ total }}</div>
         </div>
       </div>
-      <div class="body">
-        <div class="details">
-          <div>
-            <h2>Invitees</h2>
-          </div>
-          <div>
-            <div>Attending: {{ attending }}</div>
-            <div>Unconfirmed:{{ unconfirmed }}</div>
-            <div>total: {{ total }}</div>
-          </div>
-        </div>
-        <div v-if="dPerson">
+      <h4 v-if="dPerson">
+        {{ dPerson }}
+      </h4>
+      <div v-if="dInvited || dPerson" class="invited">
+        <div v-for="(invited, index) in dInvited" :key="index" class="card">
           <h4>
-            {{ dPerson }}
+            <span class="fas fa-user" />
+            {{ invited.name }}
           </h4>
-        </div>
-        <div v-if="dInvited" class="invited">
-          <div v-for="(invited, index) in dInvited" :key="index" class="card">
-            <h4>
-              {{ invited.name }}
-            </h4>
-            <div>
-              <input
-                :id="invited.name"
-                v-model="invited.status"
-                type="checkbox"
-                :name="invited.name"
-                :checked="invited.status"
-              />
-              <label :for="invited.name">Confirmed</label>
-            </div>
-            <div>
-              <vue-button
-                tag="editButton"
-                category="small"
-                text="edit"
-                icon="fas fa-times"
-                :ctx="updateInvited.bind(this, invited.name, false)"
-              />
-              <vue-button
-                tag="deleteButton"
-                category="small"
-                text="remove"
-                icon="fas fa-user-minus"
-                :ctx="updateInvited.bind(this, invited.name, true)"
-              />
-            </div>
-          </div>
+          <checkbox-input
+            :id="invited.name"
+            :label="invited.status ? 'Confirmed' : 'Confirm'"
+            :name="invited.name"
+            :value="invited.status"
+            :alert="alertObject"
+            @value="val => (invited.status = val)"
+            @alerts="alerts"
+          />
+          <vue-button
+            tag="deleteButton"
+            category="small"
+            text="Uninvite"
+            icon="fas fa-user-minus"
+            :ctx="updateInvited.bind(this, invited.name, true)"
+          />
         </div>
       </div>
     </div>
@@ -82,18 +65,31 @@
 
 <script>
 import vueButton from "@/components/vueButton.vue";
+import checkboxInput from "@/components/checkboxInput.vue";
 import vueImg from "@/components/vueImg.vue";
 import { toggle } from "@/typeScript/toggle";
+import { alerts } from "../../../typeScript/common/alerts";
+
 export default {
   name: "Rsvp",
   components: {
+    checkboxInput,
     vueButton,
     vueImg
   },
-  mixins: [toggle],
+  mixins: [toggle, alerts],
   data() {
     const dPerson = null;
-    const dInvited = null;
+    const dInvited = [
+      {
+        name: "John Doe",
+        status: true
+      },
+      {
+        name: "Jim CantSwim",
+        status: false
+      }
+    ];
     const dEdit = null;
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const dRSVPImage = require("@/assets/webApp/RSVP.svg");
@@ -196,93 +192,92 @@ export default {
 @import (reference) "../../../Less/customMixins.less";
 .rsvp {
   & > div {
-    & > div {
-      &.body {
+    &.body {
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+      & > div {
         display: flex;
-        flex-direction: column;
-        min-height: 320px;
-        & > div {
+        flex-direction: row;
+        margin: @spaceMd @spaceLg;
+        &.invited {
           display: flex;
           flex-direction: row;
-          margin: @spaceMd @spaceLg;
-          &.invited {
+          flex-wrap: wrap;
+          //individual invited cards
+          & > .card {
             display: flex;
-            flex-direction: row;
-            //individual invited cards
-            & > .card {
-              display: flex;
-              flex-direction: column;
-              margin: @spaceMd;
-              padding: @spaceMd @spaceLg;
-              border-radius: @borderRadius;
-              .boxShadow(@one);
-              & > div:last-child {
-                justify-content: space-evenly;
-              }
+            flex-direction: column;
+            margin: @spaceMd;
+            padding: @spaceMd @spaceLg;
+            border-radius: @borderRadius;
+            .boxShadow(@one, @accentColor);
+            & > button {
+              margin-left: auto;
             }
           }
+        }
 
-          &.details {
-            justify-content: space-between;
-            & > div {
-              display: flex;
-              flex-direction: row;
-              justify-content: space-around;
-              text-align: right;
-              &:last-child {
-                flex-direction: column;
-              }
+        &.details {
+          justify-content: space-between;
+          & > div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            text-align: right;
+            &:last-child {
+              flex-direction: column;
             }
           }
         }
       }
-      &.header {
-        position: relative;
-        & > img {
-          margin-top: @spaceXl;
-        }
-        & > div {
-          &.invite {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -24px;
-            margin: auto;
+    }
+    &.header {
+      position: relative;
+      & > img {
+        margin-top: @spaceXl;
+      }
+      & > div {
+        &.invite {
+          display: flex;
+          position: absolute;
+          left: 25%;
+          bottom: -16px;
+          background-color: @backgroundColor;
+          width: fit-content;
+          border-radius: @borderRadius;
+          height: 64px;
+          .boxShadow(@one);
+          & > input {
             background-color: @backgroundColor;
-            width: fit-content;
-            padding: @spaceMd;
-            border-radius: @borderRadius;
-            height: 64px;
-            .boxShadow(@two);
-            & > input {
-              background-color: @backgroundColor;
-              width: 400px;
-              height: 40px;
+            width: 400px;
+            height: 100%;
+            border: none;
+            padding: @spaceLg;
+            &:focus,
+            &:focus-within {
               border: none;
-              padding: @spaceSm;
-              margin: auto @spaceSm;
-              &:focus,
-              &:focus-within {
-                border: none;
-                outline: none;
-              }
+              outline: none;
             }
           }
-          &:not(.invite) {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 50%;
-            text-align: center;
-            .textShadow(@five);
-            & > b {
-              padding: @spaceLg;
-              border-radius: 2 * @borderRadiusLg;
-              opacity: 0.8;
-              background-color: #333333;
-              font-size: @fontSize * 4;
-              color: @white;
-            }
+          & > button {
+            height: 100%;
+          }
+        }
+        &:not(.invite) {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 50%;
+          text-align: center;
+          .textShadow(@five);
+          & > b {
+            padding: @spaceLg;
+            border-radius: 2 * @borderRadiusLg;
+            opacity: 0.8;
+            background-color: #333333;
+            font-size: @fontSize * 4;
+            color: @white;
           }
         }
       }

@@ -19,21 +19,21 @@
           <countdown-timer
             class="alert"
             start-time="January 24, 2021 23:59:99"
-            end-time="Feb 01, 2021 00:00:01"
+            end-time="Feb 08, 2021 00:00:01"
             trans='{
-          "day":"Day",
-          "hours":"Hours",
-          "minutes":"Minuts",
-          "seconds":"Seconds",
-          "expired":"Please contact the administrator (hrishirich619@gmail.com).",
-          "running":"You may experience gliteches in th e website due to it being constantly updated in the next few days. Please report any bugs to site administrator (hrishirich619@gmail.com).",
-          "upcoming":"Till start of event.",
-          "status": {
-            "expired":"We apologise fior the delay, Please come back tomorrow.",
-            "running":"Site is being currently updated.",
-            "upcoming":"Future"
-          }
-        }'
+              "day":"Day",
+              "hours":"Hours",
+              "minutes":"Minuts",
+              "seconds":"Seconds",
+              "expired":"Please contact the administrator (hrishirich619@gmail.com).",
+              "running":"You may experience gliteches in th e website due to it being constantly updated in the next few days. Please report any bugs to site administrator (hrishirich619@gmail.com).",
+              "upcoming":"Till start of event.",
+              "status": {
+                "expired":"We apologise fior the delay, Please come back tomorrow.",
+                "running":"Site is being currently updated.",
+                "upcoming":"Future"
+              }
+            }'
           />
           <breadcrums />
           <scroll-indicator>

@@ -1,10 +1,9 @@
 <template>
-  <div class="fitnessFriend">
-    <router-link to="/project">
-      <span class="fas fa-angle-double-left fa-2x"> Go Back</span>
-    </router-link>
-    <vue-img :src="dFitnessFriend" alt="Concept walkthroughfor a fitness app" />
-  </div>
+  <vue-img
+    class="fitnessFriend"
+    :src="dFitnessFriend"
+    alt="Concept walkthroughfor a fitness app"
+  />
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
@@ -25,9 +24,9 @@ export default {
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
 .fitnessFriend {
-  img {
-    margin-top: @spaceXl*2;
-    .boxShadow(@two);
-  }
+  margin-top: @spaceXl*2;
+  .boxShadow(@one);
+  max-width: 80vw;
+  min-width: 480px;
 }
 </style>
