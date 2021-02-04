@@ -28,12 +28,12 @@
           icon="fas fa-sign-in-alt"
           :ctx="
             () => {
-              this.$router.push({ name: 'about' });
+              $router.push({ name: 'about' });
             }
           "
         />
       </div>
-      <div @click="this.$router.push({ name: 'project' })">
+      <div @click="$router.push({ name: 'project' })">
         <span>Designer</span>
         <span>&</span>
         <span>Developer</span>

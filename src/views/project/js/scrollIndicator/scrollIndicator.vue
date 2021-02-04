@@ -34,7 +34,7 @@ export default {
     //stores pixel value above which we select a tag.
     const windowBuffer = null;
     //ratio used to calculate window buffer
-    const bufferRatio = 0.25;
+    const bufferRatio = 0.24;
     return {
       headerOffset,
       tag,
@@ -131,6 +131,7 @@ export default {
       & > a {
         display: flex;
         flex-direction: row-reverse;
+        align-items: center;
         text-decoration: none;
         padding: @spaceMd;
         margin: @spaceSm 0;
@@ -140,14 +141,13 @@ export default {
         &:hover,
         &.active {
           border-radius: @borderRadius;
-          .boxShadow(@one);
           color: @white;
           //active block text;
           & > span:last-child {
             display: block;
             color: @textColor;
             font-weight: bold;
-            margin-right: @spaceLg;
+            margin-right: @spaceMd;
           }
         }
         & > span {
@@ -186,14 +186,19 @@ export default {
                 width: max-content;
                 text-align: center;
                 color: @accentColor;
-                top: -32px;
-                right: -16px;
+                top: -40px;
+                right: -8px;
                 font-weight: bold;
               }
             }
             & > span {
               color: @backgroundColor;
               .textShadow(@one);
+              &:last-child {
+                background-color: @backgroundColor;
+                width: 100%;
+                .textShadow(none);
+              }
             }
           }
           &::before {

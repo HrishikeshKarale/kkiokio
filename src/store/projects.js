@@ -130,20 +130,21 @@ export const projects = [
       {
         id: 3,
         title: "Array Cardio",
-        tags: ["Array functions"],
+        tags: [
+          ".every",
+          ".some",
+          ".slice",
+          ".pop",
+          ".Map",
+          ".push",
+          ".findIndex",
+          ".find",
+          ".reduce",
+          ".sort"
+        ],
         description:
           "Playing with Array functions was a good way of getting acquaintanced with them.<br />\
-        functions used in this project were as follows: <ul>\
-        <li>Array.every</li>\
-        <li>Array.some</li>\
-        <li>Array.slice</li>\
-          <li>Array.pop</li>\
-          <li>Array.Map</li>\
-          <li>Array.push</li>\
-          <li>Array.findIndex</li>\
-          <li>Array.find</li>\
-          <li>Array.reduce</li>\
-          <li>Array.sort </li></ul> ",
+          Array Functions used were as follows",
         component: "arrayCardio"
       },
       {

@@ -314,7 +314,6 @@ header {
       & + div.user {
         display: flex;
         margin-left: auto;
-        position: relative;
         & > span {
           color: @text;
           padding: @spaceMd;

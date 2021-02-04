@@ -91,15 +91,17 @@ export default {
         border-left-width: 0;
         border-right-color: @accentColor;
       }
+      //text and icon
       & > span {
         margin: 0 @spaceMd;
         color: @white;
         font-size: @fontSizeSm;
         font-weight: bold;
+        letter-spacing: 2px !important;
         //fontawesome circle
         &.fas {
           position: absolute;
-          top: 8px;
+          top: 12px;
           left: -@fontSizeSm / 2;
           margin: 0;
           font-size: 10px;
