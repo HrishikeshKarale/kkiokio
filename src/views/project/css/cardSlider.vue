@@ -1,21 +1,25 @@
 <template>
   <div class="cardSlider">
     <vue-button
+      id="previous"
       tag="Previous"
       category="icon-lg"
       icon="fas fa-chevron-left"
       :ctx="handleScrollPrev.bind(this)"
     />
-    <div v-for="index in 10" :key="index" class="card">
-      <h3>4.6</h3>
-      <span class="fa fa-heart" />
-      <div class="image"></div>
-      <div class="content">
-        <h2>Clasy Royale</h2>
-        <p>text</p>
+    <div ref="cards" class="cards">
+      <div v-for="index in 50" :key="index" class="card">
+        <h4>4.6</h4>
+        <span class="fa fa-heart" />
+        <div class="image" />
+        <div class="content">
+          <h2>Clasy Royale</h2>
+          <p>{{ index }} - text</p>
+        </div>
       </div>
     </div>
     <vue-button
+      id="next"
       tag="Next"
       category="icon-lg"
       icon="fas fa-chevron-right"
@@ -31,21 +35,27 @@ export default {
   components: {
     vueButton
   },
+
   data() {
-    return {};
+    const cards = this.$refs.cards;
+    return {
+      cards
+    };
+  },
+
+  mounted() {
+    this.cards = document.querySelector(".cards");
   },
   methods: {
     handleScrollNext: function() {
-      const cards = document.querySelector(".cardSlider");
-      cards.scrollLeft = cards.scrollLeft +=
-        window.innerWidth / 2 > 600
+      this.cards.scrollLeft = this.cards.scrollLeft +=
+        window.innerWidth / 2 > 160
           ? window.innerWidth / 2
-          : window.innerWidth - 100;
+          : window.innerWidth - 160;
     }, //handleScrollNext
     handleScrollPrev: function() {
-      const cards = document.querySelector(".cardSlider");
-      cards.scrollLeft = cards.scrollLeft =
-        window.innerWidth / 2 > 600
+      this.cards.scrollLeft = this.cards.scrollLeft -=
+        window.innerWidth / 2 > 160
           ? window.innerwidth / 2
           : window.innerWidth - 160;
     } //handleScrollPrev
@@ -58,79 +68,142 @@ export default {
 .cardSlider {
   display: flex;
   flex-direction: row;
-  flex-wrap: no-wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  width: 60vw;
-  height: auto;
+  width: 100%;
+  height: min-content;
   overflow: hidden;
-  &:after {
+  &::after,
+  &::before {
     content: "";
-    left: 80px;
+    display: block;
+    width: 80px;
     height: 100%;
     position: absolute;
-    width: 150px;
-    z-index: @bodyZ + 10;
+    z-index: @contentZ + 15 !important;
     pointer-events: none;
+    right: 0;
+    //   background: rgb(255, 255, 255);
+    //   background: -moz-linear-gradient(
+    //     90deg,
+    //     rgba(255, 255, 255, 0) 0%,
+    //     rgba(250, 251, 252, 1) 100%
+    //   );
+    //   background: -webkit-linear-gradient(
+    //     90deg,
+    //     rgba(255, 255, 255, 0) 0%,
+    //     rgba(250, 251, 252, 1) 100%
+    //   );
+    //   background: linear-gradient(
+    //     90deg,
+    //     rgba(255, 255, 255, 0) 0%,
+    //     rgba(250, 251, 252, 1) 100%
+    //   );
+    //   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#fafbfc",GradientType=1);
   }
-  &:before {
+  &::before {
     content: "";
-    right: 80px;
+    display: block;
+    width: 80px;
     height: 100%;
     position: absolute;
-    width: 150px;
-    z-index: @bodyZ + 10;
+    z-index: @contentZ + 15 !important;
     pointer-events: none;
+    left: 0;
+    // background: rgb(250, 251, 252);
+    // background: -moz-linear-gradient(
+    //   90deg,
+    //   rgba(250, 251, 252, 1) 0%,
+    //   rgba(255, 255, 255, 0) 100%
+    // );
+    // background: -webkit-linear-gradient(
+    //   90deg,
+    //   rgba(250, 251, 252, 1) 0%,
+    //   rgba(255, 255, 255, 0) 100%
+    // );
+    // background: linear-gradient(
+    //   90deg,
+    //   rgba(250, 251, 252, 1) 0%,
+    //   rgba(255, 255, 255, 0) 100%
+    // );
+    // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fafbfc",endColorstr="#ffffff",GradientType=1);
   }
-  & > .card {
-    width: 360px;
-    min-width: 300px;
-    height: auto;
-    background: #fafbfc;
-    border-radius: @borderRadius;
-    position: relative;
-    z-index: @bodyZ + 5;
-    margin: @spaceXl;
-    min-height: 360px;
-    transition: @transition;
-    .boxShadow(@one);
-    cursor: pointer;
-    & > h3 {
-      position: absolute;
+  & > button {
+    position: absolute;
+    z-index: @contentZ + 25 !important;
+    right: 0;
+    &#previous {
+      right: auto;
       left: 0;
-      top: 0;
-      padding: @spaceLg;
     }
-    & > span {
-      position: absolute;
-      right: 0;
-      top: 0;
-      padding: @spaceLg;
+  }
+  & > .cards {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+    overflow: auto;
+    width: 100%;
+    &::-webkit-scrollbar {
+      height: 0px;
     }
-    & > div {
-      & > .content {
+    &::after {
+      content: "";
+      display: block;
+      min-width: 20px;
+      height: 100px;
+      position: relative;
+    }
+    & > .card {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      min-width: 240px;
+      max-width: 360px;
+      border-radius: @borderRadius;
+      z-index: @contentZ + 5;
+      margin: @spaceMd @spaceLg;
+      padding: @spaceMd @spaceLg;
+      min-height: 360px;
+      transition: @transition;
+      border: 1px solid @accentColor;
+      .boxShadow(none);
+      cursor: pointer;
+      & > h4,
+      & > span {
+        position: absolute;
+        left: 0;
+        top: 0;
         padding: @spaceLg;
+        margin: 0;
+      }
+      & > span {
+        left: auto;
+        right: 0;
+      }
+      & > .image {
+        display: flex;
+        align-self: center;
+        height: 240px;
+        width: 240px;
+        transition: @transition;
+        background-color: grey;
+      }
+      & > .content {
+        transition: @transition;
         & > p {
           opacity: 0.6;
           margin-top: @spaceMd;
         }
       }
-      & > .image {
-        height: 240px;
-        width: 240px;
-        margin: 0 @spaceXl;
-        margin-top: -96px;
-        display: flex;
-        justify-content: center;
-        transition: @transition;
-        background-color: @accentColor;
-      }
-    }
-    &:hover {
-      transform: translate(0 -8px);
-      .boxShadow(@three);
-      & > image {
-        transform: translate(0, -16px);
+      &:hover {
+        transform: translate(0, -4px);
+        .boxShadow(@two, @accentColor);
+        & > .image,
+        & > .content {
+          transform: translate(0, -16px);
+        }
       }
     }
   }

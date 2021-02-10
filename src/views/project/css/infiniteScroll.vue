@@ -1,6 +1,6 @@
 <template>
   <div class="infiniteScroll">
-    <div :class="['images', reverse ? 'reverse' : null]">
+    <div :class="['scroll', reverse ? 'reverse' : null]">
       <div
         v-for="(l, index) in [
           ...list,
@@ -48,29 +48,27 @@ export default {
 @speed: 40s;
 
 .infiniteScroll {
+  display: flex;
   position: relative;
   overflow: hidden;
   height: 100%;
   width: 100%;
-  & > .images {
+  & > .scroll {
     display: flex;
     position: absolute;
     animation: slideshow-right @speed linear infinite;
     &.reverse {
-      animation: slideshow-left @speed linear infinite;
+      animation-name: slideshow-left;
     }
-    height: max-content;
-    width: max-content;
     & > div {
       display: flex;
-      justify-content: center;
-      align-content: center;
-      height: max-content;
+      align-self: center;
+      padding: 0 @spaceXl;
       width: max-content;
-      border: 2px dotted @accentColor;
-      padding: @spaceMd @spaceXl;
       height: max-content;
-      width: max-content;
+      & > span {
+        align-self: center;
+      }
     }
   }
   @keyframes slideshow-right {
