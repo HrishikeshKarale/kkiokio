@@ -1,5 +1,5 @@
 <template>
-  <div class="cardSlider">
+  <div class="cardScroller">
     <vue-button
       id="previous"
       tag="Previous"
@@ -8,15 +8,7 @@
       :ctx="handleScrollPrev.bind(this)"
     />
     <div ref="cards" class="cards">
-      <div v-for="index in 50" :key="index" class="card">
-        <h4>4.6</h4>
-        <span class="fa fa-heart" />
-        <div class="image" />
-        <div class="content">
-          <h2>Clasy Royale</h2>
-          <p>{{ index }} - text</p>
-        </div>
-      </div>
+      <slot />
     </div>
     <vue-button
       id="next"
@@ -28,9 +20,9 @@
   </div>
 </template>
 <script>
-import vueButton from "../../../components/vueButton.vue";
+import vueButton from "../../../../components/vueButton.vue";
 export default {
-  name: "CardSlider",
+  name: "CardScroller",
 
   components: {
     vueButton
@@ -56,16 +48,16 @@ export default {
     handleScrollPrev: function() {
       this.cards.scrollLeft = this.cards.scrollLeft -=
         window.innerWidth / 2 > 160
-          ? window.innerwidth / 2
+          ? window.innerWidth / 2
           : window.innerWidth - 160;
     } //handleScrollPrev
   }
 };
 </script>
 <style lang="less" scoped>
-@import (reference) "./../../../Less/customMixins.less";
-@import (reference) "./../../../Less/customVariables.less";
-.cardSlider {
+@import (reference) "../../../../Less/customMixins.less";
+@import (reference) "../../../../Less/customVariables.less";
+.cardScroller {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

@@ -1,6 +1,6 @@
 export const projects = [
   {
-    type: "Mobile UX",
+    type: "Mobile UI",
     value: [
       {
         id: 1,
@@ -31,7 +31,7 @@ export const projects = [
         title: "MedCo",
         tags: ["Adobe Illustrator", "Styleguide"],
         description:
-          "The Go Green App is an mobile aimed towards the medical industry.\
+          "MedCo is an mobile aimed towards the medical industry.\
               <br />\
               Users can look up details of services offered by various hospitals and the cost associated with those services.",
         component: "medCo"

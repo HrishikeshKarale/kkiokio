@@ -299,11 +299,11 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: "CSS/cardSlider",
+        path: "CSS/cardScroller",
         name: "cardSlider",
         component: () =>
           import(
-            /* webpackChunkName: "cardSlider" */ "@/views/project/css/cardSlider.vue"
+            /* webpackChunkName: "cardScroller" */ "@/views/project/css/cardSlider/index.vue"
           ),
         meta: { transitionName: "fade", requiresAuth: false }
       },
