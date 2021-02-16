@@ -36,8 +36,8 @@
           I’m also a novice visual designer. I’ve designed over 30 working
           prototypes in online-shopping, warehouse-management,
           inventory-management, fulfillment and healthcare using a multitude of
-          prototyping tools including products such as Adobe Illustrator, Adobe
-          XD, Sketch and Figma. My prototyping strategy primarily focuses on
+          prototyping tools including products such as Illustrator, Adobe XD,
+          Sketch and Figma. My prototyping strategy primarily focuses on
           functionality and usability.
         </p>
       </div>

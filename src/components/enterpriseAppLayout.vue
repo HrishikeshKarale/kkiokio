@@ -4,9 +4,9 @@
       <slot name="header" />
     </template>
     <div class="body">
-      <div v-if="$slots['menu']" class="menu">
+      <template v-if="$slots['menu']">
         <slot name="menu" />
-      </div>
+      </template>
       <transition
         :name="transitionName"
         :mode="transitionMode"

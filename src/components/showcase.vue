@@ -47,7 +47,14 @@ export default {
   margin: @spaceMd @spaceLg;
   min-width: 240px;
   max-width: 24vw;
-  .boxShadow(@one, @accentColor);
+  .boxShadow(none);
+
+  &:hover {
+    .boxShadow(@three, @accentColor);
+    & > a {
+      text-decoration: underline !important;
+    }
+  }
 
   & > div {
     &.name {

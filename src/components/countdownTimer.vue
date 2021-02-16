@@ -1,5 +1,5 @@
 <template>
-  <div class="countdownTimer">
+  <div v-if="days || hour || min" class="countdownTimer">
     <div class="day">
       <span class="number">{{ days }}</span>
       <div class="format">{{ wordString.day }}</div>

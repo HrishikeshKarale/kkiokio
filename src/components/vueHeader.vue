@@ -179,6 +179,7 @@ export default {
 }
 
 header {
+  line-height: 1;
   &.vueHeader {
     display: flex;
     align-items: center;

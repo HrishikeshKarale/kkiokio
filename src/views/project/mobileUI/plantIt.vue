@@ -1,7 +1,7 @@
 <template>
   <vue-img
-    class="goGreen"
-    :src="dGoGreen"
+    class="plantIt"
+    :src="dplantIt"
     alt="Onboarding Screen ideas for a croudsource tree plntation app"
   />
 </template>
@@ -13,9 +13,9 @@ export default {
   },
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const dGoGreen = require("@/assets/mobile/Go-Green Onboarding screen.png");
+    const dplantIt = require("@/assets/mobile/PlantIt board.png");
     return {
-      dGoGreen: dGoGreen
+      dplantIt: dplantIt
     };
   }
 };
@@ -23,7 +23,7 @@ export default {
 <style lang="less" scoped>
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
-.goGreen {
+.plantIt {
   margin-top: @spaceXl*2;
   .boxShadow(@one);
   max-width: 80vw;

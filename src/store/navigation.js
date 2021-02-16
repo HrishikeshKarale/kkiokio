@@ -12,12 +12,6 @@ export const nav = [
     tagline: "puts my skills to test"
   },
   {
-    name: "Case Study",
-    component: "caseStudy",
-    icon: "fab fa-canadian-maple-leaf",
-    tagline: "of some existing projects."
-  },
-  {
     name: "Logo",
     component: "logo",
     icon: "fab fa-pagelines",

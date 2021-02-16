@@ -41,7 +41,7 @@ export const skills = [
   {
     type: "Tools & Technologies",
     value: [
-      "Adobe Illustrator",
+      "Illustrator",
       "Adobe xD",
       "InVision",
       "Cascading Style Sheets (CSS)",

@@ -4,22 +4,16 @@ export const projects = [
     value: [
       {
         id: 1,
-        title: "Go Green",
-        tags: ["Adobe Illustrator", "Onboarding"],
+        title: "Plant IT!",
+        tags: ["Onboarding", "IOS"],
         description:
-          "GoGreen is online IOS app, where user can select from a list of flora, customize planters according to their needs and place order easily.",
-        component: "goGreen"
+          "Plant IT! is an Onboarding screen for an IOS application for a concept website which specializes in selling household plants and decorative pots that go along with those plants.",
+        component: "plantIt"
       },
       {
         id: 2,
         title: "Culinarian",
-        tags: [
-          "Adobe Illustrator",
-          "Styleguide",
-          "Walkthrough",
-          "Personas",
-          "Design Guide"
-        ],
+        tags: ["Styleguide", "Walkthrough", "Personas", "Design Guide"],
         description:
           "The Cullinarian App is an mobile aimed targetted towardsindividuals who like to cook.\
               <br />\
@@ -29,7 +23,7 @@ export const projects = [
       {
         id: 3,
         title: "MedCo",
-        tags: ["Adobe Illustrator", "Styleguide"],
+        tags: ["Styleguide"],
         description:
           "MedCo is an mobile aimed towards the medical industry.\
               <br />\
@@ -39,7 +33,7 @@ export const projects = [
       {
         id: 4,
         title: "Fitness Friend",
-        tags: ["Adobe Illustrator", "Wearable"],
+        tags: ["Wearable"],
         description:
           "A Fitness tracker app for smart watch.\
               <br />\
@@ -49,7 +43,7 @@ export const projects = [
       {
         id: 5,
         title: "AppSignUp",
-        tags: ["Adobe Illustrator", "Login Screen"],
+        tags: ["Login Screen"],
         description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp"
       }

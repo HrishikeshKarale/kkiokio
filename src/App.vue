@@ -69,7 +69,7 @@ export default {
   & > q {
     font-size: @fontSizeSm;
     font-weight: bold;
-    // background-color: @backgroundColor;
+    background-color: @backgroundColor;
     border-radius: @borderRadius 0 0 0;
 
     & > abbr {

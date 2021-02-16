@@ -11,16 +11,6 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/caseStudy",
-    name: "caseStudy",
-    component: () =>
-      import(/* webpackChunkName: "caseStudy" */ "@/views/caseStudy/index.vue"),
-    meta: {
-      transitionName: "fade",
-      requiresAuth: false //true
-    }
-  },
-  {
     path: "/contact",
     name: "contact",
     component: () =>
@@ -317,11 +307,11 @@ const routes: Array<RouteRecordRaw> = [
         meta: { transitionName: "fade", requiresAuth: false }
       },
       {
-        path: "mobileUX/appSignUp",
+        path: "mobileUI/appSignUp",
         name: "appSignUp",
         component: () =>
           import(
-            /* webpackChunkName: "appSignUp" */ "@/views/project/mobileUX/appSignUp.vue"
+            /* webpackChunkName: "appSignUp" */ "@/views/project/mobileUI/appSignUp.vue"
           ),
         meta: {
           transitionName: "fade",
@@ -329,11 +319,11 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: "mobileUX/medCo",
+        path: "mobileUI/medCo",
         name: "medCo",
         component: () =>
           import(
-            /* webpackChunkName: "medCo" */ "@/views/project/mobileUX/medCo.vue"
+            /* webpackChunkName: "medCo" */ "@/views/project/mobileUI/medCo.vue"
           ),
         meta: {
           transitionName: "fade",
@@ -341,11 +331,11 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: "mobileUX/fitnessFriend",
+        path: "mobileUI/fitnessFriend",
         name: "fitnessFriend",
         component: () =>
           import(
-            /* webpackChunkName: "fitnessFriend" */ "@/views/project/mobileUX/fitnessFriend.vue"
+            /* webpackChunkName: "fitnessFriend" */ "@/views/project/mobileUI/fitnessFriend.vue"
           ),
         meta: {
           transitionName: "fade",
@@ -353,11 +343,11 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: "mobileUX/culinarian",
+        path: "mobileUI/culinarian",
         name: "culinarian",
         component: () =>
           import(
-            /* webpackChunkName: "culinarian" */ "@/views/project/mobileUX/culinarian.vue"
+            /* webpackChunkName: "culinarian" */ "@/views/project/mobileUI/culinarian.vue"
           ),
         meta: {
           transitionName: "fade",
@@ -365,11 +355,11 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: "mobileUX/goGreen",
-        name: "goGreen",
+        path: "mobileUI/PlantIt",
+        name: "plantIt",
         component: () =>
           import(
-            /* webpackChunkName: "goGreen" */ "@/views/project/mobileUX/goGreen.vue"
+            /* webpackChunkName: "plantIt" */ "@/views/project/mobileUI/plantIt.vue"
           ),
         meta: {
           transitionName: "fade",
