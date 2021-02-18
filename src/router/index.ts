@@ -365,6 +365,78 @@ const routes: Array<RouteRecordRaw> = [
           transitionName: "fade",
           requiresAuth: false
         }
+      },
+      {
+        path: "UserExperience/DictionaryCaseStudy",
+        name: "dictionaryCaseStudy",
+        component: () =>
+          import(
+            /* webpackChunkName: "dictionaryCaseStudy" */ "@/views/project/UX/dictionaryCaseStudy.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
+      },
+      {
+        path: "UserExperience/Rupay",
+        name: "rupay",
+        component: () =>
+          import(
+            /* webpackChunkName: "rupay" */ "@/views/project/UX/rupay.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
+      },
+      {
+        path: "UserExperience/SkinSafe",
+        name: "skinSafe",
+        component: () =>
+          import(
+            /* webpackChunkName: "skinSafe" */ "@/views/project/UX/skinSafe.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
+      },
+      {
+        path: "UserExperience/CrowdCo",
+        name: "crowdCo",
+        component: () =>
+          import(
+            /* webpackChunkName: "crowdCo" */ "@/views/project/UX/crowdCo.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
+      },
+      {
+        path: "UserExperience/TinyThoughts",
+        name: "tinyThoughts",
+        component: () =>
+          import(
+            /* webpackChunkName: "rupay" */ "@/views/project/UX/tinyThoughts.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
+      },
+      {
+        path: "UserExperience/HRMediaPlatform",
+        name: "mediaHRPlatform",
+        component: () =>
+          import(
+            /* webpackChunkName: "mediaHRPlatform" */ "@/views/project/UX/mediaHRPlatform.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
       }
     ]
   },

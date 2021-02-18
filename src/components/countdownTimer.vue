@@ -1,5 +1,5 @@
 <template>
-  <div v-if="days || hour || min" class="countdownTimer">
+  <div v-if="days || hours || minutes" class="countdownTimer">
     <div class="day">
       <span class="number">{{ days }}</span>
       <div class="format">{{ wordString.day }}</div>
@@ -44,7 +44,7 @@ export default {
     } //trans
   },
   //["startTime", "endTime", "trans"],
-  data: function() {
+  data() {
     return {
       timer: "",
       wordString: {},

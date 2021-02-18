@@ -7,13 +7,36 @@
       The projects have vbeen divided into categories to make it easy for
       browsing.
     </p>
+    <!-- <section
+        v-for="projects in projectsDescription"
+        :id="projects.type"
+        :key="projects.type"
+      >
+        <h2>{{ projects.type }}</h2>
+        <div>
+          <template v-for="project in projects.value" :key="project.id">
+            <showcase :project="project" :component="project.component" />
+          </template>
+        </div>
+      </section> -->
     <router-view :key="$route.path" />
   </div>
 </template>
 
 <script>
+// import showcase from "@/components/showcase.vue";
+// import { projects } from "@/store/projects";
 export default {
   name: "Projects"
+  // components: {
+  //   showcase
+  // },
+  // data() {
+  //   const projectsDescription = projects;
+  //   return {
+  //     projectsDescription
+  //   };
+  // }
 };
 </script>
 

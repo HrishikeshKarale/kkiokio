@@ -1,7 +1,7 @@
 <template>
   <div class="cardSlider">
     Here is a card Scroller built using HTML/CSS/JS/
-    <card-scroller>
+    <card-scroller class="horizontal-scroller">
       <div v-for="index in 50" :key="index" class="card">
         <h4>4.6</h4>
         <span class="fa fa-heart" />
@@ -31,6 +31,9 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
+  & > .horizontal-scroller {
+    height: fit-content;
+  }
   .card {
     display: flex;
     position: relative;

@@ -1,6 +1,59 @@
 export const projects = [
   {
-    type: "Mobile UI",
+    type: "User Experience (UX)",
+    value: [
+      {
+        id: 1,
+        title: "English Dictionary",
+        tags: ["Case Study", "App redesign"],
+        description: "Redesigning an English dicionary from google apps.",
+        component: "dictionaryCaseStudy"
+      },
+      {
+        id: 2,
+        title: "HR Media",
+        tags: [
+          "User experience design",
+          "User interface design",
+          "Wireframing",
+          "Information Architecture"
+        ],
+        description: "Redesigning an social media for HR's.",
+        component: "mediaHRPlatform"
+      },
+      {
+        id: 3,
+        title: "Rupay",
+        tags: ["Case Study", "App redesign"],
+        description:
+          "Rupay is a mobile banking app also known as a digital wallet app.",
+        component: "rupay"
+      },
+      {
+        id: 4,
+        title: "TinyThoughts - Journal",
+        tags: ["Case Study", "App redesign", "Material Design"],
+        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        component: "tinyThoughts"
+      },
+      {
+        id: 5,
+        title: "skinSafe",
+        tags: ["Case Study", "App redesign", "Material Design"],
+        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        component: "skinSafe"
+      },
+      {
+        id: 5,
+        title: "CrowdCo.",
+        tags: ["Case Study", "App redesign", "IOS HID"],
+        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        component: "crowdCo"
+      }
+    ]
+  },
+  {
+    type: "User Interface (UI)",
     value: [
       {
         id: 1,
@@ -46,14 +99,9 @@ export const projects = [
         tags: ["Login Screen"],
         description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp"
-      }
-    ]
-  },
-  {
-    type: "Web UX",
-    value: [
+      },
       {
-        id: 1,
+        id: 6,
         title: "Pack Station",
         tags: ["Golden Ratio", "WMS", "Enterprise", "Kiosk", "Standalone"],
         description:
@@ -63,7 +111,7 @@ export const projects = [
         component: "packStation"
       },
       {
-        id: 2,
+        id: 7,
         title: "RSVP",
         tags: ["Standalone", "VUE"],
         description:

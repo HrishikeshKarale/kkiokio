@@ -3,7 +3,7 @@
     <vue-button
       id="previous"
       tag="Previous"
-      category="icon-lg"
+      category="large"
       icon="fas fa-chevron-left"
       :ctx="handleScrollPrev.bind(this)"
     />
@@ -13,7 +13,7 @@
     <vue-button
       id="next"
       tag="Next"
-      category="icon-lg"
+      category="large"
       icon="fas fa-chevron-right"
       :ctx="handleScrollNext.bind(this)"
     />
@@ -64,63 +64,8 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: min-content;
+  height: fit-content;
   overflow: hidden;
-  &::after,
-  &::before {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 100%;
-    position: absolute;
-    z-index: @contentZ + 15 !important;
-    pointer-events: none;
-    right: 0;
-    //   background: rgb(255, 255, 255);
-    //   background: -moz-linear-gradient(
-    //     90deg,
-    //     rgba(255, 255, 255, 0) 0%,
-    //     rgba(250, 251, 252, 1) 100%
-    //   );
-    //   background: -webkit-linear-gradient(
-    //     90deg,
-    //     rgba(255, 255, 255, 0) 0%,
-    //     rgba(250, 251, 252, 1) 100%
-    //   );
-    //   background: linear-gradient(
-    //     90deg,
-    //     rgba(255, 255, 255, 0) 0%,
-    //     rgba(250, 251, 252, 1) 100%
-    //   );
-    //   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#fafbfc",GradientType=1);
-  }
-  &::before {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 100%;
-    position: absolute;
-    z-index: @contentZ + 15 !important;
-    pointer-events: none;
-    left: 0;
-    // background: rgb(250, 251, 252);
-    // background: -moz-linear-gradient(
-    //   90deg,
-    //   rgba(250, 251, 252, 1) 0%,
-    //   rgba(255, 255, 255, 0) 100%
-    // );
-    // background: -webkit-linear-gradient(
-    //   90deg,
-    //   rgba(250, 251, 252, 1) 0%,
-    //   rgba(255, 255, 255, 0) 100%
-    // );
-    // background: linear-gradient(
-    //   90deg,
-    //   rgba(250, 251, 252, 1) 0%,
-    //   rgba(255, 255, 255, 0) 100%
-    // );
-    // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fafbfc",endColorstr="#ffffff",GradientType=1);
-  }
   & > button {
     position: absolute;
     z-index: @contentZ + 25 !important;

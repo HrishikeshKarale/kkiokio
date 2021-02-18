@@ -1,7 +1,7 @@
 <template>
   <div v-if="breadcrums.length > 1" class="breadcrums">
     <template v-for="(crums, index) in breadcrums" :key="crums">
-      <template v-if="isComponent(crums)[0] && breadcrums.length > 1">
+      <template v-if="isComponent(crums)[0]">
         <span
           v-if="index > 0 && isComponent(crums)[0]['comp']"
           class="fas fa-angle-right"

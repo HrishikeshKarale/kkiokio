@@ -8,7 +8,7 @@
       >
         <h2>{{ projects.type }}</h2>
         <div>
-          <div v-for="project in projects.value" :key="project.id">
+          <template v-for="project in projects.value" :key="project.id">
             <!-- <router-link
               :to="{
                 name: project.component
@@ -16,7 +16,7 @@
             > -->
             <showcase :project="project" :component="project.component" />
             <!-- </router-link> -->
-          </div>
+          </template>
         </div>
       </section>
     </article>
@@ -51,6 +51,7 @@ export default {
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: flex-start;
+    flex: 1 2 0;
   }
 }
 </style>
