@@ -38,13 +38,20 @@ export const projects = [
       },
       {
         id: 5,
+        title: "kuda Bank Case Study",
+        tags: ["Case Study", "App redesign", "Material Design"],
+        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        component: "kudaBankCaseStudy"
+      },
+      {
+        id: 6,
         title: "skinSafe",
         tags: ["Case Study", "App redesign", "Material Design"],
         description: "Tiny Thoughts is a personal Journal app for mobile.",
         component: "skinSafe"
       },
       {
-        id: 5,
+        id: 7,
         title: "CrowdCo.",
         tags: ["Case Study", "App redesign", "IOS HID"],
         description: "Tiny Thoughts is a personal Journal app for mobile.",

@@ -391,6 +391,18 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: "UserExperience/KudaBankCaseStudy",
+        name: "kudaBankCaseStudy",
+        component: () =>
+          import(
+            /* webpackChunkName: "kudaBankCaseStudy" */ "@/views/project/UX/kudaBankCaseStudy.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
+      },
+      {
         path: "UserExperience/SkinSafe",
         name: "skinSafe",
         component: () =>
