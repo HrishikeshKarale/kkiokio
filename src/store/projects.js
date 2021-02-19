@@ -56,6 +56,20 @@ export const projects = [
         tags: ["Case Study", "App redesign", "IOS HID"],
         description: "Tiny Thoughts is a personal Journal app for mobile.",
         component: "crowdCo"
+      },
+      {
+        id: 8,
+        title: "Venmo Case Study",
+        tags: ["Case Study", "App redesign", "IOS HID"],
+        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        component: "venmoCaseStudy"
+      },
+      {
+        id: 9,
+        title: "Google vs Waze Case Study",
+        tags: ["Case Study", "App redesign", "IOS HID"],
+        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        component: "mapsCaseStudy"
       }
     ]
   },

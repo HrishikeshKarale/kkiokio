@@ -232,6 +232,7 @@ header {
 
             & > span {
               font-size: @fontSizeSm * 2;
+              margin: auto;
               .navSubText();
             }
             & > img {

@@ -66,7 +66,7 @@
           of criteria for me to be implemented during redesign. Here is an
           overview of the expectations:
         </p>
-      <vue-img :src="expectations" alt="" />
+        <vue-img :src="expectations" alt="" />
       </div>
     </section>
     <section id="Analysis and Ideation">

@@ -64,7 +64,9 @@
             <span class="step">
               {{ step.title }}
             </span>
-            <b class="step-title">{{ step.subTitle }}</b>
+            <h3 class="step-title">
+              {{ step.subTitle }}
+            </h3>
             <ol>
               <li v-for="skill in step.skills" :key="skill">
                 {{ skill }}
@@ -145,6 +147,7 @@ article {
           & > ol.steps {
             display: flex;
             flex-direction: row;
+            justify-content: space-evenly;
             flex-wrap: wrap;
             margin: 0 auto;
 
@@ -152,23 +155,24 @@ article {
               display: flex;
               flex-direction: column;
               background-color: @backgroundColor;
-              flex: 1 240px;
+              flex: 0 0 320px;
               border-radius: @borderRadiusLg;
               padding: @spaceLg;
-              margin: @spaceLg @spaceXl;
+              margin: @spaceMd 0;
 
-              .boxShadow(@one);
+              .boxShadow(@one, @accentColor);
 
               & > .step {
                 border-radius: 50%;
                 border: 2px solid @accentColor;
                 color: @white;
-                font-size: @wizard-step-font-size;
+                font-size: @fontSize;
+                font-weight: bold;
                 line-height: @wizard-step-width-height;
                 position: relative;
-                width: @wizard-step-width-height;
+                min-width: @wizard-step-width-height;
                 text-align: center;
-                margin: @spaceLg auto;
+                margin: 0 auto;
                 background-color: @accentColor;
 
                 & + .step-title {
@@ -197,6 +201,7 @@ article {
         & > div {
           flex-direction: column;
           justify-content: space-evenly;
+          flex: 1;
         }
       }
 

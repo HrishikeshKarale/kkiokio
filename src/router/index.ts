@@ -415,6 +415,30 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: "UserExperience/mapsCaseStudy",
+        name: "mapsCaseStudy",
+        component: () =>
+          import(
+            /* webpackChunkName: "mapsCaseStudy" */ "@/views/project/UX/mapsCaseStudy.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
+      },
+      {
+        path: "UserExperience/VenmoCaseStudy",
+        name: "venmoCaseStudy",
+        component: () =>
+          import(
+            /* webpackChunkName: "venmoCaseStudy" */ "@/views/project/UX/venmoCaseStudy.vue"
+          ),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false
+        }
+      },
+      {
         path: "UserExperience/CrowdCo",
         name: "crowdCo",
         component: () =>

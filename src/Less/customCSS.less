@@ -957,7 +957,11 @@ article {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    min-height: @body;
+    min-height: 100vh;
+
+    &:first-child {
+      min-height: @body;
+    }
   }
 }
 

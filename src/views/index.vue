@@ -1,20 +1,20 @@
 <template>
   <div class="profileOverview">
-    <div>
+    <section>
       <div>
         <span>HELLO THERE</span>
         <h2>
           My name is
         </h2>
-        <h1>
+        <h1 @click="$router.push({ name: 'about' })">
           Hrishikesh Karale.
         </h1>
         <h2>
           I design Things.
         </h2>
         <p>
-          I am a multi-disciplined designer based out of Rochester, NY. My
-          experience ranges from UI/UX Design to Front-End Development.
+          I am a <b>multi-disciplined designer</b> based out of Rochester, NY.
+          My experience ranges from UI/UX Design to Front-End Development.
         </p>
         <p>
           As a Designer I believe in setting ego aside and creating an
@@ -38,26 +38,26 @@
         <span>&</span>
         <span>Developer</span>
       </div>
-    </div>
-    <div>
-      <div v-for="(skill, index) in skillSet" :key="skill.type" class="skills">
+    </section>
+    <section>
+      <!-- <div v-for="(skill, index) in skillSet" :key="skill.type" class="skills">
         <infinite-scroll :list="skill.value" :reverse="index % 2 === 1" />
-      </div>
-    </div>
+      </div> -->
+    </section>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import vueButton from "@/components/vueButton.vue";
-import infiniteScroll from "@/views/project/css/infiniteScroll.vue";
+// import infiniteScroll from "@/views/project/css/infiniteScroll.vue";
 import { skills } from "@/store/skills";
 
 export default {
   name: "Home",
   components: {
-    vueButton,
-    infiniteScroll
+    // infiniteScroll,
+    vueButton
   },
   data() {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -84,7 +84,7 @@ export default {
   min-height: @body;
   justify-content: center;
   align-content: center;
-  & > div {
+  & > section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -99,9 +99,6 @@ export default {
         flex-direction: column;
         margin: @spaceXl;
 
-        & > h2 {
-          color: @textColor;
-        }
         & > h1,
         & > h2:first-child {
           margin-top: 0;
@@ -109,6 +106,12 @@ export default {
           &:not(h2) {
             font-weight: bold;
           }
+        }
+        & > h1 {
+          cursor: pointer;
+        }
+        & > h2 {
+          color: @textColor;
         }
         & > p {
           max-width: 640px;
