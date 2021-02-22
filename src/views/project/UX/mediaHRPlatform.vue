@@ -61,17 +61,17 @@
         <ol>
           <li>
             <p>
-              <strong>1) Create high impact learning – </strong>They aim to
-              deliver a high-impact collaborative learning experience that
-              engage learners and drive deep skill development. Experiences are
-              made relevant to the learners by integrating conversations,
-              reflection, practice, and constructive feedback with meaningful
-              instructional content.
+              <strong>Create high impact learning – </strong>They aim to deliver
+              a high-impact collaborative learning experience that engage
+              learners and drive deep skill development. Experiences are made
+              relevant to the learners by integrating conversations, reflection,
+              practice, and constructive feedback with meaningful instructional
+              content.
             </p>
           </li>
           <li>
             <p>
-              <strong>2) Build connections that sustain learning –&nbsp;</strong
+              <strong>Build connections that sustain learning –&nbsp;</strong
               >Creating meaningful connections among learners and mentors is one
               of their core selling point. These connections promote
               accountability, foster a dynamic learning environment, and
@@ -80,8 +80,8 @@
           </li>
           <li>
             <p>
-              <strong>3) Drive transformation at scale – </strong>They also aim
-              to power organizational transformation by changing mindsets,
+              <strong>Drive transformation at scale – </strong>They also aim to
+              power organizational transformation by changing mindsets,
               behavior, and on-the-job performance at scale.
             </p>
           </li>
@@ -110,22 +110,22 @@
         <ol>
           <li>
             <p>
-              <strong>1) Left sidebar with a fixed width</strong> – Even though
-              the left sidebar had all the actions in place, the only problem
-              with it was the real estate that it was taking up on the screen
-              because of no ability to contract it.
+              <strong>Left sidebar with a fixed width</strong> – Even though the
+              left sidebar had all the actions in place, the only problem with
+              it was the real estate that it was taking up on the screen because
+              of no ability to contract it.
             </p>
           </li>
           <li>
             <p>
-              <strong>2) My network</strong> – The my network segment was a good
+              <strong>My network</strong> – The my network segment was a good
               addition to drive more engagement on the platform but it was not
               showing enough information for a user to interact with it.
             </p>
           </li>
           <li>
             <p>
-              <strong>3) Needed a revised information architecture – </strong>We
+              <strong>Needed a revised information architecture – </strong>We
               figured out that to make the experience more personalized,
               activities like recent assignment submission and certifications
               should not interfere with the currently active course/program that
@@ -228,14 +228,14 @@
         </p>
       </div>
       <p>
-        <strong>1. Participation – </strong>Everybody could participate in a
+        <strong>Participation – </strong>Everybody could participate in a
         discussion either by creating a new thread or commenting on an existing
         one. We wanted to give users the ability to share a wide variety of
         content like simple text, images along with video links as well.
       </p>
       <p>&nbsp;</p>
       <p>
-        <strong>2. Topic segregation</strong> – It made sense to introduce some
+        <strong>Topic segregation</strong> – It made sense to introduce some
         default topics for discussions otherwise people would have started
         posting random stuff and wall would have been a clutter. So we went back
         and forth with the client in order to decide the topics that would help

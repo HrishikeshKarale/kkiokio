@@ -1,7 +1,7 @@
 <template>
   <div v-if="breadcrums.length > 1" class="breadcrums">
     <template v-for="(crums, index) in breadcrums" :key="crums">
-      <template v-if="isComponent(crums)[0]">
+      <template v-if="isComponent(crums)[0] && breadcrums.length - 1 > index">
         <span
           v-if="index > 0 && isComponent(crums)[0]['comp']"
           class="fas fa-angle-right"
@@ -13,7 +13,12 @@
         >
           <h5>{{ isComponent(crums)[0]["name"] }}</h5>
         </router-link>
-        <h1 v-else class="crums">{{ isComponent(crums)[0]["name"] }}</h1>
+      </template>
+      <template v-if="breadcrums.length - 1 == index">
+        <span class="fas fa-angle-right" />
+        <h1>
+          {{ crums }}
+        </h1>
       </template>
     </template>
   </div>
@@ -68,6 +73,14 @@ export default {
         }
       });
       // if (comp) return this.unique.includes(comp);
+    }, //isComponent
+
+    subNav: function(selected) {
+      this.projectsDescription.forEach(project => {
+        project.value.forEach(proj => {
+          console.log(proj.component, selected);
+        });
+      });
     }
   }
 };
@@ -97,7 +110,7 @@ export default {
   }
   @media screen {
     @media (max-width: @maxWidth) {
-      margin: 0 0 0 @spaceXl !important;
+      margin: @spaceXl 0 0 @spaceXl !important;
     }
   }
 }
