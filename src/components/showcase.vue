@@ -51,8 +51,8 @@ export default {
 
   &:hover {
     .boxShadow(@three, @accentColor);
-    & > a {
-      text-decoration: underline !important;
+    & > a > h3 {
+      color: @accentColor;
     }
   }
 

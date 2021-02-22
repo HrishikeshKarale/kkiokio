@@ -7,45 +7,80 @@
       The projects have vbeen divided into categories to make it easy for
       browsing.
     </p>
-    <!-- <section
-        v-for="projects in projectsDescription"
-        :id="projects.type"
-        :key="projects.type"
-      >
-        <h2>{{ projects.type }}</h2>
-        <div>
-          <template v-for="project in projects.value" :key="project.id">
-            <showcase :project="project" :component="project.component" />
-          </template>
-        </div>
-      </section> -->
-    <router-view :key="$route.path" />
+    <section
+      v-for="projects in projectList"
+      :id="projects.type"
+      :key="projects.type"
+    >
+      <h2>{{ projects.type }}</h2>
+      <div>
+        <template v-for="project in projects.value" :key="project.id">
+          <showcase :project="project" :component="project.component" />
+        </template>
+      </div>
+    </section>
+    <!-- <router-view :key="$route.path" /> -->
   </div>
 </template>
 
 <script>
-// import showcase from "@/components/showcase.vue";
-// import { projects } from "@/store/projects";
+import showcase from "@/components/showcase.vue";
+import { projects } from "@/store/projects";
 export default {
-  name: "Projects"
-  // components: {
-  //   showcase
-  // },
-  // data() {
-  //   const projectsDescription = projects;
-  //   return {
-  //     projectsDescription
-  //   };
-  // }
+  name: "Projects",
+  components: {
+    showcase
+  },
+  data() {
+    const projectsDescription = projects;
+    const propFilter = null;
+    return {
+      projectsDescription,
+      propFilter
+    };
+  },
+  computed: {
+    projectList: function() {
+      // console.log(this.propFilter);
+      if (this.propFilter) {
+        this.projectsDescription.filter(project => {
+          return project.value.forEach(val =>
+            val.tags.includes(this.propFilter)
+          );
+        });
+      }
+      return this.projectsDescription;
+    }
+  },
+  created() {
+    this.propFilter = this.$route.query.filter;
+    // console.log(this.projectsDescription);
+  },
+  mounted() {
+    // console.log("mounted: ", this.projectList);
+  }
 };
 </script>
 
 <style lang="less" scoped>
+@import (reference) "./../Less/customMixins.less";
+@import (reference) "./../Less/customVariables.less";
 .projects {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   min-width: 400px;
+  & > section > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex: 1 2 0;
+    & > div {
+      border: 1px dashed @primaryColor;
+    }
+  }
 }
 </style>
 /* to add a project, add project details to the store project file and then add

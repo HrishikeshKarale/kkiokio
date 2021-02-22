@@ -6,7 +6,7 @@
       Feel free to use the contact form below and reach out to me for any
       questions yo might have.
       <br />
-      You can also write to me the old fashion way.
+      If you sign in, You can also write to me the old fashion way.
     </p>
     <div class="details">
       <main class="personal">
@@ -57,7 +57,7 @@
             out spam calls
           </small>
         </section>
-        <section class="address">
+        <!-- <section class="address">
           <h3>Postal Address</h3>
           <p>
             44 Crittenden Way,
@@ -66,7 +66,7 @@
             <br />
             Rochester, NY 14623
           </p>
-        </section>
+        </section> -->
       </main>
       <div>
         <h3>Contact Form</h3>
@@ -199,17 +199,15 @@ export default {
     justify-content: center;
     align-self: center;
     width: @maxWidth;
-    & > div {
+    & > div,
+    & > main {
       max-width: 360px;
       min-width: 240px;
-      margin: @spaceXl;
+      margin: 0 @spaceXl;
     }
     & > main {
       display: flex;
       flex-direction: column;
-      max-width: 360px;
-      min-width: 240px;
-      margin: @spaceXl;
       &.personal {
         & > section {
           display: flex;
@@ -223,6 +221,7 @@ export default {
             }
             & + h5 {
               margin-bottom: @spaceSm;
+              margin-top: 0;
               & > address {
                 margin-bottom: 0px;
               }
@@ -239,9 +238,6 @@ export default {
         flex-direction: row;
         flex-wrap: wrap;
         width: fit-content;
-        & > main {
-          margin: @spaceXl;
-        }
         & > div {
           & > form {
             margin: @spaceXl;

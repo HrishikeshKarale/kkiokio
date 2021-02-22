@@ -4,7 +4,7 @@
     <h2>SkinSafe</h2>
     <vue-img :src="headerImage" alt="" />
     <section id="About">
-      <h2>About the project</h2>
+      <h3>About the project</h3>
       <p>
         <strong>Overview:</strong>
         SkinSAFE is a startup that aims to provide expert knowledge with the
@@ -42,7 +42,7 @@
       </p>
     </section>
     <section id="Research">
-      <h2>Research</h2>
+      <h3>Research</h3>
       <p>
         I was in constant touch with the CEO of the company during the whole
         redesign and he helped me gain a lot of insights about the how the
@@ -50,7 +50,7 @@
         functionality.
       </p>
       <div class="subSection">
-        <h3>Skype interviews</h3>
+        <h4>Skype interviews</h4>
         <p>
           Conducting interviews and being in touch with him almost everyday, I
           came to know that the current version was outdated and overall reviews
@@ -70,7 +70,7 @@
       </div>
     </section>
     <section id="Analysis and Ideation">
-      <h3>Analysis and Ideation</h3>
+      <h4>Analysis and Ideation</h4>
       <p>
         The next step was to review the current app and analyze what mistakes
         were made from usability perspective. I did not own an iOS device at the
@@ -88,7 +88,7 @@
       </p>
       <vue-img :src="ideation2" alt="" />
       <div class="subSection">
-        <h3>App reviews</h3>
+        <h4>App reviews</h4>
         <p>
           App store/Play store reviews are also a good place to gather some
           research insights because all of the feedback comes from users who are
@@ -134,7 +134,7 @@
       </div>
     </section>
     <section id="Prototype">
-      <h2>Prototype</h2>
+      <h3>Prototype</h3>
       <p>
         After gathering all the research information and analysis of the current
         app, I went on to design low fidelity wireframes. Doing this gives me a
@@ -142,7 +142,7 @@
         application and it is easy to iterate quickly
       </p>
       <div class="subSection">
-        <h3>Wireframes</h3>
+        <h4>Wireframes</h4>
         <vue-img :src="wireframe" alt="" />
       </div>
       <div class="subSection">
@@ -172,7 +172,7 @@
       </div>
     </section>
     <section id="Conclusion">
-      <h2>Conclusion &amp; Lessons learned</h2>
+      <h3>Conclusion &amp; Lessons learned</h3>
       <p>
         It was an amazing project to work on and I learned a lot from it. It was
         my very first experience working in the skincare/beauty industry so I
@@ -186,7 +186,7 @@
         unified decisions.
       </p>
       <div class="subSection">
-        <h3>Importance of Usability testing</h3>
+        <h4>Importance of Usability testing</h4>
         <vue-img :src="usability" alt="" />
         <p>
           Usability testing is the practice of testing how easy a design is to
@@ -205,7 +205,6 @@
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
-
 import * as expectations from "@/assets/UX/skinSafe/expectations.jpg";
 import * as hifi from "@/assets/UX/skinSafe/hifi.png";
 import * as iteration from "@/assets/UX/skinSafe/iteration.png";
@@ -215,12 +214,9 @@ import * as headerImage from "@/assets/UX/skinSafe/headerImage.png";
 import * as review from "@/assets/UX/skinSafe/review.jpg";
 import * as usability from "@/assets/UX/skinSafe/usability.png";
 import * as wireframe from "@/assets/UX/skinSafe/wireframe.png";
-
 export default {
   name: "SkinSafe",
-  components: {
-    vueImg
-  },
+  components: { vueImg },
   data() {
     return {
       expectations,

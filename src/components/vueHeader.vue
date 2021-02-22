@@ -75,16 +75,6 @@
           :icon="themeIcon"
           :ctx="theme.bind(this)"
         />
-        <router-link to="/termsOfService">
-          <h5>
-            Terms Of Service
-          </h5>
-        </router-link>
-        <router-link to="/privacyPolicy">
-          <h5>
-            Privacy Policy
-          </h5>
-        </router-link>
       </div>
     </div>
   </header>
@@ -174,7 +164,7 @@ export default {
 
 //nav sub text
 .navSubText() {
-  color: @navText;
+  color: @offWhite;
   opacity: @lowOpacity;
 }
 
@@ -271,7 +261,8 @@ header {
                   color: @text;
                   font-weight: bold;
                   & + span {
-                    color: @navText;
+                    color: @white;
+                    font-weight: bold;
                     opacity: 1;
                   }
                 }
@@ -303,7 +294,7 @@ header {
                 & > h4 {
                   color: @text;
                   & + span {
-                    color: @navText;
+                    color: @offWhite;
                     opacity: 1;
                   }
                 }
@@ -316,6 +307,7 @@ header {
       & + div.user {
         display: flex;
         margin-left: auto;
+        position: relative;
         & > span {
           color: @text;
           padding: @spaceMd;
@@ -375,8 +367,9 @@ header {
         //hides navigation when toggled
         & > nav {
           display: none;
-          & + div {
-            position: fixed;
+          //user
+          & + .user {
+            position: fixed !important;
             right: 32px;
             top: 32px;
           }
@@ -415,7 +408,8 @@ header {
                 }
               }
             }
-            & + div {
+            //user
+            & + .user {
               display: flex;
               flex-direction: column;
               justify-content: space-between;

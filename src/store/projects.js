@@ -6,7 +6,7 @@ export const projects = [
         id: 1,
         title: "English Dictionary",
         tags: ["Case Study", "App redesign"],
-        description: "Redesigning an English dicionary from google apps.",
+        description: "Redesigned an English dicionary from google play.",
         component: "dictionaryCaseStudy"
       },
       {
@@ -142,35 +142,7 @@ export const projects = [
     ]
   },
   {
-    type: "CSS",
-    value: [
-      {
-        id: 1,
-        title: "Pulse Animation",
-        tags: ["CSS"],
-        description:
-          "Pulse animation is a circle that pulses every few seconds.<br />\
-        It was a good exercise in writting css for the sake of eesthetics.",
-        component: "pulseAnimation"
-      },
-      {
-        id: 2,
-        title: "Card Slider",
-        tags: [],
-        description: "does not work rite now.",
-        component: "cardSlider"
-      },
-      {
-        id: 3,
-        title: "Automated infinite Scroll",
-        tags: [],
-        description: "does not work rite now.",
-        component: "infiniteScroll"
-      }
-    ]
-  },
-  {
-    type: "JS",
+    type: "JavaScript",
     value: [
       {
         id: 1,
@@ -311,6 +283,34 @@ export const projects = [
         description:
           "Uses a range/slider bar to control the speed of the video being played.",
         component: "videoControl"
+      }
+    ]
+  },
+  {
+    type: "CSS",
+    value: [
+      {
+        id: 1,
+        title: "Pulse Animation",
+        tags: ["CSS"],
+        description:
+          "Pulse animation is a circle that pulses every few seconds.<br />\
+        It was a good exercise in writting css for the sake of eesthetics.",
+        component: "pulseAnimation"
+      },
+      {
+        id: 2,
+        title: "Card Slider",
+        tags: [],
+        description: "does not work rite now.",
+        component: "cardSlider"
+      },
+      {
+        id: 3,
+        title: "Automated infinite Scroll",
+        tags: [],
+        description: "does not work rite now.",
+        component: "infiniteScroll"
       }
     ]
   }

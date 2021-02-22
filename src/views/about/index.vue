@@ -3,7 +3,7 @@
     <header>
       <h1>About Me</h1>
     </header>
-    <section id="bio">
+    <section id="Bio">
       <div>
         <vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
         <div>
@@ -14,7 +14,7 @@
       </div>
       <div>
         <p>
-          I'm a UX Professional with 3+ years of experience working on several
+          I'm a UX Professional with 5+ years of experience working on several
           major software projects in the eCommerce and enterprise buisness
           environments.
         </p>
@@ -42,13 +42,13 @@
         </p>
       </div>
     </section>
-    <section id="objective">
+    <section id="Objective">
       <q>
         Create intuitive interfaces that can solve problems and create
         experiences that initiate a sense of delight and wonder for my users.
       </q>
     </section>
-    <section id="uxProcess">
+    <section id="Process">
       <p>
         One of the key factors that define a designers work is the process they
         use to solve a problem.
@@ -64,19 +64,19 @@
             <span class="step">
               {{ step.title }}
             </span>
-            <h3 class="step-title">
+            <h4 class="step-title">
               {{ step.subTitle }}
-            </h3>
+            </h4>
             <ol>
               <li v-for="skill in step.skills" :key="skill">
-                {{ skill }}
+                <small v-text="skill" />
               </li>
             </ol>
           </li>
         </ol>
       </div>
     </section>
-    <section id="skillset">
+    <section id="Skillset">
       <div v-for="skill in skillSet" :key="skill.type">
         <h3>{{ skill.type }}</h3>
         <div v-for="value in skill.value" :key="value">
@@ -124,10 +124,9 @@ export default {
 article {
   &.about {
     & > section {
-      &#objective {
+      &#Objective {
         & > q {
-          margin: auto;
-          font-size: @fontSize * 2;
+          font-size: @fontSizeSm * 2;
           text-align: center;
 
           & > abbr {
@@ -137,7 +136,7 @@ article {
         }
       }
 
-      &#uxProcess {
+      &#Process {
         flex-direction: column;
         text-align: left;
 
@@ -158,9 +157,7 @@ article {
               flex: 0 0 320px;
               border-radius: @borderRadiusLg;
               padding: @spaceLg;
-              margin: @spaceMd 0;
-
-              .boxShadow(@one, @accentColor);
+              margin: @spaceMd;
 
               & > .step {
                 border-radius: 50%;
@@ -181,9 +178,8 @@ article {
                   & + ol {
                     list-style: none;
                     padding: 0;
-
                     & > li {
-                      margin-top: @spaceMd;
+                      font-weight: bold;
                     }
                   }
                 }
@@ -193,7 +189,7 @@ article {
         }
       }
 
-      &#skillset {
+      &#Skillset {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -201,11 +197,12 @@ article {
         & > div {
           flex-direction: column;
           justify-content: space-evenly;
-          flex: 1;
+          flex: 0 0 320px;
+          margin: 0 @spaceLg;
         }
       }
 
-      &#bio {
+      &#Bio {
         flex-direction: column;
         flex-wrap: wrap;
         & > div {

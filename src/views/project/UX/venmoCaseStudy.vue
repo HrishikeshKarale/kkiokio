@@ -55,7 +55,7 @@
       </p>
     </section>
     <section id="Onboarding">
-      <h2>Onboarding</h2>
+      <h3>Onboarding</h3>
       <p>
         Upon opening the app, we are greeted with one of the more intriguing
         sign-up screens I have come across. The interactions are conventional –
@@ -158,7 +158,7 @@
       </p>
     </section>
     <section id="Payments">
-      <h2>Payments</h2>
+      <h3>Payments</h3>
       <p>
         As the foundation of their financial services, it is evident Venmo
         devoted a significant amount of time and effort into the process of
@@ -232,7 +232,7 @@
       </p>
     </section>
     <section id="Verdict">
-      <h2>Final Verdict</h2>
+      <h3>Final Verdict</h3>
       <p>
         Venmo’s UX team cribs industry-standard techniques from both fintech and
         social media platforms. While some of their features are

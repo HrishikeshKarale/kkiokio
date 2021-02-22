@@ -73,7 +73,7 @@
       <b>Winner: Waze</b>
     </section>
     <section id="Search">
-      <h2>Search Options</h2>
+      <h3>Search Options</h3>
       <p>
         One of the other most essential elements in a navigation app is the
         ability for the user to search for and enter their destination.
@@ -142,7 +142,7 @@
       <b>Winner: Waze</b>
     </section>
     <section id="Conclusion">
-      <h2>Looking At The Scoreboard</h2>
+      <h3>Looking At The Scoreboard</h3>
       <p>
         Although it may surprise most (because of its App Store ranking), I have
         to deem Waze as the winner of this challenge. While both apps provide a

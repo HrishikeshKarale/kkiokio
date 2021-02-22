@@ -1,7 +1,7 @@
 //https://www.termsservicetemplate.com/download.php?lang=en&token=JIp7l3ZFbifKBWmF2AwRih4vSL5eYiQj#
 //https://www.termsservicetemplate.com/live.php?token=JIp7l3ZFbifKBWmF2AwRih4vSL5eYiQj
 <template>
-  <h2>Terms of Service of <span class="website_url">www.kkiokio.com</span></h2>
+  <h2>Terms of Service</h2>
 
   <p>
     <span class="website_name">kkiokio.com</span> ("Us" or "We") provides the

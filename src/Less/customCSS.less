@@ -946,10 +946,29 @@ article {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  margin: @spaceXl 0;
 
   &>header {
     visibility: hidden;
-    height: 0;
+  }
+
+  img {
+    align-self: center;
+    width: 100%;
+    margin: @spaceXl 0;
+  }
+
+  //indent heading
+  &>*,
+  &>section>*,
+  &>section>.subSection>* {
+    padding: @spaceMd 0;
+
+    &:not(h2),
+    &:not(h3),
+    &:not(h4) {
+      padding: 0 @spaceLg;
+    }
   }
 
   &>section {
@@ -957,13 +976,92 @@ article {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    min-height: 100vh;
+    // min-height: 100vh;
 
-    &:first-child {
-      min-height: @body;
+    // &:first-child {
+    min-height: @body;
+    // }
+
+    img {
+      width: 80%;
+    }
+
+    // &:not(:last-child) {
+    //   &::after {
+    //     content: "";
+    //     border-bottom: 1px solid @textColor;
+    //     filter: opacity(32%);
+    //     width: 80%;
+    //     align-self: center;
+    //     margin: 2*@spaceXl 0;
+    //   }
+    // }
+
+    &>.subSection {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      margin: @spaceMd 0;
+
+      // &::before {
+      //   content: "";
+      //   border-top: 1px solid @textColor;
+      //   filter: opacity(16%);
+      //   max-width: 32%;
+      //   min-width: 240px;
+      //   align-self: center;
+      //   margin: 2*@spaceXl 0;
+      // }
     }
   }
 }
+
+// article {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-content: center;
+
+//   img {
+//     align-self: center;
+//     width: 100%;
+//     margin: @spaceXl 0;
+//   }
+
+//   &>header {
+//     visibility: hidden;
+//     height: 0;
+//   }
+
+//   &>section {
+//     display: flex;
+//     flex-direction: column;
+//     align-content: center;
+//     min-height: 100vh;
+//     align-self: center;
+//     // padding-bottom: 4 * @spaceXl;
+
+//     &:not(h3) {
+//       margin-left: @spaceXl;
+//     }
+
+//     img {
+//       width: 80%;
+//     }
+
+//     &:first-child {
+//       min-height: @body;
+//     }
+
+//     &>.subSection {
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-content: center;
+//     }
+//   }
+// }
 
 a {
 

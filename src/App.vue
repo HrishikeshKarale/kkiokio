@@ -17,6 +17,9 @@
         </q>
       </aside>
     </template>
+    <template #footer>
+      <vue-footer />
+    </template>
   </enterprise-app-layout>
 </template>
 
@@ -25,6 +28,7 @@
 import vueHeader from "@/components/vueHeader";
 import enterpriseAppLayout from "@/components/enterpriseAppLayout";
 import vueImg from "@/components/vueImg.vue";
+import vueFooter from "@/components/vueFooter.vue";
 import { nav } from "@/store/navigation";
 
 export default {
@@ -33,6 +37,7 @@ export default {
   components: {
     vueHeader,
     vueImg,
+    vueFooter,
     enterpriseAppLayout
   },
 
@@ -61,16 +66,19 @@ export default {
   border-radius: @borderRadius 0 0 0;
   // background-color: @backgroundColor;
   height: fit-content;
+  z-index: @modalZ;
 
   & > img {
     height: 48px;
+    margin-bottom: @spaceLg;
   }
 
   & > q {
     font-size: @fontSizeSm;
     font-weight: bold;
     background-color: @backgroundColor;
-    border-radius: @borderRadius 0 0 0;
+    border-radius: @borderRadiusLg 0 @borderRadiusLg 0;
+    padding: 0 @spaceLg;
 
     & > abbr {
       color: @primaryColor;

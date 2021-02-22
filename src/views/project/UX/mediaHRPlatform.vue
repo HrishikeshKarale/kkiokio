@@ -4,7 +4,7 @@
     <h2>mediaHRPlatform</h2>
     <vue-img :src="headerImage" alt="" />
     <section id="About">
-      <h2>About the project</h2>
+      <h3>About the project</h3>
       <p>
         <strong>Overview:</strong>
         <a href="https://www.peoplematters.in/" target="_blank" rel="noopener">
@@ -48,7 +48,7 @@
         experience along with analyzing what they have on offer.
       </p>
       <div class="subSection">
-        <h3>Competitor Analysis</h3>
+        <h4>Competitor Analysis</h4>
         <vue-img :src="competitorAnalysis" alt="" />
         <p>
           After browsing through NovoEd’s platform, we found a bunch of stuff
@@ -97,7 +97,7 @@
         coffee, we came up with the first iteration of the Dashboard.
       </p>
       <div class="subSection">
-        <h3>Dashboard – The initial design</h3>
+        <h4>Dashboard – The initial design</h4>
         <vue-img :src="initialDashboard" alt="" />
         <p>
           With the dashboard design, we aimed to provide a personalized
@@ -136,7 +136,7 @@
         </ol>
       </div>
       <div class="subSection">
-        <h3>Dashboard – The updated/final design</h3>
+        <h4>Dashboard – The updated/final design</h4>
         <vue-img :src="finalDashboard" alt="" />
         <p>
           This is the updated dashboard with a cleaner look along with
@@ -155,7 +155,7 @@
       </div>
 
       <div class="subSection">
-        <h3>Program overview</h3>
+        <h4>Program overview</h4>
         <vue-img :src="programOverview1" alt="" />
         <vue-img :src="programOverview2" alt="" />
         <p>
@@ -165,7 +165,7 @@
           structure for this screen and this is what we ended up with. The
           screen is responsible for giving the user a complete overview about
           their progress in a current program. Each program is divided into
-          multiple segments which are further divided into subsections.
+          multiple segments which are further divided into subSections.
           <strong>Actions</strong> are basically the tasks that you need to
           perform within a segment in order to complete that segment.
         </p>
@@ -196,7 +196,7 @@
         </p>
       </div>
       <div class="subSection">
-        <h3>Submissions gallery</h3>
+        <h4>Submissions gallery</h4>
         <vue-img :src="submissionGallery" alt="" />
         <p>
           A submissions gallery is something that is
@@ -215,7 +215,7 @@
       </div>
 
       <div class="subSection">
-        <h3>Discussions wall</h3>
+        <h4>Discussions wall</h4>
         <vue-img :src="discussionWall" alt="" />
         <p>
           The concept behind designing a discussion wall was to give people a
@@ -246,7 +246,7 @@
       </p>
 
       <div class="subesction">
-        <h3>User profile</h3>
+        <h4>User profile</h4>
         <vue-img :src="userProfile" alt="" />
         <p>
           User profile information is something that pops up when a user clicks
@@ -259,7 +259,7 @@
         </p>
       </div>
       <div class="subesction">
-        <h3>Login/Registration screens</h3>
+        <h4>Login/Registration screens</h4>
         <vue-img :src="loginRegistration" alt="" />
         <p>
           For the landing screen, we decided to go for an abstract look that
@@ -285,7 +285,7 @@
         outcome.
       </p>
       <div class="subesction">
-        <h3>What could have been done differently?</h3>
+        <h4>What could have been done differently?</h4>
         <p>
           Currently there is no direct messaging feature implemented on the
           learning platform due to time constraints. I think it could have been
@@ -300,7 +300,6 @@
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
-
 import * as competitorAnalysis from "@/assets/UX/mediaHRPlatform/competitorAnalysis.png";
 import * as discussionWall from "@/assets/UX/mediaHRPlatform/discussionWall.png";
 import * as finalDashboard from "@/assets/UX/mediaHRPlatform/finalDashboard.png";
@@ -312,12 +311,9 @@ import * as programOverview2 from "@/assets/UX/mediaHRPlatform/programOverview2.
 import * as subLessons from "@/assets/UX/mediaHRPlatform/subLessons.png";
 import * as submissionGallery from "@/assets/UX/mediaHRPlatform/submissionGallery.png";
 import * as userProfile from "@/assets/UX/mediaHRPlatform/userProfile.png";
-
 export default {
   name: "MediaHRPlatform",
-  components: {
-    vueImg
-  },
+  components: { vueImg },
   data() {
     return {
       competitorAnalysis,

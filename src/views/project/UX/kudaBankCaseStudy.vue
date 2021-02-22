@@ -82,19 +82,19 @@ https://medium.com/@DEJIDOPE/case-study-kudabank-website-redesign-pixelup-assess
       </p>
     </section>
     <section id="Visual Style">
-      <h2>Visual Style</h2>
+      <h3>Visual Style</h3>
       <div class="subSection">
-        <h3>Color</h3>
+        <h4>Color</h4>
         <vue-img :src="color" alt="" />
       </div>
       <div class="subSection">
-        <h3>Font</h3>
+        <h4>Font</h4>
         <p>
           Muli
         </p>
       </div>
       <div class="subSection">
-        <h3>Tools Used</h3>
+        <h4>Tools Used</h4>
         <ul>
           <li>Pen and paper</li>
           <li>figma</li>
@@ -105,7 +105,6 @@ https://medium.com/@DEJIDOPE/case-study-kudabank-website-redesign-pixelup-assess
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
-
 import * as color from "@/assets/UX/kudaBank/color.png";
 import * as original from "@/assets/UX/kudaBank/original.png";
 import * as redesign from "@/assets/UX/kudaBank/redesign.png";
@@ -118,9 +117,7 @@ import * as sketch5 from "@/assets/UX/kudaBank/sketch5.png";
 import * as sketch6 from "@/assets/UX/kudaBank/sketch6.png";
 export default {
   name: "KudaBankCaseStudy",
-  components: {
-    vueImg
-  },
+  components: { vueImg },
   data() {
     return {
       color,

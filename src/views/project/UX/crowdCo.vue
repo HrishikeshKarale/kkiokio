@@ -29,7 +29,7 @@
       </p>
     </section>
     <section id="Research and user empathy">
-      <h2>Research and user empathy</h2>
+      <h3>Research and user empathy</h3>
       <p>
         Crowdfunding means relying on the contributions of many to fund charity,
         social or business projects. It offers an alternative to traditional
@@ -43,7 +43,7 @@
         what were the features that they had on offer.
       </p>
       <div class="subSection">
-        <h3>Competitor Analysis</h3>
+        <h4>Competitor Analysis</h4>
         <p>
           After some browsing and online research, I came to know that there are
           currently two players in the market who are dominating the reward
@@ -62,7 +62,7 @@
         </p>
       </div>
       <div class="subSection">
-        <h3>App reviews</h3>
+        <h4>App reviews</h4>
         <p>
           After doing the Competitor analysis, I needed more research data on
           these current market players. So I went on Play Store & App Store to
@@ -110,7 +110,7 @@
         goals, and observed behavior patterns of my target audience.
       </p>
       <div class="subSection">
-        <h3>Persona</h3>
+        <h4>Persona</h4>
         <p>
           I decided to create two investor personas. Each persona varied in
           crowdfunding investing experience and as a result they required very
@@ -131,7 +131,7 @@
         </p>
       </div>
       <div class="subSection">
-        <h3>User Stories</h3>
+        <h4>User Stories</h4>
         <p>
           In order to relate to the life of my personas, I ended up writing user
           stories as they would allow me to articulate the user’s perspective
@@ -141,7 +141,7 @@
       </div>
     </section>
     <section id="Ideation and Prototyping">
-      <h2>Ideation and Prototyping</h2>
+      <h3>Ideation and Prototyping</h3>
       <p>
         After defining the needs of my users and documenting what exactly was
         needed to build this product, the next step was to pick up my tools. I
@@ -150,7 +150,7 @@
         provide feedback of what could be done better.
       </p>
       <div class="subSection">
-        <h3>Paper Wireframes</h3>
+        <h4>Paper Wireframes</h4>
         <vue-img :src="sketch" alt="" />
         <p>
           Keeping the information of both user personas in mind I decided that
@@ -171,7 +171,7 @@
         </p>
       </div>
       <div class="subSection">
-        <h3>High fidelity design</h3>
+        <h4>High fidelity design</h4>
         <p>
           Usually after paper prototyping I hop on to a digital wireframing tool
           in order to create some low fidelity wireframes. Doing this gives me a
@@ -184,7 +184,7 @@
       </div>
     </section>
     <section id="Development & Testing">
-      <h2>Development & Testing</h2>
+      <h3>Development & Testing</h3>
       <p>
         I spent almost 2 weeks to do all the research and designing and this
         meant that I was left with only 1 week to code and set up a basic
@@ -218,7 +218,7 @@
       </p>
     </section>
     <section id="Conclusion & Lessons learned">
-      <h2>Conclusion & Lessons learned</h2>
+      <h3>Conclusion & Lessons learned</h3>
       <p>
         To be honest I never thought that I would be able to complete both
         design and development for this product concept in 3 weeks. I am glad
@@ -255,7 +255,6 @@
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
-
 import * as headerImage from "@/assets/UX/crowdCo/headerImage.jpg";
 import * as competitor from "@/assets/UX/crowdCo/competitor.jpg";
 import * as reviews from "@/assets/UX/crowdCo/reviews.jpg";
@@ -267,12 +266,9 @@ import * as sketch2 from "@/assets/UX/crowdCo/sketch2.jpg";
 import * as hifi from "@/assets/UX/crowdCo/hifi.png";
 import * as app from "@/assets/UX/crowdCo/app.png";
 import * as conclusion from "@/assets/UX/crowdCo/conclusion.png";
-
 export default {
   name: "CrowdCo",
-  components: {
-    vueImg
-  },
+  components: { vueImg },
   data() {
     return {
       headerImage,

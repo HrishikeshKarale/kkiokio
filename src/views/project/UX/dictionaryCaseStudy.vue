@@ -37,7 +37,7 @@ https://uxplanet.org/english-dictionary-app-redesign-a-ui-ux-case-study-851fbdce
         Let us now dive straight into the app mockups and try to figure out
         what’s wrong with the current version and what has been done to fix it:
       </p>
-      <div class="subsection">
+      <div class="subSection">
         <h4>Home screen</h4>
         <vue-img :src="homeScreen" alt="" />
         <p>
@@ -71,7 +71,7 @@ https://uxplanet.org/english-dictionary-app-redesign-a-ui-ux-case-study-851fbdce
           required.
         </p>
       </div>
-      <div class="subsection">
+      <div class="subSection">
         <h4>Search screen</h4>
         <vue-img :src="searchScreen" alt="" />
         <p>
@@ -102,7 +102,7 @@ https://uxplanet.org/english-dictionary-app-redesign-a-ui-ux-case-study-851fbdce
           button.
         </p>
       </div>
-      <div class="subsection">
+      <div class="subSection">
         <h4>Notes screen</h4>
         <vue-img :src="noteScreen" alt="" />
         <p>
@@ -162,9 +162,7 @@ import * as searchScreenRe from "@/assets/UX/dictionary/searchScreenRe.png";
 import * as colorTypeface from "@/assets/UX/dictionary/colorTypeface.png";
 export default {
   name: "DictionaryCaseStudy",
-  components: {
-    vueImg
-  },
+  components: { vueImg },
   data() {
     return {
       dictionaryAppRe,

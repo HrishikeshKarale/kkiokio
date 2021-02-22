@@ -41,446 +41,443 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project",
-    // name: "project",
+    path: "/projects",
+    name: "project",
     component: () =>
       import(/* webpackChunkName: "project" */ "@/views/project.vue"),
     meta: {
       transitionName: "fade",
       requiresAuth: false //true
-    },
-    children: [
-      {
-        path: "",
-        name: "project",
-        component: () =>
-          import(/* webpackChunkName: "project" */ "@/views/project/index.vue"),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/drumKit",
-        name: "drumKit",
-        component: () =>
-          import(
-            /* webpackChunkName: "drumKit" */ "@/views/project/js/drumKit.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/analogClock",
-        name: "analogClock",
-        component: () =>
-          import(
-            /* webpackChunkName: "analogClock" */ "@/views/project/js/analogClock.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/arrayCardio",
-        name: "arrayCardio",
-        component: () =>
-          import(
-            /* webpackChunkName: "arrayCardio" */ "@/views/project/js/arrayCardio.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/imageGalery",
-        name: "imageGalery",
-        component: () =>
-          import(
-            /* webpackChunkName: "imageGalery" */ "@/views/project/js/imageGalery.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/fetchAPI",
-        name: "fetchApi",
-        component: () =>
-          import(
-            /* webpackChunkName: "fetchApi" */ "@/views/project/js/fetchApi.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/canvasExample",
-        name: "canvasExample",
-        component: () =>
-          import(
-            /* webpackChunkName: "canvasExample" */ "@/views/project/js/canvasExample.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/checkboxChallange",
-        name: "checkboxChallange",
-        component: () =>
-          import(
-            /* webpackChunkName: "checkboxChallange" */ "@/views/project/js/checkboxChallange.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/konamiCode",
-        name: "konamiCode",
-        component: () =>
-          import(
-            /* webpackChunkName: "konamiCode" */ "@/views/project/js/konamiCode.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/scrollIn",
-        name: "scrollIn",
-        component: () =>
-          import(
-            /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIndicator/index.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/speechRecognition",
-        name: "speechRecognition",
-        component: () =>
-          import(
-            /* webpackChunkName: "speechRecognition" */ "@/views/project/js/speechRecognition.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/linkFollower",
-        name: "linkFollower",
-        component: () =>
-          import(
-            /* webpackChunkName: "linkFollower" */ "@/views/project/js/linkFollower.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/geoLocation",
-        name: "geoLocation",
-        component: () =>
-          import(
-            /* webpackChunkName: "geoLocation" */ "@/views/project/js/geoLocation.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/userMedia",
-        name: "userMedia",
-        component: () =>
-          import(
-            /* webpackChunkName: "userMedia" */ "@/views/project/js/userMedia.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/followerAlongNav",
-        name: "FollowNav",
-        component: () =>
-          import(
-            /* webpackChunkName: "FollowNav" */ "@/views/project/js/followerAlongNav/index.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/clickDrag",
-        name: "clickDrag",
-        component: () =>
-          import(
-            /* webpackChunkName: "clickDrag" */ "@/views/project/js/clickDrag.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "js/videoControl",
-        name: "videoControl",
-        component: () =>
-          import(
-            /* webpackChunkName: "videoControl" */ "@/views/project/js/videoControl.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "WebUX/packStation",
-        name: "packStation",
-        component: () =>
-          import(
-            /* webpackChunkName: "packStation" */ "@/views/project/webUX/packStation.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "WebUX/RSVPApp",
-        name: "rsvpApp",
-        component: () =>
-          import(
-            /* webpackChunkName: "about" */ "@/views/project/webUX/rsvpApp.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "CSS/pulseAnimation",
-        name: "pulseAnimation",
-        component: () =>
-          import(
-            /* webpackChunkName: "pulseAnimation" */ "@/views/project/css/pulseAnimation.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "CSS/cardScroller",
-        name: "cardSlider",
-        component: () =>
-          import(
-            /* webpackChunkName: "cardScroller" */ "@/views/project/css/cardSlider/index.vue"
-          ),
-        meta: { transitionName: "fade", requiresAuth: false }
-      },
-      {
-        path: "CSS/infiniteScroll",
-        name: "infiniteScroll",
-        component: () =>
-          import(
-            /* webpackChunkName: "infiniteScroll" */ "@/views/project/css/infiniteScroll.vue"
-          ),
-        meta: { transitionName: "fade", requiresAuth: false }
-      },
-      {
-        path: "mobileUI/appSignUp",
-        name: "appSignUp",
-        component: () =>
-          import(
-            /* webpackChunkName: "appSignUp" */ "@/views/project/mobileUI/appSignUp.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "mobileUI/medCo",
-        name: "medCo",
-        component: () =>
-          import(
-            /* webpackChunkName: "medCo" */ "@/views/project/mobileUI/medCo.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "mobileUI/fitnessFriend",
-        name: "fitnessFriend",
-        component: () =>
-          import(
-            /* webpackChunkName: "fitnessFriend" */ "@/views/project/mobileUI/fitnessFriend.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "mobileUI/culinarian",
-        name: "culinarian",
-        component: () =>
-          import(
-            /* webpackChunkName: "culinarian" */ "@/views/project/mobileUI/culinarian.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "mobileUI/PlantIt",
-        name: "plantIt",
-        component: () =>
-          import(
-            /* webpackChunkName: "plantIt" */ "@/views/project/mobileUI/plantIt.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/DictionaryCaseStudy",
-        name: "dictionaryCaseStudy",
-        component: () =>
-          import(
-            /* webpackChunkName: "dictionaryCaseStudy" */ "@/views/project/UX/dictionaryCaseStudy.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/Rupay",
-        name: "rupay",
-        component: () =>
-          import(
-            /* webpackChunkName: "rupay" */ "@/views/project/UX/rupay.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/KudaBankCaseStudy",
-        name: "kudaBankCaseStudy",
-        component: () =>
-          import(
-            /* webpackChunkName: "kudaBankCaseStudy" */ "@/views/project/UX/kudaBankCaseStudy.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/SkinSafe",
-        name: "skinSafe",
-        component: () =>
-          import(
-            /* webpackChunkName: "skinSafe" */ "@/views/project/UX/skinSafe.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/mapsCaseStudy",
-        name: "mapsCaseStudy",
-        component: () =>
-          import(
-            /* webpackChunkName: "mapsCaseStudy" */ "@/views/project/UX/mapsCaseStudy.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/VenmoCaseStudy",
-        name: "venmoCaseStudy",
-        component: () =>
-          import(
-            /* webpackChunkName: "venmoCaseStudy" */ "@/views/project/UX/venmoCaseStudy.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/CrowdCo",
-        name: "crowdCo",
-        component: () =>
-          import(
-            /* webpackChunkName: "crowdCo" */ "@/views/project/UX/crowdCo.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/TinyThoughts",
-        name: "tinyThoughts",
-        component: () =>
-          import(
-            /* webpackChunkName: "rupay" */ "@/views/project/UX/tinyThoughts.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      },
-      {
-        path: "UserExperience/HRMediaPlatform",
-        name: "mediaHRPlatform",
-        component: () =>
-          import(
-            /* webpackChunkName: "mediaHRPlatform" */ "@/views/project/UX/mediaHRPlatform.vue"
-          ),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false
-        }
-      }
-    ]
+    }
+  },
+  {
+    path: "/project/js/drumKit",
+    name: "drumKit",
+    component: () =>
+      import(
+        /* webpackChunkName: "drumKit" */ "@/views/project/js/drumKit.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/analogClock",
+    name: "analogClock",
+    component: () =>
+      import(
+        /* webpackChunkName: "analogClock" */ "@/views/project/js/analogClock.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/arrayCardio",
+    name: "arrayCardio",
+    component: () =>
+      import(
+        /* webpackChunkName: "arrayCardio" */ "@/views/project/js/arrayCardio.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/imageGalery",
+    name: "imageGalery",
+    component: () =>
+      import(
+        /* webpackChunkName: "imageGalery" */ "@/views/project/js/imageGalery.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/fetchAPI",
+    name: "fetchApi",
+    component: () =>
+      import(
+        /* webpackChunkName: "fetchApi" */ "@/views/project/js/fetchApi.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/canvasExample",
+    name: "canvasExample",
+    component: () =>
+      import(
+        /* webpackChunkName: "canvasExample" */ "@/views/project/js/canvasExample.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/checkboxChallange",
+    name: "checkboxChallange",
+    component: () =>
+      import(
+        /* webpackChunkName: "checkboxChallange" */ "@/views/project/js/checkboxChallange.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/konamiCode",
+    name: "konamiCode",
+    component: () =>
+      import(
+        /* webpackChunkName: "konamiCode" */ "@/views/project/js/konamiCode.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/scrollIn",
+    name: "scrollIn",
+    component: () =>
+      import(
+        /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIndicator/index.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/speechRecognition",
+    name: "speechRecognition",
+    component: () =>
+      import(
+        /* webpackChunkName: "speechRecognition" */ "@/views/project/js/speechRecognition.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/linkFollower",
+    name: "linkFollower",
+    component: () =>
+      import(
+        /* webpackChunkName: "linkFollower" */ "@/views/project/js/linkFollower.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/geoLocation",
+    name: "geoLocation",
+    component: () =>
+      import(
+        /* webpackChunkName: "geoLocation" */ "@/views/project/js/geoLocation.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/userMedia",
+    name: "userMedia",
+    component: () =>
+      import(
+        /* webpackChunkName: "userMedia" */ "@/views/project/js/userMedia.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/followerAlongNav",
+    name: "FollowNav",
+    component: () =>
+      import(
+        /* webpackChunkName: "FollowNav" */ "@/views/project/js/followerAlongNav/index.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/clickDrag",
+    name: "clickDrag",
+    component: () =>
+      import(
+        /* webpackChunkName: "clickDrag" */ "@/views/project/js/clickDrag.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/js/videoControl",
+    name: "videoControl",
+    component: () =>
+      import(
+        /* webpackChunkName: "videoControl" */ "@/views/project/js/videoControl.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/WebUX/packStation",
+    name: "packStation",
+    component: () =>
+      import(
+        /* webpackChunkName: "packStation" */ "@/views/project/webUX/packStation.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/WebUX/RSVPApp",
+    name: "rsvpApp",
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ "@/views/project/webUX/rsvpApp.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/CSS/pulseAnimation",
+    name: "pulseAnimation",
+    component: () =>
+      import(
+        /* webpackChunkName: "pulseAnimation" */ "@/views/project/css/pulseAnimation.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/CSS/cardScroller",
+    name: "cardSlider",
+    component: () =>
+      import(
+        /* webpackChunkName: "cardScroller" */ "@/views/project/css/cardSlider/index.vue"
+      ),
+    meta: { transitionName: "fade", requiresAuth: false }
+  },
+  {
+    path: "/project/CSS/infiniteScroll",
+    name: "infiniteScroll",
+    component: () =>
+      import(
+        /* webpackChunkName: "infiniteScroll" */ "@/views/project/css/infiniteScroll.vue"
+      ),
+    meta: { transitionName: "fade", requiresAuth: false }
+  },
+  {
+    path: "/project/mobileUI/appSignUp",
+    name: "appSignUp",
+    component: () =>
+      import(
+        /* webpackChunkName: "appSignUp" */ "@/views/project/mobileUI/appSignUp.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/mobileUI/medCo",
+    name: "medCo",
+    component: () =>
+      import(
+        /* webpackChunkName: "medCo" */ "@/views/project/mobileUI/medCo.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/mobileUI/fitnessFriend",
+    name: "fitnessFriend",
+    component: () =>
+      import(
+        /* webpackChunkName: "fitnessFriend" */ "@/views/project/mobileUI/fitnessFriend.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/mobileUI/culinarian",
+    name: "culinarian",
+    component: () =>
+      import(
+        /* webpackChunkName: "culinarian" */ "@/views/project/mobileUI/culinarian.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/mobileUI/PlantIt",
+    name: "plantIt",
+    component: () =>
+      import(
+        /* webpackChunkName: "plantIt" */ "@/views/project/mobileUI/plantIt.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/DictionaryCaseStudy",
+    name: "dictionaryCaseStudy",
+    component: () =>
+      import(
+        /* webpackChunkName: "dictionaryCaseStudy" */ "@/views/project/UX/dictionaryCaseStudy.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/Rupay",
+    name: "rupay",
+    component: () =>
+      import(/* webpackChunkName: "rupay" */ "@/views/project/UX/rupay.vue"),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/KudaBankCaseStudy",
+    name: "kudaBankCaseStudy",
+    component: () =>
+      import(
+        /* webpackChunkName: "kudaBankCaseStudy" */ "@/views/project/UX/kudaBankCaseStudy.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/SkinSafe",
+    name: "skinSafe",
+    component: () =>
+      import(
+        /* webpackChunkName: "skinSafe" */ "@/views/project/UX/skinSafe.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/mapsCaseStudy",
+    name: "mapsCaseStudy",
+    component: () =>
+      import(
+        /* webpackChunkName: "mapsCaseStudy" */ "@/views/project/UX/mapsCaseStudy.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/VenmoCaseStudy",
+    name: "venmoCaseStudy",
+    component: () =>
+      import(
+        /* webpackChunkName: "venmoCaseStudy" */ "@/views/project/UX/venmoCaseStudy.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/CrowdCo",
+    name: "crowdCo",
+    component: () =>
+      import(
+        /* webpackChunkName: "crowdCo" */ "@/views/project/UX/crowdCo.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/TinyThoughts",
+    name: "tinyThoughts",
+    component: () =>
+      import(
+        /* webpackChunkName: "rupay" */ "@/views/project/UX/tinyThoughts.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/project/UserExperience/HRMediaPlatform",
+    name: "mediaHRPlatform",
+    component: () =>
+      import(
+        /* webpackChunkName: "mediaHRPlatform" */ "@/views/project/UX/mediaHRPlatform.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/TermsOfService",
+    name: "termsOfService",
+    component: () =>
+      import(
+        /* webpackChunkName: "termsOfService" */ "@/views/termsOfService.vue"
+      ),
+    meta: { transitionName: "fade", requiresAuth: false }
   },
   {
     path: "/privacyPolicy",
     name: "privacyPolicy",
     component: () =>
-      import(/* webpackChunkName: "login" */ "@/views/privacyPolicy.vue"),
+      import(
+        /* webpackChunkName: "privacyPolicy" */ "@/views/privacyPolicy.vue"
+      ),
     meta: { transitionName: "fade", requiresAuth: false }
   },
   {

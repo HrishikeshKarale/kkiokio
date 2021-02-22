@@ -4,7 +4,7 @@
     <h2>tinyThoughts</h2>
     <vue-img :src="headerImage" alt="" />
     <section id="About">
-      <h2>About the project</h2>
+      <h3>About the project</h3>
       <p>
         <strong>Overview:</strong>
         <a href="https://tinythoughts.me/" target="_blank" rel="noopener">
@@ -59,7 +59,7 @@
         of the associated issues –
       </p>
       <div class="subSection">
-        <h3>Use of navigation drawer</h3>
+        <h4>Use of navigation drawer</h4>
         <vue-img :src="navDrawer" alt="" />
         <p>
           As you can see, the navigation drawer is used as go-to navigation for
@@ -83,7 +83,7 @@
         </p>
       </div>
       <div class="subSection">
-        <h3>Image upload & journal editing</h3>
+        <h4>Image upload & journal editing</h4>
         <vue-img :src="editJournal" alt="" />
         <p>
           While uploading an image I thought that I could upload multiple times.
@@ -104,7 +104,7 @@
         </p>
       </div>
       <div class="subSection">
-        <h3>App settings & hashtags</h3>
+        <h4>App settings & hashtags</h4>
         <vue-img :src="appSettings" alt="" />
         <p>
           As discussed previously, options like logout and contact support can
@@ -153,11 +153,11 @@
         as the base for my redesign.
       </p>
       <div class="subSection">
-        <h3>User stories</h3>
+        <h4>User stories</h4>
         <vue-img :src="userStories" alt="" />
       </div>
       <div class="subSection">
-        <h3>Information Architecture</h3>
+        <h4>Information Architecture</h4>
         <vue-img :src="IA" alt="" />
         <p>
           The app also needed a restructured information architecture in order
@@ -186,9 +186,9 @@
       </div>
     </section>
     <section id="Prototype">
-      <h2>Prototype</h2>
+      <h3>Prototype</h3>
       <div class="subSection">
-        <h3>Paper Wireframes</h3>
+        <h4>Paper Wireframes</h4>
         <p>
           I usually begin implementing by ideas on pen and paper rather than
           directly going on to the screen. I feel like paper wireframes is the
@@ -209,7 +209,7 @@
       </div>
     </section>
     <section id="Conclusion">
-      <h3>Conclusion &amp; Lessons learned</h3>
+      <h4>Conclusion &amp; Lessons learned</h4>
       <p>
         I shared a working prototype of the redesign with the
         <a href="http://jessis.cool/" target="_blank" rel="noopener">creator</a>
@@ -230,7 +230,6 @@
 </template>
 <script>
 import vueImg from "@/components/vueImg.vue";
-
 import * as appSettings from "@/assets/UX/tinyThoughts/appSettings.png";
 import * as design from "@/assets/UX/tinyThoughts/design.png";
 import * as editJournal from "@/assets/UX/tinyThoughts/editJournal.png";
@@ -241,12 +240,9 @@ import * as navDrawer from "@/assets/UX/tinyThoughts/navDrawer.png";
 import * as sketch from "@/assets/UX/tinyThoughts/sketch.jpg";
 import * as sketch2 from "@/assets/UX/tinyThoughts/sketch2.jpg";
 import * as userStories from "@/assets/UX/tinyThoughts/userStories.png";
-
 export default {
   name: "TinyThoughts",
-  components: {
-    vueImg
-  },
+  components: { vueImg },
   data() {
     return {
       appSettings,

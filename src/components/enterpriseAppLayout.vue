@@ -44,10 +44,10 @@
           </template>
         </div>
       </transition>
+      <template v-if="$slots['footer']">
+        <slot name="footer" />
+      </template>
     </div>
-    <template v-if="$slots['footer']">
-      <slot name="footer" />
-    </template>
   </div>
 </template>
 
@@ -227,16 +227,6 @@ export default {
         &.body {
           & > div.content {
             min-width: 480px;
-            & > .moto {
-              padding: 0;
-
-              & > img {
-                display: none;
-              }
-              & > q {
-                padding: @spaceSm @spaceMd;
-              }
-            }
           }
         }
       }
