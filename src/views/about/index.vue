@@ -158,6 +158,9 @@ article {
               border-radius: @borderRadiusLg;
               padding: @spaceLg;
               margin: @spaceMd;
+              border-radius: @borderRadiusLg;
+              border: 1px dashed @accentColor;
+
 
               & > .step {
                 border-radius: 50%;

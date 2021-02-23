@@ -947,7 +947,7 @@ article {
   justify-content: center;
   align-content: center;
   margin: @spaceXl 0;
-  height: fit-content;
+
 
   &>header,
   &>h2 {
@@ -991,11 +991,11 @@ article {
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    // min-height: 100vh;
+    min-height: 100vh;
 
-    // &:first-child {
-    //   min-height: @body;
-    // }
+    &:first-child {
+      min-height: @body;
+    }
 
     &>h3::before {
       content: "#";

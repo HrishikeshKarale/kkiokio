@@ -47,12 +47,12 @@ export default {
     &:last-child {
       img {
         margin: @spaceMd @spaceLg;
-        border-radius: @spaceMd;
         padding: @spaceMd;
         max-width: 16vw;
         min-width: 320px;
         height: auto;
-        .boxShadow(@two);
+        border-radius: @borderRadiusLg;
+        border: 1px dashed @accentColor;
       }
     }
   }
