@@ -7,29 +7,39 @@
       <h3>About the project</h3>
       <p>
         <strong>Overview:</strong>
+        Based on the
         <a href="https://tinythoughts.me/" target="_blank" rel="noopener">
           TinyThoughts
         </a>
-        is a one sentence a day journaling app available for both Android and
-        iOS. Even though there are many journaling apps available out there,
-        what makes tinythoughts different from them is that it lets you write a
-        summary of your day in 280 words or less. It also gives you daily
-        prompts and reminders to help you write better. This redesign was part
-        of my personal project with the aim of enhancing the user experience as
-        well as increasing app engagement.
-      </p>
-      <p><strong>Duration:</strong>One Week</p>
-      <p><strong>Role:</strong> Product Designer</p>
-      <p>
-        <strong>Skills:</strong>User experience design, User interface design,
-        Wireframing, Information Architecture
+        Web-app by
+        <a href="http://jessis.cool/">Jess</a>, This app is a one sentence a day
+        journaling app available for both Android and iOS. Even though there are
+        many journaling apps available out there, what makes tinythoughts
+        different from them is that it lets you write a summary of your day in
+        280 words or less. It also gives you daily prompts and reminders to help
+        you write better. This redesign was part of my personal project with the
+        aim of enhancing the user experience as well as increasing app
+        engagement.
       </p>
       <p>
-        <strong>Solution:</strong>I came up with a redesign concept for the
-        Android app with the motive of enhancing the overall experience so that
-        the app is more engaging. I wanted to get rid of the unnecessary clutter
-        within the app and make it more usable for people who use it as their go
-        to journaling app.
+        <strong>Duration:</strong>
+        1 Week
+      </p>
+      <p>
+        <strong>Role:</strong>
+        UX Designer
+      </p>
+      <p>
+        <strong>Skills:</strong>
+        Competitor Analysis, Interface design, User Stories,Wireframing,
+        Information Architecture
+      </p>
+      <p>
+        <strong>Solution:</strong>
+        I came up with a redesign concept for the Android app with the motive of
+        enhancing the overall experience so that the app is more engaging. I
+        wanted to get rid of the unnecessary clutter within the app and make it
+        more usable for people who use it as their go to journaling app.
       </p>
     </section>
     <section id="Research">
@@ -95,12 +105,12 @@
         </p>
         <p>
           One really awesome feature that I like is the use of
-          <b>sentiment analysis</b> while writing the journal. The app can
-          depict your mood while you are typing and comes up with these unique
-          hashtags e.g. #positive-mood. This feature is well implemented and I
-          really like it. Currently you can see your mood over a period of time
-          only in the web application, so I took some cues from there and tried
-          to implement in the redesign.
+          <b>sentiment analysis</b>
+          while writing the journal. The app can depict your mood while you are
+          typing and comes up with these unique hashtags e.g. #positive-mood.
+          This feature is well implemented and I really like it. Currently you
+          can see your mood over a period of time only in the web application,
+          so I took some cues from there and tried to implement in the redesign.
         </p>
       </div>
       <div class="subSection">
@@ -117,7 +127,8 @@
         <p>
           I went through most of the comments on ProductHunt and also saw some
           reviews on Google Play Store. I recognized the following
-          <b>pain points</b> that came out of that analysis:
+          <b>pain points</b>
+          that came out of that analysis:
         </p>
         <ol>
           <li>
@@ -165,13 +176,17 @@
           web application in order to see how its navigation differs from the
           mobile app navigation.
         </p>
-        <p><b>TimeLine:</b>Shows all your journal entries</p>
         <p>
-          <b>Gallery:</b>A gallery for all the uploaded images (Premium feature)
+          <b>TimeLine:</b>
+          Shows all your journal entries
         </p>
         <p>
-          <b>Mood:</b>Shows mood trends over the selected time period (Premium
-          feature)
+          <b>Gallery:</b>
+          A gallery for all the uploaded images (Premium feature)
+        </p>
+        <p>
+          <b>Mood:</b>
+          Shows mood trends over the selected time period (Premium feature)
         </p>
         <p>
           These had to be included in the app as well in order to make a
@@ -211,17 +226,18 @@
     <section id="Conclusion">
       <h4>Conclusion &amp; Lessons learned</h4>
       <p>
-        I shared a working prototype of the redesign with the
-        <a href="http://jessis.cool/" target="_blank" rel="noopener">creator</a>
-        of the app. She appreciated the fact that I took time to clean up the
-        current design and made it more usable. I came to know that this app was
-        started as her side project and right now is used by many people as
-        their go to daily journaling app. She is looking to bring new updates in
-        the future and I hope this proved to be valuable for her
+        I shared a working prototype of the redesign with my fellow UX
+        Professionals. They appreciated the fact that I took time to clean up
+        the current design and made it more usable. I came to know that this app
+        was started as a side project by the original Jess (Original Creator)
+        and right now is used by many people as their go to daily journaling
+        app. While Jess is looking to bring new updates in the future I will
+        also be revisiting the app in the near future to look into the
+        functionality that could be added to this platform.
       </p>
       <p>
         Who knows these redesigned bits might end up getting implemented in the
-        future versions of the app! On the other hand I gained a better
+        a version ofmy own app! On the other hand I gained a better
         understanding about Google’s Material Guidelines and how to use it in
         order to design more consistent interfaces.
       </p>

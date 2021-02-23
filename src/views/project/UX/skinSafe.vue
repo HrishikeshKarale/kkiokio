@@ -1,7 +1,7 @@
 // https://abhishekkaushal.com/portfolio-showcase/people-matters-cohort/
 <template>
   <article class="skinSafe">
-    <h2>SkinSafe</h2>
+    <h2>Skin Safe</h2>
     <vue-img :src="headerImage" alt="" />
     <section id="About">
       <h3>About the project</h3>
@@ -13,39 +13,48 @@
         they are from the top most common allergy causing ingredients identified
         by Mayo Clinic.
         <br />
-        I was given the opportunity to work on the redesign of their official
-        iOS application. The redesign was planned to take place in a couple of
-        phases and this case study covers only the first one.
-      </p>
-      <p><strong>Duration:</strong>Two Weeks</p>
-      <p><strong>Role:</strong>UI/UX design</p>
-      <p>
-        <strong>Objective</strong>To develop version 2.0 of SkinSAFE iOS app
-        that provides greater engagement through better usability and
-        personalisation.
+        I took the liberty of work on the redesign of their platform. The
+        redesign was planned to take place in a couple of phases and this case
+        study covers the first one.
       </p>
       <p>
-        <strong>Target audience:</strong> The target users were between 18-44
-        and mostly in USA. Around 75% of their user base are women.
+        <strong>Objective</strong>
+        To develop version 2.0 of SkinSAFE iOS app that provides greater
+        engagement through better usability and personalisation.
       </p>
       <p>
-        <strong>Skills:</strong>User research, User experience design, User
-        interface design, Graphic design, Wireframing
+        <strong>Target audience:</strong>
+        The target users were between 18-44 and mostly in USA. Around 75% of
+        their user base are women.
       </p>
       <p>
-        <strong>Solution:</strong>My aim was to provide a more usable and
-        desirable experience for the app so that it could be more valuable for
-        both the users as well as the company. This phase revolved around a
-        redesigned experience for the home, product description, similar
-        products, favorite skincare products, product categories and product
-        scan flows.
+        <strong>Skills:</strong>
+        User research, User experience design, User interface design, Graphic
+        design, Wireframing
+      </p>
+      <p>
+        <strong>Role:</strong>
+        UI/UX design
+      </p>
+      <p>
+        <strong>Duration:</strong>
+        2 Weeks
+      </p>
+      <p>
+        <strong>Solution:</strong>
+        My aim was to provide a more usable and desirable experience for the app
+        so that it could be more valuable for both the users as well as the
+        company. This phase revolved around a redesigned experience for the
+        home, product description, similar products, favorite skincare products,
+        product categories and product scan flows.
       </p>
     </section>
     <section id="Research">
       <h3>Research</h3>
       <p>
-        I was in constant touch with the CEO of the company during the whole
-        redesign and he helped me gain a lot of insights about the how the
+        I was in constant touch with a couple of my instagram friends who are
+        social media influencers and promote skincare products during the whole
+        redesign and they helped me gain a lot of insights about the how the
         current product was positioned in the market along with its core
         functionality.
       </p>
@@ -187,7 +196,6 @@
       </p>
       <div class="subSection">
         <h4>Importance of Usability testing</h4>
-        <vue-img :src="usability" alt="" />
         <p>
           Usability testing is the practice of testing how easy a design is to
           use on a group of representative users. It usually involves observing
@@ -199,6 +207,7 @@
           going to use your final product and if they are not satisfied then
           what is the point of designing it in the first place!
         </p>
+        <vue-img :src="usability" alt="" />
       </div>
     </section>
   </article>

@@ -451,11 +451,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/UserExperience/HRMediaPlatform",
-    name: "mediaHRPlatform",
+    path: "/project/UserExperience/HRPlatform",
+    name: "HRPlatform",
     component: () =>
       import(
-        /* webpackChunkName: "mediaHRPlatform" */ "@/views/project/UX/mediaHRPlatform.vue"
+        /* webpackChunkName: "mediaHRPlatform" */ "@/views/project/UX/HRPlatform.vue"
       ),
     meta: {
       transitionName: "fade",

@@ -43,14 +43,15 @@ export default {
   color: @textColor;
   background-color: @backgroundColor;
   padding: @spaceMd @spaceLg;
-  border-radius: @borderRadius;
+  border-radius: @borderRadiusLg;
   margin: @spaceMd @spaceLg;
   min-width: 240px;
   max-width: 24vw;
-  .boxShadow(none);
+  border: 1px dashed @primaryColor;
 
   &:hover {
     .boxShadow(@three, @accentColor);
+    border: 1px dashed transparent;
     & > a > h3 {
       color: @accentColor;
     }

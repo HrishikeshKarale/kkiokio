@@ -947,28 +947,42 @@ article {
   justify-content: center;
   align-content: center;
   margin: @spaceXl 0;
+  height: fit-content;
 
   &>header,
   &>h2 {
     visibility: hidden;
+    height: 0;
+    margin: 0;
   }
 
   img {
-    align-self: center;
     width: 100%;
     margin: @spaceXl 0;
+    height: max-content;
+    .boxShadow(@one);
+  }
+
+  .sideBySide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    img {
+      width: min-content;
+    }
   }
 
   //indent heading
   &>*,
   &>section>*,
   &>section>.subSection>* {
-    padding: @spaceMd 0;
+    margin-right: @spaceMd;
 
     &:not(h2),
     &:not(h3),
     &:not(h4) {
-      padding: 0 @spaceLg;
+      margin-left: -@spaceMd;
     }
   }
 
@@ -980,8 +994,15 @@ article {
     // min-height: 100vh;
 
     // &:first-child {
-    min-height: @body;
+    //   min-height: @body;
     // }
+
+    &>h3::before {
+      content: "#";
+      margin-right: @spaceMd;
+      margin-left: -@spaceXl;
+    }
+
 
     img {
       width: 80%;
@@ -1270,6 +1291,7 @@ mark,
 ul,
 ol {
   margin-top: 0;
+  margin-left: @spaceXl;
   margin-bottom: (@lineHeight / 2);
 
   ul,

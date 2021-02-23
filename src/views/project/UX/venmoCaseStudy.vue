@@ -3,7 +3,6 @@
 <template>
   <article class="venmoCaseStudy">
     <h2>Venmo Case Study</h2>
-    <vue-img :src="headerImage" alt="" />
     <p>
       The fintech sector is a jam-packed market, flooded with tech companies
       vying to simplify an industry known for being a convoluted knot of
@@ -22,6 +21,7 @@
       </a>
       for it.
     </p>
+    <vue-img :src="headerImage" alt="" />
     <p>
       Social media is a digital arena that many have entered and few have
       conquered, a force so indelibly influential on humanity that in 3000 years

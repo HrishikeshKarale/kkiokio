@@ -202,11 +202,9 @@ export default {
       //scroll content
       div {
         &.content {
-          align-items: center;
+          align-self: center;
           color: @textColor;
-          margin: 0 auto;
-          max-width: 80vw;
-          width: @maxWidth;
+          max-width: 64vw;
           //countdown timer
           & > .alert {
             flex-direction: row;

@@ -4,25 +4,59 @@ https://uxplanet.org/english-dictionary-app-redesign-a-ui-ux-case-study-851fbdce
   <article class="dictionaryCaseStudy">
     <h2>English Dictionary app redesign</h2>
     <vue-img :src="dictionaryAppRe" alt="" />
-    <p>
-      Everyone has a list of favorite apps installed on their phones which helps
-      them in some way or the other. English Dictionary is one such app that
-      helps me enhance my vocabulary. I can easily look up for words that I have
-      previously never heard of (I should have attended those English lessons)
-      and the best part is that you don’t even need to be connected to the
-      internet in order to use this as it stores everything offline.
-    </p>
+    <section id="About">
+      <h3>About the project</h3>
+      <p>
+        <strong>Overview:</strong>
+        Everyone has a list of favorite apps installed on their phones which
+        helps them in some way or the other.
+        <a
+          href="https://play.google.com/store/apps/details?id=livio.pack.lang.en_US&hl=en_IN"
+        >
+          English Dictionary
+        </a>
+        is one such app that helps its users enhance their vocabulary. The users
+        can look up words that they have previously never heard of and the best
+        part is that you don’t even need to be connected to the internet in
+        order to use this as it stores everything offline.
+      </p>
+      <p>
+        <strong>Objective:</strong>
+        To provide a more usable, intuitive and desirable experience for the app
+        so that the experience is more engaging for the user.
+      </p>
+      <p>
+        <strong>Target audience:</strong>
+        The target users were between 18-44 and mostly in USA. Around 75% of
+        their user base are women.
+      </p>
+      <p>
+        <strong>Skills:</strong>
+        User Research, Interface Design (IxD), Information Architecture (IA).
+      </p>
+      <p>
+        <strong>Role:</strong>
+        UI/UX design
+      </p>
+      <p>
+        <strong>Duration:</strong>
+        2 Days
+      </p>
+    </section>
     <section id="Why Redesign?">
       <h3>
         Why redesign?
       </h3>
       <p>
-        Even though the original app has all the functionality that a dictionary
-        application needs along with a few more added tweaks here and there, I
-        feel like the user experience is not that good. While using it I have
-        noticed a couple of controls that have been placed at inaccurate
-        locations within the app. The messy parts of the application are
-        mentioned as follows:
+        The original app has almost all the functionality that a dictionary
+        application needs along with a few more added tweaks here and there, But
+        I feel like the user experience is not that good. While using it I
+        noticed a couple of controls that seem misplaced thus requiring the user
+        to make an effort to locating some of these functionalities.
+      </p>
+      <p>
+        Here are some of the problems I though needed be addressed as a part of
+        the redesign.
       </p>
       <ol>
         <li>Cluttered UI elements.</li>
@@ -47,13 +81,13 @@ https://uxplanet.org/english-dictionary-app-redesign-a-ui-ux-case-study-851fbdce
           leads to nothing but redundancy.
         </p>
         <p>
-          Another thing that you see is an exit app button within the drawer. I
-          mean it’s 2019, no one uses an exit button to close a mobile
-          application. Sure you can code that but no user goes like — bruh I
-          need to exit this app, let me search for the exit button.
+          Another thing that you will notice is the presence of an exit app
+          button within the app drawer. While the exit button is a good touch,
+          its not widely used in todays world due to the development in how
+          people use their devices in 2020, thus serving little to no purpose.
         </p>
         <p>
-          Below is the home screen fix designed by yours truly:
+          Below is the recomended home screen for the app:
         </p>
         <vue-img :src="homeScreenRe" alt="" />
         <p>
@@ -64,11 +98,10 @@ https://uxplanet.org/english-dictionary-app-redesign-a-ui-ux-case-study-851fbdce
           the change from the original app bar location is implemented.
         </p>
         <p>
-          After this change, the redundant elements are gone (and also that exit
-          button, thank god!). Also, that floating action button with the share
-          icon is removed as it didn’t serve any purpose other than sharing the
-          app link, which I believe can be added to the app settings itself if
-          required.
+          After this change, the redundant elements are gone. Also, that
+          floating action button with the share icon is removed as it didn’t
+          serve any purpose other than sharing the app link, which I believe can
+          be added to the app settings itself if required.
         </p>
       </div>
       <div class="subSection">
@@ -135,7 +168,7 @@ https://uxplanet.org/english-dictionary-app-redesign-a-ui-ux-case-study-851fbdce
         Whats Next?
       </h3>
       <p>
-        hrough this project, I tried my best to improve the existing user
+        Through this project, I tried my best to improve the existing user
         experience of this app. There are more screens in this app like app
         settings and bookmarks which I believe needs to be redesigned as well.
         Another thing that I can implement is a proper brand identity for this
@@ -180,6 +213,7 @@ export default {
 <style lang="less" scoped>
 @import (reference) "./../../../Less/customMixins.less";
 @import (reference) "./../../../Less/customVariables.less";
+
 .dictionaryCaseStudy {
   display: flex;
   flex-direction: column;

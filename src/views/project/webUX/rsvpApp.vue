@@ -191,6 +191,7 @@ export default {
 @import (reference) "../../../Less/customVariables.less";
 @import (reference) "../../../Less/customMixins.less";
 .rsvp {
+  width: 72vw;
   & > div {
     &.body {
       display: flex;

@@ -248,11 +248,11 @@ export default {
     padding: @spaceSm @spaceMd;
     border-width: 0px;
     font-weight: bold;
+    transform: scale(0.92);
     .boxShadow(none);
 
     &:not([disabled]):hover {
-      border-color: transparent;
-      transform: scale(1.2);
+      transform: scale(1);
     }
   }
 

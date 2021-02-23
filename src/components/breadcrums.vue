@@ -15,9 +15,9 @@
         </router-link>
       </template>
       <template v-if="breadcrums.length - 1 == index">
-        <span class="fas fa-angle-right" />
+        <span v-if="subNav(crums)" class="fas fa-angle-right" />
         <h1>
-          {{ crums }}
+          {{ subNav(crums) }}
         </h1>
       </template>
     </template>
@@ -76,11 +76,21 @@ export default {
     }, //isComponent
 
     subNav: function(selected) {
-      this.projectsDescription.forEach(project => {
-        project.value.forEach(proj => {
-          console.log(proj.component, selected);
+      let tempSelect = selected.split("#")[0];
+      if (tempSelect) {
+        tempSelect = tempSelect.toLowerCase();
+        this.projectsDescription.forEach(project => {
+          for (let index = 0; index < project.value.length; index++) {
+            const proj = project.value[index];
+            // console.log(proj.component.toLowerCase(), tempSelect.toLowerCase());
+            if (proj.component.toLowerCase() === tempSelect) {
+              tempSelect = proj.title;
+              break;
+            }
+          }
         });
-      });
+      }
+      return tempSelect;
     }
   }
 };
@@ -107,6 +117,7 @@ export default {
   }
   & > span {
     color: @textColor;
+    margin: 0 @spaceMd;
   }
   @media screen {
     @media (max-width: @maxWidth) {

@@ -8,24 +8,32 @@
       <h3>About the project</h3>
       <p>
         <strong>Overview:</strong>
-        The project was a part of NativeScript UpLabs Challenge. The end goal of
-        the experience was to develop a functioning iOS and Android app using
-        the NativeScript framework.
+        The project was a part of VUE + Electron UpLabs Challenge. The end goal
+        of the experience was to develop a functioning iOS and Android app using
+        the VUE + Electron framework.
         <br />
         Since there was no specific theme defined for the app within the
         challenge, I went on to build a reward based crowdfunding application.
         The main aim here was to spread awareness of this product concept among
         general audience.
       </p>
-      <p><strong>Duration:</strong>Three Weeks</p>
-      <p><strong>Role:</strong>Product design & App development</p>
       <p>
-        <strong>Skills:</strong>User research, User experience design, User
-        interface design, App development using NativeScript framework
+        <strong>Duration:</strong>
+        3+ Weeks
       </p>
       <p>
-        <strong>Solution:</strong>A functional iOS and Android app that can
-        demonstrate the crowdfunding concept to general audience.
+        <strong>Role:</strong>
+        Product design & App development
+      </p>
+      <p>
+        <strong>Skills:</strong>
+        User research, User experience design, User interface design, App
+        development using VUE + Electron framework
+      </p>
+      <p>
+        <strong>Solution:</strong>
+        A functional iOS and Android app that can demonstrate the crowdfunding
+        concept to general audience. The app development is in progress.
       </p>
     </section>
     <section id="Research and user empathy">
@@ -188,15 +196,15 @@
       <p>
         I spent almost 2 weeks to do all the research and designing and this
         meant that I was left with only 1 week to code and set up a basic
-        functioning app. The problem was that the app had to be coded using
-        NativeScript and I had never used it to code an app before so I had to
+        functioning app. The problem was that the app had to be coded using VUE
+        + Electron and I had never used it to code an app before so I had to
         learn the fundamentals as quickly as possible.
       </p>
       <p>
         This is where my software development skills came into picture. Whenever
         a developer is stuck with something and cannot figure out how to move
         ahead, there is this messiah on the internet which goes by the name of
-        Stack Overflow 😛. The NativeScript community there helped me a lot in
+        Stack Overflow 😛. The VUE + Electron community there helped me a lot in
         building and iterating on the app quickly.
       </p>
       <p>
@@ -220,14 +228,10 @@
     <section id="Conclusion & Lessons learned">
       <h3>Conclusion & Lessons learned</h3>
       <p>
-        To be honest I never thought that I would be able to complete both
-        design and development for this product concept in 3 weeks. I am glad
-        that I took this challenge as it taught me how to manage my time more
-        than anything else. Even though I did not end up as the winner, the
-        UpLabs team decided to put my work in their honorable mentions for this
-        challenge 😬.
+        To be honest the app development is still under progress but I am glad I
+        took this challenge as it taught me how to manage my time more than
+        anything else.
       </p>
-      <vue-img :src="conclusion" alt="" />
       <div class="subSection">
         <h3>What could have been done differently</h3>
         <ul>

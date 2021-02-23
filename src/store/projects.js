@@ -5,71 +5,124 @@ export const projects = [
       {
         id: 1,
         title: "English Dictionary",
-        tags: ["Case Study", "App redesign"],
-        description: "Redesigned an English dicionary from google play.",
+        tags: [
+          "User Research",
+          "Case Study",
+          "IBM - Carbon",
+          "Interface Design",
+          "Information Architecture",
+          "App redesign",
+          "Mobile"
+        ],
+        description: "Redesigned a English dictionary from google play.",
         component: "dictionaryCaseStudy"
       },
       {
         id: 2,
-        title: "HR Media",
+        title: "Online Learning Platform",
         tags: [
-          "User experience design",
-          "User interface design",
-          "Wireframing",
+          "User Research",
+          "Competitor Analysis",
+          "User Flow",
+          "WireFrame",
           "Information Architecture"
         ],
-        description: "Redesigning an social media for HR's.",
-        component: "mediaHRPlatform"
+        description:
+          "Designed a program learning platform for an HR media platform.",
+        component: "HRPlatform"
       },
       {
         id: 3,
-        title: "Rupay",
-        tags: ["Case Study", "App redesign"],
-        description:
-          "Rupay is a mobile banking app also known as a digital wallet app.",
+        title: "Digital Wallet",
+        tags: ["Mobile", "Fintech", "Digital Wallet"],
+        description: "Rupay is a mobile banking app.",
         component: "rupay"
       },
       {
         id: 4,
-        title: "TinyThoughts - Journal",
-        tags: ["Case Study", "App redesign", "Material Design"],
-        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        title: "Digital Journal",
+        tags: [
+          "Case Study",
+          "Competitive Analysis",
+          "App redesign",
+          "User Story",
+          "Wireframe",
+          "Information Architecture",
+          "Google - Material Design",
+          "Mobile"
+        ],
+        description: "Tiny Thoughts is a personal Journal mobile app.",
         component: "tinyThoughts"
       },
       {
         id: 5,
-        title: "kuda Bank Case Study",
-        tags: ["Case Study", "App redesign", "Material Design"],
+        title: "Bank Website",
+        tags: ["Case Study", "App redesign", "Material Design", "Fintech"],
         description: "Tiny Thoughts is a personal Journal app for mobile.",
         component: "kudaBankCaseStudy"
       },
       {
         id: 6,
-        title: "skinSafe",
-        tags: ["Case Study", "App redesign", "Material Design"],
-        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        title: "Cosmetic Product App",
+        tags: [
+          "Case Study",
+          "User Research",
+          "App redesign",
+          "IOS",
+          "WireFrame",
+          "Beauty Industry"
+        ],
+        description: "Beauty Product App redesign",
         component: "skinSafe"
       },
       {
         id: 7,
-        title: "CrowdCo.",
-        tags: ["Case Study", "App redesign", "IOS HID"],
-        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        title: "Crowd Funding App",
+        tags: [
+          "Case Study",
+          "App redesign",
+          "IOS HID",
+          "Competitive Analysis",
+          "Empathy Mapping",
+          "Persona",
+          "User Story",
+          "WireFrame"
+        ],
+        description: "CrowdCo. is a croudfunding app",
         component: "crowdCo"
       },
       {
         id: 8,
         title: "Venmo Case Study",
-        tags: ["Case Study", "App redesign", "IOS HID"],
-        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        tags: ["Case Study", "IOS HID"],
+        description: "Venmo app case study ",
         component: "venmoCaseStudy"
       },
       {
         id: 9,
         title: "Google vs Waze Case Study",
         tags: ["Case Study", "App redesign", "IOS HID"],
-        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        description: "Comparing two popular navigation platforms",
         component: "mapsCaseStudy"
+      },
+      {
+        id: 10,
+        title: "Recipie Concept App",
+        tags: [
+          "Styleguide",
+          "Walkthrough",
+          "Personas",
+          "Style Guide",
+          "Information Architecture",
+          "Task Flow",
+          "Competitive Analysis",
+          "WireFrame"
+        ],
+        description:
+          "The Cullinarian App is an mobile aimed targetted towards individuals who like to cook.\
+              <br />\
+              The app walks users towards cooking home made cusines and thus promoting a healthy lifestyle.",
+        component: "culinarian"
       }
     ]
   },
@@ -78,26 +131,16 @@ export const projects = [
     value: [
       {
         id: 1,
-        title: "Plant IT!",
+        title: "Onboarding Screen",
         tags: ["Onboarding", "IOS"],
         description:
           "Plant IT! is an Onboarding screen for an IOS application for a concept website which specializes in selling household plants and decorative pots that go along with those plants.",
         component: "plantIt"
       },
       {
-        id: 2,
-        title: "Culinarian",
-        tags: ["Styleguide", "Walkthrough", "Personas", "Design Guide"],
-        description:
-          "The Cullinarian App is an mobile aimed targetted towardsindividuals who like to cook.\
-              <br />\
-              The app walks users towards cooking home made cusines and thus promoting a healthy lifestyle.",
-        component: "culinarian"
-      },
-      {
         id: 3,
-        title: "MedCo",
-        tags: ["Styleguide"],
+        title: "Medical Appointment UI",
+        tags: ["Interface Design", "Style Guide"],
         description:
           "MedCo is an mobile aimed towards the medical industry.\
               <br />\
@@ -106,8 +149,8 @@ export const projects = [
       },
       {
         id: 4,
-        title: "Fitness Friend",
-        tags: ["Wearable"],
+        title: "Fitness Watch App",
+        tags: ["Wearable", "Wireframe", "Style Guide", "User Centered Design"],
         description:
           "A Fitness tracker app for smart watch.\
               <br />\
@@ -116,19 +159,29 @@ export const projects = [
       },
       {
         id: 5,
-        title: "AppSignUp",
+        title: "Login/SignUp Concept Screens",
         tags: ["Login Screen"],
         description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp"
       },
       {
         id: 6,
-        title: "Pack Station",
-        tags: ["Golden Ratio", "WMS", "Enterprise", "Kiosk", "Standalone"],
+        title: "Enterprise Web App",
+        tags: [
+          "Golden Ratio",
+          "WMS",
+          "Enterprise",
+          "Kiosk",
+          "Standalone",
+          "Material Design",
+          "User Centered Design",
+          "Pack Station",
+          "Web App"
+        ],
         description:
-          "The pack station is projectsed to allow users to pack and ship orders.\
-              <br />\
-              Simple Pack supports orders with original packaging and default box items.",
+          "The pack station allows users to pack and ship orders.\
+          <br />\
+          Simple Pack supports orders with original packaging and default box items.",
         component: "packStation"
       },
       {

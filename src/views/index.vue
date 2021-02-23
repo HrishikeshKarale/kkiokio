@@ -185,6 +185,10 @@ export default {
       color: @accentColor;
       z-index: @contentZ + 10;
       font-weight: 700;
+      &::before {
+        content: "";
+        margin-left: 0;
+      }
       & + p {
         align-self: center;
         width: 640px;
@@ -331,7 +335,8 @@ export default {
               }
             }
             &:hover {
-              .boxShadow(@two, @accentColor);
+              .boxShadow(@three, @accentColor);
+              border-color: transparent;
               & > a > h3 {
                 color: @accentColor;
               }

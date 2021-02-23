@@ -14,12 +14,11 @@
     >
       <h2>{{ projects.type }}</h2>
       <div>
-        <template v-for="project in projects.value" :key="project.id">
+        <div v-for="project in projects.value" :key="project.id">
           <showcase :project="project" :component="project.component" />
-        </template>
+        </div>
       </div>
     </section>
-    <!-- <router-view :key="$route.path" /> -->
   </div>
 </template>
 
@@ -68,21 +67,11 @@ export default {
 .projects {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  min-width: 400px;
-  & > section > div {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: flex-start;
-    flex: 1 2 0;
+  & > section {
     & > div {
-      border: 1px dashed @primaryColor;
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 }
 </style>
-/* to add a project, add project details to the store project file and then add
-the component to the route. links: 1. router: ../router/index.ts 2. store:
-../store/projects */

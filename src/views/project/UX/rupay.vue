@@ -1,44 +1,69 @@
-// https://medium.com/@DEJIDOPE/omnibiz-ui-ux-test-67f31bdf1df6
 <template>
   <article class="rupay">
     <h2>Rupay UI/UX</h2>
-    <p>
-      Company ABC runs a wallet system, each user registered with them has a
-      maximum of 2 accounts, they can top up their accounts, make payments from
-      their wallets, request for refunds and apply for loan
-    </p>
-    <ul>
-      <li>Switch between his accounts</li>
-      <li>See recent transactions sorted by recent Date</li>
-      <li>See his Wallet Balance</li>
-      <li>Know how to fund/top up his account</li>
-      <li>Apply for loan</li>
-      <li>Pay bills</li>
-      <li>
-        Allow user to request for a refund (this feature should not be too
-        obvious but visible)
-      </li>
-      <li>Option to Save Card</li>
-      <li>Link to refer a friend</li>
-    </ul>
-    <p>
-      I started out solving this task by conducting a research on apps that
-      offer a service similar to this to give me a general idea and serve as a
-      form of inspiration. I then decided to use the color blue as the primary
-      color because blue represents trust. For an app that deals with money, the
-      most important thing for users is security, they need to know they can put
-      their money into the app and it will be secure. I then laid out the
-      structure based on the features in the brief on paper and decided on how
-      the features will connect.
-    </p>
+    <section id="About">
+      <h3>About the project</h3>
+      <p>
+        <strong>Overview:</strong>
+        A growing Nigerian Bank wants to expand on their buisness and is in need
+        of a mobile applicatin so they can offer services. Most customer
+        registered with them has a maximum of 2 accounts. Among other things,
+        the app needs the ability to top up their accounts, make payments using
+        their mobile app, be able to request for refunds and apply for loan.
+      </p>
+      <p>
+        <strong>Objective:</strong>
+        To Create a Finech mobile appliation that keeping in mind the following
+        functionality
+      </p>
+      <ol>
+        <li>Switch between his accounts</li>
+        <li>See recent transactions sorted by recent Date</li>
+        <li>See his Wallet Balance</li>
+        <li>Know how to fund/top up his account</li>
+        <li>Apply for loan</li>
+        <li>Pay bills</li>
+        <li>
+          Allow user to request for a refund (this feature should not be too
+          obvious but visible)
+        </li>
+        <li>Option to Save Card</li>
+        <li>Link to refer a friend</li>
+      </ol>
+      <p>
+        <strong>Skills:</strong>
+        Fintech UX
+      </p>
+      <p>
+        <strong>Role:</strong>
+        UI Designer
+      </p>
+      <p>
+        <strong>Duration:</strong>
+        2 Days
+      </p>
+    </section>
+    <section id="Research">
+      <h3>Research</h3>
+      <p>
+        I started out solving this task by conducting a research on apps that
+        offer a service similar to this to give me a general idea and serve as a
+        form of inspiration. I decided to use the color blue as the primary
+        color because blue represents trust. For an app that deals with money,
+        the most important thing for users is security, they need to know they
+        can put their money into the app and it will be secure. I laid out the
+        structure based on the features in the brief on paper and decided on how
+        the features will connect.
+      </p>
+      <p>
+        Researching on apps that offer a similar service, I was able to conclude
+        that users are able to topup their wallets by using their debit cards
+        which have been saved on the app or adding a new card and by bank
+        transfer
+      </p>
+    </section>
     <section id="App Screens">
       <h3>App Screens</h3>
-      <vue-img :src="homeScreen" alt="" />
-      <p>
-        Here the users can see both accounts(Naira and Dollar) and their
-        respective amounts. The plus icon on each account lets the users know
-        they can add(topup) more money to the respective accounts.
-      </p>
       <p>
         I put the most important features of the app directly on the homescreen
         so the users don’t have to go through multiple screens to do different
@@ -48,6 +73,12 @@
         to be able to reach the users as they open the app rather than put it on
         a separate screen which they might not interact with.
       </p>
+      <vue-img :src="homeScreen" alt="" />
+      <p>
+        Here the users can see both accounts(Naira and Dollar) and their
+        respective amounts. The plus icon on each account lets the users know
+        they can add(topup) more money to the respective accounts.
+      </p>
       <p>
         The next set of screens are the Top up, Pay bills and apply for loan
         screens
@@ -55,18 +86,13 @@
       <vue-img :src="addCard" alt="" />
       <vue-img :src="walletTopUp" alt="" />
       <p>
-        Researching on apps that offer a similar service, I was able to conclude
-        that users are able to topup their wallets by using their debit cards
-        which have been saved on the app or adding a new card and by bank
-        transfer
+        They are a number of bills (utility, subscribtions etc.) that could be
+        directly paid using a mobile application, so I put them on a seperate
+        screen called Bill Pay. I broke them down into their different
+        categories to make it easier for the users to pay bills rather than
+        scrolling through ten's of options.
       </p>
       <vue-img :src="billPayLoan" alt="" />
-      <p>
-        They are a number of bills we pay here in Nigeria such as
-        electricity(utility) bill, internet subscriptions, mobile data
-        subscriptions, etc which led me to put them all on the pay bills screen,
-        but I broke them down into their different categories.
-      </p>
       <p>
         Then the loan request page, the users are asked for the amount they want
         and the duration. Based on the process it takes to give a user a loan, I
@@ -86,6 +112,22 @@
       </p>
       <vue-img :src="profile" alt="" />
     </section>
+    <section id="Conclusion">
+      <h3>Conclusion</h3>
+      <p>
+        I would not say the user experience fits a description of the “fun”
+        mobile application Rupay has tried to position itself as. Some of its
+        aesthetics are obviously echoing its competitors, but it is certainly
+        more engaging than your run-of-the-mill fintech apps.
+      </p>
+      <p>
+        It will be interesting to see how Rupay evolves, especially with major
+        institutions now integrating Rupay’s fundamental functionality into
+        their platforms. To combat the tech behemoth entering their space, Rupay
+        may have to embrace their social media roots further to differentiate,
+        or keep improving on their user experience.
+      </p>
+    </section>
   </article>
 </template>
 <script>
@@ -94,7 +136,7 @@ import * as homeScreen from "@/assets/UX/rupay/homeScreen.png";
 import * as profile from "@/assets/UX/rupay/profile.png";
 import * as addCard from "@/assets/UX/rupay/addCard.png";
 import * as billPayLoan from "@/assets/UX/rupay/billPayLoan.png";
-import * as walletTopUp from "@/assets/UX/rupay/profile.png";
+import * as walletTopUp from "@/assets/UX/rupay/walletTopUp.png";
 export default {
   name: "Rupay",
   components: {

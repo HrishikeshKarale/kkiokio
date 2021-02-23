@@ -3,13 +3,31 @@ https://medium.com/@DEJIDOPE/case-study-kudabank-website-redesign-pixelup-assess
 <template>
   <article class="kudaBankCaseStudy">
     <h2>kudaBank Case Study Website redesign</h2>
-    <p>
-      The task was to redesign a website or an app and do a proper case study
-      for it. I chose Kuda Bank’s website as I felt they didn’t put enough
-      effort into it has their main focus is their app. Image for post
-    </p>
-    <vue-img :src="original" alt="" />
-    <vue-img :src="redesign" alt="" />
+    <section id="About">
+      <h3>About the project</h3>
+      <p>
+        <strong>Overview:</strong>
+        I chose Kuda Bank’s website as I felt they didn’t put enough effort into
+        it has their main focus is their app..
+      </p>
+      <p>
+        <strong>Objective:</strong>
+        To redesign a Finech website and improve on the usability and clarity of
+        the website.
+      </p>
+      <p>
+        <strong>Skills:</strong>
+        Fintech UX, Visual Design
+      </p>
+      <p>
+        <strong>Role:</strong>
+        UX Designer
+      </p>
+      <p>
+        <strong>Duration:</strong>
+        9 Days
+      </p>
+    </section>
     <section id="Process">
       <h3>The thought process behind the redesign.</h3>
       <p>
@@ -21,13 +39,15 @@ https://medium.com/@DEJIDOPE/case-study-kudabank-website-redesign-pixelup-assess
         on their customers are free on Kuda bank, which is one of the incentives
         they are using to draw in customers to their service.
       </p>
-      <vue-img :src="sketch" alt="" />
-      <vue-img :src="sketch1" alt="" />
-      <vue-img :src="sketch2" alt="" />
-      <vue-img :src="sketch3" alt="" />
-      <vue-img :src="sketch4" alt="" />
-      <vue-img :src="sketch5" alt="" />
-      <vue-img :src="sketch6" alt="" />
+      <div class="sideBySide">
+        <vue-img :src="sketch" alt="" />
+        <vue-img :src="sketch1" alt="" />
+        <vue-img :src="sketch2" alt="" />
+        <vue-img :src="sketch3" alt="" />
+        <vue-img :src="sketch4" alt="" />
+        <vue-img :src="sketch5" alt="" />
+        <vue-img :src="sketch6" alt="" />
+      </div>
       <p>
         In the first section which is the header/hero section, readers should
         get an immediate idea of what the product/service is. On kuda’s current
@@ -80,6 +100,17 @@ https://medium.com/@DEJIDOPE/case-study-kudabank-website-redesign-pixelup-assess
         through the page. I believe the reading experience is better than the
         current website.
       </p>
+    </section>
+    <section id="Old Vs New">
+      <h3>Old Vs New Design</h3>
+      <p>
+        Here is a cmparison of the ld design (left) with the new suggested
+        design (right).
+      </p>
+      <div class="sideBySide">
+        <vue-img :src="original" alt="" />
+        <vue-img :src="redesign" alt="" />
+      </div>
     </section>
     <section id="Visual Style">
       <h3>Visual Style</h3>
