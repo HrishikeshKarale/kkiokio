@@ -178,7 +178,8 @@ export default {
       font-weight: 900;
       margin: 0;
       transform: translate(0, 64px);
-      opacity: 32%;
+      // opacity: 0.32;
+      filter: opacity(32%);
     }
     & > h3 {
       text-align: center;

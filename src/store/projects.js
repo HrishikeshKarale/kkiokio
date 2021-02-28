@@ -70,7 +70,8 @@ export const projects = [
           "App redesign",
           "IOS",
           "WireFrame",
-          "Beauty Industry"
+          "Beauty Industry",
+          "Mobile"
         ],
         description: "Beauty Product App redesign",
         component: "skinSafe"
@@ -86,7 +87,8 @@ export const projects = [
           "Empathy Mapping",
           "Persona",
           "User Story",
-          "WireFrame"
+          "WireFrame",
+          "Movile"
         ],
         description: "CrowdCo. is a croudfunding app",
         component: "crowdCo"
@@ -116,7 +118,8 @@ export const projects = [
           "Information Architecture",
           "Task Flow",
           "Competitive Analysis",
-          "WireFrame"
+          "WireFrame",
+          "Mobile"
         ],
         description:
           "The Cullinarian App is an mobile aimed targetted towards individuals who like to cook.\
@@ -132,7 +135,7 @@ export const projects = [
       {
         id: 1,
         title: "Onboarding Screen",
-        tags: ["Onboarding", "IOS"],
+        tags: ["Onboarding", "IOS", "Mobile"],
         description:
           "Plant IT! is an Onboarding screen for an IOS application for a concept website which specializes in selling household plants and decorative pots that go along with those plants.",
         component: "plantIt"
@@ -140,7 +143,7 @@ export const projects = [
       {
         id: 3,
         title: "Medical Appointment UI",
-        tags: ["Interface Design", "Style Guide"],
+        tags: ["Interface Design", "Style Guide", "Mobile"],
         description:
           "MedCo is an mobile aimed towards the medical industry.\
               <br />\
@@ -150,7 +153,13 @@ export const projects = [
       {
         id: 4,
         title: "Fitness Watch App",
-        tags: ["Wearable", "Wireframe", "Style Guide", "User Centered Design"],
+        tags: [
+          "Wearable",
+          "Wireframe",
+          "Style Guide",
+          "User Centered Design",
+          "Mobile"
+        ],
         description:
           "A Fitness tracker app for smart watch.\
               <br />\
@@ -160,7 +169,7 @@ export const projects = [
       {
         id: 5,
         title: "Login/SignUp Concept Screens",
-        tags: ["Login Screen"],
+        tags: ["Login Screen", "Mobile"],
         description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp"
       },

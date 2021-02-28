@@ -139,6 +139,7 @@ export default {
       font-weight: 500;
       font-size: @fontSizeSm;
       opacity: 0.8;
+      filter: opacity(80%);
       min-width: 64px;
     }
   }

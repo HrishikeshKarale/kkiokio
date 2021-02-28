@@ -234,7 +234,7 @@ header {
               margin-left: @spaceLg;
               //nav Text
               & > h4 {
-                color: @navText;
+                color: @offWhite;
                 //nav subText
                 & + span {
                   font-size: 12px;
@@ -255,14 +255,14 @@ header {
 
               & > span {
                 opacity: 1;
+                transform: scale(1.2);
+                // color: @secondaryColor;
               }
               & > div {
                 & > h4 {
                   color: @text;
-                  font-weight: bold;
                   & + span {
                     color: @white;
-                    font-weight: bold;
                     opacity: 1;
                   }
                 }
@@ -287,6 +287,7 @@ header {
                 transform: scale(1.2);
               }
               & > span {
+                transform: scale(1.2);
                 color: @navText;
                 opacity: 1;
               }

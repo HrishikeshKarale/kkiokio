@@ -7,15 +7,28 @@
       The projects have vbeen divided into categories to make it easy for
       browsing.
     </p>
+    <vue-filter
+      :filters="{ type: ['tags'], options: [filterList] }"
+      :selected="{ type: ['tags'], value: [propFilter] }"
+      @updateFilter="updateFilter"
+    />
     <section
-      v-for="projects in projectList"
+      v-for="projects in projectsDescription"
       :id="projects.type"
       :key="projects.type"
     >
       <h2>{{ projects.type }}</h2>
       <div>
         <div v-for="project in projects.value" :key="project.id">
-          <showcase :project="project" :component="project.component" />
+          <showcase
+            v-show="
+              propFilter.length == 0 ||
+                (propFilter.length > 0 &&
+                  propFilter.some(filter => project.tags.includes(filter)))
+            "
+            :project="project"
+            :component="project.component"
+          />
         </div>
       </div>
     </section>
@@ -23,40 +36,55 @@
 </template>
 
 <script>
+import vueFilter from "@/components/vueFilter.vue";
 import showcase from "@/components/showcase.vue";
 import { projects } from "@/store/projects";
 export default {
   name: "Projects",
   components: {
+    vueFilter,
     showcase
   },
   data() {
     const projectsDescription = projects;
-    const propFilter = null;
+    const propFilter = [];
+    const filterList = [];
     return {
       projectsDescription,
-      propFilter
+      propFilter,
+      filterList
     };
   },
-  computed: {
-    projectList: function() {
-      // console.log(this.propFilter);
-      if (this.propFilter) {
-        this.projectsDescription.filter(project => {
-          return project.value.forEach(val =>
-            val.tags.includes(this.propFilter)
-          );
-        });
-      }
-      return this.projectsDescription;
-    }
-  },
   created() {
-    this.propFilter = this.$route.query.filter;
-    // console.log(this.projectsDescription);
+    const tempPropFilter = this.$route.query.filter;
+    if (tempPropFilter) {
+      this.propFilter = [this.$route.query.filter];
+    }
+    this.projectsDescription.forEach(project => {
+      project.value.forEach(val => {
+        this.filterList = [...val.tags, ...this.filterList];
+      });
+    });
   },
-  mounted() {
-    // console.log("mounted: ", this.projectList);
+  methods: {
+    //needs work
+    updateFilter: function(filter) {
+      //type does not exists
+      if (this.propFilter.length == 0) {
+        this.propFilter.push(filter.value);
+      } else {
+        //type alerady exists
+        const index = this.propFilter.indexOf(filter.value);
+        //filter does not exists
+        console.log(index, this.propFilter, filter);
+        if (index == -1) {
+          this.propFilter = [...this.propFilter, filter.value];
+          // console.log(this.propFilter, filter);
+        } else {
+          this.propFilter.splice(index, 1);
+        }
+      }
+    } //updateFilter
   }
 };
 </script>

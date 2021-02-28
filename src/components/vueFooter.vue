@@ -21,17 +21,15 @@
         </b> -->
       </a>
     </div>
-    <div class="policy">
+    <div class="copyright">
+      <span class="fas fa-copyright" />
+      <b>2020 Hrishikesh Karale</b>
       <router-link to="/termsOfService">
         Terms Of Service
       </router-link>
       <router-link to="/privacyPolicy">
         Privacy Policy
       </router-link>
-    </div>
-    <div class="copyright">
-      <span class="fas fa-copyright" />
-      <b>Hrishikesh Karale</b>
     </div>
     <div class="disclaimer">
       * The views expressed on this website are entirely mine and not that of my
@@ -77,10 +75,9 @@ footer {
         & > span {
           margin-right: @spaceLg;
         }
-      }
-      &.policy {
-        width: 640px;
-        justify-content: space-evenly;
+        & > a {
+          margin: 0 @spaceMd;
+        }
       }
       &.social {
         position: absolute;
