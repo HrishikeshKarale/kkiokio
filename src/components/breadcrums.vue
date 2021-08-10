@@ -11,14 +11,14 @@
           class="crums"
           :to="{ name: isComponent(crums)[0]['comp'] }"
         >
-          <h5>{{ isComponent(crums)[0]["name"] }}</h5>
+          {{ isComponent(crums)[0]["name"] }}
         </router-link>
       </template>
       <template v-if="breadcrums.length - 1 == index">
         <span v-if="subNav(crums)" class="fas fa-angle-right" />
-        <h1>
+        <h5>
           {{ subNav(crums) }}
-        </h1>
+        </h5>
       </template>
     </template>
   </div>
@@ -101,27 +101,27 @@ export default {
 @import (reference) "./../Less/customVariables.less";
 
 .breadcrums {
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: row;
-  margin: @spaceLg 0;
   align-items: center;
-  & > .crums {
-    padding: @spaceMd;
-    text-decoration: none;
-    & > h5 {
-      margin: 0 !important;
-    }
-  }
-  & > h1 {
+  width: fit-content;
+  z-index: @contentZ;
+  padding: 0 @spaceMd 0 0;
+  border-radius: 0 0 @borderRadius @borderRadius;
+  background-color: @backgroundColor;
+  h1,
+  h5 {
     margin: 0 !important;
   }
   & > span {
-    color: @textColor;
+    color: @accentColor;
     margin: 0 @spaceMd;
   }
   @media screen {
     @media (max-width: @maxWidth) {
-      margin: @spaceXl 0 0 @spaceXl !important;
+      margin: 0 !important;
     }
   }
 }

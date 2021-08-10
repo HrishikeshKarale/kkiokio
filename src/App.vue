@@ -18,7 +18,7 @@
       </aside>
     </template>
     <template #footer>
-      <vue-footer />
+      <vue-footer :logo-link="logoLink" :nav="navigation" />
     </template>
   </enterprise-app-layout>
 </template>
@@ -57,12 +57,12 @@ export default {
 @import (reference) "./Less/customVariables.less";
 
 .moto {
-  display: flex;
-  flex-direction: column;
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: @spaceMd @spaceLg;
+  display: flex;
+  flex-direction: column;
+  padding: @spaceMd @spaceLg 0;
   border-radius: @borderRadius 0 0 0;
   // background-color: @backgroundColor;
   height: fit-content;
@@ -79,11 +79,11 @@ export default {
     font-size: @fontSizeSm;
     font-weight: bold;
     background-color: @backgroundColor;
-    border-radius: @borderRadiusLg 0 @borderRadiusLg 0;
+    border-radius: @borderRadiusLg 0 0 0;
     padding: 0 @spaceLg;
 
     & > abbr {
-      color: @primaryColor;
+      color: @accentColor;
       text-decoration: none;
     }
   }

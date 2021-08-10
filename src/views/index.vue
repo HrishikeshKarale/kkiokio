@@ -313,7 +313,7 @@ export default {
               & > li {
                 font-size: @fontSizeSm;
                 border-radius: @borderRadiusLg;
-                padding: 0 @spaceMd;
+                padding: 0 @spaceMd !important;
                 background-color: @secondaryColor;
                 margin: @spaceSm;
                 cursor: pointer;

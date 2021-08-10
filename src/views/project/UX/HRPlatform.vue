@@ -1,6 +1,6 @@
 <template>
   <article class="mediaHRPlatform">
-    <h2>mediaHRPlatform</h2>
+    <h2>People Matters COHORT</h2>
     <vue-img :src="headerImage" alt="" />
     <section id="About">
       <h3>About the project</h3>

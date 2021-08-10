@@ -79,15 +79,15 @@ export default {
     display: flex;
     flex-wrap: wrap;
     //offset the tag and account for position absolute
-    margin-left: @spaceLg;
+    margin-left: @spaceLg !important;
     //tag
     & > li {
       display: flex;
       flex-wrap: nowrap;
       font-size: @fontSize;
       position: relative;
-      margin-bottom: @spaceMd;
-      margin-right: @spaceLg + @spaceMd;
+      margin-bottom: @spaceMd !important;
+      margin-right: @spaceLg + @spaceMd !important;
       background-color: @accentColor;
       border-radius: 0 @borderRadius @borderRadius 0;
       color: @textColor;

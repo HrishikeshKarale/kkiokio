@@ -121,69 +121,66 @@ export default {
 @wizard-step-width-height: 120px;
 @wizard-step-font-size: @fontSize;
 
-article {
-  &.about {
-    & > section {
-      &#Objective {
-        & > q {
-          font-size: @fontSizeSm * 2;
-          text-align: center;
+.about {
+  & > section {
+    &#Objective {
+      & > q {
+        font-size: @fontSizeSm * 2;
+        text-align: center;
 
-          & > abbr {
-            color: #fbce51;
-            text-decoration: none;
-          }
+        & > abbr {
+          color: #fbce51;
+          text-decoration: none;
         }
       }
+    }
 
-      &#Process {
-        flex-direction: column;
-        text-align: left;
+    &#Process {
+      flex-direction: column;
+      text-align: left;
 
-        & > .process {
-          margin-top: @spaceLg;
+      & > .process {
+        margin-top: @spaceLg;
 
-          & > ol.steps {
+        & > ol.steps {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+          margin: 0 auto;
+
+          & > li {
             display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-            margin: 0 auto;
+            flex-direction: column;
+            background-color: @backgroundColor;
+            flex: 0 0 320px;
+            border-radius: @borderRadiusLg;
+            padding: @spaceLg;
+            margin: @spaceMd;
+            border-radius: @borderRadiusLg;
+            border: 1px dashed @accentColor;
 
-            & > li {
-              display: flex;
-              flex-direction: column;
-              background-color: @backgroundColor;
-              flex: 0 0 320px;
-              border-radius: @borderRadiusLg;
-              padding: @spaceLg;
-              margin: @spaceMd;
-              border-radius: @borderRadiusLg;
-              border: 1px dashed @accentColor;
+            & > .step {
+              border-radius: 50%;
+              border: 2px solid @accentColor;
+              color: @white;
+              font-size: @fontSize;
+              font-weight: bold;
+              line-height: @wizard-step-width-height;
+              position: relative;
+              min-width: @wizard-step-width-height;
+              text-align: center;
+              margin: 0 auto;
+              background-color: @accentColor;
 
+              & + .step-title {
+                text-align: left;
 
-              & > .step {
-                border-radius: 50%;
-                border: 2px solid @accentColor;
-                color: @white;
-                font-size: @fontSize;
-                font-weight: bold;
-                line-height: @wizard-step-width-height;
-                position: relative;
-                min-width: @wizard-step-width-height;
-                text-align: center;
-                margin: 0 auto;
-                background-color: @accentColor;
-
-                & + .step-title {
-                  text-align: left;
-
-                  & + ol {
-                    list-style: none;
-                    padding: 0;
-                    & > li {
-                      font-weight: bold;
-                    }
+                & + ol {
+                  list-style: none;
+                  padding: 0;
+                  & > li {
+                    font-weight: bold;
                   }
                 }
               }
@@ -191,66 +188,66 @@ article {
           }
         }
       }
+    }
 
-      &#Skillset {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+    &#Skillset {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
 
-        & > div {
-          flex-direction: column;
-          justify-content: space-evenly;
-          flex: 0 0 320px;
-          margin: 0 @spaceLg;
-        }
-      }
-
-      &#Bio {
+      & > div {
         flex-direction: column;
-        flex-wrap: wrap;
-        & > div {
-          max-width: 960px;
-          //image and introductory text
-          &:first-child {
+        justify-content: space-evenly;
+        flex: 0 0 320px;
+        margin: 0 @spaceLg;
+      }
+    }
+
+    &#Bio {
+      flex-direction: column;
+      flex-wrap: wrap;
+      & > div {
+        max-width: 960px;
+        //image and introductory text
+        &:first-child {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-content: center;
+
+          & > div {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            flex-wrap: wrap;
             justify-content: center;
             align-content: center;
-
-            & > div {
-              display: flex;
-              flex-direction: column;
-              flex-wrap: wrap;
-              justify-content: center;
-              align-content: center;
-              & > h1,
-              & > h3,
-              & > h4 {
-                margin-top: 0;
-              }
+            & > h1,
+            & > h3,
+            & > h4 {
+              margin-top: 0;
             }
-            & > img {
-              height: 320px;
-              width: 320px;
-              clip-path: circle(120px at center);
-            }
+          }
+          & > img {
+            height: 320px;
+            width: 320px;
+            clip-path: circle(120px at center);
           }
         }
       }
     }
+  }
 
-    @media screen {
-      @media (max-width: @maxWidth) {
-        & > #bio {
-          & > div:first-child {
-            flex-wrap: wrap;
-            & > div {
-              margin-bottom: @spaceLg;
-              & > h1,
-              & > h3,
-              & > h4 {
-                align-self: center;
-              }
+  @media screen {
+    @media (max-width: @maxWidth) {
+      & > #bio {
+        & > div:first-child {
+          flex-wrap: wrap;
+          & > div {
+            margin-bottom: @spaceLg;
+            & > h1,
+            & > h3,
+            & > h4 {
+              align-self: center;
             }
           }
         }

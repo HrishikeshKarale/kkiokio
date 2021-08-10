@@ -1,53 +1,108 @@
 //https://codepen.io/pietvanzoen/pen/Ccjlt
 <template>
   <footer class="vueFooter">
-    <div class="phoneNumber">
-      <address>
-        <a href="tel:585-520-7382">
-          (585) 520-7382
-        </a>
-      </address>
-      <div class="social">
-        <a href="https://github.com/HrishikeshKarale">
-          <span class="fab fa-github fa-2x" />
-          <!-- <b>
+    <router-link :to="{ name: 'home' }">
+      <vue-img :src="logoLink" alt="Logo" />
+      <h3>
+        Hrishikesh Karale
+        <h5>Kkiokio.com</h5>
+      </h3>
+    </router-link>
+    <div class="social">
+      <a href="https://github.com/HrishikeshKarale">
+        <span class="fab fa-github fa-2x" />
+        <!-- <b>
             @hrishikesh-karale
           </b> -->
-        </a>
-        <a href="https://www.npmjs.com/~kkiokio">
-          <span class="fab fa-npm fa-2x" />
-          <!-- <b>
+      </a>
+      <a href="https://www.npmjs.com/~kkiokio">
+        <span class="fab fa-npm fa-2x" />
+        <!-- <b>
             @kkiokio
           </b> -->
-        </a>
-        <a href="https://www.linkedin.com/in/hrishikesh-karale/">
-          <span class="fab fa-linkedin-in fa-2x" />
-          <!-- <b>
+      </a>
+      <a href="https://www.linkedin.com/in/hrishikesh-karale/">
+        <span class="fab fa-linkedin-in fa-2x" />
+        <!-- <b>
             @hrishikesh-karale
           </b> -->
-        </a>
+      </a>
+    </div>
+    <div>
+      <div>
+        <h3>Kkiokio</h3>
+        <ul>
+          <li
+            v-for="(navigation, index) in nav"
+            :key="index + '-' + navigation.name"
+          >
+            <router-link :to="{ name: navigation.component }">
+              {{ navigation.name }}
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li>
+            <router-link to="/termsOfService">
+              Terms Of Service
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/privacyPolicy">
+              Privacy Policy
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3>Buisness</h3>
+        <ul>
+          <li>
+            <router-link to="/">
+              For Buisness
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/">
+              Blogs
+            </router-link>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="copyright">
+    <p class="copyright">
       <span class="fas fa-copyright" />
       <b>2020 Hrishikesh Karale, All rights reserved.</b>
-      <router-link to="/termsOfService">
-        Terms Of Service
-      </router-link>
-      <router-link to="/privacyPolicy">
-        Privacy Policy
-      </router-link>
-    </div>
-    <div class="disclaimer">
-      * The views expressed on this website are entirely mine and not that of my
-      employers.
-    </div>
+    </p>
+    <small class="disclaimer">
+      * The views expressed on this website are entirely mine.
+    </small>
   </footer>
 </template>
 
 <script>
+import vueImg from "./vueImg.vue";
 export default {
-  name: "VueFooter"
+  name: "VueFooter",
+  components: {
+    vueImg
+  },
+  props: {
+    logoLink: {
+      required: false,
+      type: [String, null],
+      default: null
+    },
+
+    nav: {
+      required: true,
+      type: Object,
+      default: null
+    }
+  } //data
 }; //default
 </script>
 
@@ -58,10 +113,13 @@ export default {
 
 footer {
   margin-top: 4 * @spaceXl;
+  padding: @spaceXl @spaceMd;
   &.vueFooter {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    flex-wrap: nowrap;
+    // align-items: center;
     justify-content: space-around;
     background-color: @navBackground;
     font-size: @fontSizeSm;
@@ -69,51 +127,58 @@ footer {
     max-width: 100vw;
     z-index: @headerZ;
     min-height: @footer;
-    position: relative;
-    & > div {
-      display: flex;
-      align-items: center;
-      &.phoneNumber {
-        // background-color: @primaryColor;
-        height: fit-content;
-        width: 100%;
-        justify-content: space-evenly;
-        & > address {
-          & > a {
-            width: fit-content;
-            font-size: 2 * @fontSizeSm;
-          }
-        }
-        & > .social {
+    //footer logo
+    & > a {
+      width: 320px;
+      align-self: center;
+      & > img {
+        display: block;
+        height: 80px;
+        margin: auto;
+        & + h3 {
           display: flex;
-          width: max-content;
-          & > a {
-            & > span {
-              margin: 0 @spaceLg;
-              color: @backgroundColor;
-              & + b {
-                letter-spacing: 2px !important;
-              }
-            }
+          flex-direction: column;
+          margin-top: @spaceLg;
+          & > h5 {
+            align-self: flex-end;
+            color: @white;
           }
-        }
-      }
-      &.copyright {
-        position: absolute;
-        bottom: @spaceXl;
-        left: @spaceXl;
-        & > span {
-          margin-right: @spaceLg;
-        }
-        & > a {
-          margin: 0 @spaceMd;
         }
       }
     }
-    // .boxShadow(@one);
+    & > div {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    & > .social {
+      display: flex;
+      align-self: center;;
+      justify-content: space-evenly;
+      width: fit-content;
+      & > a {
+        & > span {
+          margin: 0 @spaceLg;
+        }
+      }
+    }
+    & > .copyright {
+      align-self: center;
+      & > span {
+        margin-right: @spaceMd;
+      }
+    }
+    & > .disclaimer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
     @media screen {
       @media (max-width: @maxWidth) {
-        flex-direction: row;
+        flex-direction: column;
       }
     }
   }

@@ -2,19 +2,19 @@
   <div v-if="days || hours || minutes" class="countdownTimer">
     <div class="day">
       <span class="number">{{ days }}</span>
-      <div class="format">{{ wordString.day }}</div>
+      <p class="format">{{ wordString.day }}</p>
     </div>
     <div class="hour">
       <span class="number">{{ hours }}</span>
-      <div class="format">{{ wordString.hours }}</div>
+      <p class="format">{{ wordString.hours }}</p>
     </div>
     <div class="min">
       <span class="number">{{ minutes }}</span>
-      <div class="format">{{ wordString.minutes }}</div>
+      <p class="format">{{ wordString.minutes }}</p>
     </div>
     <div class="sec">
       <span class="number">{{ seconds }}</span>
-      <div class="format">{{ wordString.seconds }}</div>
+      <p class="format">{{ wordString.seconds }}</p>
     </div>
     <div class="message">{{ message }}</div>
     <div class="status-tag" :class="statusType">{{ statusText }}</div>
@@ -119,10 +119,9 @@ export default {
 .countdownTimer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-size: @fontSize;
-  color: @backgroundColor;
-  width: 100%;
+  // color: @backgroundColor;
 
   .day,
   .hour,
@@ -130,12 +129,15 @@ export default {
   .sec {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-self: center;
     font-size: @fontSizeSm * 2;
-    font-weight: 500;
+    font-weight: bolder;
     text-align: center;
     margin: 0 @spaceSm;
+    color: @backgroundColor;
     .format {
+      color: @textColor;
       font-weight: 500;
       font-size: @fontSizeSm;
       opacity: 0.8;
@@ -151,15 +153,14 @@ export default {
     text-align: center;
   }
   .message {
-    display: flex;
     align-self: center;
+    text-align: center;
     font-size: @fontSizeSm;
-    font-weight: 400;
-    margin-top: @spaceSm;
+    margin: 0 @spaceXl;
   }
   .status-tag {
     min-width: 270px;
-    padding: @spaceMd 0;
+    padding: @spaceMd @spaceXl;
     font-weight: 500;
     color: #000;
     text-align: center;
@@ -168,7 +169,8 @@ export default {
       background-color: lightGreen;
     }
     &.running {
-      background-color: gold;
+      background-color: @dangerText;
+      color: @backgroundColor;
     }
     &.expired {
       background-color: silver;

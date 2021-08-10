@@ -19,18 +19,18 @@
           <countdown-timer
             class="alert"
             start-time="January 24, 2021 23:59:99"
-            end-time="Feb 14, 2021 00:00:01"
+            end-time="Aug 16, 2021 00:00:01"
             trans='{
               "day":"Day",
               "hours":"Hours",
               "minutes":"Minuts",
               "seconds":"Seconds",
               "expired":"Please contact the administrator (hrishirich619@gmail.com).",
-              "running":"You may experience gliteches in th e website due to it being constantly updated in the next few days. Please report any bugs to site administrator (hrishirich619@gmail.com).",
+              "running":"Please report any bugs to site administrator at hrishirich619@gmail.com",
               "upcoming":"Till start of event.",
               "status": {
                 "expired":"We apologise fior the delay, Please come back tomorrow.",
-                "running":"Site is being currently updated.",
+                "running":"Site is currently being updated.",
                 "upcoming":"Future"
               }
             }'
@@ -159,7 +159,14 @@ export default {
     });
   }, //beforeMount
 
+  mounted() {
+    document.addEventListener("scroll", this.scrollNav);
+  }, //mounted
+
   methods: {
+    scrollNav: function(event) {
+      console.log("scrollNav", event);
+    }, //scrollNav
     beforeLeave(element) {
       this.prevHeight = getComputedStyle(element).height;
     }, //beforeLeave
@@ -205,15 +212,15 @@ export default {
           align-self: center;
           color: @textColor;
           max-width: 64vw;
+          margin-top: @spaceLg;
           //countdown timer
           & > .alert {
             flex-direction: row;
-            background-color: @dangerText;
+            background-color: @dangerBorder;
             padding: @spaceMd @spaceLg;
-            border-radius: @borderRadius;
+            border-radius: @borderRadiusLg;
             height: fit-content;
             width: fit-content;
-            .boxShadow(@one);
           }
         }
       }
