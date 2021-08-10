@@ -9,14 +9,15 @@ export const skills = [
       "User Experience Testing",
       "Usability Testing",
       "Case Study",
-      "User Stories",
+      "User Story",
       "User Journeys",
       "User Interaction",
-      "User Flows",
-      "Task Flows",
+      "User Flow",
+      "Task Flow",
       "Card Sorting",
       "Mockups",
       "User Research",
+      "Competitive Analysis",
       "Qualitative & Quantitative Research Methodologies",
       "Conjoint Analysis"
     ]

@@ -4,17 +4,10 @@ export const projects = [
     value: [
       {
         id: 1,
-        title: "English Dictionary",
-        tags: [
-          "User Research",
-          "Case Study",
-          "IBM - Carbon",
-          "Interface Design",
-          "Information Architecture",
-          "App redesign",
-          "Mobile"
-        ],
-        description: "Redesigned a English dictionary from google play.",
+        title: "Mobile App Redesign",
+        tags: ["User Research", "Case Study", "IBM - Carbon", "UID", "IA"],
+        description:
+          "Redesigned an English dictionary app from google play to make it more usable, intuitive and a desirable experience that is more engaging to its users.",
         component: "dictionaryCaseStudy"
       },
       {
@@ -22,58 +15,52 @@ export const projects = [
         title: "Online Learning Platform",
         tags: [
           "User Research",
-          "Competitor Analysis",
+          "Competitive Analysis",
           "User Flow",
           "WireFrame",
-          "Information Architecture"
+          "IA"
         ],
         description:
-          "Designed a program learning platform for an HR media platform.",
+          "Designed a program learning platform for People Matters. People Matters is an HR Media Platform aimed to help foster ideas between HR-related professioals.",
         component: "HRPlatform"
       },
       {
         id: 3,
-        title: "Digital Wallet",
-        tags: ["Mobile", "Fintech", "Digital Wallet"],
-        description: "Rupay is a mobile banking app.",
+        title: "Digital Mobile Wallet",
+        tags: ["UID", "Fintech", "Digital Wallet", "Mobile Banking"],
+        description:
+          "Rupay is a mobile bankig app designed to fulfill basic services offered by a bank (access bank account, apply for aloan, check progress of existing requests, pay bills,  check transactin history etc.).",
         component: "rupay"
       },
       {
         id: 4,
-        title: "Digital Journal",
+        title: "Digital Journal Redesign",
         tags: [
           "Case Study",
           "Competitive Analysis",
-          "App redesign",
           "User Story",
           "Wireframe",
-          "Information Architecture",
-          "Google - Material Design",
-          "Mobile"
+          "IA",
+          "Google - Material Design"
         ],
-        description: "Tiny Thoughts is a personal Journal mobile app.",
+        description:
+          "Tiny Thoughts is a personal Journal mobile app. The redesign was intended to make the app more modern and reduce clutter.",
         component: "tinyThoughts"
       },
       {
         id: 5,
-        title: "Bank Website",
-        tags: ["Case Study", "App redesign", "Material Design", "Fintech"],
-        description: "Tiny Thoughts is a personal Journal app for mobile.",
+        title: "Bank Website Redesign",
+        tags: ["UID", "Case Study", "Google - Material Design", "Fintech"],
+        description:
+          "Redesign for Kuda Bank website. It lacked effort in terms of making the website trendy and eye catching. The website homapage was made more easy to read and comprehend by the use of illustrations and precise text headings.",
         component: "kudaBankCaseStudy"
       },
       {
         id: 6,
         title: "Cosmetic Product App",
-        tags: [
-          "Case Study",
-          "User Research",
-          "App redesign",
-          "IOS",
-          "WireFrame",
-          "Beauty Industry",
-          "Mobile"
-        ],
-        description: "Beauty Product App redesign",
+        tags: ["Case Study", "User Research", "IOS", "WireFrame"],
+        description:
+          "A brief case study of a multi-phase redesign ofSkinSAFE, an IOS app. The redesign was intended to make the application with added functionality(personalisation) as well as to make it more user friendly.",
         component: "skinSafe"
       },
       {
@@ -81,30 +68,31 @@ export const projects = [
         title: "Crowd Funding App",
         tags: [
           "Case Study",
-          "App redesign",
           "IOS HID",
           "Competitive Analysis",
           "Empathy Mapping",
           "Persona",
           "User Story",
-          "WireFrame",
-          "Movile"
+          "WireFrame"
         ],
-        description: "CrowdCo. is a croudfunding app",
+        description:
+          "CrowdCo. is a basic croudfunding mobile app aimed to spread awareness about crowdfunding for the general non-tech audience as a means for funding projects and needs of individuals/group od people.",
         component: "crowdCo"
       },
       {
         id: 8,
         title: "Venmo Case Study",
         tags: ["Case Study", "IOS HID"],
-        description: "Venmo app case study ",
+        description:
+          "Case study of Venmo, a popular fintech app used to transfer money ffrom one entity to another. The case study highlights the decisions made by the the Venmo team and the possible reasons behind the decisions.",
         component: "venmoCaseStudy"
       },
       {
         id: 9,
         title: "Google vs Waze Case Study",
-        tags: ["Case Study", "App redesign", "IOS HID"],
-        description: "Comparing two popular navigation platforms",
+        tags: ["Case Study"],
+        description:
+          "This is  a case study comparing two very popular navigation platforms, the different approaches taken by them to solve problems based on their user research and how people use their platforms",
         component: "mapsCaseStudy"
       },
       {
@@ -112,14 +100,12 @@ export const projects = [
         title: "Recipie Concept App",
         tags: [
           "Styleguide",
-          "Walkthrough",
           "Personas",
           "Style Guide",
-          "Information Architecture",
+          "IA",
           "Task Flow",
           "Competitive Analysis",
-          "WireFrame",
-          "Mobile"
+          "WireFrame"
         ],
         description:
           "The Cullinarian App is an mobile aimed targetted towards individuals who like to cook.\
@@ -135,7 +121,7 @@ export const projects = [
       {
         id: 1,
         title: "Onboarding Screen",
-        tags: ["Onboarding", "IOS", "Mobile"],
+        tags: ["Onboarding", "IOS"],
         description:
           "Plant IT! is an Onboarding screen for an IOS application for a concept website which specializes in selling household plants and decorative pots that go along with those plants.",
         component: "plantIt"
@@ -143,7 +129,7 @@ export const projects = [
       {
         id: 3,
         title: "Medical Appointment UI",
-        tags: ["Interface Design", "Style Guide", "Mobile"],
+        tags: ["UID", "Style Guide"],
         description:
           "MedCo is an mobile aimed towards the medical industry.\
               <br />\
@@ -153,13 +139,7 @@ export const projects = [
       {
         id: 4,
         title: "Fitness Watch App",
-        tags: [
-          "Wearable",
-          "Wireframe",
-          "Style Guide",
-          "User Centered Design",
-          "Mobile"
-        ],
+        tags: ["Wearable", "Wireframe", "Style Guide", "UCD"],
         description:
           "A Fitness tracker app for smart watch.\
               <br />\
@@ -169,7 +149,7 @@ export const projects = [
       {
         id: 5,
         title: "Login/SignUp Concept Screens",
-        tags: ["Login Screen", "Mobile"],
+        tags: ["Login Screen"],
         description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp"
       },
@@ -178,14 +158,8 @@ export const projects = [
         title: "Enterprise Web App",
         tags: [
           "Golden Ratio",
-          "WMS",
-          "Enterprise",
-          "Kiosk",
-          "Standalone",
-          "Material Design",
-          "User Centered Design",
-          "Pack Station",
-          "Web App"
+          "Google - Material Design",
+          "UCD",
         ],
         description:
           "The pack station allows users to pack and ship orders.\
@@ -196,7 +170,7 @@ export const projects = [
       {
         id: 7,
         title: "RSVP",
-        tags: ["Standalone", "VUE"],
+        tags: ["UID"],
         description:
           "The RSVP app allows a user to kleep track of their invites that they have sent to their friend.",
         component: "rsvpApp"
@@ -364,7 +338,7 @@ export const projects = [
         id: 2,
         title: "Card Slider",
         tags: [],
-        description: "does not work rite now.",
+        description: "A horizontal card/content slider",
         component: "cardSlider"
       },
       {
