@@ -263,6 +263,11 @@ export default {
           this.sqliteToken = response.data.token;
         })
         .catch(error => {
+          this.signupName = "";
+          this.signupEmail = "";
+          this.signupUsername = "";
+          this.signupPassword = "";
+          this.isAdmin = "";
           console.error(error);
         });
     }, //handleSignUp

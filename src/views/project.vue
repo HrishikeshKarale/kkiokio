@@ -76,7 +76,7 @@ export default {
         //type alerady exists
         const index = this.propFilter.indexOf(filter.value);
         //filter does not exists
-        console.log(index, this.propFilter, filter);
+        // console.log(index, this.propFilter, filter);
         if (index == -1) {
           this.propFilter = [...this.propFilter, filter.value];
           // console.log(this.propFilter, filter);

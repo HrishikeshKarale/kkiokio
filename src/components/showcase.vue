@@ -44,9 +44,12 @@ export default {
   background-color: @backgroundColor;
   padding: @spaceMd @spaceLg;
   border-radius: @borderRadiusLg;
-  margin: @spaceMd @spaceLg;
-  min-width: 240px;
-  max-width: 24vw;
+  justify-content: space-evenly;
+  // margin: @spaceMd @spaceLg;
+  margin: @spaceLg @spaceMd 0;
+  width: 360px;
+  // min-width: 240px;
+  // max-width: 24vw;
   border: 1px dashed @primaryColor;
 
   &:hover {

@@ -127,10 +127,19 @@ export default {
       capture: false, // top to bottom bubbling/propogation
       once: false //should work only once
     });
+
+    document.addEventListener("scroll", this.scrollNav, {
+      capture: false, // top to bottom bubbling/propogation
+      once: false //should work only once
+    });
     // console.log(this.$router.currentRoute.value.meta.requiresAuth);
   },
 
   methods: {
+    scrollNav: function(event) {
+      console.log("scrollNav", event);
+    }, //scrollNav
+
     clickHandler: function(event) {
       // console.log("modal", !event.target.closest(".vueHeader").length);
       if (!event.target.closest(".vueHeader") && this.isOpen("nav")) {

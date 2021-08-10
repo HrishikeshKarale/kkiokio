@@ -67,6 +67,8 @@ export default {
   // background-color: @backgroundColor;
   height: fit-content;
   z-index: @modalZ;
+  width: fit-content;
+  // align-self: flex-end;
 
   & > img {
     height: 48px;
