@@ -1,7 +1,9 @@
 <template>
   <div class="showcase">
     <router-link v-if="component" :to="{ name: component }">
-      <h3>{{ project.title }}</h3>
+      <h3>
+        {{ project.title }} <span class="fas fa-external-link-square-alt" />
+      </h3>
     </router-link>
     <h3 v-else>{{ project.title }}</h3>
     <!-- eslint-disable-next-line vue/no-v-html -->
@@ -9,7 +11,6 @@
     <ul v-if="project.tags">
       <template v-for="tag in project.tags" :key="tag">
         <li v-if="tag">
-          <span class="fas fa-circle" />
           <span>{{ tag }}</span>
         </li>
       </template>
@@ -44,81 +45,44 @@ export default {
   background-color: @backgroundColor;
   padding: @spaceMd @spaceLg;
   border-radius: @borderRadiusLg;
-  justify-content: space-evenly;
-  // margin: @spaceMd @spaceLg;
-  margin: @spaceLg @spaceMd 0;
-  width: 360px;
-  // min-width: 240px;
-  // max-width: 24vw;
+  justify-content: space-around;
+  flex: 1 1 320px;
+  height: fit-content;
   border: 1px dashed @primaryColor;
+
+  & > a > h3 {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+  }
 
   &:hover {
     .boxShadow(@three, @accentColor);
     border: 1px dashed transparent;
     & > a > h3 {
-      color: @accentColor;
-    }
-  }
-
-  & > div {
-    &.name {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-
-      & > .title {
-        font-weight: bold;
-        font-size: @fontSizeSm * 2;
+      &:hover {
+        color: @accentColor;
+      }
+      & > span {
+        color: @accentColor;
       }
     }
-    &.description {
-      display: none;
-    }
   }
+
   ul {
     display: flex;
     flex-wrap: wrap;
-    //offset the tag and account for position absolute
-    margin-left: @spaceLg !important;
+    gap: @spaceMd;
     //tag
     & > li {
       display: flex;
       flex-wrap: nowrap;
-      font-size: @fontSize;
+      font-size: @fontSizeSm;
       position: relative;
-      margin-bottom: @spaceMd !important;
-      margin-right: @spaceLg + @spaceMd !important;
-      background-color: @accentColor;
-      border-radius: 0 @borderRadius @borderRadius 0;
-      color: @textColor;
-      align-self: center;
-      width: fit-content;
-      //triangle
-      &:before {
-        content: "";
-        position: absolute;
-        left: calc(-@fontSizeMd + 2px);
-        border: solid calc(@fontSizeMd - 2px) transparent;
-        border-left-width: 0;
-        border-right-color: @accentColor;
-      }
-      //text and icon
-      & > span {
-        margin: 0 @spaceMd;
-        color: @white;
-        font-size: @fontSizeSm;
-        font-weight: bold;
-        letter-spacing: 2px !important;
-        //fontawesome circle
-        &.fas {
-          position: absolute;
-          top: 12px;
-          left: -@fontSizeSm / 2;
-          margin: 0;
-          font-size: 10px;
-          color: @white;
-        }
-      }
+      background-color: @secondaryColor;
+      border-radius: @borderRadius;
+      color: @backgroundColor;
+      padding: 0 @spaceMd !important;
     }
   }
 }

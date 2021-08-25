@@ -50,15 +50,18 @@
         and beyond. This is a detailed chronicle of the stories, processes and
         results behind the projects that I've led and contributed to.
       </p>
+      <q>
+        Jack of all trades is a master of none but is still always better than a
+        master of one.
+      </q>
       <div>
-        <div v-for="(project, index) in projects" :key="index">
-          <div>
+        <template v-for="(project, index) in projects" :key="index">
+          <div v-if="index < 2">
             <router-link :to="{ name: 'project', hash: `#${project.type}` }">
               <h3>
                 {{ project.type }}
               </h3>
             </router-link>
-            <!-- {{ project.value.length }} projects -->
             <ul>
               <li
                 v-for="skill in projectSkills[project.type]"
@@ -72,10 +75,7 @@
               </li>
             </ul>
           </div>
-          <!-- <template v-for="val in projectSkills">
-          {{ val }}
-        </template> -->
-        </div>
+        </template>
       </div>
     </section>
     <section class="kindWords">
@@ -114,9 +114,6 @@
           <h5>Justin</h5>
         </div>
       </div>
-      <!-- <div v-for="(skill, index) in skillSet" :key="skill.type" class="skills">
-        <infinite-scroll :list="skill.value" :reverse="index % 2 === 1" />
-      </div> -->
     </section>
   </article>
 </template>
@@ -168,6 +165,7 @@ export default {
 @import (reference) "./../Less/customVariables.less";
 
 .profileOverview {
+  position: relative;
   & > section {
     flex-direction: row;
     flex-wrap: wrap;
@@ -234,23 +232,15 @@ export default {
           width: 320px;
           border-radius: 25%;
           cursor: pointer;
-          align-self: center;
           justify-content: space-evenly;
           & > span {
             font-size: 64px;
             align-self: center;
-            padding: @spaceMd @spaceLg;
             font-weight: bold;
             transform: rotate(-45deg);
-            &:first-child {
-              align-self: flex-start;
-            }
             &:nth-child(2) {
-              padding: @spaceMd 0;
               transform: rotate(0deg);
-            }
-            &:last-child {
-              align-self: flex-end;
+              margin: 32px 0;
             }
           }
         }
@@ -263,15 +253,16 @@ export default {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-top: 2 * @spaceXl;
+        margin: 2 * @spaceXl;
         & > div {
           display: flex;
           flex-direction: column;
           border-radius: @borderRadiusLg;
           border: 1px dashed @primaryColor;
-          flex: 1 0 240px;
-          max-width: 30%;
+          flex: 0 1 48%;
+          height: fit-content;
           padding: @spaceXl;
+          margin-bottom: @spaceLg;
           & > h5 {
             text-align: right;
             &::before {
@@ -284,63 +275,63 @@ export default {
     }
     &.projects {
       flex-direction: column;
-      justify-content: space-evenly;
+      justify-content: space-around;
       & > div {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-evenly;
-        margin-top: 2 * @spaceXl;
+        gap: @spaceXl;
 
+        //project cards
         & > div {
           display: flex;
           flex-direction: column;
-          flex: 0 1 48%;
-          margin-bottom: @spaceLg;
-          //project cards
-          & > div {
-            padding: 0 @spaceLg @spaceMd @spaceLg;
-            border-radius: @borderRadiusLg;
-            border: 1px dashed @primaryColor;
-            & > a > h3 {
+          padding: @spaceMd @spaceLg;
+          border-radius: @borderRadiusLg;
+          border: 1px dashed @primaryColor;
+          height: fit-content;
+          flex: 1 1 320px;
+          & > a {
+            & > h3 {
               cursor: pointer;
+              margin-top: 0;
             }
-            & > ul {
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              // justify-content: space-evenly;
-              & > li {
-                font-size: @fontSizeSm;
-                border-radius: @borderRadiusLg;
-                padding: 0 @spaceMd !important;
-                background-color: @secondaryColor;
-                margin: @spaceSm;
-                cursor: pointer;
-                //tag icon
-                & > span.fas {
+          }
+          & > ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            // justify-content: space-between;
+            & > li {
+              font-size: @fontSizeSm;
+              border-radius: @borderRadiusLg;
+              padding: 0 @spaceMd !important;
+              background-color: @secondaryColor;
+              margin: @spaceSm !important;
+              cursor: pointer;
+              //tag icon
+              & > span.fas {
+                color: @backgroundColor;
+                margin-right: @spaceMd;
+                transform: scale(0.8);
+              }
+              &:hover {
+                background-color: @accentColor;
+                .boxShadow(@four, @accentColor);
+                & > span {
+                  transform: scale(1);
+                }
+                & > b {
                   color: @backgroundColor;
-                  margin-right: @spaceMd;
-                  transform: scale(0.8);
-                }
-                &:hover {
-                  background-color: @accentColor;
-                  .boxShadow(@four, @accentColor);
-                  & > span {
-                    transform: scale(1);
-                  }
-                  & > b {
-                    color: @backgroundColor;
-                  }
                 }
               }
             }
-            &:hover {
-              .boxShadow(@three, @accentColor);
-              border-color: transparent;
-              & > a > h3 {
-                color: @accentColor;
-              }
+          }
+          &:hover {
+            .boxShadow(@three, @accentColor);
+            border-color: transparent;
+            & > a > h3 {
+              color: @accentColor;
             }
           }
         }
@@ -375,7 +366,7 @@ export default {
         &.intro {
           & > div {
             &:last-child {
-              margin-top: 2 * @spaceXl;
+              margin: 2 * @spaceXl 0;
               height: 240px;
               width: 240px;
               align-self: center;

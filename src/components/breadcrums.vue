@@ -106,7 +106,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: fit-content;
+  // width: fit-content;
   z-index: @contentZ;
   padding: 0 @spaceMd 0 0;
   border-radius: 0 0 @borderRadius @borderRadius;

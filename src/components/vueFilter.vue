@@ -9,7 +9,8 @@
         type="button"
         tag="filterButton"
         icon="fas fa-filter"
-        category="icon"
+        text="Filter"
+        category="text"
         :ctx="toggleFilter"
       />
       <template v-if="selected && selected['type'].length >= 0">
@@ -24,9 +25,9 @@
               :key="val"
               class="multi"
             >
-              <div data-toggle="tooltip" data-placement="top" :title="item">
+              <small data-toggle="tooltip" data-placement="top" :title="item">
                 {{ val }}
-              </div>
+              </small>
               <span
                 class="fas fa-times"
                 @click.self="removeFilter(item, val)"
@@ -169,8 +170,11 @@ export default {
 .vueFilter {
   display: flex;
   flex-direction: column;
-  max-width: 480px;
-  min-width: 80px;
+  background-color: @backgroundColor;
+  border: 1px dashed @secondaryColor;
+  // width: fit-content;
+  padding: @spaceMd;
+  border-radius: @borderRadius;
   position: relative;
   & > div {
     &:first-child {
@@ -181,6 +185,7 @@ export default {
         border: 1px solid ~"darken(@backgroundColor, 10%)";
       }
       .selectedFilter {
+        font-size: @fontSizeSm;
         display: inline-flex;
         flex-direction: row;
         // justify-content: space-between;
@@ -189,19 +194,17 @@ export default {
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
-          margin: 0 @spaceMd;
         }
         & > div {
           font-weight: bold;
+          gap: @spaceMd;
           letter-spacing: 1px;
           background-color: @primaryColor;
           color: @white;
-          margin-right: 8px;
           border-radius: @borderRadius;
-          padding: @spaceXs @spaceSm;
+          padding: 0 @spaceSm;
           span {
             align-self: center;
-            margin-left: 8px;
           }
         }
       }
@@ -210,7 +213,6 @@ export default {
       display: flex;
       flex-direction: column;
       padding: @spaceSm @spaceMd;
-      border: 1px solid ~"darken(@backgroundColor, 10%)";
       border-radius: 0 4px 4px 4px;
       background-color: @backgroundColor;
       position: absolute;

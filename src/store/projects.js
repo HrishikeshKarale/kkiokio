@@ -156,11 +156,7 @@ export const projects = [
       {
         id: 6,
         title: "Enterprise Web App",
-        tags: [
-          "Golden Ratio",
-          "Google - Material Design",
-          "UCD",
-        ],
+        tags: ["Golden Ratio", "Google - Material Design", "UCD"],
         description:
           "The pack station allows users to pack and ship orders.\
           <br />\
@@ -174,6 +170,20 @@ export const projects = [
         description:
           "The RSVP app allows a user to kleep track of their invites that they have sent to their friend.",
         component: "rsvpApp"
+      }
+    ]
+  },
+  {
+    type: "Logo",
+    value: [
+      {
+        id: 1,
+        title: "DrumKit",
+        tags: ["JS", "Less", "HTML5", "mixins", "audio playback"],
+        description:
+          "Play your favorite tune on our virtual drums.<br />\
+          The DrumKit lets you play your favorite tune ",
+        component: "drumKit"
       }
     ]
   },
@@ -201,18 +211,7 @@ export const projects = [
       {
         id: 3,
         title: "Array Cardio",
-        tags: [
-          ".every",
-          ".some",
-          ".slice",
-          ".pop",
-          ".Map",
-          ".push",
-          ".findIndex",
-          ".find",
-          ".reduce",
-          ".sort"
-        ],
+        tags: [],
         description:
           "Playing with Array functions was a good way of getting acquaintanced with them.<br />\
           Array Functions used were as follows",

@@ -61,12 +61,12 @@
         <h3>Buisness</h3>
         <ul>
           <li>
-            <router-link to="/">
+            <router-link to="/buisness">
               For Buisness
             </router-link>
           </li>
           <li>
-            <router-link to="/">
+            <router-link to="/blog">
               Blogs
             </router-link>
           </li>
@@ -112,7 +112,6 @@ export default {
 @import (reference) "./../Less/customMixins.less";
 
 footer {
-  margin-top: 4 * @spaceXl;
   padding: @spaceXl @spaceMd;
   &.vueFooter {
     position: relative;
@@ -156,7 +155,7 @@ footer {
     }
     & > .social {
       display: flex;
-      align-self: center;;
+      align-self: center;
       justify-content: space-evenly;
       width: fit-content;
       & > a {

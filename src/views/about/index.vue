@@ -239,8 +239,9 @@ export default {
 
   @media screen {
     @media (max-width: @maxWidth) {
-      & > #bio {
+      #Bio {
         & > div:first-child {
+          display: flex;
           flex-wrap: wrap;
           & > div {
             margin-bottom: @spaceLg;

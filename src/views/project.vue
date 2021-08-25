@@ -19,17 +19,17 @@
     >
       <h2>{{ projects.type }}</h2>
       <div>
-        <div v-for="project in projects.value" :key="project.id">
-          <showcase
-            v-show="
-              propFilter.length == 0 ||
-                (propFilter.length > 0 &&
-                  propFilter.some(filter => project.tags.includes(filter)))
-            "
-            :project="project"
-            :component="project.component"
-          />
-        </div>
+        <showcase
+          v-for="project in projects.value"
+          v-show="
+            propFilter.length == 0 ||
+              (propFilter.length > 0 &&
+                propFilter.some(filter => project.tags.includes(filter)))
+          "
+          :key="project.id"
+          :project="project"
+          :component="project.component"
+        />
       </div>
     </section>
   </div>
@@ -96,9 +96,14 @@ export default {
   display: flex;
   flex-direction: column;
   & > section {
+    & > h2 {
+      width: 100%;
+    }
     & > div {
+      .scroll(480px);
       display: flex;
       flex-wrap: wrap;
+      gap: @spaceXl;
     }
   }
 }

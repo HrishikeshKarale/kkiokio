@@ -1,5 +1,8 @@
 <template>
-  <div class="contact">
+  <article class="contact">
+    <header>
+      <h1>Contact Me</h1>
+    </header>
     <p>
       Hello, My name is Hrishikesh Karale and I live in Upstate New York.
       <br />
@@ -8,111 +11,109 @@
       <br />
       If you sign in, You can also write to me the old fashion way.
     </p>
-    <div class="details">
-      <main class="personal">
-        <section class="email">
-          <h3>
-            Email
-            <vue-clipboard
-              id="emailId"
-              copy="hrishikesh.karale@gmail.com"
-              category="icon-sm"
-            />
-          </h3>
-          <h5>
-            <address>
-              <a href="mailto:hrishikesh.karale@gmail.com">
-                hrishikesh.karale@gmail.com
-              </a>
-            </address>
-          </h5>
-          <small>
-            *Feel free to send me an email any time of the day and I should be
-            able to respond in a reasonable amoutn of time.
-          </small>
-        </section>
-        <section class="phone">
-          <h3>
-            Phone Number
-            <vue-clipboard
-              id="phoneNumber"
-              copy="5855207382"
-              category="icon-sm"
-            />
-          </h3>
-          <h5>
-            <address>
-              <a href="tel:585-520-7382">
-                (585) 520-7382
-              </a>
-            </address>
-          </h5>
-          <p>
-            Hours: 8am - 4pm (EST), everyday.
-          </p>
-          <small>
-            *Text messages prefered.
-            <br />
-            *First time caller(s) are screened using virtual assistan to weed
-            out spam calls
-          </small>
-        </section>
-        <!-- <section class="address">
-          <h3>Postal Address</h3>
-          <p>
-            44 Crittenden Way,
-            <br />
-            Apartment 2,
-            <br />
-            Rochester, NY 14623
-          </p>
-        </section> -->
-      </main>
-      <div>
-        <h3>Contact Form</h3>
-        <vue-form
-          :ctx="sendMail.bind(this)"
-          d-form="contactForm"
-          :alert="{ error: dDanger, warning: dWarning }"
-          :validate="!booleanTrue"
-          :autocomplete="booleanTrue"
-        >
-          <text-input
-            v-model="name"
-            label="Name"
-            name="nameTextField"
-            placeholder="John Doe"
-            :required="booleanTrue"
-            @alerts="alerts"
+    <section id="Personal Info">
+      <div class="email">
+        <h3>
+          Email
+          <vue-clipboard
+            id="emailId"
+            copy="hrishikesh.karale@gmail.com"
+            category="icon-sm"
           />
-          <email-input
-            v-model="email"
-            label="Email"
-            name="emailField"
-            placeholder="JDoe@email.com"
-            input-icon="far fa-envelope"
-            :required="booleanTrue"
-            @alerts="alerts"
-          />
-          <phone-input
-            v-model="phone"
-            label="Phone number"
-            name="phoneInputField"
-            placeholder="555 555 5555"
-            @alerts="alerts"
-          />
-          <vue-textarea
-            v-model="comment"
-            label="message"
-            name="messageTextareaField"
-            placeholder="message"
-            :required="booleanTrue"
-            @alerts="alerts"
-          />
-        </vue-form>
+        </h3>
+        <h5>
+          <address>
+            <a href="mailto:hrishikesh.karale@gmail.com">
+              hrishikesh.karale@gmail.com
+            </a>
+          </address>
+        </h5>
+        <small>
+          *Feel free to send me an email any time of the day and I should be
+          able to respond in a reasonable amoutn of time.
+        </small>
       </div>
-    </div>
-  </div>
+      <div class="phone">
+        <h3>
+          Phone Number
+          <vue-clipboard
+            id="phoneNumber"
+            copy="5855207382"
+            category="icon-sm"
+          />
+        </h3>
+        <h5>
+          <address>
+            <a href="tel:585-520-7382">
+              (585) 520-7382
+            </a>
+          </address>
+        </h5>
+        <p>
+          Hours: 8am - 4pm (EST), everyday.
+        </p>
+        <small>
+          *Text messages prefered.
+          <br />
+          *First time caller(s) are screened using virtual assistan to weed out
+          spam calls
+        </small>
+      </div>
+      <div class="address">
+        <h3>Postal Address</h3>
+        <p>
+          44 Crittenden Way,
+          <br />
+          Apartment 2,
+          <br />
+          Rochester, NY 14623
+        </p>
+      </div>
+    </section>
+    <section>
+      <h3>Contact Form</h3>
+      <vue-form
+        :ctx="sendMail.bind(this)"
+        d-form="contactForm"
+        :alert="{ error: dDanger, warning: dWarning }"
+        :validate="!booleanTrue"
+        :autocomplete="booleanTrue"
+      >
+        <text-input
+          v-model="name"
+          label="Name"
+          name="nameTextField"
+          placeholder="John Doe"
+          :required="booleanTrue"
+          @alerts="alerts"
+        />
+        <email-input
+          v-model="email"
+          label="Email"
+          name="emailField"
+          placeholder="JDoe@email.com"
+          input-icon="far fa-envelope"
+          :required="booleanTrue"
+          @alerts="alerts"
+        />
+        <phone-input
+          v-model="phone"
+          label="Phone number"
+          name="phoneInputField"
+          placeholder="555 555 5555"
+          @alerts="alerts"
+        />
+        <vue-textarea
+          v-model="comment"
+          label="message"
+          name="messageTextareaField"
+          placeholder="message"
+          :required="booleanTrue"
+          @alerts="alerts"
+        />
+      </vue-form>
+    </section>
+  </article>
 </template>
 
 <script>
@@ -192,42 +193,23 @@ export default {
   display: flex;
   flex-direction: column;
 
-  & > .details {
+  & > section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-self: center;
-    width: @maxWidth;
-    & > div,
-    & > main {
-      max-width: 360px;
-      min-width: 240px;
-      margin: 0 @spaceXl;
-    }
-    & > main {
-      display: flex;
-      flex-direction: column;
-      &.personal {
-        & > section {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
-          & > h3 {
-            display: flex;
-            margin-bottom: @spaceMd;
-            & > div {
-              margin-left: @spaceLg;
-            }
-            & + h5 {
-              margin-bottom: @spaceSm;
-              margin-top: 0;
-              & > address {
-                margin-bottom: 0px;
-              }
-            }
-          }
-        }
+    gap: @spaceXl;
+    & > div {
+      flex: 1 1 320px;
+      border: 1px dashed @primaryColor;
+      padding: @spaceMd @spaceLg;
+      height: fit-content;
+      margin-right: 0;
+      & > h3 {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 0;
       }
     }
   }

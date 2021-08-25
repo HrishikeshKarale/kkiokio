@@ -24,6 +24,14 @@ html {
   --shadowColor: var(--offBlack);
 }
 
+html[theme='darkMode'] {
+  --primaryColor: #3a5a40;
+  --textColor: var(--offWhite);
+  --backgroundColor: var(--black);
+  --navBackground: var(--primaryColor);
+  --navText: #d8d8d8;
+}
+
 html[theme='India'] {
   --primaryColor: #000080;
   --secondaryColor: #138808;
@@ -34,7 +42,7 @@ html[theme='India'] {
   --navText: #d8d8d8;
 }
 
-html[theme='darkMode'] {
+html[theme='green'] {
   --primaryColor: #3a5a40;
   --secondaryColor: #588157;
   --accentColor: #ff5e5b;

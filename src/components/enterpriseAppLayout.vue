@@ -165,7 +165,7 @@ export default {
 
   methods: {
     scrollNav: function(event) {
-      console.log("scrollNav", event);
+      // console.log("scrollNav", event);
     }, //scrollNav
     beforeLeave(element) {
       this.prevHeight = getComputedStyle(element).height;
@@ -211,8 +211,10 @@ export default {
         &.content {
           align-self: center;
           color: @textColor;
-          max-width: 64vw;
-          margin-top: @spaceLg;
+          max-width: 72vw;
+          min-width: 1024px;
+          padding: 0 @spaceLg;
+          background-color: lightcyan;
           //countdown timer
           & > .alert {
             flex-direction: row;
@@ -231,6 +233,7 @@ export default {
       & > div {
         &.body {
           & > div.content {
+            max-width: 1024px;
             min-width: 480px;
           }
         }
