@@ -43,8 +43,9 @@
                   ? 'fas fa-check'
                   : 'fas fa-times'
               "
-            />
-            Numbers present
+            >
+              Numbers present
+            </span>
           </div>
           <div>
             <span
@@ -53,8 +54,9 @@
                   ? 'fas fa-check'
                   : 'fas fa-times'
               "
-            />
-            No Spaces
+            >
+              No Spaces
+            </span>
           </div>
           <div>
             <span
@@ -63,8 +65,9 @@
                   ? 'fas fa-check'
                   : 'fas fa-times'
               "
-            />
-            Capital Letter
+            >
+              Capital Letter
+            </span>
           </div>
           <div>
             <span
@@ -73,16 +76,18 @@
                   ? 'fas fa-check'
                   : 'fas fa-times'
               "
-            />
-            Snall letters
+            >
+              Snall letters
+            </span>
           </div>
           <div>
             <span
               :class="
                 dPasswordValue.length > 7 ? 'fas fa-check' : 'fas fa-times'
               "
-            />
-            More than 8 characters
+            >
+              More than 8 characters
+            </span>
           </div>
           <div>
             <span
@@ -91,8 +96,9 @@
                   ? 'fas fa-check'
                   : 'fas fa-times'
               "
-            />
-            Special character
+            >
+              Special character
+            </span>
           </div>
         </div>
       </div>
@@ -155,8 +161,9 @@
                   ? 'fas fa-check'
                   : 'fas fa-times'
               "
-            />
-            {{ label }} Match
+            >
+              {{ label }} Match
+            </span>
           </div>
         </div>
       </div>
@@ -218,7 +225,7 @@ export default {
       required: false,
       type: [RegExp, String, null],
       default: new RegExp(
-        "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})"
+        "^[a-zA-Z](?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})"
       )
     },
 
@@ -417,6 +424,14 @@ export default {
 
   & > div {
     .inputcss();
+    .fa-times {
+      color: @dangerText;
+      font-weight: bold;
+    }
+    .fa-check {
+      color: @successText;
+      font-weight: bold;
+    }
   }
 }
 </style>

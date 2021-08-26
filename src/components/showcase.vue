@@ -46,7 +46,7 @@ export default {
   padding: @spaceMd @spaceLg;
   border-radius: @borderRadiusLg;
   justify-content: space-around;
-  flex: 1 1 320px;
+  flex: 1 240px 320px;
   height: fit-content;
   border: 1px dashed @primaryColor;
 

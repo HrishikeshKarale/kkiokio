@@ -71,7 +71,10 @@
       </div>
     </section>
     <section>
-      <h3>Contact Form</h3>
+      <!-- <h3>Contact Form</h3> -->
+      <p>
+        Or you can also leave me a message here.
+      </p>
       <vue-form
         :ctx="sendMail.bind(this)"
         d-form="contactForm"
@@ -196,14 +199,19 @@ export default {
   & > section {
     display: flex;
     flex-direction: row;
+    // justify-content: space-around;
     flex-wrap: wrap;
     gap: @spaceXl;
+    min-height: 0px;
+    &:last-child {
+      flex-direction: column;
+    }
     & > div {
-      flex: 1 1 320px;
+      flex: 1 0 320px;
       border: 1px dashed @primaryColor;
+      border-radius: @borderRadiusLg;
       padding: @spaceMd @spaceLg;
       height: fit-content;
-      margin-right: 0;
       & > h3 {
         display: flex;
         flex-wrap: nowrap;

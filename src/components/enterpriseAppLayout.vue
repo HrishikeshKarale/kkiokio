@@ -160,13 +160,13 @@ export default {
   }, //beforeMount
 
   mounted() {
-    document.addEventListener("scroll", this.scrollNav);
+    // document.addEventListener("scroll", this.scrollNav);
   }, //mounted
 
   methods: {
-    scrollNav: function(event) {
-      // console.log("scrollNav", event);
-    }, //scrollNav
+    // scrollNav: function(event) {
+    //   console.log("scrollNav", event);
+    // }, //scrollNav
     beforeLeave(element) {
       this.prevHeight = getComputedStyle(element).height;
     }, //beforeLeave
@@ -195,7 +195,7 @@ export default {
   flex-direction: column;
   position: relative;
   height: 100vh;
-  max-width: 100vw;
+  width: 100vw;
   & > div {
     display: flex;
     flex-direction: row;
@@ -214,7 +214,7 @@ export default {
           max-width: 72vw;
           min-width: 1024px;
           padding: 0 @spaceLg;
-          background-color: lightcyan;
+          // background-color: lightcyan;
           //countdown timer
           & > .alert {
             flex-direction: row;
@@ -234,7 +234,7 @@ export default {
         &.body {
           & > div.content {
             max-width: 1024px;
-            min-width: 480px;
+            min-width: 320px;
           }
         }
       }

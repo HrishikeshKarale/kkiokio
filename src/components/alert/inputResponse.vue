@@ -65,6 +65,7 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
+  z-index: @contentZ;
 
   & > div {
     margin: @spaceSm 0;

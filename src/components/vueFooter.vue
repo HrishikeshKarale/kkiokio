@@ -123,7 +123,7 @@ footer {
     background-color: @navBackground;
     font-size: @fontSizeSm;
     color: @offWhite;
-    max-width: 100vw;
+    width: 100vw;
     z-index: @headerZ;
     min-height: @footer;
     //footer logo

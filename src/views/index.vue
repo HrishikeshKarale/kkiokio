@@ -190,7 +190,7 @@ export default {
       }
       & + p {
         align-self: center;
-        width: 640px;
+        max-width: 640px;
         text-align: center;
       }
     }
@@ -253,16 +253,14 @@ export default {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin: 2 * @spaceXl;
         & > div {
           display: flex;
           flex-direction: column;
           border-radius: @borderRadiusLg;
           border: 1px dashed @primaryColor;
-          flex: 0 1 48%;
+          flex: 1 320px 480px;
           height: fit-content;
           padding: @spaceXl;
-          margin-bottom: @spaceLg;
           & > h5 {
             text-align: right;
             &::before {
@@ -290,7 +288,7 @@ export default {
           border-radius: @borderRadiusLg;
           border: 1px dashed @primaryColor;
           height: fit-content;
-          flex: 1 1 320px;
+          flex: 1 240px 320px;
           & > a {
             & > h3 {
               cursor: pointer;
