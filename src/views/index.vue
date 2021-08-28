@@ -108,24 +108,55 @@
 			<h3>What adds to my qualification</h3>
 			<div>
 				<div v-for="cert in lisencesAndCertificates" :key="cert.id">
-					<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
 					<div>
-						<h4>
-							{{ cert.title }}
-						</h4>
-						<small>
-							{{ cert.issuer }}
-						</small>
+						<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
+						<div>
+							<h5>
+								{{ cert.title }}
+								<small>
+									{{ cert.issuer }}
+								</small>
+							</h5>
+						</div>
+					</div>
+					<div>
 						<p>
 							<b> Issued </b>
 							{{ cert.issued }}
 						</p>
 						<p>
-							{{ cert.expiry ? cert.expiry : "NO Expiry Date" }}
+							<b>
+								{{ cert.expiry ? cert.expiry : "NO Expiry Date" }}
+							</b>
 						</p>
 						<p>
 							<b> Credential ID </b>
 							{{ cert.credential }}
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="honorsAndAwards">
+			<h1>Honors & Awards</h1>
+			<h3>What proves my quality of work</h3>
+			<div>
+				<div v-for="award in honorsAndAwards" :key="award.id">
+					<div>
+						<!-- <vue-img :src="award.link" :alt="award.id + ' - ' + award.link" /> -->
+						<div>
+							<h5>
+								{{ award.title }}
+								<small>
+									{{ award.issuer }}
+								</small>
+							</h5>
+						</div>
+					</div>
+					<div>
+						<p>
+							<b> Issued </b>
+							{{ award.issued }}
 						</p>
 					</div>
 				</div>
@@ -141,6 +172,7 @@
 	// import { skills } from "@/store/skills";
 	import { projects } from "@/store/projects";
 	import { lisencesAndCertificates } from "@/store/lisencesAndCertificates";
+	import { honorsAndAwards } from "@/store/honorsAndAwards";
 	import VueImg from "@/components/vueImg.vue";
 
 	export default {
@@ -163,6 +195,7 @@
 				logo,
 				projects,
 				lisencesAndCertificates,
+				honorsAndAwards,
 				projectSkills,
 			};
 		},
@@ -247,12 +280,14 @@
 					}
 					//design and develop box
 					&:last-child {
+						margin-left: 0;
 						border: @borderRadius dashed @accentColor;
 						height: 320px;
 						width: 320px;
 						border-radius: 25%;
 						cursor: pointer;
 						justify-content: space-evenly;
+						align-self: center;
 						& > span {
 							font-size: 64px;
 							align-self: center;
@@ -272,13 +307,14 @@
 					display: flex;
 					flex-direction: row;
 					flex-wrap: wrap;
-					justify-content: space-between;
+					// justify-content: space-between;
+					gap: @spaceXl;
 					& > div {
 						display: flex;
 						flex-direction: column;
+						flex: 2 1 480px;
 						border-radius: @borderRadiusLg;
 						border: 1px dashed @primaryColor;
-						flex: 1 320px 480px;
 						height: fit-content;
 						padding: @spaceXl;
 						& > h5 {
@@ -308,7 +344,7 @@
 						border-radius: @borderRadiusLg;
 						border: 1px dashed @primaryColor;
 						height: fit-content;
-						flex: 1 240px 320px;
+						flex: 1 0 320px;
 						& > a {
 							& > h3 {
 								cursor: pointer;
@@ -355,7 +391,8 @@
 					}
 				}
 			}
-			&#LisencesAndCertificates {
+			&#LisencesAndCertificates,
+			&#honorsAndAwards {
 				flex-direction: column;
 				& > div {
 					display: flex;
@@ -364,22 +401,44 @@
 					gap: @spaceXl;
 					& > div {
 						display: flex;
-						flex-direction: row;
-						flex: 1 2 240px;
+						flex-direction: column;
+						flex-wrap: wrap;
+						flex: 0 0 240px;
 						gap: @spaceMd;
-						& > img {
-							height: 80px;
-							width: 80px;
-							.boxShadow(none);
-						}
+						padding: @spaceMd;
+						border-radius: @borderRadius;
+						border: 1px dashed @secondaryColor;
+						height: fit-content;
 						& > div {
-							& > h4,
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							gap: @spaceMd;
+							&:last-child {
+								flex-direction: column;
+								gap: 0;
+							}
+							& > img {
+								// display: flex;
+								// align-self: center;
+								height: 80px;
+								width: 80px;
+								.boxShadow(none);
+							}
+							& > div > h5,
 							& > p {
 								margin-top: 0;
 								margin-bottom: 0 !important;
 							}
+							& > div > h5 > small {
+								display: flex;
+								flex-direction: row-reverse;
+								font-weight: bold;
+								font-size: @fontSizeSm;
+							}
 							& > p {
 								font-size: @fontSizeSm;
+								line-height: 24px !important;
 							}
 						}
 					}
