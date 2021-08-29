@@ -52,13 +52,6 @@
 		methods: {
 			checkScroll: function () {
 				const highlight = Math.round(this.headerOffset.scrollTop);
-				// if (highlight > 0) {
-				// 	console.log(
-				// 		"header",
-				// 		highlight,
-				// 		document.getElementsByTagName("header")[0].classList.add("mini")
-				// 	);
-				// document.getElementsByTagName('header')[0].innerHTML
 				if (this.prevScrollValue > highlight) {
 					document.getElementsByTagName("header")[0].classList.remove("mini");
 				} else {
@@ -70,7 +63,15 @@
 						document.getElementsByTagName("header")[0].classList.add("mini");
 					}
 				}
-				// }
+				if (highlight > 0) {
+					document
+						.getElementsByClassName("breadcrums")[0]
+						.classList.add("scroll");
+				} else {
+					document
+						.getElementsByClassName("breadcrums")[0]
+						.classList.remove("scroll");
+				}
 				for (let i = 0; i < this.tag.length; i++) {
 					const tagOffset = this.tagOffset[i];
 
