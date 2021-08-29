@@ -107,7 +107,7 @@
 		flex-direction: row;
 		align-items: center;
 		// width: fit-content;
-		z-index: @contentZ;
+		z-index: @headerZ;
 		padding: 0 @spaceMd 0 0;
 		border-radius: 0 0 @borderRadius @borderRadius;
 		background-color: @backgroundColor;

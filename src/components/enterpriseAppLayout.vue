@@ -212,8 +212,8 @@
 						align-self: center;
 						color: @textColor;
 						max-width: 72vw;
-						min-width: 1024px;
-						padding: 0 @spaceLg;
+						// min-width: 1024px;
+						margin: 0 @spaceXl;
 						// background-color: lightcyan;
 						//countdown timer
 						& > .alert {

@@ -3,7 +3,7 @@
 		<div class="scrolContent">
 			<slot />
 		</div>
-		<div v-if="tagOffset.length > 1" class="scroll">
+		<div v-if="tagOffset.length > 1" class="scrollIndex">
 			<a
 				v-for="indicator in tagOffset"
 				:key="indicator.id"
@@ -140,13 +140,15 @@
 			justify-content: center;
 			position: relative;
 
-			&.scroll {
+			&.scrollIndex {
 				position: absolute;
 				height: fit-content;
 				top: @header + @spaceLg;
 				right: @spaceLg*2;
 				&::before {
 					content: "Page Content";
+					color: @primaryColor;
+					font-size: @fontSize;
 					text-align: right;
 					font-weight: bold;
 				}
@@ -160,6 +162,7 @@
 					height: @spaceXl;
 					background-color: transparent;
 					width: auto;
+					gap: @spaceLg;
 					&:hover,
 					&.active {
 						border-radius: @borderRadius;
@@ -169,13 +172,16 @@
 							display: block;
 							color: @textColor;
 							font-weight: bold;
-							margin-right: @spaceMd;
+							opacity: 1;
 						}
 					}
 					& > span {
 						.textShadow(@base);
 						&:last-child {
-							display: none;
+							// display: none;
+							font-size: @fontSizeSm;
+							color: @textColor;
+							opacity: 0.3;
 						}
 					}
 				}
@@ -190,7 +196,7 @@
 		@media screen {
 			@media (max-width: @maxWidth) {
 				& > div {
-					&.scroll {
+					&.scrollIndex {
 						background-color: @accentColor;
 						border-radius: @spaceXl;
 						padding: @spaceXs;
@@ -220,6 +226,7 @@
 									background-color: @backgroundColor;
 									width: 100%;
 									.textShadow(none);
+									display: none;
 								}
 							}
 						}

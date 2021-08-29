@@ -1,3 +1,4 @@
+// not being used rite now
 <template>
 	<div class="projectList">
 		<article>
@@ -8,14 +9,8 @@
 			>
 				<h2>{{ projects.type }}</h2>
 				<div>
-					<template
-						v-for="project in projects.value"
-						:key="project.id"
-					>
-						<showcase
-							:project="project"
-							:component="project.component"
-						/>
+					<template v-for="project in projects.value" :key="project.id">
+						<showcase :project="project" :component="project.component" />
 					</template>
 				</div>
 			</section>
@@ -28,16 +23,16 @@
 	import { projects } from "@/store/projects";
 
 	export default {
-	  name: "ProjectList",
-	  components: {
-	    showcase
-	  },
-	  data() {
-	    const projectsDescription = projects;
-	    return {
-	      projectsDescription
-	    };
-	  }
+		name: "ProjectList",
+		components: {
+			showcase,
+		},
+		data() {
+			const projectsDescription = projects;
+			return {
+				projectsDescription,
+			};
+		},
 	};
 </script>
 <style lang="less" scoped>
