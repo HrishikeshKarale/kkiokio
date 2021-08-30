@@ -1,18 +1,17 @@
 <template>
 	<div class="cardScroller">
 		<vue-button
-			v-show="rightScroll"
 			id="previous"
 			tag="Previous"
 			category="large"
 			icon="fas fa-chevron-left"
 			:ctx="handleScrollPrev.bind(this)"
 		/>
+		<div class="cardsBg" />
 		<div ref="cards" class="cards">
 			<slot />
 		</div>
 		<vue-button
-			v-show="leftScroll"
 			id="next"
 			tag="Next"
 			category="large"
@@ -29,30 +28,70 @@
 		components: {
 			vueButton,
 		},
+		props: {
+			autoScroll: {
+				required: false,
+				type: Boolean,
+				default: false,
+			},
+		}, //props
 
 		data() {
 			const cards = this.$refs.cards;
+			const timer = null;
+			const wait = 2;
+			const directionRight = true;
 			return {
 				cards,
+				timer,
+				wait,
+				directionRight,
 			};
 		},
 
 		mounted() {
 			this.cards = document.querySelector(".cards");
+			// if (this.autoScroll) {
+			// 	this.timer = setInterval(() => {
+			// 		console.log(this.directionRight ? "right" : "left", this.rightScroll());
+			// 		if (this.directionRight) {
+			// 			if (this.rightScroll()) {
+			// 				this.handleScrollNext();
+			// 			} else {
+			// 				this.directionRight = false;
+			// 			}
+			// 		} else {
+			// 			console.log(
+			// 				this.directionRight ? "right" : "left",
+			// 				this.leftScroll()
+			// 			);
+			// 			if (this.leftScroll()) {
+			// 				this.handleScrollPrev();
+			// 			} else {
+			// 				this.directionRight = true;
+			// 			}
+			// 		}
+			// 	}, this.wait * 1000);
+			// }
 		},
 
-		methods: {
-			leftScroll: function () {
-				return this.cards.scrollLeft < window.innerWidth;
-			}, //leftScroll
+		beforeUnmount() {
+			clearInterval(this.timer);
+		}, //beforeUnmount
 
+		methods: {
 			rightScroll: function () {
-				return this.cards.scrollLeft <= 0;
+				return this.cards.scrollLeft < window.innerWidth;
 			}, //rightScroll
+
+			leftScroll: function () {
+				return this.cards.scrollLeft <= 0;
+			}, //leftScroll
 
 			handleScrollNext: function () {
 				this.cards.scrollLeft = this.cards.scrollLeft += window.outerWidth;
 			}, //handleScrollNext
+
 			handleScrollPrev: function () {
 				this.cards.scrollLeft = this.cards.scrollLeft -= window.outerWidth;
 			}, //handleScrollPrev
@@ -72,7 +111,10 @@
 		height: fit-content;
 		overflow: hidden;
 		padding: @spaceMd;
-		background-color: @textColor;
+		// background-color: @textColor;
+		border: 1px dashed @accentColor;
+		border-radius: @borderRadiusLg;
+		position: relative;
 
 		& > button {
 			position: absolute;
@@ -86,6 +128,15 @@
 				left: 0;
 			}
 		}
+		& > .cardsBg {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: @primaryColor;
+			z-index: @contentZ;
+			// opacity: 0.1;
+			filter: opacity(8%);
+		}
 		& > .cards {
 			display: flex;
 			align-items: center;
@@ -94,7 +145,7 @@
 			overflow: auto;
 			gap: @spaceXl;
 			width: 100%;
-			scroll-behavior: smooth;
+			z-index: @contentZ+10;
 			&::-webkit-scrollbar {
 				height: 0px;
 			}

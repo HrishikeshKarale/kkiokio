@@ -48,6 +48,7 @@
 		},
 		mounted() {
 			this.initialize();
+			this.headerOffset.scrollTop = 0;
 		},
 		methods: {
 			checkScroll: function () {
@@ -149,6 +150,7 @@
 				height: fit-content;
 				top: @header + @spaceLg;
 				right: @spaceLg*2;
+				z-index: @headerZ;
 				&::before {
 					content: "Page Content";
 					color: @primaryColor;
@@ -212,7 +214,6 @@
 							&:hover,
 							&.active {
 								background-color: none;
-								.boxShadow(none);
 								& > span:last-child {
 									position: absolute;
 									width: max-content;
@@ -225,10 +226,10 @@
 							}
 							& > span {
 								color: @backgroundColor;
-								.textShadow(@one);
 								&:last-child {
 									background-color: @backgroundColor;
 									width: 100%;
+									border-radius: @borderRadius;
 									.textShadow(none);
 									display: none;
 								}

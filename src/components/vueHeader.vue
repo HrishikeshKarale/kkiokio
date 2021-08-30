@@ -28,7 +28,6 @@
 						<span v-if="index > 0" :class="navigation.icon" />
 						<template v-else>
 							<vue-img :src="logoLink" alt="Kkiokio.com" />
-							<!-- <small>kkiokio.com</small> -->
 						</template>
 						<div>
 							<h4>{{ navigation.name }}</h4>
@@ -125,19 +124,9 @@
 				capture: false, // top to bottom bubbling/propogation
 				once: false, //should work only once
 			});
-
-			document.addEventListener("scroll", this.scrollNav, {
-				capture: false, // top to bottom bubbling/propogation
-				once: false, //should work only once
-			});
-			// console.log(this.$router.currentRoute.value.meta.requiresAuth);
 		},
 
 		methods: {
-			scrollNav: function (event) {
-				console.log("scrollNav", event);
-			}, //scrollNav
-
 			clickHandler: function (event) {
 				// console.log("modal", !event.target.closest(".vueHeader").length);
 				if (!event.target.closest(".vueHeader") && this.isOpen("nav")) {
@@ -177,6 +166,7 @@
 
 	header {
 		line-height: 1;
+		z-index: @headerZ+10;
 		&.vueHeader {
 			display: flex;
 			align-items: center;
@@ -184,7 +174,6 @@
 			padding: @spaceMd @spaceXl;
 			background-color: @navBackground;
 			max-width: 100vw;
-			z-index: @headerZ;
 			height: @header;
 			&.mini {
 				height: 64px;

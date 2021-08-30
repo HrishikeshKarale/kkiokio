@@ -31,7 +31,7 @@ export const authentication = {
   mixins: [cookie], //mixins
 
   computed: {
-    signedIn: function() {
+    signedIn: function () {
       let signedIn = false;
       if (this.gapi) {
         signedIn = this.gapi && this.gapi.isSignedIn();
@@ -44,7 +44,7 @@ export const authentication = {
 
   methods: {
     //initialize user data when signedIn via Google
-    init: function(response) {
+    init: function (response) {
       if (response) {
         this.gapi = response.detail.gapi;
 
@@ -68,7 +68,7 @@ export const authentication = {
       }
     }, //init
 
-    signOut: function() {
+    signOut: function () {
       if (this.gapi) {
         this.gapi.disconnect();
         this.user.isLoggedIn = false;
@@ -89,7 +89,7 @@ export const authentication = {
     googleLoginScript.src =
       "https://apis.google.com/js/platform.js?onLoad=triggerGoogleLoaded";
     const s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(googleLoginScript, s);
+    // s.parentNode.insertBefore(googleLoginScript, s);
   },
   created() {
     //add eventlistner to catch the gapi after the platform.js loads

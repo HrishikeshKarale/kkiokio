@@ -18,7 +18,7 @@
 			:key="projects.type"
 		>
 			<h2>{{ projects.type }}</h2>
-			<card-scroller class="horizontal-scroller">
+			<card-scroller>
 				<showcase
 					class="project"
 					v-for="project in projects.value"

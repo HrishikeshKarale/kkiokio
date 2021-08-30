@@ -213,7 +213,7 @@
 						color: @textColor;
 						max-width: 72vw;
 						// min-width: 1024px;
-						margin: 0 @spaceXl;
+						padding: 0 @spaceXl;
 						// background-color: lightcyan;
 						//countdown timer
 						& > .alert {

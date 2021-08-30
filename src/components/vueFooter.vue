@@ -111,6 +111,7 @@
 
 	footer {
 		padding: @spaceXl @spaceMd;
+		margin-top: 4 * @spaceXl;
 		&.vueFooter {
 			position: relative;
 			display: flex;
@@ -121,7 +122,7 @@
 			background-color: @navBackground;
 			font-size: @fontSizeSm;
 			color: @offWhite;
-			width: 100vw;
+			max-width: 100vw;
 			z-index: @headerZ;
 			min-height: @footer;
 			//footer logo

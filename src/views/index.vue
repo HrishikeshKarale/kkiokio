@@ -7,14 +7,20 @@
 				<h1 @click="$router.push({ name: 'about' })">Hrishikesh Karale.</h1>
 				<h2>I design Things.</h2>
 				<p>
-					I am a <b>multi-disciplined designer</b> based out of Rochester, NY.
-					My experience ranges from UI/UX Design to Front-End Development.
+					I am a
+					<mark>multi-disciplined UX Designer</mark>
+					based out of Rochester, NY.
 				</p>
 				<p>
-					As a Designer I am passionate about <b>Empathy</b> in design. I
-					believe in setting ego aside and creating an experience that caters to
-					my user needs. My ability to organised workflows, understand visual
-					design language and solve problems shows in my work.
+					My Expertise ranges from Problem Validation -> Research -> Design ->
+					Front-End Development.
+				</p>
+				<p>
+					As a UX Professional, I am passionate about
+					<mark>Empathy in design</mark>. I believe in setting ego aside and
+					creating an experience that caters to my user needs. My ability to
+					organised workflows, understand visual design language and solve
+					problems shows in my work.
 				</p>
 				<vue-button
 					tag="loginButton"
@@ -229,7 +235,6 @@
 				font-weight: 900;
 				margin: 0;
 				transform: translate(0, 64px);
-				// opacity: 0.32;
 				filter: opacity(32%);
 			}
 			& > h3 {
@@ -237,18 +242,12 @@
 				color: @accentColor;
 				z-index: @contentZ + 10;
 				font-weight: 700;
-				&::before {
-					content: "";
-					margin-left: 0;
-				}
+				margin-bottom: 80px;
 				& + p {
 					align-self: center;
 					max-width: 640px;
 					text-align: center;
 				}
-			}
-			&::before {
-				display: none;
 			}
 			&#intro {
 				justify-content: space-evenly;
@@ -329,7 +328,7 @@
 			}
 			&#projects {
 				flex-direction: column;
-				justify-content: space-around;
+				// justify-content: space-around;
 				& > div {
 					display: flex;
 					flex-direction: row;

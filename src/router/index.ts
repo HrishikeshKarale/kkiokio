@@ -472,11 +472,11 @@ const routes: Array<RouteRecordRaw> = [
     meta: { transitionName: "fade", requiresAuth: false }
   },
   {
-    path: "/privacyPolicy",
+    path: "/PrivacyPolicy",
     name: "privacyPolicy",
     component: () =>
       import(
-        /* webpackChunkName: "privacyPolicy" */ "@/views/privacyPolicy.vue"
+        /* webpackChunkName: "termsOfService" */ "@/views/privacyPolicy.vue"
       ),
     meta: { transitionName: "fade", requiresAuth: false }
   },

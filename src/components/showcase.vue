@@ -1,9 +1,6 @@
 <template>
 	<div class="showcase">
-		<router-link
-			v-if="component"
-			:to="{ name: component }"
-		>
+		<router-link v-if="component" :to="{ name: component }">
 			<h3>
 				{{ project.title }} <span class="fas fa-external-link-square-alt" />
 			</h3>
@@ -12,10 +9,7 @@
 		<!-- eslint-disable-next-line vue/no-v-html -->
 		<p v-html="project.description" />
 		<ul v-if="project.tags">
-			<template
-				v-for="tag in project.tags"
-				:key="tag"
-			>
+			<template v-for="tag in project.tags" :key="tag">
 				<li v-if="tag">
 					<span>{{ tag }}</span>
 				</li>
@@ -25,18 +19,18 @@
 </template>
 <script>
 	export default {
-	  name: "Showcase",
-	  props: {
-	    project: {
-	      required: true,
-	      type: Object
-	    },
-	    component: {
-	      required: false,
-	      type: String,
-	      default: ""
-	    }
-	  }
+		name: "Showcase",
+		props: {
+			project: {
+				required: true,
+				type: Object,
+			},
+			component: {
+				required: false,
+				type: String,
+				default: "",
+			},
+		},
 	};
 </script>
 
@@ -73,6 +67,9 @@
 					color: @accentColor;
 				}
 			}
+		}
+		& > p {
+			font-size: @fontSizeSm;
 		}
 
 		ul {

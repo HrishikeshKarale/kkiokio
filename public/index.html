@@ -1,43 +1,52 @@
-<!-- //login google https://stackoverflow.com/questions/31144874/gapi-is-not-defined-google-sign-in-issue-with-gapi-auth2-init -->
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="google-signin-client_id" content="758507759739-qsqjadv7gr0sunj6mlkvuh8lc2h74hqn.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+      content="758507759739-qsqjadv7gr0sunj6mlkvuh8lc2h74hqn.apps.googleusercontent.com">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <!-- authentication start -->
+    <!-- Firebase sdk -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.2.1/firebase-app.js" />
+
+    // <!-- TODO: Add SDKs for Firebase products that you want to use
+    //     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.2.1/firebase-analytics.js" />
+
+    // <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js" />
+    // <!-- authentication start -->
     <script type="text/javascript">
       function triggerGoogleLoaded(gapi) {
         const gapiObject = gapi;
-          var event = new CustomEvent("google-loaded", {'detail': {
-          gapi: gapiObject
-        }
-      });
+        var event = new CustomEvent("google-loaded", {
+          'detail': {
+            gapi: gapiObject
+          }
+        });
         window.dispatchEvent(event);
       }
+
     </script>
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
   </head>
+
   <body id="portfolio">
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but
+        <%= htmlWebpackPlugin.options.title %>
+        doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <!-- built files will be auto injected -->
 
-    <!-- Firebase sdk -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/8.2.1/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/8.2.1/firebase-analytics.js"></script>
-
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
   </body>
+
 </html>
