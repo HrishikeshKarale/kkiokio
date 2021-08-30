@@ -64,13 +64,17 @@
 					}
 				}
 				if (highlight > 0) {
-					document
-						.getElementsByClassName("breadcrums")[0]
-						.classList.add("scroll");
+					if (document.getElementsByClassName("breadcrums")[0]) {
+						document
+							.getElementsByClassName("breadcrums")[0]
+							.classList.add("scroll");
+					}
 				} else {
-					document
-						.getElementsByClassName("breadcrums")[0]
-						.classList.remove("scroll");
+					if (document.getElementsByClassName("breadcrums")[0]) {
+						document
+							.getElementsByClassName("breadcrums")[0]
+							.classList.remove("scroll");
+					}
 				}
 				for (let i = 0; i < this.tag.length; i++) {
 					const tagOffset = this.tagOffset[i];
