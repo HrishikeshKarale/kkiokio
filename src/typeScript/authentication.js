@@ -31,7 +31,7 @@ export const authentication = {
   mixins: [cookie], //mixins
 
   computed: {
-    signedIn: function () {
+    signedIn: function() {
       let signedIn = false;
       if (this.gapi) {
         signedIn = this.gapi && this.gapi.isSignedIn();
@@ -44,7 +44,7 @@ export const authentication = {
 
   methods: {
     //initialize user data when signedIn via Google
-    init: function (response) {
+    init: function(response) {
       if (response) {
         this.gapi = response.detail.gapi;
 
@@ -68,7 +68,7 @@ export const authentication = {
       }
     }, //init
 
-    signOut: function () {
+    signOut: function() {
       if (this.gapi) {
         this.gapi.disconnect();
         this.user.isLoggedIn = false;
