@@ -945,6 +945,19 @@ article {
   display: flex;
   flex-direction: column;
 
+  &>header>h1 {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      left: -64px;
+      content: '\27A5';
+      color: @accentColor;
+      transform: rotate(180deg);
+    }
+
+  }
+
   img {
     width: 100%;
     // margin: @spaceXl 0;
