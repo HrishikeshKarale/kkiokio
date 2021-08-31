@@ -1,6 +1,9 @@
 //https://www.webdesignerdepot.com/2017/09/11-experimental-css-projects-thatll-blow-your-mind/
 <template>
 	<div class="projects">
+		<header>
+			<h1>My Projects</h1>
+		</header>
 		<p>
 			Here is a list of projects that I have worked on.
 			<br />
@@ -20,7 +23,6 @@
 			<h2>{{ projects.type }}</h2>
 			<card-scroller>
 				<showcase
-					class="project"
 					v-for="project in projects.value"
 					v-show="
 						propFilter.length == 0 ||
@@ -28,6 +30,7 @@
 							propFilter.some((filter) => project.tags.includes(filter)))
 					"
 					:key="project.id"
+					class="project"
 					:project="project"
 					:component="project.component"
 				/>

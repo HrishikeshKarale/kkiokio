@@ -3,7 +3,7 @@
 <template>
 	<article>
 		<header>
-			<h3>Terms of Service</h3>
+			<h1>Terms of Service</h1>
 		</header>
 		<p>
 			<span class="website_name">kkiokio.com</span> ("Us" or "We") provides the

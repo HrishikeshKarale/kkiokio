@@ -2,7 +2,7 @@
 <template>
 	<article>
 		<header>
-			<h3>Privacy Policy</h3>
+			<h1>Privacy Policy</h1>
 		</header>
 		<p>Last updated: November 19, 2020</p>
 		<p>
