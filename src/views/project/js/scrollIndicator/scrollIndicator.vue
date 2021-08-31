@@ -36,6 +36,7 @@
 			//ratio used to calculate window buffer
 			const bufferRatio = 0.24;
 			const prevScrollValue = 0;
+			const wait = 2;
 			return {
 				headerOffset,
 				tag,
@@ -44,15 +45,18 @@
 				windowBuffer,
 				bufferRatio,
 				prevScrollValue,
+				wait,
 			};
 		},
 		mounted() {
-			this.initialize();
-			this.headerOffset.scrollTop = 0;
+			setTimeout(() => {
+				this.initialize();
+				this.goBack();
+				this.headerOffset.scrollTop = 0;
+			}, this.wait * 1000);
 		},
 		methods: {
-			checkScroll: function () {
-				const highlight = Math.round(this.headerOffset.scrollTop);
+			scrollableHeader: function (highlight) {
 				if (this.prevScrollValue > highlight) {
 					document.getElementsByTagName("header")[0].classList.remove("mini");
 				} else {
@@ -77,6 +81,18 @@
 							.classList.remove("scroll");
 					}
 				}
+			}, //scrollableHeader
+
+			goBack: function () {
+				const article = document.getElementsByTagName("article")[0];
+				const header = article.getElementsByTagName("h2")[0];
+				header;
+				console.log(header);
+			}, //goBack
+
+			checkScroll: function () {
+				const highlight = Math.round(this.headerOffset.scrollTop);
+				this.scrollableHeader();
 				for (let i = 0; i < this.tag.length; i++) {
 					const tagOffset = this.tagOffset[i];
 
@@ -219,9 +235,21 @@
 									width: max-content;
 									text-align: center;
 									color: @accentColor;
+									padding: 0 @spaceMd;
 									top: -40px;
-									right: -8px;
+									border: 1px dashed @primaryColor;
+									border-radius: @borderRadius;
 									font-weight: bold;
+									&::before {
+										content: "";
+										position: absolute;
+										left: 0;
+										top: 0;
+										height: 100%;
+										width: 100%;
+										background-color: @primaryColor;
+										filter: opacity(8%);
+									}
 								}
 							}
 							& > span {
