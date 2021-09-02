@@ -58,7 +58,7 @@ export const projects = [
       {
         id: 6,
         title: "Cosmetic Product App",
-        tags: ["Case Study", "User Research", "IOS", "WireFrame"],
+        tags: ["Case Study", "User Research", "WireFrame"],
         description:
           "A brief case study of a multi-phase redesign ofSkinSAFE, an IOS app. The redesign was intended to make the application with added functionality(personalisation) as well as to make it more user friendly.",
         component: "skinSafe"
@@ -121,7 +121,7 @@ export const projects = [
       {
         id: 1,
         title: "Onboarding Screen",
-        tags: ["Onboarding", "IOS"],
+        tags: ["Onboarding"],
         description:
           "Plant IT! is an Onboarding screen for an IOS application for a concept website which specializes in selling household plants and decorative pots that go along with those plants.",
         component: "plantIt"
