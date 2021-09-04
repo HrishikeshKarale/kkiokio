@@ -37,7 +37,9 @@
           />
           <breadcrums />
           <scroll-indicator>
-            <router-view :key="$route.path" />
+            <keep-alive>
+              <router-view :key="$route.path" />
+            </keep-alive>
           </scroll-indicator>
           <template v-if="$slots['moto']">
             <slot name="moto" />

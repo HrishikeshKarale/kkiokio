@@ -954,17 +954,24 @@ article {
     margin-left: 0 !important;
   }
 
-  &>header>h1 {
+  &>header {
     position: relative;
 
-    &::before {
+    &>span {
       position: absolute;
-      left: -64px;
-      content: '\27A5';
+      top: 40px;
+      left: -2*@spaceXl;
       color: @accentColor;
-      transform: rotate(180deg);
-    }
 
+      &>span {
+        color: @primaryColor;
+        width: max-content;
+        font-size: @fontSize/2;
+        position: absolute;
+        top: 80%;
+        left: -@spaceSm;
+      }
+    }
   }
 
   .vueImg {
@@ -984,16 +991,10 @@ article {
   }
 
   //indent heading
-  &>*,
+  &>*:not(header),
   &>section>*,
   &>section>.subSection>* {
     margin-left: @spaceMd;
-
-    // &:not(h2),
-    // &:not(h3),
-    // &:not(h4) {
-    // margin-left: -@spaceMd;
-    // }
   }
 
   &>section {

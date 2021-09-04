@@ -54,9 +54,9 @@ export default {
   mounted() {
     setTimeout(() => {
       this.articleTag = document.getElementsByTagName("article")[0];
+      this.goBack();
       this.initialize();
       this.checkScroll();
-      this.goBack();
       this.headerOffset.scrollTop = 0;
     }, this.wait * 1000);
   },
@@ -111,12 +111,19 @@ export default {
     }, //scrollPath
 
     goBack: function() {
-      const article = document.getElementsByTagName("article")[0];
-      if (article) {
-        const header = article.getElementsByTagName("h2")[0];
-        // const backButton = document.createElement("a");
-        // backbutton
-        // header.appendChild(backButton);
+      if (this.articleTag) {
+        const header = this.articleTag.getElementsByTagName("header")[0];
+        const backButton = document.createElement("span");
+        backButton.className += "fas fa-long-arrow-alt-left fa-2x";
+        const backText = document.createElement("span");
+        const linkText = document.createTextNode("Go Back");
+        backText.appendChild(linkText);
+        backButton.appendChild(backText);
+        // backButton.classlist.add("fas fa-circle");
+        // backButton.onclick = this.$router.back();
+        // backButton.href = "http://example.com";
+        // console.log(this.$router);
+        header.appendChild(backButton);
         // console.log(header);
       }
     }, //goBack
