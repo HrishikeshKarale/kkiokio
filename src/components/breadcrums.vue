@@ -107,14 +107,15 @@ export default {
   flex-direction: row;
   align-items: center;
   // width: fit-content;
-  z-index: @headerZ;
   padding: 0 @spaceMd 0 0;
   border-radius: 0 0 @borderRadius @borderRadius;
   background-color: @backgroundColor;
   // position: relative;
   &.scroll {
-    background-color: @navBackground;
     padding: 0 0 0 16px;
+    background-color: @navBackground;
+    .boxShadow(@one, @navBackground);
+    z-index: @headerZ;
   }
   h1,
   h5 {

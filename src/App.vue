@@ -1,91 +1,87 @@
 <template>
-  <enterprise-app-layout>
-    <template #header>
-      <vue-header :logo-link="logoLink" :nav="navigation" />
-    </template>
-    <template #moto>
-      <aside class="moto">
-        <vue-img :src="logoLink" alt="Moto" />
-        <q>
-          A little
-          <abbr
-            title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
-          >
-            Empathy
-          </abbr>
-          goes a long way
-        </q>
-      </aside>
-    </template>
-    <template #footer>
-      <vue-footer :logo-link="logoLink" :nav="navigation" />
-    </template>
-  </enterprise-app-layout>
+	<enterprise-app-layout>
+		<template #header>
+			<vue-header :logo-link="logoLink" :nav="navigation" />
+		</template>
+		<template #moto>
+			<aside class="moto">
+				<vue-img :src="logoLink" alt="Moto" />
+				<q>
+					A little
+					<abbr
+						title="The action of understanding, being aware of, being sensitive to, and vicariously experiencing the feelings, thoughts, and experience of another of either the past or present without having the feelings, thoughts, and experience fully communicated in an objectively explicit manner"
+					>
+						Empathy
+					</abbr>
+					goes a long way
+				</q>
+			</aside>
+		</template>
+		<template #footer>
+			<vue-footer :logo-link="logoLink" :nav="navigation" />
+		</template>
+	</enterprise-app-layout>
 </template>
 
 <script>
-// @ is an alias to /src
-import vueHeader from "@/components/vueHeader";
-import enterpriseAppLayout from "@/components/enterpriseAppLayout";
-import vueImg from "@/components/vueImg.vue";
-import vueFooter from "@/components/vueFooter.vue";
-import { nav } from "@/store/navigation";
+	// @ is an alias to /src
+	import vueHeader from "@/components/vueHeader";
+	import enterpriseAppLayout from "@/components/enterpriseAppLayout";
+	import vueImg from "@/components/vueImg.vue";
+	import vueFooter from "@/components/vueFooter.vue";
+	import { nav } from "@/store/navigation";
 
-export default {
-  name: "App",
+	export default {
+		name: "App",
 
-  components: {
-    vueHeader,
-    vueImg,
-    vueFooter,
-    enterpriseAppLayout
-  },
+		components: {
+			vueHeader,
+			vueImg,
+			vueFooter,
+			enterpriseAppLayout,
+		},
 
-  data() {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const logoLink = require("@/assets/logo.svg");
-    const navigation = nav;
-    return {
-      navigation,
-      logoLink
-    };
-  }
-};
+		data() {
+			// eslint-disable-next-line @typescript-eslint/no-var-requires
+			const logoLink = require("@/assets/logo.svg");
+			const navigation = nav;
+			return {
+				navigation,
+				logoLink,
+			};
+		},
+	};
 </script>
 
 <style lang="less" scoped>
-@import (reference) "./Less/customVariables.less";
+	@import (reference) "./Less/customVariables.less";
 
-.moto {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  padding: @spaceMd @spaceLg 0;
-  border-radius: @borderRadius 0 0 0;
-  // background-color: @backgroundColor;
-  height: fit-content;
-  z-index: @modalZ;
-  width: fit-content;
-  // align-self: flex-end;
+	.moto {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		display: flex;
+		flex-direction: column;
+		padding: @spaceMd @spaceLg 0;
+		height: fit-content;
+		z-index: @modalZ;
+		width: fit-content;
+		& > .vueImg {
+			height: 64px;
+			margin-bottom: @spaceLg;
+		}
 
-  & > img {
-    height: 48px;
-    margin-bottom: @spaceLg;
-  }
+		& > q {
+			font-size: @fontSizeSm;
+			font-weight: bold;
+			background-color: @backgroundColor;
+			border-radius: @borderRadiusLg 0 0 0;
+			padding: 0 @spaceLg;
 
-  & > q {
-    font-size: @fontSizeSm;
-    font-weight: bold;
-    background-color: @backgroundColor;
-    border-radius: @borderRadiusLg 0 0 0;
-    padding: 0 @spaceLg;
-
-    & > abbr {
-      color: @accentColor;
-      text-decoration: none;
-    }
-  }
-}
+			& > abbr {
+				color: @accentColor;
+				text-decoration: none;
+			}
+		}
+	}
 </style>

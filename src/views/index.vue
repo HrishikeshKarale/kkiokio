@@ -237,6 +237,7 @@
 			flex-direction: column;
 			flex-wrap: wrap;
 			width: 100%;
+			min-height: @body;
 			& > h1 {
 				text-align: center;
 				font-size: 92px;
@@ -396,7 +397,7 @@
 								flex-direction: column;
 								gap: 0;
 							}
-							& > img {
+							& > .vueImg {
 								// display: flex;
 								// align-self: center;
 								height: 80px;
