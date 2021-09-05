@@ -20,22 +20,7 @@
 			:id="projects.type"
 			:key="projects.type"
 		>
-			<h2>
-				{{ projects.type }}
-				<!-- <vue-button
-          tag="loginButton"
-          category="border-sm"
-          text="About me"
-          icon="fas fa-sign-in-alt"
-          :ctx="toggleview()"
-        /> -->
-			</h2>
-			<card-scroller
-				:title="projects.type"
-				:autoScroll="!booleanTrue"
-				:vertical="!vertical"
-				@toggleVertical="(val) => (vertical = !val)"
-			>
+			<card-scroller :title="projects.type" :autoScroll="autoScroll">
 				<showcase
 					v-for="project in projects.value"
 					v-show="
@@ -71,12 +56,14 @@
 			const filterList = [];
 			const booleanTrue = true;
 			const vertical = booleanTrue;
+			const autoScroll = booleanTrue;
 			return {
 				projectsDescription,
 				propFilter,
 				filterList,
 				booleanTrue,
 				vertical,
+				autoScroll,
 			};
 		},
 		created() {

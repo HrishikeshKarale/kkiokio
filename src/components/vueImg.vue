@@ -34,7 +34,7 @@
 				},
 				caption: {
 					required: false,
-					type: String,
+					type: [String, null],
 					default: null,
 				},
 			},
@@ -56,6 +56,8 @@
 	.vueImg {
 		display: flex;
 		justify-content: center;
+		align-content: center;
+		align-self: center;
 		gap: @spaceLg;
 		z-index: @contentZ;
 		margin-block-end: 0;

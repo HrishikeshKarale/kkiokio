@@ -54,10 +54,12 @@
 			//get a list of components to be used for breadcrums
 			this.projectsDescription.forEach((project) => {
 				project.value.forEach((proj) => {
-					this.unique = [
-						{ comp: proj.component, name: proj.title },
-						...this.unique,
-					];
+					if (proj.type !== "Logo") {
+						this.unique = [
+							{ comp: proj.component, name: proj.title },
+							...this.unique,
+						];
+					}
 				});
 			});
 			this.navigation.forEach((nav) => {
@@ -80,12 +82,15 @@
 				if (tempSelect) {
 					tempSelect = tempSelect.toLowerCase();
 					this.projectsDescription.forEach((project) => {
-						for (let index = 0; index < project.value.length; index++) {
-							const proj = project.value[index];
-							// console.log(proj.component.toLowerCase(), tempSelect.toLowerCase());
-							if (proj.component.toLowerCase() === tempSelect) {
-								tempSelect = proj.title;
-								break;
+						if (project.type !== "Logo") {
+							console.log(project.type);
+							for (let index = 0; index < project.value.length; index++) {
+								const proj = project.value[index];
+								// console.log(proj.component.toLowerCase(), tempSelect.toLowerCase());
+								if (proj.component.toLowerCase() === tempSelect) {
+									tempSelect = proj.title;
+									break;
+								}
 							}
 						}
 					});

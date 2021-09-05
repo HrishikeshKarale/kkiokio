@@ -132,6 +132,18 @@
   box-sizing: @boxmodel;
 }
 
+.backgroundColor(@color: @primaryColor, @opacity: 8%) {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: @primaryColor;
+    z-index: @contentZ;
+    filter: opacity(@opacity);
+  }
+}
+
 .textShadow(@val, @color: @shadowColor, @zIndex: inherit) {
   text-shadow: @val @color;
   -webkit-text-shadow: @val @color;

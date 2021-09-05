@@ -1,29 +1,34 @@
 <template>
 	<div class="cardScroller">
 		<h2>
-			{{ title }}
 			<vue-button
 				id="viewAll"
 				tag="viewAllButton"
 				:text="vertical ? 'Minimize' : 'View All'"
 				:icon="vertical ? 'fas fa-minus' : 'fas fa-plus'"
 				category="text"
-				:ctx="toggleVertical.bind(this, vertical)"
+				:ctx="
+					() => {
+						vertical = !vertical;
+					}
+				"
 			/>
+			{{ title }}
 		</h2>
 		<div :class="vertical ? 'vertical' : 'horizontal'">
 			<vue-button
+				v-show="!vertical"
 				id="previous"
 				tag="Previous"
 				category="large"
 				icon="fas fa-chevron-left"
 				:ctx="handleScrollPrev.bind(this)"
 			/>
-			<div class="cardsBg" />
 			<div ref="cards" :class="['cards', tag]">
 				<slot />
 			</div>
 			<vue-button
+				v-show="!vertical"
 				id="next"
 				tag="Next"
 				category="large"
@@ -47,11 +52,6 @@
 				type: Boolean,
 				default: false,
 			},
-			vertical: {
-				required: false,
-				type: Boolean,
-				default: false,
-			},
 			title: {
 				required: false,
 				type: [String, null],
@@ -71,12 +71,15 @@
 			const cards = null;
 			const timer = null;
 			const wait = 2;
-			const directionRight = true;
+			const booleanTrue = true;
+			const directionRight = booleanTrue;
+			const vertical = !booleanTrue;
 			return {
 				cards,
 				timer,
 				wait,
 				directionRight,
+				vertical,
 			};
 		},
 
@@ -84,9 +87,9 @@
 			this.cards = document.getElementsByClassName(this.tag)[0];
 			// if (this.autoScroll) {
 			// 	this.timer = setInterval(() => {
-			// 		console.log(this.directionRight ? "right" : "left", this.rightScroll());
+			// 		// console.log(this.directionRight ? "right" : "left", this.leftScroll());
 			// 		if (this.directionRight) {
-			// 			if (this.rightScroll()) {
+			// 			if (this.leftScroll()) {
 			// 				this.handleScrollNext();
 			// 			} else {
 			// 				this.directionRight = false;
@@ -94,9 +97,9 @@
 			// 		} else {
 			// 			console.log(
 			// 				this.directionRight ? "right" : "left",
-			// 				this.leftScroll()
+			// 				this.rightScroll()
 			// 			);
-			// 			if (this.leftScroll()) {
+			// 			if (this.rightScroll()) {
 			// 				this.handleScrollPrev();
 			// 			} else {
 			// 				this.directionRight = true;
@@ -111,11 +114,6 @@
 		}, //beforeUnmount
 
 		methods: {
-			toggleVertical: function (vertical) {
-				console.log(vertical);
-				this.$emit("toggleVertical", !this.vertical);
-			}, //toggleVertival
-
 			rightScroll: function () {
 				return this.cards.scrollLeft < window.innerWidth;
 			}, //rightScroll
@@ -142,6 +140,7 @@
 		flex-direction: column;
 		& > h2 {
 			display: flex;
+			flex-direction: row-reverse;
 			justify-content: space-between;
 			& > button {
 				align-self: flex-end;
@@ -158,10 +157,9 @@
 			overflow-x: hidden;
 			overflow-y: show;
 			padding: @spaceLg;
-			// background-color: @textColor;
-			border: 1px dashed @accentColor;
 			border-radius: @borderRadiusLg;
 			position: relative;
+			.backgroundColor();
 			&.vertical {
 				border-width: 0px;
 				& > div {
@@ -174,27 +172,15 @@
 			}
 			& > button {
 				position: absolute;
-				z-index: @contentZ + 25 !important;
+				z-index: @contentZ + 20 !important;
 				right: @spaceLg;
-				// height: 80px;
-				// border-radius: 50%;
 				&#previous {
-					// border-radius: 50%;
 					right: auto;
 					left: @spaceLg;
 				}
 				&#viewAll {
 					top: -@spaceXl;
 				}
-			}
-			& > .cardsBg {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-color: @primaryColor;
-				z-index: @contentZ;
-				// opacity: 0.1;
-				filter: opacity(8%);
 			}
 			& > .cards {
 				display: flex;

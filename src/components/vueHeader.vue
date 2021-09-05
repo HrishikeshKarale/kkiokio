@@ -223,6 +223,7 @@
 							& > a {
 								& > .vueImg {
 									height: 64px;
+									width: 100%;
 									& + h3 {
 										display: flex;
 										flex-direction: column;
@@ -404,6 +405,7 @@
 						height: 100vh;
 						outline: 9999px solid rgba(0, 0, 0, 0.5);
 						border-bottom-right-radius: 0;
+						z-index: @headerZ+10;
 						& > nav {
 							display: flex;
 							flex-direction: column;

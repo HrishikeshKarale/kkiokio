@@ -230,16 +230,7 @@
 					min-height: calc(100% - (2 * @spaceXl));
 					width: @spaceMd;
 					background-color: @primaryColor;
-					filter: opacity(32%;);
-				}
-				& > .scrollLength {
-					background-color: @accentColor;
-					z-index: @headerZ+5;
-					bottom: auto;
-					top: 2 * @spaceXl;
-					min-height: 0;
-					max-height: calc(100% - 4 * @spaceXl);
-					filter: opacity(100%);
+					filter: opacity(32%);
 				}
 				& > a {
 					display: flex;
