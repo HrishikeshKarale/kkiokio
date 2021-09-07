@@ -70,7 +70,7 @@
 		data() {
 			const cards = null;
 			const timer = null;
-			const wait = 2;
+			const wait = 1;
 			const booleanTrue = true;
 			const directionRight = booleanTrue;
 			const vertical = !booleanTrue;

@@ -181,6 +181,7 @@
 </template>
 
 <script>
+//import { EventBus } from "@/eventBus";
 // @ is an alias to /src
 import vueButton from "@/components/vueButton.vue";
 // import infiniteScroll from "@/views/project/css/infiniteScroll.vue";
@@ -213,7 +214,13 @@ export default {
       projectSkills
     };
   },
+  unmounted() {
+    //EventBus.$emit("loadingScreen", true);
+    this.emitter.emit("loadingScreen", true);
+  },
   mounted() {
+    //EventBus.$emit("loadingScreen", false);
+    this.emitter.emit("loadingScreen", false);
     this.projects.forEach(project => {
       let uniqueArray = [];
       project.value.forEach(val => {

@@ -44,14 +44,10 @@
         </h3>
         <h5>
           <address>
-            <a href="tel:585-520-7382">
-              (585) 520-7382
-            </a>
+            <a href="tel:585-520-7382"> (585) 520-7382 </a>
           </address>
         </h5>
-        <p>
-          Hours: 8am - 4pm (EST), everyday.
-        </p>
+        <p>Hours: 8am - 4pm (EST), everyday.</p>
         <small>
           *Text messages prefered.
           <br />
@@ -72,9 +68,7 @@
     </section>
     <section>
       <!-- <h3>Contact Form</h3> -->
-      <p>
-        Or you can also leave me a message here.
-      </p>
+      <p>Or you can also leave me a message here.</p>
       <vue-form
         :ctx="sendMail.bind(this)"
         d-form="contactForm"
@@ -120,6 +114,7 @@
 </template>
 
 <script>
+//import { EventBus } from "@/eventBus";
 import textInput from "@/components/textInput.vue";
 import emailInput from "@/components/emailInput.vue";
 import phoneInput from "@/components/phoneInput.vue";
@@ -161,6 +156,14 @@ export default {
       booleanTrue,
       mailOptions
     };
+  },
+  mounted() {
+    //EventBus.$emit("loadingScreen", false);
+    this.emitter.emit("loadingScreen", false);
+  },
+  unmounted() {
+    //EventBus.$emit("loadingScreen", true);
+    this.emitter.emit("loadingScreen", true);
   },
   methods: {
     alerts: function(type, message) {

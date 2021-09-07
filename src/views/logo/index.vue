@@ -17,6 +17,7 @@
   </div>
 </template>
 <script>
+//import { EventBus } from "@/eventBus";
 import vueImg from "@/components/vueImg.vue";
 import { logoList } from "@/store/logoList";
 export default {
@@ -30,6 +31,14 @@ export default {
     return {
       logos
     };
+  },
+  mounted() {
+    //EventBus.$emit("loadingScreen", false);
+    this.emitter.emit("loadingScreen", false);
+  },
+  unmounted() {
+    //EventBus.$emit("loadingScreen", true);
+    this.emitter.emit("loadingScreen", true);
   }
 };
 </script>

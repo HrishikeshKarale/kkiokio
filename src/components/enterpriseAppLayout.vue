@@ -4,6 +4,7 @@
 			<slot name="header" />
 		</template>
 		<div class="body">
+			<vue-modal tag="loadingScreen" :display="display" @display="loadScreen" />
 			<template v-if="$slots['menu']">
 				<slot name="menu" />
 			</template>
@@ -37,9 +38,9 @@
             }'
 					/>
 					<scroll-indicator>
-						<keep-alive>
-							<router-view :key="$route.path" />
-						</keep-alive>
+						<!-- <keep-alive> -->
+						<router-view :key="$route.path" />
+						<!-- </keep-alive> -->
 					</scroll-indicator>
 					<template v-if="$slots['moto']">
 						<slot name="moto" />
@@ -54,9 +55,12 @@
 </template>
 
 <script>
+	//import { EventBus } from "@/eventBus";
 	import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator";
 	import CountdownTimer from "@/components/countdownTimer.vue";
+	import diceLoad from "@/views/project/css/diceLoad.vue";
 	import breadcrums from "@/components/breadcrums";
+	import vueModal from "./vueModal.vue";
 	import { authentication } from "@/typeScript/authentication";
 	import { cookie } from "@/typeScript/cookie";
 
@@ -66,6 +70,7 @@
 			CountdownTimer,
 			scrollIndicator,
 			breadcrums,
+			vueModal,
 		},
 
 		mixins: [authentication, cookie],
@@ -74,11 +79,14 @@
 			const DEFAULT_TRANSITION_MODE = "out-in";
 			const transitionEnterActiveClass = "";
 			const prevHeight = 0;
+			const booleanTrue = true;
+			const display = booleanTrue;
 			return {
 				transitionName: DEFAULT_TRANSITION,
 				transitionMode: DEFAULT_TRANSITION_MODE,
 				transitionEnterActiveClass,
 				prevHeight,
+				display,
 			};
 		}, //mixins
 
@@ -162,13 +170,23 @@
 		}, //beforeMount
 
 		mounted() {
-			// document.addEventListener("scroll", this.scrollNav);
+			//EventBus.$on("loadScreen", (loading) => {
+			// 	this.display = loading;
+			// });
+			this.emitter.on("loadingScreen", (loading) => {
+				console.log("toggleLoadingScreen", loading);
+				this.display = loading;
+			});
 		}, //mounted
 
 		methods: {
-			// scrollNav: function(event) {
-			//   console.log("scrollNav", event);
-			// }, //scrollNav
+			loadScreen: function (loading) {
+				this.emitter.on("loadingScreen", () => {
+					console.log("toggleLoadingScreen", loading);
+					this.display = loading;
+				});
+			}, //loadScreen
+
 			beforeLeave(element) {
 				this.prevHeight = getComputedStyle(element).height;
 			}, //beforeLeave

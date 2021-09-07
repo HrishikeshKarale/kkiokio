@@ -587,7 +587,16 @@
   </article>
 </template>
 <script>
+//import { EventBus } from "@/eventBus";
 export default {
-  name: "PrivacyPolicy"
+  name: "PrivacyPolicy",
+  mounted() {
+    //EventBus.$emit("loadingScreen", false);
+    this.emitter.emit("loadingScreen", false);
+  },
+  unmounted() {
+    //EventBus.$emit("loadingScreen", true);
+    this.emitter.emit("loadingScreen", true);
+  }
 };
 </script>

@@ -88,6 +88,7 @@
 </template>
 
 <script>
+//import { EventBus } from "@/eventBus";
 import vueImg from "@/components/vueImg.vue";
 import { skills } from "@/store/skills";
 import { uxProcess } from "@/store/uxProcess";
@@ -110,6 +111,14 @@ export default {
       skillSet,
       steps
     };
+  },
+  mounted() {
+    //EventBus.$emit("loadingScreen", false);
+    this.emitter.emit("loadingScreen", false);
+  },
+  unmounted() {
+    //EventBus.$emit("loadingScreen", true);
+    this.emitter.emit("loadingScreen", true);
   }
 };
 </script>
