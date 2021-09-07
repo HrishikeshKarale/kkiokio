@@ -136,7 +136,8 @@
 		flex-wrap: nowrap;
 		border-radius: @borderRadius;
 		border: 1px solid transparent;
-		width: fit-content;
+		min-width: fit-content;
+		max-width: 320px;
 		border-left-width: 8px;
 		padding: @spaceSm @spaceMd;
 		gap: @spaceMd;

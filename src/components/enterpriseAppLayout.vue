@@ -90,12 +90,12 @@
 			const booleanTrue = true;
 			const display = booleanTrue;
 			const alertDismissable = booleanTrue;
-			const alertType = "danger";
-			const alertMessage = "Order creation failed.";
-			const alertCode = "5.1.104";
+			const alertType = "info";
+			const alertMessage = "Welcome to my portfolio site.";
+			const alertCode = null;
 			const alertDescription =
-				"Please select a valid shipping method and try again.";
-			const alertTimeout = null;
+				"If you are looking for my projects please visit the 'work' section of the website.";
+			const alertTimeout = 5;
 			return {
 				transitionName: DEFAULT_TRANSITION,
 				transitionMode: DEFAULT_TRANSITION_MODE,
@@ -192,7 +192,6 @@
 
 		mounted() {
 			this.emitter.on("loadingScreen", (loading) => {
-				console.log("toggleLoadingScreen", loading);
 				this.display = loading;
 			});
 			this.emitter.on("alert", (payload) => {
