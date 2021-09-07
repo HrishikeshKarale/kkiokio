@@ -5,6 +5,14 @@
 		</template>
 		<div class="body">
 			<vue-modal tag="loadingScreen" :display="display" @display="loadScreen" />
+			<vue-alert
+				:code="alertCode"
+				:type="alertType"
+				:message="alertMessage"
+				:description="alertDescription"
+				:dismissible="alertDismissable"
+				:timeout="alertTimeout"
+			/>
 			<template v-if="$slots['menu']">
 				<slot name="menu" />
 			</template>
@@ -55,12 +63,11 @@
 </template>
 
 <script>
-	//import { EventBus } from "@/eventBus";
 	import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator";
 	import CountdownTimer from "@/components/countdownTimer.vue";
-	import diceLoad from "@/views/project/css/diceLoad.vue";
+	import vueAlert from "@/components/alert/vueAlert.vue";
 	import breadcrums from "@/components/breadcrums";
-	import vueModal from "./vueModal.vue";
+	import vueModal from "@/components//vueModal.vue";
 	import { authentication } from "@/typeScript/authentication";
 	import { cookie } from "@/typeScript/cookie";
 
@@ -71,6 +78,7 @@
 			scrollIndicator,
 			breadcrums,
 			vueModal,
+			vueAlert,
 		},
 
 		mixins: [authentication, cookie],
@@ -81,12 +89,25 @@
 			const prevHeight = 0;
 			const booleanTrue = true;
 			const display = booleanTrue;
+			const alertDismissable = booleanTrue;
+			const alertType = "danger";
+			const alertMessage = "Order creation failed.";
+			const alertCode = "5.1.104";
+			const alertDescription =
+				"Please select a valid shipping method and try again.";
+			const alertTimeout = null;
 			return {
 				transitionName: DEFAULT_TRANSITION,
 				transitionMode: DEFAULT_TRANSITION_MODE,
 				transitionEnterActiveClass,
 				prevHeight,
 				display,
+				alertType,
+				alertMessage,
+				alertDescription,
+				alertDismissable,
+				alertCode,
+				alertTimeout,
 			};
 		}, //mixins
 
@@ -170,21 +191,23 @@
 		}, //beforeMount
 
 		mounted() {
-			//EventBus.$on("loadScreen", (loading) => {
-			// 	this.display = loading;
-			// });
 			this.emitter.on("loadingScreen", (loading) => {
 				console.log("toggleLoadingScreen", loading);
 				this.display = loading;
+			});
+			this.emitter.on("alert", (payload) => {
+				this.alertType = payload.type;
+				this.alertMessage = payload.message;
+				this.alertDescription = payload.description;
+				this.alertDismissable = payload.dismissable;
+				this.alertCode = payload.code;
+				this.alertTimeout = payload.timeout;
 			});
 		}, //mounted
 
 		methods: {
 			loadScreen: function (loading) {
-				this.emitter.on("loadingScreen", () => {
-					console.log("toggleLoadingScreen", loading);
-					this.display = loading;
-				});
+				this.display = false;
 			}, //loadScreen
 
 			beforeLeave(element) {
@@ -225,6 +248,11 @@
 				flex-direction: column;
 				max-width: 100vw;
 				.scroll(100vh);
+				& > .vueAlert {
+					position: absolute;
+					top: @spaceXl;
+					right: @spaceXl;
+				}
 
 				//scroll content
 				div {
