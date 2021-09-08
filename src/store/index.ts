@@ -1,6 +1,22 @@
 import { createStore } from "vuex";
+import { honorsAndAwards } from "./honorsAndAwards"
+import { lisencesAndCertificates } from "./lisencesAndCertificates"
+import { logoList } from "./logoList"
+import { nav } from "./navigation"
+import { projects } from "./projects"
+import { skills } from "./skills"
+import { uxProcess } from "./uxProcess"
 const store = createStore({
   state: {
+    honorsAndAwards,
+    lisencesAndCertificates,
+    logoList,
+    nav,
+    projects,
+    skills,
+    uxProcess,
+
+    //table metadata
     metadata: {
       sortKey: null,
       sortOrders: null,
@@ -15,22 +31,6 @@ const store = createStore({
       searchKey: null,
       groupBy: null
     },
-    category: [
-      "small",
-      "standard",
-      "large",
-      "fullWidth",
-      "border-sm",
-      "border",
-      "border-lg",
-      "border-fwidth",
-      "text-sm",
-      "text",
-      "text-lg",
-      "icon-sm",
-      "icon",
-      "icon-lg"
-    ]
   },
   mutations: {
     //do something

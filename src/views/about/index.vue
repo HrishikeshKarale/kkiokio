@@ -60,7 +60,7 @@
 			</p>
 			<div class="process">
 				<ol class="steps">
-					<li v-for="(step, index) in steps" :key="index">
+					<li v-for="(step, index) in uxProcess" :key="index">
 						<span class="step">
 							{{ step.title }}
 						</span>
@@ -77,10 +77,70 @@
 			</div>
 		</section>
 		<section id="Skillset">
-			<div v-for="skill in skillSet" :key="skill.type">
-				<h3>{{ skill.type }}</h3>
-				<div v-for="value in skill.value" :key="value">
-					{{ value }}
+			<h3>SkillSet</h3>
+			<div>
+				<div class="subSection" v-for="skill in skills" :key="skill.type">
+					<h4>{{ skill.type }}</h4>
+					<div v-for="value in skill.value" :key="value">
+						{{ value }}
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="LisencesAndCertificates">
+			<h3>Licenses &amp; Certificates</h3>
+			<div>
+				<div v-for="cert in lisencesAndCertificates" :key="cert.id">
+					<div>
+						<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
+						<div>
+							<h5>
+								{{ cert.title }}
+								<small>
+									{{ cert.issuer }}
+								</small>
+							</h5>
+						</div>
+					</div>
+					<div>
+						<p>
+							<b> Issued </b>
+							{{ cert.issued }}
+						</p>
+						<p>
+							<b>
+								{{ cert.expiry ? cert.expiry : "NO Expiry Date" }}
+							</b>
+						</p>
+						<p>
+							<b> Credential ID </b>
+							{{ cert.credential }}
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="honorsAndAwards">
+			<h3>Honors &amp; Awards</h3>
+			<div>
+				<div v-for="award in honorsAndAwards" :key="award.id">
+					<div>
+						<!-- <vue-img :src="award.link" :alt="award.id + ' - ' + award.link" /> -->
+						<div>
+							<h5>
+								{{ award.title }}
+								<small>
+									{{ award.issuer }}
+								</small>
+							</h5>
+						</div>
+					</div>
+					<div>
+						<p>
+							<b> Issued </b>
+							{{ award.issued }}
+						</p>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -89,8 +149,6 @@
 
 <script>
 	import vueImg from "@/components/vueImg.vue";
-	import { skills } from "@/store/skills";
-	import { uxProcess } from "@/store/uxProcess";
 
 	export default {
 		name: "About",
@@ -102,13 +160,16 @@
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const profilePic = require("@/../public/img/profilePic.jpg");
-			const steps = uxProcess;
-			const skillSet = skills;
-
+			const skills = this.$store.state.skills;
+			const honorsAndAwards = this.$store.state.honorsAndAwards;
+			const lisencesAndCertificates = this.$store.state.lisencesAndCertificates;
+			const uxProcess = this.$store.state.uxProcess;
 			return {
 				profilePic,
-				skillSet,
-				steps,
+				skills,
+				lisencesAndCertificates,
+				honorsAndAwards,
+				uxProcess,
 			};
 		},
 		mounted() {
@@ -129,6 +190,68 @@
 
 	.about {
 		& > section {
+			&#LisencesAndCertificates,
+			&#honorsAndAwards {
+				& > div {
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					gap: 2 * @spaceLg;
+					justify-content: space-evenly;
+					& > div {
+						display: flex;
+						flex-direction: column;
+						flex-wrap: wrap;
+						flex: 0 0 40%;
+						gap: @spaceMd;
+						padding: @spaceMd;
+						border-radius: @borderRadius;
+						border: 1px dashed @secondaryColor;
+						height: fit-content;
+						& > div {
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							gap: @spaceMd;
+							&:last-child {
+								flex-direction: column;
+								gap: 0;
+							}
+							& > .vueImg {
+								// display: flex;
+								// align-self: center;
+								height: 80px;
+								width: 80px;
+								.boxShadow(none);
+								& + div {
+									display: flex;
+									flex-flow: column nowrap;
+									align-items: space-between;
+									width: 100%;
+									height: 100%;
+									justify-content: space-between;
+									& > h5 {
+										margin-top: 0;
+										margin-bottom: 0 !important;
+										& > small {
+											display: flex;
+											flex-direction: row-reverse;
+											font-weight: bold;
+											font-size: @fontSizeSm;
+										}
+									}
+								}
+							}
+							& > p {
+								margin-top: 0;
+								margin-bottom: 0 !important;
+								font-size: @fontSizeSm;
+								line-height: 24px !important;
+							}
+						}
+					}
+				}
+			}
 			&#Objective {
 				& > q {
 					font-size: @fontSizeSm * 2;
@@ -197,15 +320,21 @@
 			}
 
 			&#Skillset {
-				flex-direction: row;
-				flex-wrap: wrap;
-				justify-content: space-evenly;
-
+				display: flex;
+				flex-direction: column;
 				& > div {
-					flex-direction: column;
+					display: flex;
+					flex-flow: row wrap;
 					justify-content: space-evenly;
-					flex: 0 0 320px;
-					margin: 0 @spaceLg;
+					& > .subSection {
+						flex-direction: column;
+						justify-content: space-evenly;
+						flex: 0 0 320px;
+						margin: 0 @spaceLg;
+						padding: @spaceMd @spaceXl;
+						border-radius: @borderRadius;
+						border: 1px dashed @primaryColor;
+					}
 				}
 			}
 

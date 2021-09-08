@@ -46,9 +46,14 @@
             }'
 					/>
 					<scroll-indicator>
-						<!-- <keep-alive> -->
-						<router-view :key="$route.path" />
-						<!-- </keep-alive> -->
+						<!-- <keep-alive max="5">
+							<router-view :key="$route.fullPath" />
+						</keep-alive> -->
+						<router-view v-slot="{ Component }">
+							<keep-alive max="5">
+								<component :is="Component" />
+							</keep-alive>
+						</router-view>
 					</scroll-indicator>
 					<template v-if="$slots['moto']">
 						<slot name="moto" />
@@ -92,7 +97,7 @@
 			const alertDismissable = booleanTrue;
 			const alertType = "info";
 			const alertMessage = "Welcome to my portfolio site.";
-			const alertCode = null;
+			const alertCode = "";
 			const alertDescription =
 				"If you are looking for my projects please visit the 'work' section of the website.";
 			const alertTimeout = 5;
@@ -192,6 +197,7 @@
 
 		mounted() {
 			this.emitter.on("loadingScreen", (loading) => {
+				console.log(loading);
 				this.display = loading;
 			});
 			this.emitter.on("alert", (payload) => {
@@ -260,8 +266,9 @@
 						color: @textColor;
 						max-width: 72vw;
 						// min-width: 1024px;
-						padding: 0 @spaceXl;
-						// background-color: lightcyan;
+						background-color: @backgroundColor;
+						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
+						.boxShadow(@one, @primaryColor);
 						//countdown timer
 						& > .alert {
 							flex-direction: row;

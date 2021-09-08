@@ -46,13 +46,13 @@
 			},
 
 			code: {
-				type: String,
 				required: function () {
 					if (this.type == "danger") {
 						return true;
 					}
 					return false;
 				},
+				type: String,
 				default: "",
 			},
 
@@ -129,6 +129,7 @@
 
 <style lang="less" scoped>
 	@import (reference) "../../Less/customVariables.less";
+	@import (reference) "../../Less/customMixins.less";
 
 	.vueAlert {
 		display: flex;
@@ -136,8 +137,6 @@
 		flex-wrap: nowrap;
 		border-radius: @borderRadius;
 		border: 1px solid transparent;
-		min-width: fit-content;
-		max-width: 320px;
 		border-left-width: 8px;
 		padding: @spaceSm @spaceMd;
 		gap: @spaceMd;
@@ -154,6 +153,8 @@
 		& > div {
 			display: flex;
 			flex-direction: column;
+			min-width: fit-content;
+			max-width: 320px;
 			& > h5 {
 				margin: 0 !important;
 				margin-top: @spaceLg !important;
@@ -167,6 +168,7 @@
 		&.danger {
 			border-color: @dangerText;
 			background-color: @dangerBackground;
+			.boxShadow(@four, @dangerText, @modalZ);
 
 			h5,
 			span {
@@ -176,6 +178,7 @@
 		&.warning {
 			border-color: @warningText;
 			background-color: @warningBackground;
+			.boxShadow(@four, @warningText, @modalZ);
 
 			h5,
 			span {
@@ -185,6 +188,7 @@
 		&.success {
 			border-color: @successText;
 			background-color: @successBackground;
+			.boxShadow(@four, @successText, @modalZ);
 
 			h5,
 			span {
@@ -194,6 +198,7 @@
 		&.info {
 			border-color: @infoText;
 			background-color: @infoBackground;
+			.boxShadow(@four, @infoText, @modalZ);
 
 			h5,
 			span {

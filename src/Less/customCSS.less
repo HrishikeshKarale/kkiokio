@@ -1282,7 +1282,7 @@ body {
   background-color: @backgroundColor;
   margin: 0;
   height: 100%;
-  width: 100%;
+  max-width: 100%;
   z-index: @bodyZ;
 
   &#portfolio {
@@ -1292,5 +1292,6 @@ body {
     font-size: @fontSizeMd;
     font-style: normal;
     line-height: @lineHeight;
+    .backgroundColor(@primaryColor, 4%);
   }
 }

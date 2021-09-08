@@ -14,7 +14,7 @@ export const projects = [
       {
         id: 2,
         title: "Online Learning Platform",
-        img: require("@/assets/UX/crowdCo/header.jpg"),
+        img: require("@/assets/UX/crowdCo/header.png"),
         tags: [
           "User Research",
           "Competitive Analysis",
