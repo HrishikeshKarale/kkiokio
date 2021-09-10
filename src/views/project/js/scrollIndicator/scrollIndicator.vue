@@ -59,6 +59,10 @@
 				this.checkScroll();
 				this.headerOffset.scrollTop = 0;
 			}, this.wait * 1000);
+			this.emitter.emit("loadingScreen", false);
+		},
+		unmounted() {
+			this.emitter.emit("loadingScreen", true);
 		},
 		methods: {
 			scrollableHeader: function (highlight) {

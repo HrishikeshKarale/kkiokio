@@ -91,7 +91,6 @@
 				.vueImg {
 					margin: @spaceMd @spaceLg;
 					border-radius: @borderRadius;
-					.boxShadow(@one);
 					max-height: 16vw;
 					min-height: 480px;
 				}

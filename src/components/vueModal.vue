@@ -128,9 +128,8 @@
 
 		data() {
 			const buttonType = "button";
-			const booleanTrue = true;
-			const autofocus = booleanTrue;
-			const disabled = booleanTrue;
+			const autofocus = this.booleanTrue;
+			const disabled = this.booleanTrue;
 			const form = "";
 			return {
 				buttonType,
@@ -213,13 +212,13 @@
 	}
 
 	/*
-																																																																													    * The following styles are auto-applied to elements with
-																																																																													    * transition= "modal" when their visibility is toggled
-																																																																													    * by Vue.js.
-																																																																													    *
-																																																																													    * You can easily play with the modal transition by editing
-																																																																													    * these styles.
-																																																																													    */
+																																																																														    * The following styles are auto-applied to elements with
+																																																																														    * transition= "modal" when their visibility is toggled
+																																																																														    * by Vue.js.
+																																																																														    *
+																																																																														    * You can easily play with the modal transition by editing
+																																																																														    * these styles.
+																																																																														    */
 
 	.enter,
 	.leave-active {

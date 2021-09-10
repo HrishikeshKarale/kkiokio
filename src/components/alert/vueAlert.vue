@@ -83,14 +83,12 @@
 
 		data() {
 			const alertIcon = "";
-			const booleanTrue = true;
 			const close = false;
 			const tag = "closeAlertButton";
 			return {
 				alertIcon,
 				close,
 				tag,
-				booleanTrue,
 			}; //return
 		}, //methods
 

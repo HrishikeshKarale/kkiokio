@@ -71,9 +71,8 @@
 			const cards = null;
 			const timer = null;
 			const wait = 1;
-			const booleanTrue = true;
-			const directionRight = booleanTrue;
-			const vertical = !booleanTrue;
+			const directionRight = this.booleanTrue;
+			const vertical = !this.booleanTrue;
 			return {
 				cards,
 				timer,

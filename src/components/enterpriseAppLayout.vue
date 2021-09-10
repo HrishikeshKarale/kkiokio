@@ -92,9 +92,8 @@
 			const DEFAULT_TRANSITION_MODE = "out-in";
 			const transitionEnterActiveClass = "";
 			const prevHeight = 0;
-			const booleanTrue = true;
-			const display = booleanTrue;
-			const alertDismissable = booleanTrue;
+			const display = this.booleanTrue;
+			const alertDismissable = this.booleanTrue;
 			const alertType = "info";
 			const alertMessage = "Welcome to my portfolio site.";
 			const alertCode = "";

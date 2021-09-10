@@ -54,14 +54,12 @@
 			const projectsDescription = projects;
 			const propFilter = [];
 			const filterList = [];
-			const booleanTrue = true;
-			const vertical = booleanTrue;
-			const autoScroll = booleanTrue;
+			const vertical = this.booleanTrue;
+			const autoScroll = this.booleanTrue;
 			return {
 				projectsDescription,
 				propFilter,
 				filterList,
-				booleanTrue,
 				vertical,
 				autoScroll,
 			};

@@ -14,12 +14,12 @@
 				:name="dNameRadio"
 				:value="dRadioValue"
 				:options="dOptions"
-				:required="!booleanTrue"
-				:disabled="!booleanTrue"
-				:autofocus="!booleanTrue"
-				:inline="booleanTrue"
-				:box="booleanTrue"
-				:mask="!booleanTrue"
+				:required="!this.booleanTrue"
+				:disabled="!this.booleanTrue"
+				:autofocus="!this.booleanTrue"
+				:inline="this.booleanTrue"
+				:box="this.booleanTrue"
+				:mask="!this.booleanTrue"
 				@value="(val) => (dRadioValue = val)"
 				@alerts="alerts"
 			/>
@@ -33,8 +33,8 @@
 					:dctx="handleLogin.bind(this)"
 					form="loginForm"
 					:alert="{ error: dDanger, warning: dWarning }"
-					:validate="!booleanTrue"
-					:autocomplete="booleanTrue"
+					:validate="!this.booleanTrue"
+					:autocomplete="this.booleanTrue"
 					@alerts="alerts"
 				>
 					<email-input
@@ -42,7 +42,7 @@
 						label="Email ID"
 						name="emailTextField"
 						placeholder="JohnDoe@abc.com"
-						:required="booleanTrue"
+						:required="this.booleanTrue"
 						input-icon="fas fa-at"
 						@alerts="alerts"
 						@value="(val) => (emailID = val)"
@@ -52,9 +52,9 @@
 						label="Password"
 						name="usernameTextField"
 						placeholder="*************"
-						:required="booleanTrue"
+						:required="this.booleanTrue"
 						input-icon="far fa-user"
-						:autocomplete="booleanTrue"
+						:autocomplete="this.booleanTrue"
 						@alerts="alerts"
 						@value="(val) => (password = val)"
 					/>
@@ -64,8 +64,8 @@
 					:dctx="handleSignUp.bind(this)"
 					form="SignUpForm"
 					:alert="{ error: dDanger, warning: dWarning }"
-					:validate="!booleanTrue"
-					:autocomplete="booleanTrue"
+					:validate="!this.booleanTrue"
+					:autocomplete="this.booleanTrue"
 					@alerts="alerts"
 				>
 					<text-input
@@ -73,7 +73,7 @@
 						label="Name"
 						name="nameTextField"
 						placeholder="John Doe"
-						:required="booleanTrue"
+						:required="this.booleanTrue"
 						input-icon="far fa-user"
 						@alerts="alerts"
 						@value="(val) => (signupName = val)"
@@ -83,7 +83,7 @@
 						label="Email ID"
 						name="emailTextField"
 						placeholder="JohnDoe@email.com"
-						:required="booleanTrue"
+						:required="this.booleanTrue"
 						input-icon="fas fa-at"
 						@alerts="alerts"
 						@value="(val) => (signupEmail = val)"
@@ -93,7 +93,7 @@
 						label="Username"
 						name="usernameTextField"
 						placeholder="John Doe"
-						:required="booleanTrue"
+						:required="this.booleanTrue"
 						input-icon="far fa-user"
 						@alerts="alerts"
 						@value="(val) => (signupUsername = val)"
@@ -103,10 +103,10 @@
 						label="Password"
 						name="paswordTextField"
 						placeholder="*************"
-						:required="booleanTrue"
-						:match="booleanTrue"
+						:required="this.booleanTrue"
+						:match="this.booleanTrue"
 						input-icon="far fa-user"
-						:autocomplete="booleanTrue"
+						:autocomplete="this.booleanTrue"
 						@alerts="alerts"
 						@value="(val) => (signupPassword = val)"
 					/>
@@ -118,8 +118,8 @@
 						text="Sign out"
 						icon="fas fa-sign-out-alt"
 						category="standard"
-						:disabled="!dBooleanTrue"
-						:autofocus="!dBooleanTrue"
+						:disabled="!dthis.booleanTrue"
+						:autofocus="!dthis.booleanTrue"
 						:ctx="signOut.bind()"
 					/>
 					<div v-else class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
@@ -157,7 +157,6 @@
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logoLink = require("@/assets/logo.svg");
-			const booleanTrue = true;
 			//signUp
 			const signupName = null;
 			const signupEmail = null;
@@ -177,7 +176,6 @@
 			const dNameRadio = "loginOrSignUp";
 			const dOptions = [dLabelChecked, dLabelUnchecked];
 			const dRadioValue = dOptions[0];
-			const dBooleanTrue = true;
 			const isAdmin = 0;
 			return {
 				dNameRadio,
@@ -191,14 +189,12 @@
 				dWarning,
 				dDanger,
 				logoLink,
-				booleanTrue,
 				signupUsername,
 				signupName,
 				signupEmail,
 				signupPassword,
 				passwordConfirmation,
 				password,
-				dBooleanTrue,
 				isAdmin,
 			};
 		}, //data

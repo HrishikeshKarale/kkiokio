@@ -73,15 +73,15 @@
 				:ctx="sendMail.bind(this)"
 				d-form="contactForm"
 				:alert="{ error: dDanger, warning: dWarning }"
-				:validate="!booleanTrue"
-				:autocomplete="booleanTrue"
+				:validate="!this.booleanTrue"
+				:autocomplete="this.booleanTrue"
 			>
 				<text-input
 					v-model="name"
 					label="Name"
 					name="nameTextField"
 					placeholder="John Doe"
-					:required="booleanTrue"
+					:required="this.booleanTrue"
 					@alerts="alerts"
 				/>
 				<email-input
@@ -90,7 +90,7 @@
 					name="emailField"
 					placeholder="JDoe@email.com"
 					input-icon="far fa-envelope"
-					:required="booleanTrue"
+					:required="this.booleanTrue"
 					@alerts="alerts"
 				/>
 				<phone-input
@@ -105,7 +105,7 @@
 					label="message"
 					name="messageTextareaField"
 					placeholder="message"
-					:required="booleanTrue"
+					:required="this.booleanTrue"
 					@alerts="alerts"
 				/>
 			</vue-form>
@@ -138,7 +138,6 @@
 			const email = null;
 			const phone = null;
 			const comment = null;
-			const booleanTrue = true;
 			const mailOptions = {
 				from: "",
 				to: "",
@@ -152,7 +151,6 @@
 				email,
 				phone,
 				comment,
-				booleanTrue,
 				mailOptions,
 			};
 		},

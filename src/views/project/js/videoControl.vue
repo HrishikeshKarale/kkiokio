@@ -1,104 +1,122 @@
 <template>
-  <div class="videoControl">
-    <video
-      ref="video"
-      class="flex"
-      width="765"
-      height="430"
-      src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
-      loop
-      controls
-    />
-    <div ref="speed" class="speed">
-      <div ref="bar" class="speed-bar">1×</div>
-    </div>
-    <!-- <div>
-      <input
-        type="range"
-        ref="slider"
-        :min="min < 1 ? '1' : '0'"
-        :max="max"
-        step="1"
-        v-model="slider"
-        @click="playbackSpeed()"
-      />
-    </div>
-    {{ this.slider && this.slider > 0 ? this.slider.toFixed(2) : "1" }}x -->
-  </div>
+	<div class="videoControl">
+		<video
+			ref="video"
+			class="flex"
+			width="765"
+			height="430"
+			:src="src"
+			:loop="!loop"
+			:controls="controls"
+		/>
+		<div class="controls">
+			<h3>Manual Controls</h3>
+			<input
+				type="range"
+				class="speed"
+				:min="min"
+				:max="max"
+				:step="step"
+				v-model="range"
+				@click="playbackSpeed()"
+			/>
+			<span v-text="range" />
+		</div>
+	</div>
 </template>
 <script>
-export default {
-  name: "VideoControl",
-  data() {
-    let speed;
-    let bar;
-    let video;
-    const min = 0.1;
-    const max = 5;
-    // const slider = this.min;
-    return {
-      speed,
-      video,
-      bar,
-      min,
-      max
-      // slider
-    };
-  }, //methods
+	export default {
+		name: "VideoControl",
+		props: {
+			src: {
+				required: true,
+				type: String,
+				default: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4",
+			},
+			speed: {
+				required: false,
+				type: Number,
+				default: 1,
+			},
+			min: {
+				required: false,
+				type: Number,
+				default: 1,
+			},
+			max: {
+				required: false,
+				type: Number,
+				default: 1,
+			},
+			step: {
+				required: false,
+				type: Number,
+				default: () => {
+					return this.min;
+				},
+			},
+		}, //prop
+		computed: {
+			range: function () {
+				return this.speed;
+			},
+		}, //computed
+		data() {
+			let video;
+			const loop = this.booleanTrue;
+			const controls = this.booleanTrue;
+			return {
+				video,
+				loop,
+				controls,
+			};
+		}, //methods
 
-  mounted() {
-    this.speed = this.$refs.speed;
-    this.video = this.$refs.video;
-    this.bar = this.$refs.bar;
-    // this.slider = 1;
-
-    this.speed.addEventListener("mousemove", this.handleMove);
-  },
-  methods: {
-    // stop both mic and camera
-    handleMove: function(e) {
-      const element = e.target;
-      const y = e.pageY - element.offsetTop;
-      const percent = y / element.offsetHeight;
-      const height = Math.round(percent * 100) + "%";
-      this.slider = percent * this.max - this.min + this.min;
-      this.bar.style.height = height;
-      this.bar.textContent = this.slider.toFixed(2) + "×";
-      this.video.playbackRate = this.slider;
-    } //handleMove
-
-    // playbackSpeed: function() {
-    //   this.bar.style.height = (this.slider / this.mac) * 100;
-    //   this.bar.textContent = this.slider.toFixed(2) + "×";
-    //   this.video.playbackRate = this.slider;
-    // } //playbackSpeed
-  }
-};
+		mounted() {
+			this.video = this.$refs.video;
+		},
+		methods: {
+			playbackSpeed: function () {
+				this.video.playbackRate = this.speed;
+			}, //playbackSpeed
+		},
+	};
 </script>
 <style lang="less" scoped>
-@import (reference) "./../../../Less/customMixins.less";
-@import (reference) "./../../../Less/customVariables.less";
-.videoControl {
-  display: flex;
-  flex-direction: row;
+	@import (reference) "./../../../Less/customMixins.less";
+	@import (reference) "./../../../Less/customVariables.less";
+	.videoControl {
+		display: flex;
+		flex-direction: row;
 
-  & > video {
-    .boxShadow(@one);
-
-    & + .speed {
-      width: @spaceXl;
-      background: #efefef;
-      margin: @spaceLg;
-      border-radius: 50px;
-      .boxShadow(@two);
-
-      & > .speed-bar {
-        background: linear-gradient(0deg, red 0%, green 100%);
-        .textShadow(@three);
-        border-radius: 50px;
-        color: black;
-      }
-    }
-  }
-}
+		& > video {
+			& + .controls {
+				display: flex;
+				flex-flow: column nowrap;
+				position: absolute;
+				width: 0;
+				height: 100%;
+				top: 0;
+				right: 0;
+				border-radius: 50px 0 0 50px;
+				.boxShadow(@one);
+				& > * {
+					display: none;
+					width: 0;
+					filter: opacity(0%);
+				}
+			}
+			&:hover {
+				& + .controls {
+					width: 6 * @spaceXl;
+					.backgroundColor();
+					& > * {
+						display: flex;
+						width: fit-content;
+						filter: opacity(100%);
+					}
+				}
+			}
+		}
+	}
 </style>
