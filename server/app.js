@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // defined the database, and created an Express server and router
 const express = require("express");
+const cors = require('cors');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
@@ -9,6 +10,7 @@ const config = require("./config");
 
 const db = new DB("sqlitedb");
 const app = express();
+app.use(cors());
 const router = express.Router();
 
 router.use(
@@ -20,14 +22,14 @@ router.use(bodyParser.json());
 
 // /define CORS middleware to ensure we do not run into any cross origin resource errors
 // CORS middleware
-const allowCrossDomain = function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-};
+// const allowCrossDomain = function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "*");
+//   res.header("Access-Control-Allow-Headers", "*");
+//   next();
+// };
 
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 
 // defining router for registering a new user
 router.post("/register", (req, res) => {
