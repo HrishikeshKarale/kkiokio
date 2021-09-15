@@ -40,7 +40,7 @@ router.post("/register", (req, res) => {
   const password = req.body.password;
   db.insert([name, email, username, bcrypt.hashSync(password, 8), 0], err => {
     if (err) {
-      console.error("register user", err);
+      // console.error("register user", err);
       return res.status(500).send("There was a problem registering the user.");
     }
     db.selectByEmail(email, (err, user) => {
@@ -99,7 +99,7 @@ router.post("/register-admin", (req, res) => {
 });
 
 // define the route for logging in an administrator
-router.post("/login", (req, res) => {
+router.post("/loginUser", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   db.selectByEmail(email, (err, user) => {

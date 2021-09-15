@@ -1,11 +1,11 @@
 export const validator = {
-  emits: ["input"], //emits
+  emits: ["value"], //emits
   methods: {
-    initializeValidator: function(pattern) {
+    initializeValidator: function (pattern) {
       this.pattern = pattern;
     }, //initializeValidator
 
-    validator: function(object) {
+    validator: function (object) {
       let dDanger = null;
       let dWarning = null;
 
@@ -35,7 +35,7 @@ export const validator = {
     }, //validator
 
     //value ebsent
-    isRequired: function() {
+    isRequired: function () {
       if (this.required) {
         return "Required field.";
       }
@@ -43,7 +43,7 @@ export const validator = {
     }, //isRequired
 
     //value present
-    isTooShort: function(minlength, value) {
+    isTooShort: function (minlength, value) {
       if (minlength > value.length) {
         return (
           "Invalid Input: Allowed minlength for input is " +
@@ -53,7 +53,7 @@ export const validator = {
       }
       return null;
     }, //isTooShort
-    isTooLong: function(maxlength, value) {
+    isTooLong: function (maxlength, value) {
       if (maxlength < value.length) {
         return (
           "Invalid Input: Allowed maxlength for input exceeded by " +
@@ -65,7 +65,7 @@ export const validator = {
     }, //isTooLong
 
     //pattern matching
-    followsPattern: function(pattern, value) {
+    followsPattern: function (pattern, value) {
       if (!pattern.test(value)) {
         return "Wrong email format: Please follow the pattern " + pattern;
       }

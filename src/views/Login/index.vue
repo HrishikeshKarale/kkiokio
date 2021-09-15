@@ -25,12 +25,11 @@
 			/>
 		</div>
 		<div class="loginForm">
-			<dice-load />
 			<h1>{{ dRadioValue }}</h1>
 			<div>
 				<vue-form
 					v-if="dRadioValue == dOptions[0]"
-					:dctx="handleLogin.bind(this)"
+					:ctx="handleLogin.bind(this)"
 					form="loginForm"
 					:alert="{ error: dDanger, warning: dWarning }"
 					:validate="!booleanTrue"
@@ -61,7 +60,7 @@
 				</vue-form>
 				<vue-form
 					v-else
-					:dctx="handleSignUp.bind(this)"
+					:ctx="handleSignUp.bind(this)"
 					form="SignUpForm"
 					:alert="{ error: dDanger, warning: dWarning }"
 					:validate="!booleanTrue"
@@ -227,7 +226,7 @@
 				e.preventDefault();
 				if (this.password.length > 0) {
 					this.axios
-						.post("http://localhost:8001/login", {
+						.post("http://localhost:8001/loginUser", {
 							email: this.emailID,
 							password: this.password,
 						})
@@ -237,8 +236,17 @@
 							localStorage.setItem("jwt", response.data.token);
 						})
 						.catch((error) => {
-							console.error(error.response);
+							// console.error(error.response);
 						});
+				} else {
+					this.emitter.emit("alert", {
+						type: "danger",
+						message: "No Password detected",
+						description: "Please enter a password",
+						dismissable: true,
+						code: "101",
+						timeout: 4,
+					});
 				}
 			}, //handleLogin
 
@@ -270,11 +278,11 @@
 						this.signupUsername = "";
 						this.signupPassword = "";
 						this.isAdmin = "";
-						console.error(error);
+						// console.error(error);
 					});
 			}, //handleSignUp
 
-			alert: function (type, message) {
+			alerts: function (type, message) {
 				if (type == "warning") {
 					this.dWarning = message;
 				} else if (type == "error") {
