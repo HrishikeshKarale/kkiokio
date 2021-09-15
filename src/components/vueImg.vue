@@ -44,7 +44,7 @@ export default {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const dImageSource = require("@/assets/default.svg");
     return {
-      dImageSource: dImageSource
+      dImageSource
     }; //return
   } //props
 }; //default
