@@ -75,7 +75,10 @@
 			<span class="fas fa-copyright" />
 			<b>2020 Hrishikesh Karale, All rights reserved.</b>
 		</p>
-		<a title="Real Time Web Analytics" href="http://clicky.com/101333366"
+		<a
+			class="clickyTracking"
+			title="Real Time Web Analytics"
+			href="http://clicky.com/101333366"
 			><img
 				alt="Clicky"
 				src="//static.getclicky.com/media/links/badge.gif"
@@ -134,6 +137,10 @@
 			& > a {
 				width: 320px;
 				align-self: center;
+				&.clickyTracking {
+					visibility: hidden;
+					height: 0;
+				}
 				& > .vueImg {
 					height: 80px;
 					& + h3 {
