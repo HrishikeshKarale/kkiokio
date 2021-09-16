@@ -133,6 +133,8 @@
 }
 
 .backgroundColor(@color: @primaryColor, @opacity: 8%) {
+  position: relative;
+
   &::before {
     content: "";
     position: absolute;
@@ -718,7 +720,6 @@
 
     &>label {
       padding: @spaceLg;
-      background-color: @secondaryColor;
 
       &>input {
         display: none;
@@ -726,7 +727,7 @@
 
       &.checked {
         // border-radius: @borderRadius;
-        background-color: @primaryColor;
+        background-color: @accentColor;
         color: @backgroundColor;
         font-weight: bold;
       }

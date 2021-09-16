@@ -4,7 +4,142 @@
 			<slot name="header" />
 		</template>
 		<div class="body">
-			<vue-modal tag="loadingScreen" :display="display" @display="loadScreen" />
+			<vue-modal
+				tag="loadingScreen"
+				:display="display"
+				@display="
+					(val) => {
+						display = val;
+					}
+				"
+			/>
+			<vue-modal
+				tag="loginScreen"
+				:title="dRadioValue"
+				:display="loginDisplay"
+				@display="
+					(val) => {
+						loginDisplay = val;
+					}
+				"
+			>
+				<radio-input
+					type="radio"
+					:name="dNameRadio"
+					:value="dRadioValue"
+					:options="dOptions"
+					:required="!booleanTrue"
+					:disabled="!booleanTrue"
+					:autofocus="!booleanTrue"
+					:inline="booleanTrue"
+					:box="booleanTrue"
+					:mask="!booleanTrue"
+					@value="(val) => (dRadioValue = val)"
+					@alerts="alerts"
+				/>
+				<div class="loginForm">
+					<vue-form
+						v-if="dRadioValue == dOptions[0]"
+						:ctx="handleLogin.bind(this)"
+						form="loginForm"
+						:alert="{ error: dDanger, warning: dWarning }"
+						:validate="!booleanTrue"
+						:autocomplete="booleanTrue"
+						@alerts="alerts"
+					>
+						<email-input
+							:value="emailID"
+							label="Email ID"
+							name="emailTextField"
+							placeholder="JohnDoe@abc.com"
+							:required="booleanTrue"
+							input-icon="fas fa-at"
+							@alerts="alerts"
+							@value="(val) => (emailID = val)"
+						/>
+						<password-input
+							:value="password"
+							label="Password"
+							name="usernameTextField"
+							placeholder="*************"
+							:required="booleanTrue"
+							input-icon="far fa-user"
+							:autocomplete="booleanTrue"
+							@alerts="alerts"
+							@value="(val) => (password = val)"
+						/>
+					</vue-form>
+					<vue-form
+						v-else
+						:ctx="handleSignUp.bind(this)"
+						form="SignUpForm"
+						:alert="{ error: dDanger, warning: dWarning }"
+						:validate="!booleanTrue"
+						:autocomplete="booleanTrue"
+						@alerts="alerts"
+					>
+						<text-input
+							:value="signupName"
+							label="Name"
+							name="nameTextField"
+							placeholder="John Doe"
+							:required="booleanTrue"
+							input-icon="far fa-user"
+							@alerts="alerts"
+							@value="(val) => (signupName = val)"
+						/>
+						<email-input
+							:value="signupEmail"
+							label="Email ID"
+							name="emailTextField"
+							placeholder="JohnDoe@email.com"
+							:required="booleanTrue"
+							input-icon="fas fa-at"
+							@alerts="alerts"
+							@value="(val) => (signupEmail = val)"
+						/>
+						<text-input
+							:value="signupUsername"
+							label="Username"
+							name="usernameTextField"
+							placeholder="John Doe"
+							:required="booleanTrue"
+							input-icon="far fa-user"
+							@alerts="alerts"
+							@value="(val) => (signupUsername = val)"
+						/>
+						<password-input
+							:value="signupPassword"
+							label="Password"
+							name="paswordTextField"
+							placeholder="*************"
+							:required="booleanTrue"
+							:match="booleanTrue"
+							input-icon="far fa-user"
+							:autocomplete="booleanTrue"
+							@alerts="alerts"
+							@value="(val) => (signupPassword = val)"
+						/>
+					</vue-form>
+					<div>
+						<vue-button
+							v-if="signedIn"
+							tag="signOutButton"
+							text="Sign out"
+							icon="fas fa-sign-out-alt"
+							category="standard"
+							:disabled="!booleanTrue"
+							:autofocus="!booleanTrue"
+							:ctx="signOut.bind()"
+						/>
+						<div
+							v-else
+							class="g-signin2"
+							data-onsuccess="triggerGoogleLoaded"
+						/>
+					</div>
+				</div>
+			</vue-modal>
 			<vue-alert
 				:code="alertCode"
 				:type="alertType"
@@ -73,8 +208,16 @@
 	import vueAlert from "@/components/alert/vueAlert.vue";
 	import breadcrums from "@/components/breadcrums";
 	import vueModal from "@/components//vueModal.vue";
+	import vueImg from "@/components/vueImg.vue";
+	import textInput from "@/components/textInput.vue";
+	import emailInput from "@/components/emailInput.vue";
+	import passwordInput from "@/components/passwordInput.vue";
+	import vueForm from "@/components/vueForm";
+	import radioInput from "@/components/radioInput.vue";
+	import vueButton from "@/components/vueButton";
 	import { authentication } from "@/typeScript/authentication";
 	import { cookie } from "@/typeScript/cookie";
+	import { toggle } from "@/typeScript/toggle";
 
 	export default {
 		name: "EnterpriseAppLayout",
@@ -84,9 +227,16 @@
 			breadcrums,
 			vueModal,
 			vueAlert,
+			vueImg,
+			textInput,
+			emailInput,
+			passwordInput,
+			vueForm,
+			vueButton,
+			radioInput,
 		},
 
-		mixins: [authentication, cookie],
+		mixins: [authentication, cookie, toggle],
 		data() {
 			const DEFAULT_TRANSITION = "fade";
 			const DEFAULT_TRANSITION_MODE = "out-in";
@@ -99,8 +249,45 @@
 			const alertCode = "";
 			const alertDescription =
 				"If you are looking for my projects please visit the 'work' section of the website.";
-			const alertTimeout = 5;
+			const alertTimeout = 5; //signUp
+			const signupName = null;
+			const signupEmail = null;
+			const signupPassword = null;
+			const signupUsername = null;
+			const passwordConfirmation = null;
+			//signIn
+			const password = null;
+			const emailID = null;
+			const dWarning = null;
+			const dDanger = null;
+			const dName = "loginToggle";
+			const dLabelChecked = "SignIn";
+			const dLabelUnchecked = "SignUp";
+			const dToggle = dLabelChecked;
+			const dNameRadio = "loginOrSignUp";
+			const dOptions = [dLabelChecked, dLabelUnchecked];
+			const dRadioValue = dOptions[0];
+			const isAdmin = 0;
+			//display modal
+			const loginDisplay = !this.booleanTrue;
 			return {
+				dNameRadio,
+				dRadioValue,
+				dOptions,
+				dName,
+				emailID,
+				dToggle,
+				dLabelChecked,
+				dLabelUnchecked,
+				dWarning,
+				dDanger,
+				signupUsername,
+				signupName,
+				signupEmail,
+				signupPassword,
+				passwordConfirmation,
+				password,
+				isAdmin,
 				transitionName: DEFAULT_TRANSITION,
 				transitionMode: DEFAULT_TRANSITION_MODE,
 				transitionEnterActiveClass,
@@ -112,6 +299,7 @@
 				alertDismissable,
 				alertCode,
 				alertTimeout,
+				loginDisplay,
 			};
 		}, //mixins
 
@@ -196,8 +384,10 @@
 
 		mounted() {
 			this.emitter.on("loadingScreen", (loading) => {
-				// console.log(loading);
 				this.display = loading;
+			});
+			this.emitter.on("loginScreen", (display) => {
+				this.loginDisplay = display;
 			});
 			this.emitter.on("alert", (payload) => {
 				this.alertType = payload.type;
@@ -210,6 +400,76 @@
 		}, //mounted
 
 		methods: {
+			handleLogin(e) {
+				e.preventDefault();
+				if (this.password.length > 0) {
+					this.axios
+						.post("http://localhost:8001/loginUser", {
+							email: this.emailID,
+							password: this.password,
+						})
+						.then((response) => {
+							// const isAdmin = response.data.user.isAdmin;
+							localStorage.setItem("user", JSON.stringify(response.data.user));
+							localStorage.setItem("jwt", response.data.token);
+						})
+						.catch((error) => {
+							// console.error(error.response);
+						});
+				} else {
+					this.emitter.emit("alert", {
+						type: "danger",
+						message: "No Password detected",
+						description: "Please enter a password",
+						dismissable: true,
+						code: "101",
+						timeout: 4,
+					});
+				}
+			}, //handleLogin
+
+			handleSignUp(e) {
+				e.preventDefault();
+				let url = "http://localhost:8001/register";
+				if (this.isAdmin == 1) {
+					url = "http://localhost:8001/register-admin";
+				}
+				//POST request
+				this.axios
+					.post(url, {
+						name: this.signupName,
+						email: this.signupEmail,
+						username: this.signupUsername,
+						password: this.signupPassword,
+						isAdmin: this.isAdmin,
+					})
+					.then((response) => {
+						localStorage.setItem("user", JSON.stringify(response.data.user));
+						localStorage.setItem("jwt", response.data.token);
+
+						this.sqliteUser = response.data.user;
+						this.sqliteToken = response.data.token;
+					})
+					.catch((error) => {
+						this.signupName = "";
+						this.signupEmail = "";
+						this.signupUsername = "";
+						this.signupPassword = "";
+						this.isAdmin = "";
+						// console.error(error);
+					});
+			}, //handleSignUp
+
+			alerts: function (type, message) {
+				if (type == "warning") {
+					this.dWarning = message;
+				} else if (type == "error") {
+					this.dDanger = message;
+				} else {
+					alert("error in input alert module");
+				}
+			}, //alerts
+
 			loadScreen: function (loading) {
 				this.display = false;
 			}, //loadScreen
