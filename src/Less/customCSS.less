@@ -1026,6 +1026,7 @@ article {
 }
 
 a {
+  cursor: pointer !important;
 
   &,
   &>* {
@@ -1039,10 +1040,16 @@ p {
   line-height: @lineHeight  !important;
 }
 
-input {
+input,
+textarea {
   min-height: @spaceMd + @spaceXl;
   color: @textColor;
   caret-color: @accentColor;
+
+  &:focus-within,
+  &:focus {
+    outline: @spaceSm solid @secondaryColor  !important;
+  }
 
   &+label,
   &>label {

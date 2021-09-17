@@ -174,9 +174,11 @@
 				}
 			}
 			& > .copyright {
+				display: flex;
 				align-self: center;
+				gap: @spaceMd;
 				& > span {
-					margin-right: @spaceMd;
+					align-self: center;
 				}
 			}
 			& > .disclaimer {

@@ -185,7 +185,7 @@
 							<router-view :key="$route.fullPath" />
 						</keep-alive> -->
 						<router-view v-slot="{ Component }">
-							<keep-alive max="5">
+							<keep-alive max="2">
 								<component :is="Component" />
 							</keep-alive>
 						</router-view>
@@ -241,7 +241,6 @@
 			const DEFAULT_TRANSITION = "fade";
 			const DEFAULT_TRANSITION_MODE = "out-in";
 			const transitionEnterActiveClass = "";
-			const prevHeight = 0;
 			const display = this.booleanTrue;
 			const alertDismissable = this.booleanTrue;
 			const alertType = "info";
@@ -291,7 +290,6 @@
 				transitionName: DEFAULT_TRANSITION,
 				transitionMode: DEFAULT_TRANSITION_MODE,
 				transitionEnterActiveClass,
-				prevHeight,
 				display,
 				alertType,
 				alertMessage,
@@ -473,22 +471,6 @@
 			loadScreen: function (loading) {
 				this.display = false;
 			}, //loadScreen
-
-			beforeLeave(element) {
-				this.prevHeight = getComputedStyle(element).height;
-			}, //beforeLeave
-			enter(element) {
-				const { height } = getComputedStyle(element);
-
-				element.style.height = this.prevHeight;
-
-				setTimeout(() => {
-					element.style.height = height;
-				});
-			}, //enter
-			afterEnter(element) {
-				element.style.height = "auto";
-			}, //afterEnter
 		},
 	};
 </script>
@@ -545,7 +527,7 @@
 			@media (max-width: @maxWidth) {
 				& > div {
 					&.body {
-						& > div.content {
+						& > .content {
 							max-width: 1024px;
 							min-width: 320px;
 						}

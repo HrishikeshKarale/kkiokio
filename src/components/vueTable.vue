@@ -535,8 +535,9 @@ vue/custom-event-name-casing */
 			border-radius: @borderRadius;
 			background-color: @backgroundColor;
 
-			thead {
+			& > thead {
 				max-height: 116px;
+				.backgroundColor(@accentColor, 16%);
 
 				tr {
 					&:first-child {
@@ -578,7 +579,6 @@ vue/custom-event-name-casing */
 
 					&:last-child {
 						& > th {
-							padding-left: @spaceLg;
 							text-align: left;
 							width: @cellWidth;
 							color: @textColor;
@@ -629,7 +629,6 @@ vue/custom-event-name-casing */
 													color: @textColor;
 
 													& > input[type="checkbox"] {
-														margin-right: @spaceSm;
 														transform: scale(1);
 													}
 												}
@@ -644,11 +643,13 @@ vue/custom-event-name-casing */
 								position: relative;
 								display: flex;
 								flex-direction: row;
+								justify-content: center;
 								& > div {
 									display: flex;
 									flex-direction: row;
 									cursor: default;
 									border-radius: 0 @borderRadius @borderRadius 0;
+									justify-content: center;
 									&.showOptions {
 										position: absolute;
 										background-color: @backgroundColor;
@@ -743,10 +744,8 @@ vue/custom-event-name-casing */
 				.scroll(64vh);
 
 				& > tr {
-					background-color: @backgroundColor;
-
 					&:nth-child(2n) {
-						background-color: @white;
+						.backgroundColor();
 					}
 
 					&.selected {
@@ -757,11 +756,8 @@ vue/custom-event-name-casing */
 					& > td {
 						display: flex;
 						align-self: center;
-						padding-left: @spaceLg;
 						vertical-align: middle;
-						text-align: left;
 						width: @cellWidth;
-						// height: 100%;
 
 						&:last-child {
 							width: @lastCellWidth;
@@ -769,6 +765,7 @@ vue/custom-event-name-casing */
 
 						&:first-child {
 							width: @firstCellWidth;
+							justify-content: center;
 						}
 
 						& > span {
@@ -782,11 +779,11 @@ vue/custom-event-name-casing */
 				}
 			}
 		} /*
-								  Max width before this PARTICULAR table gets nasty
-								  This query will take effect for any screen smaller than 760px
-								  and also iPads specifically.
-								  https://css-tricks.com/responsive-data-tables/
-								  */
+																										  Max width before this PARTICULAR table gets nasty
+																										  This query will take effect for any screen smaller than 760px
+																										  and also iPads specifically.
+																										  https://css-tricks.com/responsive-data-tables/
+																										  */
 		@media only screen and (max-width: 760px),
 			(min-device-width: 768px) and (max-device-width: @maxWidth) {
 			/* Force table to not be like tables anymore */
@@ -830,18 +827,18 @@ vue/custom-event-name-casing */
 			}
 
 			/*
-								    Label the data
-								    */
+																										    Label the data
+																										    */
 			/* td:nth-of-type(1):before { content: "First Name"; }
-								      td:nth-of-type(2):before { content: "Last Name"; }
-								      td:nth-of-type(3):before { content: "Job Title"; }
-								      td:nth-of-type(4):before { content: "Favorite Color"; }
-								      td:nth-of-type(5):before { content: "Wars of Trek?"; }
-								      td:nth-of-type(6):before { content: "Secret Alias"; }
-								      td:nth-of-type(7):before { content: "Date of Birth"; }
-								      td:nth-of-type(8):before { content: "Dream Vacation City"; }
-								      td:nth-of-type(11):before { content: "GPA"; }
-								      td:nth-of-type(10):before { content: "Arbitrary Data"; } */
+																										      td:nth-of-type(2):before { content: "Last Name"; }
+																										      td:nth-of-type(3):before { content: "Job Title"; }
+																										      td:nth-of-type(4):before { content: "Favorite Color"; }
+																										      td:nth-of-type(5):before { content: "Wars of Trek?"; }
+																										      td:nth-of-type(6):before { content: "Secret Alias"; }
+																										      td:nth-of-type(7):before { content: "Date of Birth"; }
+																										      td:nth-of-type(8):before { content: "Dream Vacation City"; }
+																										      td:nth-of-type(11):before { content: "GPA"; }
+																										      td:nth-of-type(10):before { content: "Arbitrary Data"; } */
 		}
 	}
 
@@ -855,8 +852,7 @@ vue/custom-event-name-casing */
 		& > th {
 			height: inherit;
 			border-left: 1px solid #ddd;
-			padding-top: @spaceSm;
-			padding-bottom: @spaceSm;
+			color: @textColor;
 		}
 
 		& > th {

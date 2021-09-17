@@ -177,6 +177,7 @@
 			height: @header;
 			&.mini {
 				.boxShadow(@two, @navBackground);
+				z-index: @headerZ+10;
 				height: 64px;
 				& > nav > ul > li > a {
 					& > div {
@@ -380,9 +381,10 @@
 					flex-wrap: nowrap;
 					padding: @spaceMd @spaceLg;
 					border-bottom-right-radius: @borderRadiusLg;
-					height: auto;
+					height: fit-content;
 					width: fit-content;
 					position: fixed;
+					outline: 0 solid rgba(0, 0, 0, 0.08);
 					left: 0;
 					top: 0;
 					.scroll(100vh);
@@ -403,7 +405,7 @@
 					//displays navigation
 					&.showNav {
 						height: 100vh;
-						outline: 9999px solid rgba(0, 0, 0, 0.5);
+						outline: 9999px solid rgba(0, 0, 0, 0.64);
 						border-bottom-right-radius: 0;
 						z-index: @headerZ+10;
 						& > nav {

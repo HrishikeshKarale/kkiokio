@@ -142,7 +142,6 @@
 
 	.vueModal {
 		display: inline-flex;
-		// outline: 9999px solid rgba(0, 0, 0, 0.5);
 
 		& > .mask {
 			position: fixed;
@@ -151,7 +150,7 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: rgba(0, 0, 0, 0.5);
+			background-color: rgba(0, 0, 0, 0.64);
 			display: table;
 			transition: @transition;
 

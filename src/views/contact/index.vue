@@ -11,7 +11,7 @@
 			<br />
 			If you sign in, You can also write to me the old fashion way.
 		</p>
-		<section id="Personal Info">
+		<section id="Info">
 			<div class="email">
 				<h3>
 					Email
@@ -66,7 +66,7 @@
 				</p>
 			</div>
 		</section>
-		<section>
+		<section id="Form">
 			<!-- <h3>Contact Form</h3> -->
 			<p>Or you can also leave me a message here.</p>
 			<vue-form

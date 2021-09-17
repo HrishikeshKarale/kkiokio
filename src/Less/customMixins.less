@@ -170,10 +170,11 @@
 .inputError () {
   border-color: @dangerText;
   background-color: @dangerBackground;
+  outline: @spaceSm solid @dangerText  !important;
 
   &:focus-within,
   &:focus {
-    border-color: @primaryColor;
+    border-color: @dangerBackground;
 
     &>span {
       color: @dangerText ;
@@ -188,6 +189,7 @@
 .inputWarning () {
   border-color: @warningText;
   background-color: @warningBackground;
+  outline: 2px solid @warningText  !important;
 
   &:focus-within,
   &:focus {
@@ -423,10 +425,11 @@
       display: flex;
       flex-direction: row;
       padding: @spaceMd @spaceLg;
+      gap: @spaceMd;
 
-      &>span {
-        margin-right: @spaceMd;
-      }
+      // &>span {
+      //   margin-right: @spaceMd;
+      // }
     }
   }
 
@@ -452,14 +455,15 @@
   &.inline {
     flex-direction: row;
     flex-wrap: wrap;
+    gap: @spaceLg;
 
-    &>label {
-      margin-right: @spaceLg;
-    }
+    // &>label {
+    //   margin-right: @spaceLg;
+    // }
 
-    &>.inputResponse {
-      margin-left: @spaceLg;
-    }
+    // &>.inputResponse {
+    //   margin-left: @spaceLg;
+    // }
   }
 
   .inputLabel();
@@ -600,12 +604,13 @@
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
+          gap: @spaceLg;
 
           &>span {
             align-self: center;
             padding: @spaceLg auto;
             font-size: @fontSizeMd;
-            margin-right: @spaceMd;
+            // margin-right: @spaceMd;
           }
 
           &>.fileSize {
@@ -698,11 +703,12 @@
       margin: 0;
       align-items: center;
       cursor: pointer;
+      gap: @spaceMd;
 
       >input[type='checkbox'],
       >input[type='radio'] {
         min-height: auto;
-        margin-right: @spaceMd;
+        // margin-right: @spaceMd;
       }
 
       &.errorLabel {
