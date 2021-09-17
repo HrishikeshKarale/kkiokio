@@ -481,16 +481,6 @@ const routes: Array<RouteRecordRaw> = [
     meta: { transitionName: "fade", requiresAuth: false }
   },
   {
-    path: "/login",
-    name: "login",
-    component: () =>
-      import(/* webpackChunkName: "login" */ "@/views/Login/index.vue"),
-    meta: {
-      transitionName: "fade",
-      requiresAuth: false
-    }
-  },
-  {
     // path: "/404PageNotFound",
     path: "/:catchAll(.*)",
     // alias: "/404pageNotFound",
