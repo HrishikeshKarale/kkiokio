@@ -73,7 +73,7 @@ export const venmoCaseStudy = {
         },
         {
           img: {
-            src: require("@/assets/UX/venmo/onboarding2.jpg2"),
+            src: require("@/assets/UX/venmo/onboarding2.jpg"),
             alt: null,
             caption: null
           }
