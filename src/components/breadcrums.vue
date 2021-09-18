@@ -86,7 +86,6 @@
 							// console.log(project.type);
 							for (let index = 0; index < project.value.length; index++) {
 								const proj = project.value[index];
-								// console.log(proj.component.toLowerCase(), tempSelect.toLowerCase());
 								if (proj.component.toLowerCase() === tempSelect) {
 									tempSelect = proj.title;
 									break;
@@ -94,6 +93,10 @@
 							}
 						}
 					});
+				}
+				//replace%20 notation with space
+				while (tempSelect.includes("%20")) {
+					tempSelect = tempSelect.replace("%20", " ");
 				}
 				return tempSelect;
 			},
