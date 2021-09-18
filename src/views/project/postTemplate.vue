@@ -1,7 +1,7 @@
 // https://usabilitygeek.com/ux-case-study-google-maps-vs-waze-mobile-apps/
 <template>
 	<!-- {{ article }} -->
-	<article>
+	<article id="post">
 		<template v-for="entry in Object.entries(post)" :key="entry">
 			<header v-if="entry[0] === 'header'">
 				<h1 v-text="entry[1]" />
@@ -20,7 +20,7 @@
 			<template v-else-if="entry[0] === 'section'">
 				<section
 					v-for="ent in entry[1]"
-					id="section"
+					:id="Object.entries(ent)[0][1]"
 					:key="ent + '-' + entry[0]"
 				>
 					<template v-for="e in Object.entries(ent)" :key="e + '-' + ent[0]">

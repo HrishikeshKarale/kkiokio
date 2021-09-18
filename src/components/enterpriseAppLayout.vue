@@ -517,12 +517,14 @@
 				}
 
 				//scroll content
-				div {
+				& > div {
+					display: flex;
+					flex-direction: column;
 					&.content {
 						align-self: center;
 						color: @textColor;
 						max-width: 72vw;
-						// min-width: 1024px;
+						min-width: @maxWidth;
 						background-color: @backgroundColor;
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
 						.boxShadow(@one, @primaryColor);
@@ -541,12 +543,11 @@
 		}
 		@media screen {
 			@media (max-width: @maxWidth) {
-				& > div {
-					&.body {
-						& > .content {
-							max-width: 1024px;
-							min-width: 320px;
-						}
+				.body {
+					& > .content {
+						padding: 0 @spaceXl;
+						max-width: 100%;
+						min-width: 1024px;
 					}
 				}
 			}

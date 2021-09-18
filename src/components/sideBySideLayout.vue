@@ -16,30 +16,45 @@
 </script>
 
 <style lang= "less" scoped>
-	@import (reference) "./../Less/customMixins.less";
-	@import (reference) "./../Less/customVariables.less";
+	@import (reference) "../Less/customMixins.less";
+	@import (reference) "../Less/customVariables.less";
 
 	.sideBySideLayout {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
-		gap: 2 * @spaceXl;
+		gap: @spaceXl;
 
 		& > div {
 			display: flex;
 			flex-direction: column;
 			height: 100%;
+			min-width: 320px;
 
 			&.leftComponent {
-				max-width: 80%;
-				min-width: 320px;
+				max-width: 100%;
 			}
 
 			&.rightComponent {
+				margin-top: 7 * @spaceLg;
 				position: sticky;
-				top: 0;
-				width: auto;
+				top: 2 * @spaceXl;
 				height: fit-content;
+			}
+		}
+		@media screen {
+			@media (max-width: @maxWidth) {
+				flex-wrap: wrap;
+				align-self: center;
+				&.leftComponent {
+					max-width: 80%;
+					min-width: 320px;
+				}
+				& > div {
+					&.rightComponent {
+						min-width: 320px;
+					}
+				}
 			}
 		}
 	}

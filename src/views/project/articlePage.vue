@@ -4,20 +4,20 @@
 			<post-template v-if="projData" :post="projData" />
 		</template>
 		<template #right>
-			<template v-for="(project, index) in projects" :key="project.type">
-				<template v-if="index <= 1">
-					<template v-for="pro in project.value" :key="pro.id">
-						<span class="fas fa-times" v-text="pro.title" />
-					</template>
-				</template>
-			</template>
+			<div class="subscribe">
+				<h4>Subscribe to our news letter</h4>
+				<p>
+					Our e-mail updates will keep you informed on our company progress,
+					blogs, work and other important content.
+				</p>
+			</div>
 		</template>
 	</side-by-side-layout>
 </template>
 
 <script>
 	import sideBySideLayout from "../../components/sideBySideLayout.vue";
-	import postTemplate from "./UX/postTemplate.vue";
+	import postTemplate from "./postTemplate.vue";
 	export default {
 		name: "articlePage",
 
@@ -63,5 +63,31 @@
 	};
 </script>
 
-<style>
+
+<style lang="less" scoped>
+	@import (reference) "../../Less/customMixins.less";
+	@import (reference) "../../Less/customVariables.less";
+	.subscribe {
+		display: flex;
+		flex-direction: column;
+		gap: @spaceMd;
+		border-radius: @borderRadius;
+		border: 1px solid @secondaryColor;
+		min-width: 320px;
+		.boxShadow(@one);
+		.backgroundColor();
+		& > * {
+			padding: 0 @spaceLg;
+			&:first-child {
+				padding-top: @spaceLg;
+			}
+			&:last-child {
+				padding-bottom: @spaceLg;
+			}
+		}
+		& > h4 {
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+		}
+	}
 </style>
