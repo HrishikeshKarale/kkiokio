@@ -471,6 +471,22 @@
 			loadScreen: function (loading) {
 				this.display = false;
 			}, //loadScreen
+
+			beforeLeave(element) {
+				this.prevHeight = getComputedStyle(element).height;
+			}, //beforeLeave
+			enter(element) {
+				const { height } = getComputedStyle(element);
+
+				element.style.height = this.prevHeight;
+
+				setTimeout(() => {
+					element.style.height = height;
+				});
+			}, //enter
+			afterEnter(element) {
+				element.style.height = "auto";
+			}, //afterEnter
 		},
 	};
 </script>

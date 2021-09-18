@@ -1,11 +1,13 @@
 export const mapCaseStudy = {
   header: "Google Maps vs Waze Case Study",
-  img: {
-    src: require("@/assets/UX/maps/headerImage.jpg"),
-    alt: null,
-    caption: null
-  },
   content: [
+    {
+      img: {
+        src: require("@/assets/UX/maps/headerImage.jpg"),
+        alt: null,
+        caption: null
+      }
+    },
     {
       text:
         "Today, we are back in business with another app showdown! To give a recap for those of you that are new here: in this UX case study series, we put two similar apps head-to-head and see which boasts the better UX."

@@ -1,34 +1,38 @@
-export const crowdCo = {
+export const rupay = {
   header: "Rupay",
-  // img: {
-  // 	src: require("@/assets/UX/dictionary/disctionaryAppRe.png"),
-  // 	alt: null,
-  // 	caption: null
-  // },
+  content: [
+    {
+      img: {
+        src: require("@/assets/UX/rupay/header.png"),
+        alt: null,
+        caption: null
+      }
+    }
+  ],
   section: [
     {
       header: "About",
       content: [
         {
           altText:
-            "<p> < strong > Overview:</strong> A growing Nigerian Bank wants to expand on their buisness and is in need of a mobile applicatin so they can offer services.Most customer registered with them has a maximum of 2 accounts.Among other things, the app needs the ability to top up their accounts, make payments using their mobile app, be able to request for refunds and apply for loan. </p >"
+            "<p> <strong> Overview:</strong> A growing Nigerian Bank wants to expand on their buisness and is in need of a mobile applicatin so they can offer services.Most customer registered with them has a maximum of 2 accounts.Among other things, the app needs the ability to top up their accounts, make payments using their mobile app, be able to request for refunds and apply for loan. </p>"
         },
         {
           altText:
-            "<p> < strong > Objective:</strong > To Create a Finech mobile appliation that keeping in mind the following; functionality </p >"
+            "<p> <strong> Objective:</strong> To Create a Finech mobile appliation that keeping in mind the following; functionality </p>"
         },
         {
           altText:
-            "<ol> < li > Switch between his accounts</li > <li>See recent transactions sorted by recent Date</li> <li>See his Wallet Balance</li> <li>Know how to fund/top up his account</li> <li>Apply for loan</li> <li>Pay bills</li> <li> Allow user to request for a refund (this feature should not be too obvious but visible) </li> <li>Option to Save Card</li> <li>Link to refer a friend</li> </ol >"
+            "<ol> <li> Switch between his accounts</li> <li>See recent transactions sorted by recent Date</li> <li>See his Wallet Balance</li> <li>Know how to fund/top up his account</li> <li>Apply for loan</li> <li>Pay bills</li> <li> Allow user to request for a refund (this feature should not be too obvious but visible) </li> <li>Option to Save Card</li> <li>Link to refer a friend</li> </ol>"
         },
         {
-          altText: "<p> < strong > Skills:</strong > Fintech UX </p >"
+          altText: "<p> <strong> Skills:</strong> Fintech UX </p>"
         },
         {
-          altText: "<p> < strong > Role:</strong > UI Designer </p >"
+          altText: "<p> <strong> Role:</strong> UI Designer </p>"
         },
         {
-          altText: "<p> < strong > Duration:</strong > 2 Days </p >"
+          altText: "<p> <strong> Duration:</strong> 2 Days </p>"
         }
       ]
     }, //sections

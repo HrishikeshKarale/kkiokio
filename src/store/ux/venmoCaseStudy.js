@@ -1,18 +1,20 @@
 export const venmoCaseStudy = {
   header: "Venmo Case Study",
-  img: {
-    src: require("@/assets/UX/venmo/headerImage.jpg"),
-    alt: null,
-    caption: null
-  },
   content: [
+    {
+      img: {
+        src: require("@/assets/UX/venmo/headerImage.jpg"),
+        alt: null,
+        caption: null
+      }
+    },
     {
       text:
         "The fintech sector is a jam-packed market, flooded with tech companies vying to simplify an industry known for being a convoluted knot of regulations, bureaucratic protocol, and red tape."
     },
     {
       altText:
-        "Creating a quality fintech user experience can be a nightmare for designers, so much so that we recently felt the need to lay out specific <a title = 'UX Design Guidelines for Fintech Platforms' href = 'https://www.invisionapp.com/blog/ux-design-fintech/' target = '_blank' rel = 'noopener noreferrer' > design guidelines </a > for it."
+        "Creating a quality fintech user experience can be a nightmare for designers, so much so that we recently felt the need to lay out specific <a title = 'UX Design Guidelines for Fintech Platforms' href = 'https://www.invisionapp.com/blog/ux-design-fintech/' target = '_blank' rel = 'noopener noreferrer'> design guidelines </a> for it."
     },
     {
       text:
@@ -170,7 +172,7 @@ export const venmoCaseStudy = {
         },
         {
           altText:
-            "<ul>< li >Leveraging the default text to inform the user they can find their friends in a myriad of ways: name, username, phone or email</li><li>Offering a “top people” list, based on the users you interface with the most</li><li>A “Turn On Nearby” feature, which harnesses the smartphone’s Bluetooth function to identify users based on proximity</li></ul>"
+            "<ul><li>Leveraging the default text to inform the user they can find their friends in a myriad of ways: name, username, phone or email</li><li>Offering a “top people” list, based on the users you interface with the most</li><li>A “Turn On Nearby” feature, which harnesses the smartphone’s Bluetooth function to identify users based on proximity</li></ul>"
         },
         {
           text:

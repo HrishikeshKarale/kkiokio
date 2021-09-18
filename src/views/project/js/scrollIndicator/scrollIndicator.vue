@@ -37,7 +37,7 @@
 			//ratio used to calculate window buffer
 			const bufferRatio = 0.24;
 			const prevScrollValue = 0;
-			const wait = 1;
+			const wait = 0.5;
 			const articleTag = null;
 			return {
 				headerOffset,

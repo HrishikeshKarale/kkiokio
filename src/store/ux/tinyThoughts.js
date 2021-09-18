@@ -1,31 +1,35 @@
 export const tinythoughts = {
   header: "Tiny Thoughts",
-  img: {
-    src: require("@/assets/UX/tinyThoughts/headerImage.jpg"),
-    alt: null,
-    caption: null
-  },
+  content: [
+    {
+      img: {
+        src: require("@/assets/UX/tinyThoughts/headerImage.jpg"),
+        alt: null,
+        caption: null
+      }
+    }
+  ],
   section: [
     {
       header: "About",
       content: [
         {
           altText:
-            "<p>< strong > Overview:</strong> Based on the < a href = 'https://tinythoughts.me/' target = '_blank' rel = 'noopener' > TinyThoughts </a > Web - app by < a href = 'http://jessis.cool/' > Jess</a >, This app is a one sentence a day journaling app available for both Android and iOS.Even though there are many journaling apps available out there, what makes tinythoughts different from them is that it lets you write a summary of your day in 280 words or less.It also gives you daily prompts and reminders to help you write better.This redesign was part of my personal project with the aim of enhancing the user experience as well as increasing app; engagement.</p >"
+            "<p><strong> Overview:</strong> Based on the <a href = 'https://tinythoughts.me/' target = '_blank' rel = 'noopener'> TinyThoughts </a> Web - app by <a href = 'http://jessis.cool/'> Jess</a>, This app is a one sentence a day journaling app available for both Android and iOS.Even though there are many journaling apps available out there, what makes tinythoughts different from them is that it lets you write a summary of your day in 280 words or less.It also gives you daily prompts and reminders to help you write better.This redesign was part of my personal project with the aim of enhancing the user experience as well as increasing app; engagement.</p>"
         },
         {
-          altText: "<p> < strong > Role:</strong> UX Designer </p >"
+          altText: "<p> <strong> Role:</strong> UX Designer </p>"
         },
         {
-          altText: "<p> < strong > Duration:</strong> 1 Week </p >"
-        },
-        {
-          altText:
-            "<p> < strong > Skills:</strong> Competitor Analysis, Interface design, User Stories, Wireframing, Information Architecture </p >"
+          altText: "<p> <strong> Duration:</strong> 1 Week </p>"
         },
         {
           altText:
-            "<p> < strong > Solution:</strong> I came up with a redesign concept for the Android app with the motive of enhancing the overall experience so that the app is more engaging.I wanted to get rid of the unnecessary clutter within the app and make it more usable for people who use it as their go to journaling app. </p >"
+            "<p> <strong> Skills:</strong> Competitor Analysis, Interface design, User Stories, Wireframing, Information Architecture </p>"
+        },
+        {
+          altText:
+            "<p> <strong> Solution:</strong> I came up with a redesign concept for the Android app with the motive of enhancing the overall experience so that the app is more engaging.I wanted to get rid of the unnecessary clutter within the app and make it more usable for people who use it as their go to journaling app. </p>"
         }
       ]
     },
@@ -34,10 +38,10 @@ export const tinythoughts = {
       content: [
         {
           altText:
-            "<p> As a person who tries to maintain a daily journal, I have tried a lot of tools that haven’t been useful.I came to know about the app when its creator(Jess Robins) submitted it on <a	href = 'https://www.producthunt.com/posts/tinythoughts-for-mobile' target = '_blank' rel = 'noopener' >ProductHunt</a >.I decided to give it a shot and I was really impressed by the idea of this app.The selling point was that you write your daily journal in 280 words or less and the app actually gives you daily prompts in order to write better. </p >"
+            "<p> As a person who tries to maintain a daily journal, I have tried a lot of tools that haven’t been useful.I came to know about the app when its creator(Jess Robins) submitted it on <a	href = 'https://www.producthunt.com/posts/tinythoughts-for-mobile' target = '_blank' rel = 'noopener'>ProductHunt</a>.I decided to give it a shot and I was really impressed by the idea of this app.The selling point was that you write your daily journal in 280 words or less and the app actually gives you daily prompts in order to write better. </p>"
         },
         {
-          subsection: [
+          subSection: [
             {
               heading: "Navigation Drawer Usage",
               content: [
@@ -54,7 +58,7 @@ export const tinythoughts = {
                 },
                 {
                   altText:
-                    "<p> Plus you have to perform an extra step in order to reach the navigation(either swipe or tapping the hamburger menu).A bottom navigation would be a good option in this case and Google also suggests using it for 3 - 5 primary destinations in its < a href='https://material.io/components/bottom-navigation/#usage' target='_blank' rel='noopener' > Material Guidelines</a >. </p >"
+                    "<p> Plus you have to perform an extra step in order to reach the navigation(either swipe or tapping the hamburger menu).A bottom navigation would be a good option in this case and Google also suggests using it for 3 - 5 primary destinations in its <a href='https://material.io/components/bottom-navigation/#usage' target='_blank' rel='noopener'> Material Guidelines</a>. </p>"
                 }
               ]
             },
@@ -74,7 +78,7 @@ export const tinythoughts = {
                 },
                 {
                   altText:
-                    "<p> One really awesome feature that I like is the use of <mark>sentiment analysis</mark> while writing the journal.The app can depict your mood while you are typing and comes up with these unique hashtags e.g.#positive - mood. This feature is well implemented and I really like it.Currently you can see your mood over a period of time only in the web application, so I took some cues from there and tried to implement in the redesign. </p > "
+                    "<p> One really awesome feature that I like is the use of <mark>sentiment analysis</mark> while writing the journal.The app can depict your mood while you are typing and comes up with these unique hashtags e.g.#positive - mood. This feature is well implemented and I really like it.Currently you can see your mood over a period of time only in the web application, so I took some cues from there and tried to implement in the redesign. </p> "
                 }
               ]
             },
@@ -94,11 +98,11 @@ export const tinythoughts = {
                 },
                 {
                   altText:
-                    "<p> I went through most of the comments on ProductHunt and also saw some reviews on Google Play Store.I recognized the following <mark>pain points</mark> that came out of that analysis: </p >"
+                    "<p> I went through most of the comments on ProductHunt and also saw some reviews on Google Play Store.I recognized the following <mark>pain points</mark> that came out of that analysis: </p>"
                 },
                 {
                   altText:
-                    "<ol> < li > There should be an option to turn on/ off daily prompts.Some people don’t find the prompts to be helpful and would prefer not to use them while typing their journal. </li > <li> Some of them were facing the same image upload issue that I came across. People would like to be informed about the upload limit so that their initial upload does not get replaced with a new one. </li> <li> They would like to see statistics about their past mood trends as present in the web application. </li> <li> It would be a good option to have a search functionality within the app so that previous entry can be easily searched once the journal list starts to get longer. </li> </ol >"
+                    "<ol> <li> There should be an option to turn on/ off daily prompts.Some people don’t find the prompts to be helpful and would prefer not to use them while typing their journal. </li> <li> Some of them were facing the same image upload issue that I came across. People would like to be informed about the upload limit so that their initial upload does not get replaced with a new one. </li> <li> They would like to see statistics about their past mood trends as present in the web application. </li> <li> It would be a good option to have a search functionality within the app so that previous entry can be easily searched once the journal list starts to get longer. </li> </ol>"
                 }
               ]
             },
@@ -110,7 +114,7 @@ export const tinythoughts = {
                     "Keeping in mind the current features, I went on to prioritize more features that I came across in my research.Rather than doing a major overhaul, I wanted to keep the basic features intact and iterate on making the experience better.After creating a list of additional changes and features, I went on to write user stories that would serve as the base for my redesign."
                 },
                 {
-                  subsection: [
+                  subSection: [
                     {
                       header: "User stories",
                       content: [
@@ -139,15 +143,15 @@ export const tinythoughts = {
                         },
                         {
                           altText:
-                            "<p> < b > TimeLine:</b> Shows all your journal entries </p >"
+                            "<p> <b> TimeLine:</b> Shows all your journal entries </p>"
                         },
                         {
                           altText:
-                            "<p> < b > Gallery:</b> A gallery for all the uploaded images(Premium feature) </p >"
+                            "<p> <b> Gallery:</b> A gallery for all the uploaded images(Premium feature) </p>"
                         },
                         {
                           altText:
-                            "<p> < b > Mood:</b> Shows mood trends over the selected time period(Premium feature) </p >"
+                            "<p> <b> Mood:</b> Shows mood trends over the selected time period(Premium feature) </p>"
                         },
                         {
                           text:
@@ -196,7 +200,7 @@ export const tinythoughts = {
                         }
                       },
                       {
-                        subsection: [
+                        subSection: [
                           {
                             header: "High fidelity designs",
                             content: [

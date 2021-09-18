@@ -51,6 +51,18 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: "/Articles/:article",
+    name: "articlePage",
+    component: () =>
+      import(
+        /* webpackChunkName: "project" */ "@/views/project/articlePage.vue"
+      ),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false //true
+    }
+  },
+  {
     path: "/project/js/drumKit",
     name: "drumKit",
     component: () =>

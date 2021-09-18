@@ -1,35 +1,39 @@
 export const crowdCo = {
   header: "English Dictionary app redesign",
-  img: {
-    src: require("@/assets/UX/dictionary/disctionaryAppRe.png"),
-    alt: null,
-    caption: null
-  },
+  content: [
+    {
+      img: {
+        src: require("@/assets/UX/dictionary/disctionaryAppRe.png"),
+        alt: null,
+        caption: null
+      }
+    }
+  ],
   section: [
     {
       header: "About",
       content: [
         {
           altText:
-            "<p> < strong > Overview:</strong> Everyone has a list of favorite apps installed on their phones which helps them in some way or the other. < a href = 'https://play.google.com/store/apps/details?id=livio.pack.lang.en_US&hl=en_IN' > English Dictionary </a > is one such app that helps its users enhance their vocabulary.The users can look up words that they have previously never heard of and the best part is that you don’t even need to be connected to the internet in order to use this as it stores everything offline. </p >"
+            "<p> <strong> Overview:</strong> Everyone has a list of favorite apps installed on their phones which helps them in some way or the other. <a href = 'https://play.google.com/store/apps/details?id=livio.pack.lang.en_US&hl=en_IN'> English Dictionary </a> is one such app that helps its users enhance their vocabulary.The users can look up words that they have previously never heard of and the best part is that you don’t even need to be connected to the internet in order to use this as it stores everything offline. </p>"
         },
         {
           altText:
-            "<p> < strong > Objective:</strong > To provide a more usable, intuitive and desirable experience for the app so that the experience is more engaging for the user. </p >"
+            "<p> <strong> Objective:</strong> To provide a more usable, intuitive and desirable experience for the app so that the experience is more engaging for the user. </p>"
         },
         {
           altText:
-            "<p> < strong > Target audience:</strong > The target users were between 18 - 44 and mostly in USA.Around 75 % of their user base are women. </p >"
+            "<p> <strong> Target audience:</strong> The target users were between 18 - 44 and mostly in USA.Around 75 % of their user base are women. </p>"
         },
         {
           altText:
-            "<p> < strong > Skills:</strong > User Research, Interface Design(IxD), Information Architecture(IA). </p >"
+            "<p> <strong> Skills:</strong> User Research, Interface Design(IxD), Information Architecture(IA). </p>"
         },
         {
-          altText: "<p> < strong > Role:</strong > UI / UX design </p > "
+          altText: "<p> <strong> Role:</strong> UI / UX design </p> "
         },
         {
-          altText: "<p> < strong > Duration:</strong > 2 Days </p >"
+          altText: "<p> <strong> Duration:</strong> 2 Days </p>"
         }
       ]
     }, //sections
@@ -46,14 +50,14 @@ export const crowdCo = {
         },
         {
           altText:
-            "<ol> < li > Cluttered UI elements.</li> <li>Pretty bad color scheme.</li> <li> Some really good functionalities are present within the app but the developer has done the bare minimum to implement it. </li> <li>Reuse of a lot of controls which are unnecessary.</li> </ol >"
+            "<ol> <li> Cluttered UI elements.</li> <li>Pretty bad color scheme.</li> <li> Some really good functionalities are present within the app but the developer has done the bare minimum to implement it. </li> <li>Reuse of a lot of controls which are unnecessary.</li> </ol>"
         },
         {
           text:
             "Let us now dive straight into the app mockups and try to figure out what’s wrong with the current version and what has been done to fix it:"
         },
         {
-          subsection: [
+          subSection: [
             {
               header: "Home screen",
               content: [
@@ -91,7 +95,7 @@ export const crowdCo = {
                     "After this change, the redundant elements are gone. Also, that floating action button with the share icon is removed as it didn’t serve any purpose other than sharing the app link, which I believe can be added to the app settings itself if required."
                 }
               ]
-            }, //subsection
+            }, //subSection
             {
               header: "Search screen",
               content: [
@@ -125,7 +129,7 @@ export const crowdCo = {
                     "The next addition to this screen is the notes feature that I was talking about before.This is implemented with a floating action button."
                 }
               ]
-            }, //subsection
+            }, //subSection
             {
               header: "Notes screen",
               content: [
@@ -155,7 +159,7 @@ export const crowdCo = {
                     "Same functionality, but with a cleaner design. Don’t know why the developer is obsessed with that share functionality.It’s plugged in at almost every screen.I get it “sharing is caring” but that’s not true for every situation."
                 }
               ]
-            } //subsection
+            } //subSection
           ]
         }
       ]

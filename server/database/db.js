@@ -13,10 +13,10 @@ class Db {
               id integer,
               name text NOT NULL,
               email text NOT NULL,
-              username text NOT NULL CHECK (length(username) >= 8),
-              phone_number text CHECK (length(username) >= 10),
+              username text NOT NULL CHECK (length(username)>= 8),
+              phone_number text CHECK (length(username)>= 10),
               image blob,
-              user_pass text NOT NULL CHECK (length(username) >= 8),
+              user_pass text NOT NULL CHECK (length(username)>= 8),
               is_admin integer DEFAULT 0,
               PRIMARY KEY(id),
               UNIQUE(email, phone_number, username)

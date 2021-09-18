@@ -1,31 +1,35 @@
-export const crowdCo = {
+export const kudaBank = {
   header: "kudaBank Case Study Website redesign",
-  // img: {
-  // 	src: require("@/assets/UX/dictionary/disctionaryAppRe.png"),
-  // 	alt: null,
-  // 	caption: null
-  // },
+  content: [
+    {
+      img: {
+        src: require("@/assets/UX/kudaBank/header.png"),
+        alt: null,
+        caption: null
+      },
+    }
+  ],
   section: [
     {
       header: "About",
       content: [
         {
           altText:
-            "<p> < strong > Overview:</strong> I chose Kuda Bank’s website as I felt they didn’t put enough effort into it has their main focus is their app.. </p >"
+            "<p> <strong> Overview:</strong> I chose Kuda Bank’s website as I felt they didn’t put enough effort into it has their main focus is their app.. </p>"
         },
         {
           altText:
-            "<p> < strong > Objective:</strong > To redesign a Finech website and improve on the usability and clarity of the website. </p >"
+            "<p> <strong> Objective:</strong> To redesign a Finech website and improve on the usability and clarity of the website. </p>"
         },
         {
           altText:
-            "<p> < strong > Skills:</strong > Fintech UX, Visual Design </p >"
+            "<p> <strong> Skills:</strong> Fintech UX, Visual Design </p>"
         },
         {
-          altText: "<p> < strong > Role:</strong > UX Designer </p >"
+          altText: "<p> <strong> Role:</strong> UX Designer </p>"
         },
         {
-          altText: "<p> < strong > Duration:</strong > 9 Days </p >"
+          altText: "<p> <strong> Duration:</strong> 9 Days </p>"
         }
       ]
     }, //sections
@@ -114,7 +118,7 @@ export const crowdCo = {
       header: "Visual Style",
       content: [
         {
-          subsection: [
+          subSection: [
             {
               header: "Color",
               content: [
@@ -140,7 +144,7 @@ export const crowdCo = {
               content: [
                 {
                   altText:
-                    "<ul> < li > Pen and paper</li> <li>figma</li> </ul >"
+                    "<ul> <li> Pen and paper</li> <li>figma</li> </ul>"
                 }
               ]
             }

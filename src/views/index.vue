@@ -1,5 +1,23 @@
 <template>
 	<article class="profileOverview">
+		<section id="playpen">
+			<template v-for="(project, index) in projects" :key="project.type">
+				<template v-if="index <= 1">
+					<template v-for="pro in project.value" :key="pro.id">
+						<h4
+							@click="
+								$router.push({
+									name: 'articlePage',
+									params: { article: pro.title },
+								})
+							"
+						>
+							{{ pro.title }}
+						</h4>
+					</template>
+				</template>
+			</template>
+		</section>
 		<section id="intro">
 			<div>
 				<span>HELLO THERE</span>

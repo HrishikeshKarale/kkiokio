@@ -1,32 +1,36 @@
 export const crowdCo = {
   header: "CrowdCo",
-  img: {
-    src: require("@/assets/UX/crowdCo/headerImage.jpg"),
-    alt: null,
-    caption: null
-  },
+  content: [
+    {
+      img: {
+        src: require("@/assets/UX/crowdCo/headerImage.jpg"),
+        alt: null,
+        caption: null
+      },
+    }
+  ],
   section: [
     {
       header: "About",
       content: [
         {
           altText:
-            "<p> < strong > Overview:</strong> The project was a part of VUE + Electron UpLabs Challenge.The end goal of the experience was to develop a functioning iOS and Android app using the VUE + Electron framework. < br /> Since there was no specific theme defined for the app within the challenge, I went on to build a reward based crowdfunding application. The main aim here was to spread awareness of this product concept among general audience. </p >"
+            "<p> <strong> Overview:</strong> The project was a part of VUE + Electron UpLabs Challenge.The end goal of the experience was to develop a functioning iOS and Android app using the VUE + Electron framework. <br /> Since there was no specific theme defined for the app within the challenge, I went on to build a reward based crowdfunding application. The main aim here was to spread awareness of this product concept among general audience. </p>"
         },
         {
-          altText: "<p> < strong > Duration:</strong> 3 + Weeks </p >"
-        },
-        {
-          altText:
-            "<p> < strong > Role:</strong> Product design & amp; App development </p >"
+          altText: "<p> <strong> Duration:</strong> 3 + Weeks </p>"
         },
         {
           altText:
-            "<p> < strong > Skills:</strong> User research, User experience design, User interface design, App development using VUE + Electron framework </p >"
+            "<p> <strong> Role:</strong> Product design & amp; App development </p>"
         },
         {
           altText:
-            "<p> < strong > Solution:</strong> A functional iOS and Android app that can demonstrate the crowdfunding concept to general audience.The app development is in progress. </p >"
+            "<p> <strong> Skills:</strong> User research, User experience design, User interface design, App development using VUE + Electron framework </p>"
+        },
+        {
+          altText:
+            "<p> <strong> Solution:</strong> A functional iOS and Android app that can demonstrate the crowdfunding concept to general audience.The app development is in progress. </p>"
         }
       ]
     }, //sections
@@ -42,7 +46,7 @@ export const crowdCo = {
             "I started my research by doing a Competitor Analysis in order to prepare a list of current reward based crowdfunding players in the market and what were the features that they had on offer."
         },
         {
-          subsection: [
+          subSection: [
             {
               header: "Competitor Analysis",
               content: [
@@ -62,7 +66,7 @@ export const crowdCo = {
                     "Probably the biggest difference between the two platforms is their approach to money and when you get it.Kickstarter releases funds only after the campaign reaches its funding goal(fixed funding), Indiegogo provides you with an opportunity to choose between receiving funding as it comes in(flexible funding) or waiting to see if you hit your target(fixed funding)."
                 }
               ]
-            }, //subsection
+            }, //subSection
             {
               header: "App reviews",
               content: [
@@ -83,14 +87,14 @@ export const crowdCo = {
                 },
                 {
                   altText:
-                    "<p> I saw so many reviews regarding the comments section within the app and how it needs to be improved.But this did not end here, the list of<b>pain points</b> mentioned by users in their reviews is summarized below: </p >"
+                    "<p> I saw so many reviews regarding the comments section within the app and how it needs to be improved.But this did not end here, the list of<b>pain points</b> mentioned by users in their reviews is summarized below: </p>"
                 },
                 {
                   altText:
-                    "<ol> < li > Content is not well organized.App needs to have a better navigation </li > <li> New users could not find a way to see the list of campaign backers in the app. They would like to see it in order to interact with the recent backers and ask them whether the campaign is legit. </li> <li>App needs better way to display campaign categories.</li> <li> Need better ways to interact with other members on the platform. </li> </ol >"
+                    "<ol> <li> Content is not well organized.App needs to have a better navigation </li> <li> New users could not find a way to see the list of campaign backers in the app. They would like to see it in order to interact with the recent backers and ask them whether the campaign is legit. </li> <li>App needs better way to display campaign categories.</li> <li> Need better ways to interact with other members on the platform. </li> </ol>"
                 }
               ]
-            } //subsection
+            } //subSection
           ]
         }
       ]
@@ -107,7 +111,7 @@ export const crowdCo = {
             "Based on the competitor analysis &amp; the app reviews that I got from play store, I went on to create proto personas as it incorporates the needs, goals, and observed behavior patterns of my target audience."
         },
         {
-          subsection: [
+          subSection: [
             {
               header: "Persona",
               content: [
@@ -138,7 +142,7 @@ export const crowdCo = {
                     "The second persona was for a professional investor named Jennie. She has been working as an Angel Investor for the past 10 years and likes to help startups who are looking for financial support in order to scale their products."
                 }
               ]
-            }, //subsection
+            }, //subSection
             {
               header: "User Stories",
               content: [
@@ -154,7 +158,7 @@ export const crowdCo = {
                   }
                 }
               ]
-            } //subsection
+            } //subSection
           ]
         }
       ]
@@ -167,7 +171,7 @@ export const crowdCo = {
             "After defining the needs of my users and documenting what exactly was needed to build this product, the next step was to pick up my tools.I enjoy this phase because I get to see all my research data getting converted into something that people would be able to visualize and then provide feedback of what could be done better."
         },
         {
-          subsection: [
+          subSection: [
             {
               header: "Paper Wireframes",
               content: [
@@ -180,7 +184,7 @@ export const crowdCo = {
                 },
                 {
                   altText:
-                    "<p> Keeping the information of both user personas in mind I decided that the campaign details displayed on the home screen can be divided into three sub- categories: <b>Popular, New &amp; Ending soon</b>.The aim of choosing this segregation was to serve both the inexperienced and professional investor as per their needs.The campaign description screen would display a wide variety of information which all kinds of users can explore. </p >"
+                    "<p> Keeping the information of both user personas in mind I decided that the campaign details displayed on the home screen can be divided into three sub- categories: <b>Popular, New &amp; Ending soon</b>.The aim of choosing this segregation was to serve both the inexperienced and professional investor as per their needs.The campaign description screen would display a wide variety of information which all kinds of users can explore. </p>"
                 },
                 {
                   img: {
@@ -194,13 +198,13 @@ export const crowdCo = {
                     "A better comments section was also the main priority as per the research so I took some inspiration from some social networking apps in order to see how they handle the comments.Being an active Instagram user, I find its comments section to be really neat and well organized.So I tried to take some hints and implement it in my app."
                 }
               ]
-            }, //subsection
+            }, //subSection
             {
               header: "High fidelity design",
               content: [
                 {
                   altText:
-                    "<p> Usually after paper prototyping I hop on to a digital wireframing tool in order to create some low fidelity wireframes.Doing this gives me a bird’s eye view of how to structure the information within the application and it is easy to iterate quickly.But due to <b>time constraints</b> of this project I jumped straight into high fidelity design. </p >"
+                    "<p> Usually after paper prototyping I hop on to a digital wireframing tool in order to create some low fidelity wireframes.Doing this gives me a bird’s eye view of how to structure the information within the application and it is easy to iterate quickly.But due to <b>time constraints</b> of this project I jumped straight into high fidelity design. </p>"
                 },
                 {
                   img: {
@@ -210,7 +214,7 @@ export const crowdCo = {
                   }
                 }
               ]
-            } //subsection
+            } //subSection
           ]
         }
       ]
@@ -228,7 +232,7 @@ export const crowdCo = {
         },
         {
           altText:
-            "<p> While developing the app it came to my notice that I unknowingly skipped one of the most basic design concept mentioned in <a href = 'https://developer.apple.com/design/tips/' target = '_blank' rel = 'noopener noreferrer' >iOS HIG</a >. </p >"
+            "<p> While developing the app it came to my notice that I unknowingly skipped one of the most basic design concept mentioned in <a href = 'https://developer.apple.com/design/tips/' target = '_blank' rel = 'noopener noreferrer'>iOS HIG</a>. </p>"
         },
         {
           img: {
@@ -258,13 +262,13 @@ export const crowdCo = {
           }
         },
         {
-          subsection: [
+          subSection: [
             {
               header: "What could have been done differently?",
               content: [
                 {
                   altText:
-                    "<ul> < li > As you can see in my research, I did not conduct any user interviews or surveys.This was due to the time constraints for this challenge. I was initially planning to do a survey with a specific audience in order to get some <b>Quantitative data</b> as it should have given me more research insights.But the survey itself could have taken some time so instead of doing that I went for the Competitive analysis. </li > <li> While making design decisions like app navigation and displaying campaign categories, I just went with one option/idea and implemented that. Given a chance to do this again, I would think of multiple solutions before deciding a single one. Also a proper usability testing could have been done before jumping straight into development. </li> </ul >"
+                    "<ul> <li> As you can see in my research, I did not conduct any user interviews or surveys.This was due to the time constraints for this challenge. I was initially planning to do a survey with a specific audience in order to get some <b>Quantitative data</b> as it should have given me more research insights.But the survey itself could have taken some time so instead of doing that I went for the Competitive analysis. </li> <li> While making design decisions like app navigation and displaying campaign categories, I just went with one option/idea and implemented that. Given a chance to do this again, I would think of multiple solutions before deciding a single one. Also a proper usability testing could have been done before jumping straight into development. </li> </ul>"
                 }
               ]
             }

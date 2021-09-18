@@ -1,39 +1,43 @@
 export const skinSafe = {
   header: "Skin Safe",
-  img: {
-    src: require("@/assets/UX/skinSafe/headerImage.png"),
-    alt: null,
-    caption: null
-  },
+  content: [
+    {
+      img: {
+        src: require("@/assets/UX/skinSafe/headerImage.png"),
+        alt: null,
+        caption: null
+      }
+    }
+  ],
   section: [
     {
       header: "About",
       content: [
         {
           altText:
-            "<p> < strong > Overview:</strong> SkinSAFE is a startup that aims to provide expert knowledge with the world’s most comprehensive skin product ingredient database brought to you by Mayo Clinic and HER Inc.They rank all products based on how free they are from the top most common allergy causing ingredients identified by Mayo Clinic. < br /> I took the liberty of work on the redesign of their platform.The redesign was planned to take place in a couple of phases and this case study covers the first one. </p >"
+            "<p> <strong> Overview:</strong> SkinSAFE is a startup that aims to provide expert knowledge with the world’s most comprehensive skin product ingredient database brought to you by Mayo Clinic and HER Inc.They rank all products based on how free they are from the top most common allergy causing ingredients identified by Mayo Clinic. <br /> I took the liberty of work on the redesign of their platform.The redesign was planned to take place in a couple of phases and this case study covers the first one. </p>"
         },
         {
           altText:
-            "<p> < strong > Objective</strong> To develop version 2.0 of SkinSAFE iOS app that provides greater engagement through better usability and personalisation. </p >"
+            "<p> <strong> Objective</strong> To develop version 2.0 of SkinSAFE iOS app that provides greater engagement through better usability and personalisation. </p>"
         },
         {
           altText:
-            "<p> < strong > Target audience:</strong> The target users were between 18 - 44 and mostly in USA.Around 75 % of their user base are women. </p >"
+            "<p> <strong> Target audience:</strong> The target users were between 18 - 44 and mostly in USA.Around 75 % of their user base are women. </p>"
         },
         {
           altText:
-            "<p> < strong > Skills:</strong > User research, User experience design, User interface design, Graphic; design, Wireframing </p >"
+            "<p> <strong> Skills:</strong> User research, User experience design, User interface design, Graphic; design, Wireframing </p>"
         },
         {
-          altText: "<p> < strong > Role:</strong > UI / UX design </p >"
+          altText: "<p> <strong> Role:</strong> UI / UX design </p>"
         },
         {
-          altText: "<p> < strong > Duration:</strong > 2 Weeks </p >"
+          altText: "<p> <strong> Duration:</strong> 2 Weeks </p>"
         },
         {
           altText:
-            "<p> < strong > Solution:</strong > My aim was to provide a more usable and desirable experience for the app so that it could be more valuable for both the users as well as the company.This phase revolved around a redesigned experience for the home, product description, similar products, favorite skincare products, product categories and product scan flows. </p >"
+            "<p> <strong> Solution:</strong> My aim was to provide a more usable and desirable experience for the app so that it could be more valuable for both the users as well as the company.This phase revolved around a redesigned experience for the home, product description, similar products, favorite skincare products, product categories and product scan flows. </p>"
         }
       ],
       section: [
@@ -92,7 +96,7 @@ export const skinSafe = {
               }
             },
             {
-              subsection: [
+              subSection: [
                 {
                   header: "Reviews",
                   content: [
@@ -113,7 +117,7 @@ export const skinSafe = {
                     },
                     {
                       altText:
-                        "<ol> < li > The current version of<b>Home Screen</b> hides key part of the functionality that is most important to the user.It does not recommend products based on user needs. </li > <li> There is no way to see products similar to the current selected item that the user is viewing. Users need to see <b>similar products</b> in order to compare them with each other. </li> <li> People can scan for a product within the app and there are instances when it is not in SkinSafe’s database. People can help them by scanning the product which is then approved by their team and added to the database. The current <b>scan flow</b> is not very intuitive so it needed to be fixed. </li> <li> No way to filter the product based on allergens throughout the app. These filters only appear when searching through product categories. </li> <li> The product description was not as in-depth as given on their official website. </li> </ol >"
+                        "<ol> <li> The current version of<b>Home Screen</b> hides key part of the functionality that is most important to the user.It does not recommend products based on user needs. </li> <li> There is no way to see products similar to the current selected item that the user is viewing. Users need to see <b>similar products</b> in order to compare them with each other. </li> <li> People can scan for a product within the app and there are instances when it is not in SkinSafe’s database. People can help them by scanning the product which is then approved by their team and added to the database. The current <b>scan flow</b> is not very intuitive so it needed to be fixed. </li> <li> No way to filter the product based on allergens throughout the app. These filters only appear when searching through product categories. </li> <li> The product description was not as in-depth as given on their official website. </li> </ol>"
                     }
                   ]
                 }

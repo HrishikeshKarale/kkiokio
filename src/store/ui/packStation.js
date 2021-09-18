@@ -1,12 +1,12 @@
 export const packStation = {
   header: "Pack Station",
-  img: {
-    src: require("@/assets/packstation/9.svg"),
-    alt: null,
-    caption: null
-  },
   content: [
     {
+      img: {
+        src: require("@/assets/packstation/9.svg"),
+        alt: null,
+        caption: null
+      },
       text:
         "Tha pack station is web app that can be used by users to pack and ship fulfillment orders in a warehouse.This projects is a successful implementation of a grid which follows the Golden Ratio."
     },

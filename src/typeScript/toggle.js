@@ -22,7 +22,7 @@ export const toggle = {
   },
 
   methods: {
-    toggle: function(id) {
+    toggle: function (id) {
       const show = this.show;
       if (!show.includes(id)) {
         this.show = [...show, id];
@@ -32,14 +32,14 @@ export const toggle = {
       }
     }, //toggle
 
-    trans: function() {
+    trans: function () {
       document.documentElement.classList.add("transition");
       window.setTimeout(() => {
         document.documentElement.classList.remove("transition");
       }, 300);
     }, //trans
 
-    theme: function() {
+    theme: function () {
       const theme = this.selected;
       // this.cookie = new cookie();
       if (theme != "darkMode") {
@@ -55,7 +55,7 @@ export const toggle = {
       }
     }, //theme
 
-    activeTheme: function() {
+    activeTheme: function () {
       const themes = this.themes;
       // console.log(themes, this.selected);
       if (this.selected) {
@@ -68,7 +68,7 @@ export const toggle = {
       return "fas fa-question-circle";
     }, //activeTheme
 
-    isOpen: function(id) {
+    isOpen: function (id) {
       return this.show.includes(id);
     } //isOpen
   },
