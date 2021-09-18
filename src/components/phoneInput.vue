@@ -10,11 +10,11 @@
 			:class="{
 				warningContainer: dWarning,
 				errorContainer: dDanger,
-				iconPadding: inputIcon,
+				iconPadding: icon,
 				maskField: mask,
 			}"
 		>
-			<span v-if="inputIcon" :class="inputIcon" />
+			<span v-if="icon" :class="icon" />
 			<input
 				v-if="!mask"
 				v-model="dTextValue"
@@ -168,7 +168,7 @@
 
 			//if a valid fontawesome icon class string is passed, it displays it in the input field
 			//a valid fontawesome icons class string is a string which starts with fas/far/fab/fa
-			inputIcon: {
+			icon: {
 				required: false,
 				type: [String, null],
 				default: "fas fa-phone",

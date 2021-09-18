@@ -131,7 +131,7 @@
 
 	.vueAlert {
 		display: flex;
-		flex-direction: row;
+		flex-direction: row !important;
 		flex-wrap: nowrap;
 		border-radius: @borderRadius;
 		border: 1px solid transparent;

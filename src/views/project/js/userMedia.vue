@@ -63,8 +63,10 @@
 <script>
 	import vueButton from "@/components/vueButton";
 	import vueImg from "@/components/vueImg.vue";
+	import { loading } from "@/typeScript/common/loading";
 	export default {
 		name: "UserMedia",
+		mixins: [loading],
 
 		components: {
 			vueButton,
@@ -115,14 +117,6 @@
 				constraints,
 			};
 		}, //methods
-
-		mounted() {
-			this.getMedia();
-			this.emitter.emit("loadingScreen", false);
-		},
-		unmounted() {
-			this.emitter.emit("loadingScreen", true);
-		},
 		methods: {
 			// stop both mic and camera
 			stopBothVideoAndAudio: function () {

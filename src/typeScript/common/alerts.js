@@ -9,14 +9,14 @@ export const alerts = {
   }, //data
 
   computed: {
-    alertObject: function() {
+    alertObject: function () {
       return { error: this.dDanger, warning: this.dWarning };
     }
   }, //computed
 
   methods: {
     //use by form elements sent via slot
-    alerts: function(type, message) {
+    alerts: function (type, message) {
       // console.log(message);
       if (type == "warning") {
         this.dWarning = message;
@@ -27,16 +27,4 @@ export const alerts = {
       }
     } //alerts
   } //methifs
-
-  // watch: {
-  //   //send warning messages back to parent component
-  //   warning: function(newValue) {
-  //     this.$emit("notify", "warning", newValue);
-  //   },
-
-  //   //send error messages back to parent component
-  //   danger: function(newValue) {
-  //     this.$emit("notify", "error", newValue);
-  //   }
-  // }, //watch
 };

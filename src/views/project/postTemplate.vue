@@ -106,9 +106,11 @@
 
 <script>
 	import PostDetails from "./postDetails.vue";
+	import { loading } from "@/typeScript/common/loading";
 
 	export default {
 		name: "PostTemplate",
+		mixins: [loading],
 
 		components: {
 			PostDetails,
@@ -126,14 +128,6 @@
 				required: false,
 				type: Object,
 			}, //props
-
-			mounted() {
-				this.emitter.emit("loadingScreen", false);
-			},
-
-			unmounted() {
-				this.emitter.emit("loadingScreen", true);
-			},
 		},
 	};
 </script>

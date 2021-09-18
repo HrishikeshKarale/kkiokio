@@ -79,17 +79,13 @@
 	</div>
 </template>
 <script>
+	import { loading } from "@/typeScript/common/loading";
 	import followerAlongNav from "@/views/project/js/followerAlongNav/followerAlongNav.vue";
 	export default {
 		name: "FollowNav",
+		mixins: [loading],
 		components: {
 			followerAlongNav,
-		},
-		mounted() {
-			this.emitter.emit("loadingScreen", false);
-		},
-		unmounted() {
-			this.emitter.emit("loadingScreen", true);
 		},
 	};
 </script>

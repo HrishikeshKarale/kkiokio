@@ -587,13 +587,9 @@
 	</article>
 </template>
 <script>
+	import { loading } from "@/typeScript/common/loading";
 	export default {
 		name: "PrivacyPolicy",
-		mounted() {
-			this.emitter.emit("loadingScreen", false);
-		},
-		unmounted() {
-			this.emitter.emit("loadingScreen", true);
-		},
+		mixins: [loading],
 	};
 </script>

@@ -89,7 +89,7 @@
 					label="Email"
 					name="emailField"
 					placeholder="JDoe@email.com"
-					input-icon="far fa-envelope"
+					icon="far fa-envelope"
 					:required="booleanTrue"
 					@alerts="alerts"
 				/>
@@ -120,9 +120,11 @@
 	import vueTextarea from "@/components/vueTextarea.vue";
 	import vueForm from "@/components/vueForm";
 	import vueClipboard from "@/components/vueClipboard.vue";
+	import { loading } from "@/typeScript/common/loading";
 
 	export default {
 		name: "Contact",
+		mixins: [loading],
 		components: {
 			textInput,
 			emailInput,
@@ -153,12 +155,6 @@
 				comment,
 				mailOptions,
 			};
-		},
-		mounted() {
-			this.emitter.emit("loadingScreen", false);
-		},
-		unmounted() {
-			this.emitter.emit("loadingScreen", true);
 		},
 		methods: {
 			alerts: function (type, message) {

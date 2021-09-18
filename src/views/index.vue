@@ -1,23 +1,5 @@
 <template>
 	<article class="profileOverview">
-		<section id="playpen">
-			<template v-for="(project, index) in projects" :key="project.type">
-				<template v-if="index <= 1">
-					<template v-for="pro in project.value" :key="pro.id">
-						<h4
-							@click="
-								$router.push({
-									name: 'articlePage',
-									params: { article: pro.title },
-								})
-							"
-						>
-							{{ pro.title }}
-						</h4>
-					</template>
-				</template>
-			</template>
-		</section>
 		<section id="intro">
 			<div>
 				<span>HELLO THERE</span>
@@ -119,12 +101,14 @@
 <script>
 	// @ is an alias to /src
 	import vueButton from "@/components/vueButton.vue";
+	import { loading } from "@/typeScript/common/loading";
 
 	export default {
 		name: "Home",
 		components: {
 			vueButton,
 		},
+		mixins: [loading],
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const profilePic = require("@/../public/img/profilePic.jpg");
@@ -141,11 +125,7 @@
 				projectSkills,
 			};
 		},
-		unmounted() {
-			this.emitter.emit("loadingScreen", true);
-		},
 		mounted() {
-			this.emitter.emit("loadingScreen", false);
 			this.projects.forEach((project) => {
 				let uniqueArray = [];
 				project.value.forEach((val) => {

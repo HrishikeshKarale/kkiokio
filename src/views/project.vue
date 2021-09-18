@@ -16,7 +16,7 @@
 			@updateFilter="updateFilter"
 		/>
 		<section
-			v-for="projects in projectsDescription"
+			v-for="(projects, index) in projectsDescription"
 			:id="projects.type"
 			:key="projects.type"
 		>
@@ -30,7 +30,8 @@
 					"
 					:key="project.id"
 					:project="project"
-					:component="project.component"
+					:component="index < 2 ? 'articlePage' : project.component"
+					:article="project.title"
 				/>
 			</card-scroller>
 		</section>
@@ -42,8 +43,10 @@
 	import showcase from "@/components/showcase.vue";
 	import { projects } from "@/store/projects";
 	import cardScroller from "./project/css/cardSlider/cardScroller.vue";
+	import { loading } from "@/typeScript/common/loading";
 	export default {
 		name: "Projects",
+		mixins: [loading],
 		components: {
 			vueFilter,
 			showcase,
@@ -62,12 +65,6 @@
 				vertical,
 				autoScroll,
 			};
-		},
-		mounted() {
-			this.emitter.emit("loadingScreen", false);
-		},
-		unmounted() {
-			this.emitter.emit("loadingScreen", true);
 		},
 		created() {
 			const tempPropFilter = this.$route.query.filter;

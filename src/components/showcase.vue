@@ -1,6 +1,9 @@
 <template>
 	<div class="showcase">
-		<router-link v-if="component" :to="{ name: component }">
+		<router-link
+			v-if="component"
+			:to="{ name: component, params: { article: article } }"
+		>
 			<vue-img :src="project.img" alt="Moto" />
 			<h4>
 				{{ project.title }}
@@ -32,6 +35,11 @@
 				type: Object,
 			},
 			component: {
+				required: false,
+				type: String,
+				default: "",
+			},
+			article: {
 				required: false,
 				type: String,
 				default: "",

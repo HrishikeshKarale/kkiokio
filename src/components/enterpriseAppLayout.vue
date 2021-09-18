@@ -53,7 +53,7 @@
 							name="emailTextField"
 							placeholder="JohnDoe@abc.com"
 							:required="booleanTrue"
-							input-icon="fas fa-at"
+							icon="fas fa-at"
 							@alerts="alerts"
 							@value="(val) => (emailID = val)"
 						/>
@@ -63,7 +63,7 @@
 							name="usernameTextField"
 							placeholder="*************"
 							:required="booleanTrue"
-							input-icon="far fa-user"
+							icon="far fa-user"
 							:autocomplete="booleanTrue"
 							@alerts="alerts"
 							@value="(val) => (password = val)"
@@ -84,7 +84,7 @@
 							name="nameTextField"
 							placeholder="John Doe"
 							:required="booleanTrue"
-							input-icon="far fa-user"
+							icon="far fa-user"
 							@alerts="alerts"
 							@value="(val) => (signupName = val)"
 						/>
@@ -94,7 +94,7 @@
 							name="emailTextField"
 							placeholder="JohnDoe@email.com"
 							:required="booleanTrue"
-							input-icon="fas fa-at"
+							icon="fas fa-at"
 							@alerts="alerts"
 							@value="(val) => (signupEmail = val)"
 						/>
@@ -104,7 +104,7 @@
 							name="usernameTextField"
 							placeholder="John Doe"
 							:required="booleanTrue"
-							input-icon="far fa-user"
+							icon="far fa-user"
 							@alerts="alerts"
 							@value="(val) => (signupUsername = val)"
 						/>
@@ -115,7 +115,7 @@
 							placeholder="*************"
 							:required="booleanTrue"
 							:match="booleanTrue"
-							input-icon="far fa-user"
+							icon="far fa-user"
 							:autocomplete="booleanTrue"
 							@alerts="alerts"
 							@value="(val) => (signupPassword = val)"
@@ -185,7 +185,7 @@
 							<router-view :key="$route.fullPath" />
 						</keep-alive> -->
 						<router-view v-slot="{ Component }">
-							<keep-alive max="2">
+							<keep-alive max="5">
 								<component :is="Component" />
 							</keep-alive>
 						</router-view>
@@ -248,7 +248,8 @@
 			const alertCode = "";
 			const alertDescription =
 				"If you are looking for my projects please visit the 'work' section of the website.";
-			const alertTimeout = 5; //signUp
+			const alertTimeout = 8;
+			//signUp
 			const signupName = null;
 			const signupEmail = null;
 			const signupPassword = null;
@@ -503,7 +504,6 @@
 		width: 100vw;
 		& > div {
 			display: flex;
-			flex-direction: row;
 			height: 100%;
 			&.body {
 				display: flex;

@@ -2,7 +2,7 @@
 	<form
 		:id="form"
 		:ref="form"
-		class="vueForm"
+		:class="{ vueForm: true, singleAction: singleAction }"
 		:name="form"
 		:novalidate="validate"
 		:autocomplete="autocomplete"
@@ -14,14 +14,14 @@
 		<div class="formButtons">
 			<vue-button
 				type="submit"
-				text="Submit"
+				:text="text"
 				tag="formSubmitButton"
 				category="standard"
-				icon="fas fa-clipboard-check"
+				:icon="icon"
 				:disabled="!validInput"
 				:ctx="ctx"
 			/>
-			<input class="btn" type="reset" value="Reset" />
+			<input v-if="!singleAction" class="btn" type="reset" value="Reset" />
 		</div>
 	</form>
 </template>
@@ -49,6 +49,21 @@
 				required: false,
 				type: [String, null],
 				default: null,
+			},
+			text: {
+				required: false,
+				type: [String, null],
+				default: "Submit",
+			},
+			icon: {
+				required: false,
+				type: [String, null],
+				default: "fas fa-clipboard-check",
+			},
+			singleAction: {
+				required: false,
+				type: [Boolean, null],
+				default: false,
 			},
 			autocomplete: {
 				required: false,
@@ -110,14 +125,21 @@
 		display: flex;
 		flex-direction: column;
 		align-self: center;
-		flex-wrap: nowrap;
 		width: fit-content;
 		height: fit-content;
+		&.singleAction {
+			flex-flow: row nowrap;
+			& > .formButtons {
+				width: fit-content;
+				align-self: flex-start;
+			}
+		}
 		& > div {
 			display: flex;
 			&.formElements {
 				flex-direction: column;
 			}
+
 			&.formButtons {
 				flex-direction: row-reverse;
 				gap: @spaceMd;
