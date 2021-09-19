@@ -1,10 +1,15 @@
 // https://usabilitygeek.com/ux-case-study-google-maps-vs-waze-mobile-apps/
 <template>
 	<!-- {{ article }} -->
-	<article id="post">
+	<article :id="projTitle">
 		<template v-for="entry in Object.entries(post)" :key="entry">
 			<header v-if="entry[0] === 'header'">
 				<h1 v-text="entry[1]" />
+				<ul v-if="tags">
+					<li class="tag" v-for="tag in tags" :key="tag">
+						{{ tag }}
+					</li>
+				</ul>
 			</header>
 			<post-details v-else-if="type.includes(entry[0])" :entry="entry" />
 			<template
@@ -124,10 +129,39 @@
 		}, //data
 
 		props: {
-			post: {
+			title: {
 				required: false,
+				type: [String, null],
+				default: "Article",
+			},
+			post: {
+				required: true,
 				type: Object,
 			}, //props
+			tags: {
+				required: false,
+				type: [Array, null],
+				default: null,
+			},
 		},
 	};
 </script>
+
+<style lang="less" scoped>
+	@import (reference) "../../Less/customMixins.less";
+	@import (reference) "../../Less/customVariables.less";
+
+	article {
+		& > header {
+			& > h1 {
+				margin-bottom: @spaceMd !important;
+			}
+			& > ul {
+				display: flex;
+				flex-flow: row wrap;
+				gap: @spaceLg;
+				margin-bottom: @spaceXl !important;
+			}
+		}
+	}
+</style>

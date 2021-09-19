@@ -208,7 +208,7 @@
 		height: fit-content;
 		border-radius: @borderRadius;
 		gap: @spaceMd;
-		cursor: pointer;
+		cursor: pointer !important;
 		&:hover {
 			& > span {
 				transform: scale(@scale);

@@ -56,8 +56,8 @@
 		display: flex;
 		flex-flow: row nowrap;
 		width: 100%;
-		border: 1px solid @textColor;
 		border-width: 1px 0;
+		border-color: @primaryColor !important;
 		padding: @spaceXl @spaceSm;
 		& > .previous,
 		& > .next {

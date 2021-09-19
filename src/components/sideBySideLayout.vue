@@ -1,9 +1,9 @@
 <template>
 	<div class="sideBySideLayout">
-		<div class="leftComponent">
+		<div class="left">
 			<slot name="left" />
 		</div>
-		<div class="rightComponent">
+		<div class="right">
 			<slot name="right" />
 		</div>
 	</div>
@@ -31,28 +31,30 @@
 			height: 100%;
 			min-width: 320px;
 
-			&.leftComponent {
+			&.left {
 				max-width: 100%;
+				gap: @spaceXl;
 			}
 
-			&.rightComponent {
+			&.right {
 				margin-top: 7 * @spaceLg;
-				position: sticky;
-				top: 2 * @spaceXl;
 				height: fit-content;
+				gap: @spaceXl;
 			}
 		}
 		@media screen {
 			@media (max-width: @maxWidth) {
 				flex-wrap: wrap;
 				align-self: center;
-				&.leftComponent {
+				&.left {
 					max-width: 80%;
 					min-width: 320px;
 				}
 				& > div {
-					&.rightComponent {
-						min-width: 320px;
+					&.right {
+						display: flex;
+						flex-direction: column;
+						max-width: 320px;
 					}
 				}
 			}

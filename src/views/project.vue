@@ -16,7 +16,7 @@
 			@updateFilter="updateFilter"
 		/>
 		<section
-			v-for="(projects, index) in projectsDescription"
+			v-for="projects in projectList"
 			:id="projects.type"
 			:key="projects.type"
 		>
@@ -30,8 +30,8 @@
 					"
 					:key="project.id"
 					:project="project"
-					:component="index < 2 ? 'articlePage' : project.component"
-					:article="project.title"
+					:component="project.blog != null ? 'articlePage' : project.component"
+					:article="project.blog != null ? project.title : ''"
 				/>
 			</card-scroller>
 		</section>
@@ -41,7 +41,6 @@
 <script>
 	import vueFilter from "@/components/vueFilter.vue";
 	import showcase from "@/components/showcase.vue";
-	import { projects } from "@/store/projects";
 	import cardScroller from "./project/css/cardSlider/cardScroller.vue";
 	import { loading } from "@/typeScript/common/loading";
 	export default {
@@ -53,13 +52,13 @@
 			cardScroller,
 		},
 		data() {
-			const projectsDescription = projects;
+			const projectList = this.$store.state.projects;
 			const propFilter = [];
 			const filterList = [];
 			const vertical = this.booleanTrue;
 			const autoScroll = this.booleanTrue;
 			return {
-				projectsDescription,
+				projectList,
 				propFilter,
 				filterList,
 				vertical,
@@ -71,7 +70,7 @@
 			if (tempPropFilter) {
 				this.propFilter = [this.$route.query.filter];
 			}
-			this.projectsDescription.forEach((project) => {
+			this.projectList.forEach((project) => {
 				project.value.forEach((val) => {
 					this.filterList = [...val.tags, ...this.filterList];
 				});
@@ -109,11 +108,6 @@
 		& > section {
 			& > h2 {
 				width: 100%;
-			}
-			& > .cardScroller {
-				.showcase {
-					flex: 1 0 320px;
-				}
 			}
 		}
 	}

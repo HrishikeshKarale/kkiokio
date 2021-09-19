@@ -25,14 +25,11 @@
 </template>
 
 <script>
-	import { nav } from "@/store/navigation";
-	import { projects } from "@/store/projects";
-
 	export default {
 		name: "Breadcrums",
 		data() {
-			const projectsDescription = projects;
-			const navigation = nav;
+			const projectsDescription = this.$store.state.projects;
+			const navigation = this.$store.state.nav;
 			const unique = [];
 			return {
 				projectsDescription,

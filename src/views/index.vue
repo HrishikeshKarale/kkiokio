@@ -54,12 +54,27 @@
 				This is a detailed chronicle of the stories, processes and results
 				behind the projects that I've led and contributed to.
 			</p>
-			<ul>
-				<template v-for="s in skills" :key="s.type">
-					<li v-for="value in s.value" :key="value">
-						{{ value }}
-					</li>
-				</template>
+			<ul v-for="(project, index) in projects" :key="index">
+				<li>
+					<router-link :to="{ name: 'project', hash: `#${project.type}` }">
+						<h3>
+							{{ project.type }}
+						</h3>
+					</router-link>
+					<ul>
+						<li
+							class="tag"
+							v-for="skill in projectSkills[project.type]"
+							:key="skill"
+							@click="
+								$router.push({ name: 'project', query: { filter: skill } })
+							"
+						>
+							<span class="fas fa-tag" />
+							<b v-text="skill" />
+						</li>
+					</ul>
+				</li>
 			</ul>
 		</section>
 		<section id="kindWords">
@@ -115,10 +130,8 @@
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logo = require("@/assets/logo.svg");
 			const projectSkills = {};
-			const skills = this.$store.state.skills;
 			const projects = this.$store.state.projects;
 			return {
-				skills,
 				profilePic,
 				logo,
 				projects,
@@ -254,32 +267,26 @@
 				}
 				& > ul {
 					display: flex;
-					flex-direction: row;
+					flex-direction: column;
 					flex-wrap: wrap;
 					gap: @spaceLg;
 					// justify-content: space-between;
 					& > li {
-						display: flex;
-						font-size: @fontSizeSm;
-						border-radius: @borderRadiusLg;
-						padding: 0 @spaceMd !important;
-						background-color: @secondaryColor;
-						cursor: pointer;
-						gap: @spaceMd;
-						//tag icon
-						& > span.fas {
-							color: @backgroundColor;
-							// margin-right: @spaceMd;
-							transform: scale(0.8);
-						}
-						&:hover {
-							background-color: @accentColor;
-							.boxShadow(@four, @accentColor);
-							& > span {
-								transform: scale(1);
-							}
-							& > b {
-								color: @backgroundColor;
+						& > ul {
+							display: flex;
+							flex-flow: row wrap;
+							gap: @spaceMd;
+							& > li {
+								&:hover {
+									background-color: @accentColor;
+									.boxShadow(@four, @accentColor);
+									& > span {
+										transform: scale(1);
+									}
+									& > b {
+										color: @backgroundColor;
+									}
+								}
 							}
 						}
 					}

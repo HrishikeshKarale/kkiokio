@@ -1070,13 +1070,37 @@ textarea {
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
   margin: 0 !important;
   padding: 0 !important;
   list-style-type: none !important;
 
   &>li {
+    display: flex;
+    flex-direction: column;
     margin: 0 !important;
     padding: 0 !important;
+  }
+}
+
+//tags
+.tag {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: @fontSizeSm;
+  position: relative;
+  background-color: @secondaryColor;
+  border-radius: @borderRadius;
+  color: @textColor;
+  padding: 0 @spaceMd  !important;
+  gap: @spaceMd;
+  width: fit-content;
+
+  &>span {
+    align-self: center;
+    color: @backgroundColor;
+    transform: scale(0.8);
   }
 }
 

@@ -15,8 +15,8 @@
 			<vue-button
 				type="submit"
 				:text="text"
-				tag="formSubmitButton"
-				category="standard"
+				tag="formActionButton"
+				:category="category"
 				:icon="icon"
 				:disabled="!validInput"
 				:ctx="ctx"
@@ -54,6 +54,32 @@
 				required: false,
 				type: [String, null],
 				default: "Submit",
+			},
+			category: {
+				required: false,
+				type: [String, null],
+				default: "standard",
+				validator: function (value) {
+					return (
+						[
+							"standard",
+							"large",
+							"small",
+							"fullWidth",
+							"border",
+							"border-sm",
+							"border-lg",
+							"border-fwidth",
+							"text",
+							"text-sm",
+							"text-lg",
+							"icon",
+							"icon-sm",
+							"icon-lg",
+							null,
+						].indexOf(value) !== -1
+					);
+				},
 			},
 			icon: {
 				required: false,
@@ -132,6 +158,8 @@
 			& > .formButtons {
 				width: fit-content;
 				align-self: flex-start;
+				margin-top: @spaceSm+1;
+				margin-right: 0;
 			}
 		}
 		& > div {

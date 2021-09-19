@@ -1,6 +1,6 @@
 <template>
 	<div v-if="!close" :class="['vueAlert', type]">
-		<span :class="[type, alertIcon]" />
+		<span :class="[type, icon]" />
 		<div :class="type">
 			<h5>
 				<b>{{ type == "danger" ? code + " - " : "" }} {{ message }}</b>
@@ -82,29 +82,27 @@
 		},
 
 		data() {
-			const alertIcon = "";
+			const icon = "";
 			const close = false;
-			const tag = "closeAlertButton";
 			return {
-				alertIcon,
+				icon,
 				close,
-				tag,
 			}; //return
 		}, //methods
 
 		created() {
 			switch (this.type) {
 				case "warning":
-					this.alertIcon = "fas fa-exclamation-triangle";
+					this.icon = "fas fa-exclamation-triangle";
 					break;
 				case "info":
-					this.alertIcon = "fas fa-info-circle";
+					this.icon = "fas fa-info-circle";
 					break;
 				case "success":
-					this.alertIcon = "fas fa-check-circle";
+					this.icon = "fas fa-check-circle";
 					break;
 				case "danger":
-					this.alertIcon = "fas fa-exclamation-circle";
+					this.icon = "fas fa-exclamation-circle";
 					break;
 			}
 		}, //created
@@ -148,16 +146,17 @@
 			padding: @spaceLg 0 0 0;
 		}
 
+		// alert code-message and description
 		& > div {
 			display: flex;
 			flex-direction: column;
-			min-width: fit-content;
-			max-width: 320px;
+			max-width: 280px;
 			& > h5 {
 				margin: 0 !important;
 				margin-top: @spaceLg !important;
 				& + p {
 					margin-bottom: @spaceMd !important;
+					line-height: normal !important;
 				}
 			}
 		}

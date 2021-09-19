@@ -10,14 +10,18 @@
 			</h4>
 			<span class="fas fa-external-link-square-alt" />
 		</router-link>
-		<h4 v-else>{{ project.title }}</h4>
+		<template v-else>
+			<vue-img v-if="project.img" :src="project.img" alt="Moto" />
+			<h4>{{ project.title }}</h4>
+		</template>
 		<template v-if="project.description">
 			<!-- eslint-disable-next-line vue/no-v-html -->
 			<p v-html="project.description" />
 			<ul v-if="project.tags">
 				<template v-for="tag in project.tags" :key="tag">
-					<li v-if="tag">
-						<span>{{ tag }}</span>
+					<li v-if="tag" class="tag">
+						<span class="fas fa-tag" />
+						<b v-text="tag" />
 					</li>
 				</template>
 			</ul>
@@ -61,10 +65,28 @@
 		padding: @spaceMd @spaceLg;
 		border-radius: @borderRadiusLg;
 		justify-content: space-around;
-		flex: 1 2 320px;
+		flex: 1 0 320px;
 		height: fit-content;
 		// border: 1px dashed @primaryColor;
 		.boxShadow(@base, @secondaryColor);
+
+		& > p {
+			font-size: @fontSizeSm;
+			// height: 96px;
+			width: fit-content;
+			overflow: hidden;
+			white-space: wrap;
+			text-overflow: ellipsis;
+		}
+
+		& > ul {
+			display: flex;
+			flex-flow: row wrap;
+			gap: @spaceMd;
+			//tag
+			& > li {
+			}
+		}
 
 		& > a {
 			margin-bottom: @spaceLg;
@@ -157,31 +179,6 @@
 				& > span {
 					color: @accentColor;
 				}
-			}
-		}
-		& > p {
-			font-size: @fontSizeSm;
-			// height: 96px;
-			width: fit-content;
-			overflow: hidden;
-			white-space: wrap;
-			text-overflow: ellipsis;
-		}
-
-		ul {
-			display: flex;
-			flex-wrap: wrap;
-			gap: @spaceMd;
-			//tag
-			& > li {
-				display: flex;
-				flex-wrap: nowrap;
-				font-size: @fontSizeSm;
-				position: relative;
-				background-color: @secondaryColor;
-				border-radius: @borderRadius;
-				color: @textColor;
-				padding: 0 @spaceMd !important;
 			}
 		}
 	}

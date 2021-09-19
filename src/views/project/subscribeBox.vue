@@ -8,6 +8,7 @@
 		<vue-form
 			text="Subscribe"
 			icon="fas fa-rss"
+			category="small"
 			:singleAction="booleanTrue"
 			form="subscribeForm"
 			:ctx="subscribe.bind(this)"
@@ -21,7 +22,6 @@
 				name="emailTextField"
 				placeholder="JohnDoe@abc.com"
 				:required="booleanTrue"
-				icon="fas fa-at"
 				@alerts="alerts"
 				@value="(val) => (emailID = val)"
 			/>
@@ -32,7 +32,6 @@
 <script>
 	import vueForm from "../../components/vueForm.vue";
 	import emailInput from "@/components/emailInput.vue";
-	import { loading } from "@/typeScript/common/loading";
 	import { alerts } from "@/typeScript/common/alerts";
 
 	export default {
@@ -70,7 +69,7 @@
 		gap: @spaceMd;
 		border-radius: @borderRadius;
 		border: 1px solid @secondaryColor;
-		min-width: 320px;
+		max-width: 320px;
 		.boxShadow(@one);
 		.backgroundColor();
 		& > * {

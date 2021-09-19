@@ -1,21 +1,33 @@
 <template>
 	<side-by-side-layout>
 		<template #left>
-			<post-template v-if="projData" :post="projData" />
+			<post-template
+				v-if="projData"
+				:post="projData"
+				:tags="projTags"
+				:title="projTitle"
+			/>
 			<post-nav :next="nextArticle" :previous="previousArticle" />
+			<related-post :tags="projTags" />
 		</template>
 		<template #right>
 			<subscribe-box />
+			<search-blog />
+			<browse-blogs />
 		</template>
 	</side-by-side-layout>
 </template>
 
 <script>
 	import postNav from "./postNav.vue";
+	import relatedPost from "./relatedPost.vue";
+	import browseBlogs from "./browseBlogs.vue";
 	import subscribeBox from "./subscribeBox.vue";
+	import searchBlog from "./searchBlog.vue";
 	import sideBySideLayout from "../../components/sideBySideLayout.vue";
 	import postTemplate from "./postTemplate.vue";
 	import { loading } from "@/typeScript/common/loading";
+
 	export default {
 		name: "articlePage",
 
@@ -25,16 +37,23 @@
 			sideBySideLayout,
 			postTemplate,
 			subscribeBox,
+			searchBlog,
+			browseBlogs,
+			relatedPost,
 		}, //components
 
 		data() {
 			const projects = this.$store.state.projects;
 			const projData = {};
+			const projTags = null;
+			const projTitle = null;
 			const nextArticle = null;
 			const previousArticle = null;
 			return {
 				projects,
 				projData,
+				projTags,
+				projTitle,
 				nextArticle,
 				previousArticle,
 			};
@@ -50,6 +69,8 @@
 						if (!articleFound && proj.title === postTitle && proj.blog) {
 							articleFound = this.booleanTrue;
 							this.projData = Object.values(proj.blog)[0];
+							this.projTags = proj.tags;
+							this.projTitle = proj.title;
 						} else {
 							if (articleFound) {
 								this.nextArticle = proj;
@@ -60,24 +81,6 @@
 						}
 					}
 				}
-
-				// this.projects.forEach((element) => {
-				// 	let articleFound = !this.booleanTrue;
-				// 	element.value.forEach((el) => {
-				// 		console.log(articleFound, " - ", el.title);
-				// 		if (!articleFound && el.title === postTitle && el.blog) {
-				// 			articleFound = this.booleanTrue;
-				// 			this.projData = Object.values(el.blog)[0];
-				// 		} else {
-				// 			if (articleFound) {
-				// 				this.nextArticle = el;
-				// 				return null;
-				// 			} else {
-				// 				this.previousArticle = el;
-				// 			}
-				// 		}
-				// 	});
-				// });
 			}, //projectData
 		}, //methods
 

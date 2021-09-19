@@ -203,7 +203,7 @@
 			icon: {
 				required: false,
 				type: [String, null],
-				default: null,
+				default: "fas fa-at",
 			},
 		}, //beforeMount
 
