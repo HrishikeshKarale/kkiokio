@@ -10,7 +10,7 @@
 				v-show="
 					tags.length == 0 ||
 					(tags.length > 0 &&
-						tags.some((filter) => project.tags.includes(filter)))
+						tags.some((filter) => !project.tags.includes(filter)))
 				"
 				:key="project.id"
 				:project="project"

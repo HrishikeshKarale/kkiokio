@@ -1,6 +1,6 @@
 <template>
 	<div class="postNav">
-		<div class="previous">
+		<div class="previous" v-if="previous != null">
 			<h3
 				@click="
 					$router.push({
@@ -14,7 +14,7 @@
 				{{ previous.title }}
 			</h3>
 		</div>
-		<div class="next">
+		<div v-if="next != null" class="next">
 			<h3
 				@click="
 					$router.push({
