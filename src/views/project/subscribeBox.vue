@@ -53,7 +53,7 @@
 
 		methods: {
 			subscribe: function () {
-				console.log("subscribe");
+				// console.log("subscribe");
 			}, //subscribe
 		},
 	};

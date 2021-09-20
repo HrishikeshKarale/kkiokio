@@ -50,7 +50,7 @@
 
 		methods: {
 			searchBlog: function () {
-				console.log("searchBlog");
+				// console.log("searchBlog");
 			}, //subscribe
 		},
 	};
