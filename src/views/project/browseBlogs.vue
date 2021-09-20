@@ -63,6 +63,9 @@
 		display: flex;
 		flex-direction: column;
 		gap: @spaceMd;
+		max-width: 320px;
+		min-width: 240px;
+		height: fit-content;
 		& > h4 {
 			margin-bottom: 0 !important;
 			font-weight: bold;
@@ -96,6 +99,39 @@
 						display: flex;
 					}
 				}
+			}
+		}
+		@media screen {
+			@media (max-width: @1200width) {
+				& > h4 {
+					align-self: center;
+					margin-bottom: @spaceMd !important;
+				}
+				& > ul {
+					flex-flow: row wrap;
+					& > li {
+						flex: 1 0 240px;
+						border-radius: @borderRadius;
+						& > b {
+							padding: @spaceLg @spaceLg;
+							background-color: @accentColor;
+							&::before {
+								color: @backgroundColor;
+								margin-right: @spaceLg;
+							}
+						}
+						&.open {
+							.backgroundColor(@primaryColor, 16%);
+						}
+					}
+				}
+				max-width: @768width;
+				min-width: 240px;
+			}
+			@media (max-width: @768width) {
+				align-self: center;
+				max-width: @480width;
+				min-width: 240px;
 			}
 		}
 	}

@@ -70,6 +70,8 @@
 		border-radius: @borderRadius;
 		border: 1px solid @secondaryColor;
 		max-width: 320px;
+		min-width: 240px;
+		height: fit-content;
 		.boxShadow(@one);
 		.backgroundColor();
 		& > * {

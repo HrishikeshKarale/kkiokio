@@ -21,18 +21,17 @@
 
 	.sideBySideLayout {
 		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
+		flex-flow: row nowrap;
 		gap: @spaceXl;
 
 		& > div {
 			display: flex;
 			flex-direction: column;
 			height: 100%;
-			min-width: 320px;
+			width: 100%;
 
 			&.left {
-				max-width: 100%;
+				width: 100%;
 				gap: @spaceXl;
 			}
 
@@ -43,18 +42,52 @@
 			}
 		}
 		@media screen {
-			@media (max-width: @maxWidth) {
-				flex-wrap: wrap;
-				align-self: center;
-				&.left {
-					max-width: 80%;
-					min-width: 320px;
-				}
+			@media (max-width: @1600width) {
 				& > div {
+					&.left {
+						width: @1200width;
+					}
 					&.right {
-						display: flex;
-						flex-direction: column;
-						max-width: 320px;
+						width: 320px;
+					}
+				}
+			}
+			@media (max-width: @1200width) {
+				flex-direction: column;
+				& > div {
+					&.left,
+					&.right {
+						width: calc(@768width - 2 * @spaceXl);
+					}
+					&.right {
+						margin-top: 0;
+						flex-flow: row wrap;
+					}
+				}
+			}
+			@media (max-width: @768width) {
+				& > div {
+					&.left,
+					&.right {
+						max-width: 100%;
+						min-width: @480width;
+						justify-content: center;
+					}
+				}
+			}
+			@media (max-width: @480width) {
+				& > div {
+					&.left,
+					&.right {
+						width: @480width;
+					}
+				}
+			}
+			@media (max-width: @320width) {
+				& > div {
+					&.left,
+					&.right {
+						width: @320width;
 					}
 				}
 			}

@@ -779,134 +779,143 @@ vue/custom-event-name-casing */
 				}
 			}
 		} /*
-																											  Max width before this PARTICULAR table gets nasty
-																											  This query will take effect for any screen smaller than 760px
-																											  and also iPads specifically.
-																											  https://css-tricks.com/responsive-data-tables/
-																											  */
-		@media only screen and (max-width: 760px),
-			(min-device-width: 768px) and (max-device-width: @maxWidth) {
-			/* Force table to not be like tables anymore */
-			table,
-			thead,
-			tbody,
-			th,
-			td,
-			tr {
-				display: block;
-			}
-
-			/* Hide table headers (but not display: none;, for accessibility) */
-			thead tr {
-				position: absolute;
-				top: -1111px;
-				left: -1111px;
-			}
-
-			tr {
-				border: 1px solid #ccc;
-			}
-
-			td {
-				/* Behave  like a "row" */
-				border: none;
-				border-bottom: 1px solid #eee;
-				position: relative;
-				padding-left: 50%;
-
-				&:before {
-					/* Now like a table header */
-					position: absolute;
-					/* Top/left values mimic padding */
-					top: 6px;
-					left: 6px;
-					width: 45%;
-					padding-right: 10px;
-					white-space: nowrap;
+																																					  Max width before this PARTICULAR table gets nasty
+																																					  This query will take effect for any screen smaller than 760px
+																																					  and also iPads specifically.
+																																					  https://css-tricks.com/responsive-data-tables/
+																																					  */
+		@media only screen {
+			@media (max-width: @1600width) {
+				@media (max-width: @1200width) {
+					@media (max-width: @768width) {
+						@media (max-width: @480width) {
+							@media (max-width: @320width) {
+							}
+						}
+					}
 				}
+				/* Force table to not be like tables anymore */
+				table,
+				thead,
+				tbody,
+				th,
+				td,
+				tr {
+					display: block;
+				}
+
+				/* Hide table headers (but not display: none;, for accessibility) */
+				thead tr {
+					position: absolute;
+					top: -1111px;
+					left: -1111px;
+				}
+
+				tr {
+					border: 1px solid #ccc;
+				}
+
+				td {
+					/* Behave  like a "row" */
+					border: none;
+					border-bottom: 1px solid #eee;
+					position: relative;
+					padding-left: 50%;
+
+					&:before {
+						/* Now like a table header */
+						position: absolute;
+						/* Top/left values mimic padding */
+						top: 6px;
+						left: 6px;
+						width: 45%;
+						padding-right: 10px;
+						white-space: nowrap;
+					}
+				}
+
+				/*
+																																					    Label the data
+																																					    */
+				/* td:nth-of-type(1):before { content: "First Name"; }
+																																					      td:nth-of-type(2):before { content: "Last Name"; }
+																																					      td:nth-of-type(3):before { content: "Job Title"; }
+																																					      td:nth-of-type(4):before { content: "Favorite Color"; }
+																																					      td:nth-of-type(5):before { content: "Wars of Trek?"; }
+																																					      td:nth-of-type(6):before { content: "Secret Alias"; }
+																																					      td:nth-of-type(7):before { content: "Date of Birth"; }
+																																					      td:nth-of-type(8):before { content: "Dream Vacation City"; }
+																																					      td:nth-of-type(11):before { content: "GPA"; }
+																																					      td:nth-of-type(10):before { content: "Arbitrary Data"; } */
 			}
-
-			/*
-																											    Label the data
-																											    */
-			/* td:nth-of-type(1):before { content: "First Name"; }
-																											      td:nth-of-type(2):before { content: "Last Name"; }
-																											      td:nth-of-type(3):before { content: "Job Title"; }
-																											      td:nth-of-type(4):before { content: "Favorite Color"; }
-																											      td:nth-of-type(5):before { content: "Wars of Trek?"; }
-																											      td:nth-of-type(6):before { content: "Secret Alias"; }
-																											      td:nth-of-type(7):before { content: "Date of Birth"; }
-																											      td:nth-of-type(8):before { content: "Dream Vacation City"; }
-																											      td:nth-of-type(11):before { content: "GPA"; }
-																											      td:nth-of-type(10):before { content: "Arbitrary Data"; } */
-		}
-	}
-
-	tr {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		// height: 48px;
-
-		& > td,
-		& > th {
-			height: inherit;
-			border-left: 1px solid #ddd;
-			color: @textColor;
 		}
 
-		& > th {
-			padding-bottom: 0;
-		}
-	}
-
-	input[type="checkbox"] {
-		transform: scale(1.2);
-		margin-left: @spaceMd;
-	}
-
-	div.paging {
-		display: flex;
-		width: 100%;
-		background-color: @backgroundColor;
-		justify-content: space-between;
-		margin-right: @spaceXl;
-		height: 48px;
-
-		& > div {
+		tr {
 			display: flex;
 			flex-direction: row;
-			margin: auto 0px;
-			font-size: @fontSizeMd;
-			color: @textColor;
+			flex-wrap: nowrap;
+			// height: 48px;
 
-			&:first-child {
-				font-weight: normal;
-				margin-left: @spaceSm;
-				justify-content: flex-start;
+			& > td,
+			& > th {
+				height: inherit;
+				border-left: 1px solid #ddd;
+				color: @textColor;
 			}
 
-			&:last-child {
-				margin-right: @spaceLg;
-				justify-content: flex-end;
+			& > th {
+				padding-bottom: 0;
+			}
+		}
 
-				& > div {
-					margin-right: @spaceLg;
-					font-weight: bold;
-					margin: auto @spaceLg;
+		input[type="checkbox"] {
+			transform: scale(1.2);
+			margin-left: @spaceMd;
+		}
 
-					&:first-child {
-						font-weight: normal;
-					}
+		div.paging {
+			display: flex;
+			width: 100%;
+			background-color: @backgroundColor;
+			justify-content: space-between;
+			margin-right: @spaceXl;
+			height: 48px;
 
-					&:last-child {
-						margin-right: 0;
-					}
+			& > div {
+				display: flex;
+				flex-direction: row;
+				margin: auto 0px;
+				font-size: @fontSizeMd;
+				color: @textColor;
+
+				&:first-child {
+					font-weight: normal;
+					margin-left: @spaceSm;
+					justify-content: flex-start;
 				}
 
-				& span {
-					color: @accentColor;
-					font-size: 20px;
+				&:last-child {
+					margin-right: @spaceLg;
+					justify-content: flex-end;
+
+					& > div {
+						margin-right: @spaceLg;
+						font-weight: bold;
+						margin: auto @spaceLg;
+
+						&:first-child {
+							font-weight: normal;
+						}
+
+						&:last-child {
+							margin-right: 0;
+						}
+					}
+
+					& span {
+						color: @accentColor;
+						font-size: 20px;
+					}
 				}
 			}
 		}

@@ -376,76 +376,84 @@
 				}
 			}
 			@media screen {
-				@media (max-width: @maxWidth) {
-					flex-direction: column;
-					flex-wrap: nowrap;
-					padding: @spaceMd @spaceLg;
-					border-bottom-right-radius: @borderRadiusLg;
-					height: fit-content;
-					width: fit-content;
-					position: fixed;
-					outline: 0 solid rgba(0, 0, 0, 0.08);
-					left: 0;
-					top: 0;
-					.scroll(100vh);
-					& > .menuTrigger {
-						display: flex;
-						align-self: flex-end;
-					}
-					//hides navigation when toggled
-					& > nav {
-						display: none;
-						//user
-						& + .user {
-							position: fixed !important;
-							right: 32px;
-							top: 32px;
-						}
-					}
-					//displays navigation
-					&.showNav {
-						height: 100vh;
-						outline: 9999px solid rgba(0, 0, 0, 0.64);
-						border-bottom-right-radius: 0;
-						z-index: @headerZ+10;
-						& > nav {
-							display: flex;
+				@media (max-width: @1600width) {
+					@media (max-width: @1200width) {
+						@media (max-width: @768width) {
 							flex-direction: column;
-							height: 100%;
-							& > ul {
-								flex-direction: column;
-								justify-content: space-between;
-								align-items: flex-start;
-								& > li {
-									flex: 1 0 64px !important;
-									// margin-top: @spaceLg;
-									& > a {
-										& > .vueImg {
-											height: @spaceXl;
+							flex-wrap: nowrap;
+							padding: @spaceMd @spaceLg;
+							border-bottom-right-radius: @borderRadiusLg;
+							height: fit-content;
+							width: fit-content;
+							position: fixed;
+							outline: 0 solid rgba(0, 0, 0, 0.08);
+							left: 0;
+							top: 0;
+							.scroll(100vh);
+							& > .menuTrigger {
+								display: flex;
+								align-self: flex-end;
+							}
+							//hides navigation when toggled
+							& > nav {
+								display: none;
+								//user
+								& + .user {
+									position: fixed !important;
+									right: 32px;
+									top: 32px;
+								}
+							}
+							//displays navigation
+							&.showNav {
+								height: 100vh;
+								outline: 9999px solid rgba(0, 0, 0, 0.64);
+								border-bottom-right-radius: 0;
+								z-index: @headerZ+10;
+								& > nav {
+									display: flex;
+									flex-direction: column;
+									height: 100%;
+									& > ul {
+										flex-direction: column;
+										justify-content: space-between;
+										align-items: flex-start;
+										& > li {
+											flex: 1 0 64px !important;
+											// margin-top: @spaceLg;
+											& > a {
+												& > .vueImg {
+													height: @spaceXl;
+												}
+											}
+											&:first-child {
+												display: flex;
+												& > a {
+													flex-direction: column;
+													& > .vueImg {
+														height: 96px;
+													}
+													&::before {
+														display: none;
+													}
+												}
+											}
 										}
 									}
-									&:first-child {
+									//user
+									& + .user {
 										display: flex;
-										& > a {
-											flex-direction: column;
-											& > .vueImg {
-												height: 96px;
-											}
-											&::before {
-												display: none;
-											}
+										flex-direction: column;
+										justify-content: space-between;
+
+										& > button {
+											margin-bottom: @spaceLg;
 										}
 									}
 								}
 							}
-							//user
-							& + .user {
-								display: flex;
-								flex-direction: column;
-								justify-content: space-between;
-
-								& > button {
-									margin-bottom: @spaceLg;
+							@media (max-width: @480width) {
+								@media (max-width: @320width) {
 								}
 							}
 						}

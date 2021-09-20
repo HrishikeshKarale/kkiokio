@@ -524,7 +524,7 @@
 						align-self: center;
 						color: @textColor;
 						max-width: 72vw;
-						min-width: @1540width;
+						min-width: @1600width;
 						background-color: @backgroundColor;
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
 						.boxShadow(@one, @primaryColor);
@@ -535,27 +535,70 @@
 							padding: @spaceMd @spaceLg;
 							border-radius: @borderRadiusLg;
 							height: fit-content;
-							width: fit-content;
+							min-width: fit-content;
 						}
 					}
 				}
 			}
 		}
 		@media screen {
-			@media (max-width: @1540width) {
-				@media (max-width: @1366width) {
-					@media (max-width: @991width) {
-						@media (max-width: @767width) {
-							@media (max-width: @479width) {
+			@media (max-width: @1600width) {
+				& > div {
+					&.body {
+						& > div {
+							&.content {
+								max-width: @1200width;
+								min-width: @1200width;
 							}
 						}
 					}
 				}
-				.body {
-					& > .content {
-						padding: 0 @spaceXl;
-						max-width: 100%;
-						min-width: 1024px;
+			}
+			@media (max-width: @1200width) {
+				& > div {
+					&.body {
+						& > div {
+							&.content {
+								max-width: @768width;
+								min-width: @768width;
+							}
+						}
+					}
+				}
+			}
+			@media (max-width: @768width) {
+				& > div {
+					&.body {
+						& > div {
+							&.content {
+								max-width: 2 * @320width;
+								min-width: 2 * @320width;
+							}
+						}
+					}
+				}
+			}
+			@media (max-width: @480width) {
+				& > div {
+					&.body {
+						& > div {
+							&.content {
+								max-width: @480width;
+								min-width: @480width;
+							}
+						}
+					}
+				}
+			}
+			@media (max-width: @320width) {
+				& > div {
+					&.body {
+						& > div {
+							&.content {
+								max-width: @320width;
+								min-width: 100%;
+							}
+						}
 					}
 				}
 			}

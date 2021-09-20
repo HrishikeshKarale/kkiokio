@@ -295,9 +295,16 @@
 				}
 			}
 		}
-
 		@media screen {
-			@media (max-width: @maxWidth) {
+			@media (max-width: @1600width) {
+				@media (max-width: @1200width) {
+					@media (max-width: @768width) {
+						@media (max-width: @480width) {
+							@media (max-width: @320width) {
+							}
+						}
+					}
+				}
 				& > section {
 					margin-bottom: @spaceXl;
 					&#intro {

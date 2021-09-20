@@ -187,8 +187,15 @@
 				left: 0;
 			}
 			@media screen {
-				@media (max-width: @maxWidth) {
-					flex-direction: column;
+				@media (max-width: @1600width) {
+				}
+				@media (max-width: @1200width) {
+				}
+				@media (max-width: @768width) {
+				}
+				@media (max-width: @480width) {
+				}
+				@media (max-width: @320width) {
 				}
 			}
 		}

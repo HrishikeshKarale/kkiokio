@@ -64,6 +64,9 @@
 		display: flex;
 		flex-direction: column;
 		gap: @spaceMd;
+		max-width: 320px;
+		min-width: 240px;
+		height: fit-content;
 		& > h4 {
 			margin-bottom: 0 !important;
 			font-weight: bold;
