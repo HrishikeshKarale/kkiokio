@@ -524,7 +524,7 @@
 						align-self: center;
 						color: @textColor;
 						max-width: 72vw;
-						min-width: @maxWidth;
+						min-width: @1540width;
 						background-color: @backgroundColor;
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
 						.boxShadow(@one, @primaryColor);
@@ -542,7 +542,15 @@
 			}
 		}
 		@media screen {
-			@media (max-width: @maxWidth) {
+			@media (max-width: @1540width) {
+				@media (max-width: @1366width) {
+					@media (max-width: @991width) {
+						@media (max-width: @767width) {
+							@media (max-width: @479width) {
+							}
+						}
+					}
+				}
 				.body {
 					& > .content {
 						padding: 0 @spaceXl;

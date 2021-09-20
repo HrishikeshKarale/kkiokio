@@ -283,7 +283,7 @@
 			&.scrolContent {
 				display: flex;
 				align-self: center;
-				max-width: @maxWidth;
+				max-width: @1540width;
 			}
 		}
 		& > div {
