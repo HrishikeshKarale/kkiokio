@@ -28,11 +28,11 @@
 	export default {
 		name: "Breadcrums",
 		data() {
-			const projectsDescription = this.$store.state.projects;
+			const projectsList = this.$store.state.projects;
 			const navigation = this.$store.state.nav;
 			const unique = [];
 			return {
-				projectsDescription,
+				projectsList,
 				navigation,
 				unique,
 			};
@@ -47,17 +47,17 @@
 			},
 		},
 
-		mounted() {
+		created() {
 			//get a list of components to be used for breadcrums
-			this.projectsDescription.forEach((project) => {
-				project.value.forEach((proj) => {
-					if (proj.type !== "Logo") {
+			this.projectsList.forEach((project) => {
+				if (project.type !== "Logo") {
+					project.value.forEach((proj) => {
 						this.unique = [
 							{ comp: proj.component, name: proj.title },
 							...this.unique,
 						];
-					}
-				});
+					});
+				}
 			});
 			this.navigation.forEach((nav) => {
 				this.unique = [{ comp: nav.component, name: nav.name }, ...this.unique];
@@ -78,7 +78,7 @@
 				let tempSelect = selected.split("#")[0];
 				if (tempSelect) {
 					tempSelect = tempSelect.toLowerCase();
-					this.projectsDescription.forEach((project) => {
+					this.projectsList.forEach((project) => {
 						if (project.type !== "Logo") {
 							// console.log(project.type);
 							for (let index = 0; index < project.value.length; index++) {

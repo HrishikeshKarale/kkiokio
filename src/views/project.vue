@@ -20,7 +20,7 @@
 			:id="projects.type"
 			:key="projects.type"
 		>
-			<card-scroller :title="projects.type" :auto-scroll="autoScroll">
+			<card-scroller :title="projects.type" :auto-scroll="!autoScroll">
 				<showcase
 					v-for="project in projects.value"
 					v-show="
@@ -53,15 +53,15 @@
 		},
 		data() {
 			const projectList = this.$store.state.projects;
+			//vueFilter
 			const propFilter = [];
 			const filterList = [];
-			const vertical = this.booleanTrue;
+			//cardScroll
 			const autoScroll = this.booleanTrue;
 			return {
 				projectList,
 				propFilter,
 				filterList,
-				vertical,
 				autoScroll,
 			};
 		},
@@ -71,9 +71,11 @@
 				this.propFilter = [this.$route.query.filter];
 			}
 			this.projectList.forEach((project) => {
-				project.value.forEach((val) => {
-					this.filterList = [...val.tags, ...this.filterList];
-				});
+				if (project.type != "Logo") {
+					project.value.forEach((val) => {
+						this.filterList = [...val.tags, ...this.filterList];
+					});
+				}
 			});
 		},
 		methods: {

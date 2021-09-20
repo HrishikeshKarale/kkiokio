@@ -205,304 +205,304 @@ export const projects = [
       }
     ]
   },
-  // {
-  //   type: "Logo",
-  //   value: [
-  //     {
-  //       id: 32,
-  //       title: "Dentistry",
-  //       img: require("@/assets/logo/dentArtistry.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 34,
-  //       title: "HexaTees",
-  //       img: require("@/assets/logo/hexaTees.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 35,
-  //       title: "Medicare",
-  //       img: require("@/assets/logo/medicare.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 36,
-  //       title: "MV Events",
-  //       img: require("@/assets/logo/MvEvents.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 37,
-  //       title: "Innovation Circuit",
-  //       img: require("@/assets/logo/innovativeCircuits.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 1,
-  //       title: "kkiokio",
-  //       img: require("@/assets/logo/kkiokio.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Weego",
-  //       img: require("@/assets/logo/Weego.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 3,
-  //       title: "KkiokioBg",
-  //       img: require("@/assets/logo/kkiokioBg.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 4,
-  //       title: "Wander Sane Global",
-  //       img: require("@/assets/logo/wanderSaneGlobe.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 5,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/wanderSaneBadge.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 6,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/wanderSaneHelmet.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 7,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/metered.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 8,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/prideSwag.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 9,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/learningTree.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 10,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/tentFire.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 11,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/tentPalace.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 12,
-  //       img: require("@/assets/logo/mountain.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 13,
-  //       img: require("@/assets/logo/beach.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 14,
-  //       img: require("@/assets/logo/rider.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 15,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/wanderSaneStamp.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 16,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/natureStamp.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     // {
-  //     //   id: 17,
-  //     // title: "wanderSaneBadge",
-  //     //   img: require("@/assets/logo/fireLog.svg"),
-  //     // tags: null,
-  //     // description: null,
-  //     // component: null
-  //     // },
-  //     {
-  //       id: 18,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/deer.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 19,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/bird.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 20,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/biceps.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 21,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/tent.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     // {
-  //     //   id: 22,
-  //     // title: "wanderSaneBadge",
-  //     //   img: require("@/assets/logo/electron.svg"),
-  //     // tags: null,
-  //     // description: null,
-  //     // component: null
-  //     // },
-  //     {
-  //       id: 23,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/sandyGlobe.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 24,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/biker.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 25,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/hexa.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 26,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/wanderSaneVlogs.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 27,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/wonderWheel.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 28,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/electroWheel.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 29,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/wrenchWheel.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     {
-  //       id: 30,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/unison.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //     // {
-  //     //   id: 31,
-  //     // title: "wanderSaneBadge",
-  //     //   img: require("@/assets/logo/Artboard 27.svg"),
-  //     // tags: null,
-  //     // description: null,
-  //     // component: null
-  //     // },
-  //     {
-  //       id: 33,
-  //       title: "wanderSaneBadge",
-  //       img: require("@/assets/logo/anglePlus.svg"),
-  //       tags: null,
-  //       description: null,
-  //       component: null
-  //     },
-  //   ]
-  // },
+  {
+    type: "Logo",
+    value: [
+      {
+        id: 32,
+        title: "Dentistry",
+        img: require("@/assets/logo/dentArtistry.svg"),
+        tags: null,
+        description: "Dentistry is a dental Clinic owned by a local dentist who is known for his creativity.",
+        component: null
+      },
+      {
+        id: 34,
+        title: "HexaTees",
+        img: require("@/assets/logo/hexaTees.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 35,
+        title: "Medicare",
+        img: require("@/assets/logo/medicare.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 36,
+        title: "MV Events",
+        img: require("@/assets/logo/MvEvents.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 37,
+        title: "Innovation Circuit",
+        img: require("@/assets/logo/innovativeCircuits.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 1,
+        title: "kkiokio",
+        img: require("@/assets/logo/kkiokio.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 2,
+        title: "Weego",
+        img: require("@/assets/logo/Weego.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 3,
+        title: "KkiokioBg",
+        img: require("@/assets/logo/kkiokioBg.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 4,
+        title: "Wander Sane Global",
+        img: require("@/assets/logo/wanderSaneGlobe.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 5,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/wanderSaneBadge.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 6,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/wanderSaneHelmet.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 7,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/metered.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 8,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/prideSwag.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 9,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/learningTree.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 10,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/tentFire.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 11,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/tentPalace.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 12,
+        img: require("@/assets/logo/mountain.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 13,
+        img: require("@/assets/logo/beach.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 14,
+        img: require("@/assets/logo/rider.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 15,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/wanderSaneStamp.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 16,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/natureStamp.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      // {
+      //   id: 17,
+      // title: "wanderSaneBadge",
+      //   img: require("@/assets/logo/fireLog.svg"),
+      // tags: null,
+      // description: null,
+      // component: null
+      // },
+      {
+        id: 18,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/deer.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 19,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/bird.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 20,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/biceps.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 21,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/tent.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      // {
+      //   id: 22,
+      // title: "wanderSaneBadge",
+      //   img: require("@/assets/logo/electron.svg"),
+      // tags: null,
+      // description: null,
+      // component: null
+      // },
+      {
+        id: 23,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/sandyGlobe.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 24,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/biker.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 25,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/hexa.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 26,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/wanderSaneVlogs.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 27,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/wonderWheel.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 28,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/electroWheel.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 29,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/wrenchWheel.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      {
+        id: 30,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/unison.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+      // {
+      //   id: 31,
+      // title: "wanderSaneBadge",
+      //   img: require("@/assets/logo/Artboard 27.svg"),
+      // tags: null,
+      // description: null,
+      // component: null
+      // },
+      {
+        id: 33,
+        title: "wanderSaneBadge",
+        img: require("@/assets/logo/anglePlus.svg"),
+        tags: null,
+        description: null,
+        component: null
+      },
+    ]
+  },
   {
     type: "JavaScript",
     value: [

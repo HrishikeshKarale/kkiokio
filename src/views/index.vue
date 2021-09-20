@@ -54,7 +54,7 @@
 				This is a detailed chronicle of the stories, processes and results
 				behind the projects that I've led and contributed to.
 			</p>
-			<ul v-for="(project, index) in projects" :key="index">
+			<ul v-for="(project, index) in projectList" :key="index">
 				<li>
 					<router-link :to="{ name: 'project', hash: `#${project.type}` }">
 						<h3>
@@ -130,23 +130,25 @@
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logo = require("@/assets/logo.svg");
 			const projectSkills = {};
-			const projects = this.$store.state.projects;
+			const projectList = this.$store.state.projects;
 			return {
 				profilePic,
 				logo,
-				projects,
+				projectList,
 				projectSkills,
 			};
 		},
-		mounted() {
-			this.projects.forEach((project) => {
+		created() {
+			this.projectList.forEach((project) => {
 				let uniqueArray = [];
-				project.value.forEach((val) => {
-					uniqueArray = [...val.tags, ...uniqueArray];
-				});
-				this.projectSkills[project.type] = uniqueArray.filter(
-					(v, i, a) => a.indexOf(v) === i
-				);
+				if (project.type != "Logo") {
+					project.value.forEach((val) => {
+						uniqueArray = [...val.tags, ...uniqueArray];
+					});
+					this.projectSkills[project.type] = uniqueArray.filter(
+						(v, i, a) => a.indexOf(v) === i
+					);
+				}
 			});
 		},
 	};
@@ -244,7 +246,7 @@
 					& > div {
 						display: flex;
 						flex-direction: column;
-						flex: 2 1 480px;
+						flex: 0 1 480px;
 						border-radius: @borderRadiusLg;
 						border: 1px dashed @primaryColor;
 						height: fit-content;

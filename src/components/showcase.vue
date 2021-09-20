@@ -4,7 +4,7 @@
 			v-if="component"
 			:to="{ name: component, params: { article: article } }"
 		>
-			<vue-img :src="project.img" alt="Moto" />
+			<vue-img :src="project.img" :alt="project.title" />
 			<h4>
 				{{ project.title }}
 			</h4>
@@ -65,7 +65,7 @@
 		padding: @spaceMd @spaceLg;
 		border-radius: @borderRadiusLg;
 		justify-content: space-around;
-		flex: 1 0 320px;
+		flex: 0 0 320px;
 		height: fit-content;
 		// border: 1px dashed @primaryColor;
 		.boxShadow(@base, @secondaryColor);
@@ -83,12 +83,10 @@
 			display: flex;
 			flex-flow: row wrap;
 			gap: @spaceMd;
-			//tag
-			& > li {
-			}
 		}
 
-		& > a {
+		& > a,
+		& {
 			margin-bottom: @spaceLg;
 			position: relative;
 			& > .vueImg {
@@ -158,7 +156,7 @@
 				position: absolute;
 				margin-top: 0;
 				margin-bottom: @spaceMd;
-				bottom: 0;
+				bottom: @spaceMd;
 				z-index: @contentZ;
 			}
 			& > span {

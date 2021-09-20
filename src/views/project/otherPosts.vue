@@ -2,7 +2,7 @@
 	<card-scroller
 		class="relatedPost"
 		title="Related Posts"
-		:auto-scroll="!booleanTrue"
+		:auto-scroll="!autoScroll"
 	>
 		<template v-for="projects in projectList" :key="projects.type">
 			<showcase
@@ -39,8 +39,12 @@
 		}, //components
 		data() {
 			const projectList = this.$store.state.projects;
+			//cardScroll
+			const autoScroll = this.booleanTrue;
 			return {
 				projectList,
+				//cardScroll
+				autoScroll,
 			};
 		},
 	};
