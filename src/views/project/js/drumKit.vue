@@ -77,7 +77,15 @@
 								//automatic playback started
 							});
 						} catch (e) {
-							console.error(e);
+							this.emitter.emit("alert", {
+								type: "warning",
+								message: "Error playing audio for selected kit",
+								description: e,
+								dismissable: true,
+								code: "101.1",
+								timeout: 8,
+							});
+							// console.error(e);
 						}
 					}
 				});

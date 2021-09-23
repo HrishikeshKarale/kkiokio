@@ -123,7 +123,17 @@
 					.then((data) => {
 						source.response = data;
 					})
-					.catch((error) => console.error(error))
+					.catch((error) => {
+						this.emitter.emit("alert", {
+							type: "warning",
+							message: "Error handling API data",
+							description: error,
+							dismissable: true,
+							code: "101.1",
+							timeout: 8,
+						});
+						// console.error(error)
+					})
 					.finally(() => {
 						// console.log(`Fetch executed on ${source.baseURL}`);
 					});

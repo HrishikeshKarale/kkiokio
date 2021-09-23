@@ -66,9 +66,15 @@
 							throw null;
 						}
 					} catch (e) {
-						if (e != null) {
-							// console.error(e);
-						}
+						this.emitter.emit("alert", {
+							type: "warning",
+							message: "Error reacting to the konami code",
+							description: e,
+							dismissable: true,
+							code: "101.1",
+							timeout: 8,
+						});
+						// console.error(e);
 					}
 				});
 				// console.log(this.codes.indexOf(codess), codess);

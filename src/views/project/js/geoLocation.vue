@@ -77,7 +77,15 @@
 					}deg)`;
 				},
 				(err) => {
-					console.error(err);
+					this.emitter.emit("alert", {
+						type: "warning",
+						message: "Error calculating Spped/Compass direction",
+						description: err,
+						dismissable: true,
+						code: "101.1",
+						timeout: 8,
+					});
+					// console.error(err);
 				}
 			);
 		},
