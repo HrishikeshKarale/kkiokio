@@ -112,8 +112,7 @@
 		position: sticky;
 		top: 0;
 		left: 0;
-		min-width: 100%;
-		min-height: max-content;
+		width: 100%;
 		padding: 0 @spaceMd 0 0;
 		border-radius: 0 0 @borderRadius @borderRadius;
 		background-color: @backgroundColor;

@@ -25,10 +25,6 @@
 					:key="index + '-' + navigation.name"
 				>
 					<router-link :to="{ name: navigation.component }">
-						<span v-if="index > 0" :class="navigation.icon" />
-						<template v-else>
-							<vue-img :src="logoLink" alt="Kkiokio.com" />
-						</template>
 						<div>
 							<h4>{{ navigation.name }}</h4>
 							<span> {{ navigation.tagline }}</span>
@@ -39,7 +35,7 @@
 		</nav>
 		<div class="user">
 			<span class="fas fa-user" />
-			<div class="user">
+			<div class="account">
 				<template v-if="signedIn">
 					<vue-img :src="user ? user.image : null" alt="Logo" />
 					<h5 v-if="user">
@@ -156,7 +152,7 @@
 	@lowOpacity: 0.64;
 	@midOpacity: 0.84;
 
-	@text: @accentColor;
+	@text: @primaryColor;
 
 	//nav sub text
 	.navSubText() {
@@ -167,6 +163,7 @@
 	header {
 		line-height: 1;
 		z-index: @headerZ+10;
+		padding: @spaceMd;
 		&.vueHeader {
 			display: flex;
 			align-items: center;
@@ -179,25 +176,46 @@
 				.boxShadow(@two, @navBackground);
 				z-index: @headerZ+10;
 				height: 64px;
-				& > nav > ul > li > a {
-					& > div {
-						& > h4 {
-							letter-spacing: 2px !important;
-						}
-						& > span {
-							height: 0;
-							opacity: 0;
-							visibility: hidden;
+				& > nav > ul > li {
+					//logo
+					&:first-child {
+						& > a {
+							& > .vueImg {
+								height: 48px;
+							}
+							& > h3 {
+								color: @white;
+								// font-weight: bold;
+								width: max-content;
+								align-self: center;
+								margin: 0 !important;
+								& > h5 {
+									display: none;
+								}
+							}
 						}
 					}
-					&.router-link-active {
-						// & > span {
-						// 	color: @primaryColor;
-						// }
-						&::before {
-							transform: scale(1.2);
-							bottom: 0;
-							height: 4px;
+					&:not(:first-child) > a {
+						// transform: scale(0.8);
+						& > div {
+							& > h4 {
+								letter-spacing: 2px !important;
+								& + span {
+									height: 0;
+									opacity: 0;
+									visibility: hidden;
+								}
+							}
+						}
+						&.router-link-active {
+							// & > span {
+							// 	color: @primaryColor;
+							// }
+							&::before {
+								transform: scale(1);
+								bottom: 0;
+								height: 4px;
+							}
 						}
 					}
 				}
@@ -217,21 +235,35 @@
 						display: flex;
 						justify-content: space-evenly;
 						align-items: flex-start;
-						flex: 1 0 160px;
+						margin: 0 @spaceSm;
+						&:not(:first-child) {
+							flex: 1 1 160px;
+						}
 						//hide website name and logo
 						&:first-child {
-							display: none;
+							// display: none;
+
+							margin-right: 2 * @spaceXl !important;
 							& > a {
+								&:hover {
+									.backgroundColor(transparent, 0%);
+								}
 								& > .vueImg {
 									height: 64px;
-									width: 100%;
+									width: fit-content;
 									& + h3 {
 										display: flex;
 										flex-direction: column;
+										width: max-content;
 										& > h5 {
-											align-self: flex-end;
+											// align-self: flex-end;
 											color: @white;
 										}
+									}
+								}
+								&.router-link-active {
+									&::before {
+										display: none;
 									}
 								}
 							}
@@ -245,6 +277,7 @@
 							flex-direction: row;
 							flex-wrap: nowrap;
 							align-items: center;
+							width: 100%;
 
 							& > span {
 								font-size: @fontSizeSm * 2;
@@ -275,6 +308,10 @@
 								&::before {
 									transform: scale(0.8);
 								}
+								&::after {
+									.backgroundColor(@accentColor);
+									transform: scale(0.8);
+								}
 								&.router-link-exact-active {
 									color: @text;
 								}
@@ -282,6 +319,7 @@
 								& > span {
 									opacity: 1;
 									transform: scale(1.2);
+									color: @text;
 									// color: @secondaryColor;
 								}
 								& > div {
@@ -309,6 +347,7 @@
 							//hover effect for li
 							&:hover {
 								color: @primaryColor;
+								.backgroundColor(@accentColor, 16%);
 								&::before {
 									transform: scale(1.2);
 								}
@@ -336,15 +375,15 @@
 					margin-left: auto;
 					position: relative;
 					& > span {
-						color: @text;
+						color: @accentColor;
 						padding: @spaceMd;
-						border: 1px solid @text;
+						border: 1px solid @accentColor;
 						border-radius: 50%;
 						cursor: pointer;
-						& + .user {
+						& + .account {
 							display: none;
 							position: absolute;
-							border: 1px solid @text;
+							border: 1px solid @accentColor;
 							& > .vueImg {
 								width: 80px;
 							}
@@ -356,10 +395,10 @@
 					&:hover {
 						& > span {
 							border-radius: 50% 50% 0 50%;
-							background-color: @text;
-							color: @navBackground;
-							.boxShadow(@one, @shadowColor, 1001);
-							& + .user {
+							background-color: @accentColor;
+							color: @backgroundColor;
+							.boxShadow(@one, @secondaryColor, @modalZ + 20);
+							& + .account {
 								display: flex;
 								flex-direction: column;
 								background-color: @backgroundColor;
@@ -369,7 +408,7 @@
 								width: fit-content;
 								border-radius: @borderRadius;
 								padding: @spaceLg @spaceXl;
-								.boxShadow(@one, @shadowColor, 1001);
+								.boxShadow(@one, @secondaryColor, @modalZ + 20);
 							}
 						}
 					}
@@ -377,86 +416,86 @@
 			}
 			@media screen {
 				@media (max-width: @1600width) {
-					@media (max-width: @1200width) {
-						@media (max-width: @768width) {
+				}
+				@media (max-width: @1200width) {
+					flex-direction: column;
+					flex-wrap: nowrap;
+					padding: @spaceMd @spaceLg;
+					border-bottom-right-radius: @borderRadiusLg;
+					height: fit-content;
+					width: fit-content;
+					position: fixed;
+					outline: 0 solid rgba(0, 0, 0, 0.08);
+					left: 0;
+					top: 0;
+					.scroll(100vh);
+					& > .menuTrigger {
+						display: flex;
+						align-self: flex-end;
+					}
+					//hides navigation when toggled
+					& > nav {
+						display: none;
+						//user
+						& + .user {
+							position: fixed !important;
+							right: @spaceXl + @spaceMd;
+							top: @spaceXl + @spaceMd;
+						}
+					}
+					//displays navigation
+					&.showNav {
+						height: 100vh;
+						outline: 9999px solid rgba(0, 0, 0, 0.64);
+						border-bottom-right-radius: 0;
+						z-index: @headerZ+10;
+						& > nav {
+							display: flex;
 							flex-direction: column;
-							flex-wrap: nowrap;
-							padding: @spaceMd @spaceLg;
-							border-bottom-right-radius: @borderRadiusLg;
-							height: fit-content;
-							width: fit-content;
-							position: fixed;
-							outline: 0 solid rgba(0, 0, 0, 0.08);
-							left: 0;
-							top: 0;
-							.scroll(100vh);
-							& > .menuTrigger {
-								display: flex;
-								align-self: flex-end;
-							}
-							//hides navigation when toggled
-							& > nav {
-								display: none;
-								//user
-								& + .user {
-									position: fixed !important;
-									right: 32px;
-									top: 32px;
-								}
-							}
-							//displays navigation
-							&.showNav {
-								height: 100vh;
-								outline: 9999px solid rgba(0, 0, 0, 0.64);
-								border-bottom-right-radius: 0;
-								z-index: @headerZ+10;
-								& > nav {
-									display: flex;
-									flex-direction: column;
-									height: 100%;
-									& > ul {
-										flex-direction: column;
-										justify-content: space-between;
-										align-items: flex-start;
-										& > li {
-											flex: 1 0 64px !important;
-											// margin-top: @spaceLg;
-											& > a {
-												& > .vueImg {
-													height: @spaceXl;
-												}
-											}
-											&:first-child {
-												display: flex;
-												& > a {
-													flex-direction: column;
-													& > .vueImg {
-														height: 96px;
-													}
-													&::before {
-														display: none;
-													}
-												}
-											}
+							height: 100%;
+							& > ul {
+								flex-direction: column;
+								justify-content: space-between;
+								align-items: flex-start;
+								& > li {
+									flex: 1 0 64px !important;
+									// margin-top: @spaceLg;
+									& > a {
+										& > .vueImg {
+											height: @spaceXl;
 										}
 									}
-									//user
-									& + .user {
+									&:first-child {
 										display: flex;
-										flex-direction: column;
-										justify-content: space-between;
-
-										& > button {
-											margin-bottom: @spaceLg;
+										& > a {
+											flex-direction: column;
+											& > .vueImg {
+												height: 96px;
+											}
+											&::before {
+												display: none;
+											}
 										}
 									}
 								}
 							}
-							@media (max-width: @480width) {
-								@media (max-width: @320width) {
+							//user
+							& + .account {
+								display: flex;
+								flex-direction: column;
+								justify-content: space-between;
+
+								& > button {
+									margin-bottom: @spaceLg;
 								}
 							}
 						}
+					}
+					@media (max-width: @768width) {
+					}
+					@media (max-width: @480width) {
+					}
+					@media (max-width: @320width) {
 					}
 				}
 			}

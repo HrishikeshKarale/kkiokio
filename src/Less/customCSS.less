@@ -974,12 +974,6 @@ article {
     }
   }
 
-  .vueImg {
-    width: 100%;
-    height: max-content;
-    .boxShadow(@one);
-  }
-
   .sideBySide {
     display: flex;
     flex-wrap: wrap;
@@ -1005,7 +999,7 @@ article {
     align-content: center;
 
     &>h3::before {
-      content: "#";
+      content: "";
       margin-right: @spaceMd;
       margin-left: -@spaceXl;
     }
@@ -1021,6 +1015,41 @@ article {
       justify-content: center;
       align-content: center;
       margin: @spaceMd 0;
+    }
+  }
+
+  @media screen {
+    .left>& {
+      .res1600p();
+    }
+
+    @media (max-width: @1600width) {
+      .res1600p();
+
+      .left>& {
+        .res1200p();
+      }
+    }
+
+    @media (max-width: @1200width) {
+      align-self: center;
+      .res1200p();
+
+      .left>& {
+        .res768p();
+      }
+    }
+
+    @media (max-width: @768width) {
+      .res768p();
+    }
+
+    @media (max-width: @480width) {
+      .res480p();
+    }
+
+    @media (max-width: @320width) {
+      .res320p();
     }
   }
 }
@@ -1312,18 +1341,17 @@ address {
 //body
 body {
   background-color: @backgroundColor;
-  margin: 0;
-  height: 100%;
-  max-width: 100%;
-  z-index: @bodyZ;
+  margin: 0 !important;
+  z-index: @bodyZ  !important;
 
   &#portfolio {
-    font-family: @fontFamily, Helvetica, Arial, sans-serif;
+    position: static !important;
+    font-family: @fontFamily;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: @fontSizeMd;
     font-style: normal;
     line-height: @lineHeight;
-    .backgroundColor(@primaryColor, 4%);
+    // .backgroundColor(@primaryColor, 4%);
   }
 }

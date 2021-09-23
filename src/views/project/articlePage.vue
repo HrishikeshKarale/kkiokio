@@ -1,5 +1,5 @@
 <template>
-	<side-by-side-layout>
+	<side-by-side-layout class="articlePage">
 		<template #left>
 			<post-template
 				v-if="projData"
@@ -80,6 +80,12 @@
 							}
 						}
 					}
+				}
+				if (!this.nextArticle) {
+					this.nextArticle = this.projects[0].value[0];
+				}
+				if (!this.previousArticle) {
+					this.previousArticle = this.projects.at(-1).value.at(-1);
 				}
 			}, //projectData
 		}, //methods

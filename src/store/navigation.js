@@ -11,12 +11,12 @@ export const nav = [
     icon: "fas fa-tree",
     tagline: "puts my skills to test"
   },
-  {
-    name: "Logo",
-    component: "logo",
-    icon: "fab fa-pagelines",
-    tagline: "is where you see my creative side"
-  },
+  // {
+  //   name: "Logo",
+  //   component: "logo",
+  //   icon: "fab fa-pagelines",
+  //   tagline: "is where you see my creative side"
+  // },
   {
     name: "About",
     component: "about",

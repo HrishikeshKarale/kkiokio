@@ -167,10 +167,46 @@
   }
 }
 
+
+.shakeAnimation() {
+  animation: shake infinite 0.8s;
+
+  &:hover {
+    animation: none;
+  }
+
+  @keyframes shake {
+
+    0%,
+    40% {
+      transform: translateX(0)
+    }
+
+    10%,
+    30% {
+      transform: translateX(@spaceSm);
+    }
+
+    20% {
+      transform: translateX(@spaceMd);
+    }
+
+    50%,
+    70% {
+      transform: translateX(@spaceSm);
+    }
+
+    60% {
+      transform: translateX(@spaceMd);
+    }
+  }
+}
+
 .inputError () {
   border-color: @dangerText;
   background-color: @dangerBackground;
   outline: @spaceSm solid @dangerText  !important;
+  .shakeAnimation();
 
   &:focus-within,
   &:focus {
@@ -190,6 +226,7 @@
   border-color: @warningText;
   background-color: @warningBackground;
   outline: 2px solid @warningText  !important;
+  .shakeAnimation();
 
   &:focus-within,
   &:focus {
@@ -493,6 +530,8 @@
       .inputError();
     }
 
+
+
     &>datalist,
     &>select,
     &>input,
@@ -636,24 +675,24 @@
   }
 }
 
-.scroll (@height, @width: @spaceMd) {
+.scroll (@height, @width: @spaceLg) {
   max-height: @height;
   overflow-y: auto;
 
-  // &::-webkit-scrollbar {
-  //   width: @width;
-  // }
+  &::-webkit-scrollbar {
+    width: @width;
+  }
 
-  // /* Track */
-  // &::-webkit-scrollbar-track {
-  //   background: @backgroundColor;
-  // }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-  // /* Handle */
-  // &::-webkit-scrollbar-thumb {
-  //   background: @primaryColor;
-  //   border-radius: @width;
-  // }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: @accentColor;
+    border-radius: @width;
+  }
 }
 
 .checkboxCss () {
@@ -752,4 +791,30 @@
   font-size: @font-size;
   line-height: @line-height;
   border-radius: @border-radius;
+}
+
+//media query width
+.res320p() {
+  max-width: @320width;
+  min-width: 240px;
+}
+
+.res480p() {
+  max-width: @480width - 2*@spaceXl;
+  min-width: @320width - 2*@spaceXl;
+}
+
+.res768p() {
+  max-width: @768width - 2*@spaceXl;
+  min-width: @480width - 2*@spaceXl;
+}
+
+.res1200p() {
+  max-width: @1200width - 2*@spaceXl;
+  min-width: @768width - 2*@spaceXl;
+}
+
+.res1600p() {
+  max-width: @1600width - 2*@spaceXl;
+  min-width: @1200width - 2*@spaceXl;
 }

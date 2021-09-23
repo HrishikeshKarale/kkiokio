@@ -676,7 +676,7 @@ export const projects = [
         id: 1,
         title: "Pulse Animation",
         img: require("@/assets/css/pulse.jpg"),
-        tags: ["CSS"],
+        tags: [],
         description:
           "Pulse animation is a circle that pulses every few seconds.<br />\
         It was a good exercise in writting css for the sake of eesthetics.",

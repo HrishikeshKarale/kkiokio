@@ -61,18 +61,27 @@
 		padding: @spaceXl @spaceSm;
 		& > .previous,
 		& > .next {
+			position: relative;
 			flex: 1 1 160px;
-			&:before {
+			&::before {
 				content: "Previous Post";
 				font-weight: 700;
 				font-size: @fontSize;
 			}
+			&::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 3 * @spaceLg;
+				border-left: @spaceLg solid @primaryColor;
+				height: 60%;
+			}
 			& > h3 {
 				font-weight: 900;
+				letter-spacing: 2px !important;
 				color: @accentColor;
 				cursor: pointer;
-				margin-left: @spaceMd;
-				margin-top: @spaceMd !important;
+				margin-left: @spaceXl;
 			}
 		}
 		& > .next {

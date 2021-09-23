@@ -151,7 +151,8 @@
 			flex-wrap: nowrap;
 			justify-content: center;
 			align-items: center;
-			width: 100%;
+			max-width: 100%;
+			min-width: 100%;
 			height: fit-content;
 			overflow-x: hidden;
 			overflow-y: show;
@@ -164,9 +165,6 @@
 				& > div {
 					border-width: 0px;
 					flex-wrap: wrap;
-					& > .cards {
-						background-color: red;
-					}
 				}
 			}
 			& > button {
@@ -248,6 +246,37 @@
 							transform: translate(0, -16px);
 						}
 					}
+				}
+			}
+		}
+		@media screen {
+			@media (max-width: @1600width) {
+				& > div {
+					.res1600p();
+				}
+			}
+
+			@media (max-width: @1200width) {
+				& > div {
+					.res1200p();
+				}
+			}
+
+			@media (max-width: @768width) {
+				& > div {
+					.res768p();
+				}
+			}
+
+			@media (max-width: @480width) {
+				& > div {
+					.res480p();
+				}
+			}
+
+			@media (max-width: @320width) {
+				& > div {
+					.res320p();
 				}
 			}
 		}

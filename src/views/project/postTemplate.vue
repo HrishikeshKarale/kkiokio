@@ -1,7 +1,7 @@
 // https://usabilitygeek.com/ux-case-study-google-maps-vs-waze-mobile-apps/
 <template>
 	<!-- {{ article }} -->
-	<article :id="projTitle">
+	<article :id="Object.entries(post)[0][1]" class="postTemplate">
 		<template v-for="entry in Object.entries(post)" :key="entry">
 			<header v-if="entry[0] === 'header'">
 				<h1 v-text="entry[1]" />

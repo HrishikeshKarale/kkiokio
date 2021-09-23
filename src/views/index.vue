@@ -1,7 +1,7 @@
 <template>
 	<article class="profileOverview">
 		<section id="intro">
-			<div>
+			<div class="subSection">
 				<span>HELLO THERE</span>
 				<h2>My name is</h2>
 				<h1 @click="$router.push({ name: 'about' })">Hrishikesh Karale.</h1>
@@ -37,7 +37,7 @@
 					"
 				/>
 			</div>
-			<div @click="$router.push({ name: 'project' })">
+			<div class="subSection" @click="$router.push({ name: 'project' })">
 				<span>Designer</span>
 				<span>&amp;</span>
 				<span>Developer</span>
@@ -54,33 +54,35 @@
 				This is a detailed chronicle of the stories, processes and results
 				behind the projects that I've led and contributed to.
 			</p>
-			<ul v-for="(project, index) in projectList" :key="index">
-				<li>
-					<router-link :to="{ name: 'project', hash: `#${project.type}` }">
-						<h3>
-							{{ project.type }}
-						</h3>
-					</router-link>
-					<ul>
-						<li
-							class="tag"
-							v-for="skill in projectSkills[project.type]"
-							:key="skill"
-							@click="
-								$router.push({ name: 'project', query: { filter: skill } })
-							"
-						>
-							<span class="fas fa-tag" />
-							<b v-text="skill" />
-						</li>
-					</ul>
-				</li>
+			<ul>
+				<template v-for="project in projectList" :key="project.type">
+					<li v-if="project.type != 'Logo'">
+						<router-link :to="{ name: 'project', hash: `#${project.type}` }">
+							<h3>
+								{{ project.type }}
+							</h3>
+						</router-link>
+						<ul>
+							<li
+								class="tag"
+								v-for="skill in projectSkills[project.type]"
+								:key="skill"
+								@click="
+									$router.push({ name: 'project', query: { filter: skill } })
+								"
+							>
+								<span class="fas fa-tag" />
+								<b v-text="skill" />
+							</li>
+						</ul>
+					</li>
+				</template>
 			</ul>
 		</section>
 		<section id="kindWords">
 			<h1>Kind Words</h1>
 			<h3>What people think about me</h3>
-			<div>
+			<div class="subSection">
 				<div>
 					<q>
 						As a manager, you hope to hire people who are smarter than you,
@@ -91,7 +93,7 @@
 					</q>
 					<h5>Craig Swings</h5>
 				</div>
-				<div>
+				<div class="subSection">
 					<q>
 						Hrishikesh, exhibits the experience and talent of someone twice his
 						age in years. He is an incredible leader and has a way about him to
@@ -159,40 +161,26 @@
 	@import (reference) "./../Less/customVariables.less";
 
 	.profileOverview {
-		position: relative;
 		& > section {
-			flex-direction: column;
-			flex-wrap: wrap;
-			width: 100%;
+			position: relative;
 			min-height: @body;
-			& > h1 {
-				text-align: center;
-				font-size: 92px;
-				font-weight: 900;
-				margin: 0;
-				transform: translate(0, 64px);
-				filter: opacity(32%);
-			}
-			& > h3 {
-				text-align: center;
-				color: @accentColor;
-				z-index: @contentZ + 10;
-				font-weight: 700;
-				margin-bottom: 80px;
-				& + p {
+			&:not(#intro) {
+				h1 {
 					align-self: center;
-					max-width: 640px;
-					text-align: center;
+					font-weight: 900;
+					filter: opacity(16%);
+					font-size: 4 * @fontSize;
+					& + h3 {
+						position: absolute;
+						align-self: center;
+						top: 2 * @spaceXl;
+					}
 				}
 			}
 			&#intro {
 				flex-direction: row;
 				justify-content: space-evenly;
 				& > div {
-					display: flex;
-					flex-direction: column;
-					height: fit-content;
-
 					& > h1,
 					& > h2:first-child {
 						margin-top: 0;
@@ -269,11 +257,11 @@
 				}
 				& > ul {
 					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
+					flex-flow: row wrap;
 					gap: @spaceLg;
 					// justify-content: space-between;
 					& > li {
+						flex: 0 1 320px;
 						& > ul {
 							display: flex;
 							flex-flow: row wrap;
@@ -298,29 +286,30 @@
 		@media screen {
 			@media (max-width: @1600width) {
 				@media (max-width: @1200width) {
-					@media (max-width: @768width) {
-						@media (max-width: @480width) {
-							@media (max-width: @320width) {
-							}
-						}
-					}
-				}
-				& > section {
-					margin-bottom: @spaceXl;
-					&#intro {
-						flex-direction: column-reverse;
-						& > div {
-							&:last-child {
-								margin: 2 * @spaceXl 0;
-								height: 240px;
-								width: 240px;
-								align-self: center;
-								& > span {
-									font-size: 2 * @fontSize;
+					& > section {
+						margin-bottom: @spaceXl;
+						&#intro {
+							flex-direction: column-reverse;
+							.res1200p();
+							& > div {
+								&:last-child {
+									margin: 2 * @spaceXl 0;
+									height: 240px;
+									width: 240px;
+									align-self: center;
+									& > span {
+										font-size: 2 * @fontSize;
+									}
 								}
 							}
 						}
 					}
+				}
+				@media (max-width: @768width) {
+				}
+				@media (max-width: @480width) {
+				}
+				@media (max-width: @320width) {
 				}
 			}
 		}

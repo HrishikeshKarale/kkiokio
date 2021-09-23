@@ -5,18 +5,19 @@
 		:auto-scroll="autoScroll"
 	>
 		<template v-for="projects in projectList" :key="projects.type">
-			<showcase
-				v-for="project in projects.value"
-				v-show="
-					tags.length == 0 ||
-					(tags.length > 0 &&
-						tags.some((filter) => !project.tags.includes(filter)))
-				"
-				:key="project.id"
-				:project="project"
-				:component="project.blog != null ? 'articlePage' : project.component"
-				:article="project.blog != null ? project.title : ''"
-			/>
+			<template v-if="projects.type != 'Logo'">
+				<showcase
+					v-for="project in projects.value"
+					v-show="
+						tags.length > 0 &&
+						tags.some((filter) => !project.tags.includes(filter))
+					"
+					:key="project.id"
+					:project="project"
+					:component="project.blog != null ? 'articlePage' : project.component"
+					:article="project.blog != null ? project.title : ''"
+				/>
+			</template>
 		</template>
 	</card-scroller>
 </template>

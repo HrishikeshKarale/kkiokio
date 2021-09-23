@@ -20,16 +20,16 @@ const routes: Array<RouteRecordRaw> = [
       requiresAuth: false
     }
   },
-  {
-    path: "/logo",
-    name: "logo",
-    component: () =>
-      import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue"),
-    meta: {
-      transitionName: "fade",
-      requiresAuth: false //true
-    }
-  },
+  // {
+  //   path: "/logo",
+  //   name: "logo",
+  //   component: () =>
+  //     import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue"),
+  //   meta: {
+  //     transitionName: "fade",
+  //     requiresAuth: false //true
+  //   }
+  // },
   {
     path: "/about",
     name: "about",

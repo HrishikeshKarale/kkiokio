@@ -3,7 +3,7 @@
 		<template v-if="$slots['header']">
 			<slot name="header" />
 		</template>
-		<div class="body">
+		<main class="body">
 			<vue-modal
 				tag="loadingScreen"
 				:display="display"
@@ -198,7 +198,7 @@
 			<template v-if="$slots['footer']">
 				<slot name="footer" />
 			</template>
-		</div>
+		</main>
 	</div>
 </template>
 
@@ -413,6 +413,14 @@
 							localStorage.setItem("jwt", response.data.token);
 						})
 						.catch((error) => {
+							this.emitter.emit("alert", {
+								type: "warning",
+								message: "Error setting up cookies/localStorage",
+								description: error.response,
+								dismissable: true,
+								code: "101.1",
+								timeout: 8,
+							});
 							// console.error(error.response);
 						});
 				} else {
@@ -499,17 +507,19 @@
 	.enterpriseAppLayout {
 		display: flex;
 		flex-direction: column;
-		position: relative;
+		position: static;
 		height: 100vh;
 		width: 100vw;
-		& > div {
+		.backgroundColor(@primaryColor, 4%);
+		& > main {
 			display: flex;
 			height: 100%;
 			&.body {
 				display: flex;
 				flex-direction: column;
-				max-width: 100vw;
+				// width: 100vw;
 				.scroll(100vh);
+				overflow-y: overlay;
 				& > .vueAlert {
 					position: absolute;
 					top: @spaceXl;
@@ -525,9 +535,11 @@
 						color: @textColor;
 						max-width: 72vw;
 						min-width: @1600width;
-						background-color: @backgroundColor;
+						background-color: @backgroundColor !important;
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
-						.boxShadow(@one, @primaryColor);
+						align-self: center !important;
+						z-index: @contentZ;
+						// .boxShadow(@one, @primaryColor);
 						//countdown timer
 						& > .alert {
 							flex-direction: row;
@@ -543,60 +555,55 @@
 		}
 		@media screen {
 			@media (max-width: @1600width) {
-				& > div {
+				& > main {
 					&.body {
 						& > div {
 							&.content {
-								max-width: @1200width;
-								min-width: @1200width;
+								.res1600p();
 							}
 						}
 					}
 				}
 			}
 			@media (max-width: @1200width) {
-				& > div {
+				& > main {
 					&.body {
 						& > div {
 							&.content {
-								max-width: @768width;
-								min-width: @768width;
+								.res1200p();
 							}
 						}
 					}
 				}
 			}
 			@media (max-width: @768width) {
-				& > div {
+				& > main {
 					&.body {
 						& > div {
 							&.content {
-								max-width: 2 * @320width;
-								min-width: 2 * @320width;
+								.res768p();
 							}
 						}
 					}
 				}
 			}
 			@media (max-width: @480width) {
-				& > div {
+				& > main {
 					&.body {
 						& > div {
 							&.content {
-								max-width: @480width;
-								min-width: @480width;
+								.res480p();
 							}
 						}
 					}
 				}
 			}
 			@media (max-width: @320width) {
-				& > div {
+				& > main {
 					&.body {
 						& > div {
 							&.content {
-								max-width: @320width;
-								min-width: 100%;
+								.res320p();
 							}
 						}
 					}

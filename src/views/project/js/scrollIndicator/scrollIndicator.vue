@@ -1,10 +1,9 @@
 <template>
 	<div class="scrollIndicator">
-		<div class="scrolContent">
+		<div class="content">
 			<slot />
 		</div>
-		<div v-if="tagOffset.length > 1" class="scrollIndex">
-			<div ref="scrollLength" class="scrollLength" />
+		<div v-if="tagOffset.length > 1" class="contentNav">
 			<a
 				v-for="indicator in tagOffset"
 				:key="indicator.id"
@@ -75,28 +74,6 @@
 				}
 			}, //scrollableHeader
 
-			scrollPath: function (highlight) {
-				const length = 100 / this.tagOffset.length;
-				let scrollLength = 0;
-				if (0 < highlight) {
-					this.tagOffset.forEach((element, index) => {
-						if (element.selected) {
-							scrollLength = Math.round(index * length);
-						}
-					});
-					// console.log(scrollLength);
-					// this.$refs["scrollLength"].style.height = scrollLength + "%";
-					const scrollBar = this.$refs["scrollLength"];
-					if (scrollBar) {
-						scrollBar.style.minHeight = scrollLength + "%";
-						// scrollBar.style.setProperty(
-						// 	"min-height",
-						// 	"calc(" + scrollLength + " - 2@spaceXl)"
-						// );
-					}
-				}
-			}, //scrollPath
-
 			goBack: function () {
 				if (this.articleTag) {
 					const header = this.articleTag.getElementsByTagName("header");
@@ -133,7 +110,6 @@
 				// console.log(highlight);
 				this.scrollableHeader(highlight);
 				this.scrollBreadcrum(highlight);
-				this.scrollPath(highlight);
 				for (let i = 0; i < this.tag.length; i++) {
 					const tagOffset = this.tagOffset[i];
 
@@ -206,10 +182,9 @@
 		& > div {
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
-			position: relative;
+			align-self: center;
 
-			&.scrollIndex {
+			&.contentNav {
 				position: absolute;
 				top: 50%;
 				right: @spaceLg;
@@ -219,14 +194,6 @@
 				padding: @spaceXs;
 				transform: translateY(-50%);
 				z-index: @headerZ;
-				&::before {
-					content: "Page Content";
-					color: @secondaryColor;
-					font-size: @fontSize;
-					margin-right: @spaceXl;
-					text-align: right;
-					font-weight: bold;
-				}
 				& > a {
 					display: flex;
 					flex-direction: row-reverse;
@@ -278,67 +245,45 @@
 						}
 					}
 				}
+				&::before {
+					content: "";
+				}
 			}
 
-			&.scrolContent {
+			&.content {
 				display: flex;
 				align-self: center;
 				max-width: @1600width;
 			}
 		}
-		& > div {
-			&.scrollIndex {
-				background-color: @accentColor;
-				border-radius: @spaceXl;
-				padding: @spaceXs;
-				top: 50%;
-				transform: translateY(-50%);
-				right: @spaceLg;
-				&::after,
-				& > .scrollLength {
-					display: none;
+		@media screen {
+			@media (max-width: @1600width) {
+				& > div.content {
+					.res1600p();
 				}
-				& > a {
-					width: fit-content;
-					&:hover,
-					&.active {
-						background-color: none;
-						& > span:last-child {
-							position: absolute;
-							width: max-content;
-							text-align: center;
-							color: @accentColor;
-							padding: 0 @spaceMd;
-							top: -40px;
-							border: 1px dashed @primaryColor;
-							border-radius: @borderRadius;
-							font-weight: bold;
-							&::before {
-								content: "";
-								position: absolute;
-								left: 0;
-								top: 0;
-								height: 100%;
-								width: 100%;
-								background-color: @primaryColor;
-								filter: opacity(8%);
-							}
-						}
-					}
-					& > span {
-						color: @backgroundColor;
-						background-color: transparent;
-						&:last-child {
-							background-color: @backgroundColor;
-							width: 100%;
-							border-radius: @borderRadius;
-							.textShadow(none);
-							display: none;
-						}
-					}
+			}
+
+			@media (max-width: @1200width) {
+				& > .content {
+					.res1200p();
 				}
-				&::before {
-					content: "";
+			}
+
+			@media (max-width: @768width) {
+				& > .content {
+					.res768p();
+				}
+			}
+
+			@media (max-width: @480width) {
+				& > .content {
+					.res480p();
+				}
+			}
+
+			@media (max-width: @320width) {
+				& > .content {
+					.res320p();
 				}
 			}
 		}
