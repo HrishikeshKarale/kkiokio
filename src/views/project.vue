@@ -41,7 +41,7 @@
 <script>
 	import vueFilter from "@/components/vueFilter.vue";
 	import showcase from "@/components/showcase.vue";
-	import cardScroller from "./project/css/cardSlider/cardScroller.vue";
+	import cardScroller from "./projects/css/cardSlider/cardScroller.vue";
 	import { loading } from "@/typeScript/common/loading";
 	export default {
 		name: "Projects",

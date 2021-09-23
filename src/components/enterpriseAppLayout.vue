@@ -203,7 +203,7 @@
 </template>
 
 <script>
-	import scrollIndicator from "@/views/project/js/scrollIndicator/scrollIndicator";
+	import scrollIndicator from "@/views/projects/js/scrollIndicator/scrollIndicator";
 	import CountdownTimer from "@/components/countdownTimer.vue";
 	import vueAlert from "@/components/alert/vueAlert.vue";
 	import breadcrums from "@/components/breadcrums";

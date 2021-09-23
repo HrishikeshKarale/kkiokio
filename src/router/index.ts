@@ -55,7 +55,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "articlePage",
     component: () =>
       import(
-        /* webpackChunkName: "project" */ "@/views/project/articlePage.vue"
+        /* webpackChunkName: "project" */ "@/views/projects/articlePage.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -63,11 +63,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/drumKit",
+    path: "/projects/js/drumKit",
     name: "drumKit",
     component: () =>
       import(
-        /* webpackChunkName: "drumKit" */ "@/views/project/js/drumKit.vue"
+        /* webpackChunkName: "drumKit" */ "@/views/projects/js/drumKit.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -75,11 +75,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/analogClock",
+    path: "/projects/js/analogClock",
     name: "analogClock",
     component: () =>
       import(
-        /* webpackChunkName: "analogClock" */ "@/views/project/js/analogClock.vue"
+        /* webpackChunkName: "analogClock" */ "@/views/projects/js/analogClock.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -87,11 +87,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/arrayCardio",
+    path: "/projects/js/arrayCardio",
     name: "arrayCardio",
     component: () =>
       import(
-        /* webpackChunkName: "arrayCardio" */ "@/views/project/js/arrayCardio.vue"
+        /* webpackChunkName: "arrayCardio" */ "@/views/projects/js/arrayCardio.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -99,11 +99,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/imageGalery",
+    path: "/projects/js/imageGalery",
     name: "imageGalery",
     component: () =>
       import(
-        /* webpackChunkName: "imageGalery" */ "@/views/project/js/imageGalery.vue"
+        /* webpackChunkName: "imageGalery" */ "@/views/projects/js/imageGalery.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -111,11 +111,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/fetchAPI",
+    path: "/projects/js/fetchAPI",
     name: "fetchApi",
     component: () =>
       import(
-        /* webpackChunkName: "fetchApi" */ "@/views/project/js/fetchApi.vue"
+        /* webpackChunkName: "fetchApi" */ "@/views/projects/js/fetchApi.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -123,11 +123,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/canvasExample",
+    path: "/projects/js/canvasExample",
     name: "canvasExample",
     component: () =>
       import(
-        /* webpackChunkName: "canvasExample" */ "@/views/project/js/canvasExample.vue"
+        /* webpackChunkName: "canvasExample" */ "@/views/projects/js/canvasExample.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -135,11 +135,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/checkboxChallange",
+    path: "/projects/js/checkboxChallange",
     name: "checkboxChallange",
     component: () =>
       import(
-        /* webpackChunkName: "checkboxChallange" */ "@/views/project/js/checkboxChallange.vue"
+        /* webpackChunkName: "checkboxChallange" */ "@/views/projects/js/checkboxChallange.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -147,11 +147,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/konamiCode",
+    path: "/projects/js/konamiCode",
     name: "konamiCode",
     component: () =>
       import(
-        /* webpackChunkName: "konamiCode" */ "@/views/project/js/konamiCode.vue"
+        /* webpackChunkName: "konamiCode" */ "@/views/projects/js/konamiCode.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -159,11 +159,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/scrollIn",
+    path: "/projects/js/scrollIn",
     name: "scrollIn",
     component: () =>
       import(
-        /* webpackChunkName: "scrollIn" */ "@/views/project/js/scrollIndicator/index.vue"
+        /* webpackChunkName: "scrollIn" */ "@/views/projects/js/scrollIndicator/index.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -171,11 +171,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/speechRecognition",
+    path: "/projects/js/speechRecognition",
     name: "speechRecognition",
     component: () =>
       import(
-        /* webpackChunkName: "speechRecognition" */ "@/views/project/js/speechRecognition.vue"
+        /* webpackChunkName: "speechRecognition" */ "@/views/projects/js/speechRecognition.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -183,11 +183,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/linkFollower",
+    path: "/projects/js/linkFollower",
     name: "linkFollower",
     component: () =>
       import(
-        /* webpackChunkName: "linkFollower" */ "@/views/project/js/linkFollower.vue"
+        /* webpackChunkName: "linkFollower" */ "@/views/projects/js/linkFollower.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -195,11 +195,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/geoLocation",
+    path: "/projects/js/geoLocation",
     name: "geoLocation",
     component: () =>
       import(
-        /* webpackChunkName: "geoLocation" */ "@/views/project/js/geoLocation.vue"
+        /* webpackChunkName: "geoLocation" */ "@/views/projects/js/geoLocation.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -207,11 +207,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/userMedia",
+    path: "/projects/js/userMedia",
     name: "userMedia",
     component: () =>
       import(
-        /* webpackChunkName: "userMedia" */ "@/views/project/js/userMedia.vue"
+        /* webpackChunkName: "userMedia" */ "@/views/projects/js/userMedia.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -219,11 +219,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/followerAlongNav",
+    path: "/projects/js/followerAlongNav",
     name: "FollowNav",
     component: () =>
       import(
-        /* webpackChunkName: "FollowNav" */ "@/views/project/js/followerAlongNav/index.vue"
+        /* webpackChunkName: "FollowNav" */ "@/views/projects/js/followerAlongNav/index.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -231,11 +231,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/clickDrag",
+    path: "/projects/js/clickDrag",
     name: "clickDrag",
     component: () =>
       import(
-        /* webpackChunkName: "clickDrag" */ "@/views/project/js/clickDrag.vue"
+        /* webpackChunkName: "clickDrag" */ "@/views/projects/js/clickDrag.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -243,11 +243,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/js/videoControl",
+    path: "/projects/js/videoControl",
     name: "videoControl",
     component: () =>
       import(
-        /* webpackChunkName: "videoControl" */ "@/views/project/js/videoControl.vue"
+        /* webpackChunkName: "videoControl" */ "@/views/projects/js/videoControl.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -255,11 +255,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/WebUX/RSVPApp",
+    path: "/projects/WebUX/RSVPApp",
     name: "rsvpApp",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "@/views/project/webUX/rsvpApp.vue"
+        /* webpackChunkName: "about" */ "@/views/projects/webUX/rsvpApp.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -267,11 +267,11 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/CSS/pulseAnimation",
+    path: "/projects/CSS/pulseAnimation",
     name: "pulseAnimation",
     component: () =>
       import(
-        /* webpackChunkName: "pulseAnimation" */ "@/views/project/css/pulseAnimation.vue"
+        /* webpackChunkName: "pulseAnimation" */ "@/views/projects/css/pulseAnimation.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -279,20 +279,20 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/project/CSS/cardScroller",
+    path: "/projects/CSS/cardScroller",
     name: "cardSlider",
     component: () =>
       import(
-        /* webpackChunkName: "cardScroller" */ "@/views/project/css/cardSlider/index.vue"
+        /* webpackChunkName: "cardScroller" */ "@/views/projects/css/cardSlider/index.vue"
       ),
     meta: { transitionName: "fade", requiresAuth: false }
   },
   {
-    path: "/project/CSS/infiniteScroll",
+    path: "/projects/CSS/infiniteScroll",
     name: "infiniteScroll",
     component: () =>
       import(
-        /* webpackChunkName: "infiniteScroll" */ "@/views/project/css/infiniteScroll.vue"
+        /* webpackChunkName: "infiniteScroll" */ "@/views/projects/css/infiniteScroll.vue"
       ),
     meta: { transitionName: "fade", requiresAuth: false }
   },

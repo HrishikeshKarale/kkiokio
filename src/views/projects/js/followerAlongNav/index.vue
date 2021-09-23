@@ -80,7 +80,7 @@
 </template>
 <script>
 	import { loading } from "@/typeScript/common/loading";
-	import followerAlongNav from "@/views/project/js/followerAlongNav/followerAlongNav.vue";
+	import followerAlongNav from "@/views/projects/js/followerAlongNav/followerAlongNav.vue";
 	export default {
 		name: "FollowNav",
 		mixins: [loading],

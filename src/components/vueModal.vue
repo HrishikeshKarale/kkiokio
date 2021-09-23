@@ -75,7 +75,7 @@
 
 <script>
 	import vueButton from "@/components/vueButton";
-	import diceLoad from "@/views/project/css/diceLoad.vue";
+	import diceLoad from "@/views/projects/css/diceLoad.vue";
 
 	export default {
 		name: "VueModal", //props
