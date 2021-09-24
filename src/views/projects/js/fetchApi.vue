@@ -128,7 +128,7 @@
 							type: "warning",
 							message: "Error handling API data",
 							description: error,
-							dismissable: true,
+							dismissable: this.booleanTrue,
 							code: "101.1",
 							timeout: 8,
 						});

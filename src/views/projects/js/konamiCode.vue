@@ -70,7 +70,7 @@
 							type: "warning",
 							message: "Error reacting to the konami code",
 							description: e,
-							dismissable: true,
+							dismissable: this.booleanTrue,
 							code: "101.1",
 							timeout: 8,
 						});

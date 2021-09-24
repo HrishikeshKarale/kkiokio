@@ -140,14 +140,18 @@
 					</div>
 				</div>
 			</vue-modal>
-			<vue-alert
-				:code="alertCode"
-				:type="alertType"
-				:message="alertMessage"
-				:description="alertDescription"
-				:dismissible="alertDismissable"
-				:timeout="alertTimeout"
-			/>
+			<div class="alertContainer">
+				<vue-alert
+					v-for="(alt, index) in alert"
+					:key="index"
+					:code="alt.code"
+					:type="alt.type"
+					:message="alt.message"
+					:description="alt.description"
+					:dismissible="alt.dismissable"
+					:timeout="alt.timeout"
+				/>
+			</div>
 			<template v-if="$slots['menu']">
 				<slot name="menu" />
 			</template>
@@ -162,7 +166,7 @@
 				<div :key="$route.path" class="content">
 					<breadcrums />
 					<countdown-timer
-						class="alert"
+						class="countdownTimer"
 						start-time="January 24, 2021 23:59:99"
 						end-time="Aug 16, 2021 00:00:01"
 						trans='{
@@ -242,13 +246,18 @@
 			const DEFAULT_TRANSITION_MODE = "out-in";
 			const transitionEnterActiveClass = "";
 			const display = this.booleanTrue;
-			const alertDismissable = this.booleanTrue;
-			const alertType = "info";
-			const alertMessage = "Welcome to my portfolio site.";
-			const alertCode = "";
-			const alertDescription =
-				"If you are looking for my projects please visit the 'work' section of the website.";
-			const alertTimeout = 8;
+			//alerts
+			const alert = [
+				{
+					type: "info",
+					message: "Welcome to my portfolio site.",
+					description:
+						"If you are looking for my projects please visit the 'work' section of the website.",
+					dismissable: this.booleanTrue,
+					code: "619",
+					timeout: 8,
+				},
+			];
 			//signUp
 			const signupName = null;
 			const signupEmail = null;
@@ -292,12 +301,7 @@
 				transitionMode: DEFAULT_TRANSITION_MODE,
 				transitionEnterActiveClass,
 				display,
-				alertType,
-				alertMessage,
-				alertDescription,
-				alertDismissable,
-				alertCode,
-				alertTimeout,
+				alert,
 				loginDisplay,
 			};
 		}, //mixins
@@ -389,12 +393,14 @@
 				this.loginDisplay = display;
 			});
 			this.emitter.on("alert", (payload) => {
-				this.alertType = payload.type;
-				this.alertMessage = payload.message;
-				this.alertDescription = payload.description;
-				this.alertDismissable = payload.dismissable;
-				this.alertCode = payload.code;
-				this.alertTimeout = payload.timeout;
+				this.alert.push({
+					type: payload.type,
+					message: payload.message,
+					description: payload.description,
+					dismissable: payload.dismissable,
+					code: payload.code,
+					timeout: payload.timeout,
+				});
 			});
 		}, //mounted
 
@@ -417,7 +423,7 @@
 								type: "warning",
 								message: "Error setting up cookies/localStorage",
 								description: error.response,
-								dismissable: true,
+								dismissable: this.booleanTrue,
 								code: "101.1",
 								timeout: 8,
 							});
@@ -428,7 +434,7 @@
 						type: "danger",
 						message: "No Password detected",
 						description: "Please enter a password",
-						dismissable: true,
+						dismissable: this.booleanTrue,
 						code: "101",
 						timeout: 4,
 					});
@@ -507,23 +513,25 @@
 	.enterpriseAppLayout {
 		display: flex;
 		flex-direction: column;
-		position: static;
 		height: 100vh;
-		width: 100vw;
+		width: 100%;
 		.backgroundColor(@primaryColor, 4%);
+		position: static;
 		& > main {
 			display: flex;
 			height: 100%;
 			&.body {
 				display: flex;
 				flex-direction: column;
-				// width: 100vw;
-				.scroll(100vh);
+				.scroll();
 				overflow-y: overlay;
-				& > .vueAlert {
+				& > .alertContainer {
+					display: flex;
+					flex-flow: column nowrap;
 					position: absolute;
 					top: @spaceXl;
 					right: @spaceXl;
+					gap: @spaceLg;
 				}
 
 				//scroll content
@@ -531,17 +539,16 @@
 					display: flex;
 					flex-direction: column;
 					&.content {
-						align-self: center;
 						color: @textColor;
 						max-width: 72vw;
-						min-width: @1600width;
+						min-width: min-content;
 						background-color: @backgroundColor !important;
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
 						align-self: center !important;
 						z-index: @contentZ;
 						// .boxShadow(@one, @primaryColor);
 						//countdown timer
-						& > .alert {
+						& > .countdownTimer {
 							flex-direction: row;
 							background-color: @dangerBorder;
 							padding: @spaceMd @spaceLg;

@@ -7,14 +7,14 @@
 			</h5>
 			<p v-text="description" />
 		</div>
-		<template v-if="dismissible">
-			<vue-button
-				tag="closeAlertButton"
-				icon="fas fa-times"
-				category="icon"
-				:ctx="closeAlertBox.bind(this)"
-			/>
-		</template>
+		<!-- <template v-if="dismissible"> -->
+		<vue-button
+			tag="closeAlertButton"
+			icon="fas fa-times"
+			category="icon"
+			:ctx="closeAlertBox.bind(this)"
+		/>
+		<!-- </template> -->
 	</div>
 </template>
 

@@ -81,7 +81,7 @@
 								type: "warning",
 								message: "Error playing audio for selected kit",
 								description: e,
-								dismissable: true,
+								dismissable: this.booleanTrue,
 								code: "101.1",
 								timeout: 8,
 							});

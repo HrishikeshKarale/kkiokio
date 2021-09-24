@@ -249,7 +249,7 @@
 						message: "Error getting access to media/video",
 						description:
 							"The access to media was not found or something went wrong while playing the media, please refresh and try again",
-						dismissable: true,
+						dismissable: this.booleanTrue,
 						code: "101.1",
 						timeout: 8,
 					});

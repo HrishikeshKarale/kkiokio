@@ -81,7 +81,7 @@
 						type: "warning",
 						message: "Error calculating Spped/Compass direction",
 						description: err,
-						dismissable: true,
+						dismissable: this.booleanTrue,
 						code: "101.1",
 						timeout: 8,
 					});
