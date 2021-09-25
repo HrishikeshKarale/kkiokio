@@ -15,8 +15,8 @@
 					<router-link :to="{ name: 'home' }">
 						<vue-img :src="logoLink" alt="Logo" />
 						<h3>
-							Hrishikesh Karale
-							<h5>Kkiokio.com</h5>
+							Kkiokio
+							<h5>Hrishikesh Karale</h5>
 						</h3>
 					</router-link>
 				</li>
@@ -25,6 +25,7 @@
 					:key="index + '-' + navigation.name"
 				>
 					<router-link :to="{ name: navigation.component }">
+						<span :class="navigation.icon"></span>
 						<div>
 							<h4>{{ navigation.name }}</h4>
 							<span> {{ navigation.tagline }}</span>
@@ -150,7 +151,6 @@
 	@import (reference) "./../Less/customMixins.less";
 
 	@lowOpacity: 0.64;
-	@midOpacity: 0.84;
 
 	@text: @primaryColor;
 
@@ -163,67 +163,17 @@
 	header {
 		line-height: 1;
 		z-index: @headerZ+10;
-		padding: @spaceMd;
+		width: 100vw;
+		.boxShadow(@three, @navBackground, @headerZ);
 		&.vueHeader {
+			height: @header;
 			display: flex;
 			align-items: center;
-			justify-content: space-around;
-			padding: @spaceMd @spaceXl;
+			justify-content: space-between;
+			padding: @spaceLg @spaceXl;
 			background-color: @navBackground;
-			max-width: 100vw;
-			height: @header;
-			&.mini {
-				.boxShadow(@two, @navBackground);
-				z-index: @headerZ+10;
-				height: 64px;
-				& > nav > ul > li {
-					//logo
-					&:first-child {
-						& > a {
-							& > .vueImg {
-								height: 48px;
-							}
-							& > h3 {
-								color: @white;
-								// font-weight: bold;
-								width: max-content;
-								align-self: center;
-								margin: 0 !important;
-								& > h5 {
-									display: none;
-								}
-							}
-						}
-					}
-					&:not(:first-child) > a {
-						// transform: scale(0.8);
-						& > div {
-							& > h4 {
-								letter-spacing: 2px !important;
-								& + span {
-									height: 0;
-									opacity: 0;
-									visibility: hidden;
-								}
-							}
-						}
-						&.router-link-active {
-							// & > span {
-							// 	color: @primaryColor;
-							// }
-							&::before {
-								transform: scale(1);
-								bottom: 0;
-								height: 4px;
-							}
-						}
-					}
-				}
-			}
-			// .boxShadow(@one);
 			& > .menuTrigger {
 				display: none;
-				margin-left: auto;
 			}
 			& > nav {
 				& > ul {
@@ -233,21 +183,86 @@
 
 					& > li {
 						display: flex;
-						justify-content: space-evenly;
-						align-items: flex-start;
-						margin: 0 @spaceSm;
+						align-self: flex-end;
 						&:not(:first-child) {
-							flex: 1 1 160px;
-						}
-						//hide website name and logo
-						&:first-child {
-							// display: none;
+							flex: 1 0 160px;
+							& > a {
+								padding: @spaceMd @spaceLg;
+								border-radius: @borderRadius;
+								border: 4px solid transparent;
 
+								//styling selected link
+								&.router-link-active {
+									border-color: @primaryColor;
+									&.router-link-exact-active {
+										color: @text;
+									}
+
+									& > span {
+										color: @text;
+										opacity: 1;
+										transform: scale(1.2);
+									}
+									& > div {
+										align-content: center;
+										justify-content: center;
+										& > h4 {
+											color: @text;
+											font-weight: bold;
+											letter-spacing: 2px !important;
+											& + span {
+												visibility: visible;
+												color: @white;
+												height: auto;
+												opacity: 1;
+											}
+										}
+									}
+								}
+							}
+						}
+
+						& > a {
+							display: flex;
+							position: relative;
+							flex-direction: row;
+							align-items: center;
+							gap: @spaceLg;
+							color: @navText;
+							width: 100%;
+
+							//nav icon
+							& > span {
+								font-size: @fontSize;
+								width: max-content;
+								.navSubText();
+								align-self: flex-start;
+							}
+							& > div {
+								display: flex;
+								flex-direction: column;
+								width: 100%;
+								gap: @spaceMd;
+
+								//nav Text
+								& > h4 {
+									color: @offWhite;
+									margin: 0 !important;
+									//nav subText
+									& + span {
+										visibility: hidden;
+										height: 0;
+										font-size: 12px;
+										.navSubText();
+									}
+								}
+							}
+						}
+
+						//website name and logo
+						&:first-child {
 							margin-right: 2 * @spaceXl !important;
 							& > a {
-								&:hover {
-									.backgroundColor(transparent, 0%);
-								}
 								& > .vueImg {
 									height: 64px;
 									width: fit-content;
@@ -255,102 +270,21 @@
 										display: flex;
 										flex-direction: column;
 										width: max-content;
+										align-self: center;
+										margin: 0 !important;
+										color: @white;
 										& > h5 {
-											// align-self: flex-end;
-											color: @white;
+											visibility: visible;
+											color: @text;
+											margin-bottom: 0 !important;
 										}
-									}
-								}
-								&.router-link-active {
-									&::before {
-										display: none;
 									}
 								}
 							}
 						}
-						& > a {
-							display: flex;
-							gap: @spaceLg;
-							color: @navText;
-							position: relative;
-							display: flex;
-							flex-direction: row;
-							flex-wrap: nowrap;
-							align-items: center;
-							width: 100%;
-
-							& > span {
-								font-size: @fontSizeSm * 2;
-								// margin: auto;
-								.navSubText();
-							}
-							& > .vueImg {
-								height: 48px;
-							}
-							& > div {
-								display: flex;
-								flex-direction: column;
-								// margin-left: @spaceLg;
-								//nav Text
-								& > h4 {
-									color: @offWhite;
-									//nav subText
-									& + span {
-										font-size: 12px;
-										.navSubText();
-									}
-								}
-							}
-
-							//styling selected link
-							&.router-link-active {
-								color: @text;
-								&::before {
-									transform: scale(0.8);
-								}
-								&::after {
-									.backgroundColor(@accentColor);
-									transform: scale(0.8);
-								}
-								&.router-link-exact-active {
-									color: @text;
-								}
-
-								& > span {
-									opacity: 1;
-									transform: scale(1.2);
-									color: @text;
-									// color: @secondaryColor;
-								}
-								& > div {
-									& > h4 {
-										color: @text;
-										& + span {
-											color: @white;
-											opacity: 1;
-										}
-									}
-								}
-							}
-
-							//bottom line for nav
-							&::before {
-								content: "";
-								position: absolute;
-								width: 100%;
-								background-color: @text;
-								bottom: -8px;
-								height: 2px;
-								transform: scale(0);
-								transition: @transition;
-							}
-							//hover effect for li
-							&:hover {
-								color: @primaryColor;
-								.backgroundColor(@accentColor, 16%);
-								&::before {
-									transform: scale(1.2);
-								}
+						&:hover {
+							color: @primaryColor;
+							& > a {
 								& > span {
 									transform: scale(1.2);
 									color: @navText;
@@ -360,6 +294,8 @@
 									& > h4 {
 										color: @text;
 										& + span {
+											visibility: visible;
+											height: auto;
 											color: @offWhite;
 											opacity: 1;
 										}
@@ -370,9 +306,8 @@
 					}
 				}
 				//user account
-				& + div.user {
+				& + .user {
 					display: flex;
-					margin-left: auto;
 					position: relative;
 					& > span {
 						color: @accentColor;
@@ -414,6 +349,55 @@
 					}
 				}
 			}
+			&.mini {
+				.boxShadow(@four, @navBackground, @headerZ);
+				height: auto;
+				& > nav {
+					& > ul > li {
+						//logo
+						&:first-child {
+							& > a {
+								& > .vueImg {
+									height: 48px;
+								}
+								& > h3 {
+									color: @white;
+									width: max-content;
+									align-self: center;
+									margin: 0 !important;
+									& > h5 {
+										visibility: hidden;
+										height: 0;
+										margin: 0px !important;
+									}
+								}
+							}
+						}
+						&:not(:first-child) > a {
+							& > div {
+								& > h4 {
+									letter-spacing: 2px !important;
+									margin: 0 !important;
+									& + span {
+										visibility: hidden;
+										height: 0;
+									}
+								}
+							}
+							&.router-link-active {
+								& > span {
+									color: @primaryColor;
+								}
+								& > div {
+									& > h4 {
+										align-self: center;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 			@media screen {
 				@media (max-width: @1600width) {
 				}
@@ -428,7 +412,7 @@
 					outline: 0 solid rgba(0, 0, 0, 0.08);
 					left: 0;
 					top: 0;
-					.scroll(100vh);
+					.scroll();
 					& > .menuTrigger {
 						display: flex;
 						align-self: flex-end;
@@ -448,18 +432,16 @@
 						height: 100vh;
 						outline: 9999px solid rgba(0, 0, 0, 0.64);
 						border-bottom-right-radius: 0;
-						z-index: @headerZ+10;
 						& > nav {
 							display: flex;
 							flex-direction: column;
 							height: 100%;
 							& > ul {
 								flex-direction: column;
-								justify-content: space-between;
-								align-items: flex-start;
+								justify-content: flex-start;
 								& > li {
-									flex: 1 0 64px !important;
-									// margin-top: @spaceLg;
+									flex: 1 0 auto;
+									align-self: flex-start;
 									& > a {
 										& > .vueImg {
 											height: @spaceXl;
@@ -467,13 +449,14 @@
 									}
 									&:first-child {
 										display: flex;
+										align-self: center;
+										margin-right: 0 !important;
+										margin-bottom: 2 * @spaceXl !important;
 										& > a {
 											flex-direction: column;
 											& > .vueImg {
 												height: 96px;
-											}
-											&::before {
-												display: none;
+												width: 96px;
 											}
 										}
 									}
