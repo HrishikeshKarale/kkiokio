@@ -196,7 +196,7 @@
 			padding: @spaceLg @spaceXl;
 			border-radius: @borderRadiusLg;
 			.responsive(@1600width, 0);
-			.backgroundColor(@primaryColor, 16%);
+			.backgroundColor(@primaryColor, 8%);
 			&.vertical {
 				border-width: 0px;
 				& > div {
@@ -282,6 +282,22 @@
 
 			@media (max-width: @768width) {
 				.responsive(@480width, -1);
+				& > h2 {
+					margin-bottom: @spaceXl + @spaceLg;
+				}
+				& > #viewAll {
+					top: (3 * @spaceXl) + @spaceMd;
+				}
+				& > #next,
+				& > #previous {
+					top: 3 * @spaceXl;
+				}
+				& > #next {
+					right: 3 * @spaceXl;
+				}
+				& > #previous {
+					right: 6 * @spaceXl;
+				}
 			}
 
 			@media (max-width: @480width) {

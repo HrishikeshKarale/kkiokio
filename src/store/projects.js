@@ -510,7 +510,7 @@ export const projects = [
         id: 1,
         title: "DrumKit",
         img: require("@/assets/js/drumKitHeader.png"),
-        tags: ["JS", "Less", "HTML5", "mixins", "audio playback"],
+        tags: ["audio playback"],
         description:
           "Play your favorite tune on our virtual drums.<br />\
           The DrumKit lets you play your favorite tune ",
@@ -521,7 +521,7 @@ export const projects = [
         id: 2,
         title: "AnalogCLock",
         img: require("@/assets/js/clock.png"),
-        tags: ["CSS", "JS"],
+        tags: [],
         description:
           "The analogue clock was a good way of putting my CSS skills to test.<br />\
         The clock also has date and a digital timer in it.",
@@ -543,7 +543,7 @@ export const projects = [
         id: 4,
         title: "Image Gallery",
         img: require("@/assets/js/imageGallery.jpg"),
-        tags: ["Landing Page"],
+        tags: [],
         description:
           "An image gallery is a way to display parts of an image or information. The users can click on the section to view more info on thje selecetd topic without having to scroll.",
         component: "imageGalery",
@@ -553,7 +553,7 @@ export const projects = [
         id: 5,
         title: "Fetch API",
         img: require("@/assets/js/fetch API.png"),
-        tags: ["REST API"],
+        tags: ["API"],
         description:
           "Fetch data from Sttudio Ghibli API and use it to simulatte an IMDB like data driven website.",
         component: "fetchApi",
@@ -572,7 +572,7 @@ export const projects = [
         id: 7,
         title: "CheckboxChallange",
         img: require("@/assets/js/checkbox challange.png"),
-        tags: ["keyboard Shortcuts", "Usability"],
+        tags: ["keyboard Shortcuts"],
         description:
           "Simulates a checkbox input field where users can use keyboard shortcuts to select/deselect multiple checkbox inputs at once. Pressing and holding shift while checking/unckecking checkboxes triggers the checkboxes in between.",
         component: "checkboxChallange",
@@ -592,7 +592,7 @@ export const projects = [
         id: 9,
         title: "ScrollIn",
         img: require("@/assets/js/scrollIn.jpg"),
-        tags: ["JS", "LESS", "Navigation"],
+        tags: ["Navigation"],
         description:
           "ScrollIn is a scroll indicator which segments the webpage into segments using the sections html tag and disp[lays a page content menu on the right so that yusers can jump between different sections of the page.",
         component: "scrollIn",
@@ -602,7 +602,7 @@ export const projects = [
         id: 10,
         title: "UserMedia",
         img: require("@/assets/js/userMedia.png"),
-        tags: ["HTML5"],
+        tags: ["HTML5 Media"],
         description:
           "Uses the video html5 tag to simulate a webcam, saves screenshots and applies different effects to the image",
         component: "userMedia",
@@ -642,7 +642,7 @@ export const projects = [
         id: 14,
         title: "Follow Along Navigation Dropdown",
         img: require("@/assets/js/followAlongDropDown.png"),
-        tags: ["Modern", "JS"],
+        tags: [],
         description:
           "Building on the link follower, the Follow Along NAvigation simulates a navigation where the self adjusting navigtion background travels along different navigation links and displays the sub-content ion a fun way.",
         component: "FollowNav",
@@ -652,7 +652,7 @@ export const projects = [
         id: 15,
         title: "Click and Drag",
         img: require("@/assets/js/click and drag.jpg"),
-        tags: ["Slider", "JS", "Mobile", "Gallery"],
+        tags: [],
         description: "click and Drag simulates a slidable/draggable slider",
         component: "clickDrag",
         blog: null
@@ -661,7 +661,7 @@ export const projects = [
         id: 16,
         title: "Control video speed",
         img: require("@/assets/js/videoSpeed.jpg"),
-        tags: ["HTML5", "Slider"],
+        tags: ["HTML5 video"],
         description:
           "Uses a range/slider bar to control the speed of the video being played.",
         component: "videoControl",

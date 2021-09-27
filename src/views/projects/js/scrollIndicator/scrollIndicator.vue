@@ -225,6 +225,7 @@
 							border-radius: @borderRadius;
 							font-weight: bold;
 							opacity: 1;
+							background-color: @backgroundColor;
 							&::before {
 								content: "";
 								position: absolute;
@@ -259,28 +260,18 @@
 		}
 		@media screen {
 			@media (max-width: @1600width) {
-				& > div.scrollBody {
-				}
 			}
 
 			@media (max-width: @1200width) {
-				& > .scrollBody {
-				}
 			}
 
 			@media (max-width: @768width) {
-				& > .scrollBody {
-				}
 			}
 
 			@media (max-width: @480width) {
-				& > .scrollBody {
-				}
 			}
 
 			@media (max-width: @320width) {
-				& > .scrollBody {
-				}
 			}
 		}
 	}
