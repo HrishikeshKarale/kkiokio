@@ -63,7 +63,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/drumKit",
+    path: "/work/js/drumKit",
     name: "drumKit",
     component: () =>
       import(
@@ -75,7 +75,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/analogClock",
+    path: "/work/js/analogClock",
     name: "analogClock",
     component: () =>
       import(
@@ -87,7 +87,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/arrayCardio",
+    path: "/work/js/arrayCardio",
     name: "arrayCardio",
     component: () =>
       import(
@@ -99,7 +99,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/imageGalery",
+    path: "/work/js/imageGalery",
     name: "imageGalery",
     component: () =>
       import(
@@ -111,7 +111,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/fetchAPI",
+    path: "/work/js/fetchAPI",
     name: "fetchApi",
     component: () =>
       import(
@@ -123,7 +123,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/canvasExample",
+    path: "/work/js/canvasExample",
     name: "canvasExample",
     component: () =>
       import(
@@ -135,7 +135,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/checkboxChallange",
+    path: "/work/js/checkboxChallange",
     name: "checkboxChallange",
     component: () =>
       import(
@@ -147,7 +147,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/konamiCode",
+    path: "/work/js/konamiCode",
     name: "konamiCode",
     component: () =>
       import(
@@ -159,7 +159,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/scrollIn",
+    path: "/work/js/scrollIn",
     name: "scrollIn",
     component: () =>
       import(
@@ -171,7 +171,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/speechRecognition",
+    path: "/work/js/speechRecognition",
     name: "speechRecognition",
     component: () =>
       import(
@@ -183,7 +183,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/linkFollower",
+    path: "/work/js/linkFollower",
     name: "linkFollower",
     component: () =>
       import(
@@ -195,7 +195,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/geoLocation",
+    path: "/work/js/geoLocation",
     name: "geoLocation",
     component: () =>
       import(
@@ -207,7 +207,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/userMedia",
+    path: "/work/js/userMedia",
     name: "userMedia",
     component: () =>
       import(
@@ -219,7 +219,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/followerAlongNav",
+    path: "/work/js/followerAlongNav",
     name: "FollowNav",
     component: () =>
       import(
@@ -231,7 +231,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/clickDrag",
+    path: "/work/js/clickDrag",
     name: "clickDrag",
     component: () =>
       import(
@@ -243,7 +243,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/js/videoControl",
+    path: "/work/js/videoControl",
     name: "videoControl",
     component: () =>
       import(
@@ -255,7 +255,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/WebUX/RSVPApp",
+    path: "/work/WebUX/RSVPApp",
     name: "rsvpApp",
     component: () =>
       import(
@@ -267,7 +267,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/CSS/pulseAnimation",
+    path: "/work/CSS/pulseAnimation",
     name: "pulseAnimation",
     component: () =>
       import(
@@ -279,7 +279,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/projects/CSS/cardScroller",
+    path: "/work/CSS/cardScroller",
     name: "cardSlider",
     component: () =>
       import(
@@ -288,7 +288,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: { transitionName: "fade", requiresAuth: false }
   },
   {
-    path: "/projects/CSS/infiniteScroll",
+    path: "/work/CSS/infiniteScroll",
     name: "infiniteScroll",
     component: () =>
       import(
