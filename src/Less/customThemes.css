@@ -9,11 +9,11 @@ html {
   --offBlack: #0C090D;
 
   /* shades of grey */
-  --grayDarker: ~"lighten(--black, 13.5%)";
-  --grayDark: ~"lighten(--black, 20%)";
-  --gray: ~"lighten(--black, 33.5%)";
-  --grayLight: ~"lighten(--black, 46.7%)";
-  --grayLighter: ~"lighten(--black, 93.5%)";
+  --grayDarker:~"lighten({--black}, 13.5%)";
+  --grayDark:~"lighten({--black}, 20%)";
+  --gray:~"lighten({--black}, 33.5%)";
+  --grayLight:~"lighten({--black}, 46.7%)";
+  --grayLighter:~"lighten({--black}, 93.5%)";
 }
 
 :root {

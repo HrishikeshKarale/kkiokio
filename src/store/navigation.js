@@ -2,13 +2,13 @@ export const nav = [
   {
     name: "Home",
     component: "home",
-    icon: "fas fa-tree",
+    icon: "fas fa-home",
     tagline: "is where we all want to be"
   },
   {
-    name: "Project",
+    name: "Work",
     component: "project",
-    icon: "fas fa-tree",
+    icon: "fas fa-suitcase",
     tagline: "puts my skills to test"
   },
   // {
@@ -20,13 +20,13 @@ export const nav = [
   {
     name: "About",
     component: "about",
-    icon: "fas fa-leaf",
+    icon: "fas fa-user-tie",
     tagline: "to know me better as a professional"
   },
   {
     name: "Contact",
     component: "contact",
-    icon: "fab fa-envira",
+    icon: "far fa-id-badge",
     tagline: "will help you get in touch with me"
   }
 ];

@@ -88,7 +88,7 @@
 		}
 	}
 	.highlight {
-		transition: @transition;
+		transition: .transition();
 		border-bottom: 2px solid #ffc600;
 		position: absolute;
 		top: 0;

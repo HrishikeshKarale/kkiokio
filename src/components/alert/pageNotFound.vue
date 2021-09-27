@@ -18,11 +18,11 @@
 				</div>
 				<div class="shadow"></div>
 			</div>
-			<div class="top">
-				<h3>Looks like something went wrong.</h3>
-			</div>
+			<h3 class="top">Looks like something went wrong.</h3>
+			{{
+				similarRoutes.length > 1 ? similarRoutes : "No Matching Routes found."
+			}}
 		</section>
-		<!-- <section></section> -->
 	</article>
 </template>
 
@@ -34,8 +34,10 @@
 
 		data() {
 			const Id = "stackTrace";
+			const similarRoutes = this.$route.matched;
 			return {
 				Id,
+				similarRoutes,
 			}; //return
 		}, //data
 

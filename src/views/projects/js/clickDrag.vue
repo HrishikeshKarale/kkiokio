@@ -110,7 +110,7 @@
 		white-space: nowrap;
 		user-select: none;
 		cursor: pointer;
-		transition: @transition;
+		transition: .transition();
 		transform: scale(0.99);
 		will-change: transform;
 		position: relative;

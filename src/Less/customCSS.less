@@ -918,7 +918,8 @@
 .noselect,
 * {
   letter-spacing: @letterSpacing  !important;
-  transition: @transition;
+  transition: .transition();
+  // overflow: scroll;
   .boxSizing(border-box);
   word-wrap: break-word !important;
   scroll-behavior: smooth !important;
@@ -944,6 +945,14 @@ abbr[title] {
 article {
   display: flex;
   flex-direction: column;
+  .responsive(@1600width, 2);
+
+  .left>& {
+    .responsive(@1200width, 4);
+
+  }
+
+  flex: 1 0 240px;
 
   h1,
   h2,
@@ -977,10 +986,11 @@ article {
   .sideBySide {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-evenly;
 
     .vueImg {
-      width: min-content;
+      // width: min-content;
     }
   }
 
@@ -988,15 +998,15 @@ article {
   &>*:not(header),
   &>section>*,
   &>section>.subSection>* {
-    margin-left: @spaceMd;
+    margin-left: @spaceLg;
+    margin-right: @spaceLg;
   }
 
   &>section {
-    min-height: calc(@body/2);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+    width: fit-content;
 
     &>h3::before {
       content: "";
@@ -1019,37 +1029,28 @@ article {
   }
 
   @media screen {
-    .left>& {
-      .res1600p();
-    }
-
     @media (max-width: @1600width) {
-      .res1600p();
+      .responsive(@1200width, 6);
 
       .left>& {
-        .res1200p();
+        .responsive(@768width, 10);
       }
     }
 
     @media (max-width: @1200width) {
-      align-self: center;
-      .res1200p();
-
-      .left>& {
-        .res768p();
-      }
+      .responsive(@768width, 6);
     }
 
     @media (max-width: @768width) {
-      .res768p();
+      .responsive(@480width, 6);
     }
 
     @media (max-width: @480width) {
-      .res480p();
+      .responsive(@480width, -2);
     }
 
     @media (max-width: @320width) {
-      .res320p();
+      // .responsive(240, 6);
     }
   }
 }
@@ -1122,7 +1123,7 @@ ul {
   background-color: @secondaryColor;
   border-radius: @borderRadius;
   color: @textColor;
-  padding: 0 @spaceMd  !important;
+  padding: 0 @spaceLg  !important;
   gap: @spaceMd;
   width: fit-content;
 

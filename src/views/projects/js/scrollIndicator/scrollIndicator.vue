@@ -1,9 +1,9 @@
 <template>
 	<div class="scrollIndicator">
-		<div class="content">
+		<div class="scrollBody">
 			<slot />
 		</div>
-		<div v-if="tagOffset.length > 1" class="contentNav">
+		<div v-if="tagOffset.length > 1" class="scrollNav">
 			<a
 				v-for="indicator in tagOffset"
 				:key="indicator.id"
@@ -183,8 +183,9 @@
 			display: flex;
 			flex-direction: column;
 			align-self: center;
+			height: fit-content;
 
-			&.contentNav {
+			&.scrollNav {
 				position: absolute;
 				top: 50%;
 				right: @spaceLg;
@@ -193,7 +194,7 @@
 				border-radius: @spaceXl;
 				padding: @spaceXs;
 				transform: translateY(-50%);
-				z-index: @headerZ;
+				z-index: @contentZ+20;
 				& > a {
 					display: flex;
 					flex-direction: row-reverse;
@@ -250,40 +251,35 @@
 				}
 			}
 
-			&.content {
+			&.scrollBody {
 				display: flex;
 				align-self: center;
-				max-width: @1600width;
+				.responsive(@1600width, 6);
 			}
 		}
 		@media screen {
 			@media (max-width: @1600width) {
-				& > div.content {
-					.res1600p();
+				& > div.scrollBody {
 				}
 			}
 
 			@media (max-width: @1200width) {
-				& > .content {
-					.res1200p();
+				& > .scrollBody {
 				}
 			}
 
 			@media (max-width: @768width) {
-				& > .content {
-					.res768p();
+				& > .scrollBody {
 				}
 			}
 
 			@media (max-width: @480width) {
-				& > .content {
-					.res480p();
+				& > .scrollBody {
 				}
 			}
 
 			@media (max-width: @320width) {
-				& > .content {
-					.res320p();
+				& > .scrollBody {
 				}
 			}
 		}

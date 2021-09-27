@@ -2,7 +2,7 @@
 	<card-scroller
 		class="relatedPost"
 		title="Related Posts"
-		:auto-scroll="autoScroll"
+		:auto-scroll="!autoScroll"
 	>
 		<template v-for="projects in projectList" :key="projects.type">
 			<template v-if="projects.type != 'Logo'">
@@ -57,5 +57,7 @@
 	@import (reference) "../../Less/customVariables.less";
 	.relatedPost {
 		display: flex;
+		width: 100%;
+		.responsive(@1600width, 0);
 	}
 </style>

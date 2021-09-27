@@ -351,7 +351,7 @@
 			}
 			&.mini {
 				.boxShadow(@four, @navBackground, @headerZ);
-				height: auto;
+				height: 80px;
 				& > nav {
 					& > ul > li {
 						//logo

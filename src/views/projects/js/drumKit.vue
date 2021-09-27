@@ -131,7 +131,7 @@
 			cursor: pointer;
 			&.key {
 				border: 0px solid @primaryColor;
-				transition: @transition;
+				transition: .transition();
 			}
 			&.playing {
 				transform: scale(1.1);

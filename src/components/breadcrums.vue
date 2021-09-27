@@ -1,11 +1,14 @@
 <template>
 	<div v-if="breadcrums.length > 1" class="breadcrums">
+		<span class="far fa-folder-open" />
 		<template v-for="(crums, index) in breadcrums" :key="crums">
 			<template v-if="isComponent(crums)[0] && breadcrums.length - 1 > index">
 				<span
 					v-if="index > 0 && isComponent(crums)[0]['comp']"
 					class="fas fa-angle-right"
-				/>
+				>
+					<div>menu option</div>
+				</span>
 				<router-link
 					v-if="breadcrums.length - 1 > index"
 					class="crums"
@@ -15,7 +18,9 @@
 				</router-link>
 			</template>
 			<template v-if="breadcrums.length - 1 == index">
-				<span v-if="subNav(crums)" class="fas fa-angle-right" />
+				<span v-if="subNav(crums)" class="fas fa-angle-right">
+					<div>menu option</div>
+				</span>
 				<h5>
 					{{ subNav(crums) }}
 				</h5>
@@ -113,15 +118,13 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		padding: 0 @spaceMd 0 0;
 		border-radius: 0 0 @borderRadius @borderRadius;
-		background-color: @backgroundColor;
 		gap: @spaceLg;
 		&.scroll {
 			padding: 0 0 0 16px;
 			background-color: @navBackground;
-			.boxShadow(@two, @navBackground);
-			z-index: @headerZ;
+			.boxShadow(@four, @navBackground, @headerZ);
+			// z-index: @headerZ;
 		}
 		h1,
 		h5 {
@@ -129,6 +132,23 @@
 		}
 		& > span {
 			color: @accentColor;
+			& > div {
+				display: none;
+				position: absolute;
+				bottom: 0;
+				height: 320px;
+				width: 240px;
+			}
+		}
+		&.openNav {
+			span {
+				&:hover {
+					color: red;
+					& > div {
+						display: flex;
+					}
+				}
+			}
 		}
 		@media screen {
 			@media (max-width: @1600width) {

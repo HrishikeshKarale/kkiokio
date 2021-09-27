@@ -120,18 +120,15 @@
 
 	footer {
 		padding: @spaceXl @spaceMd;
+		position: relative;
 		&.vueFooter {
-			position: relative;
 			display: flex;
-			flex-direction: column;
-			flex-wrap: nowrap;
-			// align-items: center;
-			justify-content: space-around;
+			flex-flow: column nowrap;
 			background-color: @navBackground;
 			font-size: @fontSizeSm;
 			color: @offWhite;
 			width: 100vw;
-			z-index: @contentZ;
+			z-index: @bodyZ;
 			min-height: @footer;
 			//footer logo
 			& > a {

@@ -8,7 +8,7 @@
 		<vue-form
 			text="Subscribe"
 			icon="fas fa-rss"
-			category="small"
+			category="fullWidth"
 			:singleAction="booleanTrue"
 			form="subscribeForm"
 			:ctx="subscribe.bind(this)"

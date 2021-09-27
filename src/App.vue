@@ -27,7 +27,7 @@
 	// @ is an alias to /src
 	import vueHeader from "@/components/vueHeader";
 	import enterpriseAppLayout from "@/components/enterpriseAppLayout";
-	import vueImg from "@/components/vueImg.vue";
+	import vueImg from "@/components/vueImg";
 	import vueFooter from "@/components/vueFooter.vue";
 	import { nav } from "@/store/navigation";
 
@@ -57,11 +57,12 @@
 	@import (reference) "./Less/customVariables.less";
 
 	.moto {
+		display: flex;
+		flex-direction: column;
+		display: none;
 		position: absolute;
 		bottom: 0;
 		right: 0;
-		display: flex;
-		flex-direction: column;
 		padding: @spaceMd @spaceLg 0;
 		height: fit-content;
 		z-index: @modalZ;

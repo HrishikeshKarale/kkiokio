@@ -1,5 +1,8 @@
 <template>
 	<article class="profileOverview">
+		<!-- <section>
+			<slider />
+		</section> -->
 		<section id="intro">
 			<div class="subSection">
 				<span>HELLO THERE</span>
@@ -50,13 +53,22 @@
 				>Globally adopted software, high converting websites, emerging
 				technology and beyond.
 			</q>
+			<q>
+				A good User Interface is important because it can turn potential
+				visitors to buyers as it facilitates interactions between the user and
+				your website or web application----f5-studio.com
+			</q>
 			<p>
 				This is a detailed chronicle of the stories, processes and results
 				behind the projects that I've led and contributed to.
 			</p>
 			<ul>
 				<template v-for="project in projectList" :key="project.type">
-					<li v-if="project.type != 'Logo'">
+					<li
+						v-if="
+							project.type != 'Logo' && projectSkills[project.type].length > 0
+						"
+					>
 						<router-link :to="{ name: 'project', hash: `#${project.type}` }">
 							<h3>
 								{{ project.type }}
@@ -119,11 +131,13 @@
 	// @ is an alias to /src
 	import vueButton from "@/components/vueButton.vue";
 	import { loading } from "@/typeScript/common/loading";
+	// import slider from "./projects/js/slider.vue";
 
 	export default {
 		name: "Home",
 		components: {
 			vueButton,
+			// slider,
 		},
 		mixins: [loading],
 		data() {
@@ -180,6 +194,7 @@
 			&#intro {
 				flex-direction: row;
 				justify-content: space-evenly;
+				align-self: center;
 				& > div {
 					& > h1,
 					& > h2:first-child {
@@ -225,6 +240,52 @@
 					}
 				}
 			}
+			&#projects {
+				& > q {
+					text-align: center;
+				}
+				& > ul {
+					display: flex;
+					flex-flow: row wrap;
+					gap: @spaceLg;
+					justify-content: space-evenly;
+					align-self: center;
+					& > li {
+						display: flex;
+						flex-direction: column;
+						flex: 0 1 480px;
+						border-radius: @borderRadiusLg;
+						border: 1px dashed @primaryColor;
+						height: fit-content;
+						.backgroundColor();
+						& > a {
+							margin-left: @spaceXl !important;
+							& + ul {
+								display: flex;
+								flex-flow: row wrap;
+								gap: @spaceLg;
+								& {
+									margin: @spaceXl !important;
+									margin-top: 0 !important;
+								}
+								gap: @spaceMd;
+								& > li {
+									&:hover {
+										background-color: @accentColor;
+										.boxShadow(@four, @accentColor);
+										& > span {
+											transform: scale(1);
+										}
+										& > b {
+											color: @backgroundColor;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 			&#kindWords {
 				& > div {
 					display: flex;
@@ -238,44 +299,17 @@
 						border-radius: @borderRadiusLg;
 						border: 1px dashed @primaryColor;
 						height: fit-content;
-						padding: @spaceXl;
+						.backgroundColor();
+						gap: @spaceLg;
 						& > q {
+							margin: @spaceXl;
 							& + h5 {
-								text-align: right;
-								&::before {
+								display: flex;
+								flex-direction: row-reverse;
+								margin-right: @spaceXl;
+								gap: @spaceMd;
+								&::after {
 									content: "-";
-									margin-right: @spaceMd;
-								}
-							}
-						}
-					}
-				}
-			}
-			&#projects {
-				& > q {
-					text-align: center;
-				}
-				& > ul {
-					display: flex;
-					flex-flow: row wrap;
-					gap: @spaceLg;
-					// justify-content: space-between;
-					& > li {
-						flex: 0 1 320px;
-						& > ul {
-							display: flex;
-							flex-flow: row wrap;
-							gap: @spaceMd;
-							& > li {
-								&:hover {
-									background-color: @accentColor;
-									.boxShadow(@four, @accentColor);
-									& > span {
-										transform: scale(1);
-									}
-									& > b {
-										color: @backgroundColor;
-									}
 								}
 							}
 						}
@@ -290,7 +324,6 @@
 						margin-bottom: @spaceXl;
 						&#intro {
 							flex-direction: column-reverse;
-							.res1200p();
 							& > div {
 								&:last-child {
 									margin: 2 * @spaceXl 0;
@@ -300,6 +333,16 @@
 									& > span {
 										font-size: 2 * @fontSize;
 									}
+								}
+							}
+						}
+						&#projects {
+							& > ul {
+								flex-direction: column;
+								flex: none;
+								& > li {
+									max-width: 640px;
+									min-width: 240px;
 								}
 							}
 						}

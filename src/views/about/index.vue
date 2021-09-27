@@ -10,6 +10,29 @@
 					<h1>Hrishikesh Karale</h1>
 					<h3>Sr. UX Designer</h3>
 					<h4>Full Stack Designer</h4>
+					<div class="social">
+						<a target="_blank" href="https://github.com/HrishikeshKarale">
+							<span class="fab fa-github fa-2x" />
+							<!-- <b>
+            @hrishikesh-karale
+          </b> -->
+						</a>
+						<a target="_blank" href="https://www.npmjs.com/~kkiokio">
+							<span class="fab fa-npm fa-2x" />
+							<!-- <b>
+            @kkiokio
+          </b> -->
+						</a>
+						<a
+							target="_blank"
+							href="https://www.linkedin.com/in/hrishikesh-karale/"
+						>
+							<span class="fab fa-linkedin-in fa-2x" />
+							<!-- <b>
+            @hrishikesh-karale
+          </b> -->
+						</a>
+					</div>
 				</div>
 			</div>
 			<div>
@@ -356,6 +379,17 @@
 							& > h3,
 							& > h4 {
 								margin-top: 0;
+							}
+							& > .social {
+								display: flex;
+								align-self: center;
+								justify-content: space-evenly;
+								width: fit-content;
+								& > a {
+									& > span {
+										margin: 0 @spaceLg;
+									}
+								}
 							}
 						}
 						& > .vueImg {

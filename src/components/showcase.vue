@@ -91,8 +91,8 @@
 			position: relative;
 			& > .vueImg {
 				position: relative;
-				width: calc(100% + @spaceXl) !important;
-				height: calc(100% + @spaceMd);
+				width: ~"calc(100% + @{spaceXl})" !important;
+				height: ~"calc(100% + @{spaceMd})";
 				margin-left: -@spaceLg;
 				margin-top: -@spaceMd;
 				border-radius: @borderRadius @borderRadius 0 0 !important;
@@ -103,8 +103,8 @@
 					top: 0;
 					margin-left: 0;
 					margin-top: -@spaceMd;
-					height: calc(100% + @spaceMd);
-					width: calc(100% + 4 * @spaceMd);
+					height: ~"calc(100% + @{spaceMd})";
+					width: ~"calc(100% + 4 * @{spaceMd})";
 					content: "";
 					background: -moz-linear-gradient(
 							top,

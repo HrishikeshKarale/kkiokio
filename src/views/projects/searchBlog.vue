@@ -5,7 +5,7 @@
 		<vue-form
 			text="Search"
 			icon="fas fa-search"
-			category="small"
+			category="fullWidth"
 			:singleAction="booleanTrue"
 			form="searchBlogForm"
 			:ctx="searchBlog.bind(this)"

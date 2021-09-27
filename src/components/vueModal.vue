@@ -152,7 +152,7 @@
 			height: 100%;
 			background-color: rgba(0, 0, 0, 0.64);
 			display: table;
-			transition: @transition;
+			transition: .transition();
 
 			& > .wrapper {
 				display: flex;
@@ -168,7 +168,7 @@
 					height: fit-content;
 					background-color: @backgroundColor;
 					border-radius: @borderRadius;
-					transition: @transition;
+					transition: .transition();
 					.boxShadow(@two);
 					.backgroundColor();
 					&.loading {

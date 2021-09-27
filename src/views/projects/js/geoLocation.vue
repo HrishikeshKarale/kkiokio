@@ -104,7 +104,7 @@
 		.compass {
 			width: 250px;
 			overflow: hidden;
-			transition: @transition;
+			transition: .transition();
 			transform: rotate(0deg);
 			display: inline-block;
 		}

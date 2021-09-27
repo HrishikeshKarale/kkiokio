@@ -3,7 +3,7 @@
 		<template v-if="$slots['header']">
 			<slot name="header" />
 		</template>
-		<main class="body">
+		<div class="body">
 			<vue-modal
 				tag="loadingScreen"
 				:display="display"
@@ -163,7 +163,7 @@
 				@enter="enter"
 				@afterEnter="afterEnter"
 			>
-				<div :key="$route.path" class="content">
+				<main :key="$route.path" class="content">
 					<breadcrums />
 					<countdown-timer
 						class="countdownTimer"
@@ -197,12 +197,12 @@
 					<template v-if="$slots['moto']">
 						<slot name="moto" />
 					</template>
-				</div>
+				</main>
 			</transition>
 			<template v-if="$slots['footer']">
 				<slot name="footer" />
 			</template>
-		</main>
+		</div>
 	</div>
 </template>
 
@@ -515,9 +515,9 @@
 		flex-direction: column;
 		height: 100vh;
 		width: 100%;
-		.backgroundColor(@primaryColor, 4%);
+		.backgroundColor(@primaryColor, 16%);
 		position: static;
-		& > main {
+		& > div {
 			display: flex;
 			height: 100%;
 			&.body {
@@ -535,18 +535,17 @@
 				}
 
 				//scroll content
-				& > div {
+				& > main {
 					display: flex;
 					flex-direction: column;
 					&.content {
 						color: @textColor;
-						max-width: 72vw;
-						min-width: min-content;
-						background-color: @backgroundColor !important;
+						.responsive(@1600width, 4);
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
 						align-self: center !important;
 						z-index: @contentZ;
-						// .boxShadow(@one, @primaryColor);
+						.boxShadow(@one, @secondaryColor,@contentZ);
+						background-color: @backgroundColor !important;
 						//countdown timer
 						& > .countdownTimer {
 							flex-direction: row;
@@ -562,55 +561,55 @@
 		}
 		@media screen {
 			@media (max-width: @1600width) {
-				& > main {
+				& > div {
 					&.body {
-						& > div {
+						& > main {
 							&.content {
-								.res1600p();
+								.responsive(@1200width, 0);
 							}
 						}
 					}
 				}
 			}
 			@media (max-width: @1200width) {
-				& > main {
+				& > div {
 					&.body {
-						& > div {
+						& > main {
 							&.content {
-								.res1200p();
+								.responsive(@768width, 6);
 							}
 						}
 					}
 				}
 			}
 			@media (max-width: @768width) {
-				& > main {
+				& > div {
 					&.body {
-						& > div {
+						& > main {
 							&.content {
-								.res768p();
+								.responsive(@480width, 2);
 							}
 						}
 					}
 				}
 			}
 			@media (max-width: @480width) {
-				& > main {
+				& > div {
 					&.body {
-						& > div {
+						& > main {
 							&.content {
-								.res480p();
+								.responsive(@320width, 2);
 							}
 						}
 					}
 				}
 			}
 			@media (max-width: @320width) {
-				& > main {
+				& > div {
 					&.body {
-						& > div {
+						& > main {
 							&.content {
-								.res320p();
+								.responsive(@320width, -2);
 							}
 						}
 					}

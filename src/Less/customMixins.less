@@ -265,7 +265,7 @@
     &>span {
       margin-left: @spaceSm;
       color: @infoText;
-      font-size: calc(@fontSizeSm - 4px);
+      font-size:~"calc(@{fontSizeSm} - 4px)";
       .opacity(0.64);
 
       &>abbr {
@@ -560,7 +560,7 @@
       &+span {
         position: absolute;
         cursor: pointer;
-        left: calc(100% + @spaceMd);
+        left:~"calc(100% + @{spaceMd})";
         font-size: @fontSizeMd;
         top: 50%;
         transform: translate(0, -50%);
@@ -603,7 +603,7 @@
           &+span {
             cursor: pointer;
             font-size: @fontSizeMd;
-            left: calc(100% + @spaceMd);
+            left:~"calc(100% + @{spaceMd})";
             color: @accentColor;
           }
 
@@ -675,7 +675,7 @@
   }
 }
 
-.scroll (@height, @width: @spaceMd) {
+.scroll (@height: 100vh, @width: @spaceMd) {
   max-height: @height;
   overflow-y: auto;
 
@@ -780,6 +780,11 @@
   }
 }
 
+//transition
+.transition(@transitionElement: all, @transitionDuration: 0.8s, @transitionTimingFunction: cubic-bezier(0.55, 0, 0.1, 1)) {
+  @transition: @transitionElement @transitionDuration @transitionTimingFunction;
+}
+
 
 //https://codepen.io/origine/pen/KVzpYm
 
@@ -794,27 +799,7 @@
 }
 
 //media query width
-.res320p() {
-  max-width: @320width;
-  min-width: 240px;
-}
 
-.res480p() {
-  max-width: @480width - 2*@spaceXl;
-  min-width: @320width - 2*@spaceXl;
-}
-
-.res768p() {
-  max-width: @768width - 2*@spaceXl;
-  min-width: @480width - 2*@spaceXl;
-}
-
-.res1200p() {
-  max-width: @1200width - 2*@spaceXl;
-  min-width: @768width - 2*@spaceXl;
-}
-
-.res1600p() {
-  max-width: @1600width - 2*@spaceXl;
-  min-width: @1200width - 2*@spaceXl;
+.responsive(@width: 240px, @multiple: 2) {
+  max-width:~"calc(@{width} + ( @{multiple} * @{spaceXl} ) )";
 }

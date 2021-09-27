@@ -55,18 +55,20 @@
 
 	.vueImg {
 		display: flex;
+		flex-flow: column nowrap;
 		justify-content: center;
 		align-content: center;
 		align-self: center;
 		gap: @spaceLg;
-		z-index: @contentZ;
+		z-index: inherit;
 		margin-block-end: 0;
 		margin-block-start: 0;
 		margin-inline-end: 0;
 		margin-inline-start: 0;
 		width: 100%;
 		& > img {
-			width: inherit !important;
+			max-width: 100%;
+			height: inherit;
 		}
 	}
 </style>

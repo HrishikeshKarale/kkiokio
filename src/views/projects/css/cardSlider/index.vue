@@ -52,7 +52,7 @@
 			margin: @spaceMd @spaceLg;
 			padding: @spaceMd @spaceLg;
 			min-height: 360px;
-			transition: @transition;
+			transition: .transition();
 			border: 1px solid @accentColor;
 			.boxShadow(none);
 			cursor: pointer;
@@ -64,7 +64,7 @@
 				padding: @spaceLg;
 				margin: 0;
 				z-index: @contentZ + 25;
-				transition: @transition;
+				transition: .transition();
 			}
 			& > span {
 				left: auto;
@@ -75,12 +75,12 @@
 				align-self: center;
 				height: 240px;
 				width: 240px;
-				transition: @transition;
+				transition: .transition();
 				background-color: grey;
 				transform: scale(0.9);
 			}
 			& > .content {
-				transition: @transition;
+				transition: .transition();
 				& > p {
 					opacity: 0.6;
 					margin-top: @spaceMd;

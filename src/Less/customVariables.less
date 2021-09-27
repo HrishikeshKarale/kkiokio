@@ -77,7 +77,7 @@
 //height content
 @header: 120px;
 @footer: fit-content;
-@body: calc(100vh - @header);
+@body: ~"calc(100vh - @{header})";
 
 //letter spacing
 @letterSpacing: 0px;
@@ -109,9 +109,10 @@
 @fiveText: @five;
 
 //transitions
-@transitionDuration: 0.3s;
+@transitionElement: all;
+@transitionDuration: 0.8s;
 @transitionTimingFunction: cubic-bezier(0.55, 0, 0.1, 1);
-@transition: all @transitionDuration @transitionTimingFunction;
+// @transition: all @transitionDuration @transitionTimingFunction;
 
 
 //z-index

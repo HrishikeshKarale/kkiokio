@@ -1,10 +1,6 @@
 <template>
 	<button
-		:class="[
-			'vueButton',
-			['fullWidth', 'border-fwidth'].includes(category) ? 'fullWidth' : null,
-			buttonClass,
-		]"
+		:class="['vueButton', buttonClass]"
 		:type="type"
 		:name="tag"
 		:autofocus="autofocus"
@@ -168,7 +164,7 @@
 					this.buttonClass += "btn-lg";
 					break;
 				case "fullWidth":
-					this.buttonClass += "btn-fullWidth btn-block";
+					this.buttonClass += "btn-fullWidth .btn-primary";
 					break;
 				case "border":
 					this.buttonClass += "btn-border";
@@ -259,8 +255,7 @@
 			font-weight: bold;
 		}
 
-		&.fullWidth,
-		.btn-fullWidth {
+		&.btn-fullWidth {
 			width: 100%;
 		}
 

@@ -15,12 +15,21 @@
 			:selected="{ type: ['tags'], value: [propFilter] }"
 			@updateFilter="updateFilter"
 		/>
-		<section
-			v-for="projects in projectList"
-			:id="projects.type"
-			:key="projects.type"
-		>
-			<card-scroller :title="projects.type" :auto-scroll="!autoScroll">
+		<template v-for="projects in projectList" :key="projects.type">
+			<card-scroller
+				:id="projects.type"
+				:title="projects.type"
+				:auto-scroll="!autoScroll"
+				v-show="
+					projects.value.some((project) => {
+						return (
+							propFilter.length == 0 ||
+							(propFilter.length > 0 &&
+								propFilter.some((filter) => project.tags.includes(filter)))
+						);
+					})
+				"
+			>
 				<showcase
 					v-for="project in projects.value"
 					v-show="
@@ -34,7 +43,7 @@
 					:article="project.blog != null ? project.title : ''"
 				/>
 			</card-scroller>
-		</section>
+		</template>
 	</article>
 </template>
 

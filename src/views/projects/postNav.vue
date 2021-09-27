@@ -1,5 +1,5 @@
 <template>
-	<div class="postNav">
+	<section class="postNav">
 		<div class="previous" v-if="previous != null">
 			<h3
 				@click="
@@ -28,7 +28,7 @@
 				{{ next.title }}
 			</h3>
 		</div>
-	</div>
+	</section>
 </template>
 
 <script>
@@ -87,6 +87,48 @@
 		& > .next {
 			&:before {
 				content: "Next Post";
+			}
+		}
+		@media screen {
+			@media (max-width: @1600width) {
+				// .responsive(@1200width, -3);
+			}
+
+			@media (max-width: @1200width) {
+				& > .previous,
+				& > .next {
+					& > h3 {
+						font-size: @fontSize;
+						font-weight: 300;
+						margin-top: @spaceLg !important;
+						margin-bottom: 0 !important;
+					}
+				}
+			}
+
+			@media (max-width: @768width) {
+				// .responsive(@480width, -1);
+			}
+
+			@media (max-width: @480width) {
+				// .responsive(@320width, 0);
+				flex-flow: column nowrap !important;
+				& > .previous,
+				& > .next {
+					& > h3 {
+						font-size: 2 * @fontSizeMd;
+						font-weight: 300;
+						margin-top: @spaceLg !important;
+						margin-bottom: 0 !important;
+					}
+					&:before {
+						margin-bottom: @spaceMd;
+					}
+				}
+			}
+
+			@media (max-width: @320width) {
+				.responsive(@320width, -2);
 			}
 		}
 	}

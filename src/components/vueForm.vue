@@ -153,12 +153,18 @@
 		align-self: center;
 		width: fit-content;
 		height: fit-content;
+		gap: @spaceXl;
+		width: 100%;
 		&.singleAction {
-			flex-flow: row nowrap;
+			gap: 0;
+			flex-flow: row wrap;
+			& > .formElements {
+				max-width: 320px;
+				min-width: 240px;
+			}
 			& > .formButtons {
-				width: fit-content;
 				align-self: flex-start;
-				margin-top: @spaceSm+1;
+				justify-content: flex-end;
 				margin-right: 0;
 			}
 		}

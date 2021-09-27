@@ -19,25 +19,27 @@
 	@import (reference) "../Less/customMixins.less";
 	@import (reference) "../Less/customVariables.less";
 
+	@sideBarWidth: 320px;
+
 	.sideBySideLayout {
 		display: flex;
 		flex-flow: row nowrap;
 		gap: @spaceXl;
+		/* padding: 32px; */
 
 		& > div {
 			display: flex;
 			flex-direction: column;
 			height: 100%;
-			width: 100%;
 			gap: @spaceXl;
 			height: fit-content;
 
 			&.left {
-				.res1600p();
+				.responsive(@1600width - @sideBarWidth, 0);
 			}
 
 			&.right {
-				max-width: 320px;
+				max-width: @sideBarWidth;
 				min-width: 240px;
 				margin-top: 7 * @spaceLg;
 			}
@@ -46,14 +48,14 @@
 			@media (max-width: @1600width) {
 				& > div {
 					&.left {
-						.res1200p();
+						.responsive(@1200width - @sideBarWidth, 0);
 					}
 				}
 			}
 			@media (max-width: @1200width) {
 				& > div {
 					&.left {
-						.res1200p();
+						.responsive(@768width - @sideBarWidth, 0);
 					}
 				}
 			}
@@ -62,7 +64,7 @@
 				& > div {
 					&.left,
 					&.right {
-						.res768p();
+						.responsive(@768width, -2);
 					}
 					&.right {
 						margin-top: 0;
@@ -75,7 +77,7 @@
 				& > div {
 					&.left,
 					&.right {
-						.res480p();
+						.responsive(@480width, 0);
 					}
 				}
 			}
@@ -83,7 +85,7 @@
 				& > div {
 					&.left,
 					&.right {
-						.res320p();
+						.responsive(@1200width - @sideBarWidth, 0);
 					}
 				}
 			}
