@@ -276,6 +276,7 @@
 										& > h5 {
 											visibility: visible;
 											color: @text;
+											margin-top: @spaceSm !important;
 											margin-bottom: 0 !important;
 										}
 									}
@@ -363,7 +364,7 @@
 								& > h3 {
 									color: @white;
 									width: max-content;
-									align-self: center;
+									text-align: center;
 									margin: 0 !important;
 									& > h5 {
 										visibility: hidden;
