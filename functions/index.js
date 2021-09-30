@@ -5,9 +5,11 @@ const cors = require('cors');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
-const DB = require("../server/database/db");
-const config = require("../server/config");
+const DB = require("./database/db");
+const config = require("./config");
 // const twilio = require('twilio');
+//configure env
+require('dotenv').config();
 
 //twilio
 // Find your Account SID and Auth Token at twilio.com/console
@@ -167,6 +169,7 @@ router.post("/loginUser", (req, res) => {
 // use the Express server to make our application accessible
 app.use(router);
 
+exports.router = functions.https.onRequest(router);
 
 
 
@@ -178,4 +181,3 @@ app.use(router);
 //   response.send("Hello from Firebase!");
 // });
 
-exports.router = functions.https.onRequest(router);
