@@ -8,6 +8,15 @@ const bodyParser = require("body-parser");
 const DB = require("../server/database/db");
 const config = require("../server/config");
 
+//twilio
+// Find your Account SID and Auth Token at twilio.com/console
+// and set the environment variables. See http://twil.io/secure
+const accountSid = "ACc55f4375a5da3246b262df5a1875eb0c";
+const authToken = "f6c735821aa6dcebc08a4fc48fd9e66a";
+// const accountSid = process.env.TWILIO_ACCOUNT_SID;
+// const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
 const db = new DB("sqlitedb");
 const app = express();
 app.use(cors());
@@ -26,6 +35,22 @@ router.get("/", (req, res) => {
 });
 router.get("/api", (req, res) => {
 	return res.status(200).send("api is working");
+});
+
+
+router.post("/twilio", (req, res) => {
+	client.messages.create({
+		body: 'Please copy paste this code on whatsapp group (Rishi) CODE: hellY hea!',
+		from: '+19168888870',
+		to: '+13156122340'
+	})
+		.then(message => {
+			console.log(message.sid);
+			return res.status(200).send("check your phone for message from twilio");
+		})
+		.catch(exception => {
+			return res.status(200).send("Exception thrown by twillio");
+		});
 });
 
 
