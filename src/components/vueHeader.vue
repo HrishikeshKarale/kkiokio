@@ -413,6 +413,9 @@
 					outline: 0 solid rgba(0, 0, 0, 0.08);
 					left: 0;
 					top: 0;
+					&.mini {
+						height: 64px;
+					}
 					.scroll();
 					& > .menuTrigger {
 						display: flex;
