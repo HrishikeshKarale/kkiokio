@@ -33,10 +33,22 @@ router.use(
 );
 router.use(bodyParser.json());
 
-
-router.get("/", (req, res) => {
-	return res.status(200).send("Server is working");
-});
+router.route('/')
+	.get(function (req, res) {
+		res.send('server is working (get)');
+	})
+	.delete(function (req, res) {
+		res.send('server is working (delete)');
+	})
+	.post(function (req, res) {
+		res.send('server is working (post)');
+	})
+	.put(function (req, res) {
+		res.send('server is working (put)');
+	});
+// router.get("/", (req, res) => {
+// 	return res.status(200).send("Server is working");
+// });
 router.get("/api", (req, res) => {
 	return res.status(200).send("api is working");
 });
