@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
-const register = require("./controller");
+const otpRoutes = require("./otp/route");
+const smsRoutes = require("./sms/route");
 
 //handle request made to api/authenticate
 const route = express.Router();
 
-// defining router for registering a new user
-route.post("/register:isAdmin", register.controller);
+route.use("/twilio", otpRoutes);
+route.use("/twilio", smsRoutes);
 
 module.exports = route;

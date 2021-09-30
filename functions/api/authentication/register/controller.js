@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const DB = require("../../../database/db");
+const config = require("../../../config");
+const db = new DB("sqlitedb");
 const controller = (req, res) => {
 	//console.log("pretneder");
 	const name = req.body.name;
@@ -30,6 +34,6 @@ const controller = (req, res) => {
 	});
 };
 
-module.export = {
+module.exports = {
 	controller
 };

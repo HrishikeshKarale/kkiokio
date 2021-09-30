@@ -409,7 +409,7 @@
 				e.preventDefault();
 				if (this.password.length > 0) {
 					this.axios
-						.post("http://localhost:8001/loginUser", {
+						.post("http://localhost:8001/login", {
 							email: this.emailID,
 							password: this.password,
 						})

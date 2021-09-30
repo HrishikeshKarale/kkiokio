@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const DB = require("../../../database/db");
+const config = require("../../../config");
+const db = new DB("sqlitedb");
 const controller = (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
@@ -28,6 +32,6 @@ const controller = (req, res) => {
 	});
 };
 
-module.export = {
+module.exports = {
 	controller
 };

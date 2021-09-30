@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { Router } = require("express");
-const { loginRouter } = require("./authentication/login");
-const { registerRouter } = require("./authentication/register");
+const express = require("express");
+const twilioRoutes = require("./twilio/index");
+const authenticateRoutes = require("./authentication/index");
 
 //handle request made to api/authenticate
-const authenticateRouter = Router();
+const route = express().Router();
 
-authenticateRouter.use("/authenticate", loginRouter);
-authenticateRouter.use("/authenticate", registerRouter);
+route.use("/api", twilioRoutes);
+route.use("/api", authenticateRoutes);
 
-module.export = {
-	authenticateRouter
-};
+module.exports = route;

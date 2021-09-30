@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
-const register = require("./controller");
+const loginRoutes = require("./login/route");
+const registerRoutes = require("./register/route");
 
 //handle request made to api/authenticate
 const route = express.Router();
 
-// defining router for registering a new user
-route.post("/register:isAdmin", register.controller);
+route.use("/authenticate", loginRoutes);
+route.use("/authenticate", registerRoutes);
 
 module.exports = route;
