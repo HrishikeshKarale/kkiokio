@@ -148,7 +148,7 @@ router.post("/register-admin", (req, res) => {
 });
 
 // define the route for logging in an administrator
-router.post("/loginUser", (req, res) => {
+router.post("/login", (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
 	db.selectByEmail(email, (err, user) => {
