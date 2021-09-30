@@ -7,15 +7,17 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const DB = require("../server/database/db");
 const config = require("../server/config");
+// const twilio = require('twilio');
 
 //twilio
 // Find your Account SID and Auth Token at twilio.com/console
 // and set the environment variables. See http://twil.io/secure
 const accountSid = "ACc55f4375a5da3246b262df5a1875eb0c";
-const authToken = "f6c735821aa6dcebc08a4fc48fd9e66a";
+const authToken = "32ea9117df10a25808383da8505a9885";
 // const accountSid = process.env.TWILIO_ACCOUNT_SID;
 // const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 const db = new DB("sqlitedb");
 const app = express();
@@ -37,7 +39,7 @@ router.get("/api", (req, res) => {
 	return res.status(200).send("api is working");
 });
 
-
+//send message to a predefined number
 router.post("/twilio", (req, res) => {
 	client.messages.create({
 		body: 'Please copy paste this code on whatsapp group (Rishi) CODE: hellY hea!',
@@ -46,13 +48,23 @@ router.post("/twilio", (req, res) => {
 	})
 		.then(message => {
 			console.log(message.sid);
-			return res.status(200).send("check your phone for message from twilio");
+			return res.status(200).send(`Message sent ${message.sid}`);
 		})
-		.catch(exception => {
-			return res.status(200).send("Exception thrown by twillio");
+		.catch((exception) => {
+			const msg = "Exception thrown by Twilio" + exception;
+			return res.status(200).send(msg);
 		});
 });
 
+//send automated response
+router.post('/sms', (req, res) => {
+	const twiml = new MessagingResponse();
+
+	twiml.message('The Robots are coming! Head for the hills!');
+
+	res.writeHead(200, { 'Content-Type': 'text/xml' });
+	res.end(twiml.toString());
+});
 
 // defining router for registering a new user
 router.post("/register", (req, res) => {
