@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const DB = require("../../../database/db");
 const config = require("../../../config");
 const db = new DB("sqlitedb");
+
 const controller = (req, res) => {
-	//console.log("pretneder");
 	const name = req.body.name;
 	const email = req.body.email;
 	const username = req.body.username;
 	const password = req.body.password;
-	const isAdmin = req.param.isAdmin ? req.param.isAdmin : 0;
+	const isAdmin = (req.params.isAdmin !== null) ? req.params.isAdmin : 0;
 	db.insert([name, email, username, bcrypt.hashSync(password, 8), isAdmin], err => {
 		if (err) {
-			// console.error("register user", err);
+			console.error("register user", err);
 			return res.status(500).send("There was a problem registering the user.");
 		}
 		db.selectByEmail(email, (err, user) => {

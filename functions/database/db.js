@@ -60,16 +60,6 @@ class Db {
     );
   }
 
-  insertAdmin(user, callback) {
-    return this.db.run(
-      "INSERT INTO user (name, email, username, user_pass, is_admin) VALUES (?,?,?,?,?)",
-      user,
-      err => {
-        callback(err);
-      }
-    );
-  }
-
   selectAll(callback) {
     return this.db.all("SELECT * FROM user", (err, rows) => {
       callback(err, rows);
@@ -77,6 +67,7 @@ class Db {
   }
 
   insert(user, callback) {
+    console.log("user");
     return this.db.run(
       "INSERT INTO user (name, email, username, user_pass, is_admin) VALUES (?,?,?,?,?)",
       user,

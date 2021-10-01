@@ -6,6 +6,6 @@ const controller = require("./controller");
 const route = express.Router();
 
 // defining router for registering a new user
-route.post("/register:isAdmin", controller);
+route.post("/register/:isAdmin", controller);
 
 module.exports = route;

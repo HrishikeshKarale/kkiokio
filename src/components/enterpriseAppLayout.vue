@@ -409,10 +409,16 @@
 				e.preventDefault();
 				if (this.password.length > 0) {
 					this.axios
-						.post("http://localhost:8001/login", {
-							email: this.emailID,
-							password: this.password,
-						})
+						.post(
+							"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/login",
+							{
+								email: this.emailID,
+								password: this.password,
+							},
+							{
+								"Content-Type": "text/plain",
+							}
+						)
 						.then((response) => {
 							// const isAdmin = response.data.user.isAdmin;
 							localStorage.setItem("user", JSON.stringify(response.data.user));
@@ -443,19 +449,24 @@
 
 			handleSignUp(e) {
 				e.preventDefault();
-				let url = "http://localhost:8001/register";
-				if (this.isAdmin == 1) {
-					url = "http://localhost:8001/register-admin";
-				}
+				const url =
+					"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/register/" +
+					this.isAdmin;
 				//POST request
 				this.axios
-					.post(url, {
-						name: this.signupName,
-						email: this.signupEmail,
-						username: this.signupUsername,
-						password: this.signupPassword,
-						isAdmin: this.isAdmin,
-					})
+					.post(
+						url,
+						{
+							name: this.signupName,
+							email: this.signupEmail,
+							username: this.signupUsername,
+							password: this.signupPassword,
+							isAdmin: this.isAdmin,
+						},
+						{
+							"Content-Type": "text/plain",
+						}
+					)
 					.then((response) => {
 						localStorage.setItem("user", JSON.stringify(response.data.user));
 						localStorage.setItem("jwt", response.data.token);
