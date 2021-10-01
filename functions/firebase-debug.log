@@ -5,7 +5,7 @@
 [debug] [2021-10-01T21:10:49.736Z] Node Version:  v15.6.0
 [debug] [2021-10-01T21:10:49.737Z] Time:          Fri Oct 01 2021 17:10:49 GMT-0400 (Eastern Daylight Time)
 [debug] [2021-10-01T21:10:49.737Z] ----------------------------------------------------------------------
-[debug] [2021-10-01T21:10:49.737Z] 
+[debug] [2021-10-01T21:10:49.737Z]
 [debug] [2021-10-01T21:10:49.743Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
 [debug] [2021-10-01T21:10:49.744Z] > authorizing via signed-in user
 [info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
@@ -41,7 +41,7 @@
 [debug] [2021-10-01T21:10:50.330Z] [runtime-status] [15056] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.15.7","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [15056] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.15.7\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
 [debug] [2021-10-01T21:10:50.330Z] [runtime-status] [15056] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.12.0","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [15056] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
 [info] +  functions[router]: http function initialized (http://localhost:5001/portfolio-website-689b4/us-central1/router). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/portfolio-website-689b4/us-central1/router)."}}
-[info] 
+[info]
 ┌─────────────────────────────────────────────────────────────┐
 │ ✔  All emulators ready! It is now safe to connect your app. │
 │ i  View Emulator UI at http://localhost:4042                │
@@ -56,7 +56,7 @@
   Other reserved ports: 4500
 
 Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
- 
+
 [debug] [2021-10-01T21:10:51.221Z] [worker-~diagnostic~-afd48383-8ab6-42e4-8805-2c79249fbb7e]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-afd48383-8ab6-42e4-8805-2c79249fbb7e]: IDLE"}}
 [debug] [2021-10-01T21:10:53.347Z] [work-queue] {"queueLength":1,"workRunningCount":0}
 [debug] [2021-10-01T21:10:53.347Z] [work-queue] {"queueLength":0,"workRunningCount":1}
@@ -87,15 +87,24 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [debug] [2021-10-01T21:10:54.474Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
 [debug] [2021-10-01T21:10:54.490Z] [runtime-status] [19552] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"[runtime-status] [19552] Ephemeral server handling POST request"}}
 [debug] [2021-10-01T21:10:54.493Z] [runtime-status] [19552] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"[runtime-status] [19552] Ephemeral server survived."}}
-[info] >  D:\Website desing\kkiokio\functions\node_modules\bcrypt\bcrypt.js:166 {"user":"D:\\Website desing\\kkiokio\\functions\\node_modules\\bcrypt\\bcrypt.js:166\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m D:\\Website desing\\kkiokio\\functions\\node_modules\\bcrypt\\bcrypt.js:166\r"}}
-[info] >          throw new Error('data and hash arguments required'); {"user":"        throw new Error('data and hash arguments required');\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m         throw new Error('data and hash arguments required');\r"}}
-[info] >                ^ {"user":"              ^\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m               ^\r"}}
-[info] >   {"user":"\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m \r"}}
-[info] >  Error: data and hash arguments required {"user":"Error: data and hash arguments required\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m Error: data and hash arguments required\r"}}
-[info] >      at Object.compareSync (D:\Website desing\kkiokio\functions\node_modules\bcrypt\bcrypt.js:166:15) {"user":"    at Object.compareSync (D:\\Website desing\\kkiokio\\functions\\node_modules\\bcrypt\\bcrypt.js:166:15)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m     at Object.compareSync (D:\\Website desing\\kkiokio\\functions\\node_modules\\bcrypt\\bcrypt.js:166:15)\r"}}
-[info] >      at D:\Website desing\kkiokio\functions\api\authentication\login\controller.js:13:34 {"user":"    at D:\\Website desing\\kkiokio\\functions\\api\\authentication\\login\\controller.js:13:34\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m     at D:\\Website desing\\kkiokio\\functions\\api\\authentication\\login\\controller.js:13:34\r"}}
-[info] >      at Statement.<anonymous> (D:\Website desing\kkiokio\functions\database\db.js:48:9) {"user":"    at Statement.<anonymous> (D:\\Website desing\\kkiokio\\functions\\database\\db.js:48:9)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m     at Statement.<anonymous> (D:\\Website desing\\kkiokio\\functions\\database\\db.js:48:9)\r"}}
-[info] >      at Statement.replacement (D:\Website desing\kkiokio\functions\node_modules\sqlite3\lib\trace.js:25:27) {"user":"    at Statement.replacement (D:\\Website desing\\kkiokio\\functions\\node_modules\\sqlite3\\lib\\trace.js:25:27)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m     at Statement.replacement (D:\\Website desing\\kkiokio\\functions\\node_modules\\sqlite3\\lib\\trace.js:25:27)\r"}}
+[info] >  D:\Website desing\kkiokio\functions\node_modules\bcrypt\bcrypt.js:166
+ {"user":"D:\\Website desing\\kkiokio\\functions\\node_modules\\bcrypt\\bcrypt.js:166\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m D:\\Website desing\\kkiokio\\functions\\node_modules\\bcrypt\\bcrypt.js:166\r"}}
+[info] >          throw new Error('data and hash arguments required');
+ {"user":"        throw new Error('data and hash arguments required');\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m         throw new Error('data and hash arguments required');\r"}}
+[info] >                ^
+ {"user":"              ^\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m               ^\r"}}
+[info] >
+ {"user":"\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m \r"}}
+[info] >  Error: data and hash arguments required
+ {"user":"Error: data and hash arguments required\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m Error: data and hash arguments required\r"}}
+[info] >      at Object.compareSync (D:\Website desing\kkiokio\functions\node_modules\bcrypt\bcrypt.js:166:15)
+ {"user":"    at Object.compareSync (D:\\Website desing\\kkiokio\\functions\\node_modules\\bcrypt\\bcrypt.js:166:15)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m     at Object.compareSync (D:\\Website desing\\kkiokio\\functions\\node_modules\\bcrypt\\bcrypt.js:166:15)\r"}}
+[info] >      at D:\Website desing\kkiokio\functions\api\authentication\login\controller.js:13:34
+ {"user":"    at D:\\Website desing\\kkiokio\\functions\\api\\authentication\\login\\controller.js:13:34\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m     at D:\\Website desing\\kkiokio\\functions\\api\\authentication\\login\\controller.js:13:34\r"}}
+[info] >      at Statement.<anonymous> (D:\Website desing\kkiokio\functions\database\db.js:48:9)
+ {"user":"    at Statement.<anonymous> (D:\\Website desing\\kkiokio\\functions\\database\\db.js:48:9)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m     at Statement.<anonymous> (D:\\Website desing\\kkiokio\\functions\\database\\db.js:48:9)\r"}}
+[info] >      at Statement.replacement (D:\Website desing\kkiokio\functions\node_modules\sqlite3\lib\trace.js:25:27)
+ {"user":"    at Statement.replacement (D:\\Website desing\\kkiokio\\functions\\node_modules\\sqlite3\\lib\\trace.js:25:27)\r","metadata":{"emulator":{"name":"functions"},"function":{"name":"router"},"message":"\u001b[90m> \u001b[39m     at Statement.replacement (D:\\Website desing\\kkiokio\\functions\\node_modules\\sqlite3\\lib\\trace.js:25:27)\r"}}
 [debug] [2021-10-01T21:10:54.504Z] [worker-router-9512579c-89f7-4f65-9d6a-dcc1265f05a5]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-router-9512579c-89f7-4f65-9d6a-dcc1265f05a5]: exited"}}
 [debug] [2021-10-01T21:10:54.504Z] [worker-router-9512579c-89f7-4f65-9d6a-dcc1265f05a5]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-router-9512579c-89f7-4f65-9d6a-dcc1265f05a5]: FINISHED"}}
 [debug] [2021-10-01T21:10:54.504Z] [work-queue] {"queueLength":0,"workRunningCount":0}
@@ -621,3 +630,65 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [debug] [2021-10-01T21:20:19.235Z] [runtime-status] [19944] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.15.7","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [19944] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.15.7\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
 [debug] [2021-10-01T21:20:19.236Z] [runtime-status] [19944] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.12.0","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [19944] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
 [debug] [2021-10-01T21:20:20.116Z] [worker-~diagnostic~-e9bf41f1-dada-4209-8024-bfad3c775349]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-e9bf41f1-dada-4209-8024-bfad3c775349]: IDLE"}}
+[debug] [2021-10-01T21:53:31.121Z] [worker-~diagnostic~-e9bf41f1-dada-4209-8024-bfad3c775349]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-e9bf41f1-dada-4209-8024-bfad3c775349]: exited"}}
+[debug] [2021-10-01T22:03:58.084Z] ----------------------------------------------------------------------
+[debug] [2021-10-01T22:03:58.086Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kkiokio\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2021-10-01T22:03:58.087Z] CLI Version:   9.1.0
+[debug] [2021-10-01T22:03:58.087Z] Platform:      win32
+[debug] [2021-10-01T22:03:58.087Z] Node Version:  v15.6.0
+[debug] [2021-10-01T22:03:58.088Z] Time:          Fri Oct 01 2021 18:03:58 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-01T22:03:58.088Z] ----------------------------------------------------------------------
+[debug] [2021-10-01T22:03:58.088Z]
+[debug] [2021-10-01T22:03:58.095Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-01T22:03:58.096Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project portfolio-website-689b4. This may result in unexpected behavior.
+[debug] [2021-10-01T22:03:58.115Z] [hub] writing locator at C:\Users\kkiokio\AppData\Local\Temp\hub-portfolio-website-689b4.json
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub\u001b[22m"}}
+[warn] !  Your requested "node" version "12" doesn't match your global version "15" {"metadata":{"emulator":{"name":"functions"},"message":"Your requested \"node\" version \"12\" doesn't match your global version \"15\""}}
+[debug] [2021-10-01T22:03:58.142Z] defaultcredentials: writing to file C:\Users\kkiokio\AppData\Roaming\firebase\hrishirich619_gmail_com_application_default_credentials.json
+[debug] [2021-10-01T22:03:58.144Z] Setting GAC to C:\Users\kkiokio\AppData\Roaming\firebase\hrishirich619_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\kkiokio\\AppData\\Roaming\\firebase\\hrishirich619_gmail_com_application_default_credentials.json"}}
+[warn] !  ui: Emulator UI unable to start on port 4000, starting on 4043 instead. {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI unable to start on port 4000, starting on 4043 instead."}}
+[debug] [2021-10-01T22:03:58.234Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2021-10-01T22:03:58.234Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2021-10-01T22:03:58.234Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\kkiokio\\.cache\\firebase\\emulators\\ui-v1.4.1\\server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\kkiokio\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.4.1\\\\server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2021-10-01T22:03:58.324Z] Web / API server started at http://localhost:4043
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at http://localhost:4043\n"}}
+[info] i  functions: Watching "D:\Website desing\kkiokio\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"D:\\Website desing\\kkiokio\\functions\" for Cloud Functions..."}}
+[debug] [2021-10-01T22:03:58.508Z] [worker-pool] addWorker(~diagnostic~) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(~diagnostic~)"}}
+[debug] [2021-10-01T22:03:58.509Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key ~diagnostic~, total=1"}}
+[debug] [2021-10-01T22:03:58.509Z] [worker-pool] submitWork(triggerId=) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=)"}}
+[debug] [2021-10-01T22:03:58.509Z] [worker-~diagnostic~-1c93bfb2-3264-4b79-a889-2dea12a1cb79]: Assigning socketPath: \\?\pipe\D:\Website desing\kkiokio\functions\11476 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-1c93bfb2-3264-4b79-a889-2dea12a1cb79]: Assigning socketPath: \\\\?\\pipe\\D:\\Website desing\\kkiokio\\functions\\11476"}}
+[debug] [2021-10-01T22:03:58.509Z] [worker-~diagnostic~-1c93bfb2-3264-4b79-a889-2dea12a1cb79]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-1c93bfb2-3264-4b79-a889-2dea12a1cb79]: BUSY"}}
+[debug] [2021-10-01T22:03:58.679Z] [runtime-status] [11476] Functions runtime initialized. {"cwd":"D:\\Website desing\\kkiokio\\functions","node_version":"15.6.0"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Functions runtime initialized. {\"cwd\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\",\"node_version\":\"15.6.0\"}"}}
+[debug] [2021-10-01T22:03:58.679Z] [runtime-status] [11476] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Disabled runtime features: undefined"}}
+[debug] [2021-10-01T22:03:58.681Z] [runtime-status] [11476] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2021-10-01T22:03:58.684Z] [runtime-status] [11476] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.15.7","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.15.7\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2021-10-01T22:03:58.686Z] [runtime-status] [11476] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.15.7","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.15.7\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2021-10-01T22:03:58.687Z] [runtime-status] [11476] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2021-10-01T22:03:58.688Z] [runtime-status] [11476] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.15.7","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.15.7\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2021-10-01T22:03:58.730Z] [runtime-status] [11476] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Checked functions.config() {\"config\":{}}"}}
+[debug] [2021-10-01T22:03:58.730Z] [runtime-status] [11476] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.15.7","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.15.7\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2021-10-01T22:03:58.731Z] [runtime-status] [11476] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.15.7","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.15.7\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2021-10-01T22:03:58.732Z] [runtime-status] [11476] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.12.0","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2021-10-01T22:03:58.732Z] [runtime-status] [11476] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.15.7","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.15.7\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2021-10-01T22:03:58.733Z] [runtime-status] [11476] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.12.0","resolution":"D:\\Website desing\\kkiokio\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [11476] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"9.12.0\",\"resolution\":\"D:\\\\Website desing\\\\kkiokio\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[info] +  functions[router]: http function initialized (http://localhost:5001/portfolio-website-689b4/us-central1/router). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/portfolio-website-689b4/us-central1/router)."}}
+[info]
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4043                │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ localhost:5001 │ http://localhost:4043/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+
+[debug] [2021-10-01T22:03:59.710Z] [worker-~diagnostic~-1c93bfb2-3264-4b79-a889-2dea12a1cb79]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-1c93bfb2-3264-4b79-a889-2dea12a1cb79]: IDLE"}}
