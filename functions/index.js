@@ -3,9 +3,11 @@ const functions = require('firebase-functions');
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
 //api routes
 const apiRoutes = require("./api");
+//cors
+const corsFunc = require("./cors");
+
 
 const app = express();
 app.use(cors());
@@ -17,6 +19,8 @@ router.use(
 	})
 );
 router.use(bodyParser.json());
+
+router.all('/*', corsFunc);
 
 router.route('/')
 	.get(function (req, res) {
