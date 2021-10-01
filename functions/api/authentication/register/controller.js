@@ -1,22 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { Router } = require("express");
-const config = require("../../config");
-const DB = require("../../database/db");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-
-//handle request made to api/authenticate
-const registerRouter = Router();
+const DB = require("../../../database/db");
+const config = require("../../../config");
 const db = new DB("sqlitedb");
-
-// defining router for registering a new user
-registerRouter.post("/register", (req, res) => {
+const controller = (req, res) => {
 	//console.log("pretneder");
 	const name = req.body.name;
 	const email = req.body.email;
 	const username = req.body.username;
 	const password = req.body.password;
-	db.insert([name, email, username, bcrypt.hashSync(password, 8), 0], err => {
+	const isAdmin = req.param.isAdmin;
+	db.insert([name, email, username, bcrypt.hashSync(password, 8), isAdmin], err => {
 		if (err) {
 			// console.error("register user", err);
 			return res.status(500).send("There was a problem registering the user.");
@@ -39,8 +32,8 @@ registerRouter.post("/register", (req, res) => {
 			});
 		});
 	});
-});
+};
 
-module.export = {
-	registerRouter
+module.exports = {
+	controller
 };

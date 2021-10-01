@@ -1,16 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { Router } = require("express");
-const config = require("../../config");
-const DB = require("../../database/db");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-
-//handle request made to api/authenticate
-const loginRouter = Router();
+const DB = require("../../../database/db");
+const config = require("../../../config");
 const db = new DB("sqlitedb");
-
-// define the route for logging in an administrator
-loginRouter.post("/loginUser", (req, res) => {
+const controller = (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
 	db.selectByEmail(email, (err, user) => {
@@ -38,8 +30,8 @@ loginRouter.post("/loginUser", (req, res) => {
 			user
 		});
 	});
-});
+};
 
-module.export = {
-	loginRouter
+module.exports = {
+	controller
 };

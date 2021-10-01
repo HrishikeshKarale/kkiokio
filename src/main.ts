@@ -4,10 +4,14 @@ import App from "@/App.vue";
 import router from "@/router";
 import store from "@/store";
 import "@/registerServiceWorker";
+//icons
 import "@/Less/fontAwesome/fontawesome.less";
+//css files
 import "@/Less/bootstrap.less";
+//api calls
 import axios from "axios";
 import VueAxios from "vue-axios";
+//global emitter
 import mitt from "mitt";
 const emitter = mitt();
 

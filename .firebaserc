@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "portfolio-website-689b4",
+    "staging": "portfolio-website-689b4",
     "kkiokio": "portfolio-website-689b4"
   }
 }
