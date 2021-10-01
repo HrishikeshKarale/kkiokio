@@ -4,7 +4,7 @@ const otpRoutes = require("./otp/route");
 const smsRoutes = require("./sms/route");
 
 //handle request made to api/authenticate
-const route = express.Router();
+const route = express();
 
 route.use("/twilio", otpRoutes);
 route.use("/twilio", smsRoutes);

@@ -17,7 +17,7 @@ const client = require('twilio')(accountSid, authToken);
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 //api routes
-const apiRoutes = require("./api/index");
+const apiRoutes = require("./api");
 
 const app = express();
 app.use(cors());

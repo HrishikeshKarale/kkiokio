@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
-const sms = require("./controller");
+const { controller } = require("./controller");
 
 //handle request made to api/authenticate/login
 const route = express.Router();
 
 // define the route for logging in an administrator
-route.post("/sms", sms.controller);
+route.post("/sms", controller);
 
 module.exports = route;
