@@ -44,10 +44,6 @@ router.route('/')
 		res.send('server is working (put)');
 	});
 
-router.get("/api", (req, res) => {
-	return res.status(200).send("api is working");
-});
-
 //twilio routes (SMS)
 router.use("/", apiRoutes);
 

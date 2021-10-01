@@ -8,5 +8,8 @@ const route = express.Router();
 
 route.use("/api", twilioRoutes);
 route.use("/api", authenticateRoutes);
+route.get("/api", (req, res) => {
+	return res.status(200).send("api is working");
+});
 
 module.exports = route;
