@@ -420,9 +420,10 @@
 							}
 						)
 						.then((response) => {
-							// const isAdmin = response.data.user.isAdmin;
-							localStorage.setItem("user", JSON.stringify(response.data.user));
-							localStorage.setItem("jwt", response.data.token);
+							if (response.data.auth) {
+								localStorage.setItem("user", JSON.stringify(response.data.user));
+								localStorage.setItem("jwt", response.data.token);
+							}
 						})
 						.catch((error) => {
 							this.emitter.emit("alert", {

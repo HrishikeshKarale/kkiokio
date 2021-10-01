@@ -8,13 +8,19 @@ const controller = (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
 	db.selectByEmail(email, (err, user) => {
-		if (err) return res.status(500).send("Error on the server.");
-		if (!user) return res.status(404).send("No user found.");
+		if (err) return res.status(500).send({
+			auth: false,
+			message: "Error on the server.",
+		});
+		if (!user) return res.status(404).send({
+			auth: false,
+			message: "No user found.",
+		});
 		const passwordIsValid = bcrypt.compareSync(password, user.user_pass);
 		if (!passwordIsValid) {
 			return res.status(401).send({
 				auth: false,
-				token: null
+				token: "Incorrect Password"
 			});
 		}
 		const token = jwt.sign(
