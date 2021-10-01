@@ -279,6 +279,11 @@
 			const isAdmin = 0;
 			//display modal
 			const loginDisplay = !this.booleanTrue;
+			//cors header
+			const config = {
+				"Content-Type": "text/plain",
+				"Access-Control-Allow-Origin": "*",
+			};
 			return {
 				dNameRadio,
 				dRadioValue,
@@ -303,6 +308,7 @@
 				display,
 				alert,
 				loginDisplay,
+				config,
 			};
 		}, //mixins
 
@@ -415,9 +421,7 @@
 								email: this.emailID,
 								password: this.password,
 							},
-							{
-								"Content-Type": "text/plain",
-							}
+							this.config
 						)
 						.then((response) => {
 							if (response.data.auth) {
@@ -464,9 +468,7 @@
 							password: this.signupPassword,
 							isAdmin: this.isAdmin,
 						},
-						{
-							"Content-Type": "text/plain",
-						}
+						this.config
 					)
 					.then((response) => {
 						localStorage.setItem("user", JSON.stringify(response.data.user));
