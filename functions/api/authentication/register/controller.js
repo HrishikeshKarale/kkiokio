@@ -8,7 +8,7 @@ const controller = (req, res) => {
 	const email = req.body.email;
 	const username = req.body.username;
 	const password = req.body.password;
-	const isAdmin = req.param.isAdmin;
+	const isAdmin = req.param.isAdmin ? req.param.isAdmin : 0;
 	db.insert([name, email, username, bcrypt.hashSync(password, 8), isAdmin], err => {
 		if (err) {
 			// console.error("register user", err);
@@ -34,6 +34,4 @@ const controller = (req, res) => {
 	});
 };
 
-module.exports = {
-	controller
-};
+module.exports = controller;

@@ -18,6 +18,4 @@ const client = require('twilio')(accountSid, authToken); const controller = (req
 		});
 };
 
-module.exports = {
-	controller
-};
+module.exports = controller;

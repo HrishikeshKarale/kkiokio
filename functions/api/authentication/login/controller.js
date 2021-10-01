@@ -32,6 +32,4 @@ const controller = (req, res) => {
 	});
 };
 
-module.exports = {
-	controller
-};
+module.exports = controller;

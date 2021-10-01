@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
-const { controller } = require("./controller");
+const controller = require("./controller");
 
 //handle request made to api/authenticate/login
 const route = express.Router();

@@ -13,6 +13,4 @@ const controller = (req, res) => {
 	res.end(twiml.toString());
 };
 
-module.exports = {
-	controller
-};
+module.exports = controller;
