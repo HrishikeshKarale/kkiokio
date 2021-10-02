@@ -1,11 +1,11 @@
 import { createStore } from "vuex";
-import { honorsAndAwards } from "./honorsAndAwards";
-import { lisencesAndCertificates } from "./lisencesAndCertificates";
-import { logoList } from "./logoList";
-import { nav } from "./navigation";
-import { projects } from "./projects";
-import { skills } from "./skills";
-import { uxProcess } from "./uxProcess";
+import { honorsAndAwards } from "./data/honorsAndAwards";
+import { lisencesAndCertificates } from "./data/lisencesAndCertificates";
+import { logoList } from "./data/logoList";
+import { nav } from "./data/navigation";
+import { projects } from "./data/projects";
+import { skills } from "./data/skills";
+import { uxProcess } from "./data/uxProcess";
 const store = createStore({
   state: {
     honorsAndAwards,
