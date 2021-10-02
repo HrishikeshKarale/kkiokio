@@ -1,23 +1,25 @@
 <template>
 	<div v-if="breadcrums.length > 1" class="breadcrums">
 		<span class="far fa-folder-open" />
-		<template v-for="(crums, index) in breadcrums" :key="crums">
+		<template v-for="(crums, index) in breadcrums">
 			<template v-if="isComponent(crums)[0] && breadcrums.length - 1 > index">
 				<span
 					v-if="index > 0 && isComponent(crums)[0]['comp']"
 					class="fas fa-angle-right"
+					:key="crums"
 				/>
 				<router-link
 					v-if="breadcrums.length - 1 > index"
 					class="crums"
 					:to="{ name: isComponent(crums)[0]['comp'] }"
+					:key="crums"
 				>
 					{{ isComponent(crums)[0]["name"] }}
 				</router-link>
 			</template>
 			<template v-if="breadcrums.length - 1 == index">
-				<span v-if="subNav(crums)" class="fas fa-angle-right" />
-				<h5>
+				<span v-if="subNav(crums)" class="fas fa-angle-right" :key="crums" />
+				<h5 :key="crums">
 					{{ subNav(crums) }}
 				</h5>
 			</template>

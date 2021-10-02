@@ -76,7 +76,6 @@
 	</div>
 </template>
 <script>
-	import { arrayExercise } from "@/store/arrayExercise";
 	import { loading } from "@/typeScript/common/loading";
 	import { mapState } from "vuex";
 
@@ -89,8 +88,14 @@
 		components: {
 			vueTable,
 		},
+		data() {
+			const arrayExercise = this.$store.state.arrayExercise;
+			return {
+				arrayExercise,
+			};
+		}, //data
 
-		mixins: [arrayExercise, loading],
+		mixins: [loading],
 		computed: {
 			...mapState(["metadata"]),
 

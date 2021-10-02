@@ -20,7 +20,6 @@
 </template>
 <script>
 	import { nameConvention } from "@/typeScript/nameConvention";
-	import { drumKit } from "@/store/drumKit";
 	import { loading } from "@/typeScript/common/loading";
 
 	export default {
@@ -28,7 +27,7 @@
 
 		mixins: [nameConvention, loading],
 		data() {
-			const kit = drumKit;
+			const kit = this.$store.state.drumKit;
 			return {
 				kit,
 			};

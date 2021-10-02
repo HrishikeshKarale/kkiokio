@@ -29,7 +29,6 @@
 	import enterpriseAppLayout from "@/components/enterpriseAppLayout";
 	import vueImg from "@/components/vueImg";
 	import vueFooter from "@/components/vueFooter.vue";
-	import { nav } from "@/store/navigation";
 
 	export default {
 		name: "App",
@@ -44,7 +43,7 @@
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logoLink = require("@/assets/logo.svg");
-			const navigation = nav;
+			const navigation = this.$store.state.nav;
 			return {
 				navigation,
 				logoLink,
