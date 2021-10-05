@@ -42,16 +42,16 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/Work",
-    name: "project",
+    name: "work",
     component: () =>
-      import(/* webpackChunkName: "project" */ "@/views/project.vue"),
+      import(/* webpackChunkName: "work" */ "@/views/project.vue"),
     meta: {
       transitionName: "fade",
       requiresAuth: false //true
     }
   },
   {
-    path: "/Articles/:article",
+    path: "/Work/:article",
     name: "articlePage",
     component: () =>
       import(

@@ -9,7 +9,7 @@ const client = require('twilio')(accountSid, authToken); const controller = (req
 		to: '+13156122340'
 	})
 		.then(message => {
-			console.log(message.sid);
+			// console.log(message.sid);
 			return res.status(200).send(`Message sent ${message.sid}`);
 		})
 		.catch((exception) => {

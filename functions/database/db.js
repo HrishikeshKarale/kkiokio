@@ -67,7 +67,7 @@ class Db {
   }
 
   insert(user, callback) {
-    console.log("user");
+    // console.log("user");
     return this.db.run(
       "INSERT INTO user (name, email, username, user_pass, is_admin) VALUES (?,?,?,?,?)",
       user,

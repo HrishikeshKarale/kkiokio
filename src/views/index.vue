@@ -40,7 +40,7 @@
 					"
 				/>
 			</div>
-			<div class="subSection" @click="$router.push({ name: 'project' })">
+			<div class="subSection" @click="$router.push({ name: 'work' })">
 				<span>Designer</span>
 				<span>&amp;</span>
 				<span>Developer</span>
@@ -69,7 +69,7 @@
 							project.type != 'Logo' && projectSkills[project.type].length > 0
 						"
 					>
-						<router-link :to="{ name: 'project', hash: `#${project.type}` }">
+						<router-link :to="{ name: 'work', hash: `#${project.type}` }">
 							<h3>
 								{{ project.type }}
 							</h3>
@@ -80,7 +80,7 @@
 								v-for="skill in projectSkills[project.type]"
 								:key="skill"
 								@click="
-									$router.push({ name: 'project', query: { filter: skill } })
+									$router.push({ name: 'work', query: { filter: skill } })
 								"
 							>
 								<span class="fas fa-tag" />
@@ -146,7 +146,7 @@
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logo = require("@/assets/logo.svg");
 			const projectSkills = {};
-			const projectList = this.$store.state.projects;
+			const projectList = this.$store.state.contentModule.projects;
 			return {
 				profilePic,
 				logo,

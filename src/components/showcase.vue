@@ -18,8 +18,8 @@
 			<!-- eslint-disable-next-line vue/no-v-html -->
 			<p v-html="project.description" />
 			<ul v-if="project.tags">
-				<template v-for="tag in project.tags" :key="tag">
-					<li v-if="tag" class="tag">
+				<template v-for="tag in project.tags">
+					<li v-if="tag" class="tag" :key="tag">
 						<span class="fas fa-tag" />
 						<b v-text="tag" />
 					</li>
