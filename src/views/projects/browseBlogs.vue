@@ -27,7 +27,7 @@
 	export default {
 		name: "browseBlogs",
 		data() {
-			const projects = this.$store.state.projects;
+			const projects = this.$store.state.contentModule.projects;
 			const category = {};
 			const show = "";
 			return {

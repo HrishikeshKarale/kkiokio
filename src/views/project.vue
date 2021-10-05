@@ -11,7 +11,7 @@
 			browsing.
 		</p>
 		<vue-filter
-			:filters="{ type: ['tags'], options: [filterList] }"
+			:filters="{ type: ['tags'], options: [uniqueTags] }"
 			:selected="{ type: ['tags'], value: [propFilter] }"
 			@updateFilter="updateFilter"
 		/>
@@ -20,6 +20,7 @@
 				:id="projects.type"
 				:title="projects.type"
 				:auto-scroll="!autoScroll"
+				:tag="projects.type"
 				v-show="
 					projects.value.some((project) => {
 						return (
@@ -48,12 +49,15 @@
 </template>
 
 <script>
+	//vuex
+	import { mapGetters } from "vuex";
+
 	import vueFilter from "@/components/vueFilter.vue";
 	import showcase from "@/components/showcase.vue";
 	import cardScroller from "./projects/css/cardSlider/cardScroller.vue";
 	import { loading } from "@/typeScript/common/loading";
 	export default {
-		name: "Projects",
+		name: "work",
 		mixins: [loading],
 		components: {
 			vueFilter,
@@ -61,16 +65,14 @@
 			cardScroller,
 		},
 		data() {
-			const projectList = this.$store.state.projects;
 			//vueFilter
 			const propFilter = [];
-			const filterList = [];
+			// const filterList = [];
 			//cardScroll
 			const autoScroll = this.booleanTrue;
 			return {
-				projectList,
 				propFilter,
-				filterList,
+				// filterList,
 				autoScroll,
 			};
 		},
@@ -79,14 +81,14 @@
 			if (tempPropFilter) {
 				this.propFilter = [this.$route.query.filter];
 			}
-			this.projectList.forEach((project) => {
-				if (project.type != "Logo") {
-					project.value.forEach((val) => {
-						this.filterList = [...val.tags, ...this.filterList];
-					});
-				}
-			});
+			this.$store.dispatch("contentModule/processPorjects");
 		},
+		computed: {
+			...mapGetters({
+				uniqueTags: "contentModule/uniqueTagList",
+				projectList: "contentModule/getProjects",
+			}),
+		}, //computed
 		methods: {
 			//needs work
 			updateFilter: function (filter) {

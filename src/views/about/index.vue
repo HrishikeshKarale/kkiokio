@@ -185,10 +185,11 @@
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const profilePic = require("@/../public/img/profilePic.jpg");
-			const skills = this.$store.state.skills;
-			const honorsAndAwards = this.$store.state.honorsAndAwards;
-			const lisencesAndCertificates = this.$store.state.lisencesAndCertificates;
-			const uxProcess = this.$store.state.uxProcess;
+			const skills = this.$store.state.contentModule.skills;
+			const honorsAndAwards = this.$store.state.contentModule.honorsAndAwards;
+			const lisencesAndCertificates =
+				this.$store.state.contentModule.lisencesAndCertificates;
+			const uxProcess = this.$store.state.contentModule.uxProcess;
 			return {
 				profilePic,
 				skills,

@@ -1,12 +1,15 @@
+//mutations  are Synchronous (commit)
+//actions can be synchronous and asynchrous (dispatch)
 import { createStore } from "vuex";
-import dataModule from "./contentAndNav";
+import contentModule from "./contentAndNav";
 import authenticationModule from "./authentication";
 import tableModule from "./table";
 const store = createStore({
+  strict: process.env.NODE_ENV !== 'production',
   modules: {
-    data: dataModule,
-    table: tableModule,
-    authentication: authenticationModule
+    contentModule,
+    tableModule,
+    authenticationModule
   }
 });
 

@@ -207,6 +207,9 @@
 </template>
 
 <script>
+	//store
+	import { mapGetters } from "vuex";
+
 	import scrollIndicator from "@/views/projects/js/scrollIndicator/scrollIndicator";
 	import CountdownTimer from "@/components/countdownTimer.vue";
 	import vueAlert from "@/components/alert/vueAlert.vue";
@@ -241,6 +244,10 @@
 		},
 
 		mixins: [authentication, cookie, toggle],
+
+		computed: {
+			// ...mapGetters(["logdedIn"]),
+		}, //computed
 		data() {
 			const DEFAULT_TRANSITION = "fade";
 			const DEFAULT_TRANSITION_MODE = "out-in";
@@ -473,17 +480,16 @@
 					.then((response) => {
 						localStorage.setItem("user", JSON.stringify(response.data.user));
 						localStorage.setItem("jwt", response.data.token);
-
-						this.sqliteUser = response.data.user;
-						this.sqliteToken = response.data.token;
 					})
 					.catch((error) => {
-						this.signupName = "";
-						this.signupEmail = "";
-						this.signupUsername = "";
-						this.signupPassword = "";
-						this.isAdmin = "";
-						// console.error(error);
+						this.emitter.emit("alert", {
+							type: "danger",
+							message: "SignUp Request Failed",
+							description: "Please try again.",
+							dismissable: this.booleanTrue,
+							code: "101",
+							timeout: 4,
+						});
 					});
 			}, //handleSignUp
 

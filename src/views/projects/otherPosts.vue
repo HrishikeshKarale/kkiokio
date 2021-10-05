@@ -38,7 +38,7 @@
 			showcase,
 		}, //components
 		data() {
-			const projectList = this.$store.state.projects;
+			const projectList = this.$store.state.contentModule.projects;
 			//cardScroll
 			const autoScroll = this.booleanTrue;
 			return {

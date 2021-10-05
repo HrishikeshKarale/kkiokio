@@ -1,4 +1,5 @@
 const module = {
+  namespaced: true,
   state: {
     //table metadata
     metadata: {
@@ -20,6 +21,9 @@ const module = {
     //do something
   },
   actions: {
+    //do something
+  },
+  getters: {
     //do something
   }
 };

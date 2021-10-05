@@ -43,7 +43,7 @@
 		}, //components
 
 		data() {
-			const projects = this.$store.state.projects;
+			const projects = this.$store.state.contentModule.projects;
 			const projData = {};
 			const projTags = null;
 			const projTitle = null;

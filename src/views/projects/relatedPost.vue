@@ -2,9 +2,10 @@
 	<card-scroller
 		class="relatedPost"
 		title="Related Posts"
+		tag="relatedPost"
 		:auto-scroll="!autoScroll"
 	>
-		<template v-for="projects in projectList" :key="projects.type">
+		<template v-for="projects in projectList">
 			<template v-if="projects.type != 'Logo'">
 				<showcase
 					v-for="project in projects.value"
@@ -12,7 +13,7 @@
 						tags.length > 0 &&
 						tags.some((filter) => !project.tags.includes(filter))
 					"
-					:key="project.id"
+					:key="project.id + ' - ' + projects.type"
 					:project="project"
 					:component="project.blog != null ? 'articlePage' : project.component"
 					:article="project.blog != null ? project.title : ''"
@@ -39,7 +40,7 @@
 			showcase,
 		}, //components
 		data() {
-			const projectList = this.$store.state.projects;
+			const projectList = this.$store.state.contentModule.projects;
 			//cardScroll
 			const autoScroll = this.booleanTrue;
 			return {

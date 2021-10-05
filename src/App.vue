@@ -43,7 +43,7 @@
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logoLink = require("@/assets/logo.svg");
-			const navigation = this.$store.state.nav;
+			const navigation = this.$store.state.contentModule.nav;
 			return {
 				navigation,
 				logoLink,
