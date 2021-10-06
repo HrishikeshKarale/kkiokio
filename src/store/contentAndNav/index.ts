@@ -6,6 +6,7 @@ const module = {
   namespaced: true,
   modules: {
     breadcrums
+    // breadcrums: require("./breadcrums")
   },
   state: {
     honorsAndAwards: require("./honorsAndAwards"),
@@ -29,13 +30,14 @@ const module = {
 
     //list of {component, name}[] unique to the projects
     SET_COMP_LIST(state, array) {
-      console.log("SET_COMP_LIST", array);
+      // console.log("SET_COMP_LIST", array);
       state.compList = array;
     }, //SET_COMP_LIST
   },
   actions: {
     //returns a unique list of tags for individual projects
     async processPorjects(context) {
+      // console.log("processPorjects");
       let tagList: String[] = [];
       let compList: {
         subNav: {
@@ -73,8 +75,9 @@ const module = {
 
       context.commit("SET_UNIQUE_TAG_LIST", tagList);
       context.commit("SET_COMP_LIST", compList);
-    }, //getTags
+    }, //processProjects
   },
+
   getters: {
 
     getHonorsAndAwards(state) {
@@ -98,12 +101,12 @@ const module = {
     },
 
     getNavigation(state) {
-      console.log("GETTER Navigation", state.nav.nav);
+      // console.log("GETTER Navigation", state.nav.nav);
       return state.nav.nav;
     }, //getProjects
 
     getProjects(state) {
-      console.log("GETTER", state.projects.projects);
+      // console.log("GETTER", state.projects.projects);
       return state.projects.projects;
     }, //getProjects
 

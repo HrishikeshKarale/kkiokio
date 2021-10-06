@@ -1,4 +1,4 @@
-const module: {} = {
+const module = {
   namespaced: true,
   state: {
     //table metadata
