@@ -15,8 +15,9 @@
 			:selected="{ type: ['tags'], value: [propFilter] }"
 			@updateFilter="updateFilter"
 		/>
-		<template v-for="projects in projectList" :key="projects.type">
+		<template v-for="projects in projectList">
 			<card-scroller
+				:key="projects.type"
 				:id="projects.type"
 				:title="projects.type"
 				:auto-scroll="!autoScroll"

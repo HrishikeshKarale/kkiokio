@@ -2,8 +2,8 @@
 <template>
 	<!-- {{ article }} -->
 	<article :id="Object.entries(post)[0][1]" class="postTemplate">
-		<template v-for="entry in Object.entries(post)" :key="entry">
-			<header v-if="entry[0] === 'header'">
+		<template v-for="(entry, index) in Object.entries(post)">
+			<header v-if="entry[0] === 'header'" :key="entry">
 				<h1 v-text="entry[1]" />
 				<ul v-if="tags">
 					<li class="tag" v-for="tag in tags" :key="tag">
@@ -11,14 +11,18 @@
 					</li>
 				</ul>
 			</header>
-			<post-details v-else-if="type.includes(entry[0])" :entry="entry" />
-			<template
-				v-for="ent in entry[1]"
-				v-else-if="entry[0] === 'content'"
-				:key="ent + '-' + entry[0]"
-			>
-				<template v-for="e in Object.entries(ent)" :key="e">
-					<post-details v-if="type.includes(e[0])" :entry="e" />
+			<post-details
+				v-else-if="type.includes(entry[0])"
+				:entry="entry"
+				:key="index"
+			/>
+			<template v-for="ent in entry[1]" v-else-if="entry[0] === 'content'">
+				<template v-for="e in Object.entries(ent)">
+					<post-details
+						v-if="type.includes(e[0])"
+						:entry="e"
+						:key="e + '-' + ent + '-' + entry[0]"
+					/>
 				</template>
 			</template>
 			<!-- section -->
@@ -28,18 +32,19 @@
 					:id="Object.entries(ent)[0][1]"
 					:key="ent + '-' + entry[0]"
 				>
-					<template v-for="e in Object.entries(ent)" :key="e + '-' + ent[0]">
-						<h3 v-if="e[0] === 'header'" v-text="e[1]" />
-						<template
-							v-for="e1 in e[1]"
-							v-else-if="e[0] === 'content'"
-							:key="e1 + '-' + e[0]"
-						>
-							<template
-								v-for="e2 in Object.entries(e1)"
-								:key="e2 + '-' + e1[0]"
-							>
-								<post-details v-if="type.includes(e2[0])" :entry="e2" />
+					<template v-for="e in Object.entries(ent)">
+						<h3
+							v-if="e[0] === 'header'"
+							v-text="e[1]"
+							:key="e + '-' + ent[0]"
+						/>
+						<template v-for="e1 in e[1]" v-else-if="e[0] === 'content'">
+							<template v-for="e2 in Object.entries(e1)">
+								<post-details
+									v-if="type.includes(e2[0])"
+									:entry="e2"
+									:key="e2 + '-' + e1[0] + '-' + e[0]"
+								/>
 								<!-- subSection -->
 								<template v-else-if="e2[0] === 'subSection'">
 									<div
@@ -47,21 +52,19 @@
 										v-for="e3 in e2[1]"
 										:key="e3 + '-' + e2[0]"
 									>
-										<template
-											v-for="e4 in Object.entries(e3)"
-											:key="e4 + '-' + e3[0]"
-										>
-											<h4 v-if="e4[0] === 'header'" v-text="e4[1]" />
+										<template v-for="e4 in Object.entries(e3)">
+											<h4
+												v-if="e4[0] === 'header'"
+												v-text="e4[1]"
+												:key="e4 + '-' + e3[0]"
+											/>
 											<template
 												v-else-if="e4[0] === 'content'"
 												v-for="e5 in e4[1]"
-												:key="e5 + '-' + e4[0]"
 											>
-												<template
-													v-for="e6 in Object.entries(e5)"
-													:key="e6 + '-' + e5[0]"
-												>
+												<template v-for="e6 in Object.entries(e5)">
 													<post-details
+														:key="e6 + '-' + e5[0] + '-' + e4[0]"
 														v-if="type.includes(e6[0])"
 														:entry="e6"
 													/>
@@ -74,21 +77,19 @@
 													v-for="e5 in e4[1]"
 													:key="e5 + '-' + e4[0]"
 												>
-													<template
-														v-for="e5 in Object.entries(e4)"
-														:key="e5 + '-' + e4[0]"
-													>
-														<h5 v-if="e5[0] === 'header'" v-text="e5[1]" />
+													<template v-for="e5 in Object.entries(e4)">
+														<h5
+															v-if="e5[0] === 'header'"
+															v-text="e5[1]"
+															:key="e5 + '-' + e4[0]"
+														/>
 														<template
 															v-else-if="e5[0] === 'content'"
 															v-for="e6 in e5[1]"
-															:key="e6 + '-' + e5[0]"
 														>
-															<template
-																v-for="e7 in Object.entries(e6)"
-																:key="e7 + '-' + e6[0]"
-															>
+															<template v-for="e7 in Object.entries(e6)">
 																<post-details
+																	:key="e7 + '-' + e6[0] + '-' + e5[0]"
 																	v-if="type.includes(e7[0])"
 																	:entry="e7"
 																/>

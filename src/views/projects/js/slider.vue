@@ -1,6 +1,6 @@
 <template>
 	<div class="slider">
-		<template v-for="slide in slides" :key="slide">
+		<template v-for="slide in slides">
 			<!-- <transition
         :name="transitionName"
         :mode="transitionMode"
@@ -9,7 +9,7 @@
         @enter="enter"
         @afterEnter="afterEnter"
       > -->
-			<div v-if="slide == currentSlide" :class="slide" />
+			<div v-if="slide == currentSlide" :class="slide" :key="slide" />
 			<!-- </transition> -->
 		</template>
 		<!-- <vue-img src="" alt="Moto" /> -->
@@ -166,7 +166,7 @@
 		transition: .transition();
 	}
 	.slide-fade-enter, .slide-fade-leave-to
-																			/* .slide-fade-leave-active below version 2.1.8 */ {
+																				/* .slide-fade-leave-active below version 2.1.8 */ {
 		transform: translateX(10px);
 		opacity: 0;
 	}

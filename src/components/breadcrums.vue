@@ -1,8 +1,8 @@
 <template>
 	<nav v-if="routeComp.length > 1" class="breadcrums">
 		<ol>
-			<template v-for="route in routeComp" :key="route.name">
-				<li v-if="pageTitle != route.name">
+			<template v-for="route in routeComp">
+				<li v-if="pageTitle != route.name" :key="route.name">
 					<router-link
 						class="crums"
 						:to="{ name: route.comp }"

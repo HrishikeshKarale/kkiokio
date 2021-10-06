@@ -83,8 +83,6 @@
 	export default {
 		name: "ArrayCardio",
 
-		mapState,
-
 		components: {
 			vueTable,
 		},

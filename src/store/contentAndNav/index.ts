@@ -38,20 +38,20 @@ const module = {
     //returns a unique list of tags for individual projects
     async processPorjects(context) {
       // console.log("processPorjects");
-      let tagList: String[] = [];
+      let tagList: string[] = [];
       let compList: {
         subNav: {
-        id: Number,
-        title: String,
-        img: String,
-        tags: String[],
+        id: number,
+        title: string,
+        img: string,
+        tags: string[],
         description:
-          String,
-        component: String,
-        blog: String
+          string,
+        component: string,
+        blog: string
         }[] | null,
-        comp: String,
-        name: String
+        comp: string,
+        name: string
       }[] = [];
       const projects = context.getters.getProjects;
       projects.forEach((project) => {
