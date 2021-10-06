@@ -1,103 +1,52 @@
 <template>
-	<div v-if="breadcrums.length > 1" class="breadcrums">
-		<span class="far fa-folder-open" />
-		<template v-for="(crums, index) in breadcrums" :key="crums">
-			<template v-if="isComponent(crums)[0] && breadcrums.length - 1 > index">
-				<span
-					v-if="index > 0 && isComponent(crums)[0]['comp']"
-					class="fas fa-angle-right"
-				/>
-				<router-link
-					v-if="breadcrums.length - 1 > index"
-					class="crums"
-					:to="{ name: isComponent(crums)[0]['comp'] }"
-				>
-					{{ isComponent(crums)[0]["name"] }}
-				</router-link>
+	<nav v-if="routeComp.length > 1" class="breadcrums">
+		<ol>
+			<template v-for="route in routeComp" :key="route.name">
+				<li v-if="pageTitle != route.name">
+					<router-link
+						class="crums"
+						:to="{ name: route.comp }"
+						v-text="route.name"
+					/>
+					<span class="fas fa-angle-right"> </span>
+				</li>
 			</template>
-			<template v-if="breadcrums.length - 1 == index">
-				<span v-if="subNav(crums)" class="fas fa-angle-right" />
-				<h5>
-					{{ subNav(crums) }}
-				</h5>
-			</template>
-		</template>
-	</div>
+			<li>
+				<h4 v-text="pageTitle" />
+			</li>
+		</ol>
+	</nav>
 </template>
 
 <script>
+	import { mapGetters, mapMutations } from "vuex";
 	export default {
 		name: "Breadcrums",
 		data() {
-			const projectsList = this.$store.state.projects;
-			const navigation = this.$store.state.nav;
-			const unique = [];
-			return {
-				projectsList,
-				navigation,
-				unique,
-			};
-		}, //methods
+			return {};
+		}, //data
 		computed: {
-			breadcrums: function () {
-				let temp = ("home" + this.$route.path).split("/");
-				temp = temp.filter(function (el) {
-					return el != "";
-				});
-				return temp;
-			},
+			...mapGetters({
+				getProjects: "contentModule/getProjects",
+				navigation: "contentModule/getNavigation",
+				compList: "contentModule/compList",
+				breadcrums: "contentModule/breadcrums/breadcrums",
+				routeComp: "contentModule/breadcrums/routeComp",
+				pageTitle: "contentModule/breadcrums/pageTitle",
+			}),
 		},
 
 		created() {
-			//get a list of components to be used for breadcrums
-			this.projectsList.forEach((project) => {
-				if (project.type !== "Logo") {
-					project.value.forEach((proj) => {
-						this.unique = [
-							{ comp: proj.component, name: proj.title },
-							...this.unique,
-						];
-					});
-				}
-			});
-			this.navigation.forEach((nav) => {
-				this.unique = [{ comp: nav.component, name: nav.name }, ...this.unique];
-			});
+			this.$store.dispatch(
+				"contentModule/breadcrums/initialize",
+				this.$route.path
+			);
 		},
 
 		methods: {
-			isComponent: function (comp) {
-				return this.unique.filter((uni) => {
-					if (comp == uni["comp"]) {
-						return uni.name;
-					}
-				});
-				// if (comp) return this.unique.includes(comp);
-			}, //isComponent
-
-			subNav: function (selected) {
-				let tempSelect = selected.split("#")[0];
-				if (tempSelect) {
-					tempSelect = tempSelect.toLowerCase();
-					this.projectsList.forEach((project) => {
-						if (project.type !== "Logo") {
-							// console.log(project.type);
-							for (let index = 0; index < project.value.length; index++) {
-								const proj = project.value[index];
-								if (proj.component.toLowerCase() === tempSelect) {
-									tempSelect = proj.title;
-									break;
-								}
-							}
-						}
-					});
-				}
-				//replace%20 notation with space
-				while (tempSelect.includes("%20")) {
-					tempSelect = tempSelect.replace("%20", " ");
-				}
-				return tempSelect;
-			},
+			...mapMutations({
+				isComponent: "contentModule/breadcrums/IS_COMPONENT",
+			}),
 		},
 	};
 </script>
@@ -122,12 +71,17 @@
 			.boxShadow(@four, @navBackground, @headerZ);
 			// z-index: @headerZ;
 		}
-		h1,
-		h5 {
-			margin: 0 !important;
-		}
-		& > span {
-			color: @accentColor;
+		& > ol {
+			gap: @spaceLg;
+			& > li {
+				gap: @spaceLg;
+				& > h4 {
+					margin: 0 !important;
+				}
+				& > span {
+					color: @accentColor;
+				}
+			}
 		}
 		@media screen {
 			@media (max-width: @1600width) {

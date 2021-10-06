@@ -1,7 +1,11 @@
 <template>
 	<div class="cardSlider">
 		Here is a card Scroller built using HTML/CSS/JS/
-		<card-scroller class="horizontal-scroller" :auto-scroll="!autoScroll">
+		<card-scroller
+			class="horizontal-scroller"
+			:auto-scroll="!autoScroll"
+			tag="sample CardScroller"
+		>
 			<div v-for="index in 50" :key="index" class="card">
 				<h4>4.6</h4>
 				<span class="fa fa-heart" />

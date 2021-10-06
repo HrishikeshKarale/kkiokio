@@ -173,6 +173,7 @@
 <script>
 	import vueImg from "@/components/vueImg.vue";
 	import { loading } from "@/typeScript/common/loading";
+	import { mapGetters } from "vuex";
 
 	export default {
 		name: "About",
@@ -181,20 +182,20 @@
 		components: {
 			vueImg,
 		},
+		computed: {
+			...mapGetters({
+				skills: "contentModule/getSkills",
+				lisencesAndCertificates: "contentModule/getLisencesAndCertificates",
+				honorsAndAwards: "contentModule/getHonorsAndAwards",
+				uxProcess: "contentModule/getUxProcess",
+			}),
+		},
 
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const profilePic = require("@/../public/img/profilePic.jpg");
-			const skills = this.$store.state.skills;
-			const honorsAndAwards = this.$store.state.honorsAndAwards;
-			const lisencesAndCertificates = this.$store.state.lisencesAndCertificates;
-			const uxProcess = this.$store.state.uxProcess;
 			return {
 				profilePic,
-				skills,
-				lisencesAndCertificates,
-				honorsAndAwards,
-				uxProcess,
 			};
 		},
 	};

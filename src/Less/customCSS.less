@@ -1292,13 +1292,14 @@ mark,
 // Unordered and Ordered lists
 ul,
 ol {
-  margin-top: 0;
-  margin-left: @spaceXl;
-  margin-bottom: (@lineHeight / 2);
-
-  ul,
-  ol {
-    margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  & > li {
+    display: flex;
+    align-items: center;
   }
 }
 

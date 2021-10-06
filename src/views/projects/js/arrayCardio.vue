@@ -76,9 +76,8 @@
 	</div>
 </template>
 <script>
-	import { arrayExercise } from "@/store/arrayExercise";
 	import { loading } from "@/typeScript/common/loading";
-	import { mapState } from "vuex";
+	import { mapGetters } from "vuex";
 
 	import vueTable from "@/components/vueTable.vue";
 	export default {
@@ -89,10 +88,16 @@
 		components: {
 			vueTable,
 		},
+		data() {
+			return {};
+		}, //data
 
-		mixins: [arrayExercise, loading],
+		mixins: [loading],
 		computed: {
-			...mapState(["metadata"]),
+			...mapGetters({
+				metadata: "tableModule/getMetadata",
+				arrayExercise: "contentModule/getArrayExercise",
+			}),
 
 			isAdult: function () {
 				return this.inventors.some(

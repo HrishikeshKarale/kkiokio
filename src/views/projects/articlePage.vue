@@ -27,6 +27,7 @@
 	import sideBySideLayout from "../../components/sideBySideLayout.vue";
 	import postTemplate from "./postTemplate.vue";
 	import { loading } from "@/typeScript/common/loading";
+	import { mapGetters } from "vuex";
 
 	export default {
 		name: "articlePage",
@@ -43,14 +44,12 @@
 		}, //components
 
 		data() {
-			const projects = this.$store.state.projects;
 			const projData = {};
 			const projTags = null;
 			const projTitle = null;
 			const nextArticle = null;
 			const previousArticle = null;
 			return {
-				projects,
 				projData,
 				projTags,
 				projTitle,
@@ -58,6 +57,12 @@
 				previousArticle,
 			};
 		}, //data
+
+		computed: {
+			...mapGetters({
+				projects: "contentModule/getProjects",
+			}),
+		}, //computed
 
 		methods: {
 			projectData: function () {

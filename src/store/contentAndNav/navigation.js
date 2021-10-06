@@ -7,7 +7,7 @@ export const nav = [
   },
   {
     name: "Work",
-    component: "project",
+    component: "work",
     icon: "fas fa-suitcase",
     tagline: "puts my skills to test"
   },

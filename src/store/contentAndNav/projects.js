@@ -10,7 +10,7 @@ export const projects = [
         description:
           "Redesigned an English dictionary app from google play to make it more usable, intuitive and a desirable experience that is more engaging to its users.",
         component: "dictionaryCaseStudy",
-        blog: require("@/store/ux/dictionaryCaseStudy")
+        blog: require("@/store/project/ux/dictionaryCaseStudy")
       },
       {
         id: 2,
@@ -26,7 +26,7 @@ export const projects = [
         description:
           "Designed a program learning platform for People Matters. People Matters is an HR Media Platform aimed to help foster ideas between HR-related professioals.",
         component: "HRPlatform",
-        blog: require("@/store/ux/hRPlatform")
+        blog: require("@/store/project/ux/hRPlatform")
       },
       {
         id: 3,
@@ -36,7 +36,7 @@ export const projects = [
         description:
           "Rupay is a mobile bankig app designed to fulfill basic services offered by a bank (access bank account, apply for aloan, check progress of existing requests, pay bills,  check transactin history etc.).",
         component: "rupay",
-        blog: require("@/store/ux/rupay")
+        blog: require("@/store/project/ux/rupay")
       },
       {
         id: 4,
@@ -53,7 +53,7 @@ export const projects = [
         description:
           "Tiny Thoughts is a personal Journal mobile app. The redesign was intended to make the app more modern and reduce clutter.",
         component: "tinyThoughts",
-        blog: require("@/store/ux/tinyThoughts")
+        blog: require("@/store/project/ux/tinyThoughts")
       },
       {
         id: 5,
@@ -63,7 +63,7 @@ export const projects = [
         description:
           "Redesign for Kuda Bank website. It lacked effort in terms of making the website trendy and eye catching. The website homapage was made more easy to read and comprehend by the use of illustrations and precise text headings.",
         component: "kudaBankCaseStudy",
-        blog: require("@/store/ux/kudaBank")
+        blog: require("@/store/project/ux/kudaBank")
       },
       {
         id: 6,
@@ -73,7 +73,7 @@ export const projects = [
         description:
           "A brief case study of a multi-phase redesign ofSkinSAFE, an IOS app. The redesign was intended to make the application with added functionality(personalisation) as well as to make it more user friendly.",
         component: "skinSafe",
-        blog: require("@/store/ux/skinSafe")
+        blog: require("@/store/project/ux/skinSafe")
       },
       {
         id: 7,
@@ -91,7 +91,7 @@ export const projects = [
         description:
           "CrowdCo. is a basic croudfunding mobile app aimed to spread awareness about crowdfunding for the general non-tech audience as a means for funding projects and needs of individuals/group od people.",
         component: "crowdCo",
-        blog: require("@/store/ux/crowdCo")
+        blog: require("@/store/project/ux/crowdCo")
       },
       {
         id: 8,
@@ -101,7 +101,7 @@ export const projects = [
         description:
           "Case study of Venmo, a popular fintech app used to transfer money ffrom one entity to another. The case study highlights the decisions made by the the Venmo team and the possible reasons behind the decisions.",
         component: "venmoCaseStudy",
-        blog: require("@/store/ux/venmoCaseStudy")
+        blog: require("@/store/project/ux/venmoCaseStudy")
       },
       {
         id: 9,
@@ -111,7 +111,7 @@ export const projects = [
         description:
           "This is  a case study comparing two very popular navigation platforms, the different approaches taken by them to solve problems based on their user research and how people use their platforms",
         component: "mapsCaseStudy",
-        blog: require("@/store/ux/mapCaseStudy")
+        blog: require("@/store/project/ux/mapCaseStudy")
       }
     ]
   },
@@ -126,7 +126,7 @@ export const projects = [
         description:
           "Plant IT! is an Onboarding screen for an IOS application for a concept website which specializes in selling household plants and decorative pots that go along with those plants.",
         component: "plantIt",
-        blog: require("@/store/ui/plantIt")
+        blog: require("@/store/project/ui/plantIt")
       },
       {
         id: 3,
@@ -138,7 +138,7 @@ export const projects = [
               <br />\
               Users can look up details of services offered by various hospitals and the cost associated with those services.",
         component: "medCo",
-        blog: require("@/store/ui/medCo")
+        blog: require("@/store/project/ui/medCo")
       },
       {
         id: 4,
@@ -150,7 +150,7 @@ export const projects = [
               <br />\
               It helps its users keep track of their daily activity and vitals.",
         component: "fitnessFriend",
-        blog: require("@/store/ui/fitnessFriend")
+        blog: require("@/store/project/ui/fitnessFriend")
       },
       {
         id: 5,
@@ -159,7 +159,7 @@ export const projects = [
         tags: ["Login Screen"],
         description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp",
-        blog: require("@/store/ui/appSignUp")
+        blog: require("@/store/project/ui/appSignUp")
       },
       {
         id: 6,
@@ -171,7 +171,7 @@ export const projects = [
           <br />\
           Simple Pack supports orders with original packaging and default box items.",
         component: "packStation",
-        blog: require("@/store/ui/packStation")
+        blog: require("@/store/project/ui/packStation")
       },
       {
         id: 7,
@@ -201,7 +201,7 @@ export const projects = [
               <br />\
               The app walks users towards cooking home made cusines and thus promoting a healthy lifestyle.",
         component: "culinarian",
-        blog: require("@/store/ui/culinarian")
+        blog: require("@/store/project/ui/culinarian")
       }
     ]
   },

@@ -40,7 +40,7 @@
 					"
 				/>
 			</div>
-			<div class="subSection" @click="$router.push({ name: 'project' })">
+			<div class="subSection" @click="$router.push({ name: 'work' })">
 				<span>Designer</span>
 				<span>&amp;</span>
 				<span>Developer</span>
@@ -62,14 +62,15 @@
 				This is a detailed chronicle of the stories, processes and results
 				behind the projects that I've led and contributed to.
 			</p>
-			<ul>
-				<template v-for="project in projectList" :key="project.type">
+			{{ getProjects }}
+			<!-- <ul>
+				<template v-for="project in getProjects" :key="project.type">
 					<li
 						v-if="
 							project.type != 'Logo' && projectSkills[project.type].length > 0
 						"
 					>
-						<router-link :to="{ name: 'project', hash: `#${project.type}` }">
+						<router-link :to="{ name: 'work', hash: `#${project.type}` }">
 							<h3>
 								{{ project.type }}
 							</h3>
@@ -80,7 +81,7 @@
 								v-for="skill in projectSkills[project.type]"
 								:key="skill"
 								@click="
-									$router.push({ name: 'project', query: { filter: skill } })
+									$router.push({ name: 'work', query: { filter: skill } })
 								"
 							>
 								<span class="fas fa-tag" />
@@ -89,7 +90,7 @@
 						</ul>
 					</li>
 				</template>
-			</ul>
+			</ul> -->
 		</section>
 		<section id="kindWords">
 			<h1>Kind Words</h1>
@@ -131,6 +132,7 @@
 	// @ is an alias to /src
 	import vueButton from "@/components/vueButton.vue";
 	import { loading } from "@/typeScript/common/loading";
+	import { mapGetters } from "vuex";
 	// import slider from "./projects/js/slider.vue";
 
 	export default {
@@ -146,26 +148,14 @@
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logo = require("@/assets/logo.svg");
 			const projectSkills = {};
-			const projectList = this.$store.state.projects;
 			return {
 				profilePic,
 				logo,
-				projectList,
 				projectSkills,
 			};
 		},
-		created() {
-			this.projectList.forEach((project) => {
-				let uniqueArray = [];
-				if (project.type != "Logo") {
-					project.value.forEach((val) => {
-						uniqueArray = [...val.tags, ...uniqueArray];
-					});
-					this.projectSkills[project.type] = uniqueArray.filter(
-						(v, i, a) => a.indexOf(v) === i
-					);
-				}
-			});
+		computed: {
+			...mapGetters({ getProjects: "contentModule/getProjects" }),
 		},
 	};
 </script>

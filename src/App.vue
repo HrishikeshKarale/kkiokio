@@ -29,7 +29,7 @@
 	import enterpriseAppLayout from "@/components/enterpriseAppLayout";
 	import vueImg from "@/components/vueImg";
 	import vueFooter from "@/components/vueFooter.vue";
-	import { nav } from "@/store/navigation";
+	import { mapGetters, mapActions } from "vuex";
 
 	export default {
 		name: "App",
@@ -44,11 +44,23 @@
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logoLink = require("@/assets/logo.svg");
-			const navigation = nav;
 			return {
-				navigation,
 				logoLink,
 			};
+		},
+		created() {
+			this.$store.dispatch("contentModule/processPorjects", null, { root: true });
+			// this.processPorjects;
+		}, //created
+
+		// methods: {
+		// 	...mapActions({ processPorjects: "contentModule/processPorjects" }),
+		// }, //mehods
+
+		computed: {
+			...mapGetters({
+				navigation: "contentModule/getNavigation",
+			}),
 		},
 	};
 </script>

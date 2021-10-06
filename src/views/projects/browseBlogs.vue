@@ -24,18 +24,25 @@
 </template>
 
 <script>
+	import { mapGetters } from "vuex";
+
 	export default {
 		name: "browseBlogs",
 		data() {
-			const projects = this.$store.state.projects;
 			const category = {};
 			const show = "";
 			return {
-				projects,
 				category,
 				show,
 			};
 		},
+
+		computed: {
+			...mapGetters({
+				projects: "contentModule/getProjects",
+			}),
+		}, //computed
+
 		created() {
 			this.projects.forEach((project) => {
 				project.value.forEach((pro) => {

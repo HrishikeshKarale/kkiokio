@@ -1,5 +1,6 @@
 module.exports = {
   pwa: {
-    name: 'Kkiokio (Hrishikesh Karale Portfolio)'
+    name: 'Kkiokio (Hrishikesh Karale Portfolio)',
+    manifestCrossorigin: 'anonymous'
   }
 }

@@ -22,9 +22,9 @@
 </template>
 
 <script>
-	import cardScrollerVue from "./css/cardSlider/cardScroller.vue";
 	import cardScroller from "./css/cardSlider/cardScroller.vue";
 	import showcase from "../../components/showcase.vue";
+	import { mapGetters } from "vuex";
 	export default {
 		name: "relatedPost",
 		props: {
@@ -38,15 +38,18 @@
 			showcase,
 		}, //components
 		data() {
-			const projectList = this.$store.state.projects;
 			//cardScroll
 			const autoScroll = this.booleanTrue;
 			return {
-				projectList,
 				//cardScroll
 				autoScroll,
 			};
 		},
+		computed: {
+			...mapGetters({
+				projectList: "contentModule/getProjects",
+			}),
+		}, //computed
 	};
 </script>
 
