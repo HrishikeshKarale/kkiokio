@@ -31,12 +31,12 @@ const module = {
   mutations: {
     // list of unique tags
     SET_UNIQUE_TAG_LIST(state, array) {
-      store.state.contentModule.uniqueTagList = arrayMethods.methods.unique(array);
+      state.uniqueTagList = arrayMethods.methods.unique(array);
     }, //GET_UNIQUE
 
     //list of {component, name}[] unique to the projects
     SET_COMP_LIST(state, array) {
-      store.state.contentModule.compList = array;
+      state.compList = array;
     }, //SET_COMP_LIST
   },
   actions: {
@@ -81,16 +81,16 @@ const module = {
   },
   getters: {
 
-    getProjects() {
-      return store.state.contentModule.projects;
+    getProjects(state) {
+      return state.projects;
     }, //getProjects
 
-    uniqueTagList() {
-      return store.state.contentModule.uniqueTagList;
+    uniqueTagList(state) {
+      return state.uniqueTagList;
     }, //uniqueTagList
 
-    compList() {
-      return store.state.contentModule.compList;
+    compList(state) {
+      return state.compList;
     }, //compList
   }
 };
