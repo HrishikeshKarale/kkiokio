@@ -8,13 +8,7 @@
 						:to="{ name: route.comp }"
 						v-text="route.name"
 					/>
-					<span class="fas fa-angle-right">
-						<!-- <ol>
-							<li v-for="subNav in route.subNav" :key="subNav.id">
-								{{ subNav.title }}
-							</li>
-						</ol> -->
-					</span>
+					<span class="fas fa-angle-right"> </span>
 				</li>
 			</template>
 			<li>
@@ -29,17 +23,12 @@
 	export default {
 		name: "Breadcrums",
 		data() {
-			const projectsList = this.$store.state.contentModule.projects;
-			const navigation = this.$store.state.contentModule.nav;
-			const unique = [];
-			return {
-				projectsList,
-				navigation,
-				unique,
-			};
-		}, //methods
+			return {};
+		}, //data
 		computed: {
 			...mapGetters({
+				getProjects: "contentModule/getProjects",
+				navigation: "contentModule/getNavigation",
 				compList: "contentModule/compList",
 				breadcrums: "contentModule/breadcrums/breadcrums",
 				routeComp: "contentModule/breadcrums/routeComp",
@@ -48,7 +37,6 @@
 		},
 
 		created() {
-			this.$store.dispatch("contentModule/processPorjects");
 			this.$store.dispatch(
 				"contentModule/breadcrums/initialize",
 				this.$route.path

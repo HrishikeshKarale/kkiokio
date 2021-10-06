@@ -1,12 +1,3 @@
-import store from "..";
-import { honorsAndAwards } from "./honorsAndAwards";
-import { lisencesAndCertificates } from "./lisencesAndCertificates";
-import { logoList } from "./logoList";
-import { nav } from "./navigation";
-import { projects } from "./projects";
-import { skills } from "./skills";
-import { uxProcess } from "./uxProcess";
-
 import { arrayMethods } from "@/typeScript/arrayMethods";
 
 import breadcrums from "./breadcrums"
@@ -17,13 +8,15 @@ const module = {
     breadcrums
   },
   state: {
-    honorsAndAwards,
-    lisencesAndCertificates,
-    logoList,
-    nav,
-    projects,
-    skills,
-    uxProcess,
+    honorsAndAwards: require("./honorsAndAwards"),
+    lisencesAndCertificates: require("./lisencesAndCertificates"),
+    logoList: require("./logoList"),
+    nav: require("./navigation"),
+    projects: require("./projects"),
+    skills: require("./skills"),
+    uxProcess: require("./uxProcess"),
+    arrayExercise: require("./arrayExercise"),
+    drumKit: require("./drumKit"),
     // get unique list of tags
     uniqueTagList: [],
     compList: []
@@ -36,12 +29,13 @@ const module = {
 
     //list of {component, name}[] unique to the projects
     SET_COMP_LIST(state, array) {
+      console.log("SET_COMP_LIST", array);
       state.compList = array;
     }, //SET_COMP_LIST
   },
   actions: {
     //returns a unique list of tags for individual projects
-    async processPorjects(context, state) {
+    async processPorjects(context) {
       let tagList: String[] = [];
       let compList: {
         subNav: {
@@ -57,7 +51,8 @@ const module = {
         comp: String,
         name: String
       }[] = [];
-      context.state.projects.forEach((project) => {
+      const projects = context.getters.getProjects;
+      projects.forEach((project) => {
         // console.log(arrayMethods.methods.unique);
         if (project.type != "Logo") {
           project.value.forEach((val) => {
@@ -70,8 +65,9 @@ const module = {
           });
         }
       });
+      const nav = context.getters.getNavigation;
 
-      context.state.nav.forEach((nav) => {
+      nav.forEach((nav) => {
 				compList = [{subNav: null, comp: nav.component, name: nav.name }, ...compList];
       });
 
@@ -81,12 +77,46 @@ const module = {
   },
   getters: {
 
+    getHonorsAndAwards(state) {
+      return state.honorsAndAwards.honorsAndAwards;
+    },
+
+    getLisencesAndCertificates(state) {
+      return state.lisencesAndCertificates.lisencesAndCertificates;
+    },
+
+    getLogoList(state) {
+      return state.logoList.logoList;
+    },
+
+    getSkills(state) {
+      return state.skills.skills;
+    },
+
+    getUxProcess(state) {
+      return state.uxProcess.uxProcess;
+    },
+
+    getNavigation(state) {
+      console.log("GETTER Navigation", state.nav.nav);
+      return state.nav.nav;
+    }, //getProjects
+
     getProjects(state) {
-      return state.projects;
+      console.log("GETTER", state.projects.projects);
+      return state.projects.projects;
     }, //getProjects
 
     uniqueTagList(state) {
-      return state.uniqueTagList;
+      return state.uniqueTagList.uniqueTagList;
+    }, //uniqueTagList
+
+    getDrumKit(state) {
+      return state.drumKit.drumKit;
+    }, //uniqueTagList
+
+    getArrayExercise(state) {
+      return state.arrayExercise.arrayExercise;
     }, //uniqueTagList
 
     compList(state) {

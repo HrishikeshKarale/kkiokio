@@ -62,7 +62,7 @@ const module = {
   getters: {
     //do something
     loggedIn(state) {
-      return state.loggedIn;
+      return state.loggedIn.loggedIn;
     }
   }
 };

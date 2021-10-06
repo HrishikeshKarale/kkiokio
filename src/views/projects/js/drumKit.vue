@@ -21,17 +21,18 @@
 <script>
 	import { nameConvention } from "@/typeScript/nameConvention";
 	import { loading } from "@/typeScript/common/loading";
+	import { mapGetters } from "vuex";
 
 	export default {
 		name: "DrumKit",
 
 		mixins: [nameConvention, loading],
 		data() {
-			const kit = this.$store.state.drumKit;
-			return {
-				kit,
-			};
+			return {};
 		},
+		computed: {
+			...mapGetters({ drumKit: "contentModule/getDrumKit" }),
+		}, //computed
 		created() {
 			window.addEventListener("keydown", this.keyPressed, {
 				capture: false, // top to bottom bubbling/propogation

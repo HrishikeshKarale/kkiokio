@@ -81,7 +81,6 @@
 			if (tempPropFilter) {
 				this.propFilter = [this.$route.query.filter];
 			}
-			this.$store.dispatch("contentModule/processPorjects");
 		},
 		computed: {
 			...mapGetters({

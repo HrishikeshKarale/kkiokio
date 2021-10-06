@@ -1,9 +1,9 @@
 <template>
 	<div class="scrollIndicator">
-		<div class="scrollBody">
+		<div class="body">
 			<slot />
 		</div>
-		<div v-if="tagOffset.length > 1" class="scrollNav">
+		<div v-if="tagOffset.length > 1" class="nav">
 			<a
 				v-for="indicator in tagOffset"
 				:key="indicator.id"
@@ -185,7 +185,7 @@
 			align-self: center;
 			height: fit-content;
 
-			&.scrollNav {
+			&.nav {
 				position: absolute;
 				top: 50%;
 				right: @spaceLg;
@@ -252,7 +252,7 @@
 				}
 			}
 
-			&.scrollBody {
+			&.body {
 				display: flex;
 				align-self: center;
 				.responsive(@1600width, 6);

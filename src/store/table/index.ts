@@ -1,4 +1,4 @@
-const module = {
+const module: {} = {
   namespaced: true,
   state: {
     //table metadata
@@ -25,6 +25,9 @@ const module = {
   },
   getters: {
     //do something
+    getMetadata(state) {
+      return state.metadata.metadata;
+    }
   }
 };
 
