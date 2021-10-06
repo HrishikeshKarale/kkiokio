@@ -17,17 +17,17 @@ const module = {
         return el != "";
       });
 
-      store.state.contentModule.breadcrums.path = ["home", ...temp];
+      state.breadcrums.path = ["home", ...temp];
 
-      console.log("SET_PATH", store.state.contentModule.breadcrums.path);
+      console.log("SET_PATH", state.breadcrums.path);
     }, //SET_PATH
 
     CRUMS(state): void {
       let routeComp:{ comp: string, name: string }[] = [];
 
-      const compList = store.state.contentModule.compList;
+      const compList = state.compList;
 
-      store.state.contentModule.breadcrums.path.forEach(comp => {
+      state.breadcrums.path.forEach(comp => {
 
         compList.forEach((list) => {
           if (nameConvention.methods.capitalize(comp) === nameConvention.methods.capitalize(list.comp)) {
@@ -42,23 +42,18 @@ const module = {
 
 
 
-      store.state.contentModule.breadcrums.routeComp = routeComp;
-      // store.state.contentModule.breadcrums.routeComp = [...routeComp, {comp: null, name: route[route.length-1]}];
+      state.breadcrums.routeComp = routeComp;
+      // state.breadcrums.routeComp = [...routeComp, {comp: null, name: route[route.length-1]}];
 
-      console.log("CRUMS", store.state.contentModule.breadcrums.routeComp);
+      console.log("CRUMS", state.breadcrums.routeComp);
     },
 
     IS_COMPONENT(state, comp): { comp: string, name: string } {
-      const compList = store.state.contentModule.compList;
+      const compList = state.compList;
       return compList.find((list) => {
         return nameConvention.methods.capitalize(comp) === nameConvention.methods.capitalize(list.comp);
       });
     },
-
-    DEF_COMPONENT(state) {
-      console.log("DEF_COMPONENT", store);
-
-    }
   },
   actions: {
     //returns a unique list of tags for individual projects
@@ -70,18 +65,16 @@ const module = {
       console.log("initialize");
 			context.commit("SET_PATH", route);
 			context.commit("CRUMS");
-      context.commit("DEF_COMPONENT");
       // context.commit("IS_COMPONENT", comp);
-      console.log("initialize", store);
     }
   },
   getters: {
-    routeComp() {
-      return store.state.contentModule.breadcrums.routeComp;
+    routeComp(state) {
+      return state.breadcrums.routeComp;
     }, //routeComp
 
-    pageTitle() {
-      const route = store.state.contentModule.breadcrums.path;
+    pageTitle(state) {
+      const route = state.breadcrums.path;
 
       //remove %20 if any
       let tempSelect = route[route.length-1];
