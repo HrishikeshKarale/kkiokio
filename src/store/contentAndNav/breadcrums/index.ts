@@ -1,14 +1,10 @@
-import store from "@/store";
-import { Store } from "vuex";
-
 import { nameConvention } from "@/typeScript/nameConvention";
-import { isCoreComponent } from "@vue/compiler-core";
 
 const module = {
   namespaced: true,
   state: {
     routeComp: [],
-    path: ""
+    path: []
   },
   mutations: {
     SET_PATH(state, path): void {
@@ -17,17 +13,15 @@ const module = {
         return el != "";
       });
 
-      state.breadcrums.path = ["home", ...temp];
+      state.path = ["home", ...temp];
 
-      console.log("SET_PATH", state.breadcrums.path);
+      console.log("SET_PATH", state.path);
     }, //SET_PATH
 
-    CRUMS(state): void {
+    CRUMS(state, compList): void {
       let routeComp:{ comp: string, name: string }[] = [];
 
-      const compList = state.compList;
-
-      state.breadcrums.path.forEach(comp => {
+      state.path.forEach(comp => {
 
         compList.forEach((list) => {
           if (nameConvention.methods.capitalize(comp) === nameConvention.methods.capitalize(list.comp)) {
@@ -42,10 +36,10 @@ const module = {
 
 
 
-      state.breadcrums.routeComp = routeComp;
-      // state.breadcrums.routeComp = [...routeComp, {comp: null, name: route[route.length-1]}];
+      state.routeComp = routeComp;
+      // state.routeComp = [...routeComp, {comp: null, name: route[route.length-1]}];
 
-      console.log("CRUMS", state.breadcrums.routeComp);
+      console.log("CRUMS", state.routeComp);
     },
 
     IS_COMPONENT(state, comp): { comp: string, name: string } {
@@ -64,7 +58,7 @@ const module = {
     async initialize(context, route) {
       console.log("initialize");
 			context.commit("SET_PATH", route);
-			context.commit("CRUMS");
+			context.commit("CRUMS", context.rootState.contentModule.compList);
       // context.commit("IS_COMPONENT", comp);
     }
   },
