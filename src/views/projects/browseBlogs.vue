@@ -2,12 +2,8 @@
 	<div class="browseBlogs">
 		<h4>Browse by tags</h4>
 		<ul>
-			<template v-for="entry in Object.entries(category)">
-				<li
-					@click="show = entry[0]"
-					:class="{ open: show === entry[0] }"
-					:key="entry[0]"
-				>
+			<template v-for="entry in Object.entries(category)" :key="entry[0]">
+				<li @click="show = entry[0]" :class="{ open: show === entry[0] }">
 					<b v-text="entry[0]" />
 					<ul>
 						<li v-for="tag in entry[1]" :key="entry[0] + ' - ' + tag">
