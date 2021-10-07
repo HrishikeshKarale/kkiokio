@@ -1,7 +1,7 @@
 <template>
 	<div class="drumKit">
 		<div
-			v-for="k in kit"
+			v-for="k in drumKit"
 			:key="k.dataKey"
 			:class="['key', k.isPlaying ? 'playing' : '']"
 			:data-key="k.dataKey"
@@ -42,7 +42,7 @@
 
 		methods: {
 			endTransition: function (value) {
-				const kit = this.kit;
+				const kit = this.drumKit;
 				let k = null;
 				for (const i in kit) {
 					k = kit[i];
@@ -56,39 +56,40 @@
 				this.playAudio(keyCode);
 			},
 			playAudio(keyCode) {
-				// const audioFiles = Array.from(document.getElementsByTagName("audio"));
-				// audioFiles.forEach(file => {
-				//   const dataKey= file.getAttribute("data-key");
-				//   if (dataKey == keyCode) {
-				//     file.audio.currentTime = 0;
-				//     file.isPlaying = true;
-				//     file.audio.play();
-				//   }
-				// });
-
-				this.kit.forEach((kit) => {
-					if (kit.dataKey == keyCode) {
-						kit.audio.currentTime = 10;
-						kit.audio.crossOrigin = "anonymous";
-						kit.audio.autoplay = true;
-						kit.isPlaying = true;
-						try {
-							kit.audio.play().then(() => {
-								//automatic playback started
-							});
-						} catch (e) {
-							this.emitter.emit("alert", {
-								type: "warning",
-								message: "Error playing audio for selected kit",
-								description: e,
-								dismissable: this.booleanTrue,
-								code: "101.1",
-								timeout: 8,
-							});
-							// console.error(e);
-						}
+				const audioFiles = Array.from(document.getElementsByTagName("audio"));
+				audioFiles.forEach((file) => {
+					const dataKey = file.getAttribute("data-key");
+					if (dataKey == keyCode) {
+						// console.log(file.play());
+						file.currentTime = 0;
+						file.isPlaying = true;
+						file.play();
 					}
 				});
+
+				// this.drumKit.forEach((kit) => {
+				// 	if (kit.dataKey == keyCode) {
+				// 		kit.audio.currentTime = 10;
+				// 		kit.audio.crossOrigin = "anonymous";
+				// 		kit.audio.autoplay = true;
+				// 		kit.isPlaying = true;
+				// 		try {
+				// 			kit.audio.play().then(() => {
+				// 				//automatic playback started
+				// 			});
+				// 		} catch (e) {
+				// 			this.emitter.emit("alert", {
+				// 				type: "warning",
+				// 				message: "Error playing audio for selected kit",
+				// 				description: e,
+				// 				dismissable: this.booleanTrue,
+				// 				code: "101.1",
+				// 				timeout: 8,
+				// 			});
+				// 			// console.error(e);
+				// 		}
+				// 	}
+				// });
 
 				// let k = null;
 				// const kit = this.kit;
