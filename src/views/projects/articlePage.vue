@@ -7,7 +7,10 @@
 				:tags="projTags"
 				:title="projTitle"
 			/>
-			<feedback-tracker />
+			<feedback-tracker
+				:value="feedbackValue"
+				@input="(val) => (feedbackValue = val)"
+			/>
 			<post-nav :next="nextArticle" :previous="previousArticle" />
 			<related-post :tags="projTags" />
 		</template>
@@ -52,12 +55,15 @@
 			const projTitle = null;
 			const nextArticle = null;
 			const previousArticle = null;
+			//feedback
+			const feedbackValue = 3;
 			return {
 				projData,
 				projTags,
 				projTitle,
 				nextArticle,
 				previousArticle,
+				feedbackValue,
 			};
 		}, //data
 
