@@ -60,47 +60,11 @@
 				audioFiles.forEach((file) => {
 					const dataKey = file.getAttribute("data-key");
 					if (dataKey == keyCode) {
-						// console.log(file.play());
 						file.currentTime = 0;
 						file.isPlaying = true;
 						file.play();
 					}
 				});
-
-				// this.drumKit.forEach((kit) => {
-				// 	if (kit.dataKey == keyCode) {
-				// 		kit.audio.currentTime = 10;
-				// 		kit.audio.crossOrigin = "anonymous";
-				// 		kit.audio.autoplay = true;
-				// 		kit.isPlaying = true;
-				// 		try {
-				// 			kit.audio.play().then(() => {
-				// 				//automatic playback started
-				// 			});
-				// 		} catch (e) {
-				// 			this.emitter.emit("alert", {
-				// 				type: "warning",
-				// 				message: "Error playing audio for selected kit",
-				// 				description: e,
-				// 				dismissable: this.booleanTrue,
-				// 				code: "101.1",
-				// 				timeout: 8,
-				// 			});
-				// 			// console.error(e);
-				// 		}
-				// 	}
-				// });
-
-				// let k = null;
-				// const kit = this.kit;
-				// for (const i in kit) {
-				//   k = kit[i];
-				//   if (k.dataKey == keyCode) {
-				//     k.audio.currentTime = 0;
-				//     k.isPlaying = true;
-				//     k.audio.play();
-				//   }
-				// }
 			},
 			keyPressed: function () {
 				const keyCode = event.keyCode;
