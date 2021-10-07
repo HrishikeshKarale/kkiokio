@@ -7,6 +7,7 @@
 				:tags="projTags"
 				:title="projTitle"
 			/>
+			<feedback-tracker />
 			<post-nav :next="nextArticle" :previous="previousArticle" />
 			<related-post :tags="projTags" />
 		</template>
@@ -20,6 +21,7 @@
 
 <script>
 	import postNav from "./postNav.vue";
+	import feedbackTracker from "./feedbackTracker.vue";
 	import relatedPost from "./relatedPost.vue";
 	import browseBlogs from "./browseBlogs.vue";
 	import subscribeBox from "./subscribeBox.vue";
@@ -35,6 +37,7 @@
 		mixins: [loading],
 		components: {
 			postNav,
+			feedbackTracker,
 			sideBySideLayout,
 			postTemplate,
 			subscribeBox,
