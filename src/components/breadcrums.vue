@@ -72,8 +72,11 @@
 			// z-index: @headerZ;
 		}
 		& > ol {
+			flex-flow: row nowrap;
+			align-items: center;
 			gap: @spaceLg;
 			& > li {
+				align-items: center;
 				gap: @spaceLg;
 				& > h4 {
 					margin: 0 !important;
