@@ -8,6 +8,8 @@
     "server": "nodemon server/app",
     "deploy": "concurrently \"npm run build\" \"npm run firebase\"",
     "build": "vue-cli-service build",
+    "firebase-hosting": "firebase deploy --only hosting",
+    "firebase-functions": "firebase deploy --only functions",
     "firebase": "firebase deploy",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",

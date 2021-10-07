@@ -62,9 +62,9 @@
 				This is a detailed chronicle of the stories, processes and results
 				behind the projects that I've led and contributed to.
 			</p>
-			<p>
+			<!-- <p>
 				{{ getProjects }}
-			</p>
+			</p> -->
 			<!-- <ul>
 				<template v-for="project in getProjects" :key="project.type">
 					<li
