@@ -20,16 +20,16 @@ const routes: Array<RouteRecordRaw> = [
       requiresAuth: false
     }
   },
-  // {
-  //   path: "/logo",
-  //   name: "logo",
-  //   component: () =>
-  //     import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue"),
-  //   meta: {
-  //     transitionName: "fade",
-  //     requiresAuth: false //true
-  //   }
-  // },
+  {
+    path: "/blogs",
+    name: "blogs",
+    component: () =>
+      import(/* webpackChunkName: "blogs" */ "@/views/blogs.vue"),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false //true
+    }
+  },
   {
     path: "/about",
     name: "about",
@@ -41,17 +41,42 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/Work",
+    path: "/work",
     name: "work",
     component: () =>
       import(/* webpackChunkName: "work" */ "@/views/project.vue"),
+      redirect: {
+        name: 'index'
+      },
     meta: {
       transitionName: "fade",
       requiresAuth: false //true
-    }
+    },
+    children: [
+      {
+        path: "",
+        name: "work.index",
+        component: () =>
+          import(/* webpackChunkName: "index" */ "@/views/projects/index.vue"),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false //true
+        },
+      },
+      {
+        path: ":type",
+        name: "index",
+        component: () =>
+          import(/* webpackChunkName: "index:type" */ "@/views/projects/index.vue"),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false //true
+        },
+      }
+    ]
   },
   {
-    path: "/Work/:article",
+    path: "/work/:type/:article",
     name: "articlePage",
     component: () =>
       import(
@@ -334,7 +359,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 });
 
