@@ -20,12 +20,18 @@ const module = {
     drumKit: require("./drumKit"),
     // get unique list of tags
     uniqueTagList: [],
-    compList: []
+    compList: [],
+    categoryList: []
   },
   mutations: {
     // list of unique tags
     SET_UNIQUE_TAG_LIST(state, array) {
       state.uniqueTagList = arrayMethods.methods.unique(array);
+    }, //GET_UNIQUE
+
+    // list of unique categories
+    SET_UNIQUE_CATEGORY_LIST(state, array) {
+      state.categoryList = array;
     }, //GET_UNIQUE
 
     //list of {component, name}[] unique to the projects
@@ -39,6 +45,7 @@ const module = {
     async processPorjects(context) {
       // console.log("processPorjects");
       let tagList: string[] = [];
+      let categoryList: string[] = [];
       let compList: {
         subNav: {
         id: number,
@@ -56,6 +63,7 @@ const module = {
       const projects = context.getters.getProjects;
       projects.forEach((project) => {
         // console.log(arrayMethods.methods.unique);
+        categoryList = [...categoryList,project.type];
         if (project.type != "Logo") {
           project.value.forEach((val) => {
             //store
@@ -73,6 +81,7 @@ const module = {
 				compList = [{subNav: null, comp: nav.component, name: nav.name }, ...compList];
       });
 
+      context.commit("SET_UNIQUE_CATEGORY_LIST", categoryList);
       context.commit("SET_UNIQUE_TAG_LIST", tagList);
       context.commit("SET_COMP_LIST", compList);
     }, //processProjects
@@ -110,10 +119,6 @@ const module = {
       return state.projects.projects;
     }, //getProjects
 
-    uniqueTagList(state) {
-      return state.uniqueTagList.uniqueTagList;
-    }, //uniqueTagList
-
     getDrumKit(state) {
       return state.drumKit.drumKit;
     }, //uniqueTagList
@@ -125,6 +130,15 @@ const module = {
     compList(state) {
       return state.compList;
     }, //compList
+
+    uniqueTagList(state) {
+      return state.uniqueTagList;
+    }, //uniqueTagList
+
+    categoryList(state) {
+      // console.log(state.categoryList)
+      return state.categoryList;
+    }, //uniqueTagList
   }
 };
 

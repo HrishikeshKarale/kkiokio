@@ -2,7 +2,7 @@
 	<div class="vueFilter">
 		<div
 			:class="{
-				open: showFilter || Object.keys(selected).length !== 0,
+				open: Object.keys(selected).length !== 0,
 			}"
 		>
 			<vue-button
@@ -71,6 +71,7 @@
 		<!-- popup -->
 		<vue-form
 			v-show="showFilter"
+			:title="title"
 			text="Filter"
 			icon="fas fa-add"
 			category="small"
@@ -120,6 +121,11 @@
 		mixins: [alerts],
 
 		props: {
+			title: {
+				required: false,
+				type: [String, null],
+				default: null,
+			},
 			filters: {
 				required: true,
 				type: Object,
@@ -335,16 +341,17 @@
 		}
 		& > form {
 			position: absolute;
-			top: 32px;
+			top: @spaceXl + @spaceLg;
 			left: 0;
 			display: flex;
 			flex-direction: column;
 			padding: @spaceMd @spaceLg;
 			border-radius: @borderRadius;
-			z-index: @contentZ + 15;
 			background-color: @backgroundColor;
 			.boxShadow(@two, @accentColor);
-			width: fit-content;
+			outline: 9999px solid #000000a3;
+			width: max-content;
+			z-index: @contentZ + 100;
 			& > div {
 				&:last-child {
 					display: flex;

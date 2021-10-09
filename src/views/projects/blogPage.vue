@@ -1,16 +1,25 @@
 <template>
-	<post-template
-		v-if="projData"
-		:post="projData"
-		:tags="projTags"
-		:title="projTitle"
-	/>
-	<feedback-tracker
-		:value="feedbackValue"
-		@input="(val) => (feedbackValue = val)"
-	/>
-	<post-nav :next="nextArticle" :previous="previousArticle" />
-	<related-post :tags="projTags" />
+	<side-by-side-layout class="articlePage">
+		<template #left>
+			<post-template
+				v-if="projData"
+				:post="projData"
+				:tags="projTags"
+				:title="projTitle"
+			/>
+			<feedback-tracker
+				:value="feedbackValue"
+				@input="(val) => (feedbackValue = val)"
+			/>
+			<post-nav :next="nextArticle" :previous="previousArticle" />
+			<related-post :tags="projTags" />
+		</template>
+		<template #right>
+			<subscribe-box />
+			<search-blog />
+			<browse-blogs />
+		</template>
+	</side-by-side-layout>
 </template>
 
 <script>
@@ -104,4 +113,34 @@
 <style lang="less" scoped>
 	@import (reference) "../../Less/customMixins.less";
 	@import (reference) "../../Less/customVariables.less";
+
+	.postNav {
+		display: flex;
+		flex-flow: row nowrap;
+		width: 100%;
+		border: 1px solid @textColor;
+		border-width: 1px 0;
+		padding: @spaceXl @spaceSm;
+		& > .previous,
+		& > .next {
+			flex: 1 1 160px;
+			&:before {
+				content: "Previous Post";
+				font-weight: 700;
+				font-size: @fontSize;
+			}
+			& > h3 {
+				font-weight: 900;
+				color: @accentColor;
+				cursor: pointer;
+				margin-left: @spaceMd;
+				margin-top: @spaceMd !important;
+			}
+		}
+		& > .next {
+			&:before {
+				content: "Next Post";
+			}
+		}
+	}
 </style>

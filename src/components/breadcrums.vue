@@ -2,7 +2,10 @@
 	<nav v-if="routeComp.length > 1" class="breadcrums">
 		<ol>
 			<template v-for="route in routeComp">
-				<li v-if="pageTitle != route.name" :key="route.name">
+				<li
+					v-if="pageTitle.toUpperCase() != route.name.toUpperCase()"
+					:key="route.name"
+				>
 					<router-link
 						class="crums"
 						:to="{ name: route.comp }"
