@@ -3,6 +3,7 @@
 		:class="['vueButton', buttonClass]"
 		:type="type"
 		:name="tag"
+		:aria-label="tag"
 		:autofocus="autofocus"
 		:disabled="disabled"
 		:form="form"
@@ -238,7 +239,7 @@
 			padding: @spaceSm @spaceMd;
 			border-width: 0px;
 			font-weight: bold;
-			transform: scale(0.92);
+			transform: scale(0.96);
 			.boxShadow(none);
 
 			&:not([disabled]):hover {
@@ -260,16 +261,18 @@
 		}
 
 		&.btn-sm {
+			gap: @spaceSm;
 			padding: @spaceXs @spaceSm;
-			font-size: @fontSizeMd;
+			font-size: @fontSizeSm;
 		}
 		&.btn-primary {
 			padding: @spaceSm @spaceMd;
 			font-size: @fontSizeMd;
 		}
 		&.btn-lg {
+			gap: @spaceLg;
 			padding: @spaceMd @spaceLg;
-			font-size: @fontSizeSm * 2;
+			font-size: @fontSize;
 		}
 	}
 </style>

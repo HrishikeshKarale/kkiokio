@@ -178,8 +178,6 @@
 				flex-direction: row-reverse;
 				gap: @spaceMd;
 				align-items: center;
-				//set a slight offset
-				margin-right: -@spaceXl;
 				& > input {
 					font-size: @fontSizeMd;
 					&[type="reset"] {
