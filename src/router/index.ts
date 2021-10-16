@@ -1,5 +1,9 @@
 import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
 
+//set up emiter for login's
+import mitt from "mitt";
+const emitter = mitt();
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -37,7 +41,7 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "about" */ "@/views/about/index.vue"),
     meta: {
       transitionName: "fade",
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -45,34 +49,21 @@ const routes: Array<RouteRecordRaw> = [
     name: "work",
     component: () =>
       import(/* webpackChunkName: "work" */ "@/views/project.vue"),
-      redirect: {
-        name: 'index'
-      },
     meta: {
       transitionName: "fade",
       requiresAuth: false //true
     },
     children: [
       {
-        path: "",
-        name: "work.index",
-        component: () =>
-          import(/* webpackChunkName: "index" */ "@/views/projects/index.vue"),
+        path: ":type",
+        name: "work",
+    component: () =>
+      import(/* webpackChunkName: "work" */ "@/views/project.vue"),
         meta: {
           transitionName: "fade",
           requiresAuth: false //true
         },
       },
-      {
-        path: ":type",
-        name: "index",
-        component: () =>
-          import(/* webpackChunkName: "index:type" */ "@/views/projects/index.vue"),
-        meta: {
-          transitionName: "fade",
-          requiresAuth: false //true
-        },
-      }
     ]
   },
   {
@@ -284,7 +275,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "rsvpApp",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "@/views/projects/webUX/rsvpApp.vue"
+        /* webpackChunkName: "rsvpApp" */ "@/views/projects/webUX/rsvpApp.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -345,7 +336,7 @@ const routes: Array<RouteRecordRaw> = [
     // alias: "/404pageNotFound",
     name: "pageNotFound",
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (pageNotFound.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(
@@ -365,33 +356,35 @@ const router = createRouter({
 
 // router.beforeEach((to, from, next) => {
 //   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     if (localStorage.getItem('jwt') == null) {
-//       next({
-//         path: '/login',
-//         params: { nextUrl: to.fullPath }
-//       })
-//     } else {
-//       const user = JSON.parse(localStorage.getItem('user') || '{}');
-//       if (to.matched.some(record => record.meta.isAdmin)) {
-//         if (user.isAdmin == 1) {
-//           next()
-//         }
-//         else {
-//           next({ name: 'userboard' })
-//         }
-//       } else {
-//         next()
-//       }
-//     }
-//   } else if (to.matched.some(record => record.meta.guest)) {
-//     if (localStorage.getItem('jwt') == null) {
-//       next()
-//     }
-//     else {
-//       next({ name: 'userboard' })
-//     }
-//   } else {
-//     next()
+    // emitter.emit("loadingScreen", true);
+    // if (localStorage.getItem('jwt') == null) {
+    //   //   next({
+    //     //     path: '/login',
+    //     //     params: { nextUrl: to.fullPath }
+    //     //   })
+    // } else {
+    //   const user = JSON.parse(localStorage.getItem('user') || '{}');
+    //   if (to.matched.some(record => record.meta.isAdmin)) {
+    //     if (user.isAdmin == 1) {
+    //       next()
+    //     }
+    //     else {
+    //       next({ name: 'userboard' })
+    //     }
+    //   } else {
+    //     next()
+    //   }
+    // }
+  // } else if (to.matched.some(record => record.meta.guest)) {
+    //   if (localStorage.getItem('jwt') == null) {
+    //     next()
+    //   }
+    //   else {
+    //     next({ name: 'userboard' })
+    //   }
+    // } else {
+    //   next()
+    // }
 //   }
 // })
 

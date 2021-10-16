@@ -1,16 +1,16 @@
 <template>
 	<post-template
-		v-if="projData"
-		:post="projData"
-		:tags="projTags"
-		:title="projTitle"
+		v-if="selectedArticle.article"
+		:post="selectedArticle.article"
+		:tags="selectedArticle.tags"
+		:title="selectedArticle.title"
 	/>
 	<feedback-tracker
 		:value="feedbackValue"
 		@input="(val) => (feedbackValue = val)"
 	/>
 	<post-nav :next="nextArticle" :previous="previousArticle" />
-	<related-post :tags="projTags" />
+	<related-post :tags="selectedArticle.tags" />
 </template>
 
 <script>
@@ -41,19 +41,9 @@
 		}, //components
 
 		data() {
-			const projData = {};
-			const projTags = null;
-			const projTitle = null;
-			const nextArticle = null;
-			const previousArticle = null;
 			//feedback
 			const feedbackValue = 3;
 			return {
-				projData,
-				projTags,
-				projTitle,
-				nextArticle,
-				previousArticle,
 				feedbackValue,
 			};
 		}, //data
@@ -61,42 +51,14 @@
 		computed: {
 			...mapGetters({
 				projects: "contentModule/getProjects",
+				selectedArticle: "contentModule/getSelectedProject",
+				nextArticle: "contentModule/getNextArticle",
+				previousArticle: "contentModule/getPreviousArticle",
 			}),
 		}, //computed
 
-		methods: {
-			projectData: function () {
-				let articleFound = !this.booleanTrue;
-				const postTitle = this.$router.currentRoute.value.params.article;
-				for (const project of this.projects) {
-					for (const proj of project.value) {
-						// console.log(articleFound, " - ", proj.title);
-						if (!articleFound && proj.title === postTitle && proj.blog) {
-							articleFound = this.booleanTrue;
-							this.projData = Object.values(proj.blog)[0];
-							this.projTags = proj.tags;
-							this.projTitle = proj.title;
-						} else {
-							if (articleFound) {
-								this.nextArticle = proj;
-								return null;
-							} else {
-								this.previousArticle = proj;
-							}
-						}
-					}
-				}
-				if (!this.nextArticle) {
-					this.nextArticle = this.projects[0].value[0];
-				}
-				if (!this.previousArticle) {
-					this.previousArticle = this.projects.at(-1).value.at(-1);
-				}
-			}, //projectData
-		}, //methods
-
-		beforeMount() {
-			this.projectData();
+		created() {
+			this.$store.dispatch("contentModule/projectData", this.$router.currentRoute.value.params.article, { root: true });
 		}, //beforeMount
 	};
 </script>

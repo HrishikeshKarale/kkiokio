@@ -1,4 +1,18 @@
-export const projects = [
+interface projectType {
+  type: string,
+  value: {
+    id: Number,
+    title: string,
+    img: string,
+    tags: string[],
+    description: string | null,
+    component: string | null,
+    blog: string | null
+  }[]
+};
+
+
+export const projects: projectType[] = [
   {
     type: "User Experience (UX)",
     value: [
@@ -214,7 +228,8 @@ export const projects = [
         img: require("@/assets/logo/dentArtistry.svg"),
         tags: [],
         description: "Dentistry is a dental Clinic owned by a local dentist who is known for his creativity.",
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 34,
@@ -222,7 +237,8 @@ export const projects = [
         img: require("@/assets/logo/hexaTees.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 35,
@@ -230,7 +246,8 @@ export const projects = [
         img: require("@/assets/logo/medicare.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 36,
@@ -238,7 +255,8 @@ export const projects = [
         img: require("@/assets/logo/MvEvents.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 37,
@@ -246,7 +264,8 @@ export const projects = [
         img: require("@/assets/logo/innovativeCircuits.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 1,
@@ -254,7 +273,8 @@ export const projects = [
         img: require("@/assets/logo/kkiokio.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 2,
@@ -262,7 +282,8 @@ export const projects = [
         img: require("@/assets/logo/Weego.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 3,
@@ -270,7 +291,8 @@ export const projects = [
         img: require("@/assets/logo/kkiokioBg.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 4,
@@ -278,7 +300,8 @@ export const projects = [
         img: require("@/assets/logo/wanderSaneGlobe.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 5,
@@ -286,7 +309,8 @@ export const projects = [
         img: require("@/assets/logo/wanderSaneBadge.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 6,
@@ -294,7 +318,8 @@ export const projects = [
         img: require("@/assets/logo/wanderSaneHelmet.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 7,
@@ -302,7 +327,8 @@ export const projects = [
         img: require("@/assets/logo/metered.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 8,
@@ -310,7 +336,8 @@ export const projects = [
         img: require("@/assets/logo/prideSwag.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 9,
@@ -318,7 +345,8 @@ export const projects = [
         img: require("@/assets/logo/learningTree.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 10,
@@ -326,7 +354,8 @@ export const projects = [
         img: require("@/assets/logo/tentFire.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 11,
@@ -334,28 +363,35 @@ export const projects = [
         img: require("@/assets/logo/tentPalace.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 12,
+        title: "wanderSaneBadge",
         img: require("@/assets/logo/mountain.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 13,
+        title: "wanderSaneBadge",
         img: require("@/assets/logo/beach.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 14,
+        title: "wanderSaneBadge",
         img: require("@/assets/logo/rider.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 15,
@@ -363,7 +399,8 @@ export const projects = [
         img: require("@/assets/logo/wanderSaneStamp.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 16,
@@ -371,7 +408,8 @@ export const projects = [
         img: require("@/assets/logo/natureStamp.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       // {
       //   id: 17,
@@ -379,7 +417,8 @@ export const projects = [
       //   img: require("@/assets/logo/fireLog.svg"),
       // tags: [],
       // description: null,
-      // component: null
+      // component: null,
+        // blog: null
       // },
       {
         id: 18,
@@ -387,7 +426,8 @@ export const projects = [
         img: require("@/assets/logo/deer.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 19,
@@ -395,7 +435,8 @@ export const projects = [
         img: require("@/assets/logo/bird.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 20,
@@ -403,7 +444,8 @@ export const projects = [
         img: require("@/assets/logo/biceps.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 21,
@@ -411,7 +453,8 @@ export const projects = [
         img: require("@/assets/logo/tent.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       // {
       //   id: 22,
@@ -419,7 +462,8 @@ export const projects = [
       //   img: require("@/assets/logo/electron.svg"),
       // tags: [],
       // description: null,
-      // component: null
+      // component: null,
+        // blog: null
       // },
       {
         id: 23,
@@ -427,7 +471,8 @@ export const projects = [
         img: require("@/assets/logo/sandyGlobe.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 24,
@@ -435,7 +480,8 @@ export const projects = [
         img: require("@/assets/logo/biker.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 25,
@@ -443,7 +489,8 @@ export const projects = [
         img: require("@/assets/logo/hexa.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 26,
@@ -451,7 +498,8 @@ export const projects = [
         img: require("@/assets/logo/wanderSaneVlogs.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 27,
@@ -459,7 +507,8 @@ export const projects = [
         img: require("@/assets/logo/wonderWheel.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 28,
@@ -467,7 +516,8 @@ export const projects = [
         img: require("@/assets/logo/electroWheel.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 29,
@@ -475,7 +525,8 @@ export const projects = [
         img: require("@/assets/logo/wrenchWheel.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       {
         id: 30,
@@ -483,7 +534,8 @@ export const projects = [
         img: require("@/assets/logo/unison.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
       // {
       //   id: 31,
@@ -491,7 +543,8 @@ export const projects = [
       //   img: require("@/assets/logo/Artboard 27.svg"),
       // tags: [],
       // description: null,
-      // component: null
+      // component: null,
+        // blog: null
       // },
       {
         id: 33,
@@ -499,7 +552,8 @@ export const projects = [
         img: require("@/assets/logo/anglePlus.svg"),
         tags: [],
         description: null,
-        component: null
+        component: null,
+        blog: null
       },
     ]
   },

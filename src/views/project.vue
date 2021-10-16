@@ -10,11 +10,6 @@
 			The projects have vbeen divided into categories to make it easy for
 			browsing.
 		</p>
-		<vue-filter
-			:filters="filterList"
-			:selected="propFilter"
-			@updateFilters="(val) => (propFilter = val)"
-		/>
 		<nav v-show="$route.params.type">
 			<ol>
 				<template v-for="projects in projectList" :key="projects.type">
@@ -27,13 +22,20 @@
 				</template>
 			</ol>
 		</nav>
+		<vue-filter
+			title="Filter Projects"
+			:filters="filterList"
+			:selected="propFilter"
+			@updateFilters="(val) => (propFilter = val)"
+		/>
 		<template v-if="$route.params.type">
 			<template v-for="projects in projectList" :key="projects.type">
 				<showcase
 					v-for="project in projects.value"
 					v-show="
-						($route.params.type == projects.type && propFilter.length == 0) ||
-						(propFilter.length > 0 &&
+						($route.params.type == projects.type &&
+							Object.keys(propFilter).length == 0) ||
+						(Object.keys(propFilter).length > 0 &&
 							propFilter.some((filter) => project.tags.includes(filter)))
 					"
 					:key="project.id"
@@ -47,9 +49,9 @@
 		<template v-else v-for="projects in projectList" :key="projects.type">
 			<template
 				v-if="
-					propFilter.length == 0 ||
-					(propFilter.length > 0 &&
-						propFilter.some((filter) => [projects.type].includes(filter)))
+					Object.keys(propFilter).length == 0 ||
+					(Object.keys(propFilter).length > 0 &&
+						propFilter.type.some((filter) => [projects.type].includes(filter)))
 				"
 			>
 				<card-scroller
@@ -60,8 +62,8 @@
 					v-show="
 						projects.value.some((project) => {
 							return (
-								propFilter.length == 0 ||
-								(propFilter.length > 0 &&
+								Object.keys(propFilter).length == 0 ||
+								(Object.keys(propFilter).length > 0 &&
 									propFilter.some((filter) => project.tags.includes(filter)))
 							);
 						})
@@ -70,8 +72,8 @@
 					<showcase
 						v-for="project in projects.value"
 						v-show="
-							propFilter.length == 0 ||
-							(propFilter.length > 0 &&
+							Object.keys(propFilter).length == 0 ||
+							(Object.keys(propFilter).length > 0 &&
 								propFilter.some((filter) => project.tags.includes(filter)))
 						"
 						:key="project.id"
@@ -115,11 +117,11 @@
 				],
 			};
 			//cardScroll
-			const autoScroll = this.booleanTrue;
+			// const autoScroll = this.booleanTrue;
 			return {
 				propFilter,
 				filterList,
-				autoScroll,
+				// autoScroll,
 			};
 		},
 		created() {

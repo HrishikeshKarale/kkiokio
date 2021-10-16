@@ -21,7 +21,10 @@ const module = {
     // get unique list of tags
     uniqueTagList: [],
     compList: [],
-    categoryList: []
+    categoryList: [],
+    selectedProject: {},
+    nextArticle: null,
+    previousArticle: null
   },
   mutations: {
     // list of unique tags
@@ -39,10 +42,65 @@ const module = {
       // console.log("SET_COMP_LIST", array);
       state.compList = array;
     }, //SET_COMP_LIST
+
+    //store data related to current Article being displayed
+    SET_SELECTED_PROJECT(state, payload) {
+      console.log("SET_SELECTED_PROJECT", payload);
+      state.selectedProject = payload;
+    }, //SET_SELECTED_PROJECT
+
+    //store data related to current Article being displayed
+    SET_NEXT_ARTICLE(state, payload) {
+      console.log("SET_NEXT_ARTICLE", payload);
+      state.nextArticle = payload;
+    }, //SET_NEXT_ARTICLE
+
+    //store data related to current Article being displayed
+    SET_PEVIOUS_ARTICLE(state, payload) {
+      console.log("SET_PEVIOUS_ARTICLE", payload);
+      state.previousArticle = payload;
+    }, //SET_PEVIOUS_ARTICLE
   },
   actions: {
+    // loads data for selected project and adjoining projects
+    projectData: async function (context, article) {
+      let articleFound = false;
+      const postTitle = article;
+      const projects = context.getters.getProjects;
+      let selectedArticle:any = {};
+      let selectedTags = [];
+      let selectedTitle = "";
+      context.commit("SET_NEXT_ARTICLE", projects[0].value[0]);
+      context.commit("SET_PEVIOUS_ARTICLE", projects.at(-1).value.at(-1));
+      for (const project of projects) {
+        // console.log("project Data");
+        for (const proj of project.value) {
+          if (!articleFound && proj.title === postTitle && proj.blog) {
+            articleFound = true;
+            console.log("VALUE", Object.values(proj.blog)[0]);
+            selectedArticle = Object.values(proj.blog)[0];
+            selectedTags = proj.tags;
+            selectedTitle = proj.title;
+            console.log(articleFound, " - ", proj.title);
+            context.commit("SET_SELECTED_PROJECT", {
+              article: selectedArticle,
+              tags: selectedTags,
+              title: selectedTitle});
+          } else {
+            if (articleFound) {
+              context.commit("SET_NEXT_ARTICLE", proj);
+              return null;
+            } else {
+              context.commit("SET_PEVIOUS_ARTICLE", proj);
+            }
+          }
+        }
+      }
+    }, //projectData
+
+
     //returns a unique list of tags for individual projects
-    async processPorjects(context) {
+    processPorjects: async function (context) {
       // console.log("processPorjects");
       let tagList: string[] = [];
       let categoryList: string[] = [];
@@ -136,9 +194,24 @@ const module = {
     }, //uniqueTagList
 
     categoryList(state) {
-      // console.log(state.categoryList)
+      // console.log(state.categoryList);
       return state.categoryList;
     }, //uniqueTagList
+
+    getSelectedProject(state) {
+      console.log("getSelectedProject", state.selectedProject);
+      return state.selectedProject;
+    },
+
+    getNextArticle(state) {
+      console.log("getNextArticle", state.nextArticle);
+      return state.nextArticle;
+    },
+
+    getPreviousArticle(state) {
+      console.log("getPreviousArticle", state.previousArticle);
+      return state.previousArticle;
+    },
   }
 };
 
