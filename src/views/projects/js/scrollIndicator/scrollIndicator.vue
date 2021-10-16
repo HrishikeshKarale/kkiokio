@@ -11,7 +11,7 @@
 				:class="{ active: indicator.selected }"
 			>
 				<span :class="[indicator.selected ? 'fas' : 'far', 'fa-circle']" />
-				<span>{{ indicator.id }}</span>
+				<span v-text="indicator.id" />
 			</a>
 		</div>
 	</div>

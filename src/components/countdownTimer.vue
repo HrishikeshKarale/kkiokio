@@ -1,23 +1,23 @@
 <template>
   <div v-if="days || hours || minutes" class="countdownTimer">
     <div class="day">
-      <span class="number">{{ days }}</span>
-      <p class="format">{{ wordString.day }}</p>
+      <span class="number" v-text="days"/>
+      <p class="format" v-text="wordString.day"/>
     </div>
     <div class="hour">
-      <span class="number">{{ hours }}</span>
-      <p class="format">{{ wordString.hours }}</p>
+      <span class="number" v-text="hours"/>
+      <p class="format" v-text="wordString.hours"/>
     </div>
     <div class="min">
-      <span class="number">{{ minutes }}</span>
-      <p class="format">{{ wordString.minutes }}</p>
+      <span class="number" v-text="minutes"/>
+      <p class="format" v-text="wordString.minutes"/>
     </div>
     <div class="sec">
-      <span class="number">{{ seconds }}</span>
-      <p class="format">{{ wordString.seconds }}</p>
+      <span class="number" v-text="seconds"/>
+      <p class="format" v-text="wordString.seconds"/>
     </div>
-    <div class="message">{{ message }}</div>
-    <div class="status-tag" :class="statusType">{{ statusText }}</div>
+    <div class="message" v-text="message"/>
+    <div class="status-tag" :class="statusType" v-text="statusText"/>
   </div>
 </template>
 <script>

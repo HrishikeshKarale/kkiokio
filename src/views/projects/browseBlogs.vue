@@ -12,9 +12,9 @@
 									name: tag.blog != null ? 'articlePage' : tag.component,
 									params: { article: tag.blog != null ? tag.title : '' },
 								}"
-							>
-								{{ tag.title }}
-							</router-link>
+								v-text="tag.title"
+								replace
+							/>
 						</li>
 					</ul>
 				</li>

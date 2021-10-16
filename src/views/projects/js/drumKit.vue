@@ -8,13 +8,9 @@
 			@click="clicked"
 			@transitionend="endTransition(k.dataKey)"
 		>
-			<div class="keyboardKey" :data-key="k.key">
-				{{ k.key }}
-			</div>
+			<div class="keyboardKey" :data-key="k.key" v-text="k.key" />
 			<audio :src="k.audio" :data-key="k.dataKey" />
-			<div class="instrument" :data-key="k.dataKey">
-				{{ k.name }}
-			</div>
+			<div class="instrument" :data-key="k.dataKey" v-text="k.name" />
 		</div>
 	</div>
 </template>

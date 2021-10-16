@@ -1,14 +1,14 @@
 <template>
 	<div class="analogClock">
 		<div class="digital">
-			<div>{{ hours }}</div>
-			<div>{{ minutes }}</div>
-			<div>{{ seconds }}</div>
+			<div v-text="hours" />
+			<div v-text="minutes" />
+			<div v-text="seconds" />
 		</div>
 		<div class="date">
-			<div>{{ month }}</div>
-			<div>{{ date }}</div>
-			<div>{{ year }}</div>
+			<div v-text="month" />
+			<div v-text="date" />
+			<div v-text="year" />
 		</div>
 		<div class="analog">
 			<div ref="hour" class="hourHand" />

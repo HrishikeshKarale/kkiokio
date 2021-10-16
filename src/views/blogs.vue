@@ -38,6 +38,7 @@
 							propFilter.some((filter) => project.tags.includes(filter)))
 					"
 					:key="project.id"
+					:type="blogs.type"
 					:project="project"
 					:component="project.blog != null ? 'articlePage' : project.component"
 					:article="project.blog != null ? project.title : ''"

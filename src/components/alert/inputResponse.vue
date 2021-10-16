@@ -2,15 +2,15 @@
 	<div class="inputResponse">
 		<div v-if="error" class="errorMessage">
 			<span class="fas fa-exclamation-circle" />
-			<b>{{ error }}</b>
+			<b v-text="error" />
 		</div>
 		<div v-else-if="warning" class="warningMessage">
 			<span class="fas fa-exclamation-triangle" />
-			<b>{{ warning }}</b>
+			<b v-text="warning" />
 		</div>
 		<div v-else-if="info" class="infoMessage">
 			<span class="fas fa-info-circle" />
-			<b>{{ info }}</b>
+			<b v-text="info" />
 		</div>
 		<div v-else-if="charLimitReached" class="infoMessage">
 			<span class="fas fa-info-circle" />

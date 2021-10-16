@@ -2,8 +2,8 @@
 	<div ref="KeyPressed" class="konamiCode">
 		<div>
 			<div v-for="(uc, index) in userCode" :key="uc + '-' + index">
-				<span>{{ uc.code }}</span>
-				<span>{{ uc.key }}</span>
+				<span v-text="uc.code" />
+				<span v-text="uc.key" />
 			</div>
 		</div>
 	</div>

@@ -10,9 +10,7 @@
 		@click.stop.prevent="ctx"
 	>
 		<span v-if="icon" :class="icon" />
-		<template v-if="!['icon', 'icon-sm', 'icon-lg'].includes(category) && text">
-			{{ text }}
-		</template>
+		<template v-if="!['icon', 'icon-sm', 'icon-lg'].includes(category) && text" v-text="text" />
 	</button>
 </template>
 

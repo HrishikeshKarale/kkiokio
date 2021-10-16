@@ -15,6 +15,7 @@
 					"
 					:key="project.id + ' - ' + projects.type"
 					:project="project"
+					:type= "projects.type"
 					:component="project.blog != null ? 'articlePage' : project.component"
 					:article="project.blog != null ? project.title : ''"
 				/>

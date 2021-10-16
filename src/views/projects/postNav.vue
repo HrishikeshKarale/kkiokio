@@ -10,9 +10,8 @@
 						},
 					})
 				"
-			>
-				{{ previous.title }}
-			</h3>
+				v-text="previous.title"
+			/>
 		</div>
 		<div v-if="next != null" class="next">
 			<h3
@@ -24,9 +23,8 @@
 						},
 					})
 				"
-			>
-				{{ next.title }}
-			</h3>
+				v-text="next.title"
+			/>
 		</div>
 	</section>
 </template>

@@ -1,31 +1,11 @@
 <template>
 	<div class="fetchApi">
-		<!-- <div class="apiFilter">
-      <radio-input
-        label="Endpoint"
-        type="radio"
-        name="studioGhibliEndpoints"
-        v-model="selectedEndpoint"
-        :options="this.studioGhibli.endpoint"
-        :required="!this.booleanTrue"
-        :disabled="!this.booleanTrue"
-        :autofocus="!this.booleanTrue"
-        :inline="!this.booleanTrue"
-        :mask="!this.booleanTrue"
-        :box="!this.booleanTrue"
-        @select="select"
-        @alerts="alerts"
-      />
-      {{ selectedEndpoint }}
-    </div> -->
 		<div class="apiResponse">
 			<template v-if="studioGhibli.response">
-				<template v-for="data in studioGhibli.response">
-					<div :data-title="data.title" :key="data.id">
-						<h3>{{ data.title }}</h3>
-						<div :class="{ description: true, show: show.includes(data.id) }">
-							{{ data.description }}
-						</div>
+				<template v-for="data in studioGhibli.response" :key="data.id">
+					<div :data-title="data.title">
+						<h3 v-text="data.title" />
+						<div :class="{ description: true, show: show.includes(data.id) }" v-text="data.description" />
 						<div class="viewMore">
 							<vue-button
 								tag="editButton"
@@ -42,19 +22,19 @@
 						<div class="info">
 							<div>
 								<label for="">director:</label>
-								<span>{{ data.director }}</span>
+								<span v-text="data.director" />
 							</div>
 							<div>
 								<label for="">producer:</label>
-								<span>{{ data.producer }}</span>
+								<span v-text="data.producer" />
 							</div>
 							<div>
 								<label for="">release date:</label>
-								<span>{{ data.release_date }}</span>
+								<span v-text="data.release_date" />
 							</div>
 							<div>
 								<label for="">rt score:</label>
-								<span>{{ data.rt_score }}</span>
+								<span v-text="data.rt_score" />
 							</div>
 						</div>
 					</div>

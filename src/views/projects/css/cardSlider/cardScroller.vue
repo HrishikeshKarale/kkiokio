@@ -1,7 +1,10 @@
 <template>
 	<section class="cardScroller">
 		<h2>
-			{{ title }}
+			<router-link
+				:to="{ name: 'work', params: { type: title, } }"
+				v-text="title"
+			/>
 		</h2>
 		<template v-if="!vertical">
 			<vue-button

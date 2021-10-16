@@ -27,11 +27,8 @@
 				@blur="validate"
 			/>
 			<datalist :id="name">
-				<option v-for="(option, index) in options" :key="index" :value="option">
-					{{ option }}
-				</option>
-				<!-- option --></datalist
-			><!--datalist-->
+				<option v-for="(option, index) in options" :key="index" :value="option" v-text="option" />
+				</datalist>
 		</div>
 		<input-response :warning="warning" :error="danger" />
 	</div>

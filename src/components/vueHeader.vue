@@ -27,8 +27,8 @@
 					<router-link :to="{ name: navigation.component }">
 						<span :class="navigation.icon"></span>
 						<div>
-							<h4>{{ navigation.name }}</h4>
-							<span> {{ navigation.tagline }}</span>
+							<h4 v-text="navigation.name" />
+							<span v-text="navigation.tagline" />
 						</div>
 					</router-link>
 				</li>
@@ -39,9 +39,7 @@
 			<div class="account">
 				<template v-if="signedIn">
 					<vue-img :src="user ? user.image : null" alt="Logo" />
-					<h5 v-if="user">
-						{{ user ? user.name : null }}
-					</h5>
+					<h5 v-if="user" v-text="user ? user.name : 'guest'" />
 					<h5 v-else>Guest</h5>
 				</template>
 				<div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />

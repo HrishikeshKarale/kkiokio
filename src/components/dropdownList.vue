@@ -1,6 +1,6 @@
 <template>
 	<div class="dropdownList" :class="{ inline: inline }">
-		<label v-if="label" :class="{ maskField: mask }" :for="name">
+		<label v-if="label" :class="{ maskField: mask }" :for="name" >
 			{{ label }}
 			<abbr v-if="required" title="Required Field">*</abbr>
 			<span v-else> - Optional field<abbr>*</abbr></span>
@@ -33,9 +33,7 @@
                 >
                     pick an option
                </option> -->
-				<option v-for="(option, index) in options" :key="index" :value="option">
-					{{ option }}
-				</option>
+				<option v-for="(option, index) in options" :key="index" :value="option" v-text="option" />
 			</select>
 		</div>
 		<input-response :error="danger" />

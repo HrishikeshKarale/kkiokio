@@ -3,16 +3,15 @@
 		<router-link
 			v-if="component"
 			:to="{ name: component, params: { article: article, type: type } }"
+			replace
 		>
 			<vue-img :src="project.img" :alt="project.title" />
-			<h4>
-				{{ project.title }}
-			</h4>
+			<h4 v-text="project.title" />
 			<span class="fas fa-external-link-square-alt" />
 		</router-link>
 		<template v-else>
 			<vue-img v-if="project.img" :src="project.img" alt="Moto" />
-			<h4>{{ project.title }}</h4>
+			<h4 v-text="project.title" />
 		</template>
 		<template v-if="project.description">
 			<!-- eslint-disable-next-line vue/no-v-html -->
@@ -44,7 +43,7 @@
 				default: "",
 			},
 			type: {
-				required: true,
+				required: false,
 				type: String,
 			},
 			article: {

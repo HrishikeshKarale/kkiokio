@@ -1,8 +1,6 @@
 <template>
   <div class="multiToggle" :class="{ inline: inline }">
-    <label v-if="label" :class="{ maskField: mask }">
-      {{ label }}
-    </label>
+    <label v-if="label" :class="{ maskField: mask }" v-text="label" />
     <div
       class="checkbox-toggle"
       :class="{
