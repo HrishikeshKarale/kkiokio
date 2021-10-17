@@ -123,7 +123,7 @@ export default {
       return {
         checked: this.dToggled,
         unchecked: !this.dToggled,
-        isDisabledthis.disabled
+        disabled: this.isDisabled
       };
     }, //classes
 
@@ -161,7 +161,7 @@ export default {
   methods: {
     //toggle state unless toggle is disabled
     toggle: function(e) {
-      if (this.disabled && e.keyCode === 9) {
+      if (this.isDisabled && e.keyCode === 9) {
         // not if disabled or tab is pressed
         return;
       }

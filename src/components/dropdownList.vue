@@ -25,15 +25,7 @@
 				:size="size"
 				@change="validate"
 			>
-				<!-- <option
-                    value= ''
-                    :selected= '!selectedOption'
-                    disabled= 'true'
-                    :hidden= 'options.includes(selectedOption) && required'
-                >
-                    pick an option
-               </option> -->
-				<option v-for="(option, index) in options" :key="index" :value="option" v-text="option" />
+				<option v-for="(option, index) in options.filter(option => option!=selectedOption)" :key="index" :value="option" v-text="option" />
 			</select>
 		</div>
 		<input-response :error="danger" />
