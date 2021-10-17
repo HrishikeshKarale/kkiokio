@@ -14,14 +14,14 @@
 			:ctx="subscribe.bind(this)"
 			:alert="alertObject"
 			:validate="!booleanTrue"
-			:autocomplete="booleanTrue"
+			:isAutocomplete="booleanTrue"
 			@alerts="alerts"
 		>
 			<email-input
 				:value="emailID"
 				name="emailTextField"
 				placeholder="JohnDoe@abc.com"
-				:required="booleanTrue"
+				:isRequired="booleanTrue"
 				@alerts="alerts"
 				@value="(val) => (emailID = val)"
 			/>

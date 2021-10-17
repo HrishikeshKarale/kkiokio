@@ -3,7 +3,7 @@
 	<div class="phoneInput" :class="{ inline: inline }">
 		<label v-if="label" :class="{ maskField: mask }">
 			{{ label }}
-			<abbr v-if="required" title="Required Field">*</abbr>
+			<abbr v-if="isRequired" title="Required Field">*</abbr>
 			<span v-else> - Optional field<abbr>*</abbr></span>
 		</label>
 		<div
@@ -26,8 +26,8 @@
 				:pattern="pattern"
 				:autofocus="autofocus"
 				:disabled="isDisabled"
-				:readonly="readonly"
-				:required="required"
+				:readonly="isReadOnly"
+				:required="isRequired"
 				@input="phoneMask(mphone)"
 				@blur="validate"
 			/>
@@ -118,7 +118,7 @@
 			},
 
 			//sets the required attribute for the input field
-			required: {
+			isRequired: {
 				required: false,
 				type: [Boolean, null],
 				default: false,
@@ -139,14 +139,14 @@
 			},
 
 			//sets the autocomplete attribute for the input field
-			autocomplete: {
+			isAutocomplete: {
 				required: false,
 				type: [Boolean, null],
 				default: true,
 			},
 
 			//sets the readonly attribute for the input field
-			readonly: {
+			isReadOnly: {
 				required: false,
 				type: [Boolean, null],
 				default: false,

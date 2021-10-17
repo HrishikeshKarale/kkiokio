@@ -79,7 +79,7 @@
 			form="filterForm"
 			:alert="{ error: dDanger, warning: dWarning }"
 			:validate="!booleanTrue"
-			:autocomplete="booleanTrue"
+			:isAutocomplete="booleanTrue"
 			@alerts="alerts"
 		>
 			<dropdown-list

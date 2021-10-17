@@ -89,7 +89,7 @@
 			},
 
 			//sets the autocomplete attribute for the input field
-			autocomplete: {
+			isAutocomplete: {
 				type: Boolean,
 				required: false,
 				default: true,

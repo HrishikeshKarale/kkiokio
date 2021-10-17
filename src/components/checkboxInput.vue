@@ -19,10 +19,10 @@
 				@keyup[1]="check(value)"
 			/>
 			{{ label }}
-			<abbr v-if="required" title="Required Field">*</abbr>
+			<abbr v-if="isRequired" title="Required Field">*</abbr>
 			<span v-else-if="options"> - Optional field<abbr>*</abbr></span>
 			<!-- stores the value of the component to be used when validating a form -->
-			<input :name="tag" type="hidden" :value="value" :required="required" />
+			<input :name="tag" type="hidden" :value="value" :required="isRequired" />
 			<vue-button
 				v-if="options?.length && value"
 				id="clearSelection"
@@ -166,7 +166,7 @@
 			},
 
 			//sets the required attribute for the input field
-			required: {
+			isRequired: {
 				required: false,
 				type: Boolean,
 				default: false,

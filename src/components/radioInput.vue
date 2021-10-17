@@ -17,9 +17,9 @@
         @input="check(value)"
       />
       {{ label }}
-      <abbr v-if="required" title="Required Field">*</abbr>
+      <abbr v-if="isRequired" title="Required Field">*</abbr>
       <span v-else> - Optional field<abbr>*</abbr></span>
-      <input :name="name" type="hidden" :value="value" :required="required" />
+      <input :name="name" type="hidden" :value="value" :required="isRequired" />
       <vue-button
         v-if="options && value"
         id="clearSelection"
@@ -157,7 +157,7 @@ export default {
     },
 
     //sets the required attribute for the input field
-    required: {
+    isRequired: {
       required: false,
       type: [Boolean, null],
       default: false

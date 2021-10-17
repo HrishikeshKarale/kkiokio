@@ -5,7 +5,7 @@
 		:class="{ vueForm: true, singleAction: singleAction }"
 		:name="form"
 		:novalidate="validate"
-		:autocomplete="autocomplete"
+		:autocomplete="isAutocomplete"
 		@submit="ctx"
 	>
 		<h4 v-if="title" v-text="title" />
@@ -97,7 +97,7 @@
 				type: [Boolean, null],
 				default: false,
 			},
-			autocomplete: {
+			isAutocomplete: {
 				required: false,
 				type: [Boolean, null],
 				default: true,

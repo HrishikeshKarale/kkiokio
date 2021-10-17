@@ -2,7 +2,7 @@
 	<div class="searchableDropdownList" :class="{ inline: inline }">
 		<label v-if="label" :class="{ maskField: mask }">
 			{{ label }}
-			<abbr v-if="required" title="Required Field">*</abbr>
+			<abbr v-if="isRequired" title="Required Field">*</abbr>
 			<span v-else> - Optional field<abbr>*</abbr></span>
 		</label>
 		<div
@@ -20,7 +20,7 @@
 				:list="name"
 				:placeholder="placeholder"
 				:multiple="multiple"
-				:required="required"
+				:required="isRequired"
 				:disabled="isDisabled"
 				:autofocus="autofocus"
 				:maxlength="maxlength"
@@ -142,7 +142,7 @@
 			},
 
 			//sets the required attribute for the input field
-			required: {
+			isRequired: {
 				required: false,
 				type: [Boolean, null],
 				default: false,
@@ -163,7 +163,7 @@
 			},
 
 			//sets the autocomplete attribute for the input field
-			autocomplete: {
+			isAutocomplete: {
 				required: false,
 				type: [Boolean, null],
 				default: true,

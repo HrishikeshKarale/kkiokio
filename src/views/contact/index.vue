@@ -74,14 +74,14 @@
 				d-form="contactForm"
 				:alert="{ error: dDanger, warning: dWarning }"
 				:validate="!booleanTrue"
-				:autocomplete="booleanTrue"
+				:isAutocomplete="booleanTrue"
 			>
 				<text-input
 					v-model="name"
 					label="Name"
 					name="nameTextField"
 					placeholder="John Doe"
-					:required="booleanTrue"
+					:isRequired="booleanTrue"
 					@alerts="alerts"
 				/>
 				<email-input
@@ -90,7 +90,7 @@
 					name="emailField"
 					placeholder="JDoe@email.com"
 					icon="far fa-envelope"
-					:required="booleanTrue"
+					:isRequired="booleanTrue"
 					@alerts="alerts"
 				/>
 				<phone-input
@@ -105,7 +105,7 @@
 					label="message"
 					name="messageTextareaField"
 					placeholder="message"
-					:required="booleanTrue"
+					:isRequired="booleanTrue"
 					@alerts="alerts"
 				/>
 			</vue-form>

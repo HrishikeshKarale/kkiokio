@@ -2,7 +2,7 @@
 	<div class="dropdownList" :class="{ inline: inline }">
 		<label v-if="label" :class="{ maskField: mask }" :for="name" >
 			{{ label }}
-			<abbr v-if="required" title="Required Field">*</abbr>
+			<abbr v-if="isRequired" title="Required Field">*</abbr>
 			<span v-else> - Optional field<abbr>*</abbr></span>
 		</label>
 		<div
@@ -20,7 +20,7 @@
 				v-model="selectedOption"
 				:autofocus="autofocus"
 				:disabled="isDisabled"
-				:required="required"
+				:required="isRequired"
 				:multiple="multiple"
 				:size="size"
 				@change="validate"
@@ -105,7 +105,7 @@
 			},
 
 			//sets the required attribute for the input field
-			required: {
+			isRequired: {
 				required: false,
 				type: [Boolean, null],
 				default: false,
@@ -126,7 +126,7 @@
 			},
 
 			//sets the autocomplete attribute for the input field
-			autocomplete: {
+			isAutocomplete: {
 				required: false,
 				type: [Boolean, null],
 				default: true,
