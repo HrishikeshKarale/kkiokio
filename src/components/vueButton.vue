@@ -5,12 +5,13 @@
 		:name="tag"
 		:aria-label="tag"
 		:autofocus="autofocus"
-		:disabled="disabled"
+		:disabled="isDisabled"
 		:form="form"
-		@click.stop.prevent="ctx"
+		@click.prevent="ctx"
 	>
 		<span v-if="icon" :class="icon" />
-		<template v-if="!['icon', 'icon-sm', 'icon-lg'].includes(category) && text" v-text="text" />
+		<template v-if="!['icon', 'icon-sm', 'icon-lg'].includes(category) && text"> {{text}}
+		</template>
 	</button>
 </template>
 
@@ -75,7 +76,7 @@
 				},
 			},
 
-			disabled: {
+			isDisabled: {
 				type: Boolean,
 				required: false,
 				default: false,

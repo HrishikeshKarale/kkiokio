@@ -22,7 +22,7 @@
         :maxlength="maxlength"
         :pattern="pattern"
         :autofocus="autofocus"
-        :disabled="disabled"
+        :disabled="isDisabled"
         :readonly="readonly"
         :required="required"
         @keyup[0]="validate"
@@ -115,7 +115,7 @@ export default defineComponent({
     },
 
     //sets the disabled attribute for the input field
-    disabled: {
+    isDisabled: {
       required: false,
       type: Boolean,
       default: false

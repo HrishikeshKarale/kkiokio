@@ -80,7 +80,7 @@ export default {
     },
 
     //sets the disabled attribute for multitoggle
-    disabled: {
+    isDisabled: {
       required: false,
       type: [Boolean, null],
       default: false
@@ -123,7 +123,7 @@ export default {
       return {
         checked: this.dToggled,
         unchecked: !this.dToggled,
-        disabled: this.disabled
+        isDisabledthis.disabled
       };
     }, //classes
 

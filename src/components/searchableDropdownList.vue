@@ -21,7 +21,7 @@
 				:placeholder="placeholder"
 				:multiple="multiple"
 				:required="required"
-				:disabled="disabled"
+				:disabled="isDisabled"
 				:autofocus="autofocus"
 				:maxlength="maxlength"
 				@blur="validate"
@@ -149,7 +149,7 @@
 			},
 
 			//sets the disabled attribute for the input field
-			disabled: {
+			isDisabled: {
 				required: false,
 				type: [Boolean, null],
 				default: false,

@@ -19,7 +19,7 @@
 				tag="formActionButton"
 				:category="category"
 				:icon="icon"
-				:disabled="!validInput"
+				:isDisabled="!validInput"
 				:ctx="ctx"
 			/>
 			<input v-if="!singleAction" class="btn" type="reset" value="Reset" />

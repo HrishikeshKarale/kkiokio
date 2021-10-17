@@ -12,7 +12,7 @@
 				type="checkbox"
 				:name="tag"
 				:checked="value"
-				:disabled="disabled"
+				:disabled="isDisabled"
 				:autofocus="autofocus"
 				@input="check(value)"
 				@keyup[0]="check(value)"
@@ -68,7 +68,7 @@
 								: option == value
 						"
 						:value="option"
-						:disabled="disabled"
+						:disabled="isDisabled"
 						:autofocus="index == 0 ? autofocus : false"
 						@input="check(option)"
 						@keyup[0]="check(option)"
@@ -173,7 +173,7 @@
 			},
 
 			//sets the disabled attribute for the input field
-			disabled: {
+			isDisabled: {
 				required: false,
 				type: Boolean,
 				default: false,

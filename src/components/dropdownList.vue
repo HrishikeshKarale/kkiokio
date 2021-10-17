@@ -19,7 +19,7 @@
 				:id="name"
 				v-model="selectedOption"
 				:autofocus="autofocus"
-				:disabled="disabled"
+				:disabled="isDisabled"
 				:required="required"
 				:multiple="multiple"
 				:size="size"
@@ -112,7 +112,7 @@
 			},
 
 			//sets the disabled attribute for the input field
-			disabled: {
+			isDisabled: {
 				required: false,
 				type: [Boolean, null],
 				default: false,

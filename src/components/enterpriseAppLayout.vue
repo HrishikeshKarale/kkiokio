@@ -29,7 +29,7 @@
 					:value="dRadioValue"
 					:options="dOptions"
 					:required="!booleanTrue"
-					:disabled="!booleanTrue"
+					:isDisabled="!booleanTrue"
 					:autofocus="!booleanTrue"
 					:inline="booleanTrue"
 					:box="booleanTrue"
@@ -128,7 +128,7 @@
 							text="Sign out"
 							icon="fas fa-sign-out-alt"
 							category="standard"
-							:disabled="!booleanTrue"
+							:isDisabled="!booleanTrue"
 							:autofocus="!booleanTrue"
 							:ctx="signOut.bind()"
 						/>
