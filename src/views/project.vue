@@ -28,30 +28,12 @@
 			:selected="propFilter"
 			@updateFilters="(val) => (propFilter = val)"
 		/>
-		<template v-if="$route.params.type">
-			<template v-for="projects in projectList" :key="projects.type">
-				<showcase
-					v-for="project in projects.value"
-					v-show="
-						($route.params.type == projects.type &&
-							Object.keys(propFilter).length == 0) ||
-						(Object.keys(propFilter).length > 0 &&
-							propFilter.some((filter) => project.tags.includes(filter)))
-					"
-					:key="project.id"
-					:project="project"
-					:type="projects.type"
-					:component="project.blog != null ? 'articlePage' : project.component"
-					:article="project.blog != null ? project.title : ''"
-				/>
-			</template>
-		</template>
-		<template v-else v-for="projects in projectList" :key="projects.type">
+		{{propFilter}}
+		<!-- display redult of the query/prop -->
+		<template v-for="projects in projectList" :key="projects.type">
 			<template
 				v-if="
-					Object.keys(propFilter).length == 0 ||
-					(Object.keys(propFilter).length > 0 &&
-						propFilter.type.some((filter) => [projects.type].includes(filter)))
+				$route.params.type? $route.params.type === projects.type : Object.keys(propFilter).length == 0 || isPresent(projects.value,'tag')
 				"
 			>
 				<card-scroller
@@ -59,22 +41,12 @@
 					:title="projects.type"
 					:auto-scroll="!autoScroll"
 					:tag="projects.type"
-					v-show="
-						projects.value.some((project) => {
-							return (
-								Object.keys(propFilter).length == 0 ||
-								(Object.keys(propFilter).length > 0 &&
-									propFilter.some((filter) => project.tags.includes(filter)))
-							);
-						})
-					"
+					:vertical="$route.params.type? true: false"
 				>
 					<showcase
 						v-for="project in projects.value"
 						v-show="
-							Object.keys(propFilter).length == 0 ||
-							(Object.keys(propFilter).length > 0 &&
-								propFilter.some((filter) => project.tags.includes(filter)))
+							Object.keys(propFilter).length == 0 || (Object.keys(propFilter).length > 0 && filterCards(project,'tag'))
 						"
 						:key="project.id"
 						:project="project"
@@ -106,6 +78,28 @@
 			showcase,
 			cardScroller,
 		},
+		methods: {
+			isPresent: function (projects, category) {
+				if(Object.keys(this.propFilter).length > 0) {
+					const categoryIndex = this.propFilter.type.indexOf(category);
+					if (categoryIndex !== -1) {
+						return projects.some((project) => {
+							// console.log(this.propFilter.value[categoryIndex], project.tags, project.tags.some((filter) => this.propFilter.value[categoryIndex].includes(filter)));
+							return project.tags.some((filter) => this.propFilter.value[categoryIndex].includes(filter));
+						});
+					}
+				}
+			}, //isPresent
+
+			filterCards: function (project, category) {
+				if(Object.keys(this.propFilter).length > 0) {
+					const categoryIndex = this.propFilter.type.indexOf(category);
+					if (categoryIndex !== -1) {
+							return project.tags.some((filter) => this.propFilter.value[categoryIndex].includes(filter));
+					}
+				}
+			}, //isPresent
+		}, //methods
 		data() {
 			//vueFilter
 			const propFilter = {};
@@ -117,11 +111,11 @@
 				],
 			};
 			//cardScroll
-			// const autoScroll = this.booleanTrue;
+			const autoScroll = this.booleanTrue;
 			return {
 				propFilter,
 				filterList,
-				// autoScroll,
+				autoScroll,
 			};
 		},
 		created() {

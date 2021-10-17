@@ -40,7 +40,7 @@
 					:key="project.id"
 					:type="blogs.type"
 					:project="project"
-					:component="project.blog != null ? 'articlePage' : project.component"
+					:component="project.blog != null ? 'blogsPage' : project.component"
 					:article="project.blog != null ? project.title : ''"
 				/>
 			</card-scroller>

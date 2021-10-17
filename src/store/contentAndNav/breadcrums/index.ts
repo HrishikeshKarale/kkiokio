@@ -77,12 +77,13 @@ const module = {
 
       //remove %20 if any
       let tempSelect = route[route.length-1];
+      console.log("pageTitle", tempSelect)
 
       while (tempSelect.includes("%20")) {
         tempSelect = tempSelect.replace("%20", " ");
       }
 
-      // console.log("pageTitle", tempSelect)
+      console.log("pageTitle", tempSelect)
       return tempSelect;
     }, //routeComp
   }

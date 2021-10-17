@@ -168,7 +168,7 @@ export const projects: projectType[] = [
       },
       {
         id: 5,
-        title: "Login/SignUp Concept Screens",
+        title: "Authentication Concept Screens",
         img: require("@/assets/mobile/login screenHeader.png"),
         tags: ["Login Screen"],
         description: "Login/SignUp screen for a mobile app.",
