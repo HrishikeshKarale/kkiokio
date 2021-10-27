@@ -110,7 +110,7 @@
 		props: {
 			logoLink: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 

@@ -304,19 +304,19 @@ vue/custom-event-name-casing */
 
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			subtableId: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			select: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 		}, //filters

@@ -91,7 +91,7 @@
 		props: {
 			logoLink: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
@@ -137,6 +137,9 @@
 
 			toggleNavigation: function () {
 				this.$refs["vueHeader"].classList.toggle("showNav");
+				if (this.$refs["vueHeader"].classList.contains("showNav")) {
+					this.$refs["vueHeader"].classList.remove("mini");
+				}
 				this.toggle("nav");
 			}, //toggleNavigation
 		},
@@ -259,7 +262,7 @@
 
 						//website name and logo
 						&:first-child {
-							margin-right: 2 * @spaceXl !important;
+							margin-right: @spaceXl !important;
 							& > a {
 								& > .vueImg {
 									height: 64px;

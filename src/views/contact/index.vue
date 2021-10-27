@@ -66,8 +66,8 @@
 				</p>
 			</div>
 		</section>
-		<section id="Form">
-			<!-- <h3>Contact Form</h3> -->
+		<!-- <section id="Form">
+			<h3>Contact Form</h3>
 			<p>Or you can also leave me a message here.</p>
 			<vue-form
 				:ctx="sendMail.bind(this)"
@@ -109,7 +109,7 @@
 					@alerts="alerts"
 				/>
 			</vue-form>
-		</section>
+		</section> -->
 	</article>
 </template>
 

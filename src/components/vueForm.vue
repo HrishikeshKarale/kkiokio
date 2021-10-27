@@ -40,7 +40,7 @@
 		props: {
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 			alert: {
@@ -53,17 +53,17 @@
 			},
 			form: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 			text: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "Submit",
 			},
 			category: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "standard",
 				validator: function (value) {
 					return (
@@ -89,22 +89,22 @@
 			},
 			icon: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "fas fa-clipboard-check",
 			},
 			singleAction: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 			isAutocomplete: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: true,
 			},
 			validate: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 		},

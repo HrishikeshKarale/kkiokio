@@ -10,7 +10,7 @@
 				tag="filterButton"
 				icon="fas fa-filter"
 				text="Filter"
-				category="text-lg"
+				category="icon-lg"
 				:ctx="toggleFilter"
 			/>
 			<vue-button
@@ -123,7 +123,7 @@
 		props: {
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 			filters: {
@@ -296,6 +296,12 @@
 		position: relative;
 		width: fit-content;
 		.backgroundColor();
+		// &.scroll {
+		// 	position: sticky;
+		// 	top: 32px;
+		// 	left: 0;
+		// 	border-radius: 50%;
+		// }
 		& > .open {
 			display: flex;
 			flex-flow: column wrap;
@@ -342,7 +348,7 @@
 		& > form {
 			position: absolute;
 			top: @spaceXl + @spaceLg;
-			left: 0;
+			right: 0;
 			display: flex;
 			flex-direction: column;
 			padding: @spaceMd @spaceLg;

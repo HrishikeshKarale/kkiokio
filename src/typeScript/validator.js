@@ -28,19 +28,19 @@ export const validator = {
       }
       //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
       else {
-        dDanger = this.isRequired();
+        dDanger = this.isRequiredFlag();
       }
 
       return { warning: dWarning, error: dDanger };
     }, //validator
 
     //value ebsent
-    isRequired: function () {
+    isRequiredFlag: function () {
       if (this.required) {
         return "Required field.";
       }
       return null;
-    }, //isRequired
+    }, //isRequiredFlag
 
     //value present
     isTooShort: function (minlength, value) {

@@ -48,14 +48,14 @@
 			//sets heading/Label for the input field
 			label: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			//sets name attribute for the input field (required field in case of forms)
 			name: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "dropdownInput",
 			},
 
@@ -91,7 +91,7 @@
 			//if set true wors like a dropdown list while if toggles between
 			strict: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: true,
 			},
 
@@ -111,7 +111,7 @@
 			//sets the placeholder attribute for the input field
 			placeholder: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: function (props) {
 					if (props.strict) {
 						return "Select an option...";
@@ -123,63 +123,63 @@
 			//sets the maxlength attribute for the input field
 			maxlength: {
 				required: false,
-				type: [Number, null],
+				type: Number,
 				default: 50,
 			},
 
 			//sets the multiple attribute for the input field to accept multiple values
 			multiple: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//sets the manual alerts
 			alertMessage: {
 				required: false,
-				type: [Object, null],
+				type: Object,
 				default: null,
 			},
 
 			//sets the required attribute for the input field
 			isRequired: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//sets the disabled attribute for the input field
 			isDisabled: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//sets the autofocus attribute for the input field
 			autofocus: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//sets the autocomplete attribute for the input field
 			isAutocomplete: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: true,
 			},
 
 			//checks if label options should appear on the same line or not
 			inline: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//reserves space and created a mask if set to true
 			mask: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
@@ -187,7 +187,7 @@
 			//a valid fontawesome icons class string is a string which starts with fas/far/fab/fa
 			icon: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 		}, //props

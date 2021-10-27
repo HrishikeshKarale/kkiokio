@@ -184,6 +184,7 @@
 				}
 			}
 			&#intro {
+				// .backgroundColor(@primaryColor, 100vw, 32%);
 				flex-direction: row;
 				justify-content: space-evenly;
 				align-self: center;

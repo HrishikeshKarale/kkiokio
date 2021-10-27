@@ -10,7 +10,7 @@
 			The projects have vbeen divided into categories to make it easy for
 			browsing.
 		</p>
-		<nav v-show="$route.params.type">
+		<nav class='projectNav' v-show="$route.params.type">
 			<ol>
 				<template v-for="projects in projectList" :key="projects.type">
 					<li>
@@ -28,7 +28,6 @@
 			:selected="propFilter"
 			@updateFilters="(val) => (propFilter = val)"
 		/>
-		{{propFilter}}
 		<!-- display redult of the query/prop -->
 		<template v-for="projects in projectList" :key="projects.type">
 			<template
@@ -84,7 +83,6 @@
 					const categoryIndex = this.propFilter.type.indexOf(category);
 					if (categoryIndex !== -1) {
 						return projects.some((project) => {
-							// console.log(this.propFilter.value[categoryIndex], project.tags, project.tags.some((filter) => this.propFilter.value[categoryIndex].includes(filter)));
 							return project.tags.some((filter) => this.propFilter.value[categoryIndex].includes(filter));
 						});
 					}
@@ -139,10 +137,43 @@
 	@import (reference) "./../Less/customVariables.less";
 
 	.work {
-		& > nav {
+		& > nav.projectNav {
+			display: flex;
+		&.scroll {
+			flex-direction: row-reverse;
+		position: sticky;
+		top: 0;
+		left: 0;
+			z-index: @headerZ;
+			& > ol {
+				gap: @spaceSm;
+				& > li {
+					font-size: @fontSizeSm;
+					& > a {
+						padding: @spaceXs @spaceMd;
+					}
+				}
+			}
+		}
 			& > ol {
 				flex-flow: row nowrap;
 				gap: @spaceXl;
+				& > li {
+					& > a {
+						padding: @spaceMd @spaceLg;
+						border-radius: @borderRadius;
+						&.router-link-active {
+							background-color: @primaryColor;
+							color: @backgroundColor;
+						}
+					}
+				}
+			}
+		}
+		& > .vueFilter {
+			align-self: flex-end;
+			& > div {
+				border-radius: 50%;
 			}
 		}
 	}

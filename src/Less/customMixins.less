@@ -132,14 +132,14 @@
   box-sizing: @boxmodel;
 }
 
-.backgroundColor(@color: @primaryColor, @opacity: 8%, @zIndex: @bodyZ) {
+.backgroundColor(@color: @primaryColor, @width: 100%, @opacity: 8%, @zIndex: inherit) {
   position: relative;
   padding: 0 !important;
 
   &::before {
     content: "";
     position: absolute;
-    width: 100%;
+    width: @width;
     height: 100%;
     background-color: @color;
     z-index: @zIndex;
@@ -169,8 +169,8 @@
 }
 
 
-.shakeAnimation() {
-  animation: shake infinite 0.8s;
+.shakeAnimation(@iteration: infinite, @duration: 0.8s) {
+  animation: shake @iteration @duration;
 
   &:hover {
     animation: none;
@@ -207,7 +207,7 @@
   border-color: @dangerText;
   background-color: @dangerBackground;
   outline: @spaceSm solid @dangerText  !important;
-  .shakeAnimation();
+  .shakeAnimation(3);
 
   &:focus-within,
   &:focus {
@@ -227,7 +227,7 @@
   border-color: @warningText;
   background-color: @warningBackground;
   outline: 2px solid @warningText  !important;
-  .shakeAnimation();
+  .shakeAnimation(3);
 
   &:focus-within,
   &:focus {

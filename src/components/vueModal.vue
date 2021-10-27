@@ -88,31 +88,31 @@
 		props: {
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			text: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			tag: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			icon: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			display: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 

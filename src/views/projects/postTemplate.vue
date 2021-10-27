@@ -129,7 +129,7 @@
 		props: {
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "Article",
 			},
 			post: {

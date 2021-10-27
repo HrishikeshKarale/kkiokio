@@ -32,7 +32,7 @@
 			},
 			reverse: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 		}, //props

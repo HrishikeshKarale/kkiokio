@@ -94,7 +94,7 @@ export default {
     //valid values include ['checkbox', 'radio']
     type: {
       required: false,
-      type: [String, null],
+      type: String,
       validator: function(value) {
         return ["checkbox", "radio"].indexOf(value) !== -1;
       },
@@ -105,14 +105,14 @@ export default {
     //in case of single/no-option checkbox, label is used as checkbox text
     label: {
       required: false,
-      type: [String, null],
+      type: String,
       default: null
     },
 
     //sets the name attribute for the input field (required field in case of forms)
     name: {
       required: false,
-      type: [String, null],
+      type: String,
       default: "radioInput"
     },
 
@@ -122,7 +122,7 @@ export default {
       type: [Boolean, Array, String, Number, null],
       // type: function(props) {
       //   if (!props.options) {
-      //     return [Boolean, null];
+      //     return Boolean;
       //   } else if (props.type != "radio") {
       //     return [Array, null];
       //   } else {
@@ -152,49 +152,49 @@ export default {
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: [Object, null],
+      type: Object,
       default: null
     },
 
     //sets the required attribute for the input field
     isRequired: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //sets the disabled attribute for the input field
     isDisabled: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //sets the autofocus attribute for the input field
     autofocus: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //checks if label options should appear on the same line or not
     inline: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //reserves space and created a mask if set to true
     mask: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //checks if label options should appear on the same line or as buttons
     box: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     }
   }, //methods

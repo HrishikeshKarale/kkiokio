@@ -131,7 +131,7 @@
 				type: [Boolean, Array, String, Number],
 				// type: function(props) {
 				//   if (!props.options) {
-				//     return [Boolean, null];
+				//     return Boolean;
 				//   } else if (props.type != "radio") {
 				//     return Array,;
 				//   } else {

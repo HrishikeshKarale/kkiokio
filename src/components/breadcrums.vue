@@ -30,10 +30,6 @@
 		}, //data
 		computed: {
 			...mapGetters({
-				getProjects: "contentModule/getProjects",
-				navigation: "contentModule/getNavigation",
-				compList: "contentModule/compList",
-				breadcrums: "contentModule/breadcrums/breadcrums",
 				routeComp: "contentModule/breadcrums/routeComp",
 				pageTitle: "contentModule/breadcrums/pageTitle",
 			}),
@@ -44,12 +40,6 @@
 				"contentModule/breadcrums/initialize",
 				this.$route.path
 			);
-		},
-
-		methods: {
-			...mapMutations({
-				isComponent: "contentModule/breadcrums/IS_COMPONENT",
-			}),
 		},
 	};
 </script>

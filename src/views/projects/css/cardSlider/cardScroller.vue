@@ -76,12 +76,12 @@
 		props: {
 			autoScroll: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 			tag: {
@@ -94,7 +94,7 @@
 			},
 			vertical: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false
 			}
 		}, //props

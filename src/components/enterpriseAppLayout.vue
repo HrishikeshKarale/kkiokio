@@ -535,7 +535,7 @@
 		flex-direction: column;
 		height: 100vh;
 		width: 100%;
-		.backgroundColor(@primaryColor, 16%);
+		.backgroundColor(@primaryColor, 100vw, 8%);
 		position: static;
 		& > div {
 			display: flex;
@@ -564,7 +564,7 @@
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
 						align-self: center !important;
 						z-index: @contentZ;
-						.boxShadow(@one, @secondaryColor,@contentZ);
+						// .boxShadow(@one, @secondaryColor,@contentZ);
 						background-color: @backgroundColor !important;
 						//countdown timer
 						& > .countdownTimer {

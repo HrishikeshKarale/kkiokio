@@ -33,14 +33,14 @@ export default {
     //sets heading/Label for multitoggle
     label: {
       required: false,
-      type: [String, null],
+      type: String,
       default: null
     },
 
     //sets name attribute for multitoggle  (required field in case of forms)
     name: {
       required: false,
-      type: [String, null],
+      type: String,
       default: "textInput"
     },
 
@@ -54,7 +54,7 @@ export default {
     //toggles label for multitoggle
     showLabels: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
@@ -75,28 +75,28 @@ export default {
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: [Object, null],
+      type: Object,
       default: null
     },
 
     //sets the disabled attribute for multitoggle
     isDisabled: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //checks if label options should appear on the same line or not
     inline: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //reserves space and created a mask if set to true
     mask: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     }
   }, //computed
