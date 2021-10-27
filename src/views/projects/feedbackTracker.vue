@@ -14,8 +14,7 @@
 				/>
 			</template>
 		</div>
-		<input type="range" :min="min" :max="max" :value="value" :step="step" />
-		{{ value.value }}
+		<input type="range" :min="min" :max="max" :value="value" :step="step" hidden/>
 	</section>
 </template>
 
@@ -26,8 +25,8 @@
 		props: {
 			value: {
 				required: true,
-				type: [Number, null],
-				default: 7,
+				type: Number,
+				default: 3,
 			},
 		}, //props
 		components: { vueImg }, //components

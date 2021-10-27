@@ -7,7 +7,7 @@
 	/>
 	<feedback-tracker
 		:value="feedbackValue"
-		@input="(val) => (feedbackValue = val)"
+		@input="(val) => feedbackValue = val"
 	/>
 	<post-nav :next="nextArticle" :previous="previousArticle" />
 	<related-post :tags="selectedArticle.tags" />
@@ -29,6 +29,7 @@
 		name: "articlePage",
 
 		mixins: [loading],
+
 		components: {
 			postNav,
 			feedbackTracker,
@@ -50,7 +51,6 @@
 
 		computed: {
 			...mapGetters({
-				projects: "contentModule/getProjects",
 				selectedArticle: "contentModule/getSelectedProject",
 				nextArticle: "contentModule/getNextArticle",
 				previousArticle: "contentModule/getPreviousArticle",
@@ -59,7 +59,7 @@
 
 		created() {
 			this.$store.dispatch("contentModule/projectData", this.$router.currentRoute.value.params.article, { root: true });
-		}, //beforeMount
+		}, //created
 	};
 </script>
 
