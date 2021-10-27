@@ -7,18 +7,18 @@
 		</label>
 		<div
 			:class="{
-				warningContainer: dWarning,
-				errorContainer: dDanger,
+				warningContainer: alert ? alert.warning : false,
+				errorContainer: alert ? alert.error : false,
 				iconPadding: icon,
-				maskField: mask,
+				maskField: mask
 			}"
 		>
 			<span v-if="icon" :class="icon" />
 			<input
 				v-if="!mask"
-				v-model="dTextValue"
+				v-model="dValue"
 				type="text"
-				:name="name"
+				:name="tag"
 				:placeholder="placeholder"
 				:maxlength="maxlength"
 				:minlength="minlength"
@@ -26,231 +26,197 @@
 				:autofocus="autofocus"
 				:disabled="disabled"
 				:readonly="readonly"
+				:autocomplete="autocomplete"
 				:required="required"
+				v-on:keyup[0]="validate"
+				v-on:keyup[1]="validate"
 				@input="validate"
+				@blur="followsPattern"
 			/>
 		</div>
 		<input-response
-			:warning="dWarning"
-			:error="dDanger"
-			:char-limit-reached="
-				dTextValue ? maxlength - dTextValue.length <= 0 : false
-			"
-			:maxlength="maxlength"
+			:warning="alert ? alert.warning : ''"
+			:error="alert ? alert.error : ''"
+			:info="alert ? alert.info : dValue ?
+				maxlength - dValue.length < 0 : ''"
+			:success="alert ? alert.success : ''"
 		/>
 	</div>
 </template>
 
-<script>
-	import inputResponse from "@/components/alert/inputResponse.vue";
-	import { validator } from "@/typeScript/validator";
+<script lang='ts'>
+// vue
+import { defineComponent, ref, reactive } from 'vue';
+// components
+import inputResponse from '@/components/alert/inputResponse.vue';
+// ts
+import validator from '@/typeScript/utilities/validator';
 
-	export default {
-		name: "TextInput",
+export default defineComponent({
+	components: {
+		inputResponse,
+	}, // components
 
-		components: {
-			inputResponse,
-		}, //components
-
-		mixins: [validator], //mixins
-
-		props: {
-			//sets heading/Label for the input field
-			label: {
-				required: false,
-				type: [String, null],
-				default: null,
-			},
-
-			//sets name attribute for the input field (required field in case of forms)
-			name: {
-				required: false,
-				type: [String, null],
-				default: "textInput",
-			},
-
-			//users can pass preset values for the input field
-			value: {
-				required: false,
-				type: [String, null],
-				default: null,
-			},
-
-			//sets the format/pattern for acceptable values for the input field
-			//^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$
-			//https://learning.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s03.html
-			// phone number with extension
-			pattern: {
-				required: false,
-				type: [RegExp, String, null],
-				default: null,
-			},
-
-			//sets the placeholder attribute for the input field
-			placeholder: {
-				required: false,
-				type: [String, null],
-				default: "Enter text here...",
-			},
-
-			//sets the minlength attribute for the input field
-			minlength: {
-				required: false,
-				type: [Number, null],
-				default: 0,
-			},
-
-			//sets the maxlength attribute for the input field
-			maxlength: {
-				required: false,
-				type: [Number, null],
-				default: 50,
-			},
-
-			//sets the manual alerts
-			alertMessage: {
-				required: false,
-				type: [Object, null],
-				default: null,
-			},
-
-			//sets the required attribute for the input field
-			required: {
-				required: false,
-				type: [Boolean, null],
-				default: false,
-			},
-
-			//sets the disabled attribute for the input field
-			disabled: {
-				required: false,
-				type: [Boolean, null],
-				default: false,
-			},
-
-			//sets the autofocus attribute for the input field
-			autofocus: {
-				required: false,
-				type: [Boolean, null],
-				default: false,
-			},
-
-			//sets the autocomplete attribute for the input field
-			autocomplete: {
-				required: false,
-				type: [Boolean, null],
-				default: true,
-			},
-
-			//sets the readonly attribute for the input field
-			readonly: {
-				required: false,
-				type: [Boolean, null],
-				default: false,
-			},
-
-			//checks if label options should appear on the same line or not
-			inline: {
-				required: false,
-				type: [Boolean, null],
-				default: false,
-			},
-
-			//reserves space and created a mask if set to true
-			mask: {
-				required: false,
-				type: [Boolean, null],
-				default: false,
-			},
-
-			//if a valid fontawesome icon class string is passed, it displays it in the input field
-			//a valid fontawesome icons class string is a string which starts with fas/far/fab/fa
-			icon: {
-				required: false,
-				type: [String, null],
-				default: null,
-			},
-		}, //props
-
-		emits: ["alerts"],
-
-		data() {
-			//stores errors thrown by the input fields
-			const dDanger = null;
-			//stores errors thrown by the input fields
-			const dWarning = null;
-			//stores textbox values
-			const dTextValue = null;
-			return {
-				dDanger,
-				dWarning,
-				dTextValue,
-			}; //return
-		}, //data
-
-		watch: {
-			//send warning messages back to parent component
-			dWarning: function (newValue) {
-				this.$emit("alerts", "warning", newValue);
-			},
-
-			//send error messages back to parent component
-			dDanger: function (newValue) {
-				this.$emit("alerts", "error", newValue);
-			},
-		}, //watch
-
-		created() {
-			//store values passed as props into dTextValue for future manipulation
-			if (this.value) {
-				this.dTextValue = this.value;
-			}
-		}, //created
-
-		beforeMount() {
-			const alertMessage = this.alertMessage;
-
-			if (this.value) {
-				this.validate();
-			}
-
-			if (alertMessage) {
-				if (alertMessage["error"]) {
-					this.dDanger = alertMessage["error"];
-				} else if (alertMessage["warning"]) {
-					this.dWarning = alertMessage["warning"];
-				} else if (alertMessage["success"]) {
-					this.dSuccess = alertMessage["success"];
-				} else if (alertMessage["info"]) {
-					this.dInfo = alertMessage["info"];
-				}
-			}
+	props: {
+		// sets heading/Label for the
+		// input field
+		label: {
+			required: false,
+			type: String,
+			default: '',
 		},
 
-		methods: {
-			//validate the textbox input and set alert messages if required.
-			//it also emits/send the current textbox value to  parent component as v-model attribute value
-			validate: function () {
-				const object = {
-					value: this.dTextValue,
-					maxlength: this.maxLength,
-					minlength: this.minLength,
-					pattern: this.pattern,
-				};
-				const response = this.validator(object);
-				this.dDanger = response.error;
-				this.dWarning = response.warning;
-			}, //validate
-		}, //methods
-	}; //default
+		// sets tag attribute for the
+		// input field (required field in case of forms)
+		tag: {
+			required: false,
+			type: String,
+			default: 'textInput',
+		},
+
+		// users can pass preset values
+		// for the input field
+		value: {
+			required: false,
+			type: String,
+			default: '',
+		},
+
+		// sets the format/pattern for
+		// acceptable values for the input field
+		pattern: {
+			required: false,
+			type: [RegExp, String],
+			default:
+				new RegExp('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$'),
+		},
+
+		// sets the placeholder attribute
+		// for the input field
+		placeholder: {
+			required: false,
+			type: String,
+			default: 'Enter text here...',
+		},
+
+		// sets the minlength attribute
+		// for the input field
+		minlength: {
+			required: false,
+			type: Number,
+			default: 0,
+		},
+
+		// sets the maxlength attribute
+		// for the input field
+		maxlength: {
+			required: false,
+			type: [Number],
+			default: 50,
+		},
+
+		// sets the manual alerts
+		alert: {
+			required: false,
+			type: Object,
+			default: () => ({
+				error: '',
+				warning: '',
+			}),
+		},
+
+		// sets the required attribute
+		// for the input field
+		required: {
+			required: false,
+			type: Boolean,
+			default: false,
+		},
+
+		// sets the disabled attribute
+		// for the input field
+		disabled: {
+			required: false,
+			type: Boolean,
+			default: false,
+		},
+
+		// sets the autofocus attribute
+		// for the input field
+		autofocus: {
+			required: false,
+			type: Boolean,
+			default: false,
+		},
+
+		// sets the autocomplete attribute
+		// for the input field
+		autocomplete: {
+			required: false,
+			type: Boolean,
+			default: true,
+		},
+
+		// sets the readonly attribute
+		// for the input field
+		readonly: {
+			required: false,
+			type: Boolean,
+			default: false,
+		},
+
+		// checks if label options should
+		// appear on the same line or not
+		inline: {
+			required: false,
+			type: Boolean,
+			default: false,
+		},
+
+		// reserves space and created a
+		// mask if set to true
+		mask: {
+			required: false,
+			type: Boolean,
+			default: false,
+		},
+
+		// if a valid fontawesome icon class
+		// string is passed, it displays it in the input field
+		// a valid fontawesome icons class
+		// string is a string which starts with fas/far/fab/fa
+		icon: {
+			required: false,
+			type: String,
+			default: '',
+		},
+
+		// uses the values to trigger validation by using v-on attribute
+		keyup: {
+			type: Array,
+			required: false,
+			default: () => ['keyup.tab', 'keyup.enter'],
+		},
+	}, // props
+
+	setup(props, { emit }) {
+		const dValue = ref('');
+		const alertObject = reactive({
+			warning: props.alert ? props.alert.warning : '',
+			error: props.alert ? props.alert.error : '',
+		});
+		const { validate, followsPattern } = validator(props, emit, dValue);
+		return {
+			alertObject, dValue, validate, followsPattern,
+		};
+	},
+});
 </script>
 
 <style lang="less" scoped>
-	@import (reference) "../Less/customMixins.less";
-
-	.textInput {
-		.inputcss();
-
-		/* .placeholder(); */
-	}
+@import (reference) "../less/customMixins.less";
+.textInput {
+	.inputcss();
+	/* .placeholder(); */
+}
 </style>

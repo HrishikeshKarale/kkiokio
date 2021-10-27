@@ -20,7 +20,7 @@
 			</div>
 			<h3 class="top">Looks like something went wrong.</h3>
 			{{
-				similarRoutes.length > 1 ? similarRoutes : "No Matching Routes found."
+				similarRoutes.length > 1 ? similarRoutes : 'No Matching Routes found.'
 			}}
 		</section>
 	</article>

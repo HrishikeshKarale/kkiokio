@@ -7,7 +7,7 @@
 				:text="text"
 				:icon="icon"
 				category="large"
-				:disabled="!disabled"
+				:isDisabled="!isDisabled"
 				:autofocus="!autofocus"
 				:ctx="
 					() => {
@@ -21,7 +21,7 @@
 				:text="text"
 				:icon="icon"
 				category="text"
-				:disabled="!disabled"
+				:isDisabled="!isDisabled"
 				:autofocus="!autofocus"
 				:ctx="
 					() => {
@@ -47,7 +47,7 @@
 									text="CONFIRM"
 									:icon="icon"
 									category="large"
-									:disabled="!disabled"
+									:isDisabled="!isDisabled"
 									:autofocus="!autofocus"
 									:ctx="ctx"
 								/>
@@ -57,7 +57,7 @@
 								tag="closeModal"
 								icon="fas fa-times"
 								category="icon"
-								:disabled="!disabled"
+								:isDisabled="!isDisabled"
 								:autofocus="!autofocus"
 								:ctx="
 									() => {
@@ -88,31 +88,31 @@
 		props: {
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			text: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			tag: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			icon: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			display: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
@@ -125,11 +125,11 @@
 
 		data() {
 			const autofocus = this.booleanTrue;
-			const disabled = this.booleanTrue;
+			const isDisabled = this.booleanTrue;
 			const form = "";
 			return {
 				autofocus,
-				disabled,
+				isDisabled,
 				form,
 			}; //return
 		}, //components

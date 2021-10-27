@@ -7,9 +7,7 @@
 			@click="gal.isActive = !gal.isActive"
 		>
 			<template v-for="k in Object.keys(gal)">
-				<div v-if="gal[k]" :key="k + '-' + gal.color">
-					{{ gal[k] }}
-				</div>
+				<div v-if="gal[k]" :key="k + '-' + gal.color" v-text="gal[k]" />
 			</template>
 		</div>
 	</div>

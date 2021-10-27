@@ -6,6 +6,8 @@ module.exports = {
   },
   rules: {
     strict: "off",
-    "no-console": "off"
+    "no-console": "off",
+    "vue/no-v-for-template-key": "off",
+    "vue/no-use-v-if-with-v-for": "off",
   }
 };

@@ -1,7 +1,10 @@
 <template>
 	<section class="cardScroller">
 		<h2>
-			{{ title }}
+			<router-link
+				:to="{ name: 'work', params: { type: title, } }"
+				v-text="title"
+			/>
 		</h2>
 		<template v-if="!vertical">
 			<vue-button
@@ -78,7 +81,7 @@
 			},
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 			tag: {
@@ -89,6 +92,11 @@
 					return name.toString();
 				},
 			},
+			vertical: {
+				required: false,
+				type: Boolean,
+				default: false
+			}
 		}, //props
 
 		data() {
@@ -96,7 +104,6 @@
 			const timer = null;
 			const wait = 8;
 			const directionRight = this.booleanTrue;
-			const vertical = !this.booleanTrue;
 			const left = 0;
 			const right = 0;
 			const maxSteps = 0;
@@ -105,7 +112,6 @@
 				timer,
 				wait,
 				directionRight,
-				vertical,
 				left,
 				right,
 				maxSteps,
@@ -142,13 +148,13 @@
 
 		methods: {
 			handleScrollnext: function () {
-				this.cards.scrollLeft = this.cards.scrollLeft += window.outerWidth;
+				this.cards.scrollLeft = this.cards.scrollLeft += window.outerWidth/2;
 				this.left++;
 				this.right--;
 			}, //handleScrollnext
 
 			handleScrollPrev: function () {
-				this.cards.scrollLeft = this.cards.scrollLeft -= window.outerWidth;
+				this.cards.scrollLeft = this.cards.scrollLeft -= window.outerWidth/2;
 				this.right++;
 				this.left--;
 			}, //handleScrollPrev

@@ -1,6 +1,7 @@
 export default function validator(props, emit, dValue) {
-  //value ebsent
-  const isRequired = function() {
+
+  // value ebsent
+  const isRequiredFlag = function() {
     if (props.required) {
       let msg = "";
       if (!dValue.value) {
@@ -10,9 +11,9 @@ export default function validator(props, emit, dValue) {
       return msg;
     }
     return false;
-  }; //isRequired
+  }; // isRequiredFlag
 
-  //value present
+  // value present
   const isStrict = () => {
     if (props.strict) {
       let msg = "";
@@ -30,9 +31,9 @@ export default function validator(props, emit, dValue) {
       return msg;
     }
     return false;
-  }; //isStrict
+  }; // isStrict
 
-  //value present
+  // value present
   const isTooShort = function() {
     if (props.minlength) {
       let msg = "";
@@ -46,7 +47,7 @@ export default function validator(props, emit, dValue) {
       return msg;
     }
     return false;
-  }; //isTooShort
+  }; // isTooShort
 
   const isTooLong = () => {
     if (props.maxlength) {
@@ -61,9 +62,9 @@ export default function validator(props, emit, dValue) {
       return msg;
     }
     return false;
-  }; //isTooLong
+  }; // isTooLong
 
-  //pattern matching
+  // pattern matching
   const followsPattern = () => {
     if (props.pattern) {
       let msg = "";
@@ -77,23 +78,23 @@ export default function validator(props, emit, dValue) {
   }; //followsPattern
 
   const validate = function() {
-    //if value for val(temp) exists check for warning triggers
+    // if value for val(temp) exists check for warning triggers
     if (dValue.value) {
-      //if any of the check fails then an error message is emited as notify and
+      // if any of the check fails then an error message is emited as notify and
       if (isTooShort()) {
-        //automatically notifies the parent component/host about the error
+        // automatically notifies the parent component/host about the error
       } else if (isTooLong()) {
-        //automatically notifies the parent component/host about the error
+        // automatically notifies the parent component/host about the error
       } else {
-        //emit/send new values to parent component v-model attribute
+        // emit/send new values to parent component v-model attribute
         emit("notify", "error", "");
         emit("value", dValue.value);
       }
     }
-    //if a value for val(temp) does not exists  and is required, thentrigger error and set error message
-    else if (isRequired()) {
+    // if a value for val(temp) does not exists  and is required, thentrigger error and set error message
+    else if (isRequiredFlag()) {
       emit("value", "");
     }
-  }; //validator
-  return { validate, followsPattern, isStrict, isRequired };
+  }; // validator
+  return { validate, followsPattern, isStrict, isRequiredFlag };
 }

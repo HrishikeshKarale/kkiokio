@@ -32,9 +32,7 @@
 					<div><b>total: </b>{{ total }}</div>
 				</div>
 			</div>
-			<h4 v-if="dPerson">
-				{{ dPerson }}
-			</h4>
+			<h4 v-if="dPerson" v-text="dPerson" />
 			<div v-if="dInvited || dPerson" class="invited">
 				<div v-for="(invited, index) in dInvited" :key="index" class="card">
 					<h4>

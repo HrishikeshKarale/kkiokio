@@ -1,8 +1,8 @@
 <template>
 	<div class="dropdownList" :class="{ inline: inline }">
-		<label v-if="label" :class="{ maskField: mask }" :for="name">
+		<label v-if="label" :class="{ maskField: mask }" :for="name" >
 			{{ label }}
-			<abbr v-if="required" title="Required Field">*</abbr>
+			<abbr v-if="isRequired" title="Required Field">*</abbr>
 			<span v-else> - Optional field<abbr>*</abbr></span>
 		</label>
 		<div
@@ -19,23 +19,13 @@
 				:id="name"
 				v-model="selectedOption"
 				:autofocus="autofocus"
-				:disabled="disabled"
-				:required="required"
+				:disabled="isDisabled"
+				:required="isRequired"
 				:multiple="multiple"
 				:size="size"
 				@change="validate"
 			>
-				<!-- <option
-                    value= ''
-                    :selected= '!selectedOption'
-                    disabled= 'true'
-                    :hidden= 'options.includes(selectedOption) && required'
-                >
-                    pick an option
-               </option> -->
-				<option v-for="(option, index) in options" :key="index" :value="option">
-					{{ option }}
-				</option>
+				<option v-for="(option, index) in options.filter(option => option!=selectedOption)" :key="index" :value="option" v-text="option" />
 			</select>
 		</div>
 		<input-response :error="danger" />
@@ -56,14 +46,14 @@
 			//sets heading/Label for the input field
 			label: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			//sets name attribute for the input field (required field in case of forms)
 			name: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "dropdownInput",
 			},
 
@@ -88,63 +78,63 @@
 			//no of options  to display at a time.
 			size: {
 				required: false,
-				type: [Number, null],
+				type: Number,
 				default: null,
 			},
 
 			//sets the multiple attribute for the input field to accept multiple values
 			multiple: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//sets the manual alerts
 			alertMessage: {
 				required: false,
-				type: [Object, null],
+				type: Object,
 				default: null,
 			},
 
 			//sets the required attribute for the input field
-			required: {
+			isRequired: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//sets the disabled attribute for the input field
-			disabled: {
+			isDisabled: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//sets the autofocus attribute for the input field
 			autofocus: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//sets the autocomplete attribute for the input field
-			autocomplete: {
+			isAutocomplete: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: true,
 			},
 
 			//checks if label options should appear on the same line or not
 			inline: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
 			//reserves space and created a mask if set to true
 			mask: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 
@@ -152,7 +142,7 @@
 			//a valid fontawesome icons class string is a string which starts with fas/far/fab/fa
 			icon: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 		},

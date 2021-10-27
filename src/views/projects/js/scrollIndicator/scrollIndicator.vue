@@ -11,7 +11,7 @@
 				:class="{ active: indicator.selected }"
 			>
 				<span :class="[indicator.selected ? 'fas' : 'far', 'fa-circle']" />
-				<span>{{ indicator.id }}</span>
+				<span v-text="indicator.id" />
 			</a>
 		</div>
 	</div>
@@ -55,22 +55,24 @@
 				this.articleTag = document.getElementsByTagName("article")[0];
 				// this.goBack();
 				this.initialize();
-				this.checkScroll();
 				this.headerOffset.scrollTop = 0;
+				this.checkScroll();
 			}, this.wait * 1000);
 		}, //unmounted
 		methods: {
 			scrollableHeader: function (highlight) {
-				if (this.prevScrollValue > highlight) {
-					document.getElementsByTagName("header")[0].classList.remove("mini");
-				} else {
-					if (
-						!document
-							.getElementsByTagName("header")[0]
-							.classList.contains("showNav")
-					) {
+				if (
+					!document
+						.getElementsByTagName("header")[0]
+						.classList.contains("showNav")
+				) {
+					if (this.prevScrollValue >= highlight) {
+						document.getElementsByTagName("header")[0].classList.remove("mini");
+					} else {
 						document.getElementsByTagName("header")[0].classList.add("mini");
 					}
+				} else {
+						document.getElementsByTagName("header")[0].classList.remove("mini");
 				}
 			}, //scrollableHeader
 
@@ -92,24 +94,53 @@
 				}
 			}, //goBack
 
-			scrollBreadcrum: function (highlight) {
+			scrollNav: function (highlight) {
 				const breadcrumElement = document.getElementsByClassName("breadcrums")[0];
+				const projectNavElement = document.getElementsByClassName("projectNav")[0];
+				const filterElement = document.getElementsByClassName("vueFilter")[0];
+				// console.log(projectNavElement);
+				let projectNavOffset = 0
+				if(projectNavElement) {
+					projectNavOffset= projectNavElement.offsetTop;
+				}
+				let filterOffset = 0
+				if(filterElement) {
+					filterOffset= filterElement.offsetTop;
+				}
 				if (highlight > 0) {
+					//breadcrum
 					if (breadcrumElement) {
 						breadcrumElement.classList.add("scroll");
 					}
+					//projectNav
+					if(projectNavElement && projectNavOffset && highlight>projectNavOffset) {
+						projectNavElement.classList.add("scroll")
+					}
+					//filter
+					if(filterElement && filterOffset && highlight>filterOffset) {
+						filterElement.classList.add("scroll")
+					}
 				} else {
+					//breadcrum
 					if (breadcrumElement) {
 						breadcrumElement.classList.remove("scroll");
 					}
+					//projectNav
+					if(projectNavElement && projectNavOffset && highlight <= projectNavOffset) {
+						projectNavElement.classList.remove("scroll")
+					}
+					//filter
+					if(filterElement && filterOffset && highlight<filterOffset) {
+						filterElement.classList.remove("scroll")
+					}
 				}
-			}, //scrollBreadcrum
+			}, //scrollNav
 
 			checkScroll: function () {
 				const highlight = Math.round(this.headerOffset.scrollTop);
 				// console.log(highlight);
 				this.scrollableHeader(highlight);
-				this.scrollBreadcrum(highlight);
+				this.scrollNav(highlight);
 				for (let i = 0; i < this.tag.length; i++) {
 					const tagOffset = this.tagOffset[i];
 

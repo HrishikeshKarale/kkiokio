@@ -2,15 +2,15 @@
 	<div class="inputResponse">
 		<div v-if="error" class="errorMessage">
 			<span class="fas fa-exclamation-circle" />
-			<b>{{ error }}</b>
+			<b v-text="error" />
 		</div>
 		<div v-else-if="warning" class="warningMessage">
 			<span class="fas fa-exclamation-triangle" />
-			<b>{{ warning }}</b>
+			<b v-text="warning" />
 		</div>
 		<div v-else-if="info" class="infoMessage">
 			<span class="fas fa-info-circle" />
-			<b>{{ info }}</b>
+			<b v-text="info" />
 		</div>
 		<div v-else-if="charLimitReached" class="infoMessage">
 			<span class="fas fa-info-circle" />
@@ -25,31 +25,31 @@
 
 		props: {
 			error: {
-				type: [String, null],
+				type: String,
 				required: false,
 				default: null,
 			},
 
 			warning: {
-				type: [String, null],
+				type: String,
 				required: false,
 				default: null,
 			},
 
 			info: {
-				type: [String, null],
+				type: String,
 				required: false,
 				default: null,
 			},
 
 			charLimitReached: {
-				type: [Boolean, null],
+				type: Boolean,
 				required: false,
 				default: false,
 			},
 
 			maxlength: {
-				type: [Number, null],
+				type: Number,
 				required: false,
 				default: null,
 			},
@@ -69,12 +69,14 @@
 
 		& > div {
 			display: flex;
-			margin: @spaceSm 0;
+			margin-top: @spaceMd;
 			font-size: @fontSizeSm;
-			// font-family: monospace;
-			font-weight: bold;
+			align-items: flex-start;
+			justify-content: space-between;
 			letter-spacing: 1px !important;
-			gap: @spaceSm;
+			line-height: @fontSizeSm *1.618;
+			gap: @spaceMd;
+			height: fit-content;
 
 			&.infoMessage {
 				color: @infoText;

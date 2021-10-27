@@ -28,8 +28,8 @@
 					:name="dNameRadio"
 					:value="dRadioValue"
 					:options="dOptions"
-					:required="!booleanTrue"
-					:disabled="!booleanTrue"
+					:isRequired="!booleanTrue"
+					:isDisabled="!booleanTrue"
 					:autofocus="!booleanTrue"
 					:inline="booleanTrue"
 					:box="booleanTrue"
@@ -44,7 +44,7 @@
 						form="loginForm"
 						:alert="{ error: dDanger, warning: dWarning }"
 						:validate="!booleanTrue"
-						:autocomplete="booleanTrue"
+						:isAutocomplete="booleanTrue"
 						@alerts="alerts"
 					>
 						<email-input
@@ -52,7 +52,7 @@
 							label="Email ID"
 							name="emailTextField"
 							placeholder="JohnDoe@abc.com"
-							:required="booleanTrue"
+							:isRequired="booleanTrue"
 							icon="fas fa-at"
 							@alerts="alerts"
 							@value="(val) => (emailID = val)"
@@ -62,9 +62,9 @@
 							label="Password"
 							name="usernameTextField"
 							placeholder="*************"
-							:required="booleanTrue"
+							:isRequired="booleanTrue"
 							icon="far fa-user"
-							:autocomplete="booleanTrue"
+							:isAutocomplete="booleanTrue"
 							@alerts="alerts"
 							@value="(val) => (password = val)"
 						/>
@@ -75,7 +75,7 @@
 						form="SignUpForm"
 						:alert="{ error: dDanger, warning: dWarning }"
 						:validate="!booleanTrue"
-						:autocomplete="booleanTrue"
+						:isAutocomplete="booleanTrue"
 						@alerts="alerts"
 					>
 						<text-input
@@ -83,7 +83,7 @@
 							label="Name"
 							name="nameTextField"
 							placeholder="John Doe"
-							:required="booleanTrue"
+							:isRequired="booleanTrue"
 							icon="far fa-user"
 							@alerts="alerts"
 							@value="(val) => (signupName = val)"
@@ -93,7 +93,7 @@
 							label="Email ID"
 							name="emailTextField"
 							placeholder="JohnDoe@email.com"
-							:required="booleanTrue"
+							:isRequired="booleanTrue"
 							icon="fas fa-at"
 							@alerts="alerts"
 							@value="(val) => (signupEmail = val)"
@@ -103,7 +103,7 @@
 							label="Username"
 							name="usernameTextField"
 							placeholder="John Doe"
-							:required="booleanTrue"
+							:isRequired="booleanTrue"
 							icon="far fa-user"
 							@alerts="alerts"
 							@value="(val) => (signupUsername = val)"
@@ -113,10 +113,10 @@
 							label="Password"
 							name="paswordTextField"
 							placeholder="*************"
-							:required="booleanTrue"
+							:isRequired="booleanTrue"
 							:match="booleanTrue"
 							icon="far fa-user"
-							:autocomplete="booleanTrue"
+							:isAutocomplete="booleanTrue"
 							@alerts="alerts"
 							@value="(val) => (signupPassword = val)"
 						/>
@@ -128,7 +128,7 @@
 							text="Sign out"
 							icon="fas fa-sign-out-alt"
 							category="standard"
-							:disabled="!booleanTrue"
+							:isDisabled="!booleanTrue"
 							:autofocus="!booleanTrue"
 							:ctx="signOut.bind()"
 						/>
@@ -535,7 +535,7 @@
 		flex-direction: column;
 		height: 100vh;
 		width: 100%;
-		.backgroundColor(@primaryColor, 16%);
+		.backgroundColor(@primaryColor, 100vw, 8%);
 		position: static;
 		& > div {
 			display: flex;
@@ -564,7 +564,7 @@
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
 						align-self: center !important;
 						z-index: @contentZ;
-						.boxShadow(@one, @secondaryColor,@contentZ);
+						// .boxShadow(@one, @secondaryColor,@contentZ);
 						background-color: @backgroundColor !important;
 						//countdown timer
 						& > .countdownTimer {

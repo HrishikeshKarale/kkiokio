@@ -25,7 +25,7 @@
 
 			alt: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: function (value) {
 					if (value) {
 						return value;
@@ -35,7 +35,7 @@
 			},
 			caption: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 		},
@@ -58,7 +58,7 @@
 		flex-flow: column nowrap;
 		justify-content: center;
 		align-content: center;
-		align-self: center;
+		align-self: flex-start;
 		gap: @spaceLg;
 		z-index: inherit;
 		margin-block-end: 0;
@@ -69,6 +69,11 @@
 		& > img {
 			max-width: 100%;
 			height: inherit;
+			& + figcaption {
+				font-size: @fontSizeSm;
+				text-align: center;
+				line-height: @fontSizeSm;
+			}
 		}
 	}
 </style>

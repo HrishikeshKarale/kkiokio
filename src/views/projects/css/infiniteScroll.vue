@@ -1,7 +1,7 @@
 <template>
 	<div class="infiniteScroll">
-		<div :class="['scroll', reverse ? 'reverse' : null]">
-			<div
+		<ol :class="['scroll', reverse ? 'reverse' : null]">
+			<li
 				v-for="(l, index) in [
 					...list,
 					...list,
@@ -17,12 +17,9 @@
 					...list,
 				]"
 				:key="index"
-			>
-				<span>
-					{{ l }}
-				</span>
-			</div>
-		</div>
+				v-text="l"
+			/>
+		</ol>
 	</div>
 </template>
 <script>
@@ -35,7 +32,7 @@
 			},
 			reverse: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 		}, //props

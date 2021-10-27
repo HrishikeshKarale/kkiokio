@@ -1,5 +1,9 @@
 import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
 
+//set up emiter for login's
+import mitt from "mitt";
+const emitter = mitt();
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -20,16 +24,16 @@ const routes: Array<RouteRecordRaw> = [
       requiresAuth: false
     }
   },
-  // {
-  //   path: "/logo",
-  //   name: "logo",
-  //   component: () =>
-  //     import(/* webpackChunkName: "logo" */ "@/views/logo/index.vue"),
-  //   meta: {
-  //     transitionName: "fade",
-  //     requiresAuth: false //true
-  //   }
-  // },
+  {
+    path: "/blogs",
+    name: "blogs",
+    component: () =>
+      import(/* webpackChunkName: "blogs" */ "@/views/blogs.vue"),
+    meta: {
+      transitionName: "fade",
+      requiresAuth: false //true
+    }
+  },
   {
     path: "/about",
     name: "about",
@@ -41,17 +45,29 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: "/Work",
+    path: "/work",
     name: "work",
     component: () =>
       import(/* webpackChunkName: "work" */ "@/views/project.vue"),
     meta: {
       transitionName: "fade",
       requiresAuth: false //true
-    }
+    },
+    children: [
+      {
+        path: ":type",
+        name: "work",
+    component: () =>
+      import(/* webpackChunkName: "work" */ "@/views/project.vue"),
+        meta: {
+          transitionName: "fade",
+          requiresAuth: false //true
+        },
+      },
+    ]
   },
   {
-    path: "/Work/:article",
+    path: "/work/:type/:article",
     name: "articlePage",
     component: () =>
       import(
@@ -259,7 +275,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "rsvpApp",
     component: () =>
       import(
-        /* webpackChunkName: "about" */ "@/views/projects/webUX/rsvpApp.vue"
+        /* webpackChunkName: "rsvpApp" */ "@/views/projects/webUX/rsvpApp.vue"
       ),
     meta: {
       transitionName: "fade",
@@ -320,7 +336,7 @@ const routes: Array<RouteRecordRaw> = [
     // alias: "/404pageNotFound",
     name: "pageNotFound",
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (pageNotFound.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(
@@ -334,40 +350,8 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 });
-
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     if (localStorage.getItem('jwt') == null) {
-//       next({
-//         path: '/login',
-//         params: { nextUrl: to.fullPath }
-//       })
-//     } else {
-//       const user = JSON.parse(localStorage.getItem('user') || '{}');
-//       if (to.matched.some(record => record.meta.isAdmin)) {
-//         if (user.isAdmin == 1) {
-//           next()
-//         }
-//         else {
-//           next({ name: 'userboard' })
-//         }
-//       } else {
-//         next()
-//       }
-//     }
-//   } else if (to.matched.some(record => record.meta.guest)) {
-//     if (localStorage.getItem('jwt') == null) {
-//       next()
-//     }
-//     else {
-//       next({ name: 'userboard' })
-//     }
-//   } else {
-//     next()
-//   }
-// })
 
 export default router;

@@ -5,9 +5,10 @@
 		:class="{ vueForm: true, singleAction: singleAction }"
 		:name="form"
 		:novalidate="validate"
-		:autocomplete="autocomplete"
+		:autocomplete="isAutocomplete"
 		@submit="ctx"
 	>
+		<h4 v-if="title" v-text="title" />
 		<div class="formElements">
 			<slot />
 		</div>
@@ -18,7 +19,7 @@
 				tag="formActionButton"
 				:category="category"
 				:icon="icon"
-				:disabled="!validInput"
+				:isDisabled="!validInput"
 				:ctx="ctx"
 			/>
 			<input v-if="!singleAction" class="btn" type="reset" value="Reset" />
@@ -37,6 +38,11 @@
 		}, //data
 
 		props: {
+			title: {
+				required: false,
+				type: String,
+				default: null,
+			},
 			alert: {
 				required: true,
 				type: Object,
@@ -47,17 +53,17 @@
 			},
 			form: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 			text: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "Submit",
 			},
 			category: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "standard",
 				validator: function (value) {
 					return (
@@ -83,22 +89,22 @@
 			},
 			icon: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: "fas fa-clipboard-check",
 			},
 			singleAction: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
-			autocomplete: {
+			isAutocomplete: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: true,
 			},
 			validate: {
 				required: false,
-				type: [Boolean, null],
+				type: Boolean,
 				default: false,
 			},
 		},
@@ -151,10 +157,13 @@
 		display: flex;
 		flex-direction: column;
 		align-self: center;
-		width: fit-content;
+		width: max-content;
 		height: fit-content;
 		gap: @spaceXl;
 		width: 100%;
+		& > h4 {
+			margin-bottom: 0 !important;
+		}
 		&.singleAction {
 			gap: 0;
 			flex-flow: row wrap;
@@ -178,8 +187,6 @@
 				flex-direction: row-reverse;
 				gap: @spaceMd;
 				align-items: center;
-				//set a slight offset
-				margin-right: -@spaceXl;
 				& > input {
 					font-size: @fontSizeMd;
 					&[type="reset"] {

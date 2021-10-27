@@ -29,7 +29,7 @@
 	import enterpriseAppLayout from "@/components/enterpriseAppLayout";
 	import vueImg from "@/components/vueImg";
 	import vueFooter from "@/components/vueFooter.vue";
-	import { mapGetters, mapActions } from "vuex";
+	import { mapGetters } from "vuex";
 
 	export default {
 		name: "App",
@@ -50,12 +50,7 @@
 		},
 		created() {
 			this.$store.dispatch("contentModule/processPorjects", null, { root: true });
-			// this.processPorjects;
 		}, //created
-
-		// methods: {
-		// 	...mapActions({ processPorjects: "contentModule/processPorjects" }),
-		// }, //mehods
 
 		computed: {
 			...mapGetters({

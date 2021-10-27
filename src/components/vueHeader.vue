@@ -27,8 +27,8 @@
 					<router-link :to="{ name: navigation.component }">
 						<span :class="navigation.icon"></span>
 						<div>
-							<h4>{{ navigation.name }}</h4>
-							<span> {{ navigation.tagline }}</span>
+							<h4 v-text="navigation.name" />
+							<span v-text="navigation.tagline" />
 						</div>
 					</router-link>
 				</li>
@@ -39,9 +39,7 @@
 			<div class="account">
 				<template v-if="signedIn">
 					<vue-img :src="user ? user.image : null" alt="Logo" />
-					<h5 v-if="user">
-						{{ user ? user.name : null }}
-					</h5>
+					<h5 v-if="user" v-text="user ? user.name : 'guest'" />
 					<h5 v-else>Guest</h5>
 				</template>
 				<div class="g-signin2" data-onsuccess="triggerGoogleLoaded" />
@@ -93,7 +91,7 @@
 		props: {
 			logoLink: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
@@ -139,6 +137,9 @@
 
 			toggleNavigation: function () {
 				this.$refs["vueHeader"].classList.toggle("showNav");
+				if (this.$refs["vueHeader"].classList.contains("showNav")) {
+					this.$refs["vueHeader"].classList.remove("mini");
+				}
 				this.toggle("nav");
 			}, //toggleNavigation
 		},
@@ -261,7 +262,7 @@
 
 						//website name and logo
 						&:first-child {
-							margin-right: 2 * @spaceXl !important;
+							margin-right: @spaceXl !important;
 							& > a {
 								& > .vueImg {
 									height: 64px;

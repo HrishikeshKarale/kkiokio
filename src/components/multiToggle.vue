@@ -1,8 +1,6 @@
 <template>
   <div class="multiToggle" :class="{ inline: inline }">
-    <label v-if="label" :class="{ maskField: mask }">
-      {{ label }}
-    </label>
+    <label v-if="label" :class="{ maskField: mask }" v-text="label" />
     <div
       class="checkbox-toggle"
       :class="{
@@ -35,14 +33,14 @@ export default {
     //sets heading/Label for multitoggle
     label: {
       required: false,
-      type: [String, null],
+      type: String,
       default: null
     },
 
     //sets name attribute for multitoggle  (required field in case of forms)
     name: {
       required: false,
-      type: [String, null],
+      type: String,
       default: "textInput"
     },
 
@@ -56,7 +54,7 @@ export default {
     //toggles label for multitoggle
     showLabels: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
@@ -77,28 +75,28 @@ export default {
     //sets the manual alerts
     alertMessage: {
       required: false,
-      type: [Object, null],
+      type: Object,
       default: null
     },
 
     //sets the disabled attribute for multitoggle
-    disabled: {
+    isDisabled: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //checks if label options should appear on the same line or not
     inline: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     },
 
     //reserves space and created a mask if set to true
     mask: {
       required: false,
-      type: [Boolean, null],
+      type: Boolean,
       default: false
     }
   }, //computed
@@ -125,7 +123,7 @@ export default {
       return {
         checked: this.dToggled,
         unchecked: !this.dToggled,
-        disabled: this.disabled
+        disabled: this.isDisabled
       };
     }, //classes
 
@@ -163,7 +161,7 @@ export default {
   methods: {
     //toggle state unless toggle is disabled
     toggle: function(e) {
-      if (this.disabled && e.keyCode === 9) {
+      if (this.isDisabled && e.keyCode === 9) {
         // not if disabled or tab is pressed
         return;
       }

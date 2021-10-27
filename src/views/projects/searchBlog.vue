@@ -11,14 +11,14 @@
 			:ctx="searchBlog.bind(this)"
 			:alert="alertObject"
 			:validate="!booleanTrue"
-			:autocomplete="booleanTrue"
+			:isAutocomplete="booleanTrue"
 			@alerts="alerts"
 		>
 			<text-input
 				:value="searchQuery"
 				name="searchField"
 				placeholder="UX; IA; Research; Material ..."
-				:required="booleanTrue"
+				:isRequired="booleanTrue"
 				@alerts="alerts"
 				@value="(val) => (searchQuery = val)"
 			/>

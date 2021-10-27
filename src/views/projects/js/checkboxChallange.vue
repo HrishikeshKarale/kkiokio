@@ -8,7 +8,7 @@
 				:name="option.label"
 				@click="check(option.id, $event)"
 			/>
-			<label :for="option.label" class="noselect">{{ option.label }}</label>
+			<label :for="option.label" class="noselect" v-text="option.label" />
 		</div>
 	</div>
 </template>

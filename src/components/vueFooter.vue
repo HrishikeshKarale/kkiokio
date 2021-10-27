@@ -1,7 +1,7 @@
 //https://codepen.io/pietvanzoen/pen/Ccjlt
 <template>
 	<footer class="vueFooter">
-		<router-link :to="{ name: 'home' }">
+		<router-link :to="{ name: 'home' }" replace>
 			<vue-img :src="logoLink" alt="Logo" />
 			<h3>
 				Hrishikesh Karale
@@ -36,9 +36,11 @@
 						v-for="(navigation, index) in nav"
 						:key="index + '-' + navigation.name"
 					>
-						<router-link :to="{ name: navigation.component }">
-							{{ navigation.name }}
-						</router-link>
+						<router-link
+							:to="{ name: navigation.component }"
+							v-text="navigation.name"
+							replace
+						/>
 					</li>
 				</ul>
 			</div>
@@ -46,16 +48,24 @@
 				<h3>Legal</h3>
 				<ul>
 					<li>
-						<router-link to="/termsOfService"> Terms Of Service </router-link>
+						<router-link
+							to="/termsOfService"
+							v-text="'Terms Of Service'"
+							replace
+						/>
 					</li>
 					<li>
-						<router-link to="/privacyPolicy"> Privacy Policy </router-link>
+						<router-link
+							to="/privacyPolicy"
+							v-text="'Privacy Policy'"
+							replace
+						/>
 					</li>
 					<li>
-						<router-link to="/disclaimer"> Disclaimer </router-link>
+						<router-link to="/disclaimer" v-text="'Disclaimer'" replace />
 					</li>
 					<li>
-						<router-link to="/siteMap"> Site Map </router-link>
+						<router-link to="/siteMap" v-text="'Site Map'" replace />
 					</li>
 				</ul>
 			</div>
@@ -63,10 +73,10 @@
 				<h3>Buisness</h3>
 				<ul>
 					<li>
-						<router-link to="/buisness"> For Buisness </router-link>
+						<router-link to="/buisness" v-text="'For Buisness'" replace />
 					</li>
 					<li>
-						<router-link to="/blog"> Blogs </router-link>
+						<router-link to="/blog" v-text="'Blogs'" replace />
 					</li>
 				</ul>
 			</div>
@@ -100,7 +110,7 @@
 		props: {
 			logoLink: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 

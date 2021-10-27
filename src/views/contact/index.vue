@@ -66,22 +66,22 @@
 				</p>
 			</div>
 		</section>
-		<section id="Form">
-			<!-- <h3>Contact Form</h3> -->
+		<!-- <section id="Form">
+			<h3>Contact Form</h3>
 			<p>Or you can also leave me a message here.</p>
 			<vue-form
 				:ctx="sendMail.bind(this)"
 				d-form="contactForm"
 				:alert="{ error: dDanger, warning: dWarning }"
 				:validate="!booleanTrue"
-				:autocomplete="booleanTrue"
+				:isAutocomplete="booleanTrue"
 			>
 				<text-input
 					v-model="name"
 					label="Name"
 					name="nameTextField"
 					placeholder="John Doe"
-					:required="booleanTrue"
+					:isRequired="booleanTrue"
 					@alerts="alerts"
 				/>
 				<email-input
@@ -90,7 +90,7 @@
 					name="emailField"
 					placeholder="JDoe@email.com"
 					icon="far fa-envelope"
-					:required="booleanTrue"
+					:isRequired="booleanTrue"
 					@alerts="alerts"
 				/>
 				<phone-input
@@ -105,11 +105,11 @@
 					label="message"
 					name="messageTextareaField"
 					placeholder="message"
-					:required="booleanTrue"
+					:isRequired="booleanTrue"
 					@alerts="alerts"
 				/>
 			</vue-form>
-		</section>
+		</section> -->
 	</article>
 </template>
 

@@ -4,13 +4,7 @@ export const cookie = {
       const cname: string = name + "=";
       const decodedCookie: string = decodeURIComponent(document.cookie);
       const ca: string[] = decodedCookie.split(";");
-      //alternate imlementation for returning value of requested cookie.
-      // ca.some(c => {
-      //   const str : string = c.trim();
-      //   if (str.startsWith(cname)) {
-      //     return c.substring(cname.length, c.length)
-      //   }
-      // });
+
       for (let i = 0; i < ca.length; i++) {
         let c: string = ca[i];
         // remove spaces at the begining
@@ -67,11 +61,6 @@ export const cookie = {
         return false;
       }
       return true;
-
-      // alternate implementation for if a cookie exists
-      // return document.cookie.split(';').some(c => {
-      //   return c.trim().startsWith(name + '=');
-      // });
     }
   }
 };

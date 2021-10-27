@@ -7,8 +7,8 @@ vue/custom-event-name-casing */
 				<tr class="searchRow">
 					<th>
 						<div>
-							{{ title
-							}}<input
+							{{ title }}
+							<input
 								name="table"
 								type="hidden"
 								:value="metadata.selected"
@@ -163,10 +163,9 @@ vue/custom-event-name-casing */
 				</tr>
 			</thead>
 			<tbody>
-				<template v-for="(entry, index) in tableData" :entry="entry">
+				<template v-for="(entry, index) in tableData" :entry="entry" :key="index">
 					<tr
 						:id="entry[select]"
-						:key="index"
 						:class="{
 							selected:
 								metadata.selected && metadata.selected.includes(entry[select]),
@@ -305,19 +304,19 @@ vue/custom-event-name-casing */
 
 			title: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			subtableId: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 
 			select: {
 				required: false,
-				type: [String, null],
+				type: String,
 				default: null,
 			},
 		}, //filters

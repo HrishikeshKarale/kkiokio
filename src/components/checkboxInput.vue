@@ -12,17 +12,17 @@
 				type="checkbox"
 				:name="tag"
 				:checked="value"
-				:disabled="disabled"
+				:disabled="isDisabled"
 				:autofocus="autofocus"
 				@input="check(value)"
 				@keyup[0]="check(value)"
 				@keyup[1]="check(value)"
 			/>
 			{{ label }}
-			<abbr v-if="required" title="Required Field">*</abbr>
+			<abbr v-if="isRequired" title="Required Field">*</abbr>
 			<span v-else-if="options"> - Optional field<abbr>*</abbr></span>
 			<!-- stores the value of the component to be used when validating a form -->
-			<input :name="tag" type="hidden" :value="value" :required="required" />
+			<input :name="tag" type="hidden" :value="value" :required="isRequired" />
 			<vue-button
 				v-if="options?.length && value"
 				id="clearSelection"
@@ -68,7 +68,7 @@
 								: option == value
 						"
 						:value="option"
-						:disabled="disabled"
+						:disabled="isDisabled"
 						:autofocus="index == 0 ? autofocus : false"
 						@input="check(option)"
 						@keyup[0]="check(option)"
@@ -131,7 +131,7 @@
 				type: [Boolean, Array, String, Number],
 				// type: function(props) {
 				//   if (!props.options) {
-				//     return [Boolean, null];
+				//     return Boolean;
 				//   } else if (props.type != "radio") {
 				//     return Array,;
 				//   } else {
@@ -166,14 +166,14 @@
 			},
 
 			//sets the required attribute for the input field
-			required: {
+			isRequired: {
 				required: false,
 				type: Boolean,
 				default: false,
 			},
 
 			//sets the disabled attribute for the input field
-			disabled: {
+			isDisabled: {
 				required: false,
 				type: Boolean,
 				default: false,

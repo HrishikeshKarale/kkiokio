@@ -1,20 +1,16 @@
 <template>
 	<div class="drumKit">
 		<div
-			v-for="k in kit"
+			v-for="k in drumKit"
 			:key="k.dataKey"
 			:class="['key', k.isPlaying ? 'playing' : '']"
 			:data-key="k.dataKey"
 			@click="clicked"
 			@transitionend="endTransition(k.dataKey)"
 		>
-			<div class="keyboardKey" :data-key="k.key">
-				{{ k.key }}
-			</div>
+			<div class="keyboardKey" :data-key="k.key" v-text="k.key" />
 			<audio :src="k.audio" :data-key="k.dataKey" />
-			<div class="instrument" :data-key="k.dataKey">
-				{{ k.name }}
-			</div>
+			<div class="instrument" :data-key="k.dataKey" v-text="k.name" />
 		</div>
 	</div>
 </template>
@@ -42,7 +38,7 @@
 
 		methods: {
 			endTransition: function (value) {
-				const kit = this.kit;
+				const kit = this.drumKit;
 				let k = null;
 				for (const i in kit) {
 					k = kit[i];
@@ -56,50 +52,15 @@
 				this.playAudio(keyCode);
 			},
 			playAudio(keyCode) {
-				// const audioFiles = Array.from(document.getElementsByTagName("audio"));
-				// audioFiles.forEach(file => {
-				//   const dataKey= file.getAttribute("data-key");
-				//   if (dataKey == keyCode) {
-				//     file.audio.currentTime = 0;
-				//     file.isPlaying = true;
-				//     file.audio.play();
-				//   }
-				// });
-
-				this.kit.forEach((kit) => {
-					if (kit.dataKey == keyCode) {
-						kit.audio.currentTime = 10;
-						kit.audio.crossOrigin = "anonymous";
-						kit.audio.autoplay = true;
-						kit.isPlaying = true;
-						try {
-							kit.audio.play().then(() => {
-								//automatic playback started
-							});
-						} catch (e) {
-							this.emitter.emit("alert", {
-								type: "warning",
-								message: "Error playing audio for selected kit",
-								description: e,
-								dismissable: this.booleanTrue,
-								code: "101.1",
-								timeout: 8,
-							});
-							// console.error(e);
-						}
+				const audioFiles = Array.from(document.getElementsByTagName("audio"));
+				audioFiles.forEach((file) => {
+					const dataKey = file.getAttribute("data-key");
+					if (dataKey == keyCode) {
+						file.currentTime = 0;
+						file.isPlaying = true;
+						file.play();
 					}
 				});
-
-				// let k = null;
-				// const kit = this.kit;
-				// for (const i in kit) {
-				//   k = kit[i];
-				//   if (k.dataKey == keyCode) {
-				//     k.audio.currentTime = 0;
-				//     k.isPlaying = true;
-				//     k.audio.play();
-				//   }
-				// }
 			},
 			keyPressed: function () {
 				const keyCode = event.keyCode;

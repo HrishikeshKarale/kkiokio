@@ -24,25 +24,25 @@ export default {
   props: {
     text: {
       required: false,
-      type: [String, null],
+      type: String,
       default: null
     },
 
     tag: {
       required: false,
-      type: [String, null],
+      type: String,
       default: "copyToClipboard"
     },
 
     icon: {
       required: false,
-      type: [String, null],
+      type: String,
       default: "fas fa-copy"
     },
 
     category: {
       required: false,
-      type: [String, null],
+      type: String,
       default: "small"
     },
 
