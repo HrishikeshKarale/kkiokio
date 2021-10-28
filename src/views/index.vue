@@ -166,10 +166,9 @@
 	@import (reference) "./../Less/customMixins.less";
 	@import (reference) "./../Less/customVariables.less";
 
-	.profileOverview {
+	article.profileOverview {
 		& > section {
 			position: relative;
-			min-height: @body;
 			&:not(#intro) {
 				h1 {
 					align-self: center;
@@ -188,7 +187,12 @@
 				flex-direction: row;
 				justify-content: space-evenly;
 				align-self: center;
+				min-height: @body;
+				//
 				& > div {
+					& > span {
+						margin: 0;
+					}
 					& > h1,
 					& > h2:first-child {
 						margin-top: 0;
@@ -214,20 +218,26 @@
 					&:last-child {
 						margin-left: 0;
 						border: @borderRadius dashed @accentColor;
-						height: 320px;
-						width: 320px;
+						height: 240px;
+						width: 240px;
 						border-radius: 25%;
 						cursor: pointer;
-						justify-content: space-evenly;
+						justify-content: space-around;
 						align-self: center;
+
 						& > span {
 							font-size: 64px;
 							align-self: center;
 							font-weight: bold;
 							transform: rotate(-45deg);
+							margin-right: 3*@spaceXl;
+							&:last-child {
+								margin-right: 0;
+								margin-left: 3*@spaceXl;
+							}
 							&:nth-child(2) {
 								transform: rotate(0deg);
-								margin: 32px 0;
+								margin: 0;
 							}
 						}
 					}
@@ -348,6 +358,12 @@
 				}
 				@media (max-width: @320width) {
 				}
+			}
+		}
+
+		@keyframes rotate {
+			100% {
+				transform: rotate(1turn);
 			}
 		}
 	}

@@ -950,7 +950,6 @@ article {
 
   .left>& {
     .responsive(@1200width, 4);
-
   }
 
   flex: 1 0 240px;
@@ -989,10 +988,6 @@ article {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-
-    .vueImg {
-      // width: min-content;
-    }
   }
 
   //indent heading
@@ -1003,18 +998,18 @@ article {
     margin-right: @spaceLg;
   }
 
-  &>section {
+  & > section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: fit-content;
+    width: 100%;
+    @gap: @spaceXl !important;
 
     &>h3::before {
       content: "";
       margin-right: @spaceMd;
       margin-left: -@spaceXl;
     }
-
 
     .vueImg {
       width: 80%;
