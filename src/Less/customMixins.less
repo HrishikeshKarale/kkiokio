@@ -132,7 +132,7 @@
   box-sizing: @boxmodel;
 }
 
-.backgroundColor(@color: @primaryColor, @width: 100%, @opacity: 8%, @zIndex: inherit) {
+.backgroundColor(@color: @primaryColor, @opacity: 8%, @top: 0,@side: 0, @width: 100%,  @zIndex: inherit) {
   position: relative;
   padding: 0 !important;
 
@@ -144,6 +144,15 @@
     background-color: @color;
     z-index: @zIndex;
     filter: opacity(@opacity);
+  }
+  & > * {
+    margin: 0 @side !important;
+    &:first-child {
+      margin-top: @top !important;
+    }
+    &:last-child {
+      margin-bottom: @top !important;
+    }
   }
 }
 

@@ -535,7 +535,6 @@
 		flex-direction: column;
 		height: 100vh;
 		width: 100%;
-		.backgroundColor(@primaryColor, 100vw, 8%);
 		position: static;
 		& > div {
 			display: flex;

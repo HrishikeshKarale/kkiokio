@@ -202,7 +202,7 @@
 			padding: @spaceLg @spaceXl;
 			border-radius: @borderRadiusLg;
 			.responsive(@1600width, 0);
-			.backgroundColor(@primaryColor, 8%);
+			.backgroundColor(@primaryColor, 8%, 0, 0, 100vw);
 			&.vertical {
 				border-width: 0px;
 				& > div {

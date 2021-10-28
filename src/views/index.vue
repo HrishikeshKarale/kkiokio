@@ -292,10 +292,11 @@
 						border-radius: @borderRadiusLg;
 						border: 1px dashed @primaryColor;
 						height: fit-content;
-						.backgroundColor();
+						.backgroundColor(@primaryColor, 4%, @spaceLg, @spaceXl);
+						// .backgroundColor();
 						gap: @spaceLg;
 						& > q {
-							margin: @spaceXl;
+							// margin: @spaceXl;
 							& + h5 {
 								display: flex;
 								flex-direction: row-reverse;
