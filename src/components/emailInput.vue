@@ -81,8 +81,7 @@
 	</div>
 </template>
 
-<script lang="ts">
-// vue
+<script lang='ts'>
 import { defineComponent, toRef, toRefs } from 'vue';
 // components
 import inputResponse from '@/components/alert/inputResponse.vue';
