@@ -173,7 +173,7 @@
 						} else {
 							// remove type and value array
 							selectedType.splice(typeIndex, 1);
-							console.log();
+							// console.log();
 							selectedValue.splice(typeIndex, 1);
 						}
 					} else {

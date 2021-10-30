@@ -45,19 +45,19 @@ const module = {
 
     //store data related to current Article being displayed
     SET_SELECTED_PROJECT(state, payload) {
-      console.log("SET_SELECTED_PROJECT", payload);
+      // console.log("SET_SELECTED_PROJECT", payload);
       state.selectedProject = payload;
     }, //SET_SELECTED_PROJECT
 
     //store data related to current Article being displayed
     SET_NEXT_ARTICLE(state, payload) {
-      console.log("SET_NEXT_ARTICLE", payload);
+      // console.log("SET_NEXT_ARTICLE", payload);
       state.nextArticle = payload;
     }, //SET_NEXT_ARTICLE
 
     //store data related to current Article being displayed
     SET_PEVIOUS_ARTICLE(state, payload) {
-      console.log("SET_PEVIOUS_ARTICLE", payload);
+      // console.log("SET_PEVIOUS_ARTICLE", payload);
       state.previousArticle = payload;
     }, //SET_PEVIOUS_ARTICLE
   },
@@ -77,11 +77,11 @@ const module = {
         for (const proj of project.value) {
           if (!articleFound && proj.title === postTitle && proj.blog) {
             articleFound = true;
-            console.log("VALUE", Object.values(proj.blog)[0]);
+            // console.log("VALUE", Object.values(proj.blog)[0]);
             selectedArticle = Object.values(proj.blog)[0];
             selectedTags = proj.tags;
             selectedTitle = proj.title;
-            console.log(articleFound, " - ", proj.title);
+            // console.log(articleFound, " - ", proj.title);
             context.commit("SET_SELECTED_PROJECT", {
               article: selectedArticle,
               tags: selectedTags,
@@ -199,17 +199,17 @@ const module = {
     }, //uniqueTagList
 
     getSelectedProject(state) {
-      console.log("getSelectedProject", state.selectedProject);
+      // console.log("getSelectedProject", state.selectedProject);
       return state.selectedProject;
     },
 
     getNextArticle(state) {
-      console.log("getNextArticle", state.nextArticle);
+      // console.log("getNextArticle", state.nextArticle);
       return state.nextArticle;
     },
 
     getPreviousArticle(state) {
-      console.log("getPreviousArticle", state.previousArticle);
+      // console.log("getPreviousArticle", state.previousArticle);
       return state.previousArticle;
     },
   }

@@ -2,6 +2,7 @@ interface projectType {
   type: string,
   value: {
     id: Number,
+    portfolio: Boolean,
     title: string,
     img: string,
     tags: string[],
@@ -18,6 +19,7 @@ export const projects: projectType[] = [
     value: [
       {
         id: 1,
+        portfolio: false,
         title: "Mobile App Redesign",
         img: require("@/assets/UX/dictionary/header.png"),
         tags: ["User Research", "Case Study", "IBM - Carbon", "UID", "IA"],
@@ -28,6 +30,7 @@ export const projects: projectType[] = [
       },
       {
         id: 2,
+        portfolio: true,
         title: "Online Learning Platform",
         img: require("@/assets/UX/crowdCo/header.png"),
         tags: [
@@ -44,6 +47,7 @@ export const projects: projectType[] = [
       },
       {
         id: 3,
+        portfolio: false,
         title: "Digital Mobile Wallet",
         img: require("@/assets/UX/rupay/header.png"),
         tags: ["UID", "Fintech", "Digital Wallet", "Mobile Banking"],
@@ -54,6 +58,7 @@ export const projects: projectType[] = [
       },
       {
         id: 4,
+        portfolio: true,
         title: "Digital Journal Redesign",
         img: require("@/assets/UX/tinyThoughts/header.jpg"),
         tags: [
@@ -71,6 +76,7 @@ export const projects: projectType[] = [
       },
       {
         id: 5,
+        portfolio: false,
         title: "Bank Website Redesign",
         img: require("@/assets/UX/kudaBank/header.png"),
         tags: ["UID", "Case Study", "Google - Material Design", "Fintech"],
@@ -81,6 +87,7 @@ export const projects: projectType[] = [
       },
       {
         id: 6,
+        portfolio: false,
         title: "Cosmetic Product App",
         img: require("@/assets/UX/skinSafe/header.png"),
         tags: ["Case Study", "User Research", "WireFrame"],
@@ -91,6 +98,7 @@ export const projects: projectType[] = [
       },
       {
         id: 7,
+        portfolio: false,
         title: "Crowd Funding App",
         img: require("@/assets/UX/mediaHRPlatform/header.png"),
         tags: [
@@ -109,6 +117,7 @@ export const projects: projectType[] = [
       },
       {
         id: 8,
+        portfolio: false,
         title: "Venmo Case Study",
         img: require("@/assets/UX/venmo/header.jpg"),
         tags: ["Case Study", "IOS HID"],
@@ -119,6 +128,7 @@ export const projects: projectType[] = [
       },
       {
         id: 9,
+        portfolio: false,
         title: "Google vs Waze Case Study",
         img: require("@/assets/UX/maps/header.jpg"),
         tags: ["Case Study"],
@@ -134,6 +144,7 @@ export const projects: projectType[] = [
     value: [
       {
         id: 1,
+        portfolio: false,
         title: "Onboarding Screen",
         img: require("@/assets/mobile/PlantIt boardHeader.png"),
         tags: ["Onboarding"],
@@ -144,6 +155,7 @@ export const projects: projectType[] = [
       },
       {
         id: 3,
+        portfolio: true,
         title: "Medical Appointment UI",
         img: require("@/assets/mobile/medical researchHeader.png"),
         tags: ["UID", "Style Guide"],
@@ -156,6 +168,7 @@ export const projects: projectType[] = [
       },
       {
         id: 4,
+        portfolio: false,
         title: "Fitness Watch App",
         img: require("@/assets/mobile/fitness friendHeader.png"),
         tags: ["Wearable", "Wireframe", "Style Guide", "UCD"],
@@ -168,6 +181,7 @@ export const projects: projectType[] = [
       },
       {
         id: 5,
+        portfolio: false,
         title: "Authentication Concept Screens",
         img: require("@/assets/mobile/login screenHeader.png"),
         tags: ["Login Screen"],
@@ -177,6 +191,7 @@ export const projects: projectType[] = [
       },
       {
         id: 6,
+        portfolio: false,
         title: "Enterprise Web App",
         img: require("@/assets/packstation/PackStationheader.png"),
         tags: ["Golden Ratio", "Google - Material Design", "UCD"],
@@ -189,6 +204,7 @@ export const projects: projectType[] = [
       },
       {
         id: 7,
+        portfolio: false,
         title: "RSVP",
         img: require("@/assets/webApp/wedding-1937022_1280.jpg"),
         tags: ["UID"],
@@ -199,6 +215,7 @@ export const projects: projectType[] = [
       },
       {
         id: 10,
+        portfolio: true,
         title: "Recipie Concept App",
         img: require("@/assets/UX/skinSafe/header.png"),
         tags: [
@@ -224,6 +241,7 @@ export const projects: projectType[] = [
     value: [
       {
         id: 32,
+        portfolio: false,
         title: "Dentistry",
         img: require("@/assets/logo/dentArtistry.svg"),
         tags: [],
@@ -233,6 +251,7 @@ export const projects: projectType[] = [
       },
       {
         id: 34,
+        portfolio: false,
         title: "HexaTees",
         img: require("@/assets/logo/hexaTees.svg"),
         tags: [],
@@ -242,6 +261,7 @@ export const projects: projectType[] = [
       },
       {
         id: 35,
+        portfolio: false,
         title: "Medicare",
         img: require("@/assets/logo/medicare.svg"),
         tags: [],
@@ -251,6 +271,7 @@ export const projects: projectType[] = [
       },
       {
         id: 36,
+        portfolio: false,
         title: "MV Events",
         img: require("@/assets/logo/MvEvents.svg"),
         tags: [],
@@ -260,6 +281,7 @@ export const projects: projectType[] = [
       },
       {
         id: 37,
+        portfolio: false,
         title: "Innovation Circuit",
         img: require("@/assets/logo/innovativeCircuits.svg"),
         tags: [],
@@ -269,6 +291,7 @@ export const projects: projectType[] = [
       },
       {
         id: 1,
+        portfolio: false,
         title: "kkiokio",
         img: require("@/assets/logo/kkiokio.svg"),
         tags: [],
@@ -278,6 +301,7 @@ export const projects: projectType[] = [
       },
       {
         id: 2,
+        portfolio: false,
         title: "Weego",
         img: require("@/assets/logo/Weego.svg"),
         tags: [],
@@ -287,6 +311,7 @@ export const projects: projectType[] = [
       },
       {
         id: 3,
+        portfolio: false,
         title: "KkiokioBg",
         img: require("@/assets/logo/kkiokioBg.svg"),
         tags: [],
@@ -296,6 +321,7 @@ export const projects: projectType[] = [
       },
       {
         id: 4,
+        portfolio: false,
         title: "Wander Sane Global",
         img: require("@/assets/logo/wanderSaneGlobe.svg"),
         tags: [],
@@ -305,6 +331,7 @@ export const projects: projectType[] = [
       },
       {
         id: 5,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/wanderSaneBadge.svg"),
         tags: [],
@@ -314,6 +341,7 @@ export const projects: projectType[] = [
       },
       {
         id: 6,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/wanderSaneHelmet.svg"),
         tags: [],
@@ -323,6 +351,7 @@ export const projects: projectType[] = [
       },
       {
         id: 7,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/metered.svg"),
         tags: [],
@@ -332,6 +361,7 @@ export const projects: projectType[] = [
       },
       {
         id: 8,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/prideSwag.svg"),
         tags: [],
@@ -341,6 +371,7 @@ export const projects: projectType[] = [
       },
       {
         id: 9,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/learningTree.svg"),
         tags: [],
@@ -350,6 +381,7 @@ export const projects: projectType[] = [
       },
       {
         id: 10,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/tentFire.svg"),
         tags: [],
@@ -359,6 +391,7 @@ export const projects: projectType[] = [
       },
       {
         id: 11,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/tentPalace.svg"),
         tags: [],
@@ -368,6 +401,7 @@ export const projects: projectType[] = [
       },
       {
         id: 12,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/mountain.svg"),
         tags: [],
@@ -377,6 +411,7 @@ export const projects: projectType[] = [
       },
       {
         id: 13,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/beach.svg"),
         tags: [],
@@ -386,6 +421,7 @@ export const projects: projectType[] = [
       },
       {
         id: 14,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/rider.svg"),
         tags: [],
@@ -395,6 +431,7 @@ export const projects: projectType[] = [
       },
       {
         id: 15,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/wanderSaneStamp.svg"),
         tags: [],
@@ -404,6 +441,7 @@ export const projects: projectType[] = [
       },
       {
         id: 16,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/natureStamp.svg"),
         tags: [],
@@ -422,6 +460,7 @@ export const projects: projectType[] = [
       // },
       {
         id: 18,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/deer.svg"),
         tags: [],
@@ -431,6 +470,7 @@ export const projects: projectType[] = [
       },
       {
         id: 19,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/bird.svg"),
         tags: [],
@@ -440,6 +480,7 @@ export const projects: projectType[] = [
       },
       {
         id: 20,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/biceps.svg"),
         tags: [],
@@ -449,6 +490,7 @@ export const projects: projectType[] = [
       },
       {
         id: 21,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/tent.svg"),
         tags: [],
@@ -467,6 +509,7 @@ export const projects: projectType[] = [
       // },
       {
         id: 23,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/sandyGlobe.svg"),
         tags: [],
@@ -476,6 +519,7 @@ export const projects: projectType[] = [
       },
       {
         id: 24,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/biker.svg"),
         tags: [],
@@ -485,6 +529,7 @@ export const projects: projectType[] = [
       },
       {
         id: 25,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/hexa.svg"),
         tags: [],
@@ -494,6 +539,7 @@ export const projects: projectType[] = [
       },
       {
         id: 26,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/wanderSaneVlogs.svg"),
         tags: [],
@@ -503,6 +549,7 @@ export const projects: projectType[] = [
       },
       {
         id: 27,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/wonderWheel.svg"),
         tags: [],
@@ -512,6 +559,7 @@ export const projects: projectType[] = [
       },
       {
         id: 28,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/electroWheel.svg"),
         tags: [],
@@ -521,6 +569,7 @@ export const projects: projectType[] = [
       },
       {
         id: 29,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/wrenchWheel.svg"),
         tags: [],
@@ -530,6 +579,7 @@ export const projects: projectType[] = [
       },
       {
         id: 30,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/unison.svg"),
         tags: [],
@@ -548,6 +598,7 @@ export const projects: projectType[] = [
       // },
       {
         id: 33,
+        portfolio: false,
         title: "wanderSaneBadge",
         img: require("@/assets/logo/anglePlus.svg"),
         tags: [],
@@ -562,6 +613,7 @@ export const projects: projectType[] = [
     value: [
       {
         id: 1,
+        portfolio: false,
         title: "DrumKit",
         img: require("@/assets/js/drumKitHeader.png"),
         tags: ["audio playback"],
@@ -573,6 +625,7 @@ export const projects: projectType[] = [
       },
       {
         id: 2,
+        portfolio: false,
         title: "AnalogCLock",
         img: require("@/assets/js/clock.png"),
         tags: [],
@@ -584,6 +637,7 @@ export const projects: projectType[] = [
       },
       {
         id: 3,
+        portfolio: false,
         title: "Array Cardio",
         img: require("@/assets/js/array cardio.jpeg"),
         tags: [],
@@ -595,6 +649,7 @@ export const projects: projectType[] = [
       },
       {
         id: 4,
+        portfolio: false,
         title: "Image Gallery",
         img: require("@/assets/js/imageGallery.jpg"),
         tags: [],
@@ -605,6 +660,7 @@ export const projects: projectType[] = [
       },
       {
         id: 5,
+        portfolio: false,
         title: "Fetch API",
         img: require("@/assets/js/fetch API.png"),
         tags: ["API"],
@@ -615,6 +671,7 @@ export const projects: projectType[] = [
       },
       {
         id: 6,
+        portfolio: false,
         title: "Canvas",
         img: require("@/assets/js/canvas.jpg"),
         tags: ["HTML Canvas"],
@@ -624,6 +681,7 @@ export const projects: projectType[] = [
       },
       {
         id: 7,
+        portfolio: false,
         title: "CheckboxChallange",
         img: require("@/assets/js/checkbox challange.png"),
         tags: ["keyboard Shortcuts"],
@@ -634,6 +692,7 @@ export const projects: projectType[] = [
       },
       {
         id: 8,
+        portfolio: false,
         title: "KonamiCode",
         img: require("@/assets/js/konami.jpeg"),
         tags: ["Gamification"],
@@ -644,6 +703,7 @@ export const projects: projectType[] = [
       },
       {
         id: 9,
+        portfolio: false,
         title: "ScrollIn",
         img: require("@/assets/js/scrollIn.jpg"),
         tags: ["Navigation"],
@@ -654,6 +714,7 @@ export const projects: projectType[] = [
       },
       {
         id: 10,
+        portfolio: false,
         title: "UserMedia",
         img: require("@/assets/js/userMedia.png"),
         tags: ["HTML5 Media"],
@@ -664,6 +725,7 @@ export const projects: projectType[] = [
       },
       {
         id: 11,
+        portfolio: false,
         title: "Speech Recognition",
         img: require("@/assets/js/speech recognition.png"),
         tags: ["Speech Recognition"],
@@ -674,6 +736,7 @@ export const projects: projectType[] = [
       },
       {
         id: 12,
+        portfolio: false,
         title: "Link Follower",
         img: require("@/assets/js/linkfollower.png"),
         tags: ["Gamification"],
@@ -684,6 +747,7 @@ export const projects: projectType[] = [
       },
       {
         id: 13,
+        portfolio: false,
         title: "Geo Location",
         img: require("@/assets/js/geoLocation.jpg"),
         tags: ["Geo Location", "Gamification"],
@@ -694,6 +758,7 @@ export const projects: projectType[] = [
       },
       {
         id: 14,
+        portfolio: false,
         title: "Follow Along Navigation Dropdown",
         img: require("@/assets/js/followAlongDropDown.png"),
         tags: [],
@@ -704,6 +769,7 @@ export const projects: projectType[] = [
       },
       {
         id: 15,
+        portfolio: false,
         title: "Click and Drag",
         img: require("@/assets/js/click and drag.jpg"),
         tags: [],
@@ -713,6 +779,7 @@ export const projects: projectType[] = [
       },
       {
         id: 16,
+        portfolio: false,
         title: "Control video speed",
         img: require("@/assets/js/videoSpeed.jpg"),
         tags: ["HTML5 video"],
@@ -728,6 +795,7 @@ export const projects: projectType[] = [
     value: [
       {
         id: 1,
+        portfolio: false,
         title: "Pulse Animation",
         img: require("@/assets/css/pulse.jpg"),
         tags: [],
@@ -739,6 +807,7 @@ export const projects: projectType[] = [
       },
       {
         id: 2,
+        portfolio: false,
         title: "Card Slider",
         img: require("@/assets/css/cardslider.jpg"),
         tags: [],
@@ -748,6 +817,7 @@ export const projects: projectType[] = [
       },
       {
         id: 3,
+        portfolio: false,
         title: "Automated infinite Scroll",
         img: require("@/assets/css/infinite scroll.png"),
         tags: [],

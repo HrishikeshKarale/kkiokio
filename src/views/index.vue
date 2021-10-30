@@ -49,50 +49,34 @@
 		<section id="projects">
 			<h1>WORK</h1>
 			<h3>What I've been up to</h3>
-			<q
-				>Globally adopted software, high converting websites, emerging
+			<p>
+				Globally adopted software, high converting websites, emerging
 				technology and beyond.
-			</q>
-			<q>
+			</p>
+			<!-- <q>
 				A good User Interface is important because it can turn potential
 				visitors to buyers as it facilitates interactions between the user and
 				your website or web application----f5-studio.com
-			</q>
+			</q> -->
 			<p>
 				This is a detailed chronicle of the stories, processes and results
 				behind the projects that I've led and contributed to.
 			</p>
-			<!-- <p>
-				{{ getProjects }}
-			</p> -->
-			<!-- <ul>
-				<template v-for="project in getProjects" :key="project.type">
-					<li
-						v-if="
-							project.type != 'Logo' && projectSkills[project.type].length > 0
-						"
-					>
-						<router-link :to="{ name: 'work', hash: `#${project.type}` }">
-							<h3>
-								{{ project.type }}
-							</h3>
-						</router-link>
-						<ul>
-							<li
-								class="tag"
-								v-for="skill in projectSkills[project.type]"
-								:key="skill"
-								@click="
-									$router.push({ name: 'work', query: { filter: skill } })
-								"
-							>
-								<span class="fas fa-tag" />
-								<b v-text="skill" />
-							</li>
-						</ul>
-					</li>
+			<div>
+				<template v-for="projects in getProjects" :key='projects.type'>
+					<template v-for="project in projects.value" :key='project.id'>
+						<showcase
+							v-if="project.portfolio"
+							:project="project"
+							:type="projects.type"
+							:component="
+								project.blog != null ? 'articlePage' : project.component
+							"
+							:article="project.blog != null ? project.title : ''"
+						/>
+					</template>
 				</template>
-			</ul> -->
+			</div>
 		</section>
 		<section id="kindWords">
 			<h1>Kind Words</h1>
@@ -135,12 +119,14 @@
 	import vueButton from "@/components/vueButton.vue";
 	import { loading } from "@/typeScript/common/loading";
 	import { mapGetters } from "vuex";
+	import showcase from "@/components/showcase.vue";
 	// import slider from "./projects/js/slider.vue";
 
 	export default {
 		name: "Home",
 		components: {
 			vueButton,
+			showcase,
 			// slider,
 		},
 		mixins: [loading],
@@ -149,11 +135,9 @@
 			const profilePic = require("@/../public/img/profilePic.jpg");
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logo = require("@/assets/logo.svg");
-			const projectSkills = {};
 			return {
 				profilePic,
 				logo,
-				projectSkills,
 			};
 		},
 		computed: {
@@ -230,7 +214,7 @@
 							align-self: center;
 							font-weight: bold;
 							transform: rotate(-45deg);
-							margin-right: 3*@spaceXl;
+							margin-right: 4*@spaceXl;
 							&:last-child {
 								margin-right: 0;
 								margin-left: 3*@spaceXl;
@@ -244,48 +228,13 @@
 				}
 			}
 			&#projects {
-				& > q {
-					text-align: center;
-				}
-				& > ul {
+				& > div {
 					display: flex;
 					flex-flow: row wrap;
-					gap: @spaceLg;
-					justify-content: space-evenly;
-					align-self: center;
-					& > li {
-						display: flex;
-						flex-direction: column;
-						flex: 0 1 480px;
-						border-radius: @borderRadiusLg;
-						border: 1px dashed @primaryColor;
-						height: fit-content;
-						.backgroundColor();
-						& > a {
-							margin-left: @spaceXl !important;
-							& + ul {
-								display: flex;
-								flex-flow: row wrap;
-								gap: @spaceLg;
-								& {
-									margin: @spaceXl !important;
-									margin-top: 0 !important;
-								}
-								gap: @spaceMd;
-								& > li {
-									&:hover {
-										background-color: @accentColor;
-										.boxShadow(@four, @accentColor);
-										& > span {
-											transform: scale(1);
-										}
-										& > b {
-											color: @backgroundColor;
-										}
-									}
-								}
-							}
-						}
+					gap: @spaceXl;
+					& > div {
+						flex: 1 0 240px;
+
 					}
 				}
 			}
