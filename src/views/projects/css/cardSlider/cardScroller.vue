@@ -31,11 +31,7 @@
 			:text="vertical ? 'Minimize' : 'View All'"
 			:icon="vertical ? 'fas fa-minus' : 'fas fa-plus'"
 			category="text"
-			:ctx="
-				() => {
-					vertical = !vertical;
-				}
-			"
+			:ctx="() => {vertical = !vertical}"
 		/>
 		<div :class="vertical ? 'vertical' : 'horizontal'">
 			<template v-if="!vertical">
@@ -49,7 +45,7 @@
 					:ctx="handleScrollPrev.bind(this)"
 				/>
 			</template>
-			<div ref="cards" :class="['cards', tag]">
+			<div :ref="tag" :class="['cards', tag]">
 				<slot />
 			</div>
 			<template v-if="!vertical">
@@ -119,7 +115,7 @@
 		},
 
 		mounted() {
-			this.cards = document.getElementsByClassName(this.tag)[0];
+			this.cards = this.$refs[this.tag];
 			if (this.autoScroll) {
 				this.timer = setInterval(() => {
 					if (this.directionRight) {
@@ -147,20 +143,28 @@
 		}, //beforeUnmount
 
 		methods: {
+			// minimize: function () {
+			// 	this.vertical = !this.vertical
+			// 		this.$emit('vertical', !this.vertical);
+			// }, // minimize
+
 			handleScrollnext: function () {
-				this.cards.scrollLeft = this.cards.scrollLeft += window.outerWidth/2;
-				this.left++;
+				const tempCardScroll = this.cards.scrollLeft + (window.outerWidth)/2
+				this.cards.scrollLeft = tempCardScroll;
 				this.right--;
+				this.left++;
 			}, //handleScrollnext
 
 			handleScrollPrev: function () {
-				this.cards.scrollLeft = this.cards.scrollLeft -= window.outerWidth/2;
+				const tempCardScroll = this.cards.scrollLeft - (window.outerWidth)/2
+				this.cards.scrollLeft = tempCardScroll;
 				this.right++;
 				this.left--;
 			}, //handleScrollPrev
 		},
 	};
 </script>
+
 <style lang="less" scoped>
 	@import (reference) "../../../../Less/customMixins.less";
 	@import (reference) "../../../../Less/customVariables.less";
@@ -198,13 +202,18 @@
 			align-items: center;
 			height: fit-content;
 			overflow-x: hidden;
-			overflow-y: show;
-			padding: @spaceLg @spaceXl;
+			overflow-y: auto;
 			border-radius: @borderRadiusLg;
 			.responsive(@1600width, 0);
-			.backgroundColor(@primary, 8%, 0, 0, 100vw);
+			&.horizontal {
+				.backgroundColor(@primary, 8%, @spaceLg, @spaceXl, 100%);
+				& > .cards {
+					overflow-x: auto;
+				}
+			}
 			&.vertical {
 				border-width: 0px;
+				.backgroundColor(none);
 				& > div {
 					border-width: 0px;
 					flex-wrap: wrap;
@@ -235,7 +244,7 @@
 					z-index: @contentZ + 5;
 					padding: @spaceMd @spaceLg;
 					min-height: 360px;
-					transition: .transition();
+					.transition();
 					border: 1px solid @accent;
 					.boxShadow(none);
 					cursor: pointer;

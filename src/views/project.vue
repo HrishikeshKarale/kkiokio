@@ -110,10 +110,12 @@
 			};
 			//cardScroll
 			const autoScroll = this.booleanTrue;
+			// const vertical = !this.booleanTrue;
 			return {
 				propFilter,
 				filterList,
 				autoScroll,
+				// vertical
 			};
 		},
 		created() {

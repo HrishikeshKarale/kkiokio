@@ -1,7 +1,8 @@
 <template>
 	<card-scroller
 		class="relatedPost"
-		title="Related Posts"
+		Title="Other Posts"
+		tag="otherPosts"
 		:auto-scroll="!autoScroll"
 	>
 		<template v-for="projects in projectList" :key="projects.type">
