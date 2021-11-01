@@ -532,7 +532,7 @@ vue/custom-event-name-casing */
 
 			& > thead {
 				max-height: 116px;
-				.backgroundColor(@accentColor, 16%);
+				.backgroundColor(@accent, 16%);
 
 				tr {
 					&:first-child {
@@ -562,7 +562,7 @@ vue/custom-event-name-casing */
 													position: relative;
 													left: 0px;
 													right: -24px;
-													color: @accentColor;
+													color: @accent;
 												}
 											}
 										}
@@ -590,7 +590,7 @@ vue/custom-event-name-casing */
 									cursor: pointer;
 
 									&:hover {
-										color: @accentColor;
+										color: @accent;
 									}
 
 									& > ul {
@@ -675,7 +675,7 @@ vue/custom-event-name-casing */
 								}
 								& > .asc,
 								& > .dsc {
-									color: @accentColor;
+									color: @accent;
 								}
 							}
 							&.active {
@@ -693,7 +693,7 @@ vue/custom-event-name-casing */
 										font-size: 10px;
 										margin-left: @spaceMd;
 										text-decoration: underline;
-										color: @accentColor;
+										color: @accent;
 									}
 								}
 								& > div {
@@ -764,7 +764,7 @@ vue/custom-event-name-casing */
 						}
 
 						& > span {
-							color: @accentColor;
+							color: @accent;
 
 							&.disabled {
 								.opacity(0.5);
@@ -908,7 +908,7 @@ vue/custom-event-name-casing */
 					}
 
 					& span {
-						color: @accentColor;
+						color: @accent;
 						font-size: 20px;
 					}
 				}

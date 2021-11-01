@@ -76,7 +76,7 @@
 				}
 				& > figcaption {
 					font-weight: 700 !important;
-					color: @primaryColor;
+					color: @primary;
 				}
 			}
 		}

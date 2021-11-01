@@ -117,7 +117,7 @@
   /* Standard syntax */
 }
 
-.boxShadow(@val, @color: @shadowColor, @zIndex: inherit) {
+.boxShadow(@val :@one, @color: @shadowColor, @zIndex: inherit) {
   box-shadow: @val @color;
   -webkit-box-shadow: @val @color;
   -moz-box-shadow: @val @color;
@@ -132,7 +132,7 @@
   box-sizing: @boxmodel;
 }
 
-.backgroundColor(@color: @primaryColor, @opacity: 8%, @top: 0,@side: 0, @width: 100%,  @zIndex: inherit) {
+.backgroundColor(@color: @primary, @opacity: 8%, @top: 0,@side: 0, @width: 100%,  @zIndex: inherit) {
   position: relative;
   padding: 0 !important;
 
@@ -156,7 +156,7 @@
   }
 }
 
-.textShadow(@val, @color: @shadowColor, @zIndex: inherit) {
+.textShadow(@val: @one, @color: @shadowColor, @zIndex: inherit) {
   text-shadow: @val @color;
   -webkit-text-shadow: @val @color;
   -moz-text-shadow: @val @color;
@@ -240,7 +240,7 @@
 
   &:focus-within,
   &:focus {
-    border-color: @primaryColor;
+    border-color: @primary;
 
     &>span {
       color: @warningText;
@@ -310,7 +310,7 @@
           ;
 
           &.fas {
-            color: @primaryColor;
+            color: @primary;
           }
         }
       }
@@ -346,7 +346,7 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    background-color: @secondaryColor;
+    background-color: @secondary;
     color: @textColor;
 
     &:first-child {
@@ -361,7 +361,7 @@
         align-items: center;
 
         span.fas {
-          color: @primaryColor;
+          color: @primary;
           font-size: @fontSizeSm * 2;
         }
       }
@@ -492,10 +492,10 @@
 
   &:focus-within,
   &:focus {
-    border-color: @primaryColor;
+    border-color: @primary;
 
     &>span {
-      color: @primaryColor;
+      color: @primary;
     }
   }
 
@@ -524,7 +524,7 @@
     min-width: 160px;
     max-width: 240px;
     min-height: @spaceLg;
-    border: 1px solid @primaryColor;
+    border: 1px solid @primary;
     position: relative;
 
     &.inputResponse {
@@ -575,7 +575,7 @@
         top: 50%;
         transform: translate(0, -50%);
         z-index: @bodyZ + 5;
-        color: @accentColor;
+        color: @accent;
       }
 
       .condition();
@@ -590,7 +590,7 @@
         top: 50%;
         transform: translate(0, -50%);
         // padding: @spaceMd+@spaceSm 0 @spaceMd+@spaceSm @spaceMd*2;; //12px 0 12px @spaceLg;
-        color: @primaryColor;
+        color: @primary;
 
         // border-right-width: 0px;
         &+datalist,
@@ -614,7 +614,7 @@
             cursor: pointer;
             font-size: @fontSizeMd;
             left:~"calc(100% + @{spaceMd})";
-            color: @accentColor;
+            color: @accent;
           }
 
           .condition();
@@ -645,7 +645,7 @@
         margin-top: @spaceMd;
         padding: @spaceLg @spaceMd;
         border-radius: @borderRadius;
-        background-color: @secondaryColor;
+        background-color: @secondary;
         position: relative;
         .boxShadow(@one);
 
@@ -700,7 +700,7 @@
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: @accentColor;
+    background: @accent;
     border-radius: @width;
   }
 }
@@ -771,7 +771,7 @@
     width: fit-content;
     background-color: @backgroundColor;
     border-radius: @borderRadius;
-    border: 1px solid @primaryColor;
+    border: 1px solid @primary;
 
     &>label {
       padding: @spaceLg;
@@ -782,7 +782,7 @@
 
       &.checked {
         // border-radius: @borderRadius;
-        background-color: @accentColor;
+        background-color: @accent;
         color: @backgroundColor;
         font-weight: bold;
       }

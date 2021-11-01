@@ -68,7 +68,7 @@
 		flex-direction: column;
 		gap: @spaceMd;
 		border-radius: @borderRadius;
-		border: 1px solid @secondaryColor;
+		border: 1px solid @secondary;
 		max-width: 320px;
 		min-width: 240px;
 		height: fit-content;

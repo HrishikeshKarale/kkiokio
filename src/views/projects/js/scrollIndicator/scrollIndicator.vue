@@ -221,7 +221,7 @@
 				top: 50%;
 				right: @spaceLg;
 				height: fit-content;
-				background-color: @accentColor;
+				background-color: @accent;
 				border-radius: @spaceXl;
 				padding: @spaceXs;
 				transform: translateY(-50%);
@@ -248,11 +248,11 @@
 							display: block;
 							position: absolute;
 							top: -40px;
-							color: @accentColor;
+							color: @accent;
 							text-align: center;
 							width: max-content;
 							padding: 0 @spaceMd;
-							border: 1px dashed @primaryColor;
+							border: 1px dashed @primary;
 							border-radius: @borderRadius;
 							font-weight: bold;
 							opacity: 1;
@@ -264,7 +264,7 @@
 								top: 0;
 								height: 100%;
 								width: 100%;
-								background-color: @primaryColor;
+								background-color: @primary;
 								filter: opacity(8%);
 							}
 						}

@@ -4,9 +4,11 @@
 			<article-page />
 		</template>
 		<template #right>
-			<subscribe-box />
-			<search-blog />
-			<browse-blogs />
+			<aside>
+				<subscribe-box />
+				<search-blog />
+				<browse-blogs />
+			</aside>
 		</template>
 	</side-by-side-layout>
 </template>
@@ -55,7 +57,7 @@
 			}
 			& > h3 {
 				font-weight: 900;
-				color: @accentColor;
+				color: @accent;
 				cursor: pointer;
 				margin-left: @spaceMd;
 				margin-top: @spaceMd !important;

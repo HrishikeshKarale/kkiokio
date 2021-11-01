@@ -132,7 +132,7 @@
 			font-weight: 100;
 			.boxShadow(@two);
 			&:first-child {
-				background-color: @accentColor;
+				background-color: @accent;
 				.boxShadow(none);
 				// display: none;
 			}

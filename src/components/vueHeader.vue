@@ -26,16 +26,16 @@
 				>
 					<router-link :to="{ name: navigation.component }">
 						<span :class="navigation.icon"></span>
-						<div>
+						<!-- <div> -->
 							<h4 v-text="navigation.name" />
-							<span v-text="navigation.tagline" />
-						</div>
+							<!-- <span v-text="navigation.tagline" /> -->
+						<!-- </div> -->
 					</router-link>
 				</li>
 			</ul>
 		</nav>
-		<div class="user">
-			<span class="fas fa-user" />
+		<!-- <div class="user"> -->
+			<!-- <span class="fas fa-user" />
 			<div class="account">
 				<template v-if="signedIn">
 					<vue-img :src="user ? user.image : null" alt="Logo" />
@@ -58,17 +58,17 @@
 					icon="fas fa-sign-out-alt"
 					category="text-sm"
 					:ctx="signOut.bind()"
-				/>
+				/> -->
 				<vue-button
 					v-if="themeIcon"
 					tag="themeToggle"
-					category="text-sm"
+					category="icon"
 					text="Theme"
 					:icon="themeIcon"
 					:ctx="theme.bind(this)"
 				/>
-			</div>
-		</div>
+			<!-- </div>
+		</div> -->
 	</header>
 </template>
 
@@ -153,11 +153,11 @@
 
 	@lowOpacity: 0.64;
 
-	@text: @primaryColor;
+	@text: @primary;
 
 	//nav sub text
 	.navSubText() {
-		color: @offWhite;
+		color: @navText;
 		opacity: @lowOpacity;
 	}
 
@@ -165,7 +165,7 @@
 		line-height: 1;
 		z-index: @headerZ+10;
 		width: 100vw;
-		.boxShadow(@three, @navBackground, @headerZ);
+		.boxShadow(@base, @navBackground, @headerZ);
 		&.vueHeader {
 			height: @header;
 			display: flex;
@@ -185,39 +185,41 @@
 					& > li {
 						display: flex;
 						align-self: flex-end;
+
 						&:not(:first-child) {
 							flex: 1 0 160px;
 							& > a {
 								padding: @spaceMd @spaceLg;
 								border-radius: @borderRadius;
-								border: 4px solid transparent;
+							gap: @spaceLg;
+								// border: 4px solid transparent;
 
+								&::after {
+									content: "";
+									position: absolute;
+									bottom: -@spaceMd;
+									left: -@spaceMd;
+									width: 100%;
+									border-radius: 8px;
+									border: @spaceSm solid transparent;
+								}
+
+								&.router-link-exact-active {
 								//styling selected link
 								&.router-link-active {
-									border-color: @primaryColor;
-									&.router-link-exact-active {
-										color: @text;
+									&::after {
+										border-color: @accent;
 									}
-
-									& > span {
-										color: @text;
-										opacity: 1;
-										transform: scale(1.2);
-									}
-									& > div {
-										align-content: center;
-										justify-content: center;
-										& > h4 {
+										& > span {
 											color: @text;
-											font-weight: bold;
-											letter-spacing: 2px !important;
-											& + span {
-												visibility: visible;
-												color: @white;
-												height: auto;
-												opacity: 1;
-											}
+											opacity: 1;
+											transform: scale(1.4);
 										}
+											& > h4 {
+												color: @text;
+												font-weight: bold;
+												letter-spacing: 2px !important;
+											}
 									}
 								}
 							}
@@ -228,7 +230,6 @@
 							position: relative;
 							flex-direction: row;
 							align-items: center;
-							gap: @spaceLg;
 							color: @navText;
 							width: 100%;
 
@@ -239,16 +240,17 @@
 								.navSubText();
 								align-self: flex-start;
 							}
-							& > div {
-								display: flex;
-								flex-direction: column;
-								width: 100%;
-								gap: @spaceMd;
+							// & > div {
+							// 	display: flex;
+							// 	flex-direction: column;
+							// 	width: 100%;
+							// 	gap: @spaceMd;
 
 								//nav Text
 								& > h4 {
-									color: @offWhite;
+									// color: @offWhite;
 									margin: 0 !important;
+											color: @navText;
 									//nav subText
 									& + span {
 										visibility: hidden;
@@ -257,15 +259,16 @@
 										.navSubText();
 									}
 								}
-							}
+							// }
 						}
 
 						//website name and logo
 						&:first-child {
-							margin-right: @spaceXl !important;
+							margin-right: 3*@spaceXl !important;
 							& > a {
 								& > .vueImg {
 									height: 64px;
+									min-width: 64px;
 									width: fit-content;
 									& + h3 {
 										display: flex;
@@ -273,10 +276,12 @@
 										width: max-content;
 										align-self: center;
 										margin: 0 !important;
-										color: @white;
+										font-weight: 900;
+										letter-spacing: 2px !important;
+										// color: @secondary;
 										& > h5 {
 											visibility: visible;
-											color: @text;
+											color: @navText;
 											margin-top: @spaceSm !important;
 											margin-bottom: 0 !important;
 										}
@@ -285,7 +290,6 @@
 							}
 						}
 						&:hover {
-							color: @primaryColor;
 							& > a {
 								& > span {
 									transform: scale(1.2);
@@ -294,11 +298,11 @@
 								}
 								& > div {
 									& > h4 {
-										color: @text;
+										color: @primary;
 										& + span {
 											visibility: visible;
 											height: auto;
-											color: @offWhite;
+											// color: @offWhite;
 											opacity: 1;
 										}
 									}
@@ -308,51 +312,51 @@
 					}
 				}
 				//user account
-				& + .user {
-					display: flex;
-					position: relative;
-					& > span {
-						color: @accentColor;
-						padding: @spaceMd;
-						border: 1px solid @accentColor;
-						border-radius: 50%;
-						cursor: pointer;
-						& + .account {
-							display: none;
-							position: absolute;
-							border: 1px solid @accentColor;
-							& > .vueImg {
-								width: 80px;
-							}
-							& > .g-signin2 {
-								display: none;
-							}
-						}
-					}
-					&:hover {
-						& > span {
-							border-radius: 50% 50% 0 50%;
-							background-color: @accentColor;
-							color: @backgroundColor;
-							.boxShadow(@one, @secondaryColor, @modalZ + 20);
-							& + .account {
-								display: flex;
-								flex-direction: column;
-								background-color: @backgroundColor;
-								top: 100%;
-								right: 0;
-								height: fit-content;
-								width: fit-content;
-								border-radius: @borderRadius;
-								padding: @spaceLg @spaceXl;
-								.boxShadow(@one, @secondaryColor, @modalZ + 20);
-							}
-						}
-					}
-				}
+				// & + .user {
+				// 	display: flex;
+				// 	position: relative;
+				// 	& > span {
+				// 		color: @accent;
+				// 		padding: @spaceMd;
+				// 		border: 1px solid @accent;
+				// 		border-radius: 50%;
+				// 		cursor: pointer;
+				// 		& + .account {
+				// 			display: none;
+				// 			position: absolute;
+				// 			border: 1px solid @accent;
+				// 			& > .vueImg {
+				// 				width: 80px;
+				// 			}
+				// 			& > .g-signin2 {
+				// 				display: none;
+				// 			}
+				// 		}
+				// 	}
+				// 	&:hover {
+				// 		& > span {
+				// 			border-radius: 50% 50% 0 50%;
+				// 			background-color: @accent;
+				// 			color: @backgroundColor;
+				// 			.boxShadow(@one, @secondary, @modalZ + 20);
+				// 			& + .account {
+				// 				display: flex;
+				// 				flex-direction: column;
+				// 				background-color: @backgroundColor;
+				// 				top: 100%;
+				// 				right: 0;
+				// 				height: fit-content;
+				// 				width: fit-content;
+				// 				border-radius: @borderRadius;
+				// 				padding: @spaceLg @spaceXl;
+				// 				.boxShadow(@one, @secondary, @modalZ + 20);
+				// 			}
+				// 		}
+				// 	}
+				// }
 			}
 			&.mini {
-				.boxShadow(@four, @navBackground, @headerZ);
+				.boxShadow(@base, @primary, @headerZ);
 				height: 80px;
 				& > nav {
 					& > ul > li {
@@ -363,7 +367,6 @@
 									height: 48px;
 								}
 								& > h3 {
-									color: @white;
 									width: max-content;
 									text-align: center;
 									margin: 0 !important;
@@ -388,7 +391,7 @@
 							}
 							&.router-link-active {
 								& > span {
-									color: @primaryColor;
+									color: @primary;
 								}
 								& > div {
 									& > h4 {
@@ -412,6 +415,7 @@
 					width: fit-content;
 					position: fixed;
 					outline: 0 solid rgba(0, 0, 0, 0.08);
+					background-color: @offBlack;
 					left: 0;
 					top: 0;
 					&.mini {
@@ -425,18 +429,20 @@
 					//hides navigation when toggled
 					& > nav {
 						display: none;
-						//user
-						& + .user {
+						// user
+						& + button {
 							position: fixed !important;
 							right: @spaceXl + @spaceMd;
-							top: @spaceXl + @spaceMd;
+							top: @spaceLg;
 						}
 					}
 					//displays navigation
 					&.showNav {
 						height: 100vh;
+						width: max-content;
 						outline: 9999px solid rgba(0, 0, 0, 0.64);
 						border-bottom-right-radius: 0;
+						padding: 0 @spaceXl;
 						& > nav {
 							display: flex;
 							flex-direction: column;
@@ -447,36 +453,50 @@
 								& > li {
 									flex: 1 0 auto;
 									align-self: flex-start;
-									& > a {
-										& > .vueImg {
-											height: @spaceXl;
+									&:not(first-child) > a {
+										gap: @spaceXl;
+										& > span,
+										& > h4 {
+											color: @backgroundColor;
+										}
+										&.router-link-exact-active {
+											//styling selected link
+											&.router-link-active {
+												&::after {
+													border-width: 2px;
+													left: 0;
+												}
+											}
 										}
 									}
+									//logo
 									&:first-child {
 										display: flex;
 										align-self: center;
 										margin-right: 0 !important;
-										margin-bottom: 2 * @spaceXl !important;
+										margin-bottom: @spaceXl !important;
 										& > a {
 											flex-direction: column;
+											gap: @spaceXl;
 											& > .vueImg {
 												height: 96px;
 												width: 96px;
+												align-self: center;
 											}
 										}
 									}
 								}
 							}
 							//user
-							& + .account {
-								display: flex;
-								flex-direction: column;
-								justify-content: space-between;
+							// & + .account {
+							// 	display: flex;
+							// 	flex-direction: column;
+							// 	justify-content: space-between;
 
-								& > button {
-									margin-bottom: @spaceLg;
-								}
-							}
+							// 	& > button {
+							// 		margin-bottom: @spaceLg;
+							// 	}
+							// }
 						}
 					}
 					@media (max-width: @768width) {

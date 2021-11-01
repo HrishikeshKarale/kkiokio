@@ -88,7 +88,7 @@
 						display: flex-inline;
 						content: "\00BB";
 						margin-right: @spaceMd;
-						color: @accentColor;
+						color: @accent;
 					}
 				}
 				& > ul {
@@ -121,7 +121,7 @@
 						& > b {
 							border-radius: @borderRadius;
 							padding: @spaceLg @spaceLg;
-							background-color: @accentColor;
+							background-color: @accent;
 							&::before {
 								color: @backgroundColor;
 								margin-right: @spaceLg;
@@ -129,7 +129,7 @@
 						}
 						&.open {
 							border-radius: @borderRadius 0 0 @borderRadius;
-							.backgroundColor(@primaryColor, 16%);
+							.backgroundColor(@primary, 16%);
 							& > * {
 								z-index: @contentZ;
 							}

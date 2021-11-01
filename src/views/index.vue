@@ -1,14 +1,11 @@
 <template>
 	<article class="profileOverview">
-		<!-- <section>
-			<slider />
-		</section> -->
 		<section id="intro">
 			<div class="subSection">
 				<span>HELLO THERE</span>
 				<h2>My name is</h2>
 				<h1 @click="$router.push({ name: 'about' })">Hrishikesh Karale.</h1>
-				<h2>I design Things.</h2>
+				<h2>I design things.</h2>
 				<p>
 					I am a
 					<mark>Inter-Disciplinary UX Designer</mark>
@@ -159,21 +156,26 @@
 					font-weight: 900;
 					filter: opacity(16%);
 					font-size: 4 * @fontSize;
+					.textShadow(@three, @black);
 					& + h3 {
 						position: absolute;
 						align-self: center;
+						text-align: center;
 						top: 2 * @spaceXl;
+						font-weight: bold;
 					}
 				}
 			}
 			&#intro {
-				// .backgroundColor(@primaryColor, 100vw, 32%);
+				// .backgroundColor(@primary, 100vw, 32%);
 				flex-direction: row;
 				justify-content: space-evenly;
 				align-self: center;
 				min-height: @body;
 				//
 				& > div {
+						justify-content: space-around;
+						align-self: center;
 					& > span {
 						margin: 0;
 					}
@@ -201,27 +203,29 @@
 					//design and develop box
 					&:last-child {
 						margin-left: 0;
-						border: @borderRadius dashed @accentColor;
+						border: @borderRadius dashed @accent;
 						height: 240px;
 						width: 240px;
 						border-radius: 25%;
 						cursor: pointer;
-						justify-content: space-around;
-						align-self: center;
-
+						.boxShadow(@five, @accent);
+						&:hover {
+							.boxShadow(@three, @accent);
+						}
+						.backgroundColor();
 						& > span {
 							font-size: 64px;
 							align-self: center;
 							font-weight: bold;
 							transform: rotate(-45deg);
-							margin-right: 4*@spaceXl;
+							margin-right: 4*@spaceXl !important;
 							&:last-child {
-								margin-right: 0;
-								margin-left: 3*@spaceXl;
+								margin-right: 0 !important;
+								margin-left: 3*@spaceXl !important;
 							}
 							&:nth-child(2) {
 								transform: rotate(0deg);
-								margin: 0;
+								margin: 0 !important;
 							}
 						}
 					}
@@ -249,10 +253,10 @@
 						flex-direction: column;
 						flex: 0 1 480px;
 						border-radius: @borderRadiusLg;
-						border: 1px dashed @primaryColor;
+						border: 1px dashed @primary;
 						height: fit-content;
-						.backgroundColor(@primaryColor, 4%, @spaceLg, @spaceXl);
-						// .backgroundColor();
+						.boxShadow(@base, @primary);
+						.backgroundColor(@primary, 4%, @spaceLg, @spaceXl);
 						gap: @spaceLg;
 						& > q {
 							// margin: @spaceXl;
@@ -307,12 +311,6 @@
 				}
 				@media (max-width: @320width) {
 				}
-			}
-		}
-
-		@keyframes rotate {
-			100% {
-				transform: rotate(1turn);
 			}
 		}
 	}

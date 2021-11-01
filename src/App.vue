@@ -87,7 +87,7 @@
 			padding: 0 @spaceLg;
 
 			& > abbr {
-				color: @accentColor;
+				color: @accent;
 				text-decoration: none;
 			}
 		}

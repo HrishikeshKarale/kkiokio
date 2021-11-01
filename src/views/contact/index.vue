@@ -202,7 +202,7 @@
 			}
 			& > div {
 				flex: 1 0 320px;
-				border: 1px dashed @primaryColor;
+				border: 1px dashed @primary;
 				border-radius: @borderRadiusLg;
 				padding: @spaceMd @spaceLg;
 				height: fit-content;

@@ -153,10 +153,12 @@
 					& + h3 {
 						display: flex;
 						flex-direction: column;
+						align-items: center;
 						margin-top: @spaceLg;
+						font-weight: bold;
 						& > h5 {
 							align-self: flex-end;
-							color: @white;
+							color: @navText;
 						}
 					}
 				}

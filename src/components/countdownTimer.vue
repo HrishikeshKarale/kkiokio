@@ -146,7 +146,7 @@ export default {
     }
   }
   .number {
-    background-color: @primaryColor;
+    background-color: @primary;
     padding: 0 @spaceSm;
     border-radius: 5px;
     width: 60px;

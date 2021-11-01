@@ -189,7 +189,7 @@
 	@import (reference) "../Less/customVariables.less";
 	@import (reference) "../less/customMixins.less";
 
-	@color: @accentColor;
+	@color: @accent;
 	@scale: 1.1;
 
 	.vueButton {

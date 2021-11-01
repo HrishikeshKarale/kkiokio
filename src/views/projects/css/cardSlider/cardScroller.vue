@@ -202,7 +202,7 @@
 			padding: @spaceLg @spaceXl;
 			border-radius: @borderRadiusLg;
 			.responsive(@1600width, 0);
-			.backgroundColor(@primaryColor, 8%, 0, 0, 100vw);
+			.backgroundColor(@primary, 8%, 0, 0, 100vw);
 			&.vertical {
 				border-width: 0px;
 				& > div {
@@ -236,7 +236,7 @@
 					padding: @spaceMd @spaceLg;
 					min-height: 360px;
 					transition: .transition();
-					border: 1px solid @accentColor;
+					border: 1px solid @accent;
 					.boxShadow(none);
 					cursor: pointer;
 					& > h4,
@@ -268,7 +268,7 @@
 					}
 					&:hover {
 						transform: translate(0, -4px);
-						.boxShadow(@two, @accentColor);
+						.boxShadow(@two, @accent);
 						& > .image,
 						& > .content {
 							transform: translate(0, -16px);

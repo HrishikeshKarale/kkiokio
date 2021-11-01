@@ -106,7 +106,7 @@
 				align-content: center;
 				padding: @spaceLg;
 				border-radius: @borderRadiusLg;
-				background-color: @primaryColor;
+				background-color: @primary;
 				width: 96px;
 				height: 96px;
 				.boxShadow(@four);

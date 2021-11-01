@@ -18,15 +18,15 @@ export default {
   width: @fontSize*4;
   height: @fontSize*4;
   border: @spaceMd solid #eee;
-  border-right-color: @accentColor;
-  border-left-color: @primaryColor;
+  border-right-color: @accent;
+  border-left-color: @primary;
   animation: spin 2s ease-in-out infinite;
   .boxShadow(@base);
   &::after {
     content: "Loading";
     color: @textColor;
     font-weight: bold;
-    background-color: @accentColor;
+    background-color: @accent;
   }
 }
 @keyframes spin {

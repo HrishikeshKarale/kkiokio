@@ -288,7 +288,7 @@
 	@import (reference) "../Less/customVariables.less";
 	@import (reference) "../Less/customMixins.less";
 
-	@color: @primaryColor;
+	@color: @primary;
 
 	.vueFilter {
 		display: flex;
@@ -319,7 +319,7 @@
 					top: -@spaceMd;
 					right: -3 * @spaceSm;
 					background-color: @backgroundColor;
-					border: 1px solid @secondaryColor;
+					border: 1px solid @secondary;
 				}
 			}
 
@@ -329,7 +329,7 @@
 				display: inline-flex;
 				width: fit-content;
 				flex-flow: row wrap;
-				border: 1px dashed @secondaryColor;
+				border: 1px dashed @secondary;
 				padding: @spaceMd;
 				border-radius: @borderRadius;
 				gap: @spaceMd;
@@ -354,7 +354,7 @@
 			padding: @spaceMd @spaceLg;
 			border-radius: @borderRadius;
 			background-color: @backgroundColor;
-			.boxShadow(@two, @accentColor);
+			.boxShadow(@two, @accent);
 			outline: 9999px solid #000000a3;
 			width: max-content;
 			z-index: @contentZ + 100;

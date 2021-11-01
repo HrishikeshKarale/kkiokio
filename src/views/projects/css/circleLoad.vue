@@ -17,7 +17,7 @@ export default {
   height: 20 * @wt;
   border-radius: 50%;
   border: @wt solid transparent;
-  border-top-color: @primaryColor;
+  border-top-color: @primary;
   background-color: transparent;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
@@ -30,7 +30,7 @@ export default {
     bottom: @wt;
     border-radius: 50%;
     border: @wt solid transparent;
-    border-top-color: @accentColor;
+    border-top-color: @accent;
     -webkit-animation: spin 3s linear infinite;
     animation: spin 3s linear infinite;
   }
@@ -43,7 +43,7 @@ export default {
     bottom: 3 * @wt;
     border-radius: 50%;
     border: @wt solid transparent;
-    border-top-color: @primaryColor;
+    border-top-color: @primary;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
   }

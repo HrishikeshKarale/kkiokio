@@ -563,7 +563,7 @@
 						padding: 0 @spaceXl 6 * @spaceXl @spaceXl;
 						align-self: center !important;
 						z-index: @contentZ;
-						// .boxShadow(@one, @secondaryColor,@contentZ);
+						// .boxShadow(@one, @secondary,@contentZ);
 						background-color: @backgroundColor !important;
 						//countdown timer
 						& > .countdownTimer {

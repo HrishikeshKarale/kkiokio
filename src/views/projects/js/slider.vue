@@ -150,7 +150,7 @@
 			right: 50vw;
 			transform: translate(32px, -48px);
 			& > span {
-				color: @secondaryColor;
+				color: @secondary;
 				margin: 0 8px;
 				padding: 8px;
 				cursor: pointer;

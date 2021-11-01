@@ -75,7 +75,7 @@
 					margin: 0 !important;
 				}
 				& > span {
-					color: @accentColor;
+					color: @accent;
 				}
 			}
 		}

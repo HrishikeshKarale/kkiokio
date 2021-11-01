@@ -226,7 +226,7 @@
 						gap: @spaceMd;
 						padding: @spaceMd;
 						border-radius: @borderRadius;
-						border: 1px dashed @secondaryColor;
+						border: 1px dashed @secondary;
 						height: fit-content;
 						& > div {
 							display: flex;
@@ -307,11 +307,11 @@
 							padding: @spaceLg;
 							margin: @spaceMd;
 							border-radius: @borderRadiusLg;
-							border: 1px dashed @accentColor;
+							border: 1px dashed @accent;
 
 							& > .step {
 								border-radius: 50%;
-								border: 2px solid @accentColor;
+								border: 2px solid @accent;
 								color: @white;
 								font-size: @fontSize;
 								font-weight: bold;
@@ -320,7 +320,7 @@
 								min-width: @wizard-step-width-height;
 								text-align: center;
 								margin: 0 auto;
-								background-color: @accentColor;
+								background-color: @accent;
 
 								& + .step-title {
 									text-align: left;
@@ -353,7 +353,7 @@
 						margin: 0 @spaceLg;
 						padding: @spaceMd @spaceXl;
 						border-radius: @borderRadius;
-						border: 1px dashed @primaryColor;
+						border: 1px dashed @primary;
 					}
 				}
 			}

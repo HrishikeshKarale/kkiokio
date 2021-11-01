@@ -192,7 +192,7 @@
 					&[type="reset"] {
 						background-color: transparent;
 						&:hover {
-							background-color: @accentColor;
+							background-color: @accent;
 							color: @backgroundColor;
 						}
 					}

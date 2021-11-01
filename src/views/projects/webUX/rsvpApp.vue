@@ -211,7 +211,7 @@
 							margin: @spaceMd;
 							padding: @spaceMd @spaceLg;
 							border-radius: @borderRadius;
-							.boxShadow(@one, @accentColor);
+							.boxShadow(@one, @accent);
 							& > button {
 								margin-left: auto;
 							}

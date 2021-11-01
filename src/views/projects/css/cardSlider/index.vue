@@ -57,7 +57,7 @@
 			padding: @spaceMd @spaceLg;
 			min-height: 360px;
 			transition: .transition();
-			border: 1px solid @accentColor;
+			border: 1px solid @accent;
 			.boxShadow(none);
 			cursor: pointer;
 			& > h4,
@@ -92,7 +92,7 @@
 			}
 			&:hover {
 				transform: translate(0, -4px);
-				.boxShadow(@two, @accentColor);
+				.boxShadow(@two, @accent);
 				& > h4,
 				& > span,
 				& > .content {

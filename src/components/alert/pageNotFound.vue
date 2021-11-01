@@ -65,7 +65,7 @@
 
 	@white: #ededed;
 	@ghostBorder: #bfc0c0;
-	@dark: @accentColor;
+	@dark: @accent;
 	@light: red;
 
 	.systemError {

@@ -41,7 +41,7 @@ export default {
         width: 8px;
         height: 32px;
         border-radius: @borderRadius;
-        background: @accentColor;
+        background: @accent;
         animation: opacity-2 1000ms infinite ease-in-out;
         margin: 0 @spaceSm;
         &.line-1 {

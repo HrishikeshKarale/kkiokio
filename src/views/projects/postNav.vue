@@ -55,7 +55,7 @@
 		flex-flow: row nowrap;
 		width: 100%;
 		border-width: 1px 0;
-		border-color: @primaryColor !important;
+		border-color: @primary !important;
 		padding: @spaceXl @spaceSm;
 		& > .previous,
 		& > .next {
@@ -71,13 +71,13 @@
 				position: absolute;
 				left: 0;
 				top: 3 * @spaceLg;
-				border-left: @spaceLg solid @primaryColor;
+				border-left: @spaceLg solid @primary;
 				height: 60%;
 			}
 			& > h3 {
 				font-weight: 900;
 				letter-spacing: 2px !important;
-				color: @accentColor;
+				color: @accent;
 				cursor: pointer;
 				margin-left: @spaceXl;
 			}

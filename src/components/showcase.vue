@@ -70,8 +70,8 @@
 		justify-content: space-around;
 		flex: 0 0 320px;
 		height: fit-content;
-		// border: 1px dashed @primaryColor;
-		.boxShadow(@base, @secondaryColor);
+		// border: 1px dashed @primary;
+		.boxShadow(@base, @secondary);
 
 		& > p {
 			font-size: @fontSizeSm;
@@ -172,13 +172,13 @@
 		}
 
 		&:hover {
-			.boxShadow(@two, @accentColor);
+			.boxShadow(@two, @accent);
 			& > a > h4 {
 				&:hover {
-					color: @accentColor;
+					color: @accent;
 				}
 				& > span {
-					color: @accentColor;
+					color: @accent;
 				}
 			}
 		}

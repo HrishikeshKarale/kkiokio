@@ -201,7 +201,7 @@ export default {
       &.checked {
         transition: all 350ms;
         background: blue;
-        border-color: @primaryColor;
+        border-color: @primary;
       }
 
       &.unchecked {
@@ -221,13 +221,13 @@ export default {
         width: @spaceXl;
         height: @spaceXl;
         border-radius: @round;
-        background: @accentColor;
+        background: @accent;
         cursor: pointer;
 
         &.checked {
           transform: translateX(32px);
           transition: all 350ms;
-          background: @accentColor;
+          background: @accent;
         }
 
         &.unchecked {
@@ -242,7 +242,7 @@ export default {
 
     .checkbox-label {
       width: max-content;
-      color: @accentColor;
+      color: @accent;
       margin-left: @spaceMd;
       font-weight: bold;
     }

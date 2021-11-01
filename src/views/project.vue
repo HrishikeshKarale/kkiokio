@@ -163,7 +163,7 @@
 						padding: @spaceMd @spaceLg;
 						border-radius: @borderRadius;
 						&.router-link-active {
-							background-color: @primaryColor;
+							background-color: @primary;
 							color: @backgroundColor;
 						}
 					}

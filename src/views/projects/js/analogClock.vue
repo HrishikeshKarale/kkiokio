@@ -118,7 +118,7 @@
 			}
 			&.analog {
 				position: relative;
-				border: @spaceMd solid @accentColor;
+				border: @spaceMd solid @accent;
 				border-radius: 50%;
 				height: @size+ 32;
 				width: @size+ 32;
@@ -149,7 +149,7 @@
 						width: 45%;
 					}
 					&.center {
-						background-color: @accentColor;
+						background-color: @accent;
 						height: @spaceXl;
 						width: @spaceXl;
 						border-radius: 50%;

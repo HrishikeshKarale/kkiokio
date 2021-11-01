@@ -91,7 +91,7 @@
 			height: 120px;
 			cursor: pointer;
 			&.key {
-				border: 0px solid @primaryColor;
+				border: 0px solid @primary;
 				transition: .transition();
 			}
 			&.playing {

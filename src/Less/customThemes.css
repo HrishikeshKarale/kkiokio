@@ -19,8 +19,8 @@ html {
 :root {
   --textColor: var(--offBlack);
   --backgroundColor: var(--white);
-  --navText: var(--secondaryColor);
-  --navBackground: var(--offBlack);
+  --navText: var(--offBlack);
+  --navBackground: var(--offWhite);
   --shadowColor: var(--offBlack);
 }
 
