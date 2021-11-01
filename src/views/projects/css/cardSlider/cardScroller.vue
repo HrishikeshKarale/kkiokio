@@ -135,7 +135,7 @@
 			}
 			this.maxSteps = this.cards.scrollWidth / this.cards.clientWidth;
 			this.maxSteps = this.maxSteps <= 1 ? 0 : Math.round(this.maxSteps);
-			this.right = this.maxSteps;
+			this.right = 2*this.maxSteps + 1;
 		},
 
 		beforeUnmount() {
@@ -201,14 +201,13 @@
 			justify-content: center;
 			align-items: center;
 			height: fit-content;
-			overflow-x: hidden;
-			overflow-y: auto;
 			border-radius: @borderRadiusLg;
 			.responsive(@1600width, 0);
 			&.horizontal {
-				.backgroundColor(@primary, 8%, @spaceLg, @spaceXl, 100%);
+				.backgroundColor(@primary, 8%, 0, 0, 100%);
 				& > .cards {
-					overflow-x: auto;
+					padding: @spaceMd @spaceLg;
+					overflow-x: hidden;
 				}
 			}
 			&.vertical {
@@ -223,10 +222,10 @@
 			& > button {
 				position: absolute;
 				z-index: @contentZ + 20 !important;
-				right: 0;
+				right: -@spaceXl;
 				&#previous {
 					right: auto;
-					left: 0;
+					left: -@spaceXl;
 				}
 			}
 			& > .cards {
