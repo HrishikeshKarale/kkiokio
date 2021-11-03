@@ -58,7 +58,7 @@ export const rupay = {
         },
         {
           img: {
-            src: require("@/assets/UX/rupay/homeScreen.png"),
+            src: require("@/assets/UX/rupay/homePageRe.svg"),
             alt: null,
             caption: null
           }
@@ -73,14 +73,49 @@ export const rupay = {
         },
         {
           img: {
-            src: require("@/assets/UX/rupay/addCard.png"),
+            src: require("@/assets/UX/rupay/addToWalleCardtRe.svg"),
             alt: null,
             caption: null
           }
         },
         {
           img: {
-            src: require("@/assets/UX/rupay/walletTopUp.png"),
+            src: require("@/assets/UX/rupay/addToWalletBankRe.svg"),
+            alt: null,
+            caption: null
+          }
+        },
+        {
+          img: {
+            src: require("@/assets/UX/rupay/addToWalletAddBankRe.svg"),
+            alt: null,
+            caption: null
+          }
+        },
+        {
+          img: {
+            src: require("@/assets/UX/rupay/creditCardRe.svg"),
+            alt: null,
+            caption: null
+          }
+        },
+        {
+          img: {
+            src: require("@/assets/UX/rupay/creditCardManualRe.svg"),
+            alt: null,
+            caption: null
+          }
+        },
+        {
+          img: {
+            src: require("@/assets/UX/rupay/creditCardAddRe.svg"),
+            alt: null,
+            caption: null
+          }
+        },
+        {
+          img: {
+            src: require("@/assets/UX/rupay/creditCardQRRe.svg"),
             alt: null,
             caption: null
           }
@@ -91,7 +126,14 @@ export const rupay = {
         },
         {
           img: {
-            src: require("@/assets/UX/rupay/billPayLoan.png"),
+            src: require("@/assets/UX/rupay/LoanRequestRe.svg"),
+            alt: null,
+            caption: null
+          }
+        },
+        {
+          img: {
+            src: require("@/assets/UX/rupay/payBillsRe.svg"),
             alt: null,
             caption: null
           }
@@ -106,7 +148,14 @@ export const rupay = {
         },
         {
           img: {
-            src: require("@/assets/UX/rupay/profile.png"),
+            src: require("@/assets/UX/rupay/profileSettingRe.svg"),
+            alt: null,
+            caption: null
+          }
+        },
+        {
+          img: {
+            src: require("@/assets/UX/rupay/helpAndSupportRe.svg"),
             alt: null,
             caption: null
           }

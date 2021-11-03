@@ -81,7 +81,21 @@ export const crowdCo = {
                 },
                 {
                   img: {
-                    src: require("@/assets/UX/dictionary/homeScreenRe.png"),
+                    src: require("@/assets/UX/dictionary/a/homeScreenRe1.svg"),
+                    alt: null,
+                    caption: null
+                  }
+                },
+                {
+                  img: {
+                    src: require("@/assets/UX/dictionary/a/homeScreenRe2.svg"),
+                    alt: null,
+                    caption: null
+                  }
+                },
+                {
+                  img: {
+                    src: require("@/assets/UX/dictionary/a/wordOfTheDay.svg"),
                     alt: null,
                     caption: null
                   }
@@ -115,7 +129,14 @@ export const crowdCo = {
                 },
                 {
                   img: {
-                    src: require("@/assets/UX/dictionary/searchScreenRe.png"),
+                    src: require("@/assets/UX/dictionary/a/searchScreenRe1.svg"),
+                    alt: null,
+                    caption: null
+                  }
+                },
+                {
+                  img: {
+                    src: require("@/assets/UX/dictionary/a/wordSearchRe.svg"),
                     alt: null,
                     caption: null
                   }
@@ -149,7 +170,7 @@ export const crowdCo = {
                 },
                 {
                   img: {
-                    src: require("@/assets/UX/dictionary/noteScreenRe.png"),
+                    src: require("@/assets/UX/dictionary/a/NotesScreenRe.svg"),
                     alt: null,
                     caption: null
                   }

@@ -208,7 +208,28 @@ export const crowdCo = {
                 },
                 {
                   img: {
-                    src: require("@/assets/UX/crowdCo/hifi.png"),
+                    src: require("@/assets/UX/crowdCo/a/homePage.svg"),
+                    alt: null,
+                    caption: null
+                  }
+                },
+                {
+                  img: {
+                    src: require("@/assets/UX/crowdCo/a/categoryPage.svg"),
+                    alt: null,
+                    caption: null
+                  }
+                },
+                {
+                  img: {
+                    src: require("@/assets/UX/crowdCo/a/productPage.svg"),
+                    alt: null,
+                    caption: null
+                  }
+                },
+                {
+                  img: {
+                    src: require("@/assets/UX/crowdCo/a/productDetailPage.svg"),
                     alt: null,
                     caption: null
                   }
