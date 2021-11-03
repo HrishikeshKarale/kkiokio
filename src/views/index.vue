@@ -12,19 +12,19 @@
 					based out of Rochester, NY.
 				</p>
 				<p>
-					My Expertise ranges from Problem Validation
+					My expertise ranges from Problem Validation
 					<span class="fas fa-arrow-right" /> Research
 					<span class="fas fa-arrow-right" /> UX/UI Design
 					<span class="fas fa-arrow-right" />
 					Front-End Development.
 				</p>
-				<p>
+				<!-- <p>
 					As a UX Professional, I am passionate about
 					<mark>Empathy in design</mark>. I believe in setting ego aside and
 					creating an experience that caters to my user needs. My ability to
 					organised workflows, understand visual design language and solve
 					problems shows in my work.
-				</p>
+				</p> -->
 				<vue-button
 					tag="loginButton"
 					category="border-sm"

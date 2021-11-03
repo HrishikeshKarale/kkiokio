@@ -60,8 +60,8 @@
 		gap: @spaceLg;
 		&.scroll {
 			padding: 0 0 0 16px;
-			background-color: @navBackground;
-			.boxShadow(@four, @navBackground, @headerZ);
+			background-color: @offBlack;
+			.boxShadow(@four, @offBlack, @headerZ);
 			// z-index: @headerZ;
 		}
 		& > ol {
@@ -83,9 +83,12 @@
 			@media (max-width: @1600width) {
 			}
 			@media (max-width: @1200width) {
+				justify-content: center;
+				&.scroll {
+					padding: 0;
+				}
 			}
 			@media (max-width: @768width) {
-				justify-content: center;
 			}
 			@media (max-width: @480width) {
 			}

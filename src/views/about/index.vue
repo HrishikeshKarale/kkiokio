@@ -4,17 +4,15 @@
 			<h1>About Me</h1>
 		</header>
 		<section id="Bio">
+			<!-- <h1>Hrishikesh Karale</h1> -->
 			<div>
-				<vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
 				<div>
-					<h1>Hrishikesh Karale</h1>
-					<h3>Sr. UX Designer</h3>
-					<h4>Full Stack Designer</h4>
+				<vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
 					<div class="social">
 						<a target="_blank" href="https://github.com/HrishikeshKarale">
 							<span class="fab fa-github fa-2x" />
 							<!-- <b>
-            @hrishikesh-karale
+            @hrishikeshKarale
           </b> -->
 						</a>
 						<a target="_blank" href="https://www.npmjs.com/~kkiokio">
@@ -34,52 +32,54 @@
 						</a>
 					</div>
 				</div>
+				<div>
+					<h1>Hrishikesh Karale</h1>
+					<h3>Product Designer</h3>
+					<h5>Sr. UX Designer/Developer</h5>
+				<a href="../../assets/Hrishikesh Karale-Resume.pdf" download>Download Resume</a>
+				</div>
 			</div>
-			<div>
-				<p>
-					I'm a UX Professional with 5+ years of experience working on several
-					major software projects in the eCommerce and enterprise buisness
-					environments.
-				</p>
-				<p>
-					I have a Masters in HCI/Design and a Bachalors in Computer
-					Engineering, this allows me to take development into consideration
-					when designing a solution.
-				</p>
-				<p>
-					As a UX Professional, I strive to use a constant end-user feedback
-					loop to define and redefine my project objectives. The user's needs
-					guide the strategic decisions I make during my UX process. This
-					non-linear approach is integral to ensuring that my projects decisions
-					lead to a massive improvement in the key metrics that are relevant to
-					the user experience. In short, I like to think like an engineer in
-					addition to being a UX Professional.
-				</p>
-				<p>
-					I’m also a novice visual designer. I’ve designed over 30 working
-					prototypes in online-shopping, warehouse-management,
-					inventory-management, fulfillment and healthcare using a multitude of
-					prototyping tools including products such as Illustrator, Adobe XD,
-					Sketch and Figma. My prototyping strategy primarily focuses on
-					functionality and usability.
-				</p>
-			</div>
+			<p>
+				I have 5+ years of experience working on several
+				major software projects in the eCommerce and Enterprise buisness environments.
+			</p>
+			<!-- <p>
+				I have a <mark>Masters in HCI/Design</mark> and a <mark>Bachelor in Computer Engineering</mark>, this allows me to take development into consideration
+				when designing a solution.
+			</p> -->
+			<p>
+				As a UX Professional, I strive to use a <mark>constant end-user feedback
+				loop</mark> to define and redefine my project objectives. The user's needs
+				guide the strategic decisions I make during my UX process. This
+				non-linear approach is integral to ensuring that my projects decisions
+				lead to a massive improvement in the key metrics that are relevant to
+				the user experience. In short, I like to think like an engineer in
+				addition to being a UX Professional.
+			</p>
+			<p>
+				I’m also a novice visual designer. I’ve designed over 30 working
+				prototypes in online-shopping, warehouse-management,
+				inventory-management, fulfillment and healthcare using a multitude of
+				prototyping tools including products such as <mark>Illustrator</mark>, <mark>Adobe XD</mark>,
+				<mark>Sketch</mark> and <mark>Figma</mark>. My prototyping strategy primarily focuses on
+				functionality and usability.
+			</p>
 		</section>
 		<section id="Objective">
+			<h1>Objective</h1>
 			<q>
 				Create intuitive interfaces that can solve problems and create
 				experiences that initiate a sense of delight and wonder for my users.
 			</q>
 		</section>
 		<section id="Process">
+			<h1>My Process</h1>
+			<h3>How I assure success</h3>
 			<p>
-				One of the key factors that define a designers work is the process they
-				use to solve a problem.
+				One of the key factors that define a designers work is the process they use to solve a problem.
 			</p>
 			<p>
-				With time, this process evolved from a standard 5 step prcoess of
-				(define, research, ideate, prototype, Test) to a 8 step process where
-				each step signifies a milestone for the projects.
+				With time, this process evolved from a standard 5 step prcoess of d(define, research, ideate, prototype, Test) to a 8 step process where each step signifies a milestone for the projects.
 			</p>
 			<div class="process">
 				<ol class="steps">
@@ -100,7 +100,8 @@
 			</div>
 		</section>
 		<section id="Skillset">
-			<h3>SkillSet</h3>
+			<h1>Skill Set</h1>
+			<h3>Badges on my belt</h3>
 			<div>
 				<div v-for="skill in skills" :key="skill.type" class="subSection">
 					<h4>{{ skill.type }}</h4>
@@ -111,7 +112,7 @@
 			</div>
 		</section>
 		<section id="LisencesAndCertificates">
-			<h3>Licenses &amp; Certificates</h3>
+			<h1>Licenses &amp; Certificates</h1>
 			<div>
 				<div v-for="cert in lisencesAndCertificates" :key="cert.id">
 					<div>
@@ -144,7 +145,7 @@
 			</div>
 		</section>
 		<section id="honorsAndAwards">
-			<h3>Honors &amp; Awards</h3>
+			<h1>Honors &amp; Awards</h1>
 			<div>
 				<div v-for="award in honorsAndAwards" :key="award.id">
 					<div>
@@ -210,6 +211,22 @@
 
 	.about {
 		& > section {
+			min-height: 640px;
+				position: relative;
+				&:not(#Bio) > h1 {
+					align-self: center;
+					font-weight: 900;
+					filter: opacity(16%);
+					font-size: 4 * @fontSize;
+					.textShadow(@three, @black);
+					& + h3 {
+						position: absolute;
+						align-self: center;
+						text-align: center;
+						top: 2 * @spaceXl;
+						font-weight: bold;
+					}
+				}
 			&#LisencesAndCertificates,
 			&#honorsAndAwards {
 				& > div {
@@ -361,42 +378,51 @@
 			&#Bio {
 				flex-direction: column;
 				flex-wrap: wrap;
+				align-content: center;
+				& > p {
+					max-width: 960px;
+				}
 				& > div {
 					max-width: 960px;
+					gap: @spaceXl;
 					//image and introductory text
 					&:first-child {
 						display: flex;
 						flex-direction: row;
 						justify-content: center;
-						align-content: center;
+								margin-bottom: 2*@spaceXl;
 
 						& > div {
 							display: flex;
 							flex-direction: column;
-							flex-wrap: wrap;
+							flex-wrap: nowrap;
 							justify-content: center;
-							align-content: center;
 							& > h1,
 							& > h3,
-							& > h4 {
+							& > h5,
+							& > a {
 								margin-top: 0;
+								font-weight: bold;
+								text-align: right;
 							}
-							& > .social {
-								display: flex;
-								align-self: center;
-								justify-content: space-evenly;
-								width: fit-content;
-								& > a {
-									& > span {
-										margin: 0 @spaceLg;
-									}
+							& > h1 {
+								.textShadow(@one, @primary);
+							}
+							// profile Image
+							&:first-child {
+								& > .social {
+									display: flex;
+									align-self: center;
+									gap: @spaceXl;
+									margin-top: -@spaceLg;
+								}
+								// profile image
+								& > .vueImg {
+									height: 320px;
+									width: 320px;
+									clip-path: circle(120px at center);
 								}
 							}
-						}
-						& > .vueImg {
-							height: 320px;
-							width: 320px;
-							clip-path: circle(120px at center);
 						}
 					}
 				}
@@ -409,20 +435,6 @@
 					@media (max-width: @768width) {
 						@media (max-width: @480width) {
 							@media (max-width: @320width) {
-							}
-						}
-					}
-				}
-				#Bio {
-					& > div:first-child {
-						display: flex;
-						flex-wrap: wrap;
-						& > div {
-							margin-bottom: @spaceLg;
-							& > h1,
-							& > h3,
-							& > h4 {
-								align-self: center;
 							}
 						}
 					}

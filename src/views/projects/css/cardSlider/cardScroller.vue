@@ -204,6 +204,7 @@
 			border-radius: @borderRadiusLg;
 			.responsive(@1600width, 0);
 			&.horizontal {
+				.boxShadow(@one, @primary);
 				.backgroundColor(@primary, 8%, 0, 0, 100%);
 				& > .cards {
 					padding: @spaceMd @spaceLg;

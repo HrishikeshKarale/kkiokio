@@ -22,7 +22,13 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Mobile App Redesign",
         img: require("@/assets/UX/dictionary/header.png"),
-        tags: ["User Research", "Case Study", "IBM - Carbon", "UID", "IA"],
+        tags: [
+          "User Research",
+          "UID",
+          "Case Study",
+          "IA",
+          "IBM - Carbon"
+        ],
         description:
           "Redesigned an English dictionary app from google play to make it more usable, intuitive and a desirable experience that is more engaging to its users.",
         component: "dictionaryCaseStudy",
@@ -35,10 +41,10 @@ export const projects: projectType[] = [
         img: require("@/assets/UX/crowdCo/header.png"),
         tags: [
           "User Research",
+          "IA",
           "Competitive Analysis",
           "User Flow",
-          "WireFrame",
-          "IA"
+          "WireFrame"
         ],
         description:
           "Designed a program learning platform for People Matters. People Matters is an HR Media Platform aimed to help foster ideas between HR-related professioals.",
@@ -50,7 +56,11 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Digital Mobile Wallet",
         img: require("@/assets/UX/rupay/header.png"),
-        tags: ["UID", "Fintech", "Digital Wallet", "Mobile Banking"],
+        tags: [
+          "Digital Wallet",
+          "UID",
+          "Fintech"
+        ],
         description:
           "Rupay is a mobile bankig app designed to fulfill basic services offered by a bank (access bank account, apply for aloan, check progress of existing requests, pay bills,  check transactin history etc.).",
         component: "rupay",
@@ -63,10 +73,10 @@ export const projects: projectType[] = [
         img: require("@/assets/UX/tinyThoughts/header.jpg"),
         tags: [
           "Case Study",
+          "IA",
           "Competitive Analysis",
           "User Story",
           "Wireframe",
-          "IA",
           "Google - Material Design"
         ],
         description:
@@ -79,7 +89,12 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Bank Website Redesign",
         img: require("@/assets/UX/kudaBank/header.png"),
-        tags: ["UID", "Case Study", "Google - Material Design", "Fintech"],
+        tags: [
+          "UID",
+          "Case Study",
+          "Google - Material Design",
+          "Fintech"
+        ],
         description:
           "Redesign for Kuda Bank website. It lacked effort in terms of making the website trendy and eye catching. The website homapage was made more easy to read and comprehend by the use of illustrations and precise text headings.",
         component: "kudaBankCaseStudy",
@@ -90,7 +105,11 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Cosmetic Product App",
         img: require("@/assets/UX/skinSafe/header.png"),
-        tags: ["Case Study", "User Research", "WireFrame"],
+        tags: [
+          "Case Study",
+          "WireFrame",
+          "User Research"
+        ],
         description:
           "A brief case study of a multi-phase redesign ofSkinSAFE, an IOS app. The redesign was intended to make the application with added functionality(personalisation) as well as to make it more user friendly.",
         component: "skinSafe",
@@ -120,7 +139,10 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Venmo Case Study",
         img: require("@/assets/UX/venmo/header.jpg"),
-        tags: ["Case Study", "IOS HID"],
+        tags: [
+          "Case Study",
+          "IOS HID"
+        ],
         description:
           "Case study of Venmo, a popular fintech app used to transfer money ffrom one entity to another. The case study highlights the decisions made by the the Venmo team and the possible reasons behind the decisions.",
         component: "venmoCaseStudy",
@@ -131,7 +153,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Google vs Waze Case Study",
         img: require("@/assets/UX/maps/header.jpg"),
-        tags: ["Case Study"],
+        tags: [
+          "Case Study"
+        ],
         description:
           "This is  a case study comparing two very popular navigation platforms, the different approaches taken by them to solve problems based on their user research and how people use their platforms",
         component: "mapsCaseStudy",
@@ -147,7 +171,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Onboarding Screen",
         img: require("@/assets/mobile/PlantIt boardHeader.png"),
-        tags: ["Onboarding"],
+        tags: [
+          "Onboarding"
+        ],
         description:
           "Plant IT! is an Onboarding screen for an IOS application for a concept website which specializes in selling household plants and decorative pots that go along with those plants.",
         component: "plantIt",
@@ -158,7 +184,10 @@ export const projects: projectType[] = [
         portfolio: true,
         title: "Medical Appointment UI",
         img: require("@/assets/mobile/medical researchHeader.png"),
-        tags: ["UID", "Style Guide"],
+        tags: [
+          "UID",
+          "Style Guide"
+        ],
         description:
           "MedCo is an mobile aimed towards the medical industry.\
               <br />\
@@ -171,7 +200,12 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Fitness Watch App",
         img: require("@/assets/mobile/fitness friendHeader.png"),
-        tags: ["Wearable", "Wireframe", "Style Guide", "UCD"],
+        tags: [
+          "Wearable",
+          "Wireframe",
+          "Style Guide",
+          "UCD"
+        ],
         description:
           "A Fitness tracker app for smart watch.\
               <br />\
@@ -184,7 +218,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Authentication Concept Screens",
         img: require("@/assets/mobile/login screenHeader.png"),
-        tags: ["Login Screen"],
+        tags: [
+          "Login Screen"
+        ],
         description: "Login/SignUp screen for a mobile app.",
         component: "appSignUp",
         blog: require("@/store/project/ui/appSignUp")
@@ -194,7 +230,11 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Enterprise Web App",
         img: require("@/assets/packstation/PackStationheader.png"),
-        tags: ["Golden Ratio", "Google - Material Design", "UCD"],
+        tags: [
+          "Golden Ratio",
+          "Google - Material Design",
+          "UCD"
+        ],
         description:
           "The pack station allows users to pack and ship orders.\
           <br />\
@@ -207,7 +247,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "RSVP",
         img: require("@/assets/webApp/wedding-1937022_1280.jpg"),
-        tags: ["UID"],
+        tags: [
+          "UID"
+        ],
         description:
           "The RSVP app allows a user to kleep track of their invites that they have sent to their friend.",
         component: "rsvpApp",
@@ -616,7 +658,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "DrumKit",
         img: require("@/assets/js/drumKitHeader.png"),
-        tags: ["audio playback"],
+        tags: [
+          "audio playback"
+        ],
         description:
           "Play your favorite tune on our virtual drums.<br />\
           The DrumKit lets you play your favorite tune ",
@@ -663,7 +707,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Fetch API",
         img: require("@/assets/js/fetch API.png"),
-        tags: ["API"],
+        tags: [
+          "API"
+        ],
         description:
           "Fetch data from Sttudio Ghibli API and use it to simulatte an IMDB like data driven website.",
         component: "fetchApi",
@@ -674,7 +720,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Canvas",
         img: require("@/assets/js/canvas.jpg"),
-        tags: ["HTML Canvas"],
+        tags: [
+          "HTML Canvas"
+        ],
         description: "Simulates an empty canvas where users can draw.",
         component: "canvasExample",
         blog: null
@@ -684,7 +732,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "CheckboxChallange",
         img: require("@/assets/js/checkbox challange.png"),
-        tags: ["keyboard Shortcuts"],
+        tags: [
+          "keyboard Shortcuts"
+        ],
         description:
           "Simulates a checkbox input field where users can use keyboard shortcuts to select/deselect multiple checkbox inputs at once. Pressing and holding shift while checking/unckecking checkboxes triggers the checkboxes in between.",
         component: "checkboxChallange",
@@ -695,7 +745,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "KonamiCode",
         img: require("@/assets/js/konami.jpeg"),
-        tags: ["Gamification"],
+        tags: [
+          "Gamification"
+        ],
         description:
           "A Konami code is a cheat code that appears in many konami video games and some non-Konami games. The user can press the following sequence of buttons/keyboard keys to enable a cheat or an effect.",
         component: "konamiCode",
@@ -706,7 +758,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "ScrollIn",
         img: require("@/assets/js/scrollIn.jpg"),
-        tags: ["Navigation"],
+        tags: [
+          "Navigation"
+        ],
         description:
           "ScrollIn is a scroll indicator which segments the webpage into segments using the sections html tag and disp[lays a page content menu on the right so that yusers can jump between different sections of the page.",
         component: "scrollIn",
@@ -717,7 +771,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "UserMedia",
         img: require("@/assets/js/userMedia.png"),
-        tags: ["HTML5 Media"],
+        tags: [
+          "HTML5 Media"
+        ],
         description:
           "Uses the video html5 tag to simulate a webcam, saves screenshots and applies different effects to the image",
         component: "userMedia",
@@ -728,7 +784,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Speech Recognition",
         img: require("@/assets/js/speech recognition.png"),
-        tags: ["Speech Recognition"],
+        tags: [
+          "Speech Recognition"
+        ],
         description:
           "Uses the built in speech recognition to convert user speech into text and displays it on the page.",
         component: "speechRecognition",
@@ -739,7 +797,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Link Follower",
         img: require("@/assets/js/linkfollower.png"),
-        tags: ["Gamification"],
+        tags: [
+          "Gamification"
+        ],
         description:
           "The linkfollower is a way of styling links such that the style travels through the page ot the next link during mouise hover",
         component: "linkFollower",
@@ -750,7 +810,10 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Geo Location",
         img: require("@/assets/js/geoLocation.jpg"),
-        tags: ["Geo Location", "Gamification"],
+        tags: [
+          "Geo Location",
+          "Gamification"
+        ],
         description:
           "the GeoLocation uses the geoLocation   browser functionality not jusdt to locate the device but also to calculate spee dif the device is travelling",
         component: "geoLocation",
@@ -782,7 +845,9 @@ export const projects: projectType[] = [
         portfolio: false,
         title: "Control video speed",
         img: require("@/assets/js/videoSpeed.jpg"),
-        tags: ["HTML5 video"],
+        tags: [
+          "HTML5 video"
+        ],
         description:
           "Uses a range/slider bar to control the speed of the video being played.",
         component: "videoControl",

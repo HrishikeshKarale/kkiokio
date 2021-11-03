@@ -80,6 +80,8 @@
 			overflow: hidden;
 			white-space: wrap;
 			text-overflow: ellipsis;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
 		}
 
 		& > ul {
