@@ -239,11 +239,10 @@
 					display: flex;
 					position: relative;
 					flex-direction: column;
-					flex: 1 0 320px;
 					border-radius: @borderRadius;
 					z-index: @contentZ + 5;
 					padding: @spaceMd @spaceLg;
-					min-height: 360px;
+					width: 240px !important;
 					.transition();
 					border: 1px solid @accent;
 					.boxShadow(none);

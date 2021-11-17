@@ -207,33 +207,26 @@ export const crowdCo = {
                     "<p> Usually after paper prototyping I hop on to a digital wireframing tool in order to create some low fidelity wireframes.Doing this gives me a bird’s eye view of how to structure the information within the application and it is easy to iterate quickly.But due to <b>time constraints</b> of this project I jumped straight into high fidelity design. </p>"
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/a/homePage.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                  img: [
+                    {
+                      src: require("@/assets/UX/crowdCo/homePage.jpg"),
+                      alt: null,
+                      caption: null
+                    }, {
+                      src: require("@/assets/UX/crowdCo/categoryPage.jpg"),
+                      alt: null,
+                      caption: null
+                    }, {
+                      src: require("@/assets/UX/crowdCo/productPage.jpg"),
+                      alt: null,
+                      caption: null
+                    }, {
+                      src: require("@/assets/UX/crowdCo/productDetailPage.jpg"),
+                      alt: null,
+                      caption: null
+                    }
+                  ]
                 },
-                {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/a/categoryPage.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/a/productPage.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/a/productDetailPage.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                }
               ]
             } //subSection
           ]
@@ -255,13 +248,13 @@ export const crowdCo = {
           altText:
             "<p> While developing the app it came to my notice that I unknowingly skipped one of the most basic design concept mentioned in <a href = 'https://developer.apple.com/design/tips/' target = '_blank' rel = 'noopener noreferrer'>iOS HIG</a>. </p>"
         },
-        {
-          img: {
-            src: require("@/assets/UX/crowdCo/app.png"),
-            alt: null,
-            caption: null
-          }
-        },
+        // {
+        //   img: {
+        //     src: require("@/assets/UX/crowdCo/app.png"),
+        //     alt: null,
+        //     caption: null
+        //   }
+        // },
         {
           text:
             "Apple expects you to keep the text size to be at least 11 pts in your apps so that it is easily readable by everyone.I discovered that some of the text in my design was less than the default size so I fixed that during my development."
@@ -275,13 +268,13 @@ export const crowdCo = {
           text:
             "To be honest the app development is still under progress but I am glad I took this challenge as it taught me how to manage my time more than anything else."
         },
-        {
-          img: {
-            src: require("@/assets/UX/crowdCo/conclusion.png"),
-            alt: null,
-            caption: null
-          }
-        },
+        // {
+        //   img: {
+        //     src: require("@/assets/UX/crowdCo/conclusion.png"),
+        //     alt: null,
+        //     caption: null
+        //   }
+        // },
         {
           subSection: [
             {

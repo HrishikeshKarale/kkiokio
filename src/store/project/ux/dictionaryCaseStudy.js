@@ -80,25 +80,21 @@ export const crowdCo = {
                   text: "Below is the recomended home screen for the app:"
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/dictionary/a/homeScreenRe1.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/dictionary/a/homeScreenRe2.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/dictionary/a/wordOfTheDay.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                  img: [
+                    {
+                      src: require("@/assets/UX/dictionary/homeScreenRe1.svg"),
+                      alt: null,
+                      caption: null
+                    }, {
+                      src: require("@/assets/UX/dictionary/homeScreenRe2.svg"),
+                      alt: null,
+                      caption: null
+                    }, {
+                      src: require("@/assets/UX/dictionary/wordOfTheDay.svg"),
+                      alt: null,
+                      caption: null
+                    }
+                  ]
                 },
                 {
                   text:
@@ -128,18 +124,17 @@ export const crowdCo = {
                   text: "Here’s the fix for our search screen:"
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/dictionary/a/searchScreenRe1.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/dictionary/a/wordSearchRe.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                  img: [
+                    {
+                      src: require("@/assets/UX/dictionary/searchScreenRe1.svg"),
+                      alt: null,
+                      caption: null
+                    }, {
+                      src: require("@/assets/UX/dictionary/wordSearchRe.svg"),
+                      alt: null,
+                      caption: null
+                    }
+                  ]
                 },
                 {
                   text:
@@ -170,7 +165,7 @@ export const crowdCo = {
                 },
                 {
                   img: {
-                    src: require("@/assets/UX/dictionary/a/NotesScreenRe.svg"),
+                    src: require("@/assets/UX/dictionary/NotesScreenRe.svg"),
                     alt: null,
                     caption: null
                   }

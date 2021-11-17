@@ -1011,8 +1011,22 @@ article {
       margin-left: -@spaceXl;
     }
 
+    .multipleImg {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      max-width: 100%;
+      align-self: center;
+      & > .vueImg {
+        min-height: 320px;
+        min-width: 320px;
+        max-height: 480px;
+      }
+    }
+
     .vueImg {
-      width: 80%;
+      width: 100%;
+      max-height: 480px;
     }
 
     &>.subSection {

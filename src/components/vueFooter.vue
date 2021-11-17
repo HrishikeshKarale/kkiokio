@@ -144,12 +144,15 @@
 			& > a {
 				width: 320px;
 				align-self: center;
+				align-content: center;
 				&.clickyTracking {
 					visibility: hidden;
 					height: 0;
 				}
 				& > .vueImg {
-					height: 80px;
+					max-height: 80px !important;
+					min-width: 80px !important;
+					align-self: center;
 					& + h3 {
 						display: flex;
 						flex-direction: column;

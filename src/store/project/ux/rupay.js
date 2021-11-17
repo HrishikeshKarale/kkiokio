@@ -72,71 +72,54 @@ export const rupay = {
             "The next set of screens are the Top up, Pay bills and apply for loan screens"
         },
         {
-          img: {
-            src: require("@/assets/UX/rupay/addToWalleCardtRe.svg"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/rupay/addToWalletBankRe.svg"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/rupay/addToWalletAddBankRe.svg"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/rupay/creditCardRe.svg"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/rupay/creditCardManualRe.svg"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/rupay/creditCardAddRe.svg"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/rupay/creditCardQRRe.svg"),
-            alt: null,
-            caption: null
-          }
+          img: [
+            {
+              src: require("@/assets/UX/rupay/addToWalleCardtRe.svg"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/rupay/addToWalletBankRe.svg"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/rupay/addToWalletAddBankRe.svg"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/rupay/creditCardRe.svg"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/rupay/creditCardManualRe.svg"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/rupay/creditCardAddRe.svg"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/rupay/creditCardQRRe.svg"),
+              alt: null,
+              caption: null
+            }
+          ]
         },
         {
           text:
             "They are a number of bills (utility, subscribtions etc.) that could be directly paid using a mobile application, so I put them on a seperate screen called Bill Pay.I broke them down into their different categories to make it easier for the users to pay bills rather than scrolling through ten's of options."
         },
         {
-          img: {
-            src: require("@/assets/UX/rupay/LoanRequestRe.svg"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/rupay/payBillsRe.svg"),
-            alt: null,
-            caption: null
-          }
+          img: [
+            {
+              src: require("@/assets/UX/rupay/LoanRequestRe.svg"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/rupay/payBillsRe.svg"),
+              alt: null,
+              caption: null
+            }
+          ]
         },
         {
           text:
@@ -147,19 +130,18 @@ export const rupay = {
             "Since we were asked to add a feature that enables the users to request for a refund but not to make it too obvious, I decided to add it to the Profile settings page in the “Help & amp; Support screen”.Also included in the Profile settings page is a tab named “Refer and Earn” which enables the users to share a link to friends and family to sign up on the app and also earn a small token on each successful sign up as an incentive to the users."
         },
         {
-          img: {
-            src: require("@/assets/UX/rupay/profileSettingRe.svg"),
-            alt: null,
-            caption: null
-          }
+          img: [
+            {
+              src: require("@/assets/UX/rupay/profileSettingRe.svg"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/rupay/helpAndSupportRe.svg"),
+              alt: null,
+              caption: null
+            }
+          ]
         },
-        {
-          img: {
-            src: require("@/assets/UX/rupay/helpAndSupportRe.svg"),
-            alt: null,
-            caption: null
-          }
-        }
       ]
     }, //sections
     {

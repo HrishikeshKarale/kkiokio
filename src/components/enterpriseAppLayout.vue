@@ -163,19 +163,19 @@
 				@enter="enter"
 				@afterEnter="afterEnter"
 			>
-				<main :key="$route.path" class="content">
+				<div :key="$route.path" class="content">
 					<breadcrums />
 					<countdown-timer
 						class="countdownTimer"
 						start-time="January 24, 2021 23:59:99"
-						end-time="Aug 16, 2021 00:00:01"
+						end-time="Nov 30, 2021 00:00:01"
 						trans='{
               "day":"Day",
               "hours":"Hours",
               "minutes":"Minuts",
               "seconds":"Seconds",
               "expired":"Please contact the administrator (hrishirich619@gmail.com).",
-              "running":"Please report any bugs to site administrator at hrishirich619@gmail.com",
+              "running":"Known problems: 1. Project cards may be uneven. 2. some designs ay not show upat all (tinyThoughts, packstation, skinsafe)",
               "upcoming":"Till start of event.",
               "status": {
                 "expired":"We apologise fior the delay, Please come back tomorrow.",
@@ -197,7 +197,7 @@
 					<template v-if="$slots['moto']">
 						<slot name="moto" />
 					</template>
-				</main>
+				</div>
 			</transition>
 			<template v-if="$slots['footer']">
 				<slot name="footer" />
@@ -554,7 +554,7 @@
 				}
 
 				//scroll content
-				& > main {
+				& > div {
 					display: flex;
 					flex-direction: column;
 					&.content {
@@ -567,6 +567,10 @@
 						background-color: @backgroundColor !important;
 						//countdown timer
 						& > .countdownTimer {
+							// position: absolute;
+							// top: 0;
+							// left: 0;
+							// z-index: @modalZ - 5;
 							flex-direction: row;
 							background-color: @dangerBorder;
 							padding: @spaceMd @spaceLg;
@@ -582,7 +586,7 @@
 			@media (max-width: @1600width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@1200width, 0);
 							}
@@ -593,7 +597,7 @@
 			@media (max-width: @1200width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@768width, 6);
 							}
@@ -604,7 +608,7 @@
 			@media (max-width: @768width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@480width, 2);
 							}
@@ -615,7 +619,7 @@
 			@media (max-width: @480width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@320width, 2);
 							}
@@ -626,7 +630,7 @@
 			@media (max-width: @320width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@320width, -2);
 							}

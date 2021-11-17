@@ -186,18 +186,17 @@ export const tinythoughts = {
                           "I usually begin implementing by ideas on pen and paper rather than directly going on to the screen.I feel like paper wireframes is the	cheapest and least time consuming way to experiment with multiple ideas.Here is some of the clutter that I generated."
                       },
                       {
-                        img: {
-                          src: require("@/assets/UX/tinyThoughts/sketch.jpg"),
-                          alt: null,
-                          caption: null
-                        }
-                      },
-                      {
-                        img: {
-                          src: require("@/assets/UX/tinyThoughts/sketch2.jpg"),
-                          alt: null,
-                          caption: null
-                        }
+                        img: [
+                          {
+                            src: require("@/assets/UX/tinyThoughts/sketch.jpg"),
+                            alt: null,
+                            caption: null
+                          }, {
+                            src: require("@/assets/UX/tinyThoughts/sketch2.jpg"),
+                            alt: null,
+                            caption: null
+                          }
+                        ]
                       },
                       {
                         subSection: [

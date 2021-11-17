@@ -68,9 +68,8 @@
 		padding: @spaceMd @spaceLg;
 		border-radius: @borderRadiusLg;
 		justify-content: space-around;
-		flex: 0 0 320px;
+		width: 320px;
 		height: fit-content;
-		// border: 1px dashed @primary;
 		.boxShadow(@base, @secondary);
 
 		& > p {
@@ -96,12 +95,13 @@
 			position: relative;
 			& > .vueImg {
 				position: relative;
-				width: ~"calc(100% + @{spaceXl})" !important;
-				height: ~"calc(100% + @{spaceMd})";
+					width: ~"calc(100% + @{spaceXl})" !important;
+					height: ~"calc(100% + @{spaceMd})";
 				margin-left: -@spaceLg;
 				margin-top: -@spaceMd;
 				border-radius: @borderRadius @borderRadius 0 0 !important;
 				overflow: hidden;
+				object-fit: fill !important;
 				//gradient
 				&::after {
 					position: absolute;

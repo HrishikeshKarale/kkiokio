@@ -266,10 +266,15 @@
 						&:first-child {
 							margin-right: 3*@spaceXl !important;
 							& > a {
+								gap: @spaceLg;
 								& > .vueImg {
-									height: 64px;
-									min-width: 64px;
+									max-height: 64px !important;
+									min-width: 64px !important;
 									width: fit-content;
+									& > img {
+										height: 64px !important;
+										width: 64px !important;
+									}
 									& + h3 {
 										display: flex;
 										flex-direction: column;

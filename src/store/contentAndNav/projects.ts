@@ -38,7 +38,7 @@ export const projects: projectType[] = [
         id: 2,
         portfolio: true,
         title: "Online Learning Platform",
-        img: require("@/assets/UX/crowdCo/header.png"),
+        img: require("@/assets/UX/mediaHRPlatform/header.png"),
         tags: [
           "User Research",
           "IA",
