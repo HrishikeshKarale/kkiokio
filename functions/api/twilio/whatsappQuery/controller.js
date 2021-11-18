@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 require('dotenv').config();
 // import getReply from '../../../stateMachine/whatsappBot/index'
-const getReply = require('../../../stateMachine/whatsappBot/index');
+const getReply = require('../../../stateMachine/registerUser/index');
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 // const sender = process.env.SENDER;
@@ -14,7 +14,7 @@ const controller = (req, res) => {
 	console.log('whatsappQuery', message, req.body);
 	client.messages
 		.create({
-			body: 'SERVER SAYS: ' + getReply(message),
+			body: getReply(message),
 			from: reciever,
 			to: sender
 		})
