@@ -1,6 +1,8 @@
 // enum Preset {
 // 	HELLO = 'Hi'
 // };
+const { getParsedCommandLineOfConfigFile } = require('typescript');
+const sendMail = require('../../mailer/index');
 
 let reply;
 
@@ -12,7 +14,7 @@ function getReply(query) {
 	console.log('getReply', query);
 	switch (query) {
 		case "Hi":
-			reply = "Dear user,\nThe number * phoneNumber * is not a registered number.\n\nWould you like to register with us using this number ?\n1. Yes, Register * phoneNumber *\n2. NO"
+			reply = "Dear user,\nThe number * phoneNumber * is not a registered number.\n\nWould you like to register with us using this number ?\n1. Yes, Register * phoneNumber *\n2. NO";
 			break;
 		case "a":
 			reply = "Great!\nPlease Enter your Full Name(Ex: Ravi Patel)"
@@ -28,6 +30,7 @@ function getReply(query) {
 			break;
 		case "e":
 			reply = "We have sent a confirmation email to *emailID@mail.com*.\nPlease confirm your email ID."
+			sendMail(['hrishirich619@gmail.com', 'anurag.Tingre@gmail'], 'TEST EMAIL NODEMAILER (TEXT)', { type: 'html', value: '<a href="https://c22b-2409-4042-d90-5d64-7916-be41-2346-9476.ngrok.io/portfolio-website-689b4/us-central1/router/api/authentication/verifyEmailID/Hrishikesh.Karale@gmail.com/3283487" target="_blank" >this is a text email sent via nodemailer </a>' });
 			break;
 		case "f":
 			reply = "You are all set up."
