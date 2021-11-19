@@ -13,7 +13,7 @@ const controller = (req, res) => {
 	if (req.body.message) {
 		message = req.body.message;
 	}
-	console.log(phoneNumber, sender);
+	// console.log(phoneNumber, sender);
 
 	client.messages
 		.create({

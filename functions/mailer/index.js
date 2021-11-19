@@ -21,9 +21,9 @@ const sendMail = (to, subject, content) => {
 		html: content.type === 'html' ? content.value : ''
 	}, function (error, info) {
 		if (error) {
-			console.log('ERROR: ', error);
+			// console.log('ERROR: ', error);
 		} else {
-			console.log('Email sent: ' + info.response);
+			// console.log('Email sent: ' + info.response);
 		}
 	});
 }

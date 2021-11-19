@@ -11,7 +11,7 @@ let state = {
 };
 
 function getReply(query) {
-	console.log('getReply', query);
+	// console.log('getReply', query);
 	switch (query) {
 		case "Hi":
 			reply = "Dear user,\nThe number * phoneNumber * is not a registered number.\n\nWould you like to register with us using this number ?\n1. Yes, Register * phoneNumber *\n2. NO";

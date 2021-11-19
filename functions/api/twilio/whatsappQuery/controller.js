@@ -11,7 +11,7 @@ const controller = (req, res) => {
 	const sender = req.body.From;
 	const reciever = req.body.To;
 
-	console.log('whatsappQuery', message, req.body);
+	// console.log('whatsappQuery', message, req.body);
 	client.messages
 		.create({
 			body: getReply(message),
