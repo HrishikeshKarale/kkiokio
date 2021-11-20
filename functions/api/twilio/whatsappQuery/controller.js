@@ -6,7 +6,7 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 // const sender = process.env.SENDER;
 const client = require('twilio')(accountSid, authToken);
-const controller = (req, res) => {
+const controller = async (req, res) => {
 	let message = req.body.Body;
 	const sender = req.body.From;
 	const reciever = req.body.To;
@@ -14,7 +14,11 @@ const controller = (req, res) => {
 	// console.log('whatsappQuery', message, req.body);
 	client.messages
 		.create({
-			body: getReply(message),
+			body: await getReply({
+				message: message,
+				to: reciever,
+				from: sender
+			}),
 			from: reciever,
 			to: sender
 		})

@@ -1,77 +1,263 @@
-// enum Preset {
-// 	HELLO = 'Hi'
-// };
-const { getParsedCommandLineOfConfigFile } = require('typescript');
-const sendMail = require('../../mailer/index');
+/* eslint-disable @typescript-eslint/no-var-requires */
+const sendSMS = require('../../js/sendSMS/index');
+const sendMail = require('../../js/sendMail/index');
+const generateOTP = require('../../js/generateOTP/index');
 
 let reply;
 
-let state = {
-	active: false
-};
+const machine = {
+	state: {
+		type: 'REGISTER_EMAIL',
+		subType: ''
+	},
+	user: {
+		OTP: '0',
+		OTP_COUNTER: 3,
+		phone: {
+			number: null,
+			verified: false
+		},
+		email: {
+			id: null,
+			verified: false
+		}
+	},
+	transitions: {
+		INIT: {
+			initialise: function (payload) {
+				reply = `Dear user, \nThe number *${payload.from.slice(-10)}* is not a registered number.\n\nWould you like to register with us using this number ?\n1. Yes, Register with *${payload.from.slice(-10)}*\n2. NO`;
+				this.changeState('VERIFY_PHONE');
+			},
+			add: function (register) {
 
-function getReply(query) {
-	// console.log('getReply', query);
-	switch (query) {
-		case "Hi":
-			reply = "Dear user,\nThe number * phoneNumber * is not a registered number.\n\nWould you like to register with us using this number ?\n1. Yes, Register * phoneNumber *\n2. NO";
+			}
+		},
+		VERIFY_PHONE: {
+			sendOTP: async function (payload) {
+				const reg = payload.message.toUpperCase();
+				switch (reg) {
+					case "1":
+					case "Y":
+					case "YES":
+					case "REGISTER":
+						this.user.OTP = this.user.OTP !== '0' ? this.user.OTP : generateOTP(5);
+						console.log(this.user.OTP);
+						this.user.OTP_COUNTER = 3;
+						await sendSMS(payload.from.slice(-10), `Kkiokio\nOTP Code:${this.user.OTP}`)
+							.then(message => {
+								this.changeSubState('OTPSent');
+								this.user.phone = {
+									number: payload.message,
+									verified: false
+								};
+								reply = `Please enter the OTP sent to your phone number (${payload.from}).`;
+							})
+							.catch((exception) => {
+								console.error(`Exception thrown by Twilio in sending OTP: ${exception}`);
+							});
+						break;
+					case "2":
+					case "N":
+					case "NO":
+						this.changeSubState('');
+						reply = 'The number you are using is not verified, please contact us using a verified phone number';
+						break;
+					default:
+						reply = 'Invaid reply\nPlease try again';
+				};
+			},
+			verifyOTP: function (payload) {
+				if (this.user.OTP === payload.message) {
+					this.changeState('REGISTER_NAME');
+					reply = `Your phone number *${payload.from.slice(-10)}* has been *VERIFIED*.\n\nTo move forward with the registration, please enter your full name (Ex: John doe)`;
+					this.user.phone.verified = true;
+				} else {
+					//  if OTP does not match decrese attempts and after 3 attempts reset counter.
+					if (this.user.OTP_COUNTER === 0) {
+						this.user.OTP = '0';
+						this.user.OTP_COUNTER = 3;
+						reply = `Invalid OTP\n\nYou have exhausted your maximum number of tries.\n please try again from the begining.`;
+					} else {
+						this.user.OTP_COUNTER -= 1;
+						reply = `Invalid OTP\n\nPlease try again.\nRetry left: ${this.user.OTP_COUNTER}`;
+					}
+				}
+			},
+		},
+		REGISTER_NAME: {
+			verifyName: function (payload) {
+				const [firstName, lastName] = payload.message.split(' ');
+				// console.log(firstName, lastName);
+				reply = `Hi *${firstName}*,\nPlease enter a valid email ID for registration (Ex: John.doe@gmail.com).`
+				this.changeState('REGISTER_EMAIL');
+			}
+		},
+		REGISTER_EMAIL: {
+			sendCode: async function (payload) {
+				const emailPattern = new RegExp('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$');
+				const reg = emailPattern.test(payload.message);
+				switch (reg) {
+					case true:
+						this.user.OTP = this.user.OTP !== '0' ? this.user.OTP : generateOTP(5);
+						this.user.OTP_COUNTER = 3;
+						this.user.email = {
+							id: payload.message,
+							verified: false
+						};
+						await sendMail(
+							[
+								payload.message
+							],
+							`Kkiokio Email Verificatinon Code ${this.user.OTP}`,
+							{
+								type: 'html',
+								value: `<p>Hi,</p><p>Your requested verification code is <b>${this.user.OTP}</b></p>`
+							}
+						)
+							.then(() => {
+								console.log(this.user.OTP);
+								this.changeSubState('codeSent');
+								reply = `Please check your email for the verification code and  enter the code here.`;
+							})
+							.catch(exception => {
+								console.error('ERROR: ', exception);
+								reply = `Somethig went wrong, Please try again.`;
+							});
+						break;
+					case false:
+						this.changeSubState('');
+						reply = 'The email you are using is not verified.\nunless verified we would not be able to send you an invoice for your purchase.';
+						break;
+					default:
+						reply = 'Invaid reply\nPlease try again';
+				};
+			},
+			verifyEmail: async function (payload) {
+				if (this.user.OTP === payload.message) {
+					this.changeState('COMPLETED');
+					this.user.email.verified = true;
+					await sendMail(
+						[
+							this.user.email.id
+						],
+						`Welcome to Kkiokio`,
+						{
+							type: 'html',
+							value: `<p>Hi,</p><p>Yor profile is now registered <b>Hurray!!</b></p>`
+						}
+					)
+						.then(() => {
+							reply = "*Congralutations!!*\n your profile has now been registered."
+						})
+						.catch(exception => {
+							console.error('ERROR: ', exception);
+						});
+				} else {
+					//  if OTP does not match decrese attempts and after 3 attempts reset counter.
+					if (this.user.OTP_COUNTER === 0) {
+						this.user.OTP = '0';
+						this.user.OTP_COUNTER = 3;
+						reply = `Invalid code\n\nYou have exhausted your maximum number of tries.\n please try again from the begining.`;
+					} else {
+						this.user.OTP_COUNTER -= 1;
+						reply = `Invalid code\n\nPlease try again.\nRetry left: ${this.user.OTP_COUNTER} `;
+					}
+				}
+			},
+		},
+		COMPLETED: {
+			registered: async function (payload) {
+				reply = 'userRegistered';
+			}
+		}
+	},
+	async dispatch(actionName, ...payload) {
+		const actions = this.transitions[this.state.type];
+		const action = actions[actionName];
+
+		if (action) {
+			await action.apply(machine, ...payload)
+		} else {
+			// do nothing
+		}
+	},
+	changeState(newState) {
+		if (this.transitions[newState]) {
+			this.state.type = newState;
+			this.changeSubState('');
+		} else {
+			// do nothing
+		}
+	},
+	changeSubState(newSubState) {
+		this.state.subType = newSubState;
+	}
+}
+
+let whatsappBot = Object.create(machine, {
+	name: {
+		writable: false,
+		enumerable: true,
+		value: "registerUser"
+	}
+});
+
+async function getReply(payload) {
+	reply = '';
+	switch (whatsappBot.state.type) {
+		case "INIT":
+			switch (whatsappBot.state.subType) {
+				case "":
+					whatsappBot.dispatch('initialise', [payload]);
+					break;
+				default:
+					reply = 'Please Try again';
+					break;
+			};
 			break;
-		case "a":
-			reply = "Great!\nPlease Enter your Full Name(Ex: Ravi Patel)"
+		case "VERIFY_PHONE":
+			switch (whatsappBot.state.subType) {
+				case "":
+					await whatsappBot.dispatch('sendOTP', [payload]);
+					break;
+				case "OTPSent":
+					whatsappBot.dispatch('verifyOTP', [payload]);
+					// console.log(reply);
+					break;
+				default:
+					reply = 'Please Try again';
+					break;
+			};
 			break;
-		case "b":
-			reply = "Hi *firstName*,\nPlease enter your Date of Birth(Ex: 01 01 90) in a 2 digit DD MM YY format."
+		case "REGISTER_NAME":
+			switch (whatsappBot.state.subType) {
+				case "":
+					whatsappBot.dispatch('verifyName', [payload]);
+					break;
+				default:
+					reply = 'Please Try again';
+					break;
+			};
 			break;
-		case "c":
-			reply = "As per our system, you seem to be *X* Years old.\n\nIs that correct ?\n1. Yes, I am * X * years old\n2. Re - Enter Date of Birth"
+		case "REGISTER_EMAIL":
+			switch (whatsappBot.state.subType) {
+				case "":
+					await whatsappBot.dispatch('sendCode', [payload]);
+					break;
+				case "codeSent":
+					await whatsappBot.dispatch('verifyEmail', [payload]);
+					break;
+				default:
+					reply = 'Please Try again';
+					break;
+			};
 			break;
-		case "d":
-			reply = "Great!\nNow that we know your age, Please enter your email address you wish to use with this account.  (Ex: username@domain.com)"
-			break;
-		case "e":
-			reply = "We have sent a confirmation email to *emailID@mail.com*.\nPlease confirm your email ID."
-			sendMail(['hrishirich619@gmail.com', 'anurag.Tingre@gmail'], 'TEST EMAIL NODEMAILER (TEXT)', { type: 'html', value: '<a href="https://c22b-2409-4042-d90-5d64-7916-be41-2346-9476.ngrok.io/portfolio-website-689b4/us-central1/router/api/authentication/verifyEmailID/Hrishikesh.Karale@gmail.com/3283487" target="_blank" >this is a text email sent via nodemailer </a>' });
-			break;
-		case "f":
-			reply = "You are all set up."
-		case "g":
-			reply = "Your profile is 40% complete.\nWould you like to complete your profile?\n1. Yes, Continue with Address details\n2. NO"
-			break;
-		case "h":
-			reply = "Awesome!\nLets continue your registration.\nPlease enter the details of your address below.\n\nI live in a ______?\n1. House\n2. partment"
-			break;
-		case "i":
-			reply = "Please enter your house Number.\nIf you don't know your houseNumber enter 'N' to skip this question"
-			break;
-		case "j":
-			reply = "Please enter closest landmark details if any, if not type 'n' to skip. (Ex: near/behind/across police station)"
-			break;
-		case "k":
-			reply = "Please enter line 1 of your address (Ex: Jawahar Nagar/Colony)"
-			break;
-		case "l":
-			reply = "Please enter line 2 of your address.\nType 'N' to skip"
-			break;
-		case "m":
-			reply = "Please Enter zip/pin code"
-			break;
-		case "n":
-			reply = "Do you live in *cityName*, *state*?\n1. Yes, I live in *cityName*, *state*\n2. NO"
-			break;
-		case "o":
-			reply = "Your profile is 60% complete.\nWould you like to complete your profile?\n\n1. Yes, Continue with mode of payment\n2. NO"
-			break;
-		case "p":
-			reply = "Please follow this link and make a payment of 1 rupee.\nYou payment would be returned to your bank account in 3 days.\n\n*Link*"
-			break;
-		case "q":
-			reply = "congralutations! Payment mode set up successfull\n\nA payment of Rs 1/- is made in the name of *firstName* *lastName*.\n\nYour payment will be reverted back in 2-3 days\n\nPlease contact us if it does not show up in 5 days."
-			break;
-		case "r":
-			reply = "Your profile is not 8-% complete.\nTo complete your profile any further, please visit this link and sign in to continue \n\n*link*"
+		case "COMPLETED":
+		case "":
+			await whatsappBot.dispatch('addDetails', [payload]);
 			break;
 		default:
-			reply = 'Please try again.'
+			reply = 'Invalid Request'
 	};
 	return reply;
 };

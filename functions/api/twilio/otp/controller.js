@@ -1,21 +1,14 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-require('dotenv').config();
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = require('twilio')(accountSid, authToken); const controller = (req, res) => {
-	let phoneNumber = 8551849510;
-	let otp = Math.floor(1000 + Math.random() * 9000);
-	if (req.body.phoneNumber) {
-		phoneNumber = req.body.phoneNumber;
-	}
-	if (req.body.otp) {
-		otp = req.body.otp;
-	}
-	client.messages.create({
-		body: `OTP Code: ${otp}`,
-		from: '+19168888870',
-		to: '+91' + phoneNumber
-	})
+const sendSMS = require('../../../js/sendSMS/index');
+const generateOTP = require('../../../js/generateOTP/index');
+
+const controller = (req, res) => {
+	const phoneNumber = req.body.phoneNumber ? req.body.phoneNumber : 8551849510;
+	const otp = req.body.otp ? req.body.otp : generateOTP(4);
+
+	const message = `Kkiokio.com\nOTP Code: ${otp}`;
+
+	sendSMS(phoneNumber, message)
 		.then(message => {
 			// console.log(message.sid);
 			return res.status(200).send({

@@ -26,11 +26,9 @@
     "twilio": "^3.68.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-typescript": "~4.5.0",
     "eslint": "^6.7.2",
     "eslint-plugin-promise": "^4.0.1",
-    "firebase-functions-test": "^0.2.0",
-    "typescript": "~4.1.5"
+    "firebase-functions-test": "^0.2.0"
   },
   "engines": {
     "node": "16"
