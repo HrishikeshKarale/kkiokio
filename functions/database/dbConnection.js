@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 require('dotenv').config();
-const password = process.env.MONGO_DB_PASSWORD;
+const MongoDBurl = process.env.MONGO_DB_URL;
 
 const { MongoClient } = require('mongodb');
-const uri = `mongodb+srv://kkiokio:${password}@kkiokio.nprdo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri = MongoDBurl;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
 	const collection = client.db("test").collection("devices");
