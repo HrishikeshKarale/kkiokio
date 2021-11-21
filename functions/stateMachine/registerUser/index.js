@@ -111,7 +111,7 @@ const machine = {
 							`Kkiokio Email Verificatinon Code ${this.user.OTP}`,
 							{
 								type: 'html',
-								value: `<p>Hi,</p><p>Your requested verification code is <b>${this.user.OTP}</b></p>`
+								value: `<p>Dear Customer,</p><p>Welcome, we than you for registering at Kkiokio on our portfolio website</p><br /><p>Your registered mobile number is: <b>${this.user.phone.number}</b><p>Your email id verification code is: <b>${this.user.OTP}</b></p><br /><br /><h5>*************Information*************</h5><p>For any Queries or information regarding your interaction/transaction with Kkiokio, do not provide your credit/debit card details by any means to Kkiokio. All your queries can be replied on the basis of 10 digit Kkiokio transaction id/user id. Kkiokio does not store the credit/debit card information inany form during the transaction.</p><h5>*************************************</h5><br /><br /><br /><br /><p>Warm Regards,<br />Customer Care Team,<br />Kkiokio</p>`
 							}
 						)
 							.then(() => {
