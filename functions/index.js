@@ -8,8 +8,8 @@ const apiRoutes = require("./api");
 //cors
 const corsFunc = require("./cors");
 
-
 const app = express();
+
 app.use(cors());
 const router = express.Router();
 

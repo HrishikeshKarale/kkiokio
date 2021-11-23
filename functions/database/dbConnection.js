@@ -1,12 +1,15 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-require('dotenv').config();
+//Import the mongoose module
+var mongoose = require('mongoose');
 const MongoDBurl = process.env.MONGO_DB_URL;
 
-const { MongoClient } = require('mongodb');
-const uri = MongoDBurl;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-	const collection = client.db("test").collection("devices");
-	// perform actions on the collection object
-	client.close();
-});
+//Set up default mongoose connection
+// var mongoDB = 'mongodb://127.0.0.1/my_database';
+mongoose.connect(MongoDBurl, { useNewUrlParser: true, useUnifiedTopology: true });
+
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+module.exports = db;
