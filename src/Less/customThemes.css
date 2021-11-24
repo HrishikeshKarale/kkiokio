@@ -4,9 +4,12 @@ html {
   --secondaryColor: #FBCE51;
   --accentColor: #E38B24;
   --white: #FFFFFF;
+  --blueWhite: #FFFEF4;
   --offWhite: #FAFBFC;
   --black: #000000;
   --offBlack: #0C090D;
+  --matteBlack: #28282B;
+  --charcoal: #36454F;
 
   /* shades of grey */
   --grayDarker:~"lighten({--black}, 13.5%)";
@@ -17,10 +20,10 @@ html {
 }
 
 :root {
-  --textColor: var(--offBlack);
-  --backgroundColor: var(--white);
-  --navText: var(--offBlack);
-  --navBackground: var(--offWhite);
+  --textColor: var(--offWhite);
+  --backgroundColor: var(--charcoal);
+  --navText: var(--accentColor);
+  --navBackground: var(--matteBlack);
   --shadowColor: var(--offBlack);
 }
 

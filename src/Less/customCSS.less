@@ -961,6 +961,7 @@ article {
   h5,
   h6 {
     margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   &>header {
@@ -1004,12 +1005,6 @@ article {
     justify-content: center;
     width: 100%;
     @gap: @spaceXl !important;
-
-    &>h3::before {
-      content: "";
-      margin-right: @spaceMd;
-      margin-left: -@spaceXl;
-    }
 
     .multipleImg {
       display: flex;
@@ -1294,8 +1289,11 @@ small,
 mark,
 .mark {
   background-color: @secondary;
-  border-radius: @borderRadiusSm;
+  border-radius: @borderRadius;
   padding: @spaceSm @spaceMd;
+  color: @backgroundColor;
+  font-weight: bold;
+  letter-spacing: 2px !important;
 }
 
 // Lists
@@ -1363,10 +1361,8 @@ body {
     font-family: @fontFamily;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: @fontSizeMd;
+    font-size: @fontSize;
     font-style: normal;
     line-height: @lineHeight;
-
-		// .backgroundColor(@primary, 4%, 0, 0, 100vw);
   }
 }

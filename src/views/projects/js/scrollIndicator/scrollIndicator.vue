@@ -272,7 +272,7 @@
 					& > span {
 						color: @backgroundColor;
 						background-color: transparent;
-						.textShadow(@base);
+						.textShadow(@baseText);
 						&:last-child {
 							display: none;
 						}

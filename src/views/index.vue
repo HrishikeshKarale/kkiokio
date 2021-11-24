@@ -1,10 +1,12 @@
 <template>
 	<article class="profileOverview">
-		<section id="intro">
+		<section id="Intro">
 			<div class="subSection">
 				<span>HELLO THERE</span>
 				<h2>My name is</h2>
-				<h1 @click="$router.push({ name: 'about' })">Hrishikesh Karale.</h1>
+				<h1>
+					<a @click="$router.push({ name: 'about' })">Hrishikesh Karale.</a>
+					</h1>
 				<h2>I design things.</h2>
 				<p>
 					I am a
@@ -18,47 +20,27 @@
 					<span class="fas fa-arrow-right" />
 					Front-End Development.
 				</p>
-				<!-- <p>
-					As a UX Professional, I am passionate about
-					<mark>Empathy in design</mark>. I believe in setting ego aside and
-					creating an experience that caters to my user needs. My ability to
-					organised workflows, understand visual design language and solve
-					problems shows in my work.
-				</p> -->
-				<vue-button
+				<!-- <vue-button
 					tag="loginButton"
-					category="border-sm"
+					category="border-lg"
 					text="About me"
-					icon="fas fa-sign-in-alt"
+					icon="fas fa-user"
 					:ctx="
 						() => {
 							$router.push({ name: 'about' });
 						}
 					"
-				/>
+				/> -->
 			</div>
 			<div class="subSection" @click="$router.push({ name: 'work' })">
-				<span>Designer</span>
+				<!-- <span>Designer</span>
 				<span>&amp;</span>
-				<span>Developer</span>
+				<span>Developer</span> -->
 			</div>
 		</section>
-		<section id="projects">
+		<section id="Work">
 			<h1>WORK</h1>
-			<h3>What I've been up to</h3>
-			<p>
-				Globally adopted software, high converting websites, emerging
-				technology and beyond.
-			</p>
-			<!-- <q>
-				A good User Interface is important because it can turn potential
-				visitors to buyers as it facilitates interactions between the user and
-				your website or web application----f5-studio.com
-			</q> -->
-			<p>
-				This is a detailed chronicle of the stories, processes and results
-				behind the projects that I've led and contributed to.
-			</p>
+			<h3>Here are some samples of my work</h3>
 			<div>
 				<template v-for="projects in getProjects" :key='projects.type'>
 					<template v-for="project in projects.value" :key='project.id'>
@@ -113,7 +95,7 @@
 
 <script>
 	// @ is an alias to /src
-	import vueButton from "@/components/vueButton.vue";
+	// import vueButton from "@/components/vueButton.vue";
 	import { loading } from "@/typeScript/common/loading";
 	import { mapGetters } from "vuex";
 	import showcase from "@/components/showcase.vue";
@@ -122,7 +104,7 @@
 	export default {
 		name: "Home",
 		components: {
-			vueButton,
+			// vueButton,
 			showcase,
 			// slider,
 		},
@@ -150,23 +132,24 @@
 	article.profileOverview {
 		& > section {
 			position: relative;
-			&:not(#intro) {
+			&:not(#Intro) {
 				h1 {
 					align-self: center;
+					position: relative;
 					font-weight: 900;
+					font-size: 6 * @fontSize;
 					filter: opacity(16%);
-					font-size: 4 * @fontSize;
-					.textShadow(@three, @black);
+					.textShadow(@fiveText);
 					& + h3 {
 						position: absolute;
 						align-self: center;
 						text-align: center;
-						top: 2 * @spaceXl;
+						top: 3 * @spaceXl + @spaceMd;
 						font-weight: bold;
 					}
 				}
 			}
-			&#intro {
+			&#Intro {
 				// .backgroundColor(@primary, 100vw, 32%);
 				flex-direction: row;
 				justify-content: space-evenly;
@@ -202,43 +185,54 @@
 					}
 					//design and develop box
 					&:last-child {
-						margin-left: 0;
-						border: @borderRadius dashed @accent;
-						height: 240px;
+						position: relative;
 						width: 240px;
-						border-radius: 25%;
+						aspect-ratio: 1;
+						border-radius: 24%;
 						cursor: pointer;
-						.boxShadow(@five, @accent);
-						&:hover {
-							.boxShadow(@three, @accent);
+						background-color: transparent;
+						border: @spaceMd double @accent;
+						gap: @spaceXl;
+						transform: rotate(-45deg);
+						&::before {
+							content: '';
+							position: absolute;
+							top: @spaceLg + @spaceSm;
+							left: @spaceLg + @spaceSm;
+							width: 80%;
+							aspect-ratio: 1/1;
+							background-image: url(../assets/logo.svg);
+							background-repeat: no-repeat;
+							background-position: center;
+							transform: rotate(45deg);
 						}
-						.backgroundColor();
+						&:hover {
+							border: @spaceMd double @accent;
+							.boxShadow(@base, @primary);
+							& > span {
+								.textShadow(@threeText);
+							}
+						}
 						& > span {
+							transform: rotate(45deg);
 							font-size: 64px;
 							align-self: center;
 							font-weight: bold;
-							transform: rotate(-45deg);
-							margin-right: 4*@spaceXl !important;
+							.textShadow(@threeText);
 							&:last-child {
 								margin-right: 0 !important;
-								margin-left: 3*@spaceXl !important;
-							}
-							&:nth-child(2) {
-								transform: rotate(0deg);
-								margin: 0 !important;
 							}
 						}
 					}
 				}
 			}
-			&#projects {
+			&#Work {
 				& > div {
 					display: flex;
 					flex-flow: row wrap;
 					gap: @spaceXl;
 					& > div {
-						flex: 1 0 240px;
-
+						flex: 0 0 100%;
 					}
 				}
 			}
@@ -284,8 +278,8 @@
 							& > div {
 								&:last-child {
 									margin: 2 * @spaceXl 0;
-									height: 240px;
 									width: 240px;
+									aspect-ratio: 1;
 									align-self: center;
 									& > span {
 										font-size: 2 * @fontSize;

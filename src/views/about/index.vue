@@ -218,7 +218,7 @@
 					font-weight: 900;
 					filter: opacity(16%);
 					font-size: 4 * @fontSize;
-					.textShadow(@three, @black);
+					.textShadow(@threeText, @black);
 					& + h3 {
 						position: absolute;
 						align-self: center;
@@ -406,7 +406,7 @@
 								text-align: right;
 							}
 							& > h1 {
-								.textShadow(@one, @primary);
+								.textShadow(@oneText, @primary);
 							}
 							// profile Image
 							&:first-child {

@@ -65,7 +65,7 @@
 @fontFamily: 'Roboto', Arial, sans-serif;
 
 @lineHeightBase: 1.428571429;
-@lineHeight: floor((@fontSize * @lineHeightBase));
+@lineHeight: floor((@fontSize * 1.618));
 
 //spacing or sizing
 @spaceXs: 2px;
@@ -101,12 +101,12 @@
 @four: 0 @spaceMd @spaceLg;
 @five: 0 @spaceLg @spaceXl;
 //textShadows (text-shadow: topOffset leftOffset blurRadius color;)
-@baseText: @base;
-@oneText: @one;
-@twoText: @two;
-@threeText: @three;
-@fourText: @four;
-@fiveText: @five;
+@baseText: inset 0 0 @spaceSm;
+@oneText: 0 0 @spaceXs;
+@twoText: 0 0 @spaceSm;
+@threeText: 0 0 @spaceMd;
+@fourText: 0 0 @spaceLg;
+@fiveText: 0 0 @spaceXl;
 
 //transitions
 @transitionElement: all;

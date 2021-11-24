@@ -168,7 +168,7 @@
 					<countdown-timer
 						class="countdownTimer"
 						start-time="January 24, 2021 23:59:99"
-						end-time="Nov 29, 2021 00:00:01"
+						end-time="Nov 20, 2021 00:00:01"
 						trans='{
               "day":"Day",
               "hours":"Hours",
