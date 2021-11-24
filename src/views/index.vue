@@ -14,29 +14,14 @@
 					based out of Rochester, NY.
 				</p>
 				<p>
-					My expertise ranges from Problem Validation
-					<span class="fas fa-arrow-right" /> Research
-					<span class="fas fa-arrow-right" /> UX/UI Design
+					My expertise ranges from <b>Problem Validation</b>
+					<span class="fas fa-arrow-right" /> <b>Research</b>
+					<span class="fas fa-arrow-right" /> <b>UX/UI Design</b>
 					<span class="fas fa-arrow-right" />
-					Front-End Development.
+					<b>Front-End Development</b>.
 				</p>
-				<!-- <vue-button
-					tag="loginButton"
-					category="border-lg"
-					text="About me"
-					icon="fas fa-user"
-					:ctx="
-						() => {
-							$router.push({ name: 'about' });
-						}
-					"
-				/> -->
 			</div>
-			<div class="subSection" @click="$router.push({ name: 'work' })">
-				<!-- <span>Designer</span>
-				<span>&amp;</span>
-				<span>Developer</span> -->
-			</div>
+			<div class="subSection" @click="$router.push({ name: 'work' })" />
 		</section>
 		<section id="Work">
 			<h1>WORK</h1>
@@ -61,32 +46,16 @@
 			<h1>Kind Words</h1>
 			<h3>What people think about me</h3>
 			<div class="subSection">
-				<div>
+				<div
+					v-for="words in kindWords"
+					:key="words.name"
+					class="subSection"
+				>
 					<q>
-						As a manager, you hope to hire people who are smarter than you,
-						driven to make a big impact, and who constantly push themselves to
-						grow–and Hrishikesh was certainly that. I learned a lot from him
-						(his knowledge in UX design is unparalleled) and it was a joy
-						working together.
+						<span class="fas fa-quote-left fa-2x fa-pull-left fa-border" />
+						{{ words.comment }}
 					</q>
-					<h5>Craig Swings</h5>
-				</div>
-				<div class="subSection">
-					<q>
-						Hrishikesh, exhibits the experience and talent of someone twice his
-						age in years. He is an incredible leader and has a way about him to
-						get the most out of anyone. But most importantly, he's always eager
-						to help others learn, grow and improve.
-					</q>
-					<h5>Junaid Shaikh</h5>
-				</div>
-				<div>
-					<q>
-						What I enjoyed most about working with Hrishikesh was his mix of
-						to-the-point creative vision and direction, while providing it in
-						one of the most humble ways I’ve encountered.
-					</q>
-					<h5>Justin</h5>
+					<h5>{{words.name}}</h5>
 				</div>
 			</div>
 		</section>
@@ -114,9 +83,25 @@
 			const profilePic = require("@/../public/img/profilePic.jpg");
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logo = require("@/assets/logo.svg");
+			// reviews
+			const kindWords = [
+				{
+					comment: "As a manager, you hope to hire people who are smarter than you, driven to make a big impact, and who constantly push themselves to grow–and Hrishikesh was certainly that. I learned a lot from him (his knowledge in UX design is unparalleled) and it was a joy working together.",
+					name: "Craig Swings"
+				},
+				{
+					comment: "Hrishikesh, exhibits the experience and talent of someone twice his age in years. He is an incredible leader and has a way about him to get the most out of anyone. But most importantly, he's always eager to help others learn, grow and improve.",
+					name: "Junaid Shaikh"
+				},
+				{
+					comment: "What I enjoyed most about working with Hrishikesh was his mix of to-the-point creative vision and direction, while providing it in one of the most humble ways I’ve encountered.",
+					name: "Justin"
+				}
+			];
 			return {
 				profilePic,
 				logo,
+				kindWords
 			};
 		},
 		computed: {
@@ -179,9 +164,12 @@
 					& > p {
 						max-width: 640px;
 						margin-bottom: @spaceXl;
-					}
-					& > button {
-						align-self: flex-end;
+						& > span {
+							padding: 0 @spaceLg;
+						}
+						& > b {
+							color: @secondary;
+						}
 					}
 					//design and develop box
 					&:last-child {
@@ -194,6 +182,15 @@
 						border: @spaceMd double @accent;
 						gap: @spaceXl;
 						transform: rotate(-45deg);
+						&::after {
+							content: '"A little empathy goes a long way"';
+							position: absolute;
+							top: 216px;
+							left: -208px;
+							font-weight: 900;
+							color: @primary;
+							transform: rotate(45deg);
+						}
 						&::before {
 							content: '';
 							position: absolute;
@@ -211,16 +208,6 @@
 							.boxShadow(@base, @primary);
 							& > span {
 								.textShadow(@threeText);
-							}
-						}
-						& > span {
-							transform: rotate(45deg);
-							font-size: 64px;
-							align-self: center;
-							font-weight: bold;
-							.textShadow(@threeText);
-							&:last-child {
-								margin-right: 0 !important;
 							}
 						}
 					}
@@ -242,18 +229,24 @@
 					flex-direction: row;
 					flex-wrap: wrap;
 					gap: @spaceXl;
+					// comment sections
 					& > div {
 						display: flex;
 						flex-direction: column;
-						flex: 0 1 480px;
+						// aspect-ratio: 16/10;
 						border-radius: @borderRadiusLg;
-						border: 1px dashed @primary;
+						// border: 1px dashed @primary;
 						height: fit-content;
-						.boxShadow(@base, @primary);
+						.boxShadow(@oneText);
 						.backgroundColor(@primary, 4%, @spaceLg, @spaceXl);
 						gap: @spaceLg;
 						& > q {
-							// margin: @spaceXl;
+							quotes: none;
+							min-width: 240px;
+							max-width: 640px;
+							&> span {
+								color: @secondary;
+							}
 							& + h5 {
 								display: flex;
 								flex-direction: row-reverse;
@@ -278,8 +271,6 @@
 							& > div {
 								&:last-child {
 									margin: 2 * @spaceXl 0;
-									width: 240px;
-									aspect-ratio: 1;
 									align-self: center;
 									& > span {
 										font-size: 2 * @fontSize;
