@@ -1129,22 +1129,19 @@ ul {
 
 //tags
 .tag {
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
-  font-size: @fontSizeSm;
-  position: relative;
+  align-items: center;
   background-color: @secondary;
   border-radius: @borderRadius;
-  color: @textColor;
   padding: 0 @spaceLg  !important;
-  gap: @spaceMd;
+  color: @backgroundColor;
   width: fit-content;
-  align-items: center;
-
-  &>span {
-    align-self: center;
-    color: @backgroundColor;
-    transform: scale(0.8);
+  font-size: @fontSizeMd;
+  gap: @spaceMd;
+  & > b {
+    letter-spacing: 1px !important;
   }
 }
 

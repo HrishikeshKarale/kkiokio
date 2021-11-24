@@ -7,7 +7,9 @@
 		>
 			<vue-img :src="project.img" :alt="project.title" />
 			<h4 v-text="project.title" />
-			<span class="fas fa-external-link-square-alt" />
+			<span class="fas fa-external-link-square-alt">
+				Open
+			</span>
 		</router-link>
 		<template v-else>
 			<vue-img v-if="project.img" :src="project.img" alt="Moto" />
@@ -64,22 +66,21 @@
 		align-self: flex-start;
 		flex-direction: column;
 		color: @textColor;
-		background-color: @backgroundColor;
+		background-color: @cardBackground;
 		padding: @spaceMd @spaceLg;
 		border-radius: @borderRadiusLg;
 		justify-content: space-around;
 		width: 240px;
 		height: fit-content;
-		.boxShadow(@base, @secondary);
+		.boxShadow(@one);
 
 		& > p {
-			font-size: @fontSizeSm;
 			// height: 96px;
 			width: fit-content;
 			overflow: hidden;
 			white-space: wrap;
 			text-overflow: ellipsis;
-			-webkit-line-clamp: 3;
+			-webkit-line-clamp: 2;
 			-webkit-box-orient: vertical;
 		}
 
@@ -107,7 +108,6 @@
 					position: absolute;
 					top: 0;
 					margin-left: 0;
-					margin-top: -@spaceMd;
 					height: ~"calc(100% + @{spaceMd})";
 					width: ~"calc(100% + 4 * @{spaceMd})";
 					content: "";
@@ -156,6 +156,16 @@
 						),
 						no-repeat;
 				}
+				&:hover {
+					&::after {
+						filter: opacity(64%);
+					}
+					& ~ span {
+						gap: @spaceMd;
+						background-color:white;
+						color: @accent;
+					}
+				}
 			}
 			& > h4 {
 				position: absolute;
@@ -168,13 +178,22 @@
 				position: absolute;
 				top: -@spaceMd;
 				right: -@spaceLg;
-				font-size: 2 * @fontSizeSm;
+				background-color: @accent;
+				padding: @spaceMd @spaceLg;
+				color: @white;
 				z-index: @contentZ;
+				border-radius: @borderRadius;
+						&::before {
+							margin-right: @spaceMd;
+						}
+				&:hover {
+					.boxShadow(@threeText, @accent);
+				}
 			}
 		}
 
 		&:hover {
-			.boxShadow(@two, @accent);
+			.boxShadow(@base);
 			& > a > h4 {
 				&:hover {
 					color: @accent;
