@@ -10,6 +10,7 @@ html {
   --offBlack: #0C090D;
   --matteBlack: #28282B;
   --charcoal: #36454F;
+  --jetBlack: #343434;
 
   /* shades of grey */
   --grayDarker:~"lighten({--black}, 13.5%)";
@@ -25,6 +26,7 @@ html {
   --navText: var(--accentColor);
   --navBackground: var(--matteBlack);
   --shadowColor: var(--offBlack);
+  --cardBackground: var(--jetBlack);
 }
 
 html[theme='darkMode'] {
