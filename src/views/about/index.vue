@@ -31,25 +31,47 @@
           </b> -->
 						</a>
 					</div>
+				<a href="../../assets/Hrishikesh Karale-Resume.pdf" download>Resume</a>
 				</div>
 				<div>
 					<h1>Hrishikesh Karale</h1>
 					<h3>Product Designer</h3>
 					<h5>Sr. UX Designer/Developer</h5>
-				<a href="../../assets/Hrishikesh Karale-Resume.pdf" download>Download Resume</a>
+			<table>
+				<tr>
+					<td>
+						<h5>
+							Academic Experience:
+							</h5>
+					</td>
+					<td>
+						{{experience.academic}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5>
+							Professional Experience:
+							</h5>
+					</td>
+					<td>
+						{{experience.professional}}
+					</td>
+				</tr>
+			</table>
 				</div>
 			</div>
-			<p>
-				I have 5+ years of experience working on several
-				major software projects in the eCommerce and Enterprise buisness environments.
-			</p>
+			<!-- <p>
+				I have {{experience.academic}} years of academic and {{experience.professional}}+ years of experience working on several
+				major software projects in the eCommerce and Enterprise domain.
+			</p> -->
 			<!-- <p>
 				I have a <mark>Masters in HCI/Design</mark> and a <mark>Bachelor in Computer Engineering</mark>, this allows me to take development into consideration
 				when designing a solution.
 			</p> -->
 			<p>
-				As a UX Professional, I strive to use a <mark>constant end-user feedback
-				loop</mark> to define and redefine my project objectives. The user's needs
+				As a UX Professional, I strive to use a constant end-user feedback
+				loop to define and redefine my project objectives. The user's needs
 				guide the strategic decisions I make during my UX process. This
 				non-linear approach is integral to ensuring that my projects decisions
 				lead to a massive improvement in the key metrics that are relevant to
@@ -68,7 +90,8 @@
 		<section id="Objective">
 			<h1>Objective</h1>
 			<q>
-				Create intuitive interfaces that can solve problems and create
+				<span class="fas fa-quote-left fa-pull-left fa-border" />
+				As a designer I believe in <mark>Empathy in Design</mark> and strive towards creating intuitive interfaces that can not only solve problems but also create
 				experiences that initiate a sense of delight and wonder for my users.
 			</q>
 		</section>
@@ -192,11 +215,26 @@
 			}),
 		},
 
+		beforeMount() {
+			const start = new Date(2017,9,10).getTime();
+			const today = Date.now();
+			let diff = (today-start)/1000;
+			diff /= (60*60*24);
+			this.experience.professional += Math.abs(Math.round(diff/365.25));
+		},
+
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const profilePic = require("@/../public/img/profilePic.jpg");
+			// const resume = require("@/assets/Hrishikesh Karale-Resume.pdf");
+			const experience = {
+				academic: 2.5,
+				professional: 1
+			}
 			return {
 				profilePic,
+				experience,
+				// resume,
 			};
 		},
 	};
@@ -243,7 +281,8 @@
 						gap: @spaceMd;
 						padding: @spaceMd;
 						border-radius: @borderRadius;
-						border: 1px dashed @secondary;
+						background-color: @cardBackground;
+						.boxShadow(@one);
 						height: fit-content;
 						& > div {
 							display: flex;
@@ -291,16 +330,12 @@
 			}
 			&#Objective {
 				& > q {
-					font-size: @fontSizeSm * 2;
-					text-align: center;
-
-					& > abbr {
-						color: #fbce51;
-						text-decoration: none;
-					}
+					quotes: none;
+					font-size: 2*@fontSize;
+					line-height: 4*@fontSize !important;
+					text-align: justify;
 				}
 			}
-
 			&#Process {
 				flex-direction: column;
 				text-align: left;
@@ -324,7 +359,8 @@
 							padding: @spaceLg;
 							margin: @spaceMd;
 							border-radius: @borderRadiusLg;
-							border: 1px dashed @accent;
+						background-color: @cardBackground;
+						.boxShadow(@one);
 
 							& > .step {
 								border-radius: 50%;
@@ -355,7 +391,6 @@
 					}
 				}
 			}
-
 			&#Skillset {
 				display: flex;
 				flex-direction: column;
@@ -370,15 +405,16 @@
 						margin: 0 @spaceLg;
 						padding: @spaceMd @spaceXl;
 						border-radius: @borderRadius;
-						border: 1px dashed @primary;
+						background-color: @cardBackground;
+						.boxShadow(@one);
 					}
 				}
 			}
-
 			&#Bio {
 				flex-direction: column;
 				flex-wrap: wrap;
 				align-content: center;
+				gap: @spaceXl;
 				& > p {
 					max-width: 960px;
 				}
@@ -390,7 +426,6 @@
 						display: flex;
 						flex-direction: row;
 						justify-content: center;
-								margin-bottom: 2*@spaceXl;
 
 						& > div {
 							display: flex;
@@ -421,6 +456,27 @@
 									height: 320px;
 									width: 320px;
 									clip-path: circle(120px at center);
+								}
+								// resume download
+								& > a {
+									width: fit-content;
+									align-self: center;
+								}
+							}
+							& > table {
+								align-self: flex-end;
+								display: table;
+								width: 320px;
+								margin: 0;
+								& > tr {
+									& > td {
+										& > h5 {
+											margin-bottom: 0 !important;
+										}
+										&:last-child {
+											text-align: right;;
+										}
+									}
 								}
 							}
 						}

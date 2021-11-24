@@ -10,7 +10,7 @@
 				<h2>I design things.</h2>
 				<p>
 					I am a
-					<mark>Inter-Disciplinary UX Designer</mark>
+					<mark>Inter-Disciplinary UX Professional</mark>
 					based out of Rochester, NY.
 				</p>
 				<p>
