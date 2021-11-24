@@ -1062,6 +1062,24 @@ article {
 
 a {
   cursor: pointer !important;
+  border-bottom: 1px dashed transparent;
+  &:hover {
+    border-color: @accent;
+  }
+  // &::after {
+  //   content: '';
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   // color: red;
+  //   background-color: @accent;
+  //   filter: opacity(8%);
+  // }
+  // &:hover {
+  //   &::after {
+  //     filter: opacity(80%);
+  //   }
+  // }
 
   &,
   &>* {
