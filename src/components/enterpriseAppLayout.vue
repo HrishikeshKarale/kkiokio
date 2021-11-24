@@ -588,7 +588,7 @@
 					&.body {
 						& > div {
 							&.content {
-								.responsive(@1200width, 0);
+								.responsive(@1200width, -2);
 							}
 						}
 					}

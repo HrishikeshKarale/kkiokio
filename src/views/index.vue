@@ -16,16 +16,22 @@
 				<p>
 					My expertise ranges from <b>Problem Validation</b>
 					<span class="fas fa-arrow-right" /> <b>Research</b>
-					<span class="fas fa-arrow-right" /> <b>UX/UI Design</b>
+					<span class="fas fa-arrow-right" /> <b>UI Design</b>
 					<span class="fas fa-arrow-right" />
 					<b>Front-End Development</b>.
 				</p>
 			</div>
-			<div class="subSection" @click="$router.push({ name: 'work' })" />
+			<div class="subSection">
+				<q>
+					A little
+					<abbr title="The ability to understand and share the feelings of another.">EMPATHY</abbr>
+					 goes a long way
+				</q>
+			</div>
 		</section>
 		<section id="Work">
 			<h1>WORK</h1>
-			<h3>Here are some samples of my work</h3>
+			<h3>Here are some samples</h3>
 			<div>
 				<template v-for="projects in getProjects" :key='projects.type'>
 					<template v-for="project in projects.value" :key='project.id'>
@@ -64,7 +70,6 @@
 
 <script>
 	// @ is an alias to /src
-	// import vueButton from "@/components/vueButton.vue";
 	import { loading } from "@/typeScript/common/loading";
 	import { mapGetters } from "vuex";
 	import showcase from "@/components/showcase.vue";
@@ -73,7 +78,6 @@
 	export default {
 		name: "Home",
 		components: {
-			// vueButton,
 			showcase,
 			// slider,
 		},
@@ -135,9 +139,8 @@
 				}
 			}
 			&#Intro {
-				// .backgroundColor(@primary, 100vw, 32%);
 				flex-direction: row;
-				justify-content: space-evenly;
+				justify-content: space-around;
 				align-self: center;
 				min-height: @body;
 				//
@@ -174,34 +177,25 @@
 					//design and develop box
 					&:last-child {
 						position: relative;
+						display: flex;
 						width: 240px;
 						aspect-ratio: 1;
 						border-radius: 24%;
-						cursor: pointer;
 						background-color: transparent;
+						margin: 0 !important;
 						border: @spaceMd double @accent;
 						gap: @spaceXl;
 						transform: rotate(-45deg);
-						&::after {
-							content: '"A little empathy goes a long way"';
-							position: absolute;
-							top: 216px;
-							left: -208px;
-							font-weight: 900;
-							color: @primary;
+						& > q {
+							text-align: center;
+							quotes: none;
 							transform: rotate(45deg);
-						}
-						&::before {
-							content: '';
-							position: absolute;
-							top: @spaceLg + @spaceSm;
-							left: @spaceLg + @spaceSm;
-							width: 80%;
-							aspect-ratio: 1/1;
-							background-image: url(../assets/logo.svg);
-							background-repeat: no-repeat;
-							background-position: center;
-							transform: rotate(45deg);
+							& > abbr {
+								font-weight: 900;
+								color: @secondary;
+								letter-spacing: 4px !important;
+								border: none;
+							}
 						}
 						&:hover {
 							border: @spaceMd double @accent;
@@ -212,6 +206,17 @@
 						}
 					}
 				}
+				// &::before {
+				// 	content: '\2193';
+				// 	position: absolute;
+				// 	bottom: 0;
+				// }
+				// &::after {
+				// 	content: 'Scroll Down';
+				// 	position: absolute;
+				// 	bottom: @spaceXl;
+				// 	font-weight: 700;
+				// }
 			}
 			&#Work {
 				& > div {
@@ -266,17 +271,8 @@
 				@media (max-width: @1200width) {
 					& > section {
 						margin-bottom: @spaceXl;
-						&#intro {
+						&#Intro {
 							flex-direction: column-reverse;
-							& > div {
-								&:last-child {
-									margin: 2 * @spaceXl 0;
-									align-self: center;
-									& > span {
-										font-size: 2 * @fontSize;
-									}
-								}
-							}
 						}
 						&#projects {
 							& > ul {
@@ -289,12 +285,27 @@
 							}
 						}
 					}
-				}
-				@media (max-width: @768width) {
-				}
-				@media (max-width: @480width) {
-				}
-				@media (max-width: @320width) {
+					@media (max-width: @768width) {
+						& > section {
+							&#Intro {
+								margin-top: 2*@spaceXl;
+								gap: @spaceXl;
+							}
+						}
+						@media (max-width: @480width) {
+							& > section {
+								&#Intro {
+									& > div {
+										&:last-child {
+											width: 200px;
+										}
+									}
+								}
+							}
+							@media (max-width: @320width) {
+							}
+						}
+					}
 				}
 			}
 		}

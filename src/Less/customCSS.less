@@ -999,11 +999,15 @@ article {
     margin-right: @spaceLg;
   }
 
+  // width of section and subsections
+  &>section,
+  &>section>.subSection {
+    width: calc(100% - 32px);
+  }
   & > section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
     @gap: @spaceXl !important;
 
     .multipleImg {
@@ -1066,20 +1070,6 @@ a {
   &:hover {
     border-color: @accent;
   }
-  // &::after {
-  //   content: '';
-  //   bottom: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   // color: red;
-  //   background-color: @accent;
-  //   filter: opacity(8%);
-  // }
-  // &:hover {
-  //   &::after {
-  //     filter: opacity(80%);
-  //   }
-  // }
 
   &,
   &>* {

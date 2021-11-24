@@ -68,7 +68,7 @@
 		padding: @spaceMd @spaceLg;
 		border-radius: @borderRadiusLg;
 		justify-content: space-around;
-		width: 320px;
+		width: 240px;
 		height: fit-content;
 		.boxShadow(@base, @secondary);
 
@@ -184,5 +184,7 @@
 				}
 			}
 		}
+		// media
+			// line-height: @fontSizeMd !important;
 	}
 </style>

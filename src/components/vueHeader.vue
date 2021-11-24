@@ -267,10 +267,13 @@
 							margin-right: 3*@spaceXl !important;
 							& > a {
 								gap: @spaceLg;
+								&:hover {
+									border-color: transparent !important;
+								}
 								& > .vueImg {
-									max-height: 64px !important;
+									// max-height: 64px !important;
 									min-width: 64px !important;
-									width: fit-content;
+									aspect-ratio: 1;
 									& > img {
 										height: 64px !important;
 										width: 64px !important;
@@ -361,23 +364,26 @@
 				// }
 			}
 			&.mini {
-				.boxShadow(@base, @primary, @headerZ);
-				height: 80px;
+				.boxShadow(@three, @navBackground, @headerZ);
+				height: 64px;
 				& > nav {
 					& > ul > li {
 						//logo
 						&:first-child {
 							& > a {
 								& > .vueImg {
-									height: 48px;
+									min-width: 32px !important;
+									aspect-ratio: 1;
 								}
 								& > h3 {
 									width: max-content;
 									text-align: center;
+									font-size: @fontSize;
 									margin: 0 !important;
 									& > h5 {
 										visibility: hidden;
 										height: 0;
+										width: 0;
 										margin: 0px !important;
 									}
 								}
