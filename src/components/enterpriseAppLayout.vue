@@ -168,14 +168,14 @@
 					<countdown-timer
 						class="countdownTimer"
 						start-time="January 24, 2021 23:59:99"
-						end-time="Nov 30, 2021 00:00:01"
+						end-time="Nov 29, 2021 00:00:01"
 						trans='{
               "day":"Day",
               "hours":"Hours",
               "minutes":"Minuts",
               "seconds":"Seconds",
               "expired":"Please contact the administrator (hrishirich619@gmail.com).",
-              "running":"Known problems: 1. Project cards may be uneven. 2. some designs ay not show upat all (tinyThoughts, packstation, skinsafe)",
+              "running":"Major updates are being pushed to the website and this my result in some parts of the website not working.",
               "upcoming":"Till start of event.",
               "status": {
                 "expired":"We apologise fior the delay, Please come back tomorrow.",
