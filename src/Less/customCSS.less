@@ -1009,6 +1009,7 @@ article {
     flex-direction: column;
     justify-content: center;
     @gap: @spaceXl !important;
+    min-height: @body;
 
     .multipleImg {
       display: flex;
@@ -1109,21 +1110,6 @@ textarea {
     .boxShadow(0 0 0 50px @backgroundColor inset);
     /*your box-shadow*/
     -webkit-text-fill-color: @textColor;
-  }
-}
-
-ul {
-  display: flex;
-  flex-direction: column;
-  margin: 0 !important;
-  padding: 0 !important;
-  list-style-type: none !important;
-
-  &>li {
-    display: flex;
-    flex-direction: column;
-    margin: 0 !important;
-    padding: 0 !important;
   }
 }
 
@@ -1309,12 +1295,14 @@ ul,
 ol {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
-  margin: 0;
-  padding: 0;
+  justify-content: flex-start;  margin: 0 !important;
+  padding: 0 !important;
+  list-style-type: none !important;
   list-style: none;
+
   & > li {
     display: flex;
+    margin: 0 !important;
   }
 }
 

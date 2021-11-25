@@ -67,8 +67,8 @@
 		margin-inline-start: 0;
 		width: min-content;
 		& > img {
-			max-height: 480px;
-			width: min-content;
+			max-height: inherit;
+			width: inherit;
 			& + figcaption {
 				font-size: @fontSizeSm;
 				text-align: center;

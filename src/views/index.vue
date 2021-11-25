@@ -143,7 +143,7 @@
 				justify-content: space-around;
 				align-self: center;
 				min-height: @body;
-				//
+				max-width: 960px;
 				& > div {
 						justify-content: space-around;
 						align-self: center;

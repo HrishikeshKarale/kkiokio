@@ -41,21 +41,27 @@
 				<tr>
 					<td>
 						<h5>
-							Academic Experience:
+							Professional Experience:
 							</h5>
 					</td>
 					<td>
-						{{experience.academic}}
+						<b>
+							{{experience.professional}}
+						</b>
+						years
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<h5>
-							Professional Experience:
+							Academic Experience:
 							</h5>
 					</td>
 					<td>
-						{{experience.professional}}
+						<b>
+							{{experience.academic}}
+						</b>
+						years
 					</td>
 				</tr>
 			</table>
@@ -91,8 +97,9 @@
 			<h1>Objective</h1>
 			<q>
 				<span class="fas fa-quote-left fa-pull-left fa-border" />
-				As a designer I believe in <mark>Empathy in Design</mark> and strive towards creating intuitive interfaces that can not only solve problems but also create
+				Strive towards creating intuitive interfaces that can not only solve problems but also create
 				experiences that initiate a sense of delight and wonder for my users.
+				<span class="fas fa-quote-right fa-pull-right fa-border" />
 			</q>
 		</section>
 		<section id="Process">
@@ -125,71 +132,65 @@
 		<section id="Skillset">
 			<h1>Skill Set</h1>
 			<h3>Badges on my belt</h3>
-			<div>
-				<div v-for="skill in skills" :key="skill.type" class="subSection">
+			<ol class='subSection'>
+				<li v-for="skill in skills" :key="skill.type">
 					<h4>{{ skill.type }}</h4>
-					<div v-for="value in skill.value" :key="value">
-						{{ value }}
-					</div>
-				</div>
-			</div>
+					<ol>
+						<li v-for="value in skill.value" :key="value">
+							{{ value }}
+						</li>
+					</ol>
+				</li>
+			</ol>
 		</section>
 		<section id="LisencesAndCertificates">
 			<h1>Licenses &amp; Certificates</h1>
-			<div>
-				<div v-for="cert in lisencesAndCertificates" :key="cert.id">
-					<div>
-						<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
-						<div>
-							<h5>
-								{{ cert.title }}
-								<small>
-									{{ cert.issuer }}
-								</small>
-							</h5>
-						</div>
-					</div>
+			<ol class='subSection'>
+				<li v-for="cert in lisencesAndCertificates" :key="cert.id">
+					<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
+						<h4>
+							{{ cert.title }}
+							<small>
+								{{ cert.issuer }}
+							</small>
+						</h4>
 					<div>
 						<p>
 							<b> Issued </b>
 							{{ cert.issued }}
 						</p>
-						<p>
+						<p v-if="cert.expiry">
 							<b>
-								{{ cert.expiry ? cert.expiry : "NO Expiry Date" }}
+								{{ cert.expiry }}
 							</b>
 						</p>
-						<p>
+						<p v-if="cert.credential">
 							<b> Credential ID </b>
-							{{ cert.credential }}
+							{{ cert.credential  }}
 						</p>
 					</div>
-				</div>
-			</div>
+				</li>
+			</ol>
 		</section>
 		<section id="honorsAndAwards">
 			<h1>Honors &amp; Awards</h1>
-			<div>
-				<div v-for="award in honorsAndAwards" :key="award.id">
-					<div>
-						<!-- <vue-img :src="award.link" :alt="award.id + ' - ' + award.link" /> -->
-						<div>
+			<ol class='subSection'>
+				<li v-for="award in honorsAndAwards" :key="award.id">
+						<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
 							<h5>
 								{{ award.title }}
 								<small>
 									{{ award.issuer }}
 								</small>
 							</h5>
-						</div>
-					</div>
 					<div>
 						<p>
 							<b> Issued </b>
 							{{ award.issued }}
 						</p>
 					</div>
-				</div>
-			</div>
+				</li>
+			</ol>
 		</section>
 	</article>
 </template>
@@ -249,7 +250,6 @@
 
 	.about {
 		& > section {
-			min-height: 640px;
 				position: relative;
 				&:not(#Bio) > h1 {
 					align-self: center;
@@ -267,73 +267,59 @@
 				}
 			&#LisencesAndCertificates,
 			&#honorsAndAwards {
-				& > div {
+				& > ol {
 					display: flex;
 					flex-direction: row;
 					flex-wrap: wrap;
-					gap: 2 * @spaceLg;
-					justify-content: space-evenly;
-					& > div {
+					gap: @spaceXl;
+					& > li {
 						display: flex;
-						flex-direction: column;
-						flex-wrap: wrap;
-						flex: 0 0 40%;
+						flex-flow: column nowrap;
+						width: 240px;
+						aspect-ratio: 1.618/1;
 						gap: @spaceMd;
-						padding: @spaceMd;
+						padding: @spaceXl @spaceLg;
 						border-radius: @borderRadius;
 						background-color: @cardBackground;
-						.boxShadow(@one);
-						height: fit-content;
-						& > div {
-							display: flex;
-							flex-direction: row;
-							flex-wrap: nowrap;
-							gap: @spaceMd;
-							&:last-child {
-								flex-direction: column;
-								gap: 0;
-							}
-							& > .vueImg {
-								// display: flex;
-								// align-self: center;
-								height: 80px;
+						.boxShadow(@baseText);
+							& > figure.vueImg {
 								width: 80px;
-								.boxShadow(none);
-								& + div {
+								aspect-ratio: 1;
+								background-color: @white;
+								& + h4 {
 									display: flex;
-									flex-flow: column nowrap;
-									align-items: space-between;
-									width: 100%;
-									height: 100%;
-									justify-content: space-between;
-									& > h5 {
-										margin-top: 0;
-										margin-bottom: 0 !important;
-										& > small {
-											display: flex;
-											flex-direction: row-reverse;
-											font-weight: bold;
-											font-size: @fontSizeSm;
-										}
+									flex-direction: column;
+									& > small {
+										margin-top: @spaceMd;
+										align-self: flex-end;
+										font-size: @fontSizeMd;
 									}
 								}
 							}
-							& > p {
-								margin-top: 0;
+							& > div {
+								margin-top: auto;
+								&  > p {
+								display: flex;
+								align-self: center;
+								justify-content: space-between;
 								margin-bottom: 0 !important;
 								font-size: @fontSizeSm;
-								line-height: 24px !important;
+								line-height: @fontSize !important;
+								gap: @spaceLg;
+								& > b {
+									color: @secondary;
+								}
 							}
-						}
+							}
 					}
 				}
 			}
 			&#Objective {
 				& > q {
 					quotes: none;
-					font-size: 2*@fontSize;
-					line-height: 4*@fontSize !important;
-					text-align: justify;
+					font-size: @fontSize;
+					line-height: 1.618*@fontSize !important;
+					text-align: center;
 				}
 			}
 			&#Process {
@@ -344,45 +330,34 @@
 					margin-top: @spaceLg;
 
 					& > ol.steps {
-						display: flex;
-						flex-direction: row;
-						justify-content: space-evenly;
-						flex-wrap: wrap;
-						margin: 0 auto;
+						flex-flow: row wrap;
+						gap: @spaceXl;
 
 						& > li {
 							display: flex;
 							flex-direction: column;
 							background-color: @backgroundColor;
-							flex: 0 0 320px;
+							flex: 1 0 240px;
 							border-radius: @borderRadiusLg;
-							padding: @spaceLg;
-							margin: @spaceMd;
+							padding: @spaceLg @spaceXl;
 							border-radius: @borderRadiusLg;
-						background-color: @cardBackground;
-						.boxShadow(@one);
+							background-color: @cardBackground;
+							.boxShadow(@one);
 
 							& > .step {
-								border-radius: 50%;
-								border: 2px solid @accent;
-								color: @white;
-								font-size: @fontSize;
-								font-weight: bold;
+								border-radius: 100%;
+								align-self: center;
 								line-height: @wizard-step-width-height;
-								position: relative;
-								min-width: @wizard-step-width-height;
+								width: @wizard-step-width-height;
+								aspect-ratio: 1;
 								text-align: center;
-								margin: 0 auto;
-								background-color: @accent;
+								background-color: @secondary;
+								color: @backgroundColor;
 
 								& + .step-title {
-									text-align: left;
-
 									& + ol {
-										list-style: none;
-										padding: 0;
-										& > li {
-											font-weight: bold;
+										& > li > small {
+											letter-spacing: 1px !important;
 										}
 									}
 								}
@@ -394,19 +369,23 @@
 			&#Skillset {
 				display: flex;
 				flex-direction: column;
-				& > div {
-					display: flex;
-					flex-flow: row wrap;
-					justify-content: space-evenly;
-					& > .subSection {
+				& > ol {
+					gap: @spaceXl;
+					& > li {
 						flex-direction: column;
-						justify-content: space-evenly;
-						flex: 0 0 320px;
-						margin: 0 @spaceLg;
 						padding: @spaceMd @spaceXl;
 						border-radius: @borderRadius;
 						background-color: @cardBackground;
 						.boxShadow(@one);
+						& > ol {
+							gap: @spaceLg;
+							flex-flow: row wrap;
+							& > li {
+								border-radius: @borderRadius;
+								border: 1px dashed @primary;
+								padding: @spaceXs @spaceMd;
+							}
+						}
 					}
 				}
 			}
@@ -466,7 +445,7 @@
 							& > table {
 								align-self: flex-end;
 								display: table;
-								width: 320px;
+								width: 240px;
 								margin: 0;
 								& > tr {
 									& > td {
@@ -474,6 +453,7 @@
 											margin-bottom: 0 !important;
 										}
 										&:last-child {
+											width: 120px;
 											text-align: right;;
 										}
 									}
