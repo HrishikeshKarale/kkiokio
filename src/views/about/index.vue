@@ -8,7 +8,7 @@
 			<div>
 				<div>
 				<vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
-					<div class="social">
+				<div class="social">
 						<a target="_blank" href="https://github.com/HrishikeshKarale">
 							<span class="fab fa-github fa-2x" />
 							<!-- <b>
@@ -30,41 +30,47 @@
             @hrishikesh-karale
           </b> -->
 						</a>
-					</div>
+				</div>
 				<a href="../../assets/Hrishikesh Karale-Resume.pdf" download>Resume</a>
 				</div>
 				<div>
-					<h1>Hrishikesh Karale</h1>
-					<h3>Product Designer</h3>
-					<h5>Sr. UX Designer/Developer</h5>
-			<table>
-				<tr>
-					<td>
-						<h5>
-							Professional Experience:
-							</h5>
-					</td>
-					<td>
-						<b>
-							{{experience.professional}}
-						</b>
-						years
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<h5>
-							Academic Experience:
-							</h5>
-					</td>
-					<td>
-						<b>
-							{{experience.academic}}
-						</b>
-						years
-					</td>
-				</tr>
-			</table>
+					<h1>
+						Hrishikesh Karale
+					</h1>
+					<h3>
+						Product Designer
+					</h3>
+					<h5>
+						Sr. UX Designer/Developer
+					</h5>
+					<table>
+						<tr>
+							<td>
+								<h6>
+									Professional Exp:
+								</h6>
+							</td>
+							<td>
+								<b>
+									{{experience.professional}} +
+								</b>
+								yrs
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h6>
+									Academic Exp:
+								</h6>
+							</td>
+							<td>
+								<b>
+									{{experience.academic}}
+								</b>
+								yrs
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			<!-- <p>
@@ -104,12 +110,20 @@
 		</section>
 		<section id="Process">
 			<h1>My Process</h1>
-			<h3>How I assure success</h3>
+			<h3>Steps I take to assure success</h3>
 			<p>
 				One of the key factors that define a designers work is the process they use to solve a problem.
 			</p>
 			<p>
-				With time, this process evolved from a standard 5 step prcoess of d(define, research, ideate, prototype, Test) to a 8 step process where each step signifies a milestone for the projects.
+				With time, my process evolved from a standard 5 step prcoess (define, research, ideate, prototype, Test) to a 8 step process where each step signifies a milestone for the projects.
+			</p>
+			<p>
+				Each of the 8 steps are further divided into various sub-steps that help add value and help us achieve out goals towards the process.
+			</p>
+			<p>
+				<b>
+					Note: The steps followed depends on the timeline and project requirements and
+				</b>
 			</p>
 			<div class="process">
 				<ol class="steps">
@@ -148,12 +162,12 @@
 			<ol class='subSection'>
 				<li v-for="cert in lisencesAndCertificates" :key="cert.id">
 					<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
-						<h4>
-							{{ cert.title }}
-							<small>
-								{{ cert.issuer }}
-							</small>
-						</h4>
+					<h4>
+						{{ cert.title }}
+						<small>
+							{{ cert.issuer }}
+						</small>
+					</h4>
 					<div>
 						<p>
 							<b> Issued </b>
@@ -177,12 +191,12 @@
 			<ol class='subSection'>
 				<li v-for="award in honorsAndAwards" :key="award.id">
 						<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
-							<h5>
-								{{ award.title }}
-								<small>
-									{{ award.issuer }}
-								</small>
-							</h5>
+						<h4>
+							{{ award.title }}
+							<small>
+								{{ award.issuer }}
+							</small>
+						</h4>
 					<div>
 						<p>
 							<b> Issued </b>
@@ -245,8 +259,7 @@
 	@import (reference) "./../../Less/customMixins.less";
 	@import (reference) "./../../Less/customVariables.less";
 
-	@wizard-step-width-height: 120px;
-	@wizard-step-font-size: @fontSize;
+	@height: 120px;
 
 	.about {
 		& > section {
@@ -283,15 +296,16 @@
 						background-color: @cardBackground;
 						.boxShadow(@baseText);
 							& > figure.vueImg {
-								width: 80px;
-								aspect-ratio: 1;
-								background-color: @white;
+								max-height: 80px;
+								min-width: 80px;
+								max-width: 200px;
 								& + h4 {
 									display: flex;
 									flex-direction: column;
 									& > small {
 										margin-top: @spaceMd;
 										align-self: flex-end;
+										text-align: right;
 										font-size: @fontSizeMd;
 									}
 								}
@@ -345,10 +359,12 @@
 							.boxShadow(@one);
 
 							& > .step {
+								display: flex;
 								border-radius: 100%;
 								align-self: center;
-								line-height: @wizard-step-width-height;
-								width: @wizard-step-width-height;
+								align-items: center;
+								justify-content: center;
+								width: @height;
 								aspect-ratio: 1;
 								text-align: center;
 								background-color: @secondary;
@@ -356,7 +372,9 @@
 
 								& + .step-title {
 									& + ol {
-										& > li > small {
+										margin-top: auto !important;
+										& > li > h4 > small {
+											text-align: right;
 											letter-spacing: 1px !important;
 										}
 									}
@@ -422,7 +440,7 @@
 							& > h1 {
 								.textShadow(@oneText, @primary);
 							}
-							// profile Image
+							// profile
 							&:first-child {
 								& > .social {
 									display: flex;
@@ -449,12 +467,14 @@
 								margin: 0;
 								& > tr {
 									& > td {
-										& > h5 {
+										& > h6 {
 											margin-bottom: 0 !important;
+											margin-top: 0 !important;
 										}
 										&:last-child {
-											width: 120px;
-											text-align: right;;
+											font-size: @fontSizeMd;
+											width: 96px;
+											text-align: right;
 										}
 									}
 								}

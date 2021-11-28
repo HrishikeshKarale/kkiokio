@@ -1,17 +1,17 @@
 export const honorsAndAwards = [
   {
     id: 1,
-    title: "Best Yound Researcher Award",
+    title: "Best Young Researcher Award",
     issuer: "UP-STAT American Stastical Association",
     issued: "Nov 2017",
-    link: require("@/assets/awards/imagineRIT.png")
+    link: require("@/assets/awards/upSTAT.gif")
   },
   {
     id: 2,
     title: "Exhibitor @Imagine RIT",
     issuer: "Rochester Institute of Technology",
     issued: "May 2017",
-    link: require("@/assets/awards/upSTAT.gif")
+    link: require("@/assets/awards/imagineRIT.png")
   },
   {
     id: 3,
@@ -51,9 +51,9 @@ export const honorsAndAwards = [
   },
   {
     id: 8,
-    title: "Disctinction",
+    title: "Distinction",
     issuer: "Australian Chemistry Olyampiad",
     issued: "2007",
-    link: null
+    link: require("@/assets/awards/australianChemistryOlympiad.png")
   }
 ];

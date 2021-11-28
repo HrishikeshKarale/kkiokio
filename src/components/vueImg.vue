@@ -68,7 +68,7 @@
 		width: min-content;
 		& > img {
 			max-height: inherit;
-			width: inherit;
+			max-width: inherit;
 			& + figcaption {
 				font-size: @fontSizeSm;
 				text-align: center;

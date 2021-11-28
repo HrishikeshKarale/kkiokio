@@ -2,17 +2,17 @@
 	<section class="feedbackTracker">
 		<h3>Your feedback is important to us</h3>
 		<p>How do you feel about the article you just read?</p>
-		<div class="images">
-			<template v-for="a in 5" :key="a">
-				<vue-img
-					:class="{ active: value == a }"
-					:src="require('../../assets/feedback/' + a + '.svg')"
-					:alt="feelingsCalculator(a)"
-					:caption="feelingsCalculator(a)"
-					@click="$emit('input', a)"
-					@mouseover="$emit('input', a)"
-				/>
-			</template>
+		<div class="subSection">
+			<vue-img
+				v-for="a in 5"
+				:key="a"
+				:class="{ active: value == a }"
+				:src="require('../../assets/feedback/' + a + '.svg')"
+				:alt="feelingsCalculator(a)"
+				:caption="feelingsCalculator(a)"
+				@click="$emit('input', a)"
+				@mouseover="$emit('input', a)"
+			/>
 		</div>
 		<input type="range" :min="min" :max="max" :value="value" :step="step" hidden/>
 	</section>
@@ -55,28 +55,28 @@
 	};
 </script>
 
-
 <style lang="less" scoped>
 	@import (reference) "../../Less/customMixins.less";
 	@import (reference) "../../Less/customVariables.less";
 	.feedbackTracker {
 		display: flex;
-		flex-flow: column nowrap;
-		& > .images {
+		flex-direction: column;
+		margin-bottom: 2*@spaceXl;
+		& > .subSection {
 			display: flex;
 			flex-flow: row nowrap;
-			justify-content: space-between;
+			justify-content: center;
+			gap: @spaceXl;
+			margin-top: 2*@spaceXl;
+			// justify-content: space-between;
 			& > .vueImg {
-				transform: scale(0.8);
-				filter: grayscale(90%);
+				filter: grayscale(80%);
+				align-self: center;
+				width: 320px;
 				&:hover,
 				&.active {
 					filter: grayscale(0%);
-					transform: scale(1);
-				}
-				& > figcaption {
-					font-weight: 700 !important;
-					color: @primary;
+					transform: scale(1.6);
 				}
 			}
 		}

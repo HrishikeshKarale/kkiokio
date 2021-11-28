@@ -7,9 +7,7 @@
 		>
 			<vue-img :src="project.img" :alt="project.title" />
 			<h4 v-text="project.title" />
-			<span class="fas fa-external-link-square-alt">
-				Open
-			</span>
+			<span class="fas fa-external-link-square-alt" />
 		</router-link>
 		<template v-else>
 			<vue-img v-if="project.img" :src="project.img" alt="Moto" />
@@ -18,14 +16,14 @@
 		<template v-if="project.description">
 			<!-- eslint-disable-next-line vue/no-v-html -->
 			<p v-html="project.description" />
-			<ul v-if="project.tags">
+			<!-- <ul v-if="project.tags">
 				<template v-for="tag in project.tags">
 					<li v-if="tag" class="tag" :key="tag">
 						<span class="fas fa-tag" />
 						<b v-text="tag" />
 					</li>
 				</template>
-			</ul>
+			</ul> -->
 		</template>
 	</div>
 </template>
@@ -67,12 +65,17 @@
 		flex-direction: column;
 		color: @textColor;
 		background-color: @cardBackground;
-		padding: @spaceMd @spaceLg;
 		border-radius: @borderRadiusLg;
 		justify-content: space-around;
-		width: 240px;
-		height: fit-content;
+		// flex: 480px 240px 320px;
+		width: min-content;
+		height: min-content;
 		.boxShadow(@one);
+		gap: @spaceLg;
+		& > p,
+		& > ul {
+		margin : 0 @spaceLg !important;
+		}
 
 		& > p {
 			// height: 96px;
@@ -88,17 +91,17 @@
 			display: flex;
 			flex-flow: row wrap;
 			gap: @spaceMd;
+			margin-bottom: @spaceLg !important;
 		}
 
 		& > a,
 		& {
-			margin-bottom: @spaceLg;
+			// margin-bottom: @spaceLg;
 			position: relative;
 			& > .vueImg {
 				position: relative;
-					width: ~"calc(100% + @{spaceXl})" !important;
-					height: ~"calc(100% + @{spaceMd})";
-				margin-left: -@spaceLg;
+				max-width: 320px;
+				min-width: 240px;
 				margin-top: -@spaceMd;
 				border-radius: @borderRadius @borderRadius 0 0 !important;
 				overflow: hidden;
@@ -161,9 +164,7 @@
 						filter: opacity(64%);
 					}
 					& ~ span {
-						gap: @spaceMd;
-						background-color:white;
-						color: @accent;
+						.boxShadow(@two);
 					}
 				}
 			}
@@ -172,20 +173,17 @@
 				margin-top: 0;
 				margin-bottom: @spaceMd;
 				bottom: @spaceMd;
-				z-index: @contentZ;
+				left: @spaceMd;
 			}
 			& > span {
 				position: absolute;
 				top: -@spaceMd;
-				right: -@spaceLg;
+				right: 0;
 				background-color: @accent;
 				padding: @spaceMd @spaceLg;
 				color: @white;
 				z-index: @contentZ;
 				border-radius: @borderRadius;
-						&::before {
-							margin-right: @spaceMd;
-						}
 				&:hover {
 					.boxShadow(@threeText, @accent);
 				}

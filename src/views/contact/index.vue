@@ -3,12 +3,11 @@
 		<header>
 			<h1>Contact Me</h1>
 		</header>
-		<p>
+		<!-- <p>
 			Hello, My name is Hrishikesh Karale and I live in Upstate New York.
-		</p>
+		</p> -->
 		<p>
-			Feel free to use the contact form below and reach out to me for any
-			questions yo might have.
+			Feel free to reach out to me for any questions you might have.
 			<!-- <br />
 			If you sign in, You can also write to me the old fashion way. -->
 		</p>
@@ -107,12 +106,7 @@ Rochester, NY 14623.'
 	.contact {
 
 		& > section {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
 			gap: @spaceXl;
-			margin: 0;
-			margin-top: 2*@spaceXl;
 			& > div {
 				flex: 1 0 240px;
 				.boxShadow(@twoText);
@@ -131,6 +125,11 @@ Rochester, NY 14623.'
 					justify-content: space-between;
 					margin-top: 0;
 					align-items: center;
+				}
+				& > h5 {
+					& > address {
+						margin-bottom: 0;
+					}
 				}
 			}
 		}

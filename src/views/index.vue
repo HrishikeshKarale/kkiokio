@@ -14,11 +14,26 @@
 					based out of Rochester, NY.
 				</p>
 				<p>
-					My expertise ranges from <b>Problem Validation</b>
-					<span class="fas fa-arrow-right" /> <b>Research</b>
-					<span class="fas fa-arrow-right" /> <b>UI Design</b>
+					My expertise ranges from
+					<abbr title="Making an effort to understand and clearly articulate the problems experienced by our user(s).">
+						Problem Validation
+					</abbr>
 					<span class="fas fa-arrow-right" />
-					<b>Front-End Development</b>.
+					<abbr title=" A clear description of the problem which also includes the vision and possible step by step solutions into solving the problem.">
+						Problem Definition
+					</abbr>
+					<span class="fas fa-arrow-right" />
+					<abbr title="A systametic study of target users and their requirements, to add realistic ocntext and insight to the design process.">
+						UX Research
+					</abbr>
+					<span class="fas fa-arrow-right" />
+					<abbr title="A nonlinear, iterative process where a designer explores design solutions in an effort towards solving a user problem,thus ultimately creating a detailed Hi-Fi solution.">
+						UI Design
+					</abbr>
+					<span class="fas fa-arrow-right" />
+					<abbr title="I am well versed">
+						Front-End Development
+					</abbr>.
 				</p>
 			</div>
 			<div class="subSection">
@@ -48,6 +63,21 @@
 				</template>
 			</div>
 		</section>
+		<section id="honorsAndAwards">
+			<h1>Honors &amp; Awards</h1>
+			<h3>You can depend on me</h3>
+			<ol class='subSection'>
+				<li v-for="award in honorsAndAwards" :key="award.id">
+						<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
+						<h4>
+							{{ award.title }}
+							<small>
+								{{ award.issuer }}
+							</small>
+						</h4>
+				</li>
+			</ol>
+		</section>
 		<section id="kindWords">
 			<h1>Kind Words</h1>
 			<h3>What people think about me</h3>
@@ -73,13 +103,13 @@
 	import { loading } from "@/typeScript/common/loading";
 	import { mapGetters } from "vuex";
 	import showcase from "@/components/showcase.vue";
-	// import slider from "./projects/js/slider.vue";
+	import vueImg from "@/components/vueImg.vue";
 
 	export default {
 		name: "Home",
 		components: {
 			showcase,
-			// slider,
+			vueImg,
 		},
 		mixins: [loading],
 		data() {
@@ -109,7 +139,9 @@
 			};
 		},
 		computed: {
-			...mapGetters({ getProjects: "contentModule/getProjects" }),
+			...mapGetters({
+				getProjects: "contentModule/getProjects",
+				honorsAndAwards: "contentModule/getHonorsAndAwards", },),
 		},
 	};
 </script>
@@ -192,9 +224,7 @@
 							transform: rotate(45deg);
 							& > abbr {
 								font-weight: 900;
-								color: @secondary;
 								letter-spacing: 4px !important;
-								border: none;
 							}
 						}
 						&:hover {
@@ -225,6 +255,42 @@
 					gap: @spaceXl;
 					& > div {
 						flex: 0 0 100%;
+					}
+				}
+			}
+			&#honorsAndAwards {
+				& > ol {
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					gap: @spaceXl;
+					& > li {
+						display: flex;
+						flex-flow: column nowrap;
+						width: 240px;
+						height: fit-content;
+						gap: @spaceMd;
+						padding: @spaceXl @spaceLg;
+						border-radius: @borderRadius;
+						// background-color: @cardBackground;
+						// .boxShadow(@baseText);
+						& > figure.vueImg {
+							max-height: 80px;
+							min-width: 80px;
+							max-width: 200px;
+							aspect-ratio: 1;
+							& + h4 {
+								display: flex;
+								flex-direction: column;
+								& > small {
+									margin-top: @spaceMd;
+									text-align: right;
+									align-self: flex-end;
+									font-size: @fontSizeMd;
+									text-align: right;
+								}
+							}
+						}
 					}
 				}
 			}

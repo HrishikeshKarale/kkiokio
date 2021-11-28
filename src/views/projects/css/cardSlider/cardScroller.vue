@@ -6,12 +6,12 @@
 				v-text="title"
 			/>
 		</h2>
-		<template v-if="!vertical">
+		<template v-if="!vertical  && maxSteps>=1">
 			<vue-button
 				v-show="left"
 				id="previous"
 				tag="previous"
-				category="icon"
+				category="icon-lg"
 				icon="fas
 				fa-chevron-left"
 				:ctx="handleScrollPrev.bind(this)"
@@ -20,12 +20,13 @@
 				v-show="right"
 				id="next"
 				tag="next"
-				category="icon"
+				category="icon-lg"
 				icon="fas fa-chevron-right"
 				:ctx="handleScrollnext.bind(this)"
 			/>
 		</template>
 		<vue-button
+			v-if="maxSteps>=1"
 			id="viewAll"
 			tag="viewAllButton"
 			:text="vertical ? 'Minimize' : 'View All'"
@@ -33,15 +34,16 @@
 			category="text"
 			:ctx="() => {vertical = !vertical}"
 		/>
-		<div :class="vertical ? 'vertical' : 'horizontal'">
+		<div class='subSection' :class="vertical ? 'vertical' : 'horizontal'">
 			<template v-if="!vertical">
 				<vue-button
-					v-show="left"
+					v-show="left && maxSteps>=1"
 					id="previous"
 					tag="previous"
 					category="large"
 					icon="fas
 				fa-chevron-left"
+				:text="left"
 					:ctx="handleScrollPrev.bind(this)"
 				/>
 			</template>
@@ -50,17 +52,19 @@
 			</div>
 			<template v-if="!vertical">
 				<vue-button
-					v-show="right"
+					v-show="right && maxSteps>=1"
 					id="next"
 					tag="next"
 					category="large"
 					icon="fas fa-chevron-right"
+				:text="right"
 					:ctx="handleScrollnext.bind(this)"
 				/>
 			</template>
 		</div>
 	</section>
 </template>
+
 <script>
 	import vueButton from "../../../../components/vueButton.vue";
 	export default {
@@ -135,7 +139,7 @@
 			}
 			this.maxSteps = this.cards.scrollWidth / this.cards.clientWidth;
 			this.maxSteps = this.maxSteps <= 1 ? 0 : Math.round(this.maxSteps);
-			this.right = 2*this.maxSteps + 1;
+			this.right = this.maxSteps+1;
 		},
 
 		beforeUnmount() {
@@ -194,30 +198,31 @@
 			right: 4 * @spaceXl;
 		}
 		//card background
+		// subsection
 		& > div {
 			display: flex;
 			flex-direction: row;
-			flex-wrap: nowrap;
 			justify-content: center;
 			align-items: center;
 			height: fit-content;
 			border-radius: @borderRadiusLg;
 			.responsive(@1600width, 0);
 			&.horizontal {
-				.boxShadow(@one, @primary);
-				.backgroundColor(@primary, 8%, 0, 0, 100%);
+				.boxShadow(@one);
+				// background-color: @navBackground;
+				.backgroundColor(@secondary, 16%, 0, 0, 100%);
 				& > .cards {
 					padding: @spaceMd @spaceLg;
 					overflow-x: hidden;
 				}
 			}
 			&.vertical {
-				border-width: 0px;
-				.backgroundColor(none);
+				// border-width: 0px;
+				// .backgroundColor(none);
 				& > div {
-					border-width: 0px;
+					// border-width: 0px;
 					flex-wrap: wrap;
-					justify-content: space-evenly;
+					justify-content: space-between;
 				}
 			}
 			& > button {

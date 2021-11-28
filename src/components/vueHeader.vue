@@ -165,6 +165,7 @@
 		line-height: 1;
 		z-index: @headerZ+10;
 		width: 100vw;
+		border-bottom: 1px dotted @primary;
 		.boxShadow(@base, @navBackground, @headerZ);
 		&.vueHeader {
 			height: @header;
