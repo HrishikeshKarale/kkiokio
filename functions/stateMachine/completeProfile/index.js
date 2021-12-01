@@ -28,9 +28,6 @@ const machine = {
 				reply = `Dear user, \nThe number *${payload.from.slice(-10)}* is not a registered number.\n\nWould you like to register with us using this number ?\n1. Yes, Register with *${payload.from.slice(-10)}*\n2. NO`;
 				this.changeState('VERIFY_PHONE');
 			},
-			add: function (register) {
-
-			}
 		},
 		VERIFY_PHONE: {
 			sendOTP: async function (payload) {
@@ -41,16 +38,18 @@ const machine = {
 					case "YES":
 					case "REGISTER":
 						this.user.OTP = this.user.OTP !== '0' ? this.user.OTP : generateOTP(5);
-						console.log(this.user.OTP);
+						// console.log(this.user.OTP);
 						this.user.OTP_COUNTER = 3;
 						await sendSMS(payload.from.slice(-10), `Kkiokio\nOTP Code:${this.user.OTP}`)
-							.then(message => {
+							.then(() => {
 								this.changeSubState('OTPSent');
+								// console.log(message);
 								this.user.phone = {
 									number: payload.message,
 									verified: false
 								};
 								reply = `Please enter the OTP sent to your phone number (${payload.from}).`;
+								return;
 							})
 							.catch((exception) => {
 								console.error(`Exception thrown by Twilio in sending OTP: ${exception}`);
@@ -64,7 +63,7 @@ const machine = {
 						break;
 					default:
 						reply = 'Invaid reply\nPlease try again';
-				};
+				}
 			},
 			verifyOTP: function (payload) {
 				if (this.user.OTP === payload.message) {
@@ -86,7 +85,7 @@ const machine = {
 		},
 		REGISTER_NAME: {
 			verifyName: function (payload) {
-				const [firstName, lastName] = payload.message.split(' ');
+				const [firstName] = payload.message.split(' ')[0];
 				// console.log(firstName, lastName);
 				reply = `Hi *${firstName}*,\nPlease enter a valid email ID for registration (Ex: John.doe@gmail.com).`
 				this.changeState('REGISTER_EMAIL');
@@ -115,9 +114,10 @@ const machine = {
 							}
 						)
 							.then(() => {
-								console.log(this.user.OTP);
+								// console.log(this.user.OTP);
 								this.changeSubState('codeSent');
 								reply = `Please check your email for the verification code and  enter the code here.`;
+								return;
 							})
 							.catch(exception => {
 								console.error('ERROR: ', exception);
@@ -130,7 +130,7 @@ const machine = {
 						break;
 					default:
 						reply = 'Invaid reply\nPlease try again';
-				};
+				}
 			},
 			verifyEmail: async function (payload) {
 				if (this.user.OTP === payload.message) {
@@ -148,6 +148,7 @@ const machine = {
 					)
 						.then(() => {
 							reply = "*Congralutations!!*\n your profile has now been registered."
+							return;
 						})
 						.catch(exception => {
 							console.error('ERROR: ', exception);
@@ -166,7 +167,7 @@ const machine = {
 			},
 		},
 		COMPLETED: {
-			registered: async function (payload) {
+			registered: async function () {
 				reply = 'userRegistered';
 			}
 		}
@@ -194,7 +195,7 @@ const machine = {
 	}
 }
 
-let whatsappBot = Object.create(machine, {
+const whatsappBot = Object.create(machine, {
 	name: {
 		writable: false,
 		enumerable: true,
@@ -213,7 +214,7 @@ async function getReply(payload) {
 				default:
 					reply = 'Please Try again';
 					break;
-			};
+			}
 			break;
 		case "VERIFY_PHONE":
 			switch (whatsappBot.state.subType) {
@@ -227,7 +228,7 @@ async function getReply(payload) {
 				default:
 					reply = 'Please Try again';
 					break;
-			};
+			}
 			break;
 		case "REGISTER_NAME":
 			switch (whatsappBot.state.subType) {
@@ -237,7 +238,7 @@ async function getReply(payload) {
 				default:
 					reply = 'Please Try again';
 					break;
-			};
+			}
 			break;
 		case "REGISTER_EMAIL":
 			switch (whatsappBot.state.subType) {
@@ -250,7 +251,7 @@ async function getReply(payload) {
 				default:
 					reply = 'Please Try again';
 					break;
-			};
+			}
 			break;
 		case "COMPLETED":
 		case "":
@@ -258,8 +259,8 @@ async function getReply(payload) {
 			break;
 		default:
 			reply = 'Invalid Request'
-	};
+	}
 	return reply;
-};
+}
 
 module.exports = getReply;

@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 //Require Mongoose
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //Define a schema
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+const userSchema = new Schema({
 	name: {
 		type: String,
 		unique: false,
@@ -46,7 +47,7 @@ var userSchema = new Schema({
 			message: '{VALUE} is not a valid password!'
 		}
 	},
-	phone_number: [
+	phoneNumber: [
 		{
 			createdOn: {
 				type: Date,
@@ -94,7 +95,7 @@ var userSchema = new Schema({
 			}
 		}
 	],
-	is_admin: {
+	isAdmin: {
 		type: Boolean,
 		default: false
 	},
@@ -112,7 +113,7 @@ userSchema.virtual('age').get(function () {
 });
 
 userSchema.virtual('firstName').get(function () {
-	let firstName = this.name
+	let firstName = this.name;
 	if (firstName.includes(' ')) {
 		firstName = firstName.split(' ')[0];
 	}
@@ -120,7 +121,7 @@ userSchema.virtual('firstName').get(function () {
 });
 
 userSchema.virtual('lastName').get(function () {
-	let lastName = ''
+	let lastName = this.name;
 	if (lastName.includes(' ')) {
 		lastName = lastName.split(' ')[1];
 	}
@@ -128,4 +129,6 @@ userSchema.virtual('lastName').get(function () {
 });
 
 // Compile model from schema
-var userModel = mongoose.model('SomeModel', userSchema);
+const userModel = mongoose.model('userDocument', userSchema);
+
+module.exports = userModel;

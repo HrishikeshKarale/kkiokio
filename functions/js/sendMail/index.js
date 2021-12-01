@@ -12,11 +12,9 @@ const transporter = nodemailer.createTransport({
 	}
 });
 
-const sendMail = async (to, subject, content, cc = null, attachments = null, func = function (error, info) {
+const sendMail = async (to, subject, content, cc = null, attachments = null, func = function (error) {
 	if (error) {
 		console.error('ERROR: ', error);
-	} else {
-		console.log('Email sent: ' + info.response);
 	}
 }) => {
 	await transporter.sendMail({

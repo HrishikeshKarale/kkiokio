@@ -16,8 +16,8 @@ const controller = (req, res) => {
 				friendlyName: name,
 				phoneNumber: '+91' + phoneNumber
 			})
-			.then(validation_request => {
-				return res.status(200).send({ validationRequest: validation_request })
+			.then(validationRequest => {
+				return res.status(200).send({ validationRequest: validationRequest })
 			})
 			.catch((exception) => {
 				const msg = "Exception thrown by Twilio" + exception;
