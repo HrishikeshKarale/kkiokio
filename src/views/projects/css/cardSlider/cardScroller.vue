@@ -26,7 +26,6 @@
 			/>
 		</template>
 		<vue-button
-			v-if="maxSteps>=1"
 			id="viewAll"
 			tag="viewAllButton"
 			:text="vertical ? 'Minimize' : 'View All'"
@@ -212,7 +211,7 @@
 				// background-color: @navBackground;
 				.backgroundColor(@secondary, 16%, 0, 0, 100%);
 				& > .cards {
-					padding: @spaceMd @spaceLg;
+					padding: @spaceXl @spaceLg;
 					overflow-x: hidden;
 				}
 			}

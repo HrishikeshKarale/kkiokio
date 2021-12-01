@@ -12,14 +12,13 @@ interface projectType {
   }[]
 };
 
-
 export const projects: projectType[] = [
   {
     type: "User Experience (UX)",
     value: [
       {
         id: 1,
-        portfolio: false,
+        portfolio: true,
         title: "Mobile App Redesign",
         img: require("@/assets/UX/dictionary/header.png"),
         tags: [
@@ -35,25 +34,8 @@ export const projects: projectType[] = [
         blog: require("@/store/project/ux/dictionaryCaseStudy")
       },
       {
-        id: 2,
-        portfolio: true,
-        title: "Online Learning Platform",
-        img: require("@/assets/UX/mediaHRPlatform/header.png"),
-        tags: [
-          "User Research",
-          "IA",
-          "Competitive Analysis",
-          "User Flow",
-          "WireFrame"
-        ],
-        description:
-          "Designed a program learning platform for People Matters. People Matters is an HR Media Platform aimed to help foster ideas between HR-related professioals.",
-        component: "HRPlatform",
-        blog: require("@/store/project/ux/hRPlatform")
-      },
-      {
         id: 3,
-        portfolio: false,
+        portfolio: true,
         title: "Digital Mobile Wallet",
         img: require("@/assets/UX/rupay/header.png"),
         tags: [
@@ -67,8 +49,27 @@ export const projects: projectType[] = [
         blog: require("@/store/project/ux/rupay")
       },
       {
-        id: 4,
+        id: 7,
         portfolio: true,
+        title: "Crowd Funding App",
+        img: require("@/assets/UX/crowdCo/header.png"),
+        tags: [
+          "Case Study",
+          "IOS HID",
+          "Competitive Analysis",
+          "Empathy Mapping",
+          "Persona",
+          "User Story",
+          "WireFrame"
+        ],
+        description:
+          "CrowdCo. is a basic croudfunding mobile app aimed to spread awareness about crowdfunding for the general non-tech audience as a means for funding projects and needs of individuals/group od people.",
+        component: "crowdCo",
+        blog: require("@/store/project/ux/crowdCo")
+      },
+      {
+        id: 4,
+        portfolio: false,
         title: "Digital Journal Redesign",
         img: require("@/assets/UX/tinyThoughts/header.jpg"),
         tags: [
@@ -83,22 +84,6 @@ export const projects: projectType[] = [
           "Tiny Thoughts is a personal Journal mobile app. The redesign was intended to make the app more modern and reduce clutter.",
         component: "tinyThoughts",
         blog: require("@/store/project/ux/tinyThoughts")
-      },
-      {
-        id: 5,
-        portfolio: false,
-        title: "Bank Website Redesign",
-        img: require("@/assets/UX/kudaBank/header.png"),
-        tags: [
-          "UID",
-          "Case Study",
-          "Google - Material Design",
-          "Fintech"
-        ],
-        description:
-          "Redesign for Kuda Bank website. It lacked effort in terms of making the website trendy and eye catching. The website homapage was made more easy to read and comprehend by the use of illustrations and precise text headings.",
-        component: "kudaBankCaseStudy",
-        blog: require("@/store/project/ux/kudaBank")
       },
       {
         id: 6,
@@ -116,25 +101,6 @@ export const projects: projectType[] = [
         blog: require("@/store/project/ux/skinSafe")
       },
       {
-        id: 7,
-        portfolio: false,
-        title: "Crowd Funding App",
-        img: require("@/assets/UX/mediaHRPlatform/header.png"),
-        tags: [
-          "Case Study",
-          "IOS HID",
-          "Competitive Analysis",
-          "Empathy Mapping",
-          "Persona",
-          "User Story",
-          "WireFrame"
-        ],
-        description:
-          "CrowdCo. is a basic croudfunding mobile app aimed to spread awareness about crowdfunding for the general non-tech audience as a means for funding projects and needs of individuals/group od people.",
-        component: "crowdCo",
-        blog: require("@/store/project/ux/crowdCo")
-      },
-      {
         id: 8,
         portfolio: false,
         title: "Venmo Case Study",
@@ -148,6 +114,39 @@ export const projects: projectType[] = [
         component: "venmoCaseStudy",
         blog: require("@/store/project/ux/venmoCaseStudy")
       },
+      {
+        id: 2,
+        portfolio: false,
+        title: "Online Learning Platform",
+        img: require("@/assets/UX/mediaHRPlatform/header.png"),
+        tags: [
+          "User Research",
+          "IA",
+          "Competitive Analysis",
+          "User Flow",
+          "WireFrame"
+        ],
+        description:
+          "Designed a program learning platform for People Matters. People Matters is an HR Media Platform aimed to help foster ideas between HR-related professioals.",
+        component: "HRPlatform",
+        blog: require("@/store/project/ux/hRPlatform")
+      },
+      // {
+      //   id: 5,
+      //   portfolio: false,
+      //   title: "Bank Website Redesign",
+      //   img: require("@/assets/UX/kudaBank/header.png"),
+      //   tags: [
+      //     "UID",
+      //     "Case Study",
+      //     "Google - Material Design",
+      //     "Fintech"
+      //   ],
+      //   description:
+      //     "Redesign for Kuda Bank website. It lacked effort in terms of making the website trendy and eye catching. The website homapage was made more easy to read and comprehend by the use of illustrations and precise text headings.",
+      //   component: "kudaBankCaseStudy",
+      //   blog: require("@/store/project/ux/kudaBank")
+      // },
       {
         id: 9,
         portfolio: false,
@@ -213,18 +212,18 @@ export const projects: projectType[] = [
         component: "fitnessFriend",
         blog: require("@/store/project/ui/fitnessFriend")
       },
-      {
-        id: 5,
-        portfolio: false,
-        title: "Authentication Concept Screens",
-        img: require("@/assets/mobile/login screenHeader.png"),
-        tags: [
-          "Login Screen"
-        ],
-        description: "Login/SignUp screen for a mobile app.",
-        component: "appSignUp",
-        blog: require("@/store/project/ui/appSignUp")
-      },
+      // {
+      //   id: 5,
+      //   portfolio: false,
+      //   title: "Authentication Concept Screens",
+      //   img: require("@/assets/mobile/login screenHeader.png"),
+      //   tags: [
+      //     "Login Screen"
+      //   ],
+      //   description: "Login/SignUp screen for a mobile app.",
+      //   component: "appSignUp",
+      //   blog: require("@/store/project/ui/appSignUp")
+      // },
       {
         id: 6,
         portfolio: false,

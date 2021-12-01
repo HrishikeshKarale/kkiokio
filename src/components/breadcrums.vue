@@ -26,9 +26,6 @@
 	import { mapGetters, mapMutations } from "vuex";
 	export default {
 		name: "Breadcrums",
-		data() {
-			return {};
-		}, //data
 		computed: {
 			...mapGetters({
 				routeComp: "contentModule/breadcrums/routeComp",

@@ -164,7 +164,6 @@
 				@afterEnter="afterEnter"
 			>
 				<div :key="$route.path" class="content">
-					<breadcrums />
 					<countdown-timer
 						class="countdownTimer"
 						start-time="January 24, 2021 23:59:99"
@@ -184,19 +183,14 @@
               }
             }'
 					/>
+					<breadcrums />
 					<scroll-indicator>
-						<!-- <keep-alive max="5">
-							<router-view :key="$route.fullPath" />
-						</keep-alive> -->
 						<router-view v-slot="{ Component }">
-							<keep-alive max="5">
+							<keep-alive max="2">
 								<component :is="Component" />
 							</keep-alive>
 						</router-view>
 					</scroll-indicator>
-					<template v-if="$slots['moto']">
-						<slot name="moto" />
-					</template>
 				</div>
 			</transition>
 			<template v-if="$slots['footer']">
@@ -330,7 +324,6 @@
 					const fromDepth = from.path.split("/").length;
 					transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
 				}
-				// this.transitionMode = DEFAULT_TRANSITION_MODE;
 				this.transitionEnterActiveClass = `${transitionName}-enter-active`;
 
 				if (to.meta.transitionName === "zoom") {
@@ -641,62 +634,21 @@
 		}
 	}
 
-	//zoom transition
-	.zoom-enter-active,
-	.zoom-leave-active {
-		animation-duration: @transitionDuration;
-		animation-fill-mode: both;
-		animation-name: zoom;
-	}
-
-	.zoom-leave-active {
-		animation-direction: reverse;
-	}
-
-	@keyframes zoom {
-		from {
-			opacity: 0;
-			transform: scale3d(0.5, 0.5, 0.5);
-		}
-
-		100% {
-			opacity: 1;
-		}
-	}
-
 	//fade transition
 	.fade-enter-active,
 	.fade-leave-active {
 		transition-duration: @transitionDuration;
-		transition-property: opacity;
+		transition-property: opacity, transform;
 		transition-timing-function: @transitionTimingFunction;
 	}
 
 	.fade-enter,
 	.fade-leave-active {
 		opacity: 0;
+		transform: translateY(4*@spaceXl);
 	}
-
-	//slide transition
-	.slide-left-enter-active,
-	.slide-left-leave-active,
-	.slide-right-enter-active,
-	.slide-right-leave-active {
-		transition-duration: @transitionDuration;
-		transition-property: height, opacity, transform;
-		transition-timing-function: @transitionTimingFunction;
-		overflow: hidden;
-	}
-
-	.slide-left-enter,
-	.slide-right-leave-active {
-		opacity: 0;
-		transform: translate(96px, 0);
-	}
-
-	.slide-left-leave-active,
-	.slide-right-enter {
-		opacity: 0;
-		transform: translate(-96px, 0);
+	.fade-leave,
+	.fade-enter-active {
+		opacity: 1;
 	}
 </style>

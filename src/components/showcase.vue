@@ -68,139 +68,155 @@
 		border-radius: @borderRadiusLg;
 		justify-content: space-around;
 		// flex: 480px 240px 320px;
-		width: min-content;
+		max-width: 320px;
 		height: min-content;
 		.boxShadow(@one);
 		gap: @spaceLg;
-		& > p,
-		& > ul {
-		margin : 0 @spaceLg !important;
-		}
+			& > p,
+			& > ul {
+				margin : 0 @spaceLg !important;
+			}
+					&:hover {
+						.boxShadow(@base);
+						& > a > h4 {
+							&:hover {
+								color: @accent;
+							}
+							& > span {
+								color: @accent;
+							}
+						}
+					}
+		// &:hover {
 
-		& > p {
-			// height: 96px;
-			width: fit-content;
-			overflow: hidden;
-			white-space: wrap;
-			text-overflow: ellipsis;
-			-webkit-line-clamp: 2;
-			-webkit-box-orient: vertical;
-		}
+		// 	& > p {
+		// 		display: block;
+		// 		max-width: 240px;
+		// 		margin-bottom: @spaceLg !important;
+		// 		&:hover {
+		// 			overflow: visible;
+		// 		}
+		// 	}
 
-		& > ul {
-			display: flex;
-			flex-flow: row wrap;
-			gap: @spaceMd;
-			margin-bottom: @spaceLg !important;
-		}
+		// 	& > ul {
+		// 		display: flex;
+		// 		flex-flow: row wrap;
+		// 		gap: @spaceMd;
+		// 		margin-bottom: @spaceLg !important;
+		// 	}
 
-		& > a,
-		& {
-			// margin-bottom: @spaceLg;
-			position: relative;
-			& > .vueImg {
+		// }
+		// & > p {
+		// 	display: none;
+		// }
+
+			&, & > a{
 				position: relative;
-				max-width: 320px;
-				min-width: 240px;
-				margin-top: -@spaceMd;
-				border-radius: @borderRadius @borderRadius 0 0 !important;
-				overflow: hidden;
-				object-fit: fill !important;
-				//gradient
-				&::after {
-					position: absolute;
+				& > .vueImg {
+					position: relative;
+					left: 0;
 					top: 0;
-					margin-left: 0;
-					height: ~"calc(100% + @{spaceMd})";
-					width: ~"calc(100% + 4 * @{spaceMd})";
-					content: "";
-					background: -moz-linear-gradient(
-							top,
-							rgba(0, 0, 0, 0) 0%,
-							rgba(0, 0, 0, 0.3) 59%,
-							rgba(0, 0, 0, 0.9) 100%
-						),
-						no-repeat;
-					background: -webkit-gradient(
-							linear,
-							left top,
-							left bottom,
-							color-stop(0%, rgba(0, 0, 0, 0)),
-							color-stop(59%, rgba(0, 0, 0, 0)),
-							color-stop(100%, rgba(0, 0, 0, 0.9))
-						),
-						no-repeat;
-					background: -webkit-linear-gradient(
-							top,
-							rgba(0, 0, 0, 0) 0%,
-							rgba(0, 0, 0, 0.3) 59%,
-							rgba(0, 0, 0, 0.9) 100%
-						),
-						no-repeat;
-					background: -o-linear-gradient(
-							top,
-							rgba(0, 0, 0, 0) 0%,
-							rgba(0, 0, 0, 0.3) 59%,
-							rgba(0, 0, 0, 0.9) 100%
-						),
-						no-repeat;
-					background: -ms-linear-gradient(
-							top,
-							rgba(0, 0, 0, 0) 0%,
-							rgba(0, 0, 0, 0.3) 59%,
-							rgba(0, 0, 0, 0.9) 100%
-						),
-						no-repeat;
-					background: linear-gradient(
-							to bottom,
-							rgba(0, 0, 0, 0) 0%,
-							rgba(0, 0, 0, 0.3) 59%,
-							rgba(0, 0, 0, 0.9) 100%
-						),
-						no-repeat;
-				}
-				&:hover {
+					max-width: 320px;
+					min-width: 240px;
+					// aspect-ratio: 1.6/1;
+					overflow: hidden;
+					object-fit: fill !important;
+					& > img {
+						border-radius: @borderRadiusLg;
+					}
+					//gradient
 					&::after {
-						filter: opacity(64%);
+						content: "";
+						position: absolute;
+						border-radius: @borderRadius @borderRadius 0 0 !important;
+						top: 0;
+						height: 100%;
+						width: 100%;
+						background: -moz-linear-gradient(
+								top,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 0.3) 59%,
+								rgba(0, 0, 0, 0.9) 100%
+							),
+							no-repeat;
+						background: -webkit-gradient(
+								linear,
+								left top,
+								left bottom,
+								color-stop(0%, rgba(0, 0, 0, 0)),
+								color-stop(59%, rgba(0, 0, 0, 0)),
+								color-stop(100%, rgba(0, 0, 0, 0.9))
+							),
+							no-repeat;
+						background: -webkit-linear-gradient(
+								top,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 0.3) 59%,
+								rgba(0, 0, 0, 0.9) 100%
+							),
+							no-repeat;
+						background: -o-linear-gradient(
+								top,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 0.3) 59%,
+								rgba(0, 0, 0, 0.9) 100%
+							),
+							no-repeat;
+						background: -ms-linear-gradient(
+								top,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 0.3) 59%,
+								rgba(0, 0, 0, 0.9) 100%
+							),
+							no-repeat;
+						background: linear-gradient(
+								to bottom,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 0.3) 59%,
+								rgba(0, 0, 0, 0.9) 100%
+							),
+							no-repeat;
 					}
-					& ~ span {
-						.boxShadow(@two);
+					&:hover {
+						&::after {
+							filter: opacity(64%);
+						}
+						& ~ span {
+							.boxShadow(@two);
+						}
 					}
 				}
-			}
-			& > h4 {
-				position: absolute;
-				margin-top: 0;
-				margin-bottom: @spaceMd;
-				bottom: @spaceMd;
-				left: @spaceMd;
-			}
-			& > span {
-				position: absolute;
-				top: -@spaceMd;
-				right: 0;
-				background-color: @accent;
-				padding: @spaceMd @spaceLg;
-				color: @white;
-				z-index: @contentZ;
-				border-radius: @borderRadius;
-				&:hover {
-					.boxShadow(@threeText, @accent);
+				&:not(a) {
+					.boxShadow(none);
+					& > .vueImg {
+						height: 320px;
+						aspect-ratio: 1;;
+						&::after {
+							background-color: transparent;
+						}
+					}
 				}
-			}
-		}
-
-		&:hover {
-			.boxShadow(@base);
-			& > a > h4 {
-				&:hover {
-					color: @accent;
+				& > h4 {
+					position: absolute;
+					margin-top: 0;
+					margin-bottom: @spaceMd;
+					bottom: @spaceMd;
+					left: @spaceLg;
 				}
 				& > span {
-					color: @accent;
+					position: absolute;
+					top: 0;
+					right: 0;
+					background-color: @accent;
+					padding: @spaceMd @spaceLg;
+					color: @white;
+					z-index: @contentZ;
+					border-radius: @borderRadius;
+					&:hover {
+						.boxShadow(@threeText, @accent);
+					}
 				}
 			}
-		}
 		// media
 			// line-height: @fontSizeMd !important;
 	}

@@ -45,27 +45,42 @@
 			</div>
 		</section>
 		<section id="Work">
+			<header>
 			<h1>WORK</h1>
 			<h3>Here are some samples</h3>
+			</header>
 			<div>
 				<template v-for="projects in getProjects" :key='projects.type'>
 					<template v-for="project in projects.value" :key='project.id'>
-						<showcase
-							v-if="project.portfolio"
+						<div v-if="project.portfolio" class="displayWork">
+							<!-- {{project}} -->
+							<div>
+							<vue-img :src="project.img" />
+								<h2>
+									{{project.title}}
+								</h2>
+								<p>
+									{{project.description}}
+								</p>
+							</div>
+						</div>
+						<!-- <showcase
 							:project="project"
 							:type="projects.type"
 							:component="
 								project.blog != null ? 'articlePage' : project.component
 							"
 							:article="project.blog != null ? project.title : ''"
-						/>
+						/> -->
 					</template>
 				</template>
 			</div>
 		</section>
 		<section id="honorsAndAwards">
+			<header>
 			<h1>Honors &amp; Awards</h1>
 			<h3>You can depend on me</h3>
+			</header>
 			<ol class='subSection'>
 				<li v-for="award in honorsAndAwards" :key="award.id">
 						<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
@@ -79,8 +94,10 @@
 			</ol>
 		</section>
 		<section id="kindWords">
+			<header>
 			<h1>Kind Words</h1>
 			<h3>What people think about me</h3>
+			</header>
 			<div class="subSection">
 				<div
 					v-for="words in kindWords"
@@ -150,24 +167,30 @@
 	@import (reference) "./../Less/customMixins.less";
 	@import (reference) "./../Less/customVariables.less";
 
-	article.profileOverview {
+	.profileOverview {
 		& > section {
 			position: relative;
+			min-height: @body;
 			&:not(#Intro) {
-				h1 {
-					align-self: center;
+				header {
+					display: flex;
+					flex-direction: column;
 					position: relative;
-					font-weight: 900;
-					font-size: 6 * @fontSize;
-					filter: opacity(16%);
-					.textShadow(@fiveText);
-					& + h3 {
-						position: absolute;
+					h1 {
 						align-self: center;
-						text-align: center;
-						top: 3 * @spaceXl + @spaceMd;
-						font-weight: bold;
-					}
+						position: relative;
+						font-weight: 900;
+						font-size: 6 * @fontSize;
+						filter: opacity(16%);
+						.textShadow(@fiveText);
+						& + h3 {
+							position: absolute;
+							align-self: center;
+							text-align: center;
+							bottom: @spaceLg;;
+							font-weight: bold;
+						}
+				}
 				}
 			}
 			&#Intro {
@@ -253,8 +276,99 @@
 					display: flex;
 					flex-flow: row wrap;
 					gap: @spaceXl;
-					& > div {
-						flex: 0 0 100%;
+					& > .displayWork {
+						flex: 0 0 48%;
+						& > div {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							position: relative;
+							& > .vueImg {
+								align-self: center;
+								max-width: 100%;
+								& + h2 {
+									position: absolute;
+									bottom: 0;
+								}
+								& ~ p {
+									position: absolute;
+									bottom: 0;
+									height: 0;
+									width: 100%;
+									filter: opacity(0);
+								}
+								//gradient
+								&::after {
+									content: "";
+									position: absolute;
+									border-radius: @borderRadius @borderRadius 0 0 !important;
+									top: 0;
+									height: 100%;
+									width: 100%;
+									background: -moz-linear-gradient(
+											top,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+									background: -webkit-gradient(
+											linear,
+											left top,
+											left bottom,
+											color-stop(0%, rgba(0, 0, 0, 0)),
+											color-stop(59%, rgba(0, 0, 0, 0)),
+											color-stop(100%, rgba(0, 0, 0, 0.9))
+										),
+										no-repeat;
+									background: -webkit-linear-gradient(
+											top,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+									background: -o-linear-gradient(
+											top,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+									background: -ms-linear-gradient(
+											top,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+									background: linear-gradient(
+											to bottom,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+								}
+							}
+							&:hover {
+								& > .vueImg {
+									&::after {
+										background-color: #333;
+										filter: opacity(80%);
+									}
+									& + h2 {
+										top: 0;
+										bottom: auto;
+									}
+									& ~ p {
+										height: fit-content;
+										filter: opacity(100);
+										left: @spaceXl;
+									}
+								}
+							}
+						}
 					}
 				}
 			}

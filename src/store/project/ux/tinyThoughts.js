@@ -1,14 +1,5 @@
 export const tinythoughts = {
   header: "Tiny Thoughts",
-  content: [
-    {
-      img: {
-        src: require("@/assets/UX/tinyThoughts/headerImage.jpg"),
-        alt: null,
-        caption: null
-      }
-    }
-  ],
   section: [
     {
       header: "About",
@@ -43,13 +34,13 @@ export const tinythoughts = {
         {
           subSection: [
             {
-              heading: "Navigation Drawer Usage",
+              header: "Navigation Drawer Usage",
               content: [
                 {
                   img: {
                     src: require("@/assets/UX/tinyThoughts/navDrawer.png"),
                     alt: null,
-                    caption: null
+                    caption: 'Dull and cramped home scree (left) and navigation (right)'
                   }
                 },
                 {
@@ -63,13 +54,13 @@ export const tinythoughts = {
               ]
             },
             {
-              header: "Image upload &amp; journal editing",
+              header: "Image upload & journal editing",
               content: [
                 {
                   img: {
                     src: require("@/assets/UX/tinyThoughts/editJournal.png"),
                     alt: null,
-                    caption: null
+                    caption: 'Inability to upload multiple images (left) and duplicate prompts while editing a journal (right)'
                   }
                 },
                 {
@@ -83,13 +74,13 @@ export const tinythoughts = {
               ]
             },
             {
-              header: "pp settings &amp; hashtags",
+              header: "App settings & hashtags",
               content: [
                 {
                   img: {
                     src: require("@/assets/UX/tinyThoughts/appSettings.png"),
                     alt: null,
-                    caption: null
+                    caption: 'inability to utilize white space thus cramping the available options.'
                   }
                 },
                 {
@@ -106,137 +97,134 @@ export const tinythoughts = {
                 }
               ]
             },
+          ]
+        }
+      ]
+    },
+    {
+      header: "Analysis and Ideation",
+      content: [
+        {
+          text:
+            "Keeping in mind the current features, I went on to prioritize more features that I came across in my research.Rather than doing a major overhaul, I wanted to keep the basic features intact and iterate on making the experience better.After creating a list of additional changes and features, I went on to write user stories that would serve as the base for my redesign."
+        },
+        {
+          subSection: [
             {
-              header: "Analysis and Ideation",
+              header: "User stories",
               content: [
                 {
-                  text:
-                    "Keeping in mind the current features, I went on to prioritize more features that I came across in my research.Rather than doing a major overhaul, I wanted to keep the basic features intact and iterate on making the experience better.After creating a list of additional changes and features, I went on to write user stories that would serve as the base for my redesign."
-                },
-                {
-                  subSection: [
-                    {
-                      header: "User stories",
-                      content: [
-                        {
-                          img: {
-                            src: require("@/assets/UX/tinyThoughts/userStories.png"),
-                            alt: null,
-                            caption: null
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      header: "Information Architecture",
-                      content: [
-                        {
-                          img: {
-                            src: require("@/assets/UX/tinyThoughts/IA.png"),
-                            alt: null,
-                            caption: null
-                          }
-                        },
-                        {
-                          text:
-                            "The app also needed a restructured information architecture in order to accommodate the updated features.I went through the Tinythoughts web application in order to see how its navigation differs from the mobile app navigation."
-                        },
-                        {
-                          altText:
-                            "<p> <b> TimeLine:</b> Shows all your journal entries </p>"
-                        },
-                        {
-                          altText:
-                            "<p> <b> Gallery:</b> A gallery for all the uploaded images(Premium feature) </p>"
-                        },
-                        {
-                          altText:
-                            "<p> <b> Mood:</b> Shows mood trends over the selected time period(Premium feature) </p>"
-                        },
-                        {
-                          text:
-                            "These had to be included in the app as well in order to make a consistent experience across all platforms."
-                        },
-                        {
-                          img: {
-                            src: require("@/assets/UX/tinyThoughts/IA2.png"),
-                            alt: null,
-                            caption: null
-                          }
-                        },
-                        {
-                          text:
-                            "I have not tried the premium features yet but I had some ideas of how these could be implemented within the mobile app.So after analyzing and ideating, I went on to make the final prototypes."
-                        }
-                      ]
-                    }
-                  ]
+                  img: [{
+                    src: require("@/assets/UX/tinyThoughts/userStories.png"),
+                    alt: null,
+                    caption: 'Requests we got while interviewing our potential target audience'
+                  }]
                 }
               ]
             },
             {
-              header: "Prototype",
-              content: [
-                {
-                  section: {
-                    header: "Paper Wireframes",
-                    content: [
-                      {
-                        text:
-                          "I usually begin implementing by ideas on pen and paper rather than directly going on to the screen.I feel like paper wireframes is the	cheapest and least time consuming way to experiment with multiple ideas.Here is some of the clutter that I generated."
-                      },
-                      {
-                        img: [
-                          {
-                            src: require("@/assets/UX/tinyThoughts/sketch.jpg"),
-                            alt: null,
-                            caption: null
-                          }, {
-                            src: require("@/assets/UX/tinyThoughts/sketch2.jpg"),
-                            alt: null,
-                            caption: null
-                          }
-                        ]
-                      },
-                      {
-                        subSection: [
-                          {
-                            header: "High fidelity designs",
-                            content: [
-                              {
-                                text:
-                                  "Pixel pushing time! I wanted to keep the primary color as it is because it’s currently being used on both mobile as the web application, hence adhering to the brand guidelines."
-                              },
-                              {
-                                img: {
-                                  src: require("@/assets/UX/tinyThoughts/design.png"),
-                                  alt: null,
-                                  caption: null
-                                }
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                }
-              ]
-            },
-            {
-              header: "Conclusion &amp; Lessons learned",
+              header: "Information Architecture",
               content: [
                 {
                   text:
-                    "I shared a working prototype of the redesign with my fellow UX Professionals.They appreciated the fact that I took time to clean up the current design and made it more usable.I came to know that this app was started as a side project by the original Jess(Original reator) and right now is used by many people as their go to daily journaling app.While Jess is looking to bring new updates in the future I will also be revisiting the app in the near future to look into the functionality that could be added to this platform."
+                    "The app also needed a restructured information architecture in order to accommodate the updated features.I went through the Tinythoughts web application in order to see how its navigation differs from the mobile app navigation."
+                },
+                {
+                  img: [{
+                    src: require("@/assets/UX/tinyThoughts/IA.png"),
+                    alt: null,
+                    caption: 'very minimal navigation offered by the website'
+                  },
+                  {
+                    src: require("@/assets/UX/tinyThoughts/IA2.png"),
+                    alt: null,
+                    caption: 'Suggested navigation'
+                  }]
+                },
+                {
+                  altText:
+                    "<p> <b> TimeLine:</b> Shows all your journal entries </p>"
+                },
+                {
+                  altText:
+                    "<p> <b> Gallery:</b> A gallery for all the uploaded images(Premium feature) </p>"
+                },
+                {
+                  altText:
+                    "<p> <b> Mood:</b> Shows mood trends over the selected time period(Premium feature) </p>"
                 },
                 {
                   text:
-                    "Who knows these redesigned bits might end up getting implemented in the a version ofmy own app! On the other hand I gained a better understanding about Google’s Material Guidelines and how to use it in order to design more consistent interfaces."
+                    "These had to be included in the app as well in order to make a consistent experience across all platforms."
+                },
+                {
+                  text:
+                    "I have not tried the premium features yet but I had some ideas of how these could be implemented within the mobile app.So after analyzing and ideating, I went on to make the final prototypes."
                 }
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      header: "Prototype",
+      content: [
+        {
+          subSection: [
+            {
+              header: "Paper Wireframes",
+              content: [
+                {
+                  text:
+                    "I usually begin implementing by ideas on pen and paper rather than directly going on to the screen.I feel like paper wireframes is the	cheapest and least time consuming way to experiment with multiple ideas.Here is some of the clutter that I generated."
+                },
+                {
+                  img: [
+                    {
+                      src: require("@/assets/UX/tinyThoughts/sketch.jpg"),
+                      alt: null,
+                      caption: 'Home screen (left),Journal - recorded notes (center) and writting or editing a note (right)'
+                    }],
+                }, {
+                  img: [{
+                    src: require("@/assets/UX/tinyThoughts/sketch2.jpg"),
+                    alt: null,
+                    caption: 'Add hastags to notes (left), Settings (center) and calendar (right)'
+                  }]
+                }
+              ]
+            },
+            {
+              header: "High fidelity designs",
+              content: [
+                {
+                  text:
+                    "Pixel pushing time! I wanted to keep the primary color as it is because it’s currently being used on both mobile as the web application, hence adhering to the brand guidelines."
+                },
+                {
+                  img: {
+                    src: require("@/assets/UX/tinyThoughts/design.png"),
+                    alt: null,
+                    caption: 'Redesigned app Screens'
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      header: "Conclusion & Lessons learned",
+      content: [
+        {
+          text:
+            "I shared a working prototype of the redesign with my fellow UX Professionals.They appreciated the fact that I took time to clean up the current design and made it more usable.I came to know that this app was started as a side project by the original Jess(Original reator) and right now is used by many people as their go to daily journaling app.While Jess is looking to bring new updates in the future I will also be revisiting the app in the near future to look into the functionality that could be added to this platform."
+        },
+        {
+          text:
+            "Who knows these redesigned bits might end up getting implemented in the a version ofmy own app! On the other hand I gained a better understanding about Google’s Material Guidelines and how to use it in order to design more consistent interfaces."
         }
       ]
     }

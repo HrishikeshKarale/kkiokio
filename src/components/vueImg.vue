@@ -71,8 +71,10 @@
 			max-width: inherit;
 			& + figcaption {
 				font-size: @fontSizeSm;
-				text-align: center;
+				text-align:
+				center;
 				line-height: @fontSizeSm;
+				color: @secondary;
 			}
 		}
 	}

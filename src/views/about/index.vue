@@ -100,7 +100,9 @@
 			</p>
 		</section>
 		<section id="Objective">
-			<h1>Objective</h1>
+			<header>
+				<h1>Objective</h1>
+			</header>
 			<q>
 				<span class="fas fa-quote-left fa-pull-left fa-border" />
 				Strive towards creating intuitive interfaces that can not only solve problems but also create
@@ -109,8 +111,10 @@
 			</q>
 		</section>
 		<section id="Process">
-			<h1>My Process</h1>
-			<h3>Steps I take to assure success</h3>
+			<header>
+				<h1>My Process</h1>
+				<h3>Steps I take to assure success</h3>
+			</header>
 			<p>
 				One of the key factors that define a designers work is the process they use to solve a problem.
 			</p>
@@ -144,8 +148,10 @@
 			</div>
 		</section>
 		<section id="Skillset">
-			<h1>Skill Set</h1>
-			<h3>Badges on my belt</h3>
+			<header>
+				<h1>Skill Set</h1>
+				<h3>Badges on my belt</h3>
+			</header>
 			<ol class='subSection'>
 				<li v-for="skill in skills" :key="skill.type">
 					<h4>{{ skill.type }}</h4>
@@ -158,7 +164,9 @@
 			</ol>
 		</section>
 		<section id="LisencesAndCertificates">
-			<h1>Licenses &amp; Certificates</h1>
+			<header>
+				<h1>Licenses &amp; Certificates</h1>
+			</header>
 			<ol class='subSection'>
 				<li v-for="cert in lisencesAndCertificates" :key="cert.id">
 					<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
@@ -187,7 +195,9 @@
 			</ol>
 		</section>
 		<section id="honorsAndAwards">
-			<h1>Honors &amp; Awards</h1>
+			<header>
+				<h1>Honors &amp; Awards</h1>
+			</header>
 			<ol class='subSection'>
 				<li v-for="award in honorsAndAwards" :key="award.id">
 						<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
@@ -264,22 +274,30 @@
 	.about {
 		& > section {
 				position: relative;
-				&:not(#Bio) > h1 {
-					align-self: center;
-					font-weight: 900;
-					filter: opacity(16%);
-					font-size: 4 * @fontSize;
-					.textShadow(@threeText, @black);
-					& + h3 {
-						position: absolute;
-						align-self: center;
-						text-align: center;
-						top: 2 * @spaceXl;
-						font-weight: bold;
+				&:not(#Bio) {
+					header {
+						display: flex;
+						flex-direction: column;
+						position: relative;
+						& > h1 {
+							align-self: center;
+							font-weight: 900;
+							filter: opacity(16%);
+							font-size: 4 * @fontSize;
+							.textShadow(@threeText, @black);
+							& + h3 {
+								position: absolute;
+								align-self: center;
+								text-align: center;
+								bottom: @spaceLg;
+								font-weight: bold;
+							}
+						}
 					}
 				}
 			&#LisencesAndCertificates,
 			&#honorsAndAwards {
+					min-height: @body;
 				& > ol {
 					display: flex;
 					flex-direction: row;
@@ -329,6 +347,7 @@
 				}
 			}
 			&#Objective {
+					min-height: @body;
 				& > q {
 					quotes: none;
 					font-size: @fontSize;
@@ -337,6 +356,7 @@
 				}
 			}
 			&#Process {
+					min-height: @body;
 				flex-direction: column;
 				text-align: left;
 
@@ -385,6 +405,7 @@
 				}
 			}
 			&#Skillset {
+					min-height: @body;
 				display: flex;
 				flex-direction: column;
 				& > ol {

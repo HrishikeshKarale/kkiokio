@@ -256,6 +256,7 @@
 							background-color: @cardBackground;
 							border-radius: @borderRadius;
 							.boxShadow(@base);
+							width: max-content;
 						}
 					}
 					&:hover {
