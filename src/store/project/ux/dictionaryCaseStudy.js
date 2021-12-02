@@ -1,14 +1,5 @@
 export const crowdCo = {
   header: "English Dictionary app redesign",
-  content: [
-    {
-      img: {
-        src: require("@/assets/UX/dictionary/disctionaryAppRe.png"),
-        alt: null,
-        caption: null
-      }
-    }
-  ],
   section: [
     {
       header: "About",
@@ -65,7 +56,7 @@ export const crowdCo = {
                   img: {
                     src: require("@/assets/UX/dictionary/homeScreen.png"),
                     alt: null,
-                    caption: null
+                    caption: 'Cluttery and redundant elements on home screen (left) and navigation (right).'
                   }
                 },
                 {
@@ -80,29 +71,28 @@ export const crowdCo = {
                   text: "Below is the recomended home screen for the app:"
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/dictionary/homeScreenRe1.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/dictionary/homeScreenRe2.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/dictionary/wordOfTheDay.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                  img: [
+                    {
+                      src: require("@/assets/UX/dictionary/homeScreenRe1.svg"),
+                      alt: null,
+                      caption: 'Home screen'
+                    }, {
+                      src: require("@/assets/UX/dictionary/homeScreenRe2.svg"),
+                      alt: null,
+                      caption: 'Navigation'
+                    }
+                  ]
                 },
                 {
                   text:
                     "As proposed above, I removed the app drawer and replaced it with a Pop Up menu on the right.The home screen looks a lot cleaner after this change.As search is the most important action that is needed to be performed within the app, it’s placement matters the most and hence the change from the original app bar location is implemented."
+                },
+                {
+                  img: [{
+                    src: require("@/assets/UX/dictionary/wordOfTheDay.svg"),
+                    alt: null,
+                    caption: 'Word of the day'
+                  }]
                 },
                 {
                   text:
@@ -117,7 +107,7 @@ export const crowdCo = {
                   img: {
                     src: require("@/assets/UX/dictionary/searchScreen.png"),
                     alt: null,
-                    caption: null
+                    caption: 'search screen'
                   }
                 },
                 {
@@ -128,18 +118,17 @@ export const crowdCo = {
                   text: "Here’s the fix for our search screen:"
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/dictionary/searchScreenRe1.svg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/dictionary/wordSearchRe.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                  img: [
+                    {
+                      src: require("@/assets/UX/dictionary/searchScreenRe1.svg"),
+                      alt: null,
+                      caption: 'Search directly from home screen using either text or voice.'
+                    }, {
+                      src: require("@/assets/UX/dictionary/wordSearchRe.svg"),
+                      alt: null,
+                      caption: 'ability to bookmark, share and listen to audio.'
+                    }
+                  ]
                 },
                 {
                   text:
@@ -158,7 +147,7 @@ export const crowdCo = {
                   img: {
                     src: require("@/assets/UX/dictionary/noteScreen.png"),
                     alt: null,
-                    caption: null
+                    caption: 'Notes screen'
                   }
                 },
                 {
@@ -169,11 +158,18 @@ export const crowdCo = {
                   text: "Here’s the redesigned version:"
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/dictionary/NotesScreenRe.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                  img: [
+                    {
+                      src: require("@/assets/UX/dictionary/NotesScreenRe.svg"),
+                      alt: null,
+                      caption: 'ability to browse add and delete notes.'
+                    },
+                    {
+                      src: require("@/assets/UX/dictionary/NotesScreenRe add.svg"),
+                      alt: null,
+                      caption: 'Add note and description'
+                    }
+                  ]
                 },
                 {
                   text:
@@ -185,18 +181,18 @@ export const crowdCo = {
         }
       ]
     }, //sections
-    {
-      header: "Color and Typography",
-      content: [
-        {
-          img: {
-            src: require("@/assets/UX/dictionary/colorTypeface.png"),
-            alt: null,
-            caption: null
-          }
-        }
-      ]
-    }, //sections
+    // {
+    //   header: "Color and Typography",
+    //   content: [
+    //     {
+    //       img: {
+    //         src: require("@/assets/UX/dictionary/colorTypeface.png"),
+    //         alt: null,
+    //         caption: 'typography and color used in the design'
+    //       }
+    //     }
+    //   ]
+    // }, //sections
     {
       header: "Whats Next?",
       content: [

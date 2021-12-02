@@ -1,110 +1,114 @@
 <template>
 	<article class="profileOverview">
-		<section id="intro">
+		<section id="Intro">
 			<div class="subSection">
 				<span>HELLO THERE</span>
 				<h2>My name is</h2>
-				<h1 @click="$router.push({ name: 'about' })">Hrishikesh Karale.</h1>
+				<h1>
+					<a @click="$router.push({ name: 'about' })">Hrishikesh Karale.</a>
+					</h1>
 				<h2>I design things.</h2>
 				<p>
 					I am a
-					<mark>Inter-Disciplinary UX Designer</mark>
+					<mark>Inter-Disciplinary UX Professional</mark>
 					based out of Rochester, NY.
 				</p>
 				<p>
-					My expertise ranges from Problem Validation
-					<span class="fas fa-arrow-right" /> Research
-					<span class="fas fa-arrow-right" /> UX/UI Design
+					My expertise ranges from
+					<abbr title="Making an effort to understand and clearly articulate the problems experienced by our user(s).">
+						Problem Validation
+					</abbr>
 					<span class="fas fa-arrow-right" />
-					Front-End Development.
+					<abbr title=" A clear description of the problem which also includes the vision and possible step by step solutions into solving the problem.">
+						Problem Definition
+					</abbr>
+					<span class="fas fa-arrow-right" />
+					<abbr title="A systametic study of target users and their requirements, to add realistic ocntext and insight to the design process.">
+						UX Research
+					</abbr>
+					<span class="fas fa-arrow-right" />
+					<abbr title="A nonlinear, iterative process where a designer explores design solutions in an effort towards solving a user problem,thus ultimately creating a detailed Hi-Fi solution.">
+						UI Design
+					</abbr>
+					<span class="fas fa-arrow-right" />
+					<abbr title="I am well versed">
+						Front-End Development
+					</abbr>.
 				</p>
-				<!-- <p>
-					As a UX Professional, I am passionate about
-					<mark>Empathy in design</mark>. I believe in setting ego aside and
-					creating an experience that caters to my user needs. My ability to
-					organised workflows, understand visual design language and solve
-					problems shows in my work.
-				</p> -->
-				<vue-button
-					tag="loginButton"
-					category="border-sm"
-					text="About me"
-					icon="fas fa-sign-in-alt"
-					:ctx="
-						() => {
-							$router.push({ name: 'about' });
-						}
-					"
-				/>
 			</div>
-			<div class="subSection" @click="$router.push({ name: 'work' })">
-				<span>Designer</span>
-				<span>&amp;</span>
-				<span>Developer</span>
+			<div class="subSection">
+				<q>
+					A little
+					<abbr title="The ability to understand and share the feelings of another.">EMPATHY</abbr>
+					 goes a long way
+				</q>
 			</div>
 		</section>
-		<section id="projects">
+		<section id="Work">
+			<header>
 			<h1>WORK</h1>
-			<h3>What I've been up to</h3>
-			<p>
-				Globally adopted software, high converting websites, emerging
-				technology and beyond.
-			</p>
-			<!-- <q>
-				A good User Interface is important because it can turn potential
-				visitors to buyers as it facilitates interactions between the user and
-				your website or web application----f5-studio.com
-			</q> -->
-			<p>
-				This is a detailed chronicle of the stories, processes and results
-				behind the projects that I've led and contributed to.
-			</p>
+			<h3>Here are some samples</h3>
+			</header>
 			<div>
 				<template v-for="projects in getProjects" :key='projects.type'>
 					<template v-for="project in projects.value" :key='project.id'>
-						<showcase
-							v-if="project.portfolio"
+						<div v-if="project.portfolio" class="displayWork">
+							<!-- {{project}} -->
+							<div>
+							<vue-img :src="project.img" />
+								<h2>
+									{{project.title}}
+								</h2>
+								<p>
+									{{project.description}}
+								</p>
+							</div>
+						</div>
+						<!-- <showcase
 							:project="project"
 							:type="projects.type"
 							:component="
 								project.blog != null ? 'articlePage' : project.component
 							"
 							:article="project.blog != null ? project.title : ''"
-						/>
+						/> -->
 					</template>
 				</template>
 			</div>
 		</section>
+		<section id="honorsAndAwards">
+			<header>
+			<h1>Honors &amp; Awards</h1>
+			<h3>You can depend on me</h3>
+			</header>
+			<ol class='subSection'>
+				<li v-for="award in honorsAndAwards" :key="award.id">
+						<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
+						<h4>
+							{{ award.title }}
+							<small>
+								{{ award.issuer }}
+							</small>
+						</h4>
+				</li>
+			</ol>
+		</section>
 		<section id="kindWords">
+			<header>
 			<h1>Kind Words</h1>
 			<h3>What people think about me</h3>
+			</header>
 			<div class="subSection">
-				<div>
+				<div
+					v-for="words in kindWords"
+					:key="words.name"
+					class="subSection"
+				>
 					<q>
-						As a manager, you hope to hire people who are smarter than you,
-						driven to make a big impact, and who constantly push themselves to
-						grow–and Hrishikesh was certainly that. I learned a lot from him
-						(his knowledge in UX design is unparalleled) and it was a joy
-						working together.
+						<span class="fas fa-quote-left fa-2x fa-pull-left fa-border" />
+						{{ words.comment }}
 					</q>
-					<h5>Craig Swings</h5>
-				</div>
-				<div class="subSection">
-					<q>
-						Hrishikesh, exhibits the experience and talent of someone twice his
-						age in years. He is an incredible leader and has a way about him to
-						get the most out of anyone. But most importantly, he's always eager
-						to help others learn, grow and improve.
-					</q>
-					<h5>Junaid Shaikh</h5>
-				</div>
-				<div>
-					<q>
-						What I enjoyed most about working with Hrishikesh was his mix of
-						to-the-point creative vision and direction, while providing it in
-						one of the most humble ways I’ve encountered.
-					</q>
-					<h5>Justin</h5>
+					<h5>{{words.name}}</h5>
 				</div>
 			</div>
 		</section>
@@ -113,18 +117,16 @@
 
 <script>
 	// @ is an alias to /src
-	import vueButton from "@/components/vueButton.vue";
 	import { loading } from "@/typeScript/common/loading";
 	import { mapGetters } from "vuex";
 	import showcase from "@/components/showcase.vue";
-	// import slider from "./projects/js/slider.vue";
+	import vueImg from "@/components/vueImg.vue";
 
 	export default {
 		name: "Home",
 		components: {
-			vueButton,
 			showcase,
-			// slider,
+			vueImg,
 		},
 		mixins: [loading],
 		data() {
@@ -132,13 +134,31 @@
 			const profilePic = require("@/../public/img/profilePic.jpg");
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logo = require("@/assets/logo.svg");
+			// reviews
+			const kindWords = [
+				{
+					comment: "As a manager, you hope to hire people who are smarter than you, driven to make a big impact, and who constantly push themselves to grow–and Hrishikesh was certainly that. I learned a lot from him (his knowledge in UX design is unparalleled) and it was a joy working together.",
+					name: "Craig Swings"
+				},
+				{
+					comment: "Hrishikesh, exhibits the experience and talent of someone twice his age in years. He is an incredible leader and has a way about him to get the most out of anyone. But most importantly, he's always eager to help others learn, grow and improve.",
+					name: "Junaid Shaikh"
+				},
+				{
+					comment: "What I enjoyed most about working with Hrishikesh was his mix of to-the-point creative vision and direction, while providing it in one of the most humble ways I’ve encountered.",
+					name: "Justin"
+				}
+			];
 			return {
 				profilePic,
 				logo,
+				kindWords
 			};
 		},
 		computed: {
-			...mapGetters({ getProjects: "contentModule/getProjects" }),
+			...mapGetters({
+				getProjects: "contentModule/getProjects",
+				honorsAndAwards: "contentModule/getHonorsAndAwards", },),
 		},
 	};
 </script>
@@ -147,32 +167,38 @@
 	@import (reference) "./../Less/customMixins.less";
 	@import (reference) "./../Less/customVariables.less";
 
-	article.profileOverview {
+	.profileOverview {
 		& > section {
 			position: relative;
-			&:not(#intro) {
-				h1 {
-					align-self: center;
-					font-weight: 900;
-					filter: opacity(16%);
-					font-size: 4 * @fontSize;
-					.textShadow(@three, @black);
-					& + h3 {
-						position: absolute;
+			min-height: @body;
+			&:not(#Intro) {
+				header {
+					display: flex;
+					flex-direction: column;
+					position: relative;
+					h1 {
 						align-self: center;
-						text-align: center;
-						top: 2 * @spaceXl;
-						font-weight: bold;
-					}
+						position: relative;
+						font-weight: 900;
+						font-size: 6 * @fontSize;
+						filter: opacity(16%);
+						.textShadow(@fiveText);
+						& + h3 {
+							position: absolute;
+							align-self: center;
+							text-align: center;
+							bottom: @spaceLg;;
+							font-weight: bold;
+						}
+				}
 				}
 			}
-			&#intro {
-				// .backgroundColor(@primary, 100vw, 32%);
+			&#Intro {
 				flex-direction: row;
-				justify-content: space-evenly;
+				justify-content: space-around;
 				align-self: center;
 				min-height: @body;
-				//
+				max-width: 960px;
 				& > div {
 						justify-content: space-around;
 						align-self: center;
@@ -196,49 +222,189 @@
 					& > p {
 						max-width: 640px;
 						margin-bottom: @spaceXl;
-					}
-					& > button {
-						align-self: flex-end;
+						& > span {
+							padding: 0 @spaceLg;
+						}
+						& > b {
+							color: @secondary;
+						}
 					}
 					//design and develop box
 					&:last-child {
-						margin-left: 0;
-						border: @borderRadius dashed @accent;
-						height: 240px;
+						position: relative;
+						display: flex;
 						width: 240px;
-						border-radius: 25%;
-						cursor: pointer;
-						.boxShadow(@five, @accent);
-						&:hover {
-							.boxShadow(@three, @accent);
-						}
-						.backgroundColor();
-						& > span {
-							font-size: 64px;
-							align-self: center;
-							font-weight: bold;
-							transform: rotate(-45deg);
-							margin-right: 4*@spaceXl !important;
-							&:last-child {
-								margin-right: 0 !important;
-								margin-left: 3*@spaceXl !important;
+						aspect-ratio: 1;
+						border-radius: 24%;
+						background-color: transparent;
+						margin: 0 !important;
+						border: @spaceMd double @accent;
+						gap: @spaceXl;
+						transform: rotate(-45deg);
+						& > q {
+							text-align: center;
+							quotes: none;
+							transform: rotate(45deg);
+							& > abbr {
+								font-weight: 900;
+								letter-spacing: 4px !important;
 							}
-							&:nth-child(2) {
-								transform: rotate(0deg);
-								margin: 0 !important;
+						}
+						&:hover {
+							border: @spaceMd double @accent;
+							.boxShadow(@base, @primary);
+							& > span {
+								.textShadow(@threeText);
+							}
+						}
+					}
+				}
+				// &::before {
+				// 	content: '\2193';
+				// 	position: absolute;
+				// 	bottom: 0;
+				// }
+				// &::after {
+				// 	content: 'Scroll Down';
+				// 	position: absolute;
+				// 	bottom: @spaceXl;
+				// 	font-weight: 700;
+				// }
+			}
+			&#Work {
+				& > div {
+					display: flex;
+					flex-flow: row wrap;
+					gap: @spaceXl;
+					& > .displayWork {
+						flex: 0 0 48%;
+						& > div {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							position: relative;
+							& > .vueImg {
+								align-self: center;
+								max-width: 100%;
+								& + h2 {
+									position: absolute;
+									bottom: 0;
+								}
+								& ~ p {
+									position: absolute;
+									bottom: 0;
+									height: 0;
+									width: 100%;
+									filter: opacity(0);
+								}
+								//gradient
+								&::after {
+									content: "";
+									position: absolute;
+									border-radius: @borderRadius @borderRadius 0 0 !important;
+									top: 0;
+									height: 100%;
+									width: 100%;
+									background: -moz-linear-gradient(
+											top,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+									background: -webkit-gradient(
+											linear,
+											left top,
+											left bottom,
+											color-stop(0%, rgba(0, 0, 0, 0)),
+											color-stop(59%, rgba(0, 0, 0, 0)),
+											color-stop(100%, rgba(0, 0, 0, 0.9))
+										),
+										no-repeat;
+									background: -webkit-linear-gradient(
+											top,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+									background: -o-linear-gradient(
+											top,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+									background: -ms-linear-gradient(
+											top,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+									background: linear-gradient(
+											to bottom,
+											rgba(0, 0, 0, 0) 0%,
+											rgba(0, 0, 0, 0.3) 59%,
+											rgba(0, 0, 0, 0.9) 100%
+										),
+										no-repeat;
+								}
+							}
+							&:hover {
+								& > .vueImg {
+									&::after {
+										background-color: #333;
+										filter: opacity(80%);
+									}
+									& + h2 {
+										top: 0;
+										bottom: auto;
+									}
+									& ~ p {
+										height: fit-content;
+										filter: opacity(100);
+										left: @spaceXl;
+									}
+								}
 							}
 						}
 					}
 				}
 			}
-			&#projects {
-				& > div {
+			&#honorsAndAwards {
+				& > ol {
 					display: flex;
-					flex-flow: row wrap;
+					flex-direction: row;
+					flex-wrap: wrap;
 					gap: @spaceXl;
-					& > div {
-						flex: 1 0 240px;
-
+					& > li {
+						display: flex;
+						flex-flow: column nowrap;
+						width: 240px;
+						height: fit-content;
+						gap: @spaceMd;
+						padding: @spaceXl @spaceLg;
+						border-radius: @borderRadius;
+						// background-color: @cardBackground;
+						// .boxShadow(@baseText);
+						& > figure.vueImg {
+							max-height: 80px;
+							min-width: 80px;
+							max-width: 200px;
+							aspect-ratio: 1;
+							& + h4 {
+								display: flex;
+								flex-direction: column;
+								& > small {
+									margin-top: @spaceMd;
+									text-align: right;
+									align-self: flex-end;
+									font-size: @fontSizeMd;
+									text-align: right;
+								}
+							}
+						}
 					}
 				}
 			}
@@ -248,18 +414,24 @@
 					flex-direction: row;
 					flex-wrap: wrap;
 					gap: @spaceXl;
+					// comment sections
 					& > div {
 						display: flex;
 						flex-direction: column;
-						flex: 0 1 480px;
+						// aspect-ratio: 16/10;
 						border-radius: @borderRadiusLg;
-						border: 1px dashed @primary;
+						// border: 1px dashed @primary;
 						height: fit-content;
-						.boxShadow(@base, @primary);
+						.boxShadow(@oneText);
 						.backgroundColor(@primary, 4%, @spaceLg, @spaceXl);
 						gap: @spaceLg;
 						& > q {
-							// margin: @spaceXl;
+							quotes: none;
+							min-width: 240px;
+							max-width: 640px;
+							&> span {
+								color: @secondary;
+							}
 							& + h5 {
 								display: flex;
 								flex-direction: row-reverse;
@@ -279,19 +451,8 @@
 				@media (max-width: @1200width) {
 					& > section {
 						margin-bottom: @spaceXl;
-						&#intro {
+						&#Intro {
 							flex-direction: column-reverse;
-							& > div {
-								&:last-child {
-									margin: 2 * @spaceXl 0;
-									height: 240px;
-									width: 240px;
-									align-self: center;
-									& > span {
-										font-size: 2 * @fontSize;
-									}
-								}
-							}
 						}
 						&#projects {
 							& > ul {
@@ -304,12 +465,27 @@
 							}
 						}
 					}
-				}
-				@media (max-width: @768width) {
-				}
-				@media (max-width: @480width) {
-				}
-				@media (max-width: @320width) {
+					@media (max-width: @768width) {
+						& > section {
+							&#Intro {
+								margin-top: 2*@spaceXl;
+								gap: @spaceXl;
+							}
+						}
+						@media (max-width: @480width) {
+							& > section {
+								&#Intro {
+									& > div {
+										&:last-child {
+											width: 200px;
+										}
+									}
+								}
+							}
+							@media (max-width: @320width) {
+							}
+						}
+					}
 				}
 			}
 		}

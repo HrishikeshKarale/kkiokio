@@ -1,6 +1,6 @@
 <template>
 	<section class="postNav">
-		<div class="previous" v-if="previous != null">
+		<div class="subSection previous" v-if="previous != null">
 			<h3
 				@click="
 					$router.push({
@@ -13,7 +13,7 @@
 				v-text="previous.title"
 			/>
 		</div>
-		<div v-if="next != null" class="next">
+		<div v-if="next != null" class="subSection next">
 			<h3
 				@click="
 					$router.push({
@@ -61,6 +61,10 @@
 		& > .next {
 			position: relative;
 			flex: 1 1 160px;
+			padding: @spaceLg;
+			&:hover {
+				.boxShadow(@baseText);
+			}
 			&::before {
 				content: "Previous Post";
 				font-weight: 700;
@@ -69,7 +73,7 @@
 			&::after {
 				content: "";
 				position: absolute;
-				left: 0;
+				left: @spaceLg;
 				top: 3 * @spaceLg;
 				border-left: @spaceLg solid @primary;
 				height: 60%;

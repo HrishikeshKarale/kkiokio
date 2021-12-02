@@ -56,23 +56,25 @@
 	.vueImg {
 		display: flex;
 		flex-flow: column nowrap;
-		justify-content: center;
-		align-content: center;
-		align-self: flex-start;
+		justify-content: space-around;
+		align-items: center;
+		align-self: center !important;
 		gap: @spaceLg;
 		z-index: inherit;
 		margin-block-end: 0;
 		margin-block-start: 0;
 		margin-inline-end: 0;
 		margin-inline-start: 0;
-		width: 100%;
+		width: min-content;
 		& > img {
-			max-width: 100%;
-			height: inherit;
+			max-height: inherit;
+			max-width: inherit;
 			& + figcaption {
 				font-size: @fontSizeSm;
-				text-align: center;
+				text-align:
+				center;
 				line-height: @fontSizeSm;
+				color: @secondary;
 			}
 		}
 	}

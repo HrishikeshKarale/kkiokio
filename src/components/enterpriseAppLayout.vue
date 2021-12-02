@@ -163,19 +163,18 @@
 				@enter="enter"
 				@afterEnter="afterEnter"
 			>
-				<main :key="$route.path" class="content">
-					<breadcrums />
+				<div :key="$route.path" class="content">
 					<countdown-timer
 						class="countdownTimer"
 						start-time="January 24, 2021 23:59:99"
-						end-time="Aug 16, 2021 00:00:01"
+						end-time="Nov 29, 2021 00:00:01"
 						trans='{
               "day":"Day",
               "hours":"Hours",
               "minutes":"Minuts",
               "seconds":"Seconds",
               "expired":"Please contact the administrator (hrishirich619@gmail.com).",
-              "running":"Please report any bugs to site administrator at hrishirich619@gmail.com",
+              "running":"Major updates are being pushed to the website and this my result in some parts of the website not working.",
               "upcoming":"Till start of event.",
               "status": {
                 "expired":"We apologise fior the delay, Please come back tomorrow.",
@@ -184,20 +183,15 @@
               }
             }'
 					/>
+					<breadcrums />
 					<scroll-indicator>
-						<!-- <keep-alive max="5">
-							<router-view :key="$route.fullPath" />
-						</keep-alive> -->
 						<router-view v-slot="{ Component }">
-							<keep-alive max="5">
+							<keep-alive max="2">
 								<component :is="Component" />
 							</keep-alive>
 						</router-view>
 					</scroll-indicator>
-					<template v-if="$slots['moto']">
-						<slot name="moto" />
-					</template>
-				</main>
+				</div>
 			</transition>
 			<template v-if="$slots['footer']">
 				<slot name="footer" />
@@ -330,7 +324,6 @@
 					const fromDepth = from.path.split("/").length;
 					transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
 				}
-				// this.transitionMode = DEFAULT_TRANSITION_MODE;
 				this.transitionEnterActiveClass = `${transitionName}-enter-active`;
 
 				if (to.meta.transitionName === "zoom") {
@@ -554,7 +547,7 @@
 				}
 
 				//scroll content
-				& > main {
+				& > div {
 					display: flex;
 					flex-direction: column;
 					&.content {
@@ -567,6 +560,10 @@
 						background-color: @backgroundColor !important;
 						//countdown timer
 						& > .countdownTimer {
+							// position: absolute;
+							// top: 0;
+							// left: 0;
+							// z-index: @modalZ - 5;
 							flex-direction: row;
 							background-color: @dangerBorder;
 							padding: @spaceMd @spaceLg;
@@ -582,9 +579,9 @@
 			@media (max-width: @1600width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
-								.responsive(@1200width, 0);
+								.responsive(@1200width, -2);
 							}
 						}
 					}
@@ -593,7 +590,7 @@
 			@media (max-width: @1200width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@768width, 6);
 							}
@@ -604,7 +601,7 @@
 			@media (max-width: @768width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@480width, 2);
 							}
@@ -615,7 +612,7 @@
 			@media (max-width: @480width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@320width, 2);
 							}
@@ -626,7 +623,7 @@
 			@media (max-width: @320width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@320width, -2);
 							}
@@ -637,62 +634,21 @@
 		}
 	}
 
-	//zoom transition
-	.zoom-enter-active,
-	.zoom-leave-active {
-		animation-duration: @transitionDuration;
-		animation-fill-mode: both;
-		animation-name: zoom;
-	}
-
-	.zoom-leave-active {
-		animation-direction: reverse;
-	}
-
-	@keyframes zoom {
-		from {
-			opacity: 0;
-			transform: scale3d(0.5, 0.5, 0.5);
-		}
-
-		100% {
-			opacity: 1;
-		}
-	}
-
 	//fade transition
 	.fade-enter-active,
 	.fade-leave-active {
 		transition-duration: @transitionDuration;
-		transition-property: opacity;
+		transition-property: opacity, transform;
 		transition-timing-function: @transitionTimingFunction;
 	}
 
 	.fade-enter,
 	.fade-leave-active {
 		opacity: 0;
+		transform: translateY(4*@spaceXl);
 	}
-
-	//slide transition
-	.slide-left-enter-active,
-	.slide-left-leave-active,
-	.slide-right-enter-active,
-	.slide-right-leave-active {
-		transition-duration: @transitionDuration;
-		transition-property: height, opacity, transform;
-		transition-timing-function: @transitionTimingFunction;
-		overflow: hidden;
-	}
-
-	.slide-left-enter,
-	.slide-right-leave-active {
-		opacity: 0;
-		transform: translate(96px, 0);
-	}
-
-	.slide-left-leave-active,
-	.slide-right-enter {
-		opacity: 0;
-		transform: translate(-96px, 0);
+	.fade-leave,
+	.fade-enter-active {
+		opacity: 1;
 	}
 </style>

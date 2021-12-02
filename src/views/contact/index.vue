@@ -3,13 +3,13 @@
 		<header>
 			<h1>Contact Me</h1>
 		</header>
-		<p>
+		<!-- <p>
 			Hello, My name is Hrishikesh Karale and I live in Upstate New York.
-			<br />
-			Feel free to use the contact form below and reach out to me for any
-			questions yo might have.
-			<br />
-			If you sign in, You can also write to me the old fashion way.
+		</p> -->
+		<p>
+			Feel free to reach out to me for any questions you might have.
+			<!-- <br />
+			If you sign in, You can also write to me the old fashion way. -->
 		</p>
 		<section id="Info">
 			<div class="email">
@@ -18,7 +18,7 @@
 					<vue-clipboard
 						id="emailId"
 						copy="hrishikesh.karale@gmail.com"
-						category="icon-sm"
+						category="icon"
 					/>
 				</h3>
 				<h5>
@@ -29,18 +29,14 @@
 					</address>
 				</h5>
 				<small>
-					*Feel free to send me an email any time of the day and I should be
-					able to respond in a reasonable amoutn of time.
+					* Feel free to send me an email any time of the day and I should be
+					able to respond in a reasonable amount of time.
 				</small>
 			</div>
 			<div class="phone">
 				<h3>
 					Phone Number
-					<vue-clipboard
-						id="phoneNumber"
-						copy="5855207382"
-						category="icon-sm"
-					/>
+					<vue-clipboard id="phoneNumber" copy="5855207382" category="icon" />
 				</h3>
 				<h5>
 					<address>
@@ -49,24 +45,33 @@
 				</h5>
 				<p>Hours: 8am - 4pm (EST), everyday.</p>
 				<small>
-					*Text messages prefered.
+					* Text messages prefered.
 					<br />
-					*First time caller(s) are screened using virtual assistan to weed out
+					* First time caller(s) are screened using virtual assistan to weed out
 					spam calls
 				</small>
 			</div>
 			<div class="address">
-				<h3>Postal Address</h3>
-				<p>
+				<h3>
+					Postal Address
+					<vue-clipboard
+						id="address"
+						copy="44 Crittenden Way,
+Apartment 2,
+Rochester, NY 14623."
+						category="icon"
+					/>
+				</h3>
+				<address>
 					44 Crittenden Way,
 					<br />
 					Apartment 2,
 					<br />
-					Rochester, NY 14623
-				</p>
+					Rochester, NY 14623.
+				</address>
 			</div>
 		</section>
-		<!-- <section id="Form">
+		<section id="Form">
 			<h3>Contact Form</h3>
 			<p>Or you can also leave me a message here.</p>
 			<vue-form
@@ -109,7 +114,7 @@
 					@alerts="alerts"
 				/>
 			</vue-form>
-		</section> -->
+		</section>
 	</article>
 </template>
 
@@ -121,64 +126,50 @@
 	import vueForm from "@/components/vueForm";
 	import vueClipboard from "@/components/vueClipboard.vue";
 	import { loading } from "@/typeScript/common/loading";
+	import { alerts } from "@/typeScript/common/alerts";
 
 	export default {
 		name: "Contact",
-		mixins: [loading],
+		mixins: [loading, alerts],
 		components: {
+			vueForm,
 			textInput,
 			emailInput,
 			phoneInput,
 			vueTextarea,
-			vueForm,
-			vueClipboard,
+			vueClipboard
 		},
-		data() {
-			const dWarning = null;
-			const dDanger = null;
-			const name = null;
-			const email = null;
-			const phone = null;
-			const comment = null;
-			const mailOptions = {
-				from: "",
-				to: "",
-				subject: "",
-				text: "",
-			};
-			return {
-				dWarning,
-				dDanger,
-				name,
-				email,
-				phone,
-				comment,
-				mailOptions,
-			};
-		},
+
 		methods: {
-			alerts: function (type, message) {
-				if (type == "warning") {
-					this.dWarning = message;
-				} else if (type == "error") {
-					this.dDanger = message;
-				} else {
-					alert("error in input alert module");
-				}
-			}, //alerts
-			sendMail: function () {
-				window.open(
-					"mailto:hrishikesh.karale@gmail.com?subject=portfolio website (" +
-						this.name +
-						" " +
-						this.email +
-						" " +
-						this.phone +
-						")&body=" +
-						this.comment
-				);
-			}, //sendMAil
-		}, //methods
+			sendMail: function() {
+				this.axios
+					.post(
+						"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/login",
+						{
+							email: this.emailID,
+							password: this.password,
+						},
+						this.config
+					)
+					.then((response) => {
+						if (response.data.auth) {
+							localStorage.setItem("user", JSON.stringify(response.data.user));
+							localStorage.setItem("jwt", response.data.token);
+						}
+					})
+					.catch((error) => {
+						this.emitter.emit("alert", {
+							type: "warning",
+							message: "Error setting up cookies/localStorage",
+							description: error.response,
+							dismissable: this.booleanTrue,
+							code: "101.1",
+							timeout: 8,
+						});
+						// console.error(error.response);
+					});
+			} //sendMAil
+		} //methods
 	};
 </script>
 
@@ -187,31 +178,31 @@
 	@import (reference) "./../../Less/customVariables.less";
 
 	.contact {
-		display: flex;
-		flex-direction: column;
-
 		& > section {
-			display: flex;
-			flex-direction: row;
-			// justify-content: space-around;
-			flex-wrap: wrap;
 			gap: @spaceXl;
-			min-height: 0px;
-			&:last-child {
-				flex-direction: column;
-			}
 			& > div {
-				flex: 1 0 320px;
-				border: 1px dashed @primary;
+				flex: 1 0 240px;
+				.boxShadow(@twoText);
 				border-radius: @borderRadiusLg;
 				padding: @spaceMd @spaceLg;
 				height: fit-content;
+				margin: 0;
+				background-color: @cardBackground;
+				&:hover {
+					.boxShadow(@base);
+				}
 				& > h3 {
 					display: flex;
 					flex-wrap: nowrap;
 					flex-direction: row;
 					justify-content: space-between;
 					margin-top: 0;
+					align-items: center;
+				}
+				& > h5 {
+					& > address {
+						margin-bottom: 0;
+					}
 				}
 			}
 		}

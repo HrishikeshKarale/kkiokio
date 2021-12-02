@@ -156,7 +156,7 @@
   }
 }
 
-.textShadow(@val: @one, @color: @shadowColor, @zIndex: inherit) {
+.textShadow(@val: @oneText, @color: @shadowColor, @zIndex: inherit) {
   text-shadow: @val @color;
   -webkit-text-shadow: @val @color;
   -moz-text-shadow: @val @color;
@@ -267,8 +267,6 @@
     &>abbr {
       padding: @spaceSm;
       color: @dangerText;
-      font-weight: bold;
-      text-decoration: none;
     }
 
     //for optional text
@@ -688,6 +686,7 @@
 .scroll (@height: 100vh, @width: @spaceMd) {
   max-height: @height;
   overflow-y: auto;
+  scroll-behavior: smooth !important;
 
   &::-webkit-scrollbar {
     width: @width;

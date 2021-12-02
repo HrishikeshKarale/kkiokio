@@ -218,14 +218,15 @@
 
 			&.nav {
 				position: absolute;
-				top: 50%;
+				top: calc(50% + (@header/2));
 				right: @spaceLg;
 				height: fit-content;
-				background-color: @accent;
+				background-color: @cardBackground;
 				border-radius: @spaceXl;
 				padding: @spaceXs;
 				transform: translateY(-50%);
 				z-index: @contentZ+20;
+				.boxShadow(@baseText);
 				& > a {
 					display: flex;
 					flex-direction: row-reverse;
@@ -234,47 +235,35 @@
 					padding: @spaceMd;
 					margin: @spaceSm 0;
 					height: @spaceXl;
-					background-color: transparent;
-					width: fit-content;
 					gap: @spaceLg;
 					z-index: @headerZ+10;
+					& > span {
+						&:last-child {
+							display: none;
+						}
+					}
 					&:hover,
 					&.active {
-						background-color: none;
 						border-radius: @borderRadius;
-						color: @white;
 						//active block text;
 						& > span:last-child {
 							display: block;
 							position: absolute;
-							top: -40px;
+							top: -@spaceXl - @spaceLg;
+							right: 0;
 							color: @accent;
-							text-align: center;
-							width: max-content;
 							padding: 0 @spaceMd;
-							border: 1px dashed @primary;
+							background-color: @cardBackground;
 							border-radius: @borderRadius;
-							font-weight: bold;
-							opacity: 1;
-							background-color: @backgroundColor;
-							&::before {
-								content: "";
-								position: absolute;
-								left: 0;
-								top: 0;
-								height: 100%;
-								width: 100%;
-								background-color: @primary;
-								filter: opacity(8%);
-							}
+							.boxShadow(@base);
+							width: max-content;
 						}
 					}
-					& > span {
-						color: @backgroundColor;
-						background-color: transparent;
-						.textShadow(@base);
-						&:last-child {
-							display: none;
+					&:hover {
+						border: none;
+						& > span:last-child {
+							top: auto;
+							right: @spaceXl + @spaceLg;
 						}
 					}
 				}

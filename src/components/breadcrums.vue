@@ -1,5 +1,6 @@
 <template>
 	<nav v-if="routeComp.length > 1" class="breadcrums">
+		<span class='fas fa-folder-open' />
 		<ol>
 			<template v-for="route in routeComp">
 				<li
@@ -25,9 +26,6 @@
 	import { mapGetters, mapMutations } from "vuex";
 	export default {
 		name: "Breadcrums",
-		data() {
-			return {};
-		}, //data
 		computed: {
 			...mapGetters({
 				routeComp: "contentModule/breadcrums/routeComp",
@@ -60,8 +58,8 @@
 		gap: @spaceLg;
 		&.scroll {
 			padding: 0 0 0 16px;
-			background-color: @offBlack;
-			.boxShadow(@four, @offBlack, @headerZ);
+			background-color: @navBackground;
+			.boxShadow(@four, @navBackground, @headerZ);
 			// z-index: @headerZ;
 		}
 		& > ol {

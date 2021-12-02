@@ -1,14 +1,5 @@
 export const crowdCo = {
   header: "CrowdCo",
-  content: [
-    {
-      img: {
-        src: require("@/assets/UX/crowdCo/headerImage.jpg"),
-        alt: null,
-        caption: null
-      },
-    }
-  ],
   section: [
     {
       header: "About",
@@ -55,11 +46,11 @@ export const crowdCo = {
                     "After some browsing and online research, I came to know that there are currently two players in the market who are dominating the reward based crowdfunding concept – one is Kickstarter and the other one is Indiegogo.So I made a list of features that both of them support and how they differ from each other."
                 },
                 {
-                  img: {
+                  img: [{
                     src: require("@/assets/UX/crowdCo/competitor.jpg"),
                     alt: null,
-                    caption: null
-                  }
+                    caption: 'Comparison of features between Kick Starter vs. IndieGoGo'
+                  }]
                 },
                 {
                   text:
@@ -79,11 +70,11 @@ export const crowdCo = {
                     "Unfortunately, I could not do research on Indiegogo app as it was not available in my country so I went on Kickstarter to see what could be found."
                 },
                 {
-                  img: {
+                  img: [{
                     src: require("@/assets/UX/crowdCo/reviews.jpg"),
                     alt: null,
-                    caption: null
-                  }
+                    caption: 'Assess app reviews for both apps as a part of research to understand what works and what doesn\'t work'
+                  }]
                 },
                 {
                   altText:
@@ -120,26 +111,23 @@ export const crowdCo = {
                     "I decided to create two investor personas. Each persona varied in crowdfunding investing experience and as a result they required very different pieces of information in order to make their final decision."
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/persona.jpg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
                   text:
                     "The first persona was for an inexperienced investor named Greg who is new to reward based crowdfunding and wants someone to help him on how to invest."
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/persona2.jpg"),
-                    alt: null,
-                    caption: null
-                  }
-                },
-                {
                   text:
                     "The second persona was for a professional investor named Jennie. She has been working as an Angel Investor for the past 10 years and likes to help startups who are looking for financial support in order to scale their products."
+                },
+                {
+                  img: [{
+                    src: require("@/assets/UX/crowdCo/persona.jpg"),
+                    alt: null,
+                    caption: 'Persona A (Greg) - New to the concept of crowd funding'
+                  }, {
+                    src: require("@/assets/UX/crowdCo/persona2.jpg"),
+                    alt: null,
+                    caption: 'Persona B (Jennie) - A veteran Entrepreneur who has been around for 10 years'
+                  }]
                 }
               ]
             }, //subSection
@@ -154,7 +142,7 @@ export const crowdCo = {
                   img: {
                     src: require("@/assets/UX/crowdCo/userStory.jpg"),
                     alt: null,
-                    caption: null
+                    caption: 'user stories grouped with features'
                   }
                 }
               ]
@@ -179,7 +167,7 @@ export const crowdCo = {
                   img: {
                     src: require("@/assets/UX/crowdCo/sketch.jpg"),
                     alt: null,
-                    caption: null
+                    caption: 'home page (left), post (center) and post options screen (right)'
                   }
                 },
                 {
@@ -190,7 +178,7 @@ export const crowdCo = {
                   img: {
                     src: require("@/assets/UX/crowdCo/sketch2.jpg"),
                     alt: null,
-                    caption: null
+                    caption: 'post details - backers (left), member/user profile (center) and post comments (right)'
                   }
                 },
                 {
@@ -207,32 +195,33 @@ export const crowdCo = {
                     "<p> Usually after paper prototyping I hop on to a digital wireframing tool in order to create some low fidelity wireframes.Doing this gives me a bird’s eye view of how to structure the information within the application and it is easy to iterate quickly.But due to <b>time constraints</b> of this project I jumped straight into high fidelity design. </p>"
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/homePage.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                  img: [
+                    {
+                      src: require("@/assets/UX/crowdCo/homePage.jpg"),
+                      alt: null,
+                      caption: 'Home page for easy access to new/popular posts etc.'
+                    }
+                  ]
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/categoryPage.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                  img: [
+                    {
+                      src: require("@/assets/UX/crowdCo/productDetailPage.jpg"),
+                      alt: null,
+                      caption: 'post details'
+                    }, {
+                      src: require("@/assets/UX/crowdCo/productPage.jpg"),
+                      alt: null,
+                      caption: 'post details - support tiers and detals about what user would get when they fund this project'
+                    }
+                  ]
                 },
                 {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/productPage.svg"),
+                  img: [{
+                    src: require("@/assets/UX/crowdCo/categoryPage.jpg"),
                     alt: null,
-                    caption: null
-                  }
-                },
-                {
-                  img: {
-                    src: require("@/assets/UX/crowdCo/productDetailPage.svg"),
-                    alt: null,
-                    caption: null
-                  }
+                    caption: 'Browse categories of posts depending on the cause or type of project that require funding'
+                  }],
                 }
               ]
             } //subSection
@@ -255,13 +244,13 @@ export const crowdCo = {
           altText:
             "<p> While developing the app it came to my notice that I unknowingly skipped one of the most basic design concept mentioned in <a href = 'https://developer.apple.com/design/tips/' target = '_blank' rel = 'noopener noreferrer'>iOS HIG</a>. </p>"
         },
-        {
-          img: {
-            src: require("@/assets/UX/crowdCo/app.png"),
-            alt: null,
-            caption: null
-          }
-        },
+        // {
+        //   img: {
+        //     src: require("@/assets/UX/crowdCo/app.png"),
+        //     alt: null,
+        //     caption: null
+        //   }
+        // },
         {
           text:
             "Apple expects you to keep the text size to be at least 11 pts in your apps so that it is easily readable by everyone.I discovered that some of the text in my design was less than the default size so I fixed that during my development."
@@ -275,13 +264,13 @@ export const crowdCo = {
           text:
             "To be honest the app development is still under progress but I am glad I took this challenge as it taught me how to manage my time more than anything else."
         },
-        {
-          img: {
-            src: require("@/assets/UX/crowdCo/conclusion.png"),
-            alt: null,
-            caption: null
-          }
-        },
+        // {
+        //   img: {
+        //     src: require("@/assets/UX/crowdCo/conclusion.png"),
+        //     alt: null,
+        //     caption: null
+        //   }
+        // },
         {
           subSection: [
             {
@@ -289,7 +278,7 @@ export const crowdCo = {
               content: [
                 {
                   altText:
-                    "<ul> <li> As you can see in my research, I did not conduct any user interviews or surveys.This was due to the time constraints for this challenge. I was initially planning to do a survey with a specific audience in order to get some <b>Quantitative data</b> as it should have given me more research insights.But the survey itself could have taken some time so instead of doing that I went for the Competitive analysis. </li> <li> While making design decisions like app navigation and displaying campaign categories, I just went with one option/idea and implemented that. Given a chance to do this again, I would think of multiple solutions before deciding a single one. Also a proper usability testing could have been done before jumping straight into development. </li> </ul>"
+                    "<ul> <li>1 - As you can see in my research, I did not conduct any user interviews or surveys.This was due to the time constraints for this challenge. I was initially planning to do a survey with a specific audience in order to get some Quantitative data as it should have given me more research insights.But the survey itself could have taken some time so instead of doing that I went for the Competitive analysis. </li> <li>2 - While making design decisions like app navigation and displaying campaign categories, I just went with one option/idea and implemented that. Given a chance to do this again, I would think of multiple solutions before deciding a single one. Also a proper usability testing could have been done before jumping straight into development. </li> </ul>"
                 }
               ]
             }

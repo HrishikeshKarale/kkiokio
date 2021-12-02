@@ -166,11 +166,11 @@
 					min-width: 80px;
 					max-width: fit-content;
 					height: fit-content;
-					background-color: @backgroundColor;
+					background-color: @textColor;
 					border-radius: @borderRadius;
 					transition: .transition();
 					.boxShadow(@two);
-					.backgroundColor();
+					// .backgroundColor();
 					&.loading {
 						border-radius: @borderRadiusLg;
 					}
