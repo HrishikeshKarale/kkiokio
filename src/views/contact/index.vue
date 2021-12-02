@@ -36,11 +36,7 @@
 			<div class="phone">
 				<h3>
 					Phone Number
-					<vue-clipboard
-						id="phoneNumber"
-						copy="5855207382"
-						category="icon"
-					/>
+					<vue-clipboard id="phoneNumber" copy="5855207382" category="icon" />
 				</h3>
 				<h5>
 					<address>
@@ -56,23 +52,68 @@
 				</small>
 			</div>
 			<div class="address">
-				<h3>Postal Address
+				<h3>
+					Postal Address
 					<vue-clipboard
 						id="address"
-						copy='44 Crittenden Way,
+						copy="44 Crittenden Way,
 Apartment 2,
-Rochester, NY 14623.'
+Rochester, NY 14623."
 						category="icon"
 					/>
-					</h3>
-					<address>
+				</h3>
+				<address>
 					44 Crittenden Way,
 					<br />
 					Apartment 2,
 					<br />
 					Rochester, NY 14623.
-					</address>
+				</address>
 			</div>
+		</section>
+		<section id="Form">
+			<h3>Contact Form</h3>
+			<p>Or you can also leave me a message here.</p>
+			<vue-form
+				:ctx="sendMail.bind(this)"
+				d-form="contactForm"
+				:alert="{ error: dDanger, warning: dWarning }"
+				:validate="!booleanTrue"
+				:isAutocomplete="booleanTrue"
+			>
+				<text-input
+					v-model="name"
+					label="Name"
+					name="nameTextField"
+					placeholder="John Doe"
+					:isRequired="booleanTrue"
+					@alerts="alerts"
+				/>
+				<email-input
+					v-model="email"
+					label="Email"
+					name="emailField"
+					placeholder="JDoe@email.com"
+					icon="far fa-envelope"
+					:isRequired="booleanTrue"
+					@alerts="alerts"
+				/>
+				<phone-input
+					v-model="phone"
+					label="Phone number"
+					name="phoneInputField"
+					placeholder="555 555 5555"
+					@alerts="alerts"
+				/>
+				<vue-textarea
+					v-model="comment"
+					label="message"
+					name="messageTextareaField"
+					placeholder="message"
+					:isRequired="booleanTrue"
+					@alerts="alerts"
+				/>
+			</vue-form>
 		</section>
 	</article>
 </template>
@@ -85,17 +126,50 @@ Rochester, NY 14623.'
 	import vueForm from "@/components/vueForm";
 	import vueClipboard from "@/components/vueClipboard.vue";
 	import { loading } from "@/typeScript/common/loading";
+	import { alerts } from "@/typeScript/common/alerts";
 
 	export default {
 		name: "Contact",
-		mixins: [loading],
+		mixins: [loading, alerts],
 		components: {
+			vueForm,
 			textInput,
 			emailInput,
 			phoneInput,
 			vueTextarea,
-			vueClipboard,
+			vueClipboard
 		},
+
+		methods: {
+			sendMail: function() {
+				this.axios
+					.post(
+						"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/login",
+						{
+							email: this.emailID,
+							password: this.password,
+						},
+						this.config
+					)
+					.then((response) => {
+						if (response.data.auth) {
+							localStorage.setItem("user", JSON.stringify(response.data.user));
+							localStorage.setItem("jwt", response.data.token);
+						}
+					})
+					.catch((error) => {
+						this.emitter.emit("alert", {
+							type: "warning",
+							message: "Error setting up cookies/localStorage",
+							description: error.response,
+							dismissable: this.booleanTrue,
+							code: "101.1",
+							timeout: 8,
+						});
+						// console.error(error.response);
+					});
+			} //sendMAil
+		} //methods
 	};
 </script>
 
@@ -104,7 +178,6 @@ Rochester, NY 14623.'
 	@import (reference) "./../../Less/customVariables.less";
 
 	.contact {
-
 		& > section {
 			gap: @spaceXl;
 			& > div {
