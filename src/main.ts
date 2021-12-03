@@ -10,15 +10,15 @@ import "@/Less/fontAwesome/fontawesome.less";
 import "@/Less/bootstrap.less";
 //api calls
 import axios from "axios";
-import VueAxios from "vue-axios";
 //global emitter
-import mitt from "mitt";
-const emitter = mitt();
+import emitter from './eventBus';
 
 const app = createApp(App);
-app.config.globalProperties.emitter = emitter;
 app.config.globalProperties.booleanTrue = true;
-app.use(router);
-app.use(store);
-app.use(VueAxios, axios);
+app.use(router)
+	.use(store)
+	.provide('$store', store)
+	.provide('$axios', axios)
+	.provide('$true', true)
+	.provide('$emitter', emitter)
 app.mount("#portfolio");

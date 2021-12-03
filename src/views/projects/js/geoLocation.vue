@@ -51,16 +51,23 @@
 	</div>
 </template>
 <script>
+	// vue
+	import { inject } from "vue";
+	// ts
 	import { loading } from "@/typeScript/common/loading";
+
 	export default {
 		name: "GeoLocation",
 		mixins: [loading],
 		data() {
+			// global property
+			const emitter = inject("$emitter");
 			let compass;
 			let speed;
 			return {
+				emitter,
 				compass,
-				speed,
+				speed
 			};
 		},
 
@@ -69,26 +76,26 @@
 			this.speed = this.$refs.speed;
 			//picks available speech recognition class for chrome or firefox
 			navigator.geolocation.watchPosition(
-				(data) => {
+				data => {
 					// console.log(data);
 					this.speed.textContent = data.coords.speed;
 					this.compass.style.transform = `rotate(${
 						data.coords.heading > 0 ? data.coords.heading * 0.621371 : 0
 					}deg)`;
 				},
-				(err) => {
-					this.emitter.emit("alert", {
+				err => {
+					emitter.emit("alert", {
 						type: "warning",
 						message: "Error calculating Spped/Compass direction",
 						description: err,
 						dismissable: this.booleanTrue,
 						code: "101.1",
-						timeout: 8,
+						timeout: 8
 					});
 					// console.error(err);
 				}
 			);
-		},
+		}
 	};
 </script>
 <style lang="less" scoped>

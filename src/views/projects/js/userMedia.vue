@@ -61,6 +61,8 @@
 	</div>
 </template>
 <script>
+	// vue
+	import { inject } from "vue";
 	import vueButton from "@/components/vueButton";
 	import vueImg from "@/components/vueImg.vue";
 	import { loading } from "@/typeScript/common/loading";
@@ -70,9 +72,11 @@
 
 		components: {
 			vueButton,
-			vueImg,
+			vueImg
 		},
 		data() {
+			// global property
+			const emitter = inject("$emitter");
 			let audioSelect;
 			let videoSelect;
 			const screenshotImage = "";
@@ -94,16 +98,17 @@
 				"saturate",
 				"invert",
 				"opacity",
-				"dropShadow",
+				"dropShadow"
 			];
 			const constraints = {
 				audio: true,
 				video: {
 					width: { min: 1280 },
-					height: { min: 720 },
-				},
+					height: { min: 720 }
+				}
 			};
 			return {
+				emitter,
 				audioSelect,
 				videoSelect,
 				html5Video,
@@ -114,14 +119,14 @@
 				filterIndex,
 				filters,
 				screenshotImage,
-				constraints,
+				constraints
 			};
 		}, //methods
 		methods: {
 			// stop both mic and camera
-			stopBothVideoAndAudio: function () {
-				navigator.mediaDevices.getUserMedia(this.constraints).then((stream) => {
-					stream.getTracks().forEach(function (track) {
+			stopBothVideoAndAudio: function() {
+				navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
+					stream.getTracks().forEach(function(track) {
 						if (track.readyState == "live") {
 							track.stop();
 						}
@@ -130,10 +135,10 @@
 			}, //stopBothVideoAndAudio
 
 			// stop only camera
-			stopVideoOnly: function () {
+			stopVideoOnly: function() {
 				this.video = !this.video;
-				navigator.mediaDevices.getUserMedia(this.constraints).then((stream) => {
-					stream.getTracks().forEach(function (track) {
+				navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
+					stream.getTracks().forEach(function(track) {
 						if (track.readyState == "live" && track.kind === "video") {
 							// console.log(track);
 							track.stop();
@@ -143,10 +148,10 @@
 			}, //stopVideoOnly
 
 			// stop only mic
-			stopAudioOnly: function () {
+			stopAudioOnly: function() {
 				this.audio = !this.audio;
-				navigator.mediaDevices.getUserMedia(this.constraints).then((stream) => {
-					stream.getTracks().forEach(function (track) {
+				navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
+					stream.getTracks().forEach(function(track) {
 						if (track.readyState == "live" && track.kind === "audio") {
 							track.stop();
 						}
@@ -155,7 +160,7 @@
 			}, //stopAudioOnly
 
 			//capture screenshot from webcam video
-			getScreenshot: function () {
+			getScreenshot: function() {
 				this.canvas = this.$refs.canvas;
 				this.screenshot = this.$refs.screenshot;
 				this.canvas.height = this.html5Video.videoHeight;
@@ -165,19 +170,20 @@
 				this.screenshotImage = this.canvas.toDataURL("image/webp");
 			}, //getScreenshot
 
-			toggleFilter: function () {
-				this.html5Video.className =
-					this.filters[this.filterIndex++ % this.filters.length];
+			toggleFilter: function() {
+				this.html5Video.className = this.filters[
+					this.filterIndex++ % this.filters.length
+				];
 			}, //toggleFilter
 
-			hasGetUserMedia: function () {
+			hasGetUserMedia: function() {
 				return navigator.mediaDevices && navigator.mediaDevices.getUserMedia;
 			}, //hasGetUserMedia
 
-			sortMedia: function () {
+			sortMedia: function() {
 				navigator.mediaDevices
 					.enumerateDevices() //get list of devices
-					.then((deviceInfos) => {
+					.then(deviceInfos => {
 						this.audioSelect = this.$refs.audioSource;
 						this.videoSelect = this.$refs.videoSource;
 						for (let i = 0; i !== deviceInfos.length; ++i) {
@@ -215,19 +221,19 @@
 			}, //sortMedia
 
 			//opens streaming for all devices and pauses it
-			openStream: function () {
-				navigator.mediaDevices.getUserMedia(this.constraints).then((stream) => {
-					stream.getTracks().forEach(function (track) {
+			openStream: function() {
+				navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
+					stream.getTracks().forEach(function(track) {
 						track.stop();
 					});
 				});
 				this.constraints = {
 					audio: {
-						deviceId: { exact: this.audioSelect.value },
+						deviceId: { exact: this.audioSelect.value }
 					},
 					video: {
-						deviceId: { exact: this.videoSelect.value },
-					},
+						deviceId: { exact: this.videoSelect.value }
+					}
 				};
 				// navigator.mediaDevices
 				//   .getUserMedia(constraints)
@@ -235,30 +241,30 @@
 				//   .catch(handleError);
 			}, //openStream
 
-			getMedia: function () {
+			getMedia: function() {
 				const hasMedia = this.hasGetUserMedia();
 				if (hasMedia) {
 					this.sortMedia();
 					this.html5Video = this.$refs.html5Video;
-					navigator.mediaDevices.getUserMedia(this.constraints).then((stream) => {
+					navigator.mediaDevices.getUserMedia(this.constraints).then(stream => {
 						this.html5Video.srcObject = stream;
 					});
 				} else {
-					this.emitter.emit("alert", {
+					emitter.emit("alert", {
 						type: "warning",
 						message: "Error getting access to media/video",
 						description:
 							"The access to media was not found or something went wrong while playing the media, please refresh and try again",
 						dismissable: this.booleanTrue,
 						code: "101.1",
-						timeout: 8,
+						timeout: 8
 					});
 				}
 				// alert("media access not found");
 				// console.error("media access not found");
 				//do something here in case of media not found
-			}, //getMedia
-		},
+			} //getMedia
+		}
 	};
 </script>
 <style lang="less" scoped>

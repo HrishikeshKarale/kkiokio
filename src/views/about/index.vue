@@ -7,8 +7,8 @@
 			<!-- <h1>Hrishikesh Karale</h1> -->
 			<div>
 				<div>
-				<vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
-				<div class="social">
+					<vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
+					<div class="social">
 						<a target="_blank" href="https://github.com/HrishikeshKarale">
 							<span class="fab fa-github fa-2x" />
 							<!-- <b>
@@ -30,8 +30,10 @@
             @hrishikesh-karale
           </b> -->
 						</a>
-				</div>
-				<a href="../../assets/Hrishikesh Karale-Resume.pdf" download>Resume</a>
+					</div>
+					<a href="../../assets/Hrishikesh Karale-Resume.pdf" download
+						>Resume</a
+					>
 				</div>
 				<div>
 					<h1>
@@ -51,9 +53,7 @@
 								</h6>
 							</td>
 							<td>
-								<b>
-									{{experience.professional}} +
-								</b>
+								<b> {{ experience.professional }} + </b>
 								yrs
 							</td>
 						</tr>
@@ -65,7 +65,7 @@
 							</td>
 							<td>
 								<b>
-									{{experience.academic}}
+									{{ experience.academic }}
 								</b>
 								yrs
 							</td>
@@ -82,21 +82,21 @@
 				when designing a solution.
 			</p> -->
 			<p>
-				As a UX Professional, I strive to use a constant end-user feedback
-				loop to define and redefine my project objectives. The user's needs
-				guide the strategic decisions I make during my UX process. This
-				non-linear approach is integral to ensuring that my projects decisions
-				lead to a massive improvement in the key metrics that are relevant to
-				the user experience. In short, I like to think like an engineer in
-				addition to being a UX Professional.
+				As a UX Professional, I strive to use a constant end-user feedback loop
+				to define and redefine my project objectives. The user's needs guide the
+				strategic decisions I make during my UX process. This non-linear
+				approach is integral to ensuring that my projects decisions lead to a
+				massive improvement in the key metrics that are relevant to the user
+				experience. In short, I like to think like an engineer in addition to
+				being a UX Professional.
 			</p>
 			<p>
 				I’m also a novice visual designer. I’ve designed over 30 working
 				prototypes in online-shopping, warehouse-management,
 				inventory-management, fulfillment and healthcare using a multitude of
-				prototyping tools including products such as <mark>Illustrator</mark>, <mark>Adobe XD</mark>,
-				<mark>Sketch</mark> and <mark>Figma</mark>. My prototyping strategy primarily focuses on
-				functionality and usability.
+				prototyping tools including products such as <mark>Illustrator</mark>,
+				<mark>Adobe XD</mark>, <mark>Sketch</mark> and <mark>Figma</mark>. My
+				prototyping strategy primarily focuses on functionality and usability.
 			</p>
 		</section>
 		<section id="Objective">
@@ -105,8 +105,9 @@
 			</header>
 			<q>
 				<span class="fas fa-quote-left fa-pull-left fa-border" />
-				Strive towards creating intuitive interfaces that can not only solve problems but also create
-				experiences that initiate a sense of delight and wonder for my users.
+				Strive towards creating intuitive interfaces that can not only solve
+				problems but also create experiences that initiate a sense of delight
+				and wonder for my users.
 				<span class="fas fa-quote-right fa-pull-right fa-border" />
 			</q>
 		</section>
@@ -116,17 +117,22 @@
 				<h3>Steps I take to assure success</h3>
 			</header>
 			<p>
-				One of the key factors that define a designers work is the process they use to solve a problem.
+				One of the key factors that define a designers work is the process they
+				use to solve a problem.
 			</p>
 			<p>
-				With time, my process evolved from a standard 5 step prcoess (define, research, ideate, prototype, Test) to a 8 step process where each step signifies a milestone for the projects.
+				With time, my process evolved from a standard 5 step prcoess (define,
+				research, ideate, prototype, Test) to a 8 step process where each step
+				signifies a milestone for the projects.
 			</p>
 			<p>
-				Each of the 8 steps are further divided into various sub-steps that help add value and help us achieve out goals towards the process.
+				Each of the 8 steps are further divided into various sub-steps that help
+				add value and help us achieve out goals towards the process.
 			</p>
 			<p>
 				<b>
-					Note: The steps followed depends on the timeline and project requirements and
+					Note: The steps followed depends on the timeline and project
+					requirements and
 				</b>
 			</p>
 			<div class="process">
@@ -152,7 +158,7 @@
 				<h1>Skill Set</h1>
 				<h3>Badges on my belt</h3>
 			</header>
-			<ol class='subSection'>
+			<ol class="subSection">
 				<li v-for="skill in skills" :key="skill.type">
 					<h4>{{ skill.type }}</h4>
 					<ol>
@@ -167,7 +173,7 @@
 			<header>
 				<h1>Licenses &amp; Certificates</h1>
 			</header>
-			<ol class='subSection'>
+			<ol class="subSection">
 				<li v-for="cert in lisencesAndCertificates" :key="cert.id">
 					<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
 					<h4>
@@ -188,7 +194,7 @@
 						</p>
 						<p v-if="cert.credential">
 							<b> Credential ID </b>
-							{{ cert.credential  }}
+							{{ cert.credential }}
 						</p>
 					</div>
 				</li>
@@ -198,15 +204,15 @@
 			<header>
 				<h1>Honors &amp; Awards</h1>
 			</header>
-			<ol class='subSection'>
+			<ol class="subSection">
 				<li v-for="award in honorsAndAwards" :key="award.id">
-						<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
-						<h4>
-							{{ award.title }}
-							<small>
-								{{ award.issuer }}
-							</small>
-						</h4>
+					<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
+					<h4>
+						{{ award.title }}
+						<small>
+							{{ award.issuer }}
+						</small>
+					</h4>
 					<div>
 						<p>
 							<b> Issued </b>
@@ -226,26 +232,25 @@
 
 	export default {
 		name: "About",
-		mixins: [loading],
 
 		components: {
-			vueImg,
+			vueImg
 		},
 		computed: {
 			...mapGetters({
 				skills: "contentModule/getSkills",
 				lisencesAndCertificates: "contentModule/getLisencesAndCertificates",
 				honorsAndAwards: "contentModule/getHonorsAndAwards",
-				uxProcess: "contentModule/getUxProcess",
-			}),
+				uxProcess: "contentModule/getUxProcess"
+			})
 		},
 
 		beforeMount() {
-			const start = new Date(2017,9,10).getTime();
+			const start = new Date(2017, 9, 10).getTime();
 			const today = Date.now();
-			let diff = (today-start)/1000;
-			diff /= (60*60*24);
-			this.experience.professional += Math.abs(Math.round(diff/365.25));
+			let diff = (today - start) / 1000;
+			diff /= 60 * 60 * 24;
+			this.experience.professional += Math.abs(Math.round(diff / 365.25));
 		},
 
 		data() {
@@ -255,13 +260,13 @@
 			const experience = {
 				academic: 2.5,
 				professional: 1
-			}
+			};
 			return {
 				profilePic,
-				experience,
+				experience
 				// resume,
 			};
-		},
+		}
 	};
 </script>
 
@@ -273,31 +278,31 @@
 
 	.about {
 		& > section {
-				position: relative;
-				&:not(#Bio) {
-					header {
-						display: flex;
-						flex-direction: column;
-						position: relative;
-						& > h1 {
+			position: relative;
+			&:not(#Bio) {
+				header {
+					display: flex;
+					flex-direction: column;
+					position: relative;
+					& > h1 {
+						align-self: center;
+						font-weight: 900;
+						filter: opacity(16%);
+						font-size: 4 * @fontSize;
+						.textShadow(@threeText, @black);
+						& + h3 {
+							position: absolute;
 							align-self: center;
-							font-weight: 900;
-							filter: opacity(16%);
-							font-size: 4 * @fontSize;
-							.textShadow(@threeText, @black);
-							& + h3 {
-								position: absolute;
-								align-self: center;
-								text-align: center;
-								bottom: @spaceLg;
-								font-weight: bold;
-							}
+							text-align: center;
+							bottom: @spaceLg;
+							font-weight: bold;
 						}
 					}
 				}
+			}
 			&#LisencesAndCertificates,
 			&#honorsAndAwards {
-					min-height: @body;
+				min-height: @body;
 				& > ol {
 					display: flex;
 					flex-direction: row;
@@ -313,24 +318,24 @@
 						border-radius: @borderRadius;
 						background-color: @cardBackground;
 						.boxShadow(@baseText);
-							& > figure.vueImg {
-								max-height: 80px;
-								min-width: 80px;
-								max-width: 200px;
-								& + h4 {
-									display: flex;
-									flex-direction: column;
-									& > small {
-										margin-top: @spaceMd;
-										align-self: flex-end;
-										text-align: right;
-										font-size: @fontSizeMd;
-									}
+						& > figure.vueImg {
+							max-height: 80px;
+							min-width: 80px;
+							max-width: 200px;
+							& + h4 {
+								display: flex;
+								flex-direction: column;
+								& > small {
+									margin-top: @spaceMd;
+									align-self: flex-end;
+									text-align: right;
+									font-size: @fontSizeMd;
 								}
 							}
-							& > div {
-								margin-top: auto;
-								&  > p {
+						}
+						& > div {
+							margin-top: auto;
+							& > p {
 								display: flex;
 								align-self: center;
 								justify-content: space-between;
@@ -342,21 +347,21 @@
 									color: @secondary;
 								}
 							}
-							}
+						}
 					}
 				}
 			}
 			&#Objective {
-					min-height: @body;
+				min-height: @body;
 				& > q {
 					quotes: none;
 					font-size: @fontSize;
-					line-height: 1.618*@fontSize !important;
+					line-height: 1.618 * @fontSize !important;
 					text-align: center;
 				}
 			}
 			&#Process {
-					min-height: @body;
+				min-height: @body;
 				flex-direction: column;
 				text-align: left;
 
@@ -405,7 +410,7 @@
 				}
 			}
 			&#Skillset {
-					min-height: @body;
+				min-height: @body;
 				display: flex;
 				flex-direction: column;
 				& > ol {

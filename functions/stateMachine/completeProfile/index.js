@@ -94,18 +94,19 @@ const machine = {
 		REGISTER_EMAIL: {
 			sendCode: async function (payload) {
 				const emailPattern = new RegExp('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$');
-				const reg = emailPattern.test(payload.message);
+				const email = payload.message;
+				const reg = emailPattern.test(email);
 				switch (reg) {
 					case true:
 						this.user.OTP = this.user.OTP !== '0' ? this.user.OTP : generateOTP(5);
 						this.user.OTP_COUNTER = 3;
 						this.user.email = {
-							id: payload.message,
+							id: email,
 							verified: false
 						};
 						await sendMail(
 							[
-								payload.message
+								email
 							],
 							`Kkiokio Email Verificatinon Code ${this.user.OTP}`,
 							{

@@ -1,6 +1,5 @@
-import axios from "axios";
-import mitt from "mitt";
-const emitter = mitt();
+// vue
+import { inject } from "vue";
 
 const module = {
   namespaced: true,
@@ -12,7 +11,10 @@ const module = {
     },
     loggedIn: false,
     token: null,
-    user: {}
+    user: {},
+    // set up vue injections
+    emitter: inject("$emitter"),
+    axios: inject("$axios")
   },
   mutations: {
     //do something
@@ -25,7 +27,7 @@ const module = {
     async handleSignUp({ commit, state }, payload) {
       const url =
         state.server + "/api/authentication/register/" + payload.isAdmin;
-      axios
+      state.axios
         .post(
           url,
           {
@@ -46,7 +48,7 @@ const module = {
           state.user = "";
           state.token = "";
           state.loggedIn = true;
-          emitter.emit("alert", {
+          state.emitter.emit("alert", {
             type: "danger",
             message: "SignUp Request Failed",
             description: "Please try again.",

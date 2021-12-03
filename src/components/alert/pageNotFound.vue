@@ -20,37 +20,43 @@
 			</div>
 			<h3 class="top">Looks like something went wrong.</h3>
 			{{
-				similarRoutes.length > 1 ? similarRoutes : 'No Matching Routes found.'
+				similarRoutes.length > 1 ? similarRoutes : "No Matching Routes found."
 			}}
 		</section>
 	</article>
 </template>
 
 <script>
+	// vue
+	import { inject } from "vue";
+	// ts
 	import { loading } from "../../typeScript/common/loading";
 	export default {
 		name: "PageNotFound",
 		mixins: [loading],
 
 		data() {
+			// global property
+			const emitter = inject("$emitter");
 			const Id = "stackTrace";
 			const similarRoutes = this.$route.matched;
 			return {
+				emitter,
 				Id,
-				similarRoutes,
+				similarRoutes
 			}; //return
 		}, //data
 
 		mounted() {
-			this.emitter.emit("alert", {
+			emitter.emit("alert", {
 				type: "warning",
 				message: "Invalid Route address",
 				description: "Please check the link for accuracy.",
 				dismissable: this.booleanTrue,
 				code: "101.1",
-				timeout: 8,
+				timeout: 8
 			});
-		}, //created
+		} //created
 	}; //default
 </script>
 

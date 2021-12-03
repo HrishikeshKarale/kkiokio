@@ -6,6 +6,6 @@ const controller = require("./controller");
 const route = express.Router();
 
 // define the route for logging in an administrator
-route.post("/sms", controller);
+route.post("/email", controller);
 
 module.exports = route;

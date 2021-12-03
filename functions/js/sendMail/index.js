@@ -17,6 +17,7 @@ const sendMail = async (to, subject, content, cc = null, attachments = null, fun
 		console.error('ERROR: ', error);
 	}
 }) => {
+	console.log(sender, password);
 	await transporter.sendMail({
 		from: sender,
 		to: to.length > 1 ? to.join(', ') : to,

@@ -1,10 +1,10 @@
 export default function validator(props, emit, dValue) {
 
   // value ebsent
-  const isRequiredFlag = function() {
-    if (props.required) {
+  const isRequiredFlag = function () {
+    if (props.isRequired) {
       let msg = "";
-      if (!dValue.value) {
+      if (!dValue.value || dValue.value === "") {
         msg = "Required field.";
       }
       emit("notify", "error", msg);
@@ -15,7 +15,7 @@ export default function validator(props, emit, dValue) {
 
   // value present
   const isStrict = () => {
-    if (props.strict) {
+    if (props.isStrict) {
       let msg = "";
       if (
         props.options?.length &&
@@ -77,7 +77,7 @@ export default function validator(props, emit, dValue) {
     return false;
   }; //followsPattern
 
-  const validate = function() {
+  const validate = function () {
     // if value for val(temp) exists check for warning triggers
     if (dValue.value) {
       // if any of the check fails then an error message is emited as notify and

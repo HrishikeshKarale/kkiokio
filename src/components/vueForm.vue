@@ -1,9 +1,9 @@
 <template>
 	<form
-		:id="form"
-		:ref="form"
+		:id="tag"
+		:ref="tag"
 		:class="{ vueForm: true, singleAction: singleAction }"
-		:name="form"
+		:name="tag"
 		:novalidate="validate"
 		:autocomplete="isAutocomplete"
 		@submit="ctx"
@@ -29,43 +29,46 @@
 
 <script>
 	import vueButton from "@/components/vueButton";
+	import { alerts } from "@/typeScript/common/alerts";
 
 	export default {
 		name: "VueForm", //props
 
+		mixins: [alerts],
+
 		components: {
-			vueButton,
+			vueButton
 		}, //data
 
 		props: {
 			title: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
-			alert: {
-				required: true,
-				type: Object,
+			alertMessage: {
+				required: false,
+				type: Object
 			},
 			ctx: {
 				required: true,
-				type: Function,
+				type: Function
 			},
-			form: {
+			tag: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 			text: {
 				required: false,
 				type: String,
-				default: "Submit",
+				default: "Submit"
 			},
 			category: {
 				required: false,
 				type: String,
 				default: "standard",
-				validator: function (value) {
+				validator: function(value) {
 					return (
 						[
 							"standard",
@@ -82,41 +85,41 @@
 							"icon",
 							"icon-sm",
 							"icon-lg",
-							null,
+							null
 						].indexOf(value) !== -1
 					);
-				},
+				}
 			},
 			icon: {
 				required: false,
 				type: String,
-				default: "fas fa-clipboard-check",
+				default: "fas fa-clipboard-check"
 			},
 			singleAction: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 			isAutocomplete: {
 				required: false,
 				type: Boolean,
-				default: true,
+				default: true
 			},
 			validate: {
 				required: false,
 				type: Boolean,
-				default: false,
-			},
+				default: false
+			}
 		},
 
 		computed: {
-			validInput: function () {
-				const alert = this.alert;
-				const form = this.$refs[this.form];
+			validInput: function() {
+				const alert = this.alertMessage;
+				const form = this.$refs[this.tag];
 				if (form && !alert["error"] && !alert["warning"]) {
 					const inputs = [
-						...Array.from(form.getElementsByTagName("select")),
-						...Array.from(form.getElementsByTagName("input")),
+						...Array.from(tag.getElementsByTagName("select")),
+						...Array.from(form.getElementsByTagName("input"))
 					];
 
 					for (let index = 0; index < inputs.length; ++index) {
@@ -131,21 +134,8 @@
 					return true;
 				}
 				return false;
-			}, //validInput
-		}, //computed
-
-		methods: {
-			alerts: function (type, message) {
-				// console.log(message);
-				if (type == "warning") {
-					this.dWarning = message;
-				} else if (type == "error") {
-					this.dDanger = message;
-				} else {
-					alert("error in input alert module");
-				}
-			}, //alerts
-		}, //methods
+			} //validInput
+		} //computed
 	}; //default
 </script>
 

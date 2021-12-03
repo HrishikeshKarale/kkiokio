@@ -24,14 +24,14 @@
 			vueHeader,
 			vueImg,
 			vueFooter,
-			enterpriseAppLayout,
+			enterpriseAppLayout
 		},
 
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const logoLink = require("@/assets/logo.svg");
 			return {
-				logoLink,
+				logoLink
 			};
 		},
 		created() {
@@ -40,9 +40,9 @@
 
 		computed: {
 			...mapGetters({
-				navigation: "contentModule/getNavigation",
-			}),
-		},
+				navigation: "contentModule/getNavigation"
+			})
+		}
 	};
 </script>
 

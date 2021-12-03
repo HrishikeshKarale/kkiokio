@@ -39,7 +39,7 @@
 				warningContainer: alert ? alert.warning : false,
 				errorContainer: alert ? alert.error : false,
 				maskField: mask,
-				inline: inline,
+				inline: inline
 			}"
 		>
 			<template v-if="!mask">
@@ -48,15 +48,15 @@
 					:key="index"
 					:class="{
 						errorLabel: alert ? alert.error : false,
-						checked: value.includes(option),
+						checked: value.includes(option)
 					}"
 					:style="{
-						'color: #aaaaaa; cursor: not-allowed;': disabled,
+						'color: #aaaaaa; cursor: not-allowed;': disabled
 					}"
 				>
 					<input
 						:ref="
-							(el) => {
+							el => {
 								checkbox[index] = el;
 							}
 						"
@@ -95,7 +95,7 @@
 	export default defineComponent({
 		components: {
 			inputResponse,
-			vueButton,
+			vueButton
 		}, //components
 
 		props: {
@@ -104,10 +104,10 @@
 			type: {
 				required: false,
 				type: String,
-				validator: function (value) {
+				validator: function(value) {
 					return ["checkbox", "radio"].indexOf(value) !== -1;
 				},
-				default: "checkbox",
+				default: "checkbox"
 			},
 
 			//sets heading for the checkboxes category
@@ -115,14 +115,14 @@
 			label: {
 				required: false,
 				type: String,
-				default: "",
+				default: ""
 			},
 
 			//sets the tag attribute for the input field (required field in case of forms)
 			tag: {
 				required: false,
 				type: String,
-				default: "checkboxInput",
+				default: "checkboxInput"
 			},
 
 			//users can pass preset values for the input field
@@ -139,7 +139,7 @@
 				//     return [String, Number, null];
 				//   }
 				// },
-				default: function (props) {
+				default: function(props) {
 					if (!props.options) {
 						return false;
 					} else if (props.type == "checkbox") {
@@ -148,71 +148,71 @@
 						//type == radio
 						return null;
 					}
-				},
+				}
 			},
 
 			//Array of options/labels in case of multiple checkboxes.
 			options: {
 				required: false,
 				type: Array,
-				default: () => [],
+				default: () => []
 			},
 
 			//sets the manual alerts
-			alert: {
+			alertMessage: {
 				required: false,
 				type: Object,
-				default: null,
+				default: null
 			},
 
 			//sets the required attribute for the input field
 			isRequired: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the disabled attribute for the input field
 			isDisabled: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the autofocus attribute for the input field
 			autofocus: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//checks if label options should appear on the same line or not
 			inline: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//reserves space and created a mask if set to true
 			mask: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//checks if label options should appear on the same line or as buttons
 			box: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//uses the values to trigger validation by using v-on attribute
 			keyup: {
 				type: Array,
 				required: false,
-				default: () => ["keyup.tab", "keyup.enter"],
-			},
+				default: () => ["keyup.tab", "keyup.enter"]
+			}
 		}, //props
 
 		emits: ["value"],
@@ -226,7 +226,7 @@
 				checkbox.value = [];
 			});
 
-			const check = (checkedValue) => {
+			const check = checkedValue => {
 				let val = props?.value;
 				if (props.options?.length) {
 					//checkbox
@@ -265,14 +265,14 @@
 
 			const clearSelection = () => {
 				const element = checkbox.value;
-				element.forEach((el) => {
+				element.forEach(el => {
 					el.checked = false;
 				});
 				emit("value", null);
 			}; //clearSelection
 
 			return { singleCheckbox, check, clearSelection, checkbox };
-		},
+		}
 	}); //default
 </script>
 

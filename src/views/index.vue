@@ -6,7 +6,7 @@
 				<h2>My name is</h2>
 				<h1>
 					<a @click="$router.push({ name: 'about' })">Hrishikesh Karale.</a>
-					</h1>
+				</h1>
 				<h2>I design things.</h2>
 				<p>
 					I am a
@@ -15,52 +15,63 @@
 				</p>
 				<p>
 					My expertise ranges from
-					<abbr title="Making an effort to understand and clearly articulate the problems experienced by our user(s).">
+					<abbr
+						title="Making an effort to understand and clearly articulate the problems experienced by our user(s)."
+					>
 						Problem Validation
 					</abbr>
 					<span class="fas fa-arrow-right" />
-					<abbr title=" A clear description of the problem which also includes the vision and possible step by step solutions into solving the problem.">
+					<abbr
+						title=" A clear description of the problem which also includes the vision and possible step by step solutions into solving the problem."
+					>
 						Problem Definition
 					</abbr>
 					<span class="fas fa-arrow-right" />
-					<abbr title="A systametic study of target users and their requirements, to add realistic ocntext and insight to the design process.">
+					<abbr
+						title="A systametic study of target users and their requirements, to add realistic ocntext and insight to the design process."
+					>
 						UX Research
 					</abbr>
 					<span class="fas fa-arrow-right" />
-					<abbr title="A nonlinear, iterative process where a designer explores design solutions in an effort towards solving a user problem,thus ultimately creating a detailed Hi-Fi solution.">
+					<abbr
+						title="A nonlinear, iterative process where a designer explores design solutions in an effort towards solving a user problem,thus ultimately creating a detailed Hi-Fi solution."
+					>
 						UI Design
 					</abbr>
 					<span class="fas fa-arrow-right" />
 					<abbr title="I am well versed">
-						Front-End Development
-					</abbr>.
+						Front-End Development </abbr
+					>.
 				</p>
 			</div>
 			<div class="subSection">
 				<q>
 					A little
-					<abbr title="The ability to understand and share the feelings of another.">EMPATHY</abbr>
-					 goes a long way
+					<abbr
+						title="The ability to understand and share the feelings of another."
+						>EMPATHY</abbr
+					>
+					goes a long way
 				</q>
 			</div>
 		</section>
 		<section id="Work">
 			<header>
-			<h1>WORK</h1>
-			<h3>Here are some samples</h3>
+				<h1>WORK</h1>
+				<h3>Here are some samples</h3>
 			</header>
 			<div>
-				<template v-for="projects in getProjects" :key='projects.type'>
-					<template v-for="project in projects.value" :key='project.id'>
+				<template v-for="projects in getProjects" :key="projects.type">
+					<template v-for="project in projects.value" :key="project.id">
 						<div v-if="project.portfolio" class="displayWork">
 							<!-- {{project}} -->
 							<div>
-							<vue-img :src="project.img" />
+								<vue-img :src="project.img" />
 								<h2>
-									{{project.title}}
+									{{ project.title }}
 								</h2>
 								<p>
-									{{project.description}}
+									{{ project.description }}
 								</p>
 							</div>
 						</div>
@@ -78,37 +89,33 @@
 		</section>
 		<section id="honorsAndAwards">
 			<header>
-			<h1>Honors &amp; Awards</h1>
-			<h3>You can depend on me</h3>
+				<h1>Honors &amp; Awards</h1>
+				<h3>You can depend on me</h3>
 			</header>
-			<ol class='subSection'>
+			<ol class="subSection">
 				<li v-for="award in honorsAndAwards" :key="award.id">
-						<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
-						<h4>
-							{{ award.title }}
-							<small>
-								{{ award.issuer }}
-							</small>
-						</h4>
+					<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
+					<h4>
+						{{ award.title }}
+						<small>
+							{{ award.issuer }}
+						</small>
+					</h4>
 				</li>
 			</ol>
 		</section>
 		<section id="kindWords">
 			<header>
-			<h1>Kind Words</h1>
-			<h3>What people think about me</h3>
+				<h1>Kind Words</h1>
+				<h3>What people think about me</h3>
 			</header>
 			<div class="subSection">
-				<div
-					v-for="words in kindWords"
-					:key="words.name"
-					class="subSection"
-				>
+				<div v-for="words in kindWords" :key="words.name" class="subSection">
 					<q>
 						<span class="fas fa-quote-left fa-2x fa-pull-left fa-border" />
 						{{ words.comment }}
 					</q>
-					<h5>{{words.name}}</h5>
+					<h5>{{ words.name }}</h5>
 				</div>
 			</div>
 		</section>
@@ -126,7 +133,7 @@
 		name: "Home",
 		components: {
 			showcase,
-			vueImg,
+			vueImg
 		},
 		mixins: [loading],
 		data() {
@@ -137,15 +144,18 @@
 			// reviews
 			const kindWords = [
 				{
-					comment: "As a manager, you hope to hire people who are smarter than you, driven to make a big impact, and who constantly push themselves to grow–and Hrishikesh was certainly that. I learned a lot from him (his knowledge in UX design is unparalleled) and it was a joy working together.",
+					comment:
+						"As a manager, you hope to hire people who are smarter than you, driven to make a big impact, and who constantly push themselves to grow–and Hrishikesh was certainly that. I learned a lot from him (his knowledge in UX design is unparalleled) and it was a joy working together.",
 					name: "Craig Swings"
 				},
 				{
-					comment: "Hrishikesh, exhibits the experience and talent of someone twice his age in years. He is an incredible leader and has a way about him to get the most out of anyone. But most importantly, he's always eager to help others learn, grow and improve.",
+					comment:
+						"Hrishikesh, exhibits the experience and talent of someone twice his age in years. He is an incredible leader and has a way about him to get the most out of anyone. But most importantly, he's always eager to help others learn, grow and improve.",
 					name: "Junaid Shaikh"
 				},
 				{
-					comment: "What I enjoyed most about working with Hrishikesh was his mix of to-the-point creative vision and direction, while providing it in one of the most humble ways I’ve encountered.",
+					comment:
+						"What I enjoyed most about working with Hrishikesh was his mix of to-the-point creative vision and direction, while providing it in one of the most humble ways I’ve encountered.",
 					name: "Justin"
 				}
 			];
@@ -158,8 +168,9 @@
 		computed: {
 			...mapGetters({
 				getProjects: "contentModule/getProjects",
-				honorsAndAwards: "contentModule/getHonorsAndAwards", },),
-		},
+				honorsAndAwards: "contentModule/getHonorsAndAwards"
+			})
+		}
 	};
 </script>
 
@@ -187,10 +198,10 @@
 							position: absolute;
 							align-self: center;
 							text-align: center;
-							bottom: @spaceLg;;
+							bottom: @spaceLg;
 							font-weight: bold;
 						}
-				}
+					}
 				}
 			}
 			&#Intro {
@@ -200,8 +211,8 @@
 				min-height: @body;
 				max-width: 960px;
 				& > div {
-						justify-content: space-around;
-						align-self: center;
+					justify-content: space-around;
+					align-self: center;
 					& > span {
 						margin: 0;
 					}
@@ -429,7 +440,7 @@
 							quotes: none;
 							min-width: 240px;
 							max-width: 640px;
-							&> span {
+							& > span {
 								color: @secondary;
 							}
 							& + h5 {
@@ -468,7 +479,7 @@
 					@media (max-width: @768width) {
 						& > section {
 							&#Intro {
-								margin-top: 2*@spaceXl;
+								margin-top: 2 * @spaceXl;
 								gap: @spaceXl;
 							}
 						}

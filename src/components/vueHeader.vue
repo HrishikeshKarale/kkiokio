@@ -27,15 +27,15 @@
 					<router-link :to="{ name: navigation.component }">
 						<span :class="navigation.icon"></span>
 						<!-- <div> -->
-							<h4 v-text="navigation.name" />
-							<!-- <span v-text="navigation.tagline" /> -->
+						<h4 v-text="navigation.name" />
+						<!-- <span v-text="navigation.tagline" /> -->
 						<!-- </div> -->
 					</router-link>
 				</li>
 			</ul>
 		</nav>
 		<!-- <div class="user"> -->
-			<!-- <span class="fas fa-user" />
+		<!-- <span class="fas fa-user" />
 			<div class="account">
 				<template v-if="signedIn">
 					<vue-img :src="user ? user.image : null" alt="Logo" />
@@ -59,31 +59,43 @@
 					category="text-sm"
 					:ctx="signOut.bind()"
 				/> -->
-				<vue-button
-					v-if="themeIcon"
-					tag="themeToggle"
-					category="icon"
-					text="Theme"
-					:icon="themeIcon"
-					:ctx="theme.bind(this)"
-				/>
-			<!-- </div>
+		<vue-button
+			v-if="themeIcon"
+			tag="themeToggle"
+			category="icon"
+			text="Theme"
+			:icon="themeIcon"
+			:ctx="theme.bind(this)"
+		/>
+		<!-- </div>
 		</div> -->
 	</header>
 </template>
 
 <script>
-	import { toggle } from "@/typeScript/toggle";
-	import { authentication } from "@/typeScript/authentication";
+	// vue
+	import { inject } from "vue";
+	// components
 	import vueButton from "@/components/vueButton";
 	import vueImg from "./vueImg.vue";
+	// ts
+	import { toggle } from "@/typeScript/toggle";
+	import { authentication } from "@/typeScript/authentication";
 
 	export default {
 		name: "VueHeader",
 
+		data() {
+			// global property
+			const emitter = inject("$emitter");
+			return {
+				emitter
+			};
+		},
+
 		components: {
 			vueButton,
-			vueImg,
+			vueImg
 		}, //data
 
 		mixins: [toggle, authentication],
@@ -92,37 +104,37 @@
 			logoLink: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			nav: {
 				required: true,
 				type: Object,
-				default: null,
-			},
+				default: null
+			}
 		},
 
 		computed: {
-			themeIcon: function () {
+			themeIcon: function() {
 				return this.activeTheme().icon;
 			}, //themeIcon
-			toggleNavIcon: function () {
+			toggleNavIcon: function() {
 				if (this.isOpen("nav")) {
 					return "fas fa-times";
 				}
 				return "fas fa-bars";
-			}, //toggleNavIcon
+			} //toggleNavIcon
 		}, //props
 
 		mounted() {
 			document.addEventListener("click", this.clickHandler, {
 				capture: false, // top to bottom bubbling/propogation
-				once: false, //should work only once
+				once: false //should work only once
 			});
 		},
 
 		methods: {
-			clickHandler: function (event) {
+			clickHandler: function(event) {
 				// console.log("modal", !event.target.closest(".vueHeader").length);
 				if (!event.target.closest(".vueHeader") && this.isOpen("nav")) {
 					this.toggleNavigation();
@@ -131,18 +143,18 @@
 				// event.stopPropogation(); //stop event bubbling
 			}, //clickHandler
 
-			login: function () {
-				this.emitter.emit("loginScreen", true);
+			login: function() {
+				emitter.emit("loginScreen", true);
 			}, //login
 
-			toggleNavigation: function () {
+			toggleNavigation: function() {
 				this.$refs["vueHeader"].classList.toggle("showNav");
 				if (this.$refs["vueHeader"].classList.contains("showNav")) {
 					this.$refs["vueHeader"].classList.remove("mini");
 				}
 				this.toggle("nav");
-			}, //toggleNavigation
-		},
+			} //toggleNavigation
+		}
 	}; //default
 </script>
 
@@ -192,7 +204,7 @@
 							& > a {
 								padding: @spaceMd @spaceLg;
 								border-radius: @borderRadius;
-							gap: @spaceLg;
+								gap: @spaceLg;
 								// border: 4px solid transparent;
 
 								&::after {
@@ -206,21 +218,21 @@
 								}
 
 								&.router-link-exact-active {
-								//styling selected link
-								&.router-link-active {
-									&::after {
-										border-color: @accent;
-									}
+									//styling selected link
+									&.router-link-active {
+										&::after {
+											border-color: @accent;
+										}
 										& > span {
 											color: @text;
 											opacity: 1;
 											transform: scale(1.4);
 										}
-											& > h4 {
-												color: @text;
-												font-weight: bold;
-												letter-spacing: 2px !important;
-											}
+										& > h4 {
+											color: @text;
+											font-weight: bold;
+											letter-spacing: 2px !important;
+										}
 									}
 								}
 							}
@@ -247,25 +259,25 @@
 							// 	width: 100%;
 							// 	gap: @spaceMd;
 
-								//nav Text
-								& > h4 {
-									// color: @offWhite;
-									margin: 0 !important;
-											color: @navText;
-									//nav subText
-									& + span {
-										visibility: hidden;
-										height: 0;
-										font-size: 12px;
-										.navSubText();
-									}
+							//nav Text
+							& > h4 {
+								// color: @offWhite;
+								margin: 0 !important;
+								color: @navText;
+								//nav subText
+								& + span {
+									visibility: hidden;
+									height: 0;
+									font-size: 12px;
+									.navSubText();
 								}
+							}
 							// }
 						}
 
 						//website name and logo
 						&:first-child {
-							margin-right: 3*@spaceXl !important;
+							margin-right: 3 * @spaceXl !important;
 							& > a {
 								gap: @spaceLg;
 								&:hover {

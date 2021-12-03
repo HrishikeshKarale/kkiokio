@@ -1,6 +1,6 @@
 <template>
 	<nav v-if="routeComp.length > 1" class="breadcrums">
-		<span class='fas fa-folder-open' />
+		<span class="fas fa-folder-open" />
 		<ol>
 			<template v-for="route in routeComp">
 				<li
@@ -23,14 +23,14 @@
 </template>
 
 <script>
-	import { mapGetters, mapMutations } from "vuex";
+	import { mapGetters } from "vuex";
 	export default {
 		name: "Breadcrums",
 		computed: {
 			...mapGetters({
 				routeComp: "contentModule/breadcrums/routeComp",
-				pageTitle: "contentModule/breadcrums/pageTitle",
-			}),
+				pageTitle: "contentModule/breadcrums/pageTitle"
+			})
 		},
 
 		created() {
@@ -38,7 +38,7 @@
 				"contentModule/breadcrums/initialize",
 				this.$route.path
 			);
-		},
+		}
 	};
 </script>
 
