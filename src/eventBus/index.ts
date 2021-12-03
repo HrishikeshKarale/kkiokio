@@ -7,7 +7,7 @@ interface Events {
   bar?: any;
 }
 
-const emitter = mitt();
-// const emitter: Emitter<Events> = mitt<Events>()
+const EMITTER = mitt();
+// const EMITTER: Emitter<Events> = mitt<Events>()
 
 export default emitter;

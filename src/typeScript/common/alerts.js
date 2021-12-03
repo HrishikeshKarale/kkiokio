@@ -1,12 +1,12 @@
 export const alerts = {
   data() {
     const warning = "";
-    const danger = "";
+    const error = "";
     const success = "";
     const info = "";
     return {
       warning,
-      danger,
+      error,
       success,
       info
     };
@@ -15,7 +15,7 @@ export const alerts = {
   computed: {
     alertObject: function () {
       return {
-        error: this.danger,
+        error: this.error,
         warning: this.warning,
         success: this.success,
         info: this.info
@@ -30,7 +30,7 @@ export const alerts = {
       if (type == "warning") {
         this.warning = message;
       } else if (type == "error") {
-        this.danger = message;
+        this.error = message;
       } else if (type == "success") {
         this.success = success;
       } else if (type == "info") {

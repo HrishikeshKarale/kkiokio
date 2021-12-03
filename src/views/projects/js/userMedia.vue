@@ -76,7 +76,7 @@
 		},
 		data() {
 			// global property
-			const emitter = inject("$emitter");
+			const EMITTER = inject("$emitter");
 			let audioSelect;
 			let videoSelect;
 			const screenshotImage = "";
@@ -108,7 +108,7 @@
 				}
 			};
 			return {
-				emitter,
+				EMITTER,
 				audioSelect,
 				videoSelect,
 				html5Video,
@@ -250,7 +250,7 @@
 						this.html5Video.srcObject = stream;
 					});
 				} else {
-					emitter.emit("alert", {
+					EMITTER.emit("alert", {
 						type: "warning",
 						message: "Error getting access to media/video",
 						description:

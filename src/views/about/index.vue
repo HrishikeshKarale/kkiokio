@@ -7,7 +7,7 @@
 			<!-- <h1>Hrishikesh Karale</h1> -->
 			<div>
 				<div>
-					<vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
+					<vue-img :src="PROFILEPIC" alt="Hrishikesh Karale profile Picture" />
 					<div class="social">
 						<a target="_blank" href="https://github.com/HrishikeshKarale">
 							<span class="fab fa-github fa-2x" />
@@ -53,7 +53,7 @@
 								</h6>
 							</td>
 							<td>
-								<b> {{ experience.professional }} + </b>
+								<b> {{ EXPERIENCE.professional }} + </b>
 								yrs
 							</td>
 						</tr>
@@ -65,7 +65,7 @@
 							</td>
 							<td>
 								<b>
-									{{ experience.academic }}
+									{{ EXPERIENCE.academic }}
 								</b>
 								yrs
 							</td>
@@ -225,47 +225,63 @@
 	</article>
 </template>
 
-<script>
-	import vueImg from "@/components/vueImg.vue";
-	import { loading } from "@/typeScript/common/loading";
+<script lang="ts">
+	// vue
+	import { defineComponent } from "vue";
+	// vuex
 	import { mapGetters } from "vuex";
+	// components
+	import vueImg from "@/components/vueImg.vue";
+	// ts
+	import loading from "@/typeScript/common/screenLoading";
 
-	export default {
+	export default defineComponent({
 		name: "About",
 
 		components: {
 			vueImg
 		},
-		computed: {
-			...mapGetters({
-				skills: "contentModule/getSkills",
-				lisencesAndCertificates: "contentModule/getLisencesAndCertificates",
-				honorsAndAwards: "contentModule/getHonorsAndAwards",
-				uxProcess: "contentModule/getUxProcess"
-			})
-		},
 
-		beforeMount() {
-			const start = new Date(2017, 9, 10).getTime();
-			const today = Date.now();
-			let diff = (today - start) / 1000;
-			diff /= 60 * 60 * 24;
-			this.experience.professional += Math.abs(Math.round(diff / 365.25));
-		},
-
-		data() {
+		setup() {
+			// global imort
+			const STORE = inject("$store");
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
-			const profilePic = require("@/../public/img/profilePic.jpg");
+			const PROFILEPIC = require("@/../public/img/profilePic.jpg");
 			// const resume = require("@/assets/Hrishikesh Karale-Resume.pdf");
-			const experience = {
+			const EXPERIENCE = {
 				academic: 2.5,
 				professional: 1
 			};
+			const START = new Date(2017, 9, 10).getTime();
+			const TODAY = Date.now();
+			let DIFF = (TODAY - START) / 1000;
+			DIFF /= 60 * 60 * 24;
+			this.EXPERIENCE.professional += Math.abs(Math.round(DIFF / 365.25));
+
+			const blogList = computed(() => STORE.getters["contentModule/getSkills"]);
+
+			const lisencesAndCertificates = computed(
+				() => STORE.getters["contentModule/getLisencesAndCertificates"]
+			);
+
 			return {
-				profilePic,
-				experience
 				// resume,
+				PROFILEPIC,
+				EXPERIENCE,
+				blogList,
+				lisencesAndCertificates
 			};
+		}
+	});
+</script>
+
+<script>
+	export default {
+		computed: {
+			...mapGetters({
+				honorsAndAwards: "contentModule/getHonorsAndAwards",
+				uxProcess: "contentModule/getUxProcess"
+			})
 		}
 	};
 </script>

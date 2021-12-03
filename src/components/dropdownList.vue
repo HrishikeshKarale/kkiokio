@@ -7,8 +7,8 @@
 		</label>
 		<div
 			:class="{
-				warningContainer: alertMessage.warning,
-				errorContainer: alertMessage.danger,
+				warningContainer: alertMessage ? alertMessage.warning : '',
+				errorContainer: alertMessage ? alertMessage.error : '',
 				iconPadding: icon,
 				maskField: mask
 			}"
@@ -35,7 +35,7 @@
 				/>
 			</select>
 		</div>
-		<input-response :error="alertMessage.danger" />
+		<input-response :error="alertMessage ? alertMessage.error : ''" />
 	</div>
 </template>
 

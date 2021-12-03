@@ -187,29 +187,28 @@ Rochester, NY 14623."
 				"Access-Control-Allow-Origin": "*"
 			};
 			// global property
-			const emitter: any = inject("$emitter");
-			const axios: any = inject("$axios");
+			const EMITTER: any = inject("$emitter");
+			const AXIOS: any = inject("$axios");
 
 			// mixins
 			loading();
 			const { alert, alertMsg } = notify();
 
 			const sendMail = function() {
-				axios
-					.post(
-						"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/notification/email",
-						{
-							to: "hrishirich619@gmail.com",
-							name: sender,
-							cc: email,
-							phoneNumber: phone,
-							preffered: preffered,
-							content: comment
-						}
-						// CONFIG
-					)
+				AXIOS.post(
+					"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/notification/email",
+					{
+						to: "hrishirich619@gmail.com",
+						name: sender,
+						cc: email,
+						phoneNumber: phone,
+						preffered: preffered,
+						content: comment
+					}
+					// CONFIG
+				)
 					.then(response => {
-						emitter.emit("alert", {
+						EMITTER.emit("alert", {
 							type: "success",
 							message: "Email sent to Kkiokio(Hrishikesh Karale)",
 							description:
@@ -219,7 +218,7 @@ Rochester, NY 14623."
 						});
 					})
 					.catch(error => {
-						emitter.emit("alert", {
+						EMITTER.emit("alert", {
 							type: "warning",
 							message: "Error sending email.",
 							description: error.response,

@@ -61,11 +61,11 @@
 		mixins: [loading],
 		data() {
 			// global property
-			const emitter = inject("$emitter");
+			const EMITTER = inject("$emitter");
 			let compass;
 			let speed;
 			return {
-				emitter,
+				EMITTER,
 				compass,
 				speed
 			};
@@ -84,7 +84,7 @@
 					}deg)`;
 				},
 				err => {
-					emitter.emit("alert", {
+					EMITTER.emit("alert", {
 						type: "warning",
 						message: "Error calculating Spped/Compass direction",
 						description: err,

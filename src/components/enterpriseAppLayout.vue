@@ -247,9 +247,9 @@
 
 		data() {
 			// global property
-			const emitter = inject("$emitter");
+			const EMITTER = inject("$emitter");
 			const booleanTrue = inject("$true");
-			const axios = inject("$axios");
+			const AXIOS = inject("$axios");
 			const DEFAULT_TRANSITION = "fade";
 			const DEFAULT_TRANSITION_MODE = "out-in";
 			const transitionEnterActiveClass = "";
@@ -293,9 +293,9 @@
 				"Access-Control-Allow-Origin": "*"
 			};
 			return {
-				emitter,
+				EMITTER,
 				booleanTrue,
-				axios,
+				AXIOS,
 				dNameRadio,
 				dRadioValue,
 				dOptions,
@@ -402,13 +402,13 @@
 		}, //beforeMount
 
 		mounted() {
-			this.emitter.on("loadingScreen", loading => {
+			this.EMITTER.on("loadingScreen", loading => {
 				this.display = loading;
 			});
-			this.emitter.on("loginScreen", display => {
+			this.EMITTER.on("loginScreen", display => {
 				this.loginDisplay = display;
 			});
-			this.emitter.on("alert", payload => {
+			this.EMITTER.on("alert", payload => {
 				this.alert.push({
 					type: payload.type,
 					message: payload.message,
@@ -424,15 +424,14 @@
 			handleLogin(e) {
 				e.preventDefault();
 				if (this.password.length > 0) {
-					this.axios
-						.post(
-							"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/login",
-							{
-								email: this.emailID,
-								password: this.password
-							},
-							this.config
-						)
+					this.AXIOS.post(
+						"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/login",
+						{
+							email: this.emailID,
+							password: this.password
+						},
+						this.config
+					)
 						.then(response => {
 							if (response.data.auth) {
 								localStorage.setItem("user", JSON.stringify(response.data.user));
@@ -440,7 +439,7 @@
 							}
 						})
 						.catch(error => {
-							emitter.emit("alert", {
+							EMITTER.emit("alert", {
 								type: "warning",
 								message: "Error setting up cookies/localStorage",
 								description: error.response,
@@ -451,7 +450,7 @@
 							// console.error(error.response);
 						});
 				} else {
-					emitter.emit("alert", {
+					EMITTER.emit("alert", {
 						type: "danger",
 						message: "No Password detected",
 						description: "Please enter a password",
@@ -468,24 +467,23 @@
 					"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/register/" +
 					this.isAdmin;
 				//POST request
-				this.axios
-					.post(
-						url,
-						{
-							name: this.signupName,
-							email: this.signupEmail,
-							username: this.signupUsername,
-							password: this.signupPassword,
-							isAdmin: this.isAdmin
-						},
-						this.config
-					)
+				this.AXIOS.post(
+					url,
+					{
+						name: this.signupName,
+						email: this.signupEmail,
+						username: this.signupUsername,
+						password: this.signupPassword,
+						isAdmin: this.isAdmin
+					},
+					this.config
+				)
 					.then(response => {
 						localStorage.setItem("user", JSON.stringify(response.data.user));
 						localStorage.setItem("jwt", response.data.token);
 					})
 					.catch(error => {
-						emitter.emit("alert", {
+						EMITTER.emit("alert", {
 							type: "danger",
 							message: "SignUp Request Failed",
 							description: "Please try again.",

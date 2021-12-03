@@ -63,7 +63,7 @@
 		mixins: [toggle, loading],
 		data() {
 			// global property
-			const emitter = inject("$emitter");
+			const EMITTER = inject("$emitter");
 			const selectedEndpoint = null;
 			const studioGhibli = {
 				baseURL: "https://ghibliapi.herokuapp.com/",
@@ -77,7 +77,7 @@
 				response: {}
 			};
 			return {
-				emitter,
+				EMITTER,
 				selectedEndpoint,
 				locationSearch,
 				studioGhibli
@@ -115,7 +115,7 @@
 						source.response = data;
 					})
 					.catch(error => {
-						emitter.emit("alert", {
+						EMITTER.emit("alert", {
 							type: "warning",
 							message: "Error handling API data",
 							description: error,

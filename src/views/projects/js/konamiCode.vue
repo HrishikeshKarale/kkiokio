@@ -18,7 +18,7 @@
 		mixins: [loading],
 		data() {
 			// global property
-			const emitter = inject("$emitter");
+			const EMITTER = inject("$emitter");
 			const codes = ["kkiokio", "qwerty"];
 			const userCode = [];
 			const keyPressed = {
@@ -31,7 +31,7 @@
 				altKey: null
 			};
 			return {
-				emitter,
+				EMITTER,
 				codes,
 				userCode,
 				keyPressed
@@ -72,7 +72,7 @@
 							throw null;
 						}
 					} catch (e) {
-						emitter.emit("alert", {
+						EMITTER.emit("alert", {
 							type: "warning",
 							message: "Error reacting to the konami code",
 							description: e,

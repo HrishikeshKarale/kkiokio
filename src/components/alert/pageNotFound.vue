@@ -37,18 +37,18 @@
 
 		data() {
 			// global property
-			const emitter = inject("$emitter");
+			const EMITTER = inject("$emitter");
 			const Id = "stackTrace";
 			const similarRoutes = this.$route.matched;
 			return {
-				emitter,
+				EMITTER,
 				Id,
 				similarRoutes
 			}; //return
 		}, //data
 
 		mounted() {
-			emitter.emit("alert", {
+			EMITTER.emit("alert", {
 				type: "warning",
 				message: "Invalid Route address",
 				description: "Please check the link for accuracy.",

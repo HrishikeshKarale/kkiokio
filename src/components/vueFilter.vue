@@ -149,9 +149,9 @@
 			const filterOptionValue = null;
 			const showFilter = false;
 			// global property
-			const emitter = inject("$emitter");
+			const EMITTER = inject("$emitter");
 			return {
-				emitter,
+				EMITTER,
 				filterTypeValue,
 				filterOptionValue,
 				showFilter
@@ -198,7 +198,7 @@
 					this.emitFilter(selectedType, selectedValue);
 				} else {
 					//type:value pair does not exist
-					emitter.emit("alert", {
+					EMITTER.emit("alert", {
 						type: "warning",
 						message: "Filter does not exists",
 						description:
@@ -230,7 +230,7 @@
 							if (!selectedValue.includes(addValue)) {
 								selectedValue[tagIndex] = [addValue, ...selectedValue[tagIndex]];
 							} else {
-								emitter.emit("alert", {
+								EMITTER.emit("alert", {
 									type: "info",
 									message: "Filter already exists",
 									description:
@@ -265,7 +265,7 @@
 					}
 					this.emitFilter(selectedType, selectedValue);
 				} else {
-					emitter.emit("alert", {
+					EMITTER.emit("alert", {
 						type: "warning",
 						message: "Filter not set",
 						description:

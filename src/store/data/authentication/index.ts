@@ -14,7 +14,7 @@ const module = {
     user: {},
     // set up vue injections
     emitter: inject("$emitter"),
-    axios: inject("$axios")
+    AXIOS: inject("$axios")
   },
   mutations: {
     //do something
@@ -27,7 +27,7 @@ const module = {
     async handleSignUp({ commit, state }, payload) {
       const url =
         state.server + "/api/authentication/register/" + payload.isAdmin;
-      state.axios
+      state.AXIOS
         .post(
           url,
           {
@@ -48,7 +48,7 @@ const module = {
           state.user = "";
           state.token = "";
           state.loggedIn = true;
-          state.emitter.emit("alert", {
+          state.EMITTER.emit("alert", {
             type: "danger",
             message: "SignUp Request Failed",
             description: "Please try again.",

@@ -87,7 +87,7 @@
 
 		data() {
 			// global property
-			const emitter = inject("$emitter");
+			const EMITTER = inject("$emitter");
 			return {
 				emitter
 			};
@@ -144,7 +144,7 @@
 			}, //clickHandler
 
 			login: function() {
-				emitter.emit("loginScreen", true);
+				EMITTER.emit("loginScreen", true);
 			}, //login
 
 			toggleNavigation: function() {
