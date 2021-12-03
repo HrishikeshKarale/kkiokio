@@ -89,7 +89,7 @@
 			// global property
 			const EMITTER = inject("$emitter");
 			return {
-				emitter
+				EMITTER
 			};
 		},
 

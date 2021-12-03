@@ -439,7 +439,7 @@
 							}
 						})
 						.catch(error => {
-							EMITTER.emit("alert", {
+							this.EMITTER.emit("alert", {
 								type: "warning",
 								message: "Error setting up cookies/localStorage",
 								description: error.response,
@@ -450,7 +450,7 @@
 							// console.error(error.response);
 						});
 				} else {
-					EMITTER.emit("alert", {
+					this.EMITTER.emit("alert", {
 						type: "danger",
 						message: "No Password detected",
 						description: "Please enter a password",
@@ -483,7 +483,7 @@
 						localStorage.setItem("jwt", response.data.token);
 					})
 					.catch(error => {
-						EMITTER.emit("alert", {
+						this.EMITTER.emit("alert", {
 							type: "danger",
 							message: "SignUp Request Failed",
 							description: "Please try again.",

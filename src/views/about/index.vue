@@ -227,9 +227,7 @@
 
 <script lang="ts">
 	// vue
-	import { defineComponent } from "vue";
-	// vuex
-	import { mapGetters } from "vuex";
+	import { defineComponent, inject, computed } from "vue";
 	// components
 	import vueImg from "@/components/vueImg.vue";
 	// ts
@@ -244,19 +242,20 @@
 
 		setup() {
 			// global imort
-			const STORE = inject("$store");
+			const STORE: any = inject("$store");
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const PROFILEPIC = require("@/../public/img/profilePic.jpg");
 			// const resume = require("@/assets/Hrishikesh Karale-Resume.pdf");
-			const EXPERIENCE = {
-				academic: 2.5,
-				professional: 1
-			};
 			const START = new Date(2017, 9, 10).getTime();
 			const TODAY = Date.now();
 			let DIFF = (TODAY - START) / 1000;
 			DIFF /= 60 * 60 * 24;
-			this.EXPERIENCE.professional += Math.abs(Math.round(DIFF / 365.25));
+			const EXPERIENCE = {
+				academic: 2.5 + Math.abs(Math.round(DIFF / 365.25)),
+				professional: 1
+			};
+			// mixin
+			loading();
 
 			const blogList = computed(() => STORE.getters["contentModule/getSkills"]);
 
@@ -264,26 +263,25 @@
 				() => STORE.getters["contentModule/getLisencesAndCertificates"]
 			);
 
+			const honorsAndAwards = computed(
+				() => STORE.getters["contentModule/getHonorsAndAwards"]
+			);
+
+			const uxProcess = computed(
+				() => STORE.getters["contentModule/getUxProcess"]
+			);
+
 			return {
 				// resume,
 				PROFILEPIC,
 				EXPERIENCE,
 				blogList,
-				lisencesAndCertificates
+				lisencesAndCertificates,
+				honorsAndAwards,
+				uxProcess
 			};
 		}
 	});
-</script>
-
-<script>
-	export default {
-		computed: {
-			...mapGetters({
-				honorsAndAwards: "contentModule/getHonorsAndAwards",
-				uxProcess: "contentModule/getUxProcess"
-			})
-		}
-	};
 </script>
 
 <style lang="less" scoped>

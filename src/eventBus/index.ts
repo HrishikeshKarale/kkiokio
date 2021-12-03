@@ -10,4 +10,4 @@ interface Events {
 const EMITTER = mitt();
 // const EMITTER: Emitter<Events> = mitt<Events>()
 
-export default emitter;
+export default EMITTER;

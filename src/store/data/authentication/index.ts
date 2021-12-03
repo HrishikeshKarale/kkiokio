@@ -13,7 +13,7 @@ const module = {
     token: null,
     user: {},
     // set up vue injections
-    emitter: inject("$emitter"),
+    EMITTER: inject("$emitter"),
     AXIOS: inject("$axios")
   },
   mutations: {
