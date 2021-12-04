@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const DB = require("../../../database/db");
-const config = require("../../../config");
-const db = new DB("sqlitedb");
+// const DB = require("../../../database/db");
+// const config = require("../../../config");
+// const db = new DB("sqlitedb");
 
 const controller = (req, res) => {
 	const name = req.body.name;

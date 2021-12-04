@@ -8,8 +8,8 @@ const apiRoutes = require("./api");
 //cors
 const corsFunc = require("./cors");
 
-
 const app = express();
+
 app.use(cors());
 const router = express.Router();
 
@@ -23,16 +23,16 @@ router.use(bodyParser.json());
 router.all('/*', corsFunc);
 
 router.route('/')
-	.get(function (req, res) {
+	.get((req, res) => {
 		res.send('server is working (get)');
 	})
-	.delete(function (req, res) {
+	.delete((req, res) => {
 		res.send('server is working (delete)');
 	})
-	.post(function (req, res) {
+	.post((req, res) => {
 		res.send('server is working (post)');
 	})
-	.put(function (req, res) {
+	.put((req, res) => {
 		res.send('server is working (put)');
 	});
 

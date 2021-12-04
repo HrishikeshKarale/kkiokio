@@ -41,54 +41,38 @@ export const kudaBank = {
             "Kuda bank is a digital bank, they have no physical branches. You can open an account and perform transactions, talk to a customer care representative using just the app which can be downloaded on any device(iOS and android).Their tag line is “ We are the bank of the free”, the free means most of the charges that traditional banks impose on their customers are free on Kuda bank, which is one of the incentives they are using to draw in customers to their service."
         },
         {
-          img: {
-            src: require("@/assets/UX/kudaBank/sketch.png"),
-            alt: null,
-            caption: null
-          }
+          img: [
+            {
+              src: require("@/assets/UX/kudaBank/sketch.png"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/kudaBank/sketch1.png"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/kudaBank/sketch2.png"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/kudaBank/sketch3.png"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/kudaBank/sketch4.png"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/kudaBank/sketch5.png"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/kudaBank/sketch6.png"),
+              alt: null,
+              caption: null
+            }
+          ]
         },
-        {
-          img: {
-            src: require("@/assets/UX/kudaBank/sketch1.png"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/kudaBank/sketch2.png"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/kudaBank/sketch3.png"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/kudaBank/sketch4.png"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/kudaBank/sketch5.png"),
-            alt: null,
-            caption: null
-          }
-        },
-        {
-          img: {
-            src: require("@/assets/UX/kudaBank/sketch6.png"),
-            alt: null,
-            caption: null
-          }
-        }
       ]
     }, //sections
     {
@@ -99,19 +83,18 @@ export const kudaBank = {
             "Here is a cmparison of the ld design (left) with the new suggested design(right)."
         },
         {
-          img: {
-            src: require("@/assets/UX/kudaBank/original.png"),
-            alt: null,
-            caption: null
-          }
+          img: [
+            {
+              src: require("@/assets/UX/kudaBank/original.png"),
+              alt: null,
+              caption: null
+            }, {
+              src: require("@/assets/UX/kudaBank/redesign.png"),
+              alt: null,
+              caption: null
+            }
+          ]
         },
-        {
-          img: {
-            src: require("@/assets/UX/kudaBank/redesign.png"),
-            alt: null,
-            caption: null
-          }
-        }
       ]
     }, //sections
     {

@@ -1,9 +1,9 @@
 <template>
 	<form
-		:id="form"
-		:ref="form"
+		:id="tag"
+		:ref="tag"
 		:class="{ vueForm: true, singleAction: singleAction }"
-		:name="form"
+		:name="tag"
 		:novalidate="validate"
 		:autocomplete="isAutocomplete"
 		@submit="ctx"
@@ -26,132 +26,145 @@
 		</div>
 	</form>
 </template>
+<script lang='ts'>
+	// vue
+	import { defineComponent, computed, onMounted, toRef } from "vue";
+	// components
+	import vueButton from "@/components/vueButton.vue";
+	// type definition
+	import SourceType from "@/typeScript/definition/notify/SourceType";
 
-<script>
-	import vueButton from "@/components/vueButton";
-
-	export default {
-		name: "VueForm", //props
+	export default defineComponent({
+		name: "VueForm",
 
 		components: {
-			vueButton,
-		}, //data
+			vueButton
+		}, // components
 
 		props: {
 			title: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
-			alert: {
-				required: true,
+
+			// sets the manual alerts
+			alertID: {
+				required: false,
+				type: Object as () => SourceType,
+				default: { parent: null, child: null }
+			},
+
+			//sets the manual alerts
+			alertMessage: {
+				required: false,
 				type: Object,
+				default: null
 			},
 			ctx: {
 				required: true,
-				type: Function,
+				type: Function
 			},
-			form: {
+			tag: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 			text: {
 				required: false,
 				type: String,
-				default: "Submit",
+				default: "Submit"
 			},
 			category: {
 				required: false,
 				type: String,
 				default: "standard",
-				validator: function (value) {
-					return (
-						[
-							"standard",
-							"large",
-							"small",
-							"fullWidth",
-							"border",
-							"border-sm",
-							"border-lg",
-							"border-fwidth",
-							"text",
-							"text-sm",
-							"text-lg",
-							"icon",
-							"icon-sm",
-							"icon-lg",
-							null,
-						].indexOf(value) !== -1
-					);
-				},
+				validator: (value: string): boolean =>
+					[
+						"standard",
+						"large",
+						"small",
+						"fullWidth",
+						"border",
+						"border-sm",
+						"border-lg",
+						"border-fwidth",
+						"text",
+						"text-sm",
+						"text-lg",
+						"icon",
+						"icon-sm",
+						"icon-lg",
+						null
+					].indexOf(value) !== -1
 			},
 			icon: {
 				required: false,
 				type: String,
-				default: "fas fa-clipboard-check",
+				default: "fas fa-clipboard-check"
 			},
 			singleAction: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 			isAutocomplete: {
 				required: false,
 				type: Boolean,
-				default: true,
+				default: true
 			},
 			validate: {
 				required: false,
 				type: Boolean,
-				default: false,
-			},
-		},
+				default: false
+			}
+		}, // props
 
-		computed: {
-			validInput: function () {
-				const alert = this.alert;
-				const form = this.$refs[this.form];
-				if (form && !alert["error"] && !alert["warning"]) {
+		setup(props) {
+			const TAG = toRef(props, "tag");
+			const ALERT = toRef(props, "alertMessage");
+			const VALIDATE = toRef(props, "validate");
+
+			let formElement = document.getElementById(TAG.value);
+
+			onMounted(() => {
+				formElement = document.getElementById(TAG.value);
+			});
+
+			// returns true if inputs entered are valid
+			// or validate flag set to false
+			const validInput = computed((): boolean => {
+				if (!VALIDATE.value) return true;
+				if (formElement && !ALERT.value.error && !ALERT.value.warning) {
 					const inputs = [
-						...Array.from(form.getElementsByTagName("select")),
-						...Array.from(form.getElementsByTagName("input")),
+						...Array.from(formElement.getElementsByTagName("select")),
+						...Array.from(formElement.getElementsByTagName("input"))
 					];
 
-					for (let index = 0; index < inputs.length; ++index) {
+					for (let index = 0; index < inputs.length; index += 1) {
 						if (inputs[index].required && !inputs[index].value) {
 							return false;
 						}
-						//skipPAsswordMatch value check
+						// skipPAsswordMatch value check
 						if (inputs[index].type === "password") {
-							index++;
+							index += 1;
 						}
 					}
 					return true;
 				}
 				return false;
-			}, //validInput
-		}, //computed
+			});
 
-		methods: {
-			alerts: function (type, message) {
-				// console.log(message);
-				if (type == "warning") {
-					this.dWarning = message;
-				} else if (type == "error") {
-					this.dDanger = message;
-				} else {
-					alert("error in input alert module");
-				}
-			}, //alerts
-		}, //methods
-	}; //default
+			return {
+				validInput
+			};
+		}
+	});
 </script>
 
-<style lang="less" scoped>
+<style lang='less' scoped>
 	@import (reference) "../Less/customMixins.less";
-	@import (reference) "../Less/customVariables.less";
+	@import (reference) "../less/customVariables.less";
 
 	.vueForm {
 		display: flex;

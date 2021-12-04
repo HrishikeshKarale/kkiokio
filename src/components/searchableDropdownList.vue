@@ -7,10 +7,10 @@
 		</label>
 		<div
 			:class="{
-				warningContainer: warning,
-				errorContainer: danger,
+				warningContainer: alertMessage.warning,
+				errorContainer: alertMessage.danger,
 				iconPadding: icon,
-				maskField: mask,
+				maskField: mask
 			}"
 		>
 			<span v-if="icon" :class="icon" />
@@ -27,10 +27,18 @@
 				@blur="validate"
 			/>
 			<datalist :id="name">
-				<option v-for="(option, index) in options" :key="index" :value="option" v-text="option" />
-				</datalist>
+				<option
+					v-for="(option, index) in options"
+					:key="index"
+					:value="option"
+					v-text="option"
+				/>
+			</datalist>
 		</div>
-		<input-response :warning="warning" :error="danger" />
+		<input-response
+			:warning="alertMessage.warning"
+			:error="alertMessage.danger"
+		/>
 	</div>
 </template>
 
@@ -41,7 +49,7 @@
 		name: "SearchableDropdownList",
 
 		components: {
-			inputResponse,
+			inputResponse
 		}, //data
 
 		props: {
@@ -49,20 +57,20 @@
 			label: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			//sets name attribute for the input field (required field in case of forms)
 			name: {
 				required: false,
 				type: String,
-				default: "dropdownInput",
+				default: "dropdownInput"
 			},
 
 			//users can pass preset values for the input field
 			value: {
 				required: false,
-				type: function (props) {
+				type: function(props) {
 					let temp = null;
 					switch (typeof props.options[0]) {
 						case "object":
@@ -79,12 +87,12 @@
 					}
 					return temp;
 				},
-				default: function (props) {
+				default: function(props) {
 					if (props.multiple) {
 						return [];
 					}
 					return null;
-				},
+				}
 			},
 
 			//looks for exact match
@@ -92,95 +100,95 @@
 			strict: {
 				required: false,
 				type: Boolean,
-				default: true,
+				default: true
 			},
 
 			//Array of options for user to select .
 			options: {
 				required: true,
-				type: Array,
+				type: Array
 			},
 
 			//sets the format/pattern for acceptable values for the input field
 			pattern: {
 				required: false,
 				type: [RegExp, String, null],
-				default: new RegExp(/([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*/),
+				default: new RegExp(/([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*/)
 			},
 
 			//sets the placeholder attribute for the input field
 			placeholder: {
 				required: false,
 				type: String,
-				default: function (props) {
+				default: function(props) {
 					if (props.strict) {
 						return "Select an option...";
 					}
 					return "Enter value or Select an option...";
-				},
+				}
 			},
 
 			//sets the maxlength attribute for the input field
 			maxlength: {
 				required: false,
 				type: Number,
-				default: 50,
+				default: 50
 			},
 
 			//sets the multiple attribute for the input field to accept multiple values
 			multiple: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the manual alerts
 			alertMessage: {
 				required: false,
 				type: Object,
-				default: null,
+				default: null
 			},
 
 			//sets the required attribute for the input field
 			isRequired: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the disabled attribute for the input field
 			isDisabled: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the autofocus attribute for the input field
 			autofocus: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the autocomplete attribute for the input field
 			isAutocomplete: {
 				required: false,
 				type: Boolean,
-				default: true,
+				default: true
 			},
 
 			//checks if label options should appear on the same line or not
 			inline: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//reserves space and created a mask if set to true
 			mask: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//if a valid fontawesome icon class string is passed, it displays it in the input field
@@ -188,8 +196,8 @@
 			icon: {
 				required: false,
 				type: String,
-				default: null,
-			},
+				default: null
+			}
 		}, //props
 
 		emits: ["alerts", "value"], //components
@@ -203,20 +211,20 @@
 				warning: null,
 
 				//stores dropdown values
-				selectedOption: null,
+				selectedOption: null
 			}; //return
 		}, //beforeMount
 
 		watch: {
 			//send warning messages back to parent component
-			warning: function (newValue) {
+			warning: function(newValue) {
 				this.$emit("alerts", "warning", newValue);
 			},
 
 			//send error messages back to parent component
-			danger: function (newValue) {
+			danger: function(newValue) {
 				this.$emit("alerts", "error", newValue);
-			},
+			}
 		}, //watch
 
 		created() {
@@ -296,7 +304,7 @@
 		methods: {
 			//validate the textbox input and set alert messages if required.
 			//it also emits/send the current textbox value to  parent component as v-model attribute value
-			validate: function () {
+			validate: function() {
 				//initialize warning and error messages to null to accomodate change in alert messages
 				this.danger = null;
 				this.warning = null;
@@ -322,8 +330,8 @@
 						this.danger = "Required field.";
 					}
 				}
-			}, //validate
-		}, //watch
+			} //validate
+		} //watch
 	}; //default
 </script>
 

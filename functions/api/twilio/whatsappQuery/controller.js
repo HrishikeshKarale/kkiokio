@@ -7,7 +7,7 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 // const sender = process.env.SENDER;
 const client = require('twilio')(accountSid, authToken);
 const controller = async (req, res) => {
-	let message = req.body.Body;
+	const message = req.body.Body;
 	const sender = req.body.From;
 	const reciever = req.body.To;
 

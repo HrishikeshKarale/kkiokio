@@ -8,7 +8,7 @@
 				tag="loadingScreen"
 				:display="display"
 				@display="
-					(val) => {
+					val => {
 						display = val;
 					}
 				"
@@ -18,7 +18,7 @@
 				:title="dRadioValue"
 				:display="loginDisplay"
 				@display="
-					(val) => {
+					val => {
 						loginDisplay = val;
 					}
 				"
@@ -34,7 +34,7 @@
 					:inline="booleanTrue"
 					:box="booleanTrue"
 					:mask="!booleanTrue"
-					@value="(val) => (dRadioValue = val)"
+					@value="val => (dRadioValue = val)"
 					@alerts="alerts"
 				/>
 				<div class="loginForm">
@@ -55,7 +55,7 @@
 							:isRequired="booleanTrue"
 							icon="fas fa-at"
 							@alerts="alerts"
-							@value="(val) => (emailID = val)"
+							@value="val => (emailID = val)"
 						/>
 						<password-input
 							:value="password"
@@ -66,7 +66,7 @@
 							icon="far fa-user"
 							:isAutocomplete="booleanTrue"
 							@alerts="alerts"
-							@value="(val) => (password = val)"
+							@value="val => (password = val)"
 						/>
 					</vue-form>
 					<vue-form
@@ -86,7 +86,7 @@
 							:isRequired="booleanTrue"
 							icon="far fa-user"
 							@alerts="alerts"
-							@value="(val) => (signupName = val)"
+							@value="val => (signupName = val)"
 						/>
 						<email-input
 							:value="signupEmail"
@@ -96,7 +96,7 @@
 							:isRequired="booleanTrue"
 							icon="fas fa-at"
 							@alerts="alerts"
-							@value="(val) => (signupEmail = val)"
+							@value="val => (signupEmail = val)"
 						/>
 						<text-input
 							:value="signupUsername"
@@ -106,7 +106,7 @@
 							:isRequired="booleanTrue"
 							icon="far fa-user"
 							@alerts="alerts"
-							@value="(val) => (signupUsername = val)"
+							@value="val => (signupUsername = val)"
 						/>
 						<password-input
 							:value="signupPassword"
@@ -118,7 +118,7 @@
 							icon="far fa-user"
 							:isAutocomplete="booleanTrue"
 							@alerts="alerts"
-							@value="(val) => (signupPassword = val)"
+							@value="val => (signupPassword = val)"
 						/>
 					</vue-form>
 					<div>
@@ -163,19 +163,18 @@
 				@enter="enter"
 				@afterEnter="afterEnter"
 			>
-				<main :key="$route.path" class="content">
-					<breadcrums />
+				<div :key="$route.path" class="content">
 					<countdown-timer
 						class="countdownTimer"
 						start-time="January 24, 2021 23:59:99"
-						end-time="Aug 16, 2021 00:00:01"
+						end-time="Nov 29, 2021 00:00:01"
 						trans='{
               "day":"Day",
               "hours":"Hours",
               "minutes":"Minuts",
               "seconds":"Seconds",
               "expired":"Please contact the administrator (hrishirich619@gmail.com).",
-              "running":"Please report any bugs to site administrator at hrishirich619@gmail.com",
+              "running":"Major updates are being pushed to the website and this my result in some parts of the website not working.",
               "upcoming":"Till start of event.",
               "status": {
                 "expired":"We apologise fior the delay, Please come back tomorrow.",
@@ -184,20 +183,15 @@
               }
             }'
 					/>
+					<breadcrums />
 					<scroll-indicator>
-						<!-- <keep-alive max="5">
-							<router-view :key="$route.fullPath" />
-						</keep-alive> -->
 						<router-view v-slot="{ Component }">
-							<keep-alive max="5">
+							<keep-alive max="2">
 								<component :is="Component" />
 							</keep-alive>
 						</router-view>
 					</scroll-indicator>
-					<template v-if="$slots['moto']">
-						<slot name="moto" />
-					</template>
-				</main>
+				</div>
 			</transition>
 			<template v-if="$slots['footer']">
 				<slot name="footer" />
@@ -207,9 +201,10 @@
 </template>
 
 <script>
-	//store
-	import { mapGetters } from "vuex";
-
+	// //store
+	// import { mapGetters } from "vuex";
+	import { inject } from "vue";
+	// components
 	import scrollIndicator from "@/views/projects/js/scrollIndicator/scrollIndicator";
 	import CountdownTimer from "@/components/countdownTimer.vue";
 	import vueAlert from "@/components/alert/vueAlert.vue";
@@ -222,6 +217,7 @@
 	import vueForm from "@/components/vueForm";
 	import radioInput from "@/components/radioInput.vue";
 	import vueButton from "@/components/vueButton";
+	// ts
 	import { authentication } from "@/typeScript/authentication";
 	import { cookie } from "@/typeScript/cookie";
 	import { toggle } from "@/typeScript/toggle";
@@ -240,19 +236,24 @@
 			passwordInput,
 			vueForm,
 			vueButton,
-			radioInput,
+			radioInput
 		},
 
 		mixins: [authentication, cookie, toggle],
 
-		computed: {
-			// ...mapGetters(["logdedIn"]),
-		}, //computed
+		// computed: {
+		// 	...mapGetters(["logdedIn"]),
+		// }, //computed
+
 		data() {
+			// global property
+			const EMITTER = inject("$emitter");
+			const booleanTrue = inject("$true");
+			const AXIOS = inject("$axios");
 			const DEFAULT_TRANSITION = "fade";
 			const DEFAULT_TRANSITION_MODE = "out-in";
 			const transitionEnterActiveClass = "";
-			const display = this.booleanTrue;
+			const display = booleanTrue;
 			//alerts
 			const alert = [
 				{
@@ -262,8 +263,8 @@
 						"If you are looking for my projects please visit the 'work' section of the website.",
 					dismissable: this.booleanTrue,
 					code: "619",
-					timeout: 8,
-				},
+					timeout: 8
+				}
 			];
 			//signUp
 			const signupName = null;
@@ -289,9 +290,12 @@
 			//cors header
 			const config = {
 				"Content-Type": "text/plain",
-				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Origin": "*"
 			};
 			return {
+				EMITTER,
+				booleanTrue,
+				AXIOS,
 				dNameRadio,
 				dRadioValue,
 				dOptions,
@@ -315,7 +319,7 @@
 				display,
 				alert,
 				loginDisplay,
-				config,
+				config
 			};
 		}, //mixins
 
@@ -330,7 +334,6 @@
 					const fromDepth = from.path.split("/").length;
 					transitionName = toDepth < fromDepth ? "slide-right" : "slide-left";
 				}
-				// this.transitionMode = DEFAULT_TRANSITION_MODE;
 				this.transitionEnterActiveClass = `${transitionName}-enter-active`;
 
 				if (to.meta.transitionName === "zoom") {
@@ -350,13 +353,13 @@
 				this.transitionName = transitionName;
 
 				//check if matched route requires authentication
-				if (to.matched.some((record) => record.meta.requiresAuth)) {
+				if (to.matched.some(record => record.meta.requiresAuth)) {
 					//if matched route requires authentication then check for absence of token
 					if (localStorage.getItem("jwt") == null && !this.checkCookie("token")) {
 						//when no token is found redirect to login page and set redirec
 						next({
 							name: "login",
-							query: { nextUrl: to.name },
+							query: { nextUrl: to.name }
 						});
 					}
 					//if matched route requires authentication and has token
@@ -370,7 +373,7 @@
 						}
 						// const user = JSON.parse(localStorage.getItem('user') || JSON.parse(this.getCookie('user')) ||{});
 						//when token is present check if user is an Admin
-						if (to.matched.some((record) => record.meta.isAdmin)) {
+						if (to.matched.some(record => record.meta.isAdmin)) {
 							//If user is an admin, proceed
 							if (user.isAdmin == 1) {
 								next();
@@ -386,7 +389,7 @@
 				}
 				//authentication was not required.
 				//check if guest access is required to matched route
-				else if (to.matched.some((record) => record.meta.guest)) {
+				else if (to.matched.some(record => record.meta.guest)) {
 					if (localStorage.getItem("jwt") == null) {
 						next();
 					} else {
@@ -399,20 +402,20 @@
 		}, //beforeMount
 
 		mounted() {
-			this.emitter.on("loadingScreen", (loading) => {
+			this.EMITTER.on("loadingScreen", loading => {
 				this.display = loading;
 			});
-			this.emitter.on("loginScreen", (display) => {
+			this.EMITTER.on("loginScreen", display => {
 				this.loginDisplay = display;
 			});
-			this.emitter.on("alert", (payload) => {
+			this.EMITTER.on("alert", payload => {
 				this.alert.push({
 					type: payload.type,
 					message: payload.message,
 					description: payload.description,
 					dismissable: payload.dismissable,
 					code: payload.code,
-					timeout: payload.timeout,
+					timeout: payload.timeout
 				});
 			});
 		}, //mounted
@@ -421,40 +424,39 @@
 			handleLogin(e) {
 				e.preventDefault();
 				if (this.password.length > 0) {
-					this.axios
-						.post(
-							"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/login",
-							{
-								email: this.emailID,
-								password: this.password,
-							},
-							this.config
-						)
-						.then((response) => {
+					this.AXIOS.post(
+						"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/login",
+						{
+							email: this.emailID,
+							password: this.password
+						},
+						this.config
+					)
+						.then(response => {
 							if (response.data.auth) {
 								localStorage.setItem("user", JSON.stringify(response.data.user));
 								localStorage.setItem("jwt", response.data.token);
 							}
 						})
-						.catch((error) => {
-							this.emitter.emit("alert", {
+						.catch(error => {
+							this.EMITTER.emit("alert", {
 								type: "warning",
 								message: "Error setting up cookies/localStorage",
 								description: error.response,
 								dismissable: this.booleanTrue,
 								code: "101.1",
-								timeout: 8,
+								timeout: 8
 							});
 							// console.error(error.response);
 						});
 				} else {
-					this.emitter.emit("alert", {
+					this.EMITTER.emit("alert", {
 						type: "danger",
 						message: "No Password detected",
 						description: "Please enter a password",
 						dismissable: this.booleanTrue,
 						code: "101",
-						timeout: 4,
+						timeout: 4
 					});
 				}
 			}, //handleLogin
@@ -465,35 +467,34 @@
 					"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/authentication/register/" +
 					this.isAdmin;
 				//POST request
-				this.axios
-					.post(
-						url,
-						{
-							name: this.signupName,
-							email: this.signupEmail,
-							username: this.signupUsername,
-							password: this.signupPassword,
-							isAdmin: this.isAdmin,
-						},
-						this.config
-					)
-					.then((response) => {
+				this.AXIOS.post(
+					url,
+					{
+						name: this.signupName,
+						email: this.signupEmail,
+						username: this.signupUsername,
+						password: this.signupPassword,
+						isAdmin: this.isAdmin
+					},
+					this.config
+				)
+					.then(response => {
 						localStorage.setItem("user", JSON.stringify(response.data.user));
 						localStorage.setItem("jwt", response.data.token);
 					})
-					.catch((error) => {
-						this.emitter.emit("alert", {
+					.catch(error => {
+						this.EMITTER.emit("alert", {
 							type: "danger",
 							message: "SignUp Request Failed",
 							description: "Please try again.",
 							dismissable: this.booleanTrue,
 							code: "101",
-							timeout: 4,
+							timeout: 4
 						});
 					});
 			}, //handleSignUp
 
-			alerts: function (type, message) {
+			alerts: function(type, message) {
 				if (type == "warning") {
 					this.dWarning = message;
 				} else if (type == "error") {
@@ -503,7 +504,7 @@
 				}
 			}, //alerts
 
-			loadScreen: function (loading) {
+			loadScreen: function(loading) {
 				this.display = false;
 			}, //loadScreen
 
@@ -521,8 +522,8 @@
 			}, //enter
 			afterEnter(element) {
 				element.style.height = "auto";
-			}, //afterEnter
-		},
+			} //afterEnter
+		}
 	};
 </script>
 
@@ -554,7 +555,7 @@
 				}
 
 				//scroll content
-				& > main {
+				& > div {
 					display: flex;
 					flex-direction: column;
 					&.content {
@@ -567,6 +568,10 @@
 						background-color: @backgroundColor !important;
 						//countdown timer
 						& > .countdownTimer {
+							// position: absolute;
+							// top: 0;
+							// left: 0;
+							// z-index: @modalZ - 5;
 							flex-direction: row;
 							background-color: @dangerBorder;
 							padding: @spaceMd @spaceLg;
@@ -582,9 +587,9 @@
 			@media (max-width: @1600width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
-								.responsive(@1200width, 0);
+								.responsive(@1200width, -2);
 							}
 						}
 					}
@@ -593,7 +598,7 @@
 			@media (max-width: @1200width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@768width, 6);
 							}
@@ -604,7 +609,7 @@
 			@media (max-width: @768width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@480width, 2);
 							}
@@ -615,7 +620,7 @@
 			@media (max-width: @480width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@320width, 2);
 							}
@@ -626,7 +631,7 @@
 			@media (max-width: @320width) {
 				& > div {
 					&.body {
-						& > main {
+						& > div {
 							&.content {
 								.responsive(@320width, -2);
 							}
@@ -637,62 +642,21 @@
 		}
 	}
 
-	//zoom transition
-	.zoom-enter-active,
-	.zoom-leave-active {
-		animation-duration: @transitionDuration;
-		animation-fill-mode: both;
-		animation-name: zoom;
-	}
-
-	.zoom-leave-active {
-		animation-direction: reverse;
-	}
-
-	@keyframes zoom {
-		from {
-			opacity: 0;
-			transform: scale3d(0.5, 0.5, 0.5);
-		}
-
-		100% {
-			opacity: 1;
-		}
-	}
-
 	//fade transition
 	.fade-enter-active,
 	.fade-leave-active {
 		transition-duration: @transitionDuration;
-		transition-property: opacity;
+		transition-property: opacity, transform;
 		transition-timing-function: @transitionTimingFunction;
 	}
 
 	.fade-enter,
 	.fade-leave-active {
 		opacity: 0;
+		transform: translateY(4 * @spaceXl);
 	}
-
-	//slide transition
-	.slide-left-enter-active,
-	.slide-left-leave-active,
-	.slide-right-enter-active,
-	.slide-right-leave-active {
-		transition-duration: @transitionDuration;
-		transition-property: height, opacity, transform;
-		transition-timing-function: @transitionTimingFunction;
-		overflow: hidden;
-	}
-
-	.slide-left-enter,
-	.slide-right-leave-active {
-		opacity: 0;
-		transform: translate(96px, 0);
-	}
-
-	.slide-left-leave-active,
-	.slide-right-enter {
-		opacity: 0;
-		transform: translate(-96px, 0);
+	.fade-leave,
+	.fade-enter-active {
+		opacity: 1;
 	}
 </style>

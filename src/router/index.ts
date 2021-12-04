@@ -1,9 +1,5 @@
 import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
 
-//set up emiter for login's
-import mitt from "mitt";
-const emitter = mitt();
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",

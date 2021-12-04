@@ -270,7 +270,7 @@
 						right: 0;
 						top: 50%;
 						text-align: center;
-						.textShadow(@five);
+						.textShadow(@fiveText);
 						& > b {
 							padding: @spaceLg;
 							border-radius: 2 * @borderRadiusLg;

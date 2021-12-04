@@ -112,6 +112,7 @@
 </script>
 <style lang="less">
 	@import (reference) "../../../Less/customVariables.less";
+	@import (reference) "../../../Less/customMixins.less";
 
 	.slider {
 		display: flex;

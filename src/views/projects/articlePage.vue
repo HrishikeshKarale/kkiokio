@@ -1,16 +1,18 @@
 <template>
-	<post-template
-		v-if="selectedArticle.article"
-		:post="selectedArticle.article"
-		:tags="selectedArticle.tags"
-		:title="selectedArticle.title"
-	/>
-	<feedback-tracker
-		:value="feedbackValue"
-		@input="(val) => feedbackValue = val"
-	/>
-	<post-nav :next="nextArticle" :previous="previousArticle" />
-	<related-post :tags="selectedArticle.tags" />
+	<main>
+		<post-template
+			v-if="selectedArticle.article"
+			:post="selectedArticle.article"
+			:tags="selectedArticle.tags"
+			:title="selectedArticle.title"
+		/>
+		<feedback-tracker
+			:value="feedbackValue"
+			@input="(val) => feedbackValue = val"
+		/>
+		<post-nav :next="nextArticle" :previous="previousArticle" />
+		<related-post :tags="selectedArticle.tags" />
+	</main>
 </template>
 
 <script>

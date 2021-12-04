@@ -9,11 +9,16 @@
 	</div>
 </template>
 <script>
+	// vue
+	import { inject } from "vue";
+	// ts
 	import { loading } from "@/typeScript/common/loading";
 	export default {
 		name: "KonamiCode",
 		mixins: [loading],
 		data() {
+			// global property
+			const EMITTER = inject("$emitter");
 			const codes = ["kkiokio", "qwerty"];
 			const userCode = [];
 			const keyPressed = {
@@ -23,22 +28,23 @@
 				shiftKey: null,
 				ctrlKey: null,
 				metatKey: null,
-				altKey: null,
+				altKey: null
 			};
 			return {
+				EMITTER,
 				codes,
 				userCode,
-				keyPressed,
+				keyPressed
 			};
 		},
 		mounted() {
 			window.addEventListener("keydown", this.codeMatcher, {
 				capture: false, // top to bottom bubbling/propogation
-				once: false, //should work only once
+				once: false //should work only once
 			});
 		},
 		methods: {
-			codeMatcher: function (event) {
+			codeMatcher: function(event) {
 				this.keyPressed["key"] = event.key;
 				this.keyPressed["code"] = event.code;
 				this.keyPressed["keyCode"] = event.keyCode;
@@ -53,10 +59,10 @@
 				if (userCode.length > 7) {
 					userCode = userCode.slice(1, 8);
 				}
-				const codess = userCode.map((evt) => {
+				const codess = userCode.map(evt => {
 					return evt.key;
 				});
-				this.codes.forEach((element) => {
+				this.codes.forEach(element => {
 					//something
 					try {
 						if (
@@ -66,13 +72,13 @@
 							throw null;
 						}
 					} catch (e) {
-						this.emitter.emit("alert", {
+						EMITTER.emit("alert", {
 							type: "warning",
 							message: "Error reacting to the konami code",
 							description: e,
 							dismissable: this.booleanTrue,
 							code: "101.1",
-							timeout: 8,
+							timeout: 8
 						});
 						// console.error(e);
 					}
@@ -80,8 +86,8 @@
 				// console.log(this.codes.indexOf(codess), codess);
 				this.userCode = userCode;
 				event.stopPropogation(); //stop event bubbling
-			}, //codeMatcher
-		},
+			} //codeMatcher
+		}
 	};
 </script>
 <style lang="less" scoped>

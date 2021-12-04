@@ -19,25 +19,7 @@ export const skills = [
       "User Interface Design (UID)",
       "Interaction Design (IxD)",
       "User-centered Design (UCD)",
-      "Mockups",
       "Usability Testing"
-      // "Conjoint Analysis"
-    ]
-  },
-  {
-    type: "Industry Knowledge",
-    value: [
-      "Pair Programming",
-      "Node",
-      "Express",
-      "OAuth",
-      "Agile",
-      "Scrum",
-      "Web Design",
-      "Wireframe",
-      "Prototype",
-      "REST API",
-      "Git"
     ]
   },
   {
@@ -45,19 +27,29 @@ export const skills = [
     value: [
       "Illustrator",
       "Adobe xD",
+      "MS Excell",
+      "MS Visio",
       "InVision",
-      "CSS",
-      "LESS",
-      "SASS/SCSS",
-      "HTML5",
-      "JavaScript",
-      "TypeScript",
-      "D3.js",
-      "Nodejs",
+      "Figma",
+      "Hotjar",
+      "UsailityHub",
+      "clickly",
+    ]
+  },
+  {
+    type: "Development Skills",
+    value: [
+      "Node",
+      "Express",
       "Vue.js",
-      "React.js",
-      "C#",
-      "Java"
+      "TypeScript",
+      "LESS",
+      "OAuth",
+      "Agile",
+      "Scrum",
+      "Web Design",
+      "REST",
+      "Git"
     ]
   }
 ];

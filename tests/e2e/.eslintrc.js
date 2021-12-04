@@ -8,6 +8,6 @@ module.exports = {
     strict: "off",
     "no-console": "off",
     "vue/no-v-for-template-key": "off",
-    "vue/no-use-v-if-with-v-for": "off",
+    "no-default-export": 'off'
   }
 };

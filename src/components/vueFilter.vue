@@ -2,7 +2,7 @@
 	<div class="vueFilter">
 		<div
 			:class="{
-				open: Object.keys(selected).length !== 0,
+				open: Object.keys(selected).length !== 0
 			}"
 		>
 			<vue-button
@@ -88,7 +88,7 @@
 				:value="filterTypeValue"
 				:options="filters['type']"
 				@notify="alerts"
-				@value="(val) => (filterTypeValue = val)"
+				@value="val => (filterTypeValue = val)"
 			/>
 			<dropdown-list
 				v-if="optionsIndex() > -1"
@@ -97,16 +97,20 @@
 				:value="filterOptionValue"
 				:options="filters.options[optionsIndex()]"
 				@notify="alerts"
-				@value="(val) => (filterOptionValue = val)"
+				@value="val => (filterOptionValue = val)"
 			/>
 		</vue-form>
 	</div>
 </template>
 
 <script>
+	// vue
+	import { inject } from "vue";
+	// components
 	import vueButton from "./vueButton.vue";
 	import vueForm from "./vueForm.vue";
 	import dropdownList from "./dropdownList.vue";
+	// ts
 	import { alerts } from "@/typeScript/common/alerts";
 
 	export default {
@@ -115,7 +119,7 @@
 		components: {
 			dropdownList,
 			vueButton,
-			vueForm,
+			vueForm
 		},
 
 		mixins: [alerts],
@@ -124,18 +128,18 @@
 			title: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 			filters: {
 				required: true,
-				type: Object,
+				type: Object
 			},
 
 			selected: {
 				required: false,
 				type: Object,
-				default: null,
-			},
+				default: null
+			}
 		}, //props
 
 		emits: ["updateFilters"],
@@ -144,21 +148,24 @@
 			const filterTypeValue = null;
 			const filterOptionValue = null;
 			const showFilter = false;
+			// global property
+			const EMITTER = inject("$emitter");
 			return {
+				EMITTER,
 				filterTypeValue,
 				filterOptionValue,
-				showFilter,
+				showFilter
 			}; //return
 		}, //data
 		methods: {
-			optionsIndex: function () {
+			optionsIndex: function() {
 				return this.filters.type.indexOf(this.filterTypeValue);
 			},
-			toggleFilter: function () {
+			toggleFilter: function() {
 				this.showFilter = !this.showFilter;
 			}, //toggleFilter
 
-			removeFilter: function (type, value) {
+			removeFilter: function(type, value) {
 				let selectedValue = this.selected.value;
 				let selectedType = this.selected.type;
 				const typeIndex = selectedType.indexOf(type);
@@ -191,20 +198,20 @@
 					this.emitFilter(selectedType, selectedValue);
 				} else {
 					//type:value pair does not exist
-					this.emitter.emit("alert", {
+					EMITTER.emit("alert", {
 						type: "warning",
 						message: "Filter does not exists",
 						description:
 							"The filter you selected does not exist, please  make ure the info is correct.",
 						dismissable: this.booleanTrue,
 						code: "200",
-						timeout: 8,
+						timeout: 8
 					});
 					return;
 				}
 			}, //removeFilter
 
-			addFilter: function () {
+			addFilter: function() {
 				const addType = this.filterTypeValue;
 				const addValue = this.filterOptionValue;
 
@@ -223,14 +230,14 @@
 							if (!selectedValue.includes(addValue)) {
 								selectedValue[tagIndex] = [addValue, ...selectedValue[tagIndex]];
 							} else {
-								this.emitter.emit("alert", {
+								EMITTER.emit("alert", {
 									type: "info",
 									message: "Filter already exists",
 									description:
 										"The filter you selected already is applied, please select another filter to apply.",
 									dismissable: this.booleanTrue,
 									code: "200",
-									timeout: 8,
+									timeout: 8
 								});
 
 								this.filterOptionValue = "";
@@ -258,29 +265,29 @@
 					}
 					this.emitFilter(selectedType, selectedValue);
 				} else {
-					this.emitter.emit("alert", {
+					EMITTER.emit("alert", {
 						type: "warning",
 						message: "Filter not set",
 						description:
 							"The filter you selected does not have a type or a value set. please try again and make sure you have set both values.",
 						dismissable: this.booleanTrue,
 						code: "100",
-						timeout: 8,
+						timeout: 8
 					});
 				}
 			}, //addFilter
 
-			emitFilter: function (type, value) {
+			emitFilter: function(type, value) {
 				if (type === null && value === null) {
 					this.$emit("updateFilters", {});
 				} else {
 					this.$emit("updateFilters", {
 						type: type,
-						value: value,
+						value: value
 					});
 				}
-			}, //emitValues
-		}, //methods
+			} //emitValues
+		} //methods
 	}; //default
 </script>
 

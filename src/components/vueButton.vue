@@ -214,7 +214,7 @@
 		.boxShadow(@two, @color);
 
 		&:not([disabled]):hover {
-			.boxShadow(none);
+			.boxShadow(@base);
 		}
 		//icon buttons
 		&.btn-icon {
@@ -250,9 +250,8 @@
 		&.btn-border {
 			border-radius: @borderRadius;
 			background-color: transparent;
-			border: 1px solid @color;
+			border: 1px double @color;
 			color: @color;
-			font-weight: bold;
 		}
 
 		&.btn-fullWidth {

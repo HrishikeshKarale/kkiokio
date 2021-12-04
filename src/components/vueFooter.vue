@@ -142,14 +142,21 @@
 			min-height: @footer;
 			//footer logo
 			& > a {
+				display: flex;
+				flex-direction: column;
 				width: 320px;
 				align-self: center;
+				align-content: center;
+				&:hover {
+					border: none;
+				}
 				&.clickyTracking {
 					visibility: hidden;
 					height: 0;
 				}
 				& > .vueImg {
-					height: 80px;
+					min-width: 80px !important;
+					align-self: center;
 					& + h3 {
 						display: flex;
 						flex-direction: column;

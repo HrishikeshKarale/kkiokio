@@ -1,16 +1,25 @@
 export const alerts = {
   data() {
-    const dWarning = "";
-    const dDanger = "";
+    const warning = "";
+    const error = "";
+    const success = "";
+    const info = "";
     return {
-      dWarning,
-      dDanger
+      warning,
+      error,
+      success,
+      info
     };
   }, //data
 
   computed: {
     alertObject: function () {
-      return { error: this.dDanger, warning: this.dWarning };
+      return {
+        error: this.error,
+        warning: this.warning,
+        success: this.success,
+        info: this.info
+      };
     }
   }, //computed
 
@@ -19,9 +28,13 @@ export const alerts = {
     alerts: function (type, message) {
       // console.log(message);
       if (type == "warning") {
-        this.dWarning = message;
+        this.warning = message;
       } else if (type == "error") {
-        this.dDanger = message;
+        this.error = message;
+      } else if (type == "success") {
+        this.success = success;
+      } else if (type == "info") {
+        this.info = info;
       } else {
         alert("error in input alert module");
       }

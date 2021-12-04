@@ -1,187 +1,200 @@
 <template>
-  <div class="vueTextarea" :class="{ inline: inline }">
-    <label v-if="label" :class="{ maskField: mask }">
-      {{ label }}
-      <abbr v-if="required" title="Required Field">*</abbr>
-      <span v-else> - Optional field<abbr>*</abbr></span>
-    </label>
-    <div
-      :class="{
-        warningContainer: alert ? alert.warning : false,
-        errorContainer: alert ? alert.error : false,
-        iconPadding: icon,
-        maskField: mask
-      }"
-    >
-      <span v-if="icon" :class="icon" />
-      <textarea
-        v-if="!mask"
-        v-model="dValue"
-        :name="tag"
-        :placeholder="placeholder"
-        :maxlength="maxlength"
-        :pattern="pattern"
-        :autofocus="autofocus"
-        :disabled="disabled"
-        :readonly="readonly"
-        :required="required"
-        v-on:keyup[0]="validate"
-        v-on:keyup[1]="validate"
-        @input="validate"
-        @blur="followsPattern"
-      />
-    </div>
-    <input-response
-      :warning="alert ? alert.warning : ''"
-      :error="alert ? alert.error : ''"
-      :info="alert ? alert.info : dValue ? maxlength - dValue.length < 0 : ''"
-      :success="alert ? alert.success : ''"
-    />
-  </div>
+	<div class="vueTextarea" :class="{ inline: inline }">
+		<label v-if="label" :class="{ maskField: mask }">
+			{{ label }}
+			<abbr v-if="required" title="Required Field">*</abbr>
+			<span v-else> - Optional field<abbr>*</abbr></span>
+		</label>
+		<div
+			:class="{
+				warningContainer: alertMessage ? alertMessage.warning : false,
+				errorContainer: alertMessage ? alertMessage.error : false,
+				iconPadding: icon,
+				maskField: mask
+			}"
+		>
+			<span v-if="icon" :class="icon" />
+			<textarea
+				v-if="!mask"
+				v-model="dValue"
+				:name="tag"
+				:placeholder="placeholder"
+				:maxlength="maxlength"
+				:pattern="pattern"
+				:autofocus="autofocus"
+				:disabled="disabled"
+				:readonly="readonly"
+				:required="required"
+				v-on:keyup[0]="validate"
+				v-on:keyup[1]="validate"
+				@input="validate"
+				@blur="followsPattern"
+			/>
+		</div>
+		<input-response
+			:warning="alertMessage ? alertMessage.warning : ''"
+			:error="alertMessage ? alertMessage.error : ''"
+			:info="
+				alertMessage
+					? alertMessage.info
+					: dValue
+					? maxlength - dValue.length < 0
+					: ''
+			"
+			:success="alertMessage ? alertMessage.success : ''"
+		/>
+	</div>
 </template>
 
 <script lang='ts'>
-import { defineComponent, ref } from 'vue';
+	// vue
+	import { defineComponent, ref } from "vue";
+	// components
+	import inputResponse from "@/components/alert/inputResponse.vue";
+	// ts
+	import validator from "@/typeScript/utilities/validator";
+	// type definition
+	import SourceType from "@/typeScript/definition/notify/SourceType";
 
-import validator from '@/typeScript/utilities/validator';
+	export default defineComponent({
+		components: {
+			inputResponse
+		}, // components
 
-import inputResponse from '@/components/alert/inputResponse.vue';
+		props: {
+			// sets heading/Label for the input field
+			label: {
+				required: false,
+				type: String,
+				default: ""
+			},
 
-export default defineComponent({
-	components: {
-		inputResponse,
-	}, // components
+			// sets the tag attribute for the input field (required field in case of forms)
+			tag: {
+				required: false,
+				type: String,
+				default: "textareaInput"
+			},
 
-	props: {
-		// sets heading/Label for the input field
-		label: {
-			required: false,
-			type: String,
-			default: '',
-		},
+			// users can pass preset values for the input field
+			value: {
+				required: false,
+				type: String,
+				default: ""
+			},
 
-		// sets the tag attribute for the input field (required field in case of forms)
-		tag: {
-			required: false,
-			type: String,
-			default: 'textareaInput',
-		},
+			// sets the format/pattern for acceptable values for the input field
+			pattern: {
+				required: false,
+				type: [RegExp, String],
+				default: ""
+			},
 
-		// users can pass preset values for the input field
-		value: {
-			required: false,
-			type: String,
-			default: '',
-		},
+			// sets the placeholder attribute for the input field
+			placeholder: {
+				required: false,
+				type: String,
+				default: "Click to enter"
+			},
 
-		// sets the format/pattern for acceptable values for the input field
-		pattern: {
-			required: false,
-			type: [RegExp, String],
-			default: '',
-		},
+			// sets the maxlength attribute for the input field
+			maxlength: {
+				required: false,
+				type: Number,
+				default: 256
+			},
 
-		// sets the placeholder attribute for the input field
-		placeholder: {
-			required: false,
-			type: String,
-			default: 'Click to enter',
-		},
+			// sets the manual alerts
+			alertID: {
+				required: false,
+				type: Object as () => SourceType,
+				default: { parent: null, child: null }
+			},
 
-		// sets the maxlength attribute for the input field
-		maxlength: {
-			required: false,
-			type: Number,
-			default: 256,
-		},
+			//sets the manual alerts
+			alertMessage: {
+				required: false,
+				type: Object,
+				default: null
+			},
 
-		// sets the manual alerts
-		alert: {
-			required: false,
-			type: Object,
-			default: () => ({
-				error: '',
-				warning: '',
-			}),
-		},
+			// sets the required attribute for the input field
+			required: {
+				required: false,
+				type: Boolean,
+				default: false
+			},
 
-		// sets the required attribute for the input field
-		required: {
-			required: false,
-			type: Boolean,
-			default: false,
-		},
+			// sets the disabled attribute for the input field
+			disabled: {
+				required: false,
+				type: Boolean,
+				default: false
+			},
 
-		// sets the disabled attribute for the input field
-		disabled: {
-			required: false,
-			type: Boolean,
-			default: false,
-		},
+			// sets the autofocus attribute for the input field
+			autofocus: {
+				required: false,
+				type: Boolean,
+				default: false
+			},
 
-		// sets the autofocus attribute for the input field
-		autofocus: {
-			required: false,
-			type: Boolean,
-			default: false,
-		},
+			// sets the autocomplete attribute for the input field
+			autocomplete: {
+				required: false,
+				type: Boolean,
+				default: true
+			},
+			// sets the readonly attribute for the input field
+			readonly: {
+				required: false,
+				type: Boolean,
+				default: false
+			},
 
-		// sets the autocomplete attribute for the input field
-		autocomplete: {
-			required: false,
-			type: Boolean,
-			default: true,
-		},
-		// sets the readonly attribute for the input field
-		readonly: {
-			required: false,
-			type: Boolean,
-			default: false,
-		},
+			// reserves space and created a mask if set to true
+			mask: {
+				required: false,
+				type: Boolean,
+				default: false
+			},
 
-		// reserves space and created a mask if set to true
-		mask: {
-			required: false,
-			type: Boolean,
-			default: false,
-		},
+			// if a valid fontawesome icon class string is passed, it displays it in the input field
+			// a valid fontawesome icons class string is a string which starts with fas/far/fab/fa
+			icon: {
+				required: false,
+				type: String,
+				default: ""
+			},
 
-		// if a valid fontawesome icon class string is passed, it displays it in the input field
-		// a valid fontawesome icons class string is a string which starts with fas/far/fab/fa
-		icon: {
-			required: false,
-			type: String,
-			default: '',
-		},
+			// checks if label options should appear on the same line or not
+			inline: {
+				required: false,
+				type: Boolean,
+				default: false
+			},
 
-		// checks if label options should appear on the same line or not
-		inline: {
-			required: false,
-			type: Boolean,
-			default: false,
-		},
+			// uses the values to trigger validation by using v-on attribute
+			keyup: {
+				type: Array,
+				required: false,
+				default: () => ["keyup.tab", "keyup.enter"]
+			}
+		}, // props
 
-		// uses the values to trigger validation by using v-on attribute
-		keyup: {
-			type: Array,
-			required: false,
-			default: () => ['keyup.tab', 'keyup.enter'],
-		},
-	}, // props
+		setup(props, { emit }) {
+			const dValue = ref(props.value);
+			const { validate, followsPattern } = validator(props, emit, dValue);
 
-	setup(props, { emit }) {
-		const dValue = ref(props.value);
-		const { validate, followsPattern } = validator(props, emit, dValue);
-
-		return { dValue, validate, followsPattern };
-	},
-});
+			return { dValue, validate, followsPattern };
+		}
+	});
 </script>
 
 <style lang="less" scoped>
-@import (reference) "../less/customMixins.less";
+	@import (reference) "../less/customMixins.less";
 
-.vueTextarea {
-  .inputcss();
-}
+	.vueTextarea {
+		.inputcss();
+	}
 </style>

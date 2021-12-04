@@ -7,7 +7,7 @@
 			<!-- <h1>Hrishikesh Karale</h1> -->
 			<div>
 				<div>
-				<vue-img :src="profilePic" alt="Hrishikesh Karale profile Picture" />
+					<vue-img :src="PROFILEPIC" alt="Hrishikesh Karale profile Picture" />
 					<div class="social">
 						<a target="_blank" href="https://github.com/HrishikeshKarale">
 							<span class="fab fa-github fa-2x" />
@@ -31,55 +31,109 @@
           </b> -->
 						</a>
 					</div>
+					<a href="../../assets/Hrishikesh Karale-Resume.pdf" download
+						>Resume</a
+					>
 				</div>
 				<div>
-					<h1>Hrishikesh Karale</h1>
-					<h3>Product Designer</h3>
-					<h5>Sr. UX Designer/Developer</h5>
-				<a href="../../assets/Hrishikesh Karale-Resume.pdf" download>Download Resume</a>
+					<h1>
+						Hrishikesh Karale
+					</h1>
+					<h3>
+						Product Designer
+					</h3>
+					<h5>
+						Sr. UX Designer/Developer
+					</h5>
+					<table>
+						<tr>
+							<td>
+								<h6>
+									Professional Exp:
+								</h6>
+							</td>
+							<td>
+								<b> {{ EXPERIENCE.professional }} + </b>
+								yrs
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h6>
+									Academic Exp:
+								</h6>
+							</td>
+							<td>
+								<b>
+									{{ EXPERIENCE.academic }}
+								</b>
+								yrs
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
-			<p>
-				I have 5+ years of experience working on several
-				major software projects in the eCommerce and Enterprise buisness environments.
-			</p>
+			<!-- <p>
+				I have {{experience.academic}} years of academic and {{experience.professional}}+ years of experience working on several
+				major software projects in the eCommerce and Enterprise domain.
+			</p> -->
 			<!-- <p>
 				I have a <mark>Masters in HCI/Design</mark> and a <mark>Bachelor in Computer Engineering</mark>, this allows me to take development into consideration
 				when designing a solution.
 			</p> -->
 			<p>
-				As a UX Professional, I strive to use a <mark>constant end-user feedback
-				loop</mark> to define and redefine my project objectives. The user's needs
-				guide the strategic decisions I make during my UX process. This
-				non-linear approach is integral to ensuring that my projects decisions
-				lead to a massive improvement in the key metrics that are relevant to
-				the user experience. In short, I like to think like an engineer in
-				addition to being a UX Professional.
+				As a UX Professional, I strive to use a constant end-user feedback loop
+				to define and redefine my project objectives. The user's needs guide the
+				strategic decisions I make during my UX process. This non-linear
+				approach is integral to ensuring that my projects decisions lead to a
+				massive improvement in the key metrics that are relevant to the user
+				experience. In short, I like to think like an engineer in addition to
+				being a UX Professional.
 			</p>
 			<p>
 				I’m also a novice visual designer. I’ve designed over 30 working
 				prototypes in online-shopping, warehouse-management,
 				inventory-management, fulfillment and healthcare using a multitude of
-				prototyping tools including products such as <mark>Illustrator</mark>, <mark>Adobe XD</mark>,
-				<mark>Sketch</mark> and <mark>Figma</mark>. My prototyping strategy primarily focuses on
-				functionality and usability.
+				prototyping tools including products such as <mark>Illustrator</mark>,
+				<mark>Adobe XD</mark>, <mark>Sketch</mark> and <mark>Figma</mark>. My
+				prototyping strategy primarily focuses on functionality and usability.
 			</p>
 		</section>
 		<section id="Objective">
-			<h1>Objective</h1>
+			<header>
+				<h1>Objective</h1>
+			</header>
 			<q>
-				Create intuitive interfaces that can solve problems and create
-				experiences that initiate a sense of delight and wonder for my users.
+				<span class="fas fa-quote-left fa-pull-left fa-border" />
+				Strive towards creating intuitive interfaces that can not only solve
+				problems but also create experiences that initiate a sense of delight
+				and wonder for my users.
+				<span class="fas fa-quote-right fa-pull-right fa-border" />
 			</q>
 		</section>
 		<section id="Process">
-			<h1>My Process</h1>
-			<h3>How I assure success</h3>
+			<header>
+				<h1>My Process</h1>
+				<h3>Steps I take to assure success</h3>
+			</header>
 			<p>
-				One of the key factors that define a designers work is the process they use to solve a problem.
+				One of the key factors that define a designers work is the process they
+				use to solve a problem.
 			</p>
 			<p>
-				With time, this process evolved from a standard 5 step prcoess of d(define, research, ideate, prototype, Test) to a 8 step process where each step signifies a milestone for the projects.
+				With time, my process evolved from a standard 5 step prcoess (define,
+				research, ideate, prototype, Test) to a 8 step process where each step
+				signifies a milestone for the projects.
+			</p>
+			<p>
+				Each of the 8 steps are further divided into various sub-steps that help
+				add value and help us achieve out goals towards the process.
+			</p>
+			<p>
+				<b>
+					Note: The steps followed depends on the timeline and project
+					requirements and
+				</b>
 			</p>
 			<div class="process">
 				<ol class="steps">
@@ -100,208 +154,228 @@
 			</div>
 		</section>
 		<section id="Skillset">
-			<h1>Skill Set</h1>
-			<h3>Badges on my belt</h3>
-			<div>
-				<div v-for="skill in skills" :key="skill.type" class="subSection">
+			<header>
+				<h1>Skill Set</h1>
+				<h3>Badges on my belt</h3>
+			</header>
+			<ol class="subSection">
+				<li v-for="skill in skills" :key="skill.type">
 					<h4>{{ skill.type }}</h4>
-					<div v-for="value in skill.value" :key="value">
-						{{ value }}
-					</div>
-				</div>
-			</div>
+					<ol>
+						<li v-for="value in skill.value" :key="value">
+							{{ value }}
+						</li>
+					</ol>
+				</li>
+			</ol>
 		</section>
 		<section id="LisencesAndCertificates">
-			<h1>Licenses &amp; Certificates</h1>
-			<div>
-				<div v-for="cert in lisencesAndCertificates" :key="cert.id">
-					<div>
-						<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
-						<div>
-							<h5>
-								{{ cert.title }}
-								<small>
-									{{ cert.issuer }}
-								</small>
-							</h5>
-						</div>
-					</div>
+			<header>
+				<h1>Licenses &amp; Certificates</h1>
+			</header>
+			<ol class="subSection">
+				<li v-for="cert in lisencesAndCertificates" :key="cert.id">
+					<vue-img :src="cert.link" :alt="cert.id + ' - ' + cert.link" />
+					<h4>
+						{{ cert.title }}
+						<small>
+							{{ cert.issuer }}
+						</small>
+					</h4>
 					<div>
 						<p>
 							<b> Issued </b>
 							{{ cert.issued }}
 						</p>
-						<p>
+						<p v-if="cert.expiry">
 							<b>
-								{{ cert.expiry ? cert.expiry : "NO Expiry Date" }}
+								{{ cert.expiry }}
 							</b>
 						</p>
-						<p>
+						<p v-if="cert.credential">
 							<b> Credential ID </b>
 							{{ cert.credential }}
 						</p>
 					</div>
-				</div>
-			</div>
+				</li>
+			</ol>
 		</section>
 		<section id="honorsAndAwards">
-			<h1>Honors &amp; Awards</h1>
-			<div>
-				<div v-for="award in honorsAndAwards" :key="award.id">
-					<div>
-						<!-- <vue-img :src="award.link" :alt="award.id + ' - ' + award.link" /> -->
-						<div>
-							<h5>
-								{{ award.title }}
-								<small>
-									{{ award.issuer }}
-								</small>
-							</h5>
-						</div>
-					</div>
+			<header>
+				<h1>Honors &amp; Awards</h1>
+			</header>
+			<ol class="subSection">
+				<li v-for="award in honorsAndAwards" :key="award.id">
+					<vue-img :src="award.link" :alt="award.id + ' - ' + award.link" />
+					<h4>
+						{{ award.title }}
+						<small>
+							{{ award.issuer }}
+						</small>
+					</h4>
 					<div>
 						<p>
 							<b> Issued </b>
 							{{ award.issued }}
 						</p>
 					</div>
-				</div>
-			</div>
+				</li>
+			</ol>
 		</section>
 	</article>
 </template>
 
-<script>
+<script lang="ts">
+	// vue
+	import { defineComponent, inject, computed } from "vue";
+	// components
 	import vueImg from "@/components/vueImg.vue";
-	import { loading } from "@/typeScript/common/loading";
-	import { mapGetters } from "vuex";
+	// ts
+	import loading from "@/typeScript/common/screenLoading";
 
-	export default {
+	export default defineComponent({
 		name: "About",
-		mixins: [loading],
 
 		components: {
-			vueImg,
-		},
-		computed: {
-			...mapGetters({
-				skills: "contentModule/getSkills",
-				lisencesAndCertificates: "contentModule/getLisencesAndCertificates",
-				honorsAndAwards: "contentModule/getHonorsAndAwards",
-				uxProcess: "contentModule/getUxProcess",
-			}),
+			vueImg
 		},
 
-		data() {
+		setup() {
+			// global imort
+			const STORE: any = inject("$store");
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
-			const profilePic = require("@/../public/img/profilePic.jpg");
-			return {
-				profilePic,
+			const PROFILEPIC = require("@/../public/img/profilePic.jpg");
+			// const resume = require("@/assets/Hrishikesh Karale-Resume.pdf");
+			const START = new Date(2017, 9, 10).getTime();
+			const TODAY = Date.now();
+			let DIFF = (TODAY - START) / 1000;
+			DIFF /= 60 * 60 * 24;
+			const EXPERIENCE = {
+				academic: 2.5 + Math.abs(Math.round(DIFF / 365.25)),
+				professional: 1
 			};
-		},
-	};
+			// mixin
+			loading();
+
+			const blogList = computed(() => STORE.getters["contentModule/getSkills"]);
+
+			const lisencesAndCertificates = computed(
+				() => STORE.getters["contentModule/getLisencesAndCertificates"]
+			);
+
+			const honorsAndAwards = computed(
+				() => STORE.getters["contentModule/getHonorsAndAwards"]
+			);
+
+			const uxProcess = computed(
+				() => STORE.getters["contentModule/getUxProcess"]
+			);
+
+			return {
+				// resume,
+				PROFILEPIC,
+				EXPERIENCE,
+				blogList,
+				lisencesAndCertificates,
+				honorsAndAwards,
+				uxProcess
+			};
+		}
+	});
 </script>
 
 <style lang="less" scoped>
 	@import (reference) "./../../Less/customMixins.less";
 	@import (reference) "./../../Less/customVariables.less";
 
-	@wizard-step-width-height: 120px;
-	@wizard-step-font-size: @fontSize;
+	@height: 120px;
 
 	.about {
 		& > section {
-			min-height: 640px;
-				position: relative;
-				&:not(#Bio) > h1 {
-					align-self: center;
-					font-weight: 900;
-					filter: opacity(16%);
-					font-size: 4 * @fontSize;
-					.textShadow(@three, @black);
-					& + h3 {
-						position: absolute;
+			position: relative;
+			&:not(#Bio) {
+				header {
+					display: flex;
+					flex-direction: column;
+					position: relative;
+					& > h1 {
 						align-self: center;
-						text-align: center;
-						top: 2 * @spaceXl;
-						font-weight: bold;
+						font-weight: 900;
+						filter: opacity(16%);
+						font-size: 4 * @fontSize;
+						.textShadow(@threeText, @black);
+						& + h3 {
+							position: absolute;
+							align-self: center;
+							text-align: center;
+							bottom: @spaceLg;
+							font-weight: bold;
+						}
 					}
 				}
+			}
 			&#LisencesAndCertificates,
 			&#honorsAndAwards {
-				& > div {
+				min-height: @body;
+				& > ol {
 					display: flex;
 					flex-direction: row;
 					flex-wrap: wrap;
-					gap: 2 * @spaceLg;
-					justify-content: space-evenly;
-					& > div {
+					gap: @spaceXl;
+					& > li {
 						display: flex;
-						flex-direction: column;
-						flex-wrap: wrap;
-						flex: 0 0 40%;
+						flex-flow: column nowrap;
+						width: 240px;
+						aspect-ratio: 1.618/1;
 						gap: @spaceMd;
-						padding: @spaceMd;
+						padding: @spaceXl @spaceLg;
 						border-radius: @borderRadius;
-						border: 1px dashed @secondary;
-						height: fit-content;
-						& > div {
-							display: flex;
-							flex-direction: row;
-							flex-wrap: nowrap;
-							gap: @spaceMd;
-							&:last-child {
+						background-color: @cardBackground;
+						.boxShadow(@baseText);
+						& > figure.vueImg {
+							max-height: 80px;
+							min-width: 80px;
+							max-width: 200px;
+							& + h4 {
+								display: flex;
 								flex-direction: column;
-								gap: 0;
-							}
-							& > .vueImg {
-								// display: flex;
-								// align-self: center;
-								height: 80px;
-								width: 80px;
-								.boxShadow(none);
-								& + div {
-									display: flex;
-									flex-flow: column nowrap;
-									align-items: space-between;
-									width: 100%;
-									height: 100%;
-									justify-content: space-between;
-									& > h5 {
-										margin-top: 0;
-										margin-bottom: 0 !important;
-										& > small {
-											display: flex;
-											flex-direction: row-reverse;
-											font-weight: bold;
-											font-size: @fontSizeSm;
-										}
-									}
+								& > small {
+									margin-top: @spaceMd;
+									align-self: flex-end;
+									text-align: right;
+									font-size: @fontSizeMd;
 								}
 							}
+						}
+						& > div {
+							margin-top: auto;
 							& > p {
-								margin-top: 0;
+								display: flex;
+								align-self: center;
+								justify-content: space-between;
 								margin-bottom: 0 !important;
 								font-size: @fontSizeSm;
-								line-height: 24px !important;
+								line-height: @fontSize !important;
+								gap: @spaceLg;
+								& > b {
+									color: @secondary;
+								}
 							}
 						}
 					}
 				}
 			}
 			&#Objective {
+				min-height: @body;
 				& > q {
-					font-size: @fontSizeSm * 2;
+					quotes: none;
+					font-size: @fontSize;
+					line-height: 1.618 * @fontSize !important;
 					text-align: center;
-
-					& > abbr {
-						color: #fbce51;
-						text-decoration: none;
-					}
 				}
 			}
-
 			&#Process {
+				min-height: @body;
 				flex-direction: column;
 				text-align: left;
 
@@ -309,44 +383,38 @@
 					margin-top: @spaceLg;
 
 					& > ol.steps {
-						display: flex;
-						flex-direction: row;
-						justify-content: space-evenly;
-						flex-wrap: wrap;
-						margin: 0 auto;
+						flex-flow: row wrap;
+						gap: @spaceXl;
 
 						& > li {
 							display: flex;
 							flex-direction: column;
 							background-color: @backgroundColor;
-							flex: 0 0 320px;
+							flex: 1 0 240px;
 							border-radius: @borderRadiusLg;
-							padding: @spaceLg;
-							margin: @spaceMd;
+							padding: @spaceLg @spaceXl;
 							border-radius: @borderRadiusLg;
-							border: 1px dashed @accent;
+							background-color: @cardBackground;
+							.boxShadow(@one);
 
 							& > .step {
-								border-radius: 50%;
-								border: 2px solid @accent;
-								color: @white;
-								font-size: @fontSize;
-								font-weight: bold;
-								line-height: @wizard-step-width-height;
-								position: relative;
-								min-width: @wizard-step-width-height;
+								display: flex;
+								border-radius: 100%;
+								align-self: center;
+								align-items: center;
+								justify-content: center;
+								width: @height;
+								aspect-ratio: 1;
 								text-align: center;
-								margin: 0 auto;
-								background-color: @accent;
+								background-color: @secondary;
+								color: @backgroundColor;
 
 								& + .step-title {
-									text-align: left;
-
 									& + ol {
-										list-style: none;
-										padding: 0;
-										& > li {
-											font-weight: bold;
+										margin-top: auto !important;
+										& > li > h4 > small {
+											text-align: right;
+											letter-spacing: 1px !important;
 										}
 									}
 								}
@@ -355,30 +423,35 @@
 					}
 				}
 			}
-
 			&#Skillset {
+				min-height: @body;
 				display: flex;
 				flex-direction: column;
-				& > div {
-					display: flex;
-					flex-flow: row wrap;
-					justify-content: space-evenly;
-					& > .subSection {
+				& > ol {
+					gap: @spaceXl;
+					& > li {
 						flex-direction: column;
-						justify-content: space-evenly;
-						flex: 0 0 320px;
-						margin: 0 @spaceLg;
 						padding: @spaceMd @spaceXl;
 						border-radius: @borderRadius;
-						border: 1px dashed @primary;
+						background-color: @cardBackground;
+						.boxShadow(@one);
+						& > ol {
+							gap: @spaceLg;
+							flex-flow: row wrap;
+							& > li {
+								border-radius: @borderRadius;
+								border: 1px dashed @primary;
+								padding: @spaceXs @spaceMd;
+							}
+						}
 					}
 				}
 			}
-
 			&#Bio {
 				flex-direction: column;
 				flex-wrap: wrap;
 				align-content: center;
+				gap: @spaceXl;
 				& > p {
 					max-width: 960px;
 				}
@@ -390,7 +463,6 @@
 						display: flex;
 						flex-direction: row;
 						justify-content: center;
-								margin-bottom: 2*@spaceXl;
 
 						& > div {
 							display: flex;
@@ -406,9 +478,9 @@
 								text-align: right;
 							}
 							& > h1 {
-								.textShadow(@one, @primary);
+								.textShadow(@oneText, @primary);
 							}
-							// profile Image
+							// profile
 							&:first-child {
 								& > .social {
 									display: flex;
@@ -421,6 +493,30 @@
 									height: 320px;
 									width: 320px;
 									clip-path: circle(120px at center);
+								}
+								// resume download
+								& > a {
+									width: fit-content;
+									align-self: center;
+								}
+							}
+							& > table {
+								align-self: flex-end;
+								display: table;
+								width: 240px;
+								margin: 0;
+								& > tr {
+									& > td {
+										& > h6 {
+											margin-bottom: 0 !important;
+											margin-top: 0 !important;
+										}
+										&:last-child {
+											font-size: @fontSizeMd;
+											width: 96px;
+											text-align: right;
+										}
+									}
 								}
 							}
 						}

@@ -12,13 +12,12 @@ const transporter = nodemailer.createTransport({
 	}
 });
 
-const sendMail = async (to, subject, content, cc = null, attachments = null, func = function (error, info) {
+const sendMail = async (to, subject, content, cc = null, attachments = null, func = function (error) {
 	if (error) {
 		console.error('ERROR: ', error);
-	} else {
-		console.log('Email sent: ' + info.response);
 	}
 }) => {
+	console.log(sender, password);
 	await transporter.sendMail({
 		from: sender,
 		to: to.length > 1 ? to.join(', ') : to,

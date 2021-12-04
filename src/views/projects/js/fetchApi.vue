@@ -5,7 +5,10 @@
 				<template v-for="data in studioGhibli.response" :key="data.id">
 					<div :data-title="data.title">
 						<h3 v-text="data.title" />
-						<div :class="{ description: true, show: show.includes(data.id) }" v-text="data.description" />
+						<div
+							:class="{ description: true, show: show.includes(data.id) }"
+							v-text="data.description"
+						/>
 						<div class="viewMore">
 							<vue-button
 								tag="editButton"
@@ -44,32 +47,40 @@
 	</div>
 </template>
 <script>
+	// vue
+	import { inject } from "vue";
+	// component
 	import vueButton from "@/components/vueButton.vue";
+	// ts
 	import { loading } from "@/typeScript/common/loading";
 	import { toggle } from "@/typeScript/toggle.js";
+
 	export default {
 		name: "FetchApi",
 		components: {
-			vueButton,
+			vueButton
 		},
 		mixins: [toggle, loading],
 		data() {
+			// global property
+			const EMITTER = inject("$emitter");
 			const selectedEndpoint = null;
 			const studioGhibli = {
 				baseURL: "https://ghibliapi.herokuapp.com/",
 				endpoint: ["films", "people", "locations", "species", "vehicles"],
-				response: {},
+				response: {}
 			};
 			const locationSearch = {
 				baseURL:
 					"https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json",
 				endpoint: [],
-				response: {},
+				response: {}
 			};
 			return {
+				EMITTER,
 				selectedEndpoint,
 				locationSearch,
-				studioGhibli,
+				studioGhibli
 			};
 		},
 		mounted() {
@@ -78,7 +89,7 @@
 		},
 
 		methods: {
-			select: function (value) {
+			select: function(value) {
 				// console.log("selected: ", value)
 				// console.log("fetchApi: ", value);
 				if (Array.isArray(value)) {
@@ -89,7 +100,7 @@
 			}, //selected
 
 			//handels alerts thrown by the component
-			alert: function (type, message) {
+			alertMessagefunction(type, message) {
 				if (type == "error") {
 					this.danger = message;
 				} else {
@@ -97,28 +108,28 @@
 				}
 			}, //change
 
-			getApiData: function (source, endpoint) {
+			getApiData: function(source, endpoint) {
 				return fetch(source.baseURL + endpoint)
-					.then((blob) => blob.json())
-					.then((data) => {
+					.then(blob => blob.json())
+					.then(data => {
 						source.response = data;
 					})
-					.catch((error) => {
-						this.emitter.emit("alert", {
+					.catch(error => {
+						EMITTER.emit("alert", {
 							type: "warning",
 							message: "Error handling API data",
 							description: error,
 							dismissable: this.booleanTrue,
 							code: "101.1",
-							timeout: 8,
+							timeout: 8
 						});
 						// console.error(error)
 					})
 					.finally(() => {
 						// console.log(`Fetch executed on ${source.baseURL}`);
 					});
-			},
-		},
+			}
+		}
 	};
 </script>
 <style lang="less" scoped>

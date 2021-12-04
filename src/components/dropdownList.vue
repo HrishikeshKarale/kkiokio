@@ -1,16 +1,16 @@
 <template>
 	<div class="dropdownList" :class="{ inline: inline }">
-		<label v-if="label" :class="{ maskField: mask }" :for="name" >
+		<label v-if="label" :class="{ maskField: mask }" :for="name">
 			{{ label }}
 			<abbr v-if="isRequired" title="Required Field">*</abbr>
 			<span v-else> - Optional field<abbr>*</abbr></span>
 		</label>
 		<div
 			:class="{
-				warningContainer: warning,
-				errorContainer: danger,
+				warningContainer: alertMessage ? alertMessage.warning : '',
+				errorContainer: alertMessage ? alertMessage.error : '',
 				iconPadding: icon,
-				maskField: mask,
+				maskField: mask
 			}"
 		>
 			<span v-if="icon" :class="icon" />
@@ -25,10 +25,17 @@
 				:size="size"
 				@change="validate"
 			>
-				<option v-for="(option, index) in options.filter(option => option!=selectedOption)" :key="index" :value="option" v-text="option" />
+				<option
+					v-for="(option, index) in options.filter(
+						option => option != selectedOption
+					)"
+					:key="index"
+					:value="option"
+					v-text="option"
+				/>
 			</select>
 		</div>
-		<input-response :error="danger" />
+		<input-response :error="alertMessage ? alertMessage.error : ''" />
 	</div>
 </template>
 
@@ -39,7 +46,7 @@
 		name: "DropdownList", //props
 
 		components: {
-			inputResponse,
+			inputResponse
 		}, //data
 
 		props: {
@@ -47,95 +54,95 @@
 			label: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			//sets name attribute for the input field (required field in case of forms)
 			name: {
 				required: false,
 				type: String,
-				default: "dropdownInput",
+				default: "dropdownInput"
 			},
 
 			//users can pass preset values for the input field (v-model)
 			value: {
 				required: false,
 				type: [String, Number, Array, null],
-				default: function (props) {
+				default: function(props) {
 					if (props.multiple) {
 						return [];
 					}
 					return null;
-				},
+				}
 			},
 
 			//Array of options for user to select .
 			options: {
 				required: true,
-				type: Array,
+				type: Array
 			},
 
 			//no of options  to display at a time.
 			size: {
 				required: false,
 				type: Number,
-				default: null,
+				default: null
 			},
 
 			//sets the multiple attribute for the input field to accept multiple values
 			multiple: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the manual alerts
 			alertMessage: {
 				required: false,
 				type: Object,
-				default: null,
+				default: null
 			},
 
 			//sets the required attribute for the input field
 			isRequired: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the disabled attribute for the input field
 			isDisabled: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the autofocus attribute for the input field
 			autofocus: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//sets the autocomplete attribute for the input field
 			isAutocomplete: {
 				required: false,
 				type: Boolean,
-				default: true,
+				default: true
 			},
 
 			//checks if label options should appear on the same line or not
 			inline: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//reserves space and created a mask if set to true
 			mask: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			//if a valid fontawesome icon class string is passed, it displays it in the input field
@@ -143,8 +150,8 @@
 			icon: {
 				required: false,
 				type: String,
-				default: null,
-			},
+				default: null
+			}
 		},
 
 		emits: ["alerts", "value"],
@@ -155,15 +162,15 @@
 				danger: null,
 				warning: null,
 				//stores dropdown values
-				selectedOption: null,
+				selectedOption: null
 			}; //return
 		}, //beforeMount
 
 		watch: {
 			//send error messages back to parent component
-			danger: function (newValue) {
+			danger: function(newValue) {
 				this.$emit("alerts", "error", newValue);
-			},
+			}
 		}, //methods
 
 		created() {
@@ -242,7 +249,7 @@
 		methods: {
 			//validate the textbox input and set alert messages if required.
 			//it also emits/send the current textbox value to  parent component as v-model attribute value
-			validate: function () {
+			validate: function() {
 				//initialize warning and error messages to null to accomodate change in alert messages
 				this.danger = null;
 				//loads current value stored from selectedOption(data) into val(temp) variable val for readability of code
@@ -258,8 +265,8 @@
 						this.danger = "Required field.";
 					}
 				}
-			}, //validate
-		}, //WATCH
+			} //validate
+		} //WATCH
 	}; //default
 </script>
 
