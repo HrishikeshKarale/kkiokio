@@ -77,23 +77,38 @@ Rochester, NY 14623."
 			<vue-form
 				:ctx="sendMail.bind(this)"
 				tag="contactForm"
-				:alert="alertObject"
+				:alertID="{ parent: 'contactForm', child: null }"
+				:alertMessage="
+					alertObject
+						.filter(
+							alert =>
+								(alert.src.parent === 'contactForm') &
+								(alert.src.child === null)
+						)
+						.pop()
+				"
 				:validate="!booleanTrue"
 				:isAutocomplete="booleanTrue"
 			>
-				{{ sender }}
-				{{ alertObject }}
 				<text-input
 					v-model="sender"
 					label="Name"
-					tag="sender"
+					tag="senderName"
 					placeholder="John Doe"
 					:isRequired="booleanTrue"
-					:alert="alertMsg({ parent: 'contactForm', child: 'sender' })"
+					:alertID="{ parent: 'contactForm', child: 'senderName' }"
+					:alertMessage="
+						alertObject
+							.filter(
+								alert =>
+									(alert.src.parent === 'contactForm') &
+									(alert.src.child === 'senderName')
+							)
+							.pop()
+					"
 					@value="val => (sender = val)"
 					@notify="alert"
 				/>
-				{{ email }}
 				<email-input
 					v-model="email"
 					label="Email"
@@ -101,21 +116,37 @@ Rochester, NY 14623."
 					placeholder="JDoe@email.com"
 					icon="far fa-envelope"
 					:isRequired="booleanTrue"
-					:alert="alertMsg({ parent: 'contactForm', child: 'senderEmail' })"
+					:alertID="{ parent: 'contactForm', child: 'senderEmail' }"
+					:alertMessage="
+						alertObject
+							.filter(
+								alert =>
+									(alert.src.parent === 'contactForm') &
+									(alert.src.child === 'senderEmail')
+							)
+							.pop()
+					"
 					@value="val => (email = val)"
 					@notify="alert"
 				/>
-				{{ phone }}
 				<phone-input
 					v-model="phone"
 					label="Phone number"
 					tag="senderPhone"
 					placeholder="(555) 555-5555"
-					:alert="alertMsg({ parent: 'contactForm', child: 'senderPhone' })"
+					:alertID="{ parent: 'contactForm', child: 'senderPhone' }"
+					:alertMessage="
+						alertObject
+							.filter(
+								alert =>
+									(alert.src.parent === 'contactForm') &
+									(alert.src.child === 'senderPhone')
+							)
+							.pop()
+					"
 					@value="val => (phone = val)"
 					@notify="alert"
 				/>
-				{{ preffered }}
 				<checkbox-input
 					v-if="phone"
 					type="radio"
@@ -125,20 +156,24 @@ Rochester, NY 14623."
 					:options="options"
 					:box="booleanTrue"
 					:isRequired="booleanTrue"
-					:alert="
-						alertMsg({ parent: 'contactForm', child: 'modeOfCommunication' })
-					"
 					@value="val => (preffered = val)"
-					@notify="alert"
 				/>
-				{{ comment }}
 				<vue-textarea
 					v-model="comment"
 					label="message"
 					tag="senderMessage"
 					placeholder="message"
 					:isRequired="booleanTrue"
-					:alert="alertMsg({ parent: 'contactForm', child: 'senderMessage' })"
+					:alertID="{ parent: 'contactForm', child: 'senderMessage' }"
+					:alertMessage="
+						alertObject
+							.filter(
+								alert =>
+									(alert.src.parent === 'contactForm') &
+									(alert.src.child === 'senderMessage')
+							)
+							.pop()
+					"
 					@value="val => (comment = val)"
 					@notify="alert"
 				/>
@@ -192,22 +227,25 @@ Rochester, NY 14623."
 
 			// mixins
 			loading();
-			const { alert, alertMsg } = notify();
+			const { alert, alertObject } = notify();
 
 			const sendMail = function() {
+				console.log("sendMail");
 				AXIOS.post(
 					"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/notification/email",
 					{
 						to: "hrishirich619@gmail.com",
-						name: sender,
-						cc: email,
-						phoneNumber: phone,
-						preffered: preffered,
-						content: comment
+						name: sender.value,
+						subject: "Kkiokio.com Contact Form",
+						cc: email.value,
+						phoneNumber: phone.value,
+						preffered: preffered.value,
+						content: comment.value
 					}
 					// CONFIG
 				)
 					.then(response => {
+						console.log("sendMail successful");
 						EMITTER.emit("alert", {
 							type: "success",
 							message: "Email sent to Kkiokio(Hrishikesh Karale)",
@@ -218,6 +256,7 @@ Rochester, NY 14623."
 						});
 					})
 					.catch(error => {
+						console.error("sendMail FAILED", error);
 						EMITTER.emit("alert", {
 							type: "warning",
 							message: "Error sending email.",
@@ -237,7 +276,7 @@ Rochester, NY 14623."
 				options,
 				preffered,
 				alert,
-				alertMsg,
+				alertObject,
 				sendMail
 			};
 		}

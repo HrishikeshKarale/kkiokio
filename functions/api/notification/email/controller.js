@@ -18,7 +18,7 @@ const controller = async (req, res) => {
 		subject,
 		{
 			type: 'html',
-			value: `<p>Hi,<p>A contact request has been made by ${name} to contact you.<br />The preferred means of contatct is ${preffered}</p></p><p>${content}</p>`
+			value: `<p>Hi,<p>A contact request has been made by ${name} to contact you.<br />The preferred means of contatct is <b>${preffered}</b></p><p><span :class='${preffered}=="phone"? "fas fa-check": ""' />Phone: ${phoneNumber}</p><span :class='${preffered}=="email"? "fas fa-check": ""' />email ID: ${cc}<p></p></p><p>message: <q>${content}</q></p>`
 		},
 		[
 			cc

@@ -54,6 +54,8 @@
 	import inputResponse from "@/components/alert/inputResponse.vue";
 	// ts
 	import validator from "@/typeScript/utilities/validator";
+	// type definition
+	import SourceType from "@/typeScript/definition/notify/SourceType";
 
 	export default defineComponent({
 		name: "PhoneInput",
@@ -114,6 +116,13 @@
 				required: false,
 				type: Number,
 				default: 14
+			},
+
+			// sets the manual alerts
+			alertID: {
+				required: false,
+				type: Object as () => SourceType,
+				default: { parent: null, child: null }
 			},
 
 			//sets the manual alerts

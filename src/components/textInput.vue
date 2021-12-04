@@ -56,6 +56,8 @@
 	import inputResponse from "@/components/alert/inputResponse.vue";
 	// ts
 	import validator from "@/typeScript/utilities/validator";
+	// type definition
+	import SourceType from "@/typeScript/definition/notify/SourceType";
 
 	export default defineComponent({
 		components: {
@@ -91,8 +93,7 @@
 			// acceptable values for the input field
 			pattern: {
 				required: false,
-				type: [RegExp, String],
-				default: new RegExp("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$")
+				type: [RegExp, String]
 			},
 
 			// sets the placeholder attribute
@@ -120,13 +121,17 @@
 			},
 
 			// sets the manual alerts
+			alertID: {
+				required: false,
+				type: Object as () => SourceType,
+				default: { parent: null, child: null }
+			},
+
+			//sets the manual alerts
 			alertMessage: {
 				required: false,
 				type: Object,
-				default: () => ({
-					error: "",
-					warning: ""
-				})
+				default: null
 			},
 
 			// sets the required attribute

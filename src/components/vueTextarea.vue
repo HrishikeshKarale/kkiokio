@@ -47,11 +47,14 @@
 </template>
 
 <script lang='ts'>
+	// vue
 	import { defineComponent, ref } from "vue";
-
-	import validator from "@/typeScript/utilities/validator";
-
+	// components
 	import inputResponse from "@/components/alert/inputResponse.vue";
+	// ts
+	import validator from "@/typeScript/utilities/validator";
+	// type definition
+	import SourceType from "@/typeScript/definition/notify/SourceType";
 
 	export default defineComponent({
 		components: {
@@ -102,15 +105,17 @@
 			},
 
 			// sets the manual alerts
+			alertID: {
+				required: false,
+				type: Object as () => SourceType,
+				default: { parent: null, child: null }
+			},
+
+			//sets the manual alerts
 			alertMessage: {
 				required: false,
 				type: Object,
-				default: () => ({
-					error: "",
-					warning: "",
-					success: "",
-					info: ""
-				})
+				default: null
 			},
 
 			// sets the required attribute for the input field

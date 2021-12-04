@@ -1,13 +1,18 @@
+// type definitions
+import SourceType from "@/typeScript/definition/notify/SourceType";
+
 export default function validator(props, emit, dValue) {
 
+  const alertMsg: SourceType = props.alertID? props.alertID : {parent: null, child: props.null};
   // value ebsent
   const isRequiredFlag = function () {
+  console.log("VALIDATE: ", alertMsg);
     if (props.isRequired) {
       let msg = "";
       if (!dValue.value || dValue.value === "") {
         msg = "Required field.";
       }
-      emit("notify", "error", msg);
+      emit("notify", "error", msg, alertMsg);
       return msg;
     }
     return false;
@@ -27,7 +32,7 @@ export default function validator(props, emit, dValue) {
           dValue.value +
           " is not a valid option.";
       }
-      emit("notify", "warning", msg);
+      emit("notify", "warning", msg, alertMsg);
       return msg;
     }
     return false;
@@ -43,7 +48,7 @@ export default function validator(props, emit, dValue) {
           props.minlength +
           " characters.";
       }
-      emit("notify", "warning", msg);
+      emit("notify", "warning", msg, alertMsg);
       return msg;
     }
     return false;
@@ -58,7 +63,7 @@ export default function validator(props, emit, dValue) {
           (props.maxlength.length - dValue.value.length) +
           " characters.";
       }
-      emit("notify", "warning", msg);
+      emit("notify", "warning", msg, alertMsg);
       return msg;
     }
     return false;
@@ -71,7 +76,7 @@ export default function validator(props, emit, dValue) {
       if (!props.pattern.test(dValue.value)) {
         msg = "Wrong email format: Please follow the pattern " + props.pattern;
       }
-      emit("notify", "warning", msg);
+      emit("notify", "warning", msg, alertMsg);
       return msg;
     }
     return false;
@@ -87,7 +92,7 @@ export default function validator(props, emit, dValue) {
         // automatically notifies the parent component/host about the error
       } else {
         // emit/send new values to parent component v-model attribute
-        emit("notify", "error", "");
+        emit("notify", "error", "", alertMsg);
         emit("value", dValue.value);
       }
     }

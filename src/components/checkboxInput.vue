@@ -87,10 +87,14 @@
 	</div>
 </template>
 
-<script>
-	import { defineComponent, ref, onBeforeUpdate } from "vue";
+<script lang="ts">
+	// vue
+	import { defineComponent, ref, onBeforeUpdate, toRef } from "vue";
+	//components
 	import inputResponse from "./alert/inputResponse.vue";
 	import vueButton from "./vueButton.vue";
+	// type definition
+	import SourceType from "@/typeScript/definition/notify/SourceType";
 
 	export default defineComponent({
 		components: {
@@ -104,7 +108,7 @@
 			type: {
 				required: false,
 				type: String,
-				validator: function(value) {
+				validator: function(value: string) {
 					return ["checkbox", "radio"].indexOf(value) !== -1;
 				},
 				default: "checkbox"
@@ -156,6 +160,13 @@
 				required: false,
 				type: Array,
 				default: () => []
+			},
+
+			// sets the manual alerts
+			alertID: {
+				required: false,
+				type: Object as () => SourceType,
+				default: { parent: null, child: null }
 			},
 
 			//sets the manual alerts
@@ -218,8 +229,11 @@
 		emits: ["value"],
 
 		setup(props, { emit }) {
-			const singleCheckbox = ref(null);
-			const checkbox = ref([]);
+			const singleCheckbox = ref<HTMLInputElement>();
+			const checkbox = ref<HTMLInputElement[]>([]);
+			const VALUE = toRef(props, "value");
+			const OPTIONS = toRef(props, "options");
+			const TYPE = toRef(props, "type");
 
 			// make sure to reset the refs before each update
 			onBeforeUpdate(() => {
@@ -227,10 +241,10 @@
 			});
 
 			const check = checkedValue => {
-				let val = props?.value;
-				if (props.options?.length) {
+				let val = VALUE.value;
+				if (OPTIONS.value.length) {
 					//checkbox
-					if (props.type !== "radio") {
+					if (TYPE.value !== "radio") {
 						if (val) {
 							//check if already exist in the form of an array
 							//if not then convert it into an array
@@ -259,13 +273,13 @@
 				} else {
 					//this.options does not exist
 					// console.log(this.$refs["singleCheckbox"].checked);
-					emit("value", singleCheckbox.value.checked);
+					emit("value", singleCheckbox.value!.checked);
 				}
 			}; //check
 
 			const clearSelection = () => {
 				const element = checkbox.value;
-				element.forEach(el => {
+				element.forEach((el: HTMLInputElement) => {
 					el.checked = false;
 				});
 				emit("value", null);

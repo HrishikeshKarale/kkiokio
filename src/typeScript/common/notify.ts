@@ -1,20 +1,11 @@
+// vue
 import { reactive } from "vue";
+// type definitions
+import SourceType from "@/typeScript/definition/notify/SourceType";
+import AlertObjectType from "@/typeScript/definition/notify/AlertObjectType";
 
-interface SourceType {
-  parent: null | String,
-  child: null | String
-};
-
-interface alertObjectType {
-  src: SourceType,
-  error: String,
-  warning: String,
-  info: String,
-  success: String
-}
-
-export default function notify() {
-  const alertObject: alertObjectType[] = reactive([{
+export default function notify(alertID: SourceType[] = [{parent: null, child: null }]) {
+  let alertObject: AlertObjectType[] = reactive([{
     src: {
       parent: null,
       child: null
@@ -25,19 +16,12 @@ export default function notify() {
     success: ""
   }]);
 
-  const alertMsg = (source: SourceType = {parent: null, child: null }): alertObjectType|void => {
+  const alert = (type: string, message: string, alertID: SourceType = { parent: null, child: null }): void => {
+    let isFound = false;
     for (let index = 0; index < alertObject.length; index++) {
-      const element = alertObject[index];
-      if (source.parent === element.src.parent && source.child === element.src.child) {
-        return element;
-      }
-    }
-  };
-
-  const alert = (type: string, message: string, source: SourceType = {parent: null, child: null }): void => {
-    for (let index = 0; index < alertObject.length; index++) {
-      const element = alertObject[index];
-      if (source.parent === element.src.parent && source.child === element.src.child) {
+      const element: AlertObjectType = alertObject[index];
+      if (alertID.parent === element.src.parent && alertID.child === element.src.child) {
+        console.log("ALERT: ", element, alertID);
         switch (type) {
           case "error":
             element.error = message;
@@ -52,12 +36,22 @@ export default function notify() {
             element.info = message;
             break;
         }
+        isFound = true;
       }
+    }
+    if (!isFound) {
+      alertObject.push({
+          src: alertID,
+          error: type==="error"? message : "",
+          warning:  type==="warning"? message : "",
+          info:  type==="info"? message : "",
+          success:  type==="success"? message : ""
+        })
     }
   };
 
   return {
-    alertMsg,
+    alertObject,
     alert
   };
 }
