@@ -147,7 +147,7 @@ Rochester, NY 14623."
 					@value="val => (phone = val)"
 					@notify="alert"
 				/>
-				<checkbox-input
+				<!-- <checkbox-input
 					v-if="phone"
 					type="radio"
 					label="Preffered means of communication?"
@@ -157,7 +157,7 @@ Rochester, NY 14623."
 					:box="booleanTrue"
 					:isRequired="booleanTrue"
 					@value="val => (preffered = val)"
-				/>
+				/> -->
 				<vue-textarea
 					v-model="comment"
 					label="message"
@@ -191,7 +191,7 @@ Rochester, NY 14623."
 	import emailInput from "@/components/emailInput.vue";
 	import phoneInput from "@/components/phoneInput.vue";
 	import vueTextarea from "@/components/vueTextarea.vue";
-	import checkboxInput from "@/components/checkboxInput.vue";
+	// import checkboxInput from "@/components/checkboxInput.vue";
 	import vueForm from "@/components/vueForm.vue";
 	import vueClipboard from "@/components/vueClipboard.vue";
 	// mixins
@@ -206,7 +206,7 @@ Rochester, NY 14623."
 			textInput,
 			emailInput,
 			phoneInput,
-			checkboxInput,
+			// checkboxInput,
 			vueTextarea,
 			vueClipboard
 		},

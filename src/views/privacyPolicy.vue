@@ -590,6 +590,6 @@
 	import { loading } from "@/typeScript/common/loading";
 	export default {
 		name: "PrivacyPolicy",
-		mixins: [loading],
+		mixins: [loading]
 	};
 </script>

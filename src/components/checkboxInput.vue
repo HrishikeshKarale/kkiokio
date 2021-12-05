@@ -129,20 +129,17 @@
 				default: "checkboxInput"
 			},
 
+			//Array of options/labels in case of multiple checkboxes.
+			options: {
+				required: false,
+				type: Array,
+				default: () => []
+			},
+
 			//users can pass preset values for the input field
 			value: {
 				required: true,
 				type: [Boolean, Array, String, Number],
-				// type: function(props) {
-				//   if (!props.options) {
-				//     return Boolean;
-				//   } else if (props.type != "radio") {
-				//     return Array,;
-				//   } else {
-				//     //type == radio
-				//     return [String, Number, null];
-				//   }
-				// },
 				default: function(props) {
 					if (!props.options) {
 						return false;
@@ -153,13 +150,6 @@
 						return null;
 					}
 				}
-			},
-
-			//Array of options/labels in case of multiple checkboxes.
-			options: {
-				required: false,
-				type: Array,
-				default: () => []
 			},
 
 			// sets the manual alerts
@@ -226,14 +216,15 @@
 			}
 		}, //props
 
-		emits: ["value"],
-
 		setup(props, { emit }) {
 			const singleCheckbox = ref<HTMLInputElement>();
 			const checkbox = ref<HTMLInputElement[]>([]);
-			const VALUE = toRef(props, "value");
-			const OPTIONS = toRef(props, "options");
-			const TYPE = toRef(props, "type");
+			const VALUE: any = toRef(props, "value");
+			const OPTIONS: any = toRef(props, "options");
+			const TYPE: any = toRef(props, "type");
+			// const VALUE = props.value;
+			// const OPTIONS = props.options;
+			// const TYPE = props.type;
 
 			// make sure to reset the refs before each update
 			onBeforeUpdate(() => {
