@@ -14,10 +14,10 @@ const transporter = nodemailer.createTransport({
 
 const sendMail = async (to, subject, content, cc = null, attachments = null, func = function (error) {
 	if (error) {
-		console.error('ERROR: ', error);
+		console.error('SEND_MAIL ERROR: ', error);
 	}
 }) => {
-	console.log(sender, password);
+	// console.log(sender, to, cc, subject, content);
 	await transporter.sendMail({
 		from: sender,
 		to: to.length > 1 ? to.join(', ') : to,

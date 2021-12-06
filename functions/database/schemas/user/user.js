@@ -129,6 +129,6 @@ userSchema.virtual('lastName').get(function () {
 });
 
 // Compile model from schema
-const userModel = mongoose.model('userDocument', userSchema);
+const userModel = mongoose.model('userDetails', userSchema);
 
 module.exports = userModel;

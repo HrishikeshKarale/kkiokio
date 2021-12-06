@@ -9,33 +9,39 @@ const contactSchema = new Schema({
 	name: {
 		type: String,
 		unique: false,
-		required: false,
+		required: true,
 		trim: true
 	},
 	email: {
 		type: String,
-		unique: true,
-		required: false,
+		unique: false,
+		required: true,
 		validate: {
 			validator: function (v) {
-				return /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$/.test(v);
+				return /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(v);
 			},
 			message: '{VALUE} is not a valid email ID!'
 		}
 	},
 	phoneNumber: {
-		type: String,
-		unique: true,
+		type: Number,
+		unique: false,
 		required: true,
 		validate: {
 			validator: function (v) {
-				return /d{10}/.test(v);
+				return /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(v);
 			},
 			message: '{VALUE} is not a valid 10 digit number!'
 		}
 	},
+	message: {
+		type: String,
+		unique: false,
+		required: true
+	},
 	preffered: {
 		type: String,
+		required: false,
 		enum: ["EMAIL", "PHONE"],
 		default: "EMAIL"
 	},
@@ -46,6 +52,6 @@ const contactSchema = new Schema({
 });
 
 // Compile model from schema
-const contactModel = mongoose.model('contactDocument', contactSchema);
+const contactModel = mongoose.model('contactform', contactSchema);
 
 module.exports = contactModel;

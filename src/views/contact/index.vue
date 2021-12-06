@@ -234,15 +234,17 @@ Rochester, NY 14623."
 				AXIOS.post(
 					"http://localhost:5001/portfolio-website-689b4/us-central1/router/api/notification/email",
 					{
-						to: "hrishirich619@gmail.com",
 						name: sender.value,
 						subject: "Kkiokio.com Contact Form",
 						cc: email.value,
 						phoneNumber: phone.value,
 						preffered: preffered.value,
 						content: comment.value
+					},
+					{
+						"Content-Type": "text/plain",
+						"Access-Control-Allow-Origin": "*"
 					}
-					// CONFIG
 				)
 					.then(response => {
 						console.log("sendMail successful");
