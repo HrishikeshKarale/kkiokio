@@ -194,6 +194,11 @@ const machine = {
 				}
 			}
 		},
+		// PAYMENT_MODE: {
+		// 	setPayment: function (payload) {
+
+		// 	}
+		// },
 		COMPLETED: {
 			registered: async function () {
 				reply = 'Profile Completed';
