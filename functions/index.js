@@ -52,16 +52,16 @@ router.all('/*', corsFunc);
 
 router.route('/')
 	.get((req, res) => {
-		res.send('server is working (get)');
+		res.status(200).send('server is working (get)');
 	})
 	.delete((req, res) => {
-		res.send('server is working (delete)');
+		res.status(200).send('server is working (delete)');
 	})
 	.post((req, res) => {
-		res.send('server is working (post)');
+		res.status(200).send('server is working (post)');
 	})
 	.put((req, res) => {
-		res.send('server is working (put)');
+		res.status(200).send('server is working (put)');
 	});
 
 //twilio routes (SMS)

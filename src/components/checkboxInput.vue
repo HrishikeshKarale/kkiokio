@@ -219,7 +219,7 @@
 		setup(props, { emit }) {
 			const singleCheckbox = ref<HTMLInputElement>();
 			const checkbox = ref<HTMLInputElement[]>([]);
-			const VALUE: any = toRef(props, "value");
+			const VALUE: any = toRef(props, "value") as any;
 			const OPTIONS: any = toRef(props, "options");
 			const TYPE: any = toRef(props, "type");
 			// const VALUE = props.value;

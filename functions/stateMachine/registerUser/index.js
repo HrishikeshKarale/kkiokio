@@ -1,18 +1,22 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+require("dotenv").config();
 const sendSMS = require('../../js/sendSMS/index');
 const sendMail = require('../../js/sendMail/index');
 const generateOTP = require('../../js/generateOTP/index');
+const { saveQuery } = require("../../database/query/index");
 
 let reply;
+const sendTo = process.env.SENDER_EMAIL;
 
 const machine = {
 	state: {
-		type: 'REGISTER_EMAIL',
+		type: 'INIT',
 		subType: ''
 	},
 	user: {
-		OTP: '0',
+		OTP: false,
 		OTP_COUNTER: 3,
+		name: "",
 		phone: {
 			number: null,
 			verified: false
@@ -40,18 +44,15 @@ const machine = {
 					case "Y":
 					case "YES":
 					case "REGISTER":
-						this.user.OTP = this.user.OTP !== '0' ? this.user.OTP : generateOTP(5);
+						this.user.OTP = this.user.OTP ? this.user.OTP : generateOTP(5);
 						// console.log(this.user.OTP);
 						this.user.OTP_COUNTER = 3;
 						await sendSMS(payload.from.slice(-10), `Kkiokio\nOTP Code:${this.user.OTP}`)
 							.then(() => {
 								this.changeSubState('OTPSent');
 								// console.log(message);
-								this.user.phone = {
-									number: payload.message,
-									verified: false
-								};
-								reply = `Please enter the OTP sent to your phone number (${payload.from}).`;
+								this.user.phone.number = payload.from.slice(-10),
+									reply = `Please enter the OTP sent to your phone number (${payload.from}).`;
 								return;
 							})
 							.catch((exception) => {
@@ -71,12 +72,13 @@ const machine = {
 			verifyOTP: function (payload) {
 				if (this.user.OTP === payload.message) {
 					this.changeState('REGISTER_NAME');
-					reply = `Your phone number *${payload.from.slice(-10)}* has been *VERIFIED*.\n\nTo move forward with the registration, please enter your full name (Ex: John doe)`;
+					reply = `Your phone number *${this.user.phone.number}* has been *VERIFIED*.\n\nTo move forward with the registration, please enter your full name (Ex: John doe)`;
 					this.user.phone.verified = true;
+					this.user.OTP = false;
 				} else {
 					//  if OTP does not match decrese attempts and after 3 attempts reset counter.
 					if (this.user.OTP_COUNTER === 0) {
-						this.user.OTP = '0';
+						this.user.OTP = false;
 						this.user.OTP_COUNTER = 3;
 						reply = `Invalid OTP\n\nYou have exhausted your maximum number of tries.\n please try again from the begining.`;
 					} else {
@@ -88,8 +90,9 @@ const machine = {
 		},
 		REGISTER_NAME: {
 			verifyName: function (payload) {
-				const [firstName] = payload.message.split(' ')[0];
+				const [firstName] = payload.message.split(' ');
 				// console.log(firstName, lastName);
+				this.user.name = payload.message;
 				reply = `Hi *${firstName}*,\nPlease enter a valid email ID for registration (Ex: John.doe@gmail.com).`;
 				this.changeState('REGISTER_EMAIL');
 			}
@@ -100,7 +103,7 @@ const machine = {
 				const reg = emailPattern.test(payload.message);
 				switch (reg) {
 					case true:
-						this.user.OTP = this.user.OTP !== '0' ? this.user.OTP : generateOTP(5);
+						this.user.OTP = this.user.OTP ? this.user.OTP : generateOTP(5);
 						this.user.OTP_COUNTER = 3;
 						this.user.email = {
 							id: payload.message,
@@ -139,6 +142,20 @@ const machine = {
 				if (this.user.OTP === payload.message) {
 					this.changeState('COMPLETED');
 					this.user.email.verified = true;
+					const DATA = {
+						target: "user",
+						name: this.user.name,
+						email: {
+							value: this.user.email.id,
+							isVerified: this.user.email.verified
+						},
+						phoneNumber: {
+							value: this.user.phone.number,
+							isVerified: this.user.phone.verified
+						}
+					}
+
+					// send email about email confirmation
 					await sendMail(
 						[
 							this.user.email.id
@@ -146,20 +163,60 @@ const machine = {
 						`Welcome to Kkiokio`,
 						{
 							type: 'html',
-							value: `<p>Hi,</p><p>Yor profile is now registered <b>Hurray!!</b></p>`
+							value: `<p>Hi,</p><p>Your emil has been verified</p>`
 						}
 					)
+						// save profile in db
+						.then(async () => {
+
+							// save
+							return await saveQuery(DATA);
+							// this.changeState('COMPLETED');
+						})
+						// send email for registration
+						.then(async () => {
+							reply = 'User Registered';
+							try {
+								return await sendMail(
+									[
+										sendTo
+									],
+									"Registered with Mr. Chemist",
+									{
+										type: 'html',
+										value: `<p>Hi,<p>You are now registered with Mr. Chemist.</p><p>*name:* ${DATA.name}</p><p>*Phone:* ${DATA.phone}</p>*Email ID*: ${DATA.email}<p></p>`
+									},
+									[
+										DATA.email
+									]
+								)
+							} catch (error) {
+								console.error('CATCH ERROR: ', error);
+								// return res.status(400).send({
+								// 	status: false,
+								// 	message: "User registered, unable to send email.",
+								// 	error: error
+								// });
+							}
+						})
+						// send reply to user about successful registration
 						.then(() => {
-							reply = "*Congralutations!!*\n your profile has now been registered."
+							reply += ` and confirmation mail sent to ${this.user.email.id}`;
+							// return res.status(200).send("email sent");
 							return;
 						})
-						.catch(exception => {
-							console.error('ERROR: ', exception);
+						.catch(error => {
+							console.error('CATCH SAVE ERROR: ', error);
+							// return res.status(400).send({
+							// 	status: false,
+							// 	message: "User registeration failed, please try again.",
+							// 	error: error
+							// });
 						});
 				} else {
 					//  if OTP does not match decrese attempts and after 3 attempts reset counter.
 					if (this.user.OTP_COUNTER === 0) {
-						this.user.OTP = '0';
+						this.user.OTP = false;
 						this.user.OTP_COUNTER = 3;
 						reply = `Invalid code\n\nYou have exhausted your maximum number of tries.\n please try again from the begining.`;
 					} else {
@@ -171,7 +228,7 @@ const machine = {
 		},
 		COMPLETED: {
 			registered: async function () {
-				reply = 'userRegistered';
+
 			}
 		}
 	},

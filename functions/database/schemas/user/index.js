@@ -20,7 +20,7 @@ const userSchema = new Schema({
 				required: false,
 				validate: {
 					validator: function (v) {
-						return /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}$/.test(v);
+						return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+/.test(v);
 					},
 					message: '{VALUE} is not a valid email ID!'
 				}
@@ -59,7 +59,7 @@ const userSchema = new Schema({
 				required: true,
 				validate: {
 					validator: function (v) {
-						return /d{10}/.test(v);
+						return /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(v);
 					},
 					message: '{VALUE} is not a valid 10 digit number!'
 				}
@@ -129,6 +129,6 @@ userSchema.virtual('lastName').get(function () {
 });
 
 // Compile model from schema
-const userModel = mongoose.model('userDetails', userSchema);
+const userModel = mongoose.model('users', userSchema);
 
 module.exports = userModel;

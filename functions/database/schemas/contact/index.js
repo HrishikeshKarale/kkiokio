@@ -18,7 +18,7 @@ const contactSchema = new Schema({
 		required: true,
 		validate: {
 			validator: function (v) {
-				return /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(v);
+				return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+/.test(v);
 			},
 			message: '{VALUE} is not a valid email ID!'
 		}
@@ -45,6 +45,12 @@ const contactSchema = new Schema({
 		enum: ["EMAIL", "PHONE"],
 		default: "EMAIL"
 	},
+	source: {
+		type: String,
+		required: false,
+		enum: ["ePHARMACY", "Kkiokio"],
+		default: "ePHARMACY"
+	},
 	createdOn: {
 		type: Date,
 		default: Date.now
@@ -52,6 +58,6 @@ const contactSchema = new Schema({
 });
 
 // Compile model from schema
-const contactModel = mongoose.model('contactform', contactSchema);
+const contactModel = mongoose.model('connectRequest', contactSchema);
 
 module.exports = contactModel;

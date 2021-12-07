@@ -32,16 +32,17 @@ const machine = {
 	},
 	transitions: {
 		INIT: {
-			initialise: function (payload) {
-				reply = `Thank you for registering with us.\nNow, let's work towards setting up your profile for success.\n\nPlease enter your Date of birth (DOB) in a 2 digit DD MM YYYY or DD MM YY  format. (Ex: 26 01 90 for January 26, 1990)`;
+			initialise: function () {
+				reply = `Looks like you are registered with us.\n\nNow, let's work towards setting up your profile for success.\n\nPlease enter your *Date of birth* (DOB) in a 2 digit *DD MM YYYY* or *DD MM YY* format. (Ex: *26 01 90* for January 26, 1990)`;
 				this.changeState('REGISTER_DOB');
 			},
 		},
 		REGISTER_DOB: {
 			validateDOB: async function (payload) {
-				const datePattern = new RegExp('^(?:(?:31(\/|-|\.| )(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.| )(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.| )0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.| )(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$');
-				const reg = emailPattern.test(payload.message);
-				let delimiter = ' '
+				const datePattern = new RegExp('^(((0?[1-9]|1[012])/(0?[1-9]|1d|2[0-8])|(0?[13456789]|1[012])/(29|30)|(0?[13578]|1[02])/31)/(19|[2-9]d)d{2}|0?2/29/((19|[2-9]d)(0[48]|[2468][048]|[13579][26])|(([2468][048]|[3579][26])00)))$');
+				const reg = datePattern.test(payload.message);
+				let delimiter = ' ';
+				let date, month, year;
 				switch (reg) {
 					case true:
 						if (payload.message.index('/')) {
@@ -51,9 +52,9 @@ const machine = {
 						} else if (payload.message.index('-')) {
 							delimiter = '-'
 						}
-						const [date, month, year] = payload.message.split(delimiter);
+						[date, month, year] = payload.message.split(delimiter);
 						this.changeState('REGISTER_GENDER');
-						state.profile.DOB = new Date(year, (+month) - 1, date);
+						state.profile.DOB = new Date(year, Number(month) - 1, date);
 						reply = `*DOB ${payload.message} added successfully*\n\nPlease select your Gender\n1. *M*ale\n2. *F*emale`;
 						break;
 					case false:
@@ -62,7 +63,7 @@ const machine = {
 						break;
 					default:
 						reply = 'Invaid reply\nPlease try again';
-				};
+				}
 			},
 		},
 		REGISTER_GENDER: {
@@ -171,6 +172,16 @@ const machine = {
 							state.profile.address.province = response.data.results[ZIPCODE][0].province;
 							state.profile.address.state = response.data.results[ZIPCODE][0].state;
 						}
+
+						return {
+							status: true,
+							result: {
+								zipCode: ZIPCODE,
+								city: state.profile.address.city,
+								procvince: rstate.profile.address.procvince,
+								state: state.profile.address.state
+							}
+						}
 					})
 					.catch(error => {
 						reply = "Something went wrong, please try gain."
@@ -182,7 +193,7 @@ const machine = {
 				const CITIES = state.profile.address.zipCode.cities;
 				let exists = false;
 				for (let i = 1; i <= CITIES.length; i += 1) {
-					if (CITY == i) {
+					if (CITY === i) {
 						exists = true;
 						state.profile.address.city = CITIES[i - 1];
 						reply = `You have selected *${CITIES[i - 1]}* as your city.\n\nWould you like to set up a payment method?`;
@@ -223,7 +234,7 @@ const machine = {
 	}
 }
 
-let whatsappBot = Object.create(machine, {
+const whatsappBot = Object.create(machine, {
 	name: {
 		writable: false,
 		enumerable: true,
@@ -242,7 +253,7 @@ async function getReply(payload) {
 				default:
 					reply = 'Please Try again';
 					break;
-			};
+			}
 			break;
 		case "REGISTER_DOB":
 			switch (whatsappBot.state.subType) {
@@ -252,7 +263,7 @@ async function getReply(payload) {
 				default:
 					reply = 'Please Try again';
 					break;
-			};
+			}
 			break;
 		case "REGISTER_GENDER":
 			switch (whatsappBot.state.subType) {
@@ -262,7 +273,7 @@ async function getReply(payload) {
 				default:
 					reply = 'Please Try again';
 					break;
-			};
+			}
 			break;
 		case "REGISTER_ADDRESS":
 			switch (whatsappBot.state.subType) {
@@ -290,7 +301,7 @@ async function getReply(payload) {
 				default:
 					reply = 'Please Try again';
 					break;
-			};
+			}
 			break;
 		case "COMPLETED":
 		case "":
@@ -298,8 +309,8 @@ async function getReply(payload) {
 			break;
 		default:
 			reply = 'Invalid Request'
-	};
+	}
 	return reply;
-};
+}
 
 module.exports = getReply;
