@@ -20,33 +20,33 @@
 			src: {
 				required: true,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			alt: {
 				required: false,
 				type: String,
-				default: function (value) {
+				default: function(value) {
 					if (value) {
 						return value;
 					}
 					return "An image goes here";
-				},
+				}
 			},
 			caption: {
 				required: false,
 				type: String,
-				default: null,
-			},
+				default: null
+			}
 		},
 
 		data() {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const dImageSource = require("@/assets/default.svg");
 			return {
-				dImageSource,
+				dImageSource
 			}; //return
-		}, //props
+		} //props
 	}; //default
 </script>
 
@@ -67,12 +67,11 @@
 		margin-inline-start: 0;
 		width: min-content;
 		& > img {
-			max-height: inherit;
-			max-width: inherit;
+			min-height: inherit;
+			min-width: inherit;
 			& + figcaption {
 				font-size: @fontSizeSm;
-				text-align:
-				center;
+				text-align: center;
 				line-height: @fontSizeSm;
 				color: @secondary;
 			}
