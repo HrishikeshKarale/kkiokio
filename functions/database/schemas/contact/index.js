@@ -48,7 +48,7 @@ const contactSchema = new Schema({
 	source: {
 		type: String,
 		required: false,
-		enum: ["ePHARMACY", "Kkiokio"],
+		enum: ["ePHARMACY", "KKIOKIO"],
 		default: "ePHARMACY"
 	},
 	createdOn: {

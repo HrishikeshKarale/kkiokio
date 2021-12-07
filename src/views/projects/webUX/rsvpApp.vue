@@ -45,7 +45,7 @@
 						:name="invited.name"
 						:value="invited.status"
 						:alert="alertObject"
-						@value="(val) => (invited.status = val)"
+						@value="val => (invited.status = val)"
 						@alerts="alerts"
 					/>
 					<vue-button
@@ -74,7 +74,7 @@
 		components: {
 			checkboxInput,
 			vueButton,
-			vueImg,
+			vueImg
 		},
 		mixins: [toggle, alerts, loading],
 		data() {
@@ -82,12 +82,12 @@
 			const dInvited = [
 				{
 					name: "John Doe",
-					status: true,
+					status: true
 				},
 				{
 					name: "Jim CantSwim",
-					status: false,
-				},
+					status: false
+				}
 			];
 			const dEdit = null;
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -96,11 +96,11 @@
 				dPerson,
 				dInvited,
 				dRSVPImage,
-				dEdit,
+				dEdit
 			};
 		},
 		computed: {
-			attending: function () {
+			attending: function() {
 				const invited = this.dInvited;
 				let counter = 0;
 				if (invited) {
@@ -112,24 +112,24 @@
 				}
 				return counter;
 			},
-			unconfirmed: function () {
+			unconfirmed: function() {
 				const invited = this.dInvited;
 				if (invited) {
 					return invited.length - this.attending;
 				}
 				return 0;
 			},
-			total: function () {
+			total: function() {
 				const invited = this.dInvited;
 				if (invited) {
 					return invited.length;
 				}
 				return 0;
-			},
+			}
 		},
 
 		methods: {
-			updateInvited: function (pName, remove) {
+			updateInvited: function(pName, remove) {
 				// console.log(pName, remove, this.dEdit);
 				if (pName) {
 					const invited = this.dInvited;
@@ -155,7 +155,7 @@
 					}
 				}
 			},
-			addPerson: function () {
+			addPerson: function() {
 				const pName = this.dPerson;
 				let alreadyExist = false;
 				if (pName) {
@@ -181,8 +181,8 @@
 						alreadyExist = false;
 					}
 				}
-			},
-		},
+			}
+		}
 	};
 </script>
 

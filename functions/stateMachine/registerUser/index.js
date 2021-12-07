@@ -176,28 +176,19 @@ const machine = {
 						// send email for registration
 						.then(async () => {
 							reply = 'User Registered';
-							try {
-								return await sendMail(
-									[
-										sendTo
-									],
-									"Registered with Mr. Chemist",
-									{
-										type: 'html',
-										value: `<p>Hi,<p>You are now registered with Mr. Chemist.</p><p>*name:* ${DATA.name}</p><p>*Phone:* ${DATA.phone}</p>*Email ID*: ${DATA.email}<p></p>`
-									},
-									[
-										DATA.email
-									]
-								)
-							} catch (error) {
-								console.error('CATCH ERROR: ', error);
-								// return res.status(400).send({
-								// 	status: false,
-								// 	message: "User registered, unable to send email.",
-								// 	error: error
-								// });
-							}
+							return await sendMail(
+								[
+									sendTo
+								],
+								"Registered with Mr. Chemist",
+								{
+									type: 'html',
+									value: `<p>Hi,<p>You are now registered with Mr. Chemist.</p><p>*name:* ${DATA.name}</p><p>*Phone:* ${DATA.phone}</p>*Email ID*: ${DATA.email}<p></p>`
+								},
+								[
+									DATA.email
+								]
+							);
 						})
 						// send reply to user about successful registration
 						.then(() => {
@@ -228,7 +219,7 @@ const machine = {
 		},
 		COMPLETED: {
 			registered: async function () {
-
+				reply = "You are already registered";
 			}
 		}
 	},
@@ -315,7 +306,7 @@ async function getReply(payload) {
 			break;
 		case "COMPLETED":
 		case "":
-			await whatsappBot.dispatch('addDetails', [payload]);
+			await whatsappBot.dispatch('registered', [payload]);
 			break;
 		default:
 			reply = 'Invalid Request'

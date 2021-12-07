@@ -25,7 +25,7 @@
 		name: "VueAlert", //data
 
 		components: {
-			vueButton,
+			vueButton
 		}, //components
 
 		props: {
@@ -33,7 +33,7 @@
 				required: true,
 				type: String,
 				default: "info",
-				validator: function (value) {
+				validator: function(value) {
 					if (["info", "success", "warning", "danger"].includes(value)) {
 						return true;
 					} else {
@@ -42,43 +42,43 @@
 								value
 						);
 					}
-				},
+				}
 			},
 
 			code: {
-				required: function () {
+				required: function() {
 					if (this.type == "danger") {
 						return true;
 					}
 					return false;
 				},
 				type: String,
-				default: "",
+				default: ""
 			},
 
 			message: {
 				required: true,
 				type: String,
-				default: "default/no alert message specified",
+				default: "default/no alert message specified"
 			},
 
 			description: {
 				required: true,
 				type: String,
-				default: "default/no alert message specified",
+				default: "default/no alert message specified"
 			},
 
 			dismissible: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			timeout: {
 				required: false,
 				type: Number,
-				default: null,
-			},
+				default: null
+			}
 		},
 
 		data() {
@@ -86,7 +86,7 @@
 			const close = false;
 			return {
 				icon,
-				close,
+				close
 			}; //return
 		}, //methods
 
@@ -118,8 +118,8 @@
 		methods: {
 			closeAlertBox() {
 				this.close = true;
-			}, //closeAlertBox
-		}, //mounted
+			} //closeAlertBox
+		} //mounted
 	}; //default
 </script>
 
@@ -135,6 +135,7 @@
 		border: 1px solid transparent;
 		border-left-width: 8px;
 		padding: @spaceSm @spaceMd;
+		background-color: white;
 		gap: @spaceMd;
 		z-index: @modalZ+20;
 		&.bottom {
@@ -150,7 +151,8 @@
 		& > div {
 			display: flex;
 			flex-direction: column;
-			max-width: 280px;
+			min-width: 280px;
+			max-width: 4800px;
 			& > h5 {
 				margin: 0 !important;
 				margin-top: @spaceLg !important;
@@ -164,7 +166,7 @@
 		//alert type
 		&.danger {
 			border-color: @dangerText;
-			background-color: @dangerBackground;
+			// background-color: @dangerBackground;
 			.boxShadow(@four, @dangerText, @modalZ);
 
 			h5,
@@ -174,7 +176,7 @@
 		}
 		&.warning {
 			border-color: @warningText;
-			background-color: @warningBackground;
+			// background-color: @warningBackground;
 			.boxShadow(@four, @warningText, @modalZ);
 
 			h5,
@@ -184,7 +186,7 @@
 		}
 		&.success {
 			border-color: @successText;
-			background-color: @successBackground;
+			// background-color: @successBackground;
 			.boxShadow(@four, @successText, @modalZ);
 
 			h5,
@@ -194,7 +196,7 @@
 		}
 		&.info {
 			border-color: @infoText;
-			background-color: @infoBackground;
+			// background-color: @infoBackground;
 			.boxShadow(@four, @infoText, @modalZ);
 
 			h5,
