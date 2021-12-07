@@ -8,7 +8,8 @@
 		:autocomplete="isAutocomplete"
 		@submit="ctx"
 	>
-		<h4 v-if="title" v-text="title" />
+		<h3 v-if="title" v-text="title" />
+		<p v-if="description" v-text="description" />
 		<div class="formElements">
 			<slot />
 		</div>
@@ -43,6 +44,12 @@
 
 		props: {
 			title: {
+				required: false,
+				type: String,
+				default: null
+			},
+
+			description: {
 				required: false,
 				type: String,
 				default: null
@@ -170,12 +177,17 @@
 		display: flex;
 		flex-direction: column;
 		align-self: center;
-		width: max-content;
+		justify-content: center;
+		width: fit-content;
 		height: fit-content;
 		gap: @spaceXl;
-		width: 100%;
-		& > h4 {
+		& > h3,
+		& > p {
 			margin-bottom: 0 !important;
+		}
+		& > p {
+			min-width: 240px;
+			max-width: 480px;
 		}
 		&.singleAction {
 			gap: 0;

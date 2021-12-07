@@ -13,7 +13,7 @@
 		</p>
 		<section>
 			<div class="subSection">
-				<p>Or you can contact me the old traditional way.</p>
+				<h3>Traditional way.</h3>
 				<div class="email">
 					<h3>
 						Email
@@ -77,6 +77,7 @@ Rochester, NY 14623."
 				<vue-form
 					:ctx="sendMail.bind(this)"
 					tag="contactForm"
+					title="Contact Form"
 					:alertID="{ parent: 'contactForm', child: null }"
 					:alertMessage="
 						alertObject
@@ -234,6 +235,7 @@ Rochester, NY 14623."
 				AXIOS.post(
 					" https://us-central1-portfolio-website-689b4.cloudfunctions.net/router/api/notification/email",
 					{
+						target: "user",
 						name: sender.value,
 						subject: "Kkiokio.com Contact Form",
 						email: email.value,
@@ -301,6 +303,8 @@ Rochester, NY 14623."
 				gap: @spaceXl;
 				&:last-child {
 					align-content: center;
+					position: sticky;
+					top: 0;
 					& > form {
 						width: max-content;
 					}
@@ -339,6 +343,11 @@ Rochester, NY 14623."
 					@media (max-width: @768width) {
 						& > section {
 							flex-direction: column-reverse;
+							& > .subSection {
+								&:last-child {
+									position: relative;
+								}
+							}
 						}
 						@media (max-width: @480width) {
 							@media (max-width: @320width) {

@@ -285,7 +285,7 @@
 								}
 								& > .vueImg {
 									// max-height: 64px !important;
-									min-width: 64px !important;
+									min-width: 48px !important;
 									aspect-ratio: 1;
 									& > img {
 										height: 64px !important;
@@ -297,7 +297,7 @@
 										width: max-content;
 										align-self: center;
 										margin: 0 !important;
-										font-weight: 900;
+										font-weight: 700;
 										letter-spacing: 2px !important;
 										// color: @secondary;
 										& > h5 {
@@ -439,11 +439,11 @@
 					width: fit-content;
 					position: fixed;
 					outline: 0 solid rgba(0, 0, 0, 0.08);
-					background-color: @offBlack;
+					// background-color: @offBlack;
 					left: 0;
 					top: 0;
 					&.mini {
-						height: 64px;
+						height: 48px;
 					}
 					.scroll();
 					& > .menuTrigger {
