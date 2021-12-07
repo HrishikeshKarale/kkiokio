@@ -12,7 +12,7 @@ vue/custom-event-name-casing */
 								name="table"
 								type="hidden"
 								:value="metadata.selected"
-								required="1==1"
+								.isRequired="1==1"
 							/>
 						</div>
 						<div>
@@ -29,7 +29,7 @@ vue/custom-event-name-casing */
 					<th>
 						<div
 							:class="{
-								showOptions: metadata.selected && metadata.selected.length > 0,
+								showOptions: metadata.selected && metadata.selected.length > 0
 							}"
 						>
 							<div>
@@ -57,8 +57,8 @@ vue/custom-event-name-casing */
 									<template
 										v-if="
 											metadata.selected &&
-											metadata.selected.length > 0 &&
-											metadata.selected.length < metadata.totalRecords
+												metadata.selected.length > 0 &&
+												metadata.selected.length < metadata.totalRecords
 										"
 									>
 										All {{ metadata.totalRecords }}
@@ -72,8 +72,8 @@ vue/custom-event-name-casing */
 									<template
 										v-if="
 											metadata.selected &&
-											metadata.selected.length > 0 &&
-											metadata.selected.length <= metadata.totalRecords
+												metadata.selected.length > 0 &&
+												metadata.selected.length <= metadata.totalRecords
 										"
 									>
 										None
@@ -163,12 +163,16 @@ vue/custom-event-name-casing */
 				</tr>
 			</thead>
 			<tbody>
-				<template v-for="(entry, index) in tableData" :entry="entry" :key="index">
+				<template
+					v-for="(entry, index) in tableData"
+					:entry="entry"
+					:key="index"
+				>
 					<tr
 						:id="entry[select]"
 						:class="{
 							selected:
-								metadata.selected && metadata.selected.includes(entry[select]),
+								metadata.selected && metadata.selected.includes(entry[select])
 						}"
 						@click.stop="SelectRow(entry[select])"
 					>
@@ -217,7 +221,7 @@ vue/custom-event-name-casing */
 					label="Show"
 					name="showRecords"
 					:options="metadata.recordsPerPage"
-					:required="booleanTrue"
+					:isRequired="booleanTrue"
 					:inline="booleanTrue"
 				/>
 			</div>
@@ -271,7 +275,7 @@ vue/custom-event-name-casing */
 			vueButton,
 			vueModal,
 			dropdownList,
-			textInput,
+			textInput
 		},
 
 		// store,
@@ -287,7 +291,7 @@ vue/custom-event-name-casing */
 			tableData: {
 				required: true,
 				type: Array,
-				default: null,
+				default: null
 			},
 
 			// columns: {
@@ -299,26 +303,26 @@ vue/custom-event-name-casing */
 			metadata: {
 				required: true,
 				type: Object,
-				default: null,
+				default: null
 			},
 
 			title: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			subtableId: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			select: {
 				required: false,
 				type: String,
-				default: null,
-			},
+				default: null
+			}
 		}, //filters
 
 		emits: [
@@ -328,17 +332,17 @@ vue/custom-event-name-casing */
 			"set-row-elements",
 			"selected",
 			"metadata",
-			"value",
+			"value"
 		],
 
 		setup(props, { emit }) {
 			const search = computed({
 				get: () => this.metadata.searchKey,
-				set: (value) => emit("metadata", value),
+				set: value => emit("metadata", value)
 			});
 
 			return {
-				search,
+				search
 			};
 		}, //setup
 
@@ -362,7 +366,7 @@ vue/custom-event-name-casing */
 				"text-lg",
 				"icon",
 				"icon-sm",
-				"icon-lg",
+				"icon-lg"
 			];
 			return {
 				columns,
@@ -370,12 +374,12 @@ vue/custom-event-name-casing */
 				rowElements,
 				dropdownValue,
 				editColumns,
-				dcategory,
+				dcategory
 			}; //return
 		}, //components
 
 		computed: {
-			showRecords: function () {
+			showRecords: function() {
 				return this.metadata.rowElements;
 			}, //metadata.showRecords
 
@@ -387,8 +391,8 @@ vue/custom-event-name-casing */
 				},
 				get() {
 					return this.$store.state.metadata.searchKey;
-				},
-			}, //metadata.searchKey
+				}
+			} //metadata.searchKey
 		}, //methods
 
 		created() {
@@ -401,15 +405,15 @@ vue/custom-event-name-casing */
 		}, //created
 
 		methods: {
-			toggleColumns: function (newValue) {
+			toggleColumns: function(newValue) {
 				this.$emit("toggle-cloumns", newValue);
 			}, //toggleColumns
 
-			toggleSubTable: function () {
+			toggleSubTable: function() {
 				//do something
 			}, //toggleSubTable
 
-			dataTableColumns: function () {
+			dataTableColumns: function() {
 				this.column = Object.keys(this.tableData[0]).forEach(function eachKey(
 					key
 				) {
@@ -418,7 +422,7 @@ vue/custom-event-name-casing */
 				});
 			}, //dataTablecolumns
 
-			intermediateState: function (selected) {
+			intermediateState: function(selected) {
 				const selectAllrows = document.getElementById("selectAllRows");
 
 				if (selected) {
@@ -438,13 +442,13 @@ vue/custom-event-name-casing */
 				}
 			}, //intermediate
 
-			toggleCheckbox: function (id) {
+			toggleCheckbox: function(id) {
 				event.target.checked = false;
 				this.SelectRow(id);
 			}, //toggleCheckbox
 
 			//check or uncheck a checkbox DOM and include it in the selected[] for the table
-			SelectRow: function (id) {
+			SelectRow: function(id) {
 				const selected = this.metadata.selected;
 				const tr = document.getElementById(id);
 				const checkbox = tr.getElementsByClassName("selectRow")[0];
@@ -462,14 +466,14 @@ vue/custom-event-name-casing */
 				this.intermediateState(selected);
 			}, //toggle
 
-			textSelectNone: function () {
+			textSelectNone: function() {
 				this.$emit("value", null);
 				const selectAllrows = document.getElementById("selectAllRows");
 				selectAllrows.checked = false;
 				selectAllrows.indeterminate = false;
 			}, //textSelectNone
 
-			selectAllFromPage: function () {
+			selectAllFromPage: function() {
 				const selected = this.metadata.selected;
 				const selectAllrows = document.getElementById("selectAllRows");
 				const inputs = document.getElementsByClassName("selectRow");
@@ -493,20 +497,20 @@ vue/custom-event-name-casing */
 				}
 			}, //selectAllFromPage
 
-			setPage: function (newValue) {
+			setPage: function(newValue) {
 				this.$emit("set-page", newValue);
 			}, //setPage
 
-			setSortKey: function (newValue) {
+			setSortKey: function(newValue) {
 				this.$emit("set-sort-key", newValue);
 			}, //setPage
-			consoleClickDelete: function () {
+			consoleClickDelete: function() {
 				// console.log("del");
 			}, //consoleClickDelete
-			setRowElements: function (newValue) {
+			setRowElements: function(newValue) {
 				this.$emit("set-row-elements", newValue);
-			}, //setRowElements
-		}, //methods
+			} //setRowElements
+		} //methods
 	}; //default
 </script>
 
@@ -774,11 +778,11 @@ vue/custom-event-name-casing */
 				}
 			}
 		} /*
-																																													  Max width before this PARTICULAR table gets nasty
-																																													  This query will take effect for any screen smaller than 760px
-																																													  and also iPads specifically.
-																																													  https://css-tricks.com/responsive-data-tables/
-																																													  */
+																																															  Max width before this PARTICULAR table gets nasty
+																																															  This query will take effect for any screen smaller than 760px
+																																															  and also iPads specifically.
+																																															  https://css-tricks.com/responsive-data-tables/
+																																															  */
 		@media only screen {
 			@media (max-width: @1600width) {
 				@media (max-width: @1200width) {
@@ -830,18 +834,18 @@ vue/custom-event-name-casing */
 				}
 
 				/*
-																																													    Label the data
-																																													    */
+																																															    Label the data
+																																															    */
 				/* td:nth-of-type(1):before { content: "First Name"; }
-																																													      td:nth-of-type(2):before { content: "Last Name"; }
-																																													      td:nth-of-type(3):before { content: "Job Title"; }
-																																													      td:nth-of-type(4):before { content: "Favorite Color"; }
-																																													      td:nth-of-type(5):before { content: "Wars of Trek?"; }
-																																													      td:nth-of-type(6):before { content: "Secret Alias"; }
-																																													      td:nth-of-type(7):before { content: "Date of Birth"; }
-																																													      td:nth-of-type(8):before { content: "Dream Vacation City"; }
-																																													      td:nth-of-type(11):before { content: "GPA"; }
-																																													      td:nth-of-type(10):before { content: "Arbitrary Data"; } */
+																																															      td:nth-of-type(2):before { content: "Last Name"; }
+																																															      td:nth-of-type(3):before { content: "Job Title"; }
+																																															      td:nth-of-type(4):before { content: "Favorite Color"; }
+																																															      td:nth-of-type(5):before { content: "Wars of Trek?"; }
+																																															      td:nth-of-type(6):before { content: "Secret Alias"; }
+																																															      td:nth-of-type(7):before { content: "Date of Birth"; }
+																																															      td:nth-of-type(8):before { content: "Dream Vacation City"; }
+																																															      td:nth-of-type(11):before { content: "GPA"; }
+																																															      td:nth-of-type(10):before { content: "Arbitrary Data"; } */
 			}
 		}
 

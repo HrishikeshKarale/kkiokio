@@ -20,7 +20,7 @@
 				v-model="selectedOption"
 				:autofocus="autofocus"
 				:disabled="isDisabled"
-				:required="isRequired"
+				:isRequired="isRequired"
 				:multiple="multiple"
 				:size="size"
 				@change="validate"
@@ -104,7 +104,7 @@
 			},
 
 			//sets the required attribute for the input field
-			isRequired: {
+			isisRequired: {
 				required: false,
 				type: Boolean,
 				default: false
@@ -261,7 +261,7 @@
 					//emit/send new values to parent component v-model attribute
 					this.$emit("value", val);
 				} else {
-					if (this.required) {
+					if (this.isRequired) {
 						this.danger = "Required field.";
 					}
 				}

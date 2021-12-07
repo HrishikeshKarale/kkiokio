@@ -25,7 +25,7 @@
 
 		<!-- stores the value of the component to be used when validating a form -->
 
-		<!-- <input :name="tag" type="hidden" :value="value" :required="isRequired" />
+		<!-- <input :name="tag" type="hidden" :value="value" :isRequired="isRequired" />
 			<vue-button
 				v-if="options?.length && value"
 				id="clearSelection"
@@ -170,7 +170,7 @@
 	// 		},
 
 	// 		//sets the required attribute for the input field
-	// 		isRequired: {
+	// 		isisRequired: {
 	// 			required: false,
 	// 			type: Boolean,
 	// 			default: false

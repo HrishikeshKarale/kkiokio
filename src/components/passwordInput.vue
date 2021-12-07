@@ -4,7 +4,7 @@
 		<div :class="{ inline: inline }">
 			<label v-if="label" :class="{ maskField: mask }">
 				{{ label }}
-				<abbr v-if="required" title="Required Field">*</abbr>
+				<abbr v-if="isRequired" title="Required Field">*</abbr>
 				<span v-else> - Optional field<abbr>*</abbr></span>
 			</label>
 			<div
@@ -27,7 +27,7 @@
 					:autofocus="autofocus"
 					:disabled="disabled"
 					:readonly="readonly"
-					:required="required"
+					:isRequired="isRequired"
 					:autocomplete="autocomplete"
 					v-on:keyup[0]="ctx"
 					v-on:keyup[1]="ctx"
@@ -99,7 +99,7 @@
 		<div v-if="valueMatch" :class="{ inline: inline }">
 			<label v-if="label" :class="{ maskField: mask }">
 				Confirm {{ label }}
-				<abbr v-if="required" title="Required Field">*</abbr>
+				<abbr v-if="isRequired" title="Required Field">*</abbr>
 				<span v-else> - Optional field<abbr>*</abbr></span>
 			</label>
 			<div
@@ -239,7 +239,7 @@
 			},
 
 			// sets the required attribute for the input field
-			required: {
+			isRequired: {
 				required: false,
 				type: Boolean,
 				default: false

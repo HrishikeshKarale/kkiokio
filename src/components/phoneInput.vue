@@ -27,7 +27,7 @@
 				:autofocus="autofocus"
 				:disabled="isDisabled"
 				:readonly="isReadOnly"
-				:required="isRequired"
+				:isRequired="isRequired"
 				@input="phoneMask(mphone(dValue))"
 				@blur="validate"
 			/>
@@ -133,7 +133,7 @@
 			},
 
 			//sets the required attribute for the input field
-			isRequired: {
+			isisRequired: {
 				required: false,
 				type: Boolean,
 				default: false

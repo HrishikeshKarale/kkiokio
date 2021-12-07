@@ -20,7 +20,7 @@
 				:list="name"
 				:placeholder="placeholder"
 				:multiple="multiple"
-				:required="isRequired"
+				:isRequired="isRequired"
 				:disabled="isDisabled"
 				:autofocus="autofocus"
 				:maxlength="maxlength"
@@ -150,7 +150,7 @@
 			},
 
 			//sets the required attribute for the input field
-			isRequired: {
+			isisRequired: {
 				required: false,
 				type: Boolean,
 				default: false
@@ -326,7 +326,7 @@
 				}
 				//if a value for val(temp) does not exists  and is required, thentrigger error and set error message
 				else {
-					if (this.required) {
+					if (this.isRequired) {
 						this.danger = "Required field.";
 					}
 				}

@@ -26,7 +26,7 @@
 				:autofocus="autofocus"
 				:disabled="isDisabled"
 				:readonly="isReadOnly"
-				:required="isRequired"
+				:isRequired="isRequired"
 				@input="validate"
 				@blur="followsPattern"
 			/>

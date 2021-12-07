@@ -2,7 +2,7 @@
 	<div class="textInput" :class="{ inline: inline }">
 		<label v-if="label" :class="{ maskField: mask }">
 			{{ label }}
-			<abbr v-if="required" title="Required Field">*</abbr>
+			<abbr v-if="isRequired" title="Required Field">*</abbr>
 			<span v-else> - Optional field<abbr>*</abbr></span>
 		</label>
 		<div
@@ -27,7 +27,7 @@
 				:disabled="disabled"
 				:readonly="readonly"
 				:autocomplete="autocomplete"
-				:required="required"
+				:isRequired="isRequired"
 				v-on:keyup[0]="validate"
 				v-on:keyup[1]="validate"
 				@input="validate"
@@ -136,7 +136,7 @@
 
 			// sets the required attribute
 			// for the input field
-			required: {
+			isRequired: {
 				required: false,
 				type: Boolean,
 				default: false
