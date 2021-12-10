@@ -6,7 +6,7 @@ export default function validator(props, emit, dValue) {
   const alertMsg: SourceType = props.alertID? props.alertID : {parent: null, child: props.null};
   // value ebsent
   const isRequiredFlag = function () {
-  console.log("VALIDATE: ", alertMsg);
+  // console.log("VALIDATE: ", alertMsg);
     if (props.isRequired) {
       let msg = "";
       if (!dValue.value || dValue.value === "") {

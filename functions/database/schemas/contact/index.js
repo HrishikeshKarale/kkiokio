@@ -24,7 +24,7 @@ const contactSchema = new Schema({
 		}
 	},
 	phoneNumber: {
-		type: Number,
+		type: String,
 		unique: false,
 		required: true,
 		validate: {

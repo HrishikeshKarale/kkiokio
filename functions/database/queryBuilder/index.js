@@ -19,7 +19,7 @@ const queryBuilder = (query, payload) => {
 				}
 			});
 		} else {
-			console.log(payload.where);
+			// console.log(payload.where);
 			query.where(payload.where.field).equals(payload.where.value);
 		}
 	}

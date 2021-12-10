@@ -37,7 +37,7 @@ const controller = async (req, res) => {
 				result: result
 			};
 		})
-		.catch(() => console.log("ERROR"));
+		.catch(() => console.error("ERROR FindQuery"));
 
 
 

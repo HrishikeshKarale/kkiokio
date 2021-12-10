@@ -68,12 +68,13 @@
 		width: min-content;
 		& > img {
 			min-height: inherit;
-			min-width: inherit;
+			max-width: inherit;
 			& + figcaption {
 				font-size: @fontSizeSm;
 				text-align: center;
 				line-height: @fontSizeSm;
 				color: @secondary;
+				margin-bottom: 0;
 			}
 		}
 	}

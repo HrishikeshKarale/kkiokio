@@ -35,10 +35,35 @@ require("./database/dbConnection");
 // 	}
 // });
 
+// const ALLOWED_ORIGIN = ["https://localhost:8080", "https://www.kkiokio.com", "https://kkiokio.com"];
+
+// const corsOptions = {
+// 	origin: function (origin, callback) {
+// 		if (ALLOWED_ORIGIN.indexOf(origin) !== -1) {
+// 			return callback(null, true)
+// 		} else {
+// 			return callback(new Error('Not allowed by CORS'))
+// 		}
+// 	}
+// }
 
 const app = express();
+app.use(cors(corsFunc));
 
-app.use(cors());
+// app.use(cors({
+// 	origin: ["http:localhost:8080/contact", "https://www.kkiokio.com"],
+// 	methods: ["POST", "GET"],
+// 	allowedHeaders: ["Content-Type", "Authorization", "origin"],
+// 	exposedHeaders: ["Content-Type"],
+// 	preflightContinue: true
+// }));
+// app.options('*', cors({
+// 	origin: ["http:localhost:8080/contact", "https://www.kkiokio.com"],
+// 	methods: ["POST", "GET"],
+// 	allowedHeaders: ["Content-Type", "Authorization", "origin"],
+// 	exposedHeaders: ["Content-Type"],
+// 	preflightContinue: true
+// }))
 const router = express.Router();
 
 router.use(
@@ -49,7 +74,6 @@ router.use(
 router.use(bodyParser.json());
 
 router.all('/*', corsFunc);
-
 router.route('/')
 	.get((req, res) => {
 		res.status(200).send('server is working (get)');

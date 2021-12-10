@@ -22,6 +22,7 @@ const controller = async (req, res) => {
 		message: req.body.message,
 	}
 
+
 	// // set data
 	// const contact = new connectRequest({
 	// 	name: name,

@@ -967,15 +967,18 @@ article {
     width: 100%;
     align-self: center;
     gap: @spaceXl;
-      margin-top: @spaceXl;
+    margin-top: @spaceXl;
+    padding: @spaceXl 0 0 0;
+    .backgroundColor(@primary, 8%, @spaceXl);
+    .boxShadow(@one);
     & + .multipleImg {
       margin-top: @spaceXl;
     }
     & > .vueImg {
+      margin: @spaceXl 0 !important;
       min-height: 320px;
-      min-width: 320px;
-      max-width: fit-content;
       max-height: 480px;
+      flex: 1 0 320px;
     }
   }
 

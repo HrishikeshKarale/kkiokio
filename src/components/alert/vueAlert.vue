@@ -2,13 +2,14 @@
 	<div v-if="!close" :class="['vueAlert', type]">
 		<span :class="[type, icon]" />
 		<div :class="type">
-			<h5>
+			<h4>
 				<b>{{ type == "danger" ? code + " - " : "" }} {{ message }}</b>
-			</h5>
+			</h4>
 			<p v-text="description" />
 		</div>
 		<!-- <template v-if="dismissible"> -->
 		<vue-button
+			v-if="dismissible"
 			tag="closeAlertButton"
 			icon="fas fa-times"
 			category="icon"
@@ -153,8 +154,9 @@
 			flex-direction: column;
 			min-width: 280px;
 			max-width: 4800px;
-			& > h5 {
-				margin: 0 !important;
+			& > h4 {
+				margin: @spaceMd !important;
+				margin-left: 0 !important;
 				margin-top: @spaceLg !important;
 				& + p {
 					margin-bottom: @spaceMd !important;
@@ -169,7 +171,7 @@
 			// background-color: @dangerBackground;
 			.boxShadow(@four, @dangerText, @modalZ);
 
-			h5,
+			h4,
 			span {
 				color: @dangerText;
 			}
@@ -179,7 +181,7 @@
 			// background-color: @warningBackground;
 			.boxShadow(@four, @warningText, @modalZ);
 
-			h5,
+			h4,
 			span {
 				color: @warningText;
 			}
@@ -189,7 +191,7 @@
 			// background-color: @successBackground;
 			.boxShadow(@four, @successText, @modalZ);
 
-			h5,
+			h4,
 			span {
 				color: @successText;
 			}
@@ -199,7 +201,7 @@
 			// background-color: @infoBackground;
 			.boxShadow(@four, @infoText, @modalZ);
 
-			h5,
+			h4,
 			span {
 				color: @infoText;
 			}

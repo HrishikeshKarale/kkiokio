@@ -23,7 +23,7 @@ const selectModel = (modelName, payload = false) => {
 
 	switch (modelName) {
 		case "user":
-			if (payload.target) {
+			if (payload) {
 				dataModel = new users(payload);
 			} else {
 				dataModel = users;

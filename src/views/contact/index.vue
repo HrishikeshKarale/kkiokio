@@ -217,7 +217,7 @@ Rochester, NY 14623."
 			const email = ref("");
 			const phone = ref("");
 			const comment = ref("");
-			const options = ["phone", "email"];
+			const options = ["PHONE", "EMAIL"];
 			const preffered = ref(options[1]);
 			const CONFIG = {
 				"Content-Type": "text/plain",
@@ -235,7 +235,7 @@ Rochester, NY 14623."
 				AXIOS.post(
 					" https://us-central1-portfolio-website-689b4.cloudfunctions.net/router/api/notification/email",
 					{
-						target: "user",
+						target: "contactForm",
 						name: sender.value,
 						subject: "Kkiokio.com Contact Form",
 						email: email.value,
@@ -243,14 +243,10 @@ Rochester, NY 14623."
 						preffered: preffered.value,
 						source: "KKIOKIO",
 						message: comment.value
-					},
-					{
-						"Content-Type": "text/plain",
-						"Access-Control-Allow-Origin": "*"
 					}
 				)
 					.then(response => {
-						console.log("sendMail successful");
+						// console.log("sendMail successful");
 						EMITTER.emit("alert", {
 							type: "success",
 							message: "Email sent to Kkiokio(Hrishikesh Karale)",

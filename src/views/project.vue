@@ -10,7 +10,7 @@
 			The projects have vbeen divided into categories to make it easy for
 			browsing.
 		</p>
-		<nav class='projectNav' v-show="$route.params.type">
+		<nav class="projectNav" v-show="$route.params.type">
 			<ol>
 				<template v-for="projects in projectList" :key="projects.type">
 					<li>
@@ -26,13 +26,16 @@
 			title="Filter Projects"
 			:filters="filterList"
 			:selected="propFilter"
-			@updateFilters="(val) => (propFilter = val)"
+			@updateFilters="val => (propFilter = val)"
 		/>
 		<!-- display redult of the query/prop -->
 		<template v-for="projects in projectList" :key="projects.type">
 			<template
 				v-if="
-				$route.params.type? $route.params.type === projects.type : Object.keys(propFilter).length == 0 || isPresent(projects.value,'tag')
+					$route.params.type
+						? $route.params.type === projects.type
+						: Object.keys(propFilter).length == 0 ||
+						  isPresent(projects.value, 'tag')
 				"
 			>
 				<card-scroller
@@ -40,12 +43,14 @@
 					:title="projects.type"
 					:auto-scroll="!autoScroll"
 					:tag="projects.type"
-					:vertical="$route.params.type? true: false"
+					:vertical="$route.params.type ? true : false"
 				>
 					<showcase
 						v-for="project in projects.value"
 						v-show="
-							Object.keys(propFilter).length == 0 || (Object.keys(propFilter).length > 0 && filterCards(project,'tag'))
+							Object.keys(propFilter).length == 0 ||
+								(Object.keys(propFilter).length > 0 &&
+									filterCards(project, 'tag'))
 						"
 						:key="project.id"
 						:project="project"
@@ -75,28 +80,32 @@
 		components: {
 			vueFilter,
 			showcase,
-			cardScroller,
+			cardScroller
 		},
 		methods: {
-			isPresent: function (projects, category) {
-				if(Object.keys(this.propFilter).length > 0) {
+			isPresent: function(projects, category) {
+				if (Object.keys(this.propFilter).length > 0) {
 					const categoryIndex = this.propFilter.type.indexOf(category);
 					if (categoryIndex !== -1) {
-						return projects.some((project) => {
-							return project.tags.some((filter) => this.propFilter.value[categoryIndex].includes(filter));
+						return projects.some(project => {
+							return project.tags.some(filter =>
+								this.propFilter.value[categoryIndex].includes(filter)
+							);
 						});
 					}
 				}
 			}, //isPresent
 
-			filterCards: function (project, category) {
-				if(Object.keys(this.propFilter).length > 0) {
+			filterCards: function(project, category) {
+				if (Object.keys(this.propFilter).length > 0) {
 					const categoryIndex = this.propFilter.type.indexOf(category);
 					if (categoryIndex !== -1) {
-							return project.tags.some((filter) => this.propFilter.value[categoryIndex].includes(filter));
+						return project.tags.some(filter =>
+							this.propFilter.value[categoryIndex].includes(filter)
+						);
 					}
 				}
-			}, //isPresent
+			} //isPresent
 		}, //methods
 		data() {
 			//vueFilter
@@ -105,8 +114,8 @@
 				type: ["category", "tag"],
 				options: [
 					this.$store.getters["contentModule/categoryList"],
-					this.$store.getters["contentModule/uniqueTagList"],
-				],
+					this.$store.getters["contentModule/uniqueTagList"]
+				]
 			};
 			//cardScroll
 			const autoScroll = this.booleanTrue;
@@ -114,7 +123,7 @@
 			return {
 				propFilter,
 				filterList,
-				autoScroll,
+				autoScroll
 				// vertical
 			};
 		},
@@ -128,9 +137,9 @@
 			...mapGetters({
 				uniqueTags: "contentModule/uniqueTagList",
 				categoryList: "contentModule/categoryList",
-				projectList: "contentModule/getProjects",
-			}),
-		}, //computed
+				projectList: "contentModule/getProjects"
+			})
+		} //computed
 	};
 </script>
 
@@ -141,22 +150,22 @@
 	.work {
 		& > nav.projectNav {
 			display: flex;
-		&.scroll {
-			flex-direction: row-reverse;
-		position: sticky;
-		top: 0;
-		left: 0;
-			z-index: @headerZ;
-			& > ol {
-				gap: @spaceSm;
-				& > li {
-					font-size: @fontSizeSm;
-					& > a {
-						padding: @spaceXs @spaceMd;
+			&.scroll {
+				flex-direction: row-reverse;
+				position: sticky;
+				top: 0;
+				left: 0;
+				z-index: @headerZ;
+				& > ol {
+					gap: @spaceSm;
+					& > li {
+						font-size: @fontSizeSm;
+						& > a {
+							padding: @spaceXs @spaceMd;
+						}
 					}
 				}
 			}
-		}
 			& > ol {
 				flex-flow: row nowrap;
 				gap: @spaceXl;
@@ -176,6 +185,17 @@
 			align-self: flex-end;
 			& > div {
 				border-radius: 50%;
+			}
+		}
+		& > .cardScroller {
+			.showcase {
+				.vueImg {
+					height: 240px !important;
+					& > img {
+						max-height: 240px !important;
+						max-width: 240px !important;
+					}
+				}
 			}
 		}
 	}

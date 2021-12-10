@@ -21,7 +21,7 @@ export default function notify(alertID: SourceType[] = [{parent: null, child: nu
     for (let index = 0; index < alertObject.length; index++) {
       const element: AlertObjectType = alertObject[index];
       if (alertID.parent === element.src.parent && alertID.child === element.src.child) {
-        console.log("ALERT: ", element, alertID);
+        // console.log("ALERT: ", element, alertID);
         switch (type) {
           case "error":
             element.error = message;
