@@ -1,21 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-// mongoose db connection
-// const mongoose = require("mongoose");
-// const CONNECTION = mongoose.connection;
 // import a model
-const connectRequest = require("../schemas/contact/index");
+const contactRequest = require("../schemas/contact/index");
 const users = require("../schemas/user/index");
 // import queryBuilder
 const queryBuilder = require("../queryBuilder/index")
-
-// interface userType {
-// 	name: String,
-// 	to: String,
-// 	email: String,
-// 	phoneNumber: Number,
-// 	message: String,
-// 	preffered: enum
-// }
 
 // SET MODEL
 const selectModel = (modelName, payload = false) => {
@@ -31,9 +19,9 @@ const selectModel = (modelName, payload = false) => {
 			break;
 		case "contactForm":
 			if (payload) {
-				dataModel = new connectRequest(payload);
+				dataModel = new contactRequest(payload);
 			} else {
-				dataModel = connectRequest;
+				dataModel = contactRequest;
 			}
 			break;
 	}

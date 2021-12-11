@@ -2,11 +2,6 @@
 require("dotenv").config();
 const sendMail = require('../../../js/sendMail/index');
 const sendTo = process.env.SENDER_EMAIL;
-// mongoose db connection
-// const mongoose = require("mongoose");
-// const CONNECTION = mongoose.connection;
-// import a model
-// const connectRequest = require("../../../database/schemas/contact/index");
 const { saveQuery } = require("../../../database/query/index");
 
 
@@ -18,20 +13,10 @@ const controller = async (req, res) => {
 		subject: req.body.subject,
 		email: req.body.email,
 		phoneNumber: req.body.phoneNumber,
+		source: req.body.source,
 		preffered: req.body.preffered,
 		message: req.body.message,
 	}
-
-
-	// // set data
-	// const contact = new connectRequest({
-	// 	name: name,
-	// 	to: to,
-	// 	email: cc,
-	// 	phoneNumber: phoneNumber,
-	// 	message: content,
-	// 	preffered: preffered
-	// });
 
 	// save
 	await saveQuery(data)

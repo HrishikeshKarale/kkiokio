@@ -8,7 +8,6 @@ const corsFunction = (req, res, next) => {
 	// res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	if (req.method === 'OPTIONS') {
-		console.log("HELO");
 		res.status(200).end();
 	} else {
 		// eslint-disable-next-line callback-return

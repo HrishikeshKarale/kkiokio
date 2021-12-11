@@ -219,10 +219,6 @@ Rochester, NY 14623."
 			const comment = ref("");
 			const options = ["PHONE", "EMAIL"];
 			const preffered = ref(options[1]);
-			const CONFIG = {
-				"Content-Type": "text/plain",
-				"Access-Control-Allow-Origin": "*"
-			};
 			// global property
 			const EMITTER: any = inject("$emitter");
 			const AXIOS: any = inject("$axios");
@@ -240,8 +236,8 @@ Rochester, NY 14623."
 						subject: "Kkiokio.com Contact Form",
 						email: email.value,
 						phoneNumber: phone.value,
-						preffered: preffered.value,
 						source: "KKIOKIO",
+						preffered: preffered.value,
 						message: comment.value
 					}
 				)

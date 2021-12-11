@@ -3,9 +3,19 @@
 const mongoose = require('mongoose');
 const MongoDBurl = process.env.MONGO_DB_URL;
 
+// const OPTIONS = {
+// 	useMongoClient: true,
+// 	autoIndex: false,
+// 	autoReconnect: true,
+// 	promiseLibrary: global.Promise
+// };
+
 //Set up default mongoose connection
 // var mongoDB = 'mongodb://127.0.0.1/my_database';
-mongoose.connect(MongoDBurl, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MongoDBurl, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+});
 
 //Get the default connection
 const db = mongoose.connection;
