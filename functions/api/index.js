@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const express = require("express");
-const twilioRoutes = require("./twilio/index");
-const authenticateRoutes = require("./authentication/index");
-const notificationRoutes = require("./notification/index");
+const twilioRoute = require("./twilio/index");
+const productRoute = require("./product/index");
+const authenticateRoute = require("./authentication/index");
+const notificationRoute = require("./notification/index");
 
 //handle request made to api/authenticate
 const route = express.Router();
 
-route.use("/api", twilioRoutes);
-route.use("/api", notificationRoutes);
-route.use("/api", authenticateRoutes);
+route.use("/api", twilioRoute);
+route.use("/api", productRoute);
+route.use("/api", notificationRoute);
+route.use("/api", authenticateRoute);
 route.get("/api", (req, res) => {
-	return res.status(200).send("api is working");
+	return res.status(200).send("api route is working");
 });
 
 module.exports = route;
