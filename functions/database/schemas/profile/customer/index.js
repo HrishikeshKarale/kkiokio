@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 //Define a schema
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const customerSchema = new Schema({
 	name: {
 		type: String,
 		unique: false,
@@ -106,13 +106,13 @@ const userSchema = new Schema({
 });
 
 // virtual
-userSchema.virtual('age').get(function () {
+customerSchema.virtual('age').get(function () {
 	const time = Math.abs(new Date() - this.DOB);
 	// return days
 	return Math.ceil(time / (1000 * 60 * 60 * 24));
 });
 
-userSchema.virtual('firstName').get(function () {
+customerSchema.virtual('firstName').get(function () {
 	let firstName = this.name;
 	if (firstName.includes(' ')) {
 		firstName = firstName.split(' ')[0];
@@ -120,7 +120,7 @@ userSchema.virtual('firstName').get(function () {
 	return firstName;
 });
 
-userSchema.virtual('lastName').get(function () {
+customerSchema.virtual('lastName').get(function () {
 	let lastName = this.name;
 	if (lastName.includes(' ')) {
 		lastName = lastName.split(' ')[1];
@@ -128,7 +128,4 @@ userSchema.virtual('lastName').get(function () {
 	return lastName;
 });
 
-// Compile model from schema
-const userModel = mongoose.model('user', userSchema);
-
-module.exports = userModel;
+module.exports = customerSchema;

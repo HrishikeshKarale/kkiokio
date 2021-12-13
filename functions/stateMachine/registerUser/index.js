@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 require("dotenv").config();
+const PROFILE = process.env.MONGO_DB_PROFILE;
 const sendSMS = require('../../js/sendSMS/index');
 const sendMail = require('../../js/sendMail/index');
 const generateOTP = require('../../js/generateOTP/index');
@@ -143,7 +144,8 @@ const machine = {
 					this.changeState('COMPLETED');
 					this.user.email.verified = true;
 					const DATA = {
-						target: "user",
+						database: PROFILE,
+						collection: "customer",
 						name: this.user.name,
 						email: {
 							value: this.user.email.id,

@@ -98,7 +98,4 @@ medicineSchema.virtual("Price").get(function () {
 	return `₹ ${this.MRP}/-`;
 });
 
-// Compile model from schema
-const medicineModel = mongoose.model('medicine', medicineSchema);
-
-module.exports = medicineModel;
+module.exports = medicineSchema;

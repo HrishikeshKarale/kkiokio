@@ -9,7 +9,9 @@ const apiRoute = require("./api");
 const corsFunc = require("./cors");
 
 // connect to db
-require("./database/dbConnection");
+const {mongoConnect} = require("./database/dbConnection.js");
+mongoConnect();
+
 
 const app = express();
 app.use(cors(corsFunc));

@@ -2,12 +2,14 @@
 require("dotenv").config();
 const sendMail = require('../../../js/sendMail/index');
 const sendTo = process.env.SENDER_EMAIL;
+const OTHERS = process.env.MONGO_DB_OTHERS;
 const { saveQuery } = require("../../../database/query/index");
 
 
 const controller = async (req, res) => {
 	const data = {
-		target: req.body.target,
+		database: OTHERS,
+		collection: "contactRequest",
 		to: sendTo,
 		name: req.body.name,
 		subject: req.body.subject,
