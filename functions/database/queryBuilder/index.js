@@ -24,6 +24,11 @@ const queryBuilder = (query, payload) => {
 		}
 	}
 
+	// SKIP
+	if (payload.skip) {
+		query.skip(payload.skip);
+	}
+
 	// LIMIT
 	if (payload.limit) {
 		query.limit(payload.limit);

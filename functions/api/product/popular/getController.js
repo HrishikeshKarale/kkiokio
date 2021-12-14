@@ -10,7 +10,7 @@ const controller = async (req, res) => {
 	await findQuery({
 		database: PRODUCT_CATALOGUE,
 		collection: PRODUCT,
-		limit: req.body.limit ? req.body.limit : 12
+		limit: req.params.limit ? req.params.limit : 12
 	})
 		.then(result => {
 			return res.status(200).send({
@@ -19,7 +19,7 @@ const controller = async (req, res) => {
 				result: result
 			});
 		})
-		.catch(error => res.status(400).send({
+		.catch(() => res.status(400).send({
 			status: false,
 			message: "something went wrong"
 		}));

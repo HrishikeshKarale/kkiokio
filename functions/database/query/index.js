@@ -102,10 +102,18 @@ const saveQuery = function (payload) {
 // 	return contact.insertMany(payload.data);
 // };
 
+// COUNT
+const CountQuery = async function (payload) {
+	// set data
+	const dataModel = selectModel(payload.database, payload.collection,);
+
+	return dataModel.countDocuments(payload.query);
+};
+
 // FIND
 const findQuery = async function (payload) {
 	// set data
-	const dataModel = selectModel(payload.database, payload.collection,);
+	const dataModel = selectModel(payload.database, payload.collection);
 
 	let QUERY;
 	switch (payload.type) {
@@ -163,6 +171,7 @@ const updateQuery = function (payload) {
 }
 
 module.exports = {
+	CountQuery,
 	saveQuery,
 	// insertQuery,
 	findQuery,
