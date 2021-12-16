@@ -63,7 +63,7 @@ const findQuery = function (payload) {
 			QUERY = dataModel.findOneAndReplace(payload.query);
 			break;
 		case "findOneAndUpdate":
-			QUERY = dataModel.findOneAndUpdate(payload.query);
+			QUERY = dataModel.findOneAndUpdate(payload.query, payload.update);
 			break;
 		default:
 			QUERY = dataModel.find(payload.query);

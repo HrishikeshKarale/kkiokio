@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-// const sendSMS = require('../../js/sendSMS/index');
+require("dotenv").config();
+const CUSTOMER = process.env.MONGO_DB_CUSTOMER;
+const PROFILE = process.env.MONGO_DB_PROFILE;
 const zipCode = require('../../js/zipCode/index');
+const isValidDate = require('../../js/validate/date');
+// query
+const { findQuery } = require("../../database/query/index");
 
 let reply;
 
@@ -11,7 +16,6 @@ const machine = {
 	},
 	profile: {
 		DOB: '',
-		COUNTER: 3,
 		gender: '',
 		address: {
 			type: '',
@@ -39,22 +43,25 @@ const machine = {
 		},
 		REGISTER_DOB: {
 			validateDOB: async function (payload) {
-				const datePattern = new RegExp('^(((0?[1-9]|1[012])/(0?[1-9]|1d|2[0-8])|(0?[13456789]|1[012])/(29|30)|(0?[13578]|1[02])/31)/(19|[2-9]d)d{2}|0?2/29/((19|[2-9]d)(0[48]|[2468][048]|[13579][26])|(([2468][048]|[3579][26])00)))$');
-				const reg = datePattern.test(payload.message);
 				let delimiter = ' ';
-				let date, month, year;
+				// date, month, year;
+
+				if (payload.message.includes('/')) {
+					delimiter = '/'
+				} else if (payload.message.includes('.')) {
+					delimiter = '.'
+				} else if (payload.message.includes('-')) {
+					delimiter = '-'
+				}
+				[date, month, year] = payload.message.split(delimiter);
+				const DOB = month + "/" + date + "/" + year;
+				const reg = isValidDate(DOB);
+
+				// const reg = datePattern.test(DOB);
 				switch (reg) {
 					case true:
-						if (payload.message.index('/')) {
-							delimiter = '/'
-						} else if (payload.message.index('.')) {
-							delimiter = '.'
-						} else if (payload.message.index('-')) {
-							delimiter = '-'
-						}
-						[date, month, year] = payload.message.split(delimiter);
 						this.changeState('REGISTER_GENDER');
-						state.profile.DOB = new Date(year, Number(month) - 1, date);
+						this.profile.DOB = new Date(year, month - 1, date);
 						reply = `*DOB ${payload.message} added successfully*\n\nPlease select your Gender\n1. *M*ale\n2. *F*emale`;
 						break;
 					case false:
@@ -75,14 +82,14 @@ const machine = {
 					case "M":
 					case "MALE":
 					case GENDER.includes("MALE"):
-						state.profile.gender = "male";
+						this.profile.gender = "male";
 						exists = true;
 						break;
 					case "2":
 					case "F":
 					case "FEMALE":
 					case GENDER.includes("FEMALE"):
-						state.profile.gender = "female";
+						this.profile.gender = "female";
 						exists = true;
 						break;
 					default:
@@ -90,7 +97,7 @@ const machine = {
 				}
 				if (exists) {
 					this.changeState('REGISTER_ADDRESS');
-					reply = `You have successfully registered as a *${state, profile.gender}.*,\n\n Lets move ahead to Entering your address.\nPlease select your type of residence.\n1. House\n2. Apartment.`;
+					reply = `You have successfully registered as a *${this.profile.gender}.*,\n\n Lets move ahead to Entering your address.\nPlease select your type of residence.\n1. House\n2. Apartment.`;
 				}
 			}
 		},
@@ -103,14 +110,14 @@ const machine = {
 					case "H":
 					case "HOUSE":
 					case RESIDENCE.includes("HOUSE"):
-						state.profile.address.type = "house";
+						this.profile.address.type = "house";
 						exists = true;
 						break;
 					case "2":
 					case "A":
 					case "APARTMENT":
 					case RESIDENCE.includes("APARTMENT"):
-						state.profile.address.type = "apartment";
+						this.profile.address.type = "apartment";
 						exists = true;
 						break;
 					default:
@@ -118,49 +125,54 @@ const machine = {
 				}
 				if (exists) {
 					this.changeSubState('residenceTypeVerified');
-					reply = `what is your *${state.profile.address.type}* number?`;
+					reply = `what is your *${this.profile.address.type}* number?`;
 				}
 			},
 			residenceNumber: function (payload) {
-				state.profile.address.houseOrAptNumber = payload.message;
+				this.profile.address.houseOrAptNumber = payload.message;
 				this.changeSubState('residenceNumberAdded');
 				reply = `Please enter closest landmark.`;
 			},
 			residenceLandmark: function (payload) {
-				state.profile.address.landmark = payload.message;
+				this.profile.address.landmark = payload.message;
 				this.changeSubState('landmarkAdded');
 				reply = `Please enter Your address(Line1/2)`;
 			},
 			residenceAddress1: function (payload) {
-				state.profile.address.address1 = payload.message;
+				this.profile.address.address1 = payload.message;
 				this.changeSubState('addressLine1Added');
 				reply = `Please enter Your address(Line2/2)`;
 			},
 			residenceAddress2: function (payload) {
-				state.profile.address.address2 = payload.message;
+				this.profile.address.address2 = payload.message;
 				this.changeSubState('addressLine2Added');
-				reply = `Please enter Your address(Line1/2)`;
+				reply = `Please enter Your pin Code`;
 			},
 			zipCode: async function (payload) {
 				let exists = true;
 				await zipCode("search", payload.message)
-					.then((response) => {
+					.then(async (response) => {
 						const ZIPCODE = payload.message;
 						const POSSIBLECITIES = [...new Set(response.data.results[ZIPCODE].map(element => element.city))];
-						state.profile.address.zipCode.cities = POSSIBLECITIES;
+						this.profile.address.zipCode.cities = POSSIBLECITIES;
 
 						const CITYCOUNTER = POSSIBLECITIES.length;
 						// multiple cities have same zip code
 						if (CITYCOUNTER > 1) {
 							this.changeSubState('selectCity');
 							let COUNTER = 1;
-							reply = `The selected pin code is *${ZIPCODE}*.\n\nPlease select one of the following cities:${COUNTER <= CITYCOUNTER ? '\n' + COUNTER + ' ' + POSSIBLECITIES[(COUNTER++) - 1] : ''} `;
+							reply = `The selected pin code is *${ZIPCODE}*.\n\nPlease select one of the following cities/nearest post office:`;
+							POSSIBLECITIES.forEach(possible => {
+								reply += '\n' + COUNTER++ + ' ' + possible;
+							});
 						} else if (CITYCOUNTER === 1) {
 							// only one city have same zip code
 							// address task completed
-							state.profile.address.city = POSSIBLECITIES.pop();
-							this.changeState('COMPLETE');
-							reply = `The pin code is associated with the following info.\n\npin code: ${ZIPCODE} \ncity: ${response.data.results[ZIPCODE][0].city} \nprovince: ${response.data.results[ZIPCODE][0].province} \nstate: ${response.data.results[ZIPCODE][0].state}.\n\nWould you like to set up a payment method?`
+							this.profile.address.city = POSSIBLECITIES.pop();
+
+							reply = `The pin code is associated with the following info.\n\npin code: ${ZIPCODE} \ncity/nearest post office: ${response.data.results[ZIPCODE][0].city} \nprovince: ${response.data.results[ZIPCODE][0].province} \nstate: ${response.data.results[ZIPCODE][0].state}.\n\n`
+
+							reply += await this.updateUserProfile(payload.from.slice(-10));
 						} else {
 							// zip not found
 							exists = false;
@@ -168,18 +180,18 @@ const machine = {
 						}
 
 						if (exists) {
-							state.profile.address.zipCode.value = ZIPCODE;
-							state.profile.address.province = response.data.results[ZIPCODE][0].province;
-							state.profile.address.state = response.data.results[ZIPCODE][0].state;
+							this.profile.address.zipCode.value = ZIPCODE;
+							this.profile.address.province = response.data.results[ZIPCODE][0].province;
+							this.profile.address.state = response.data.results[ZIPCODE][0].state;
 						}
 
 						return {
 							status: true,
 							result: {
 								zipCode: ZIPCODE,
-								city: state.profile.address.city,
-								procvince: rstate.profile.address.procvince,
-								state: state.profile.address.state
+								city: this.profile.address.city,
+								province: this.profile.address.procvince,
+								state: this.profile.address.state
 							}
 						}
 					})
@@ -188,20 +200,21 @@ const machine = {
 						console.error("ERROR: ", error);
 					});
 			},
-			cityPicker: function (payload) {
+			cityPicker: async function (payload) {
 				const CITY = payload.message.toUpperCase();
-				const CITIES = state.profile.address.zipCode.cities;
+				const CITIES = this.profile.address.zipCode.cities;
 				let exists = false;
 				for (let i = 1; i <= CITIES.length; i += 1) {
-					if (CITY === i) {
+					if (Number(CITY) === i) {
 						exists = true;
-						state.profile.address.city = CITIES[i - 1];
-						reply = `You have selected *${CITIES[i - 1]}* as your city.\n\nWould you like to set up a payment method?`;
-						this.changeState('COMPLETE');
+						this.profile.address.city = CITIES[i - 1];
+						reply = `You have selected *${CITIES[i - 1]}* as your city/nearest post office.\n\n`
 					}
 				}
 				if (!exists) {
 					reply = "Incorrect input. Please try again."
+				} else {
+					reply += await this.updateUserProfile(payload.from.slice(-10));
 				}
 			}
 		},
@@ -211,6 +224,46 @@ const machine = {
 			}
 		}
 	},
+	async updateUserProfile(phoneNumber) {
+		await findQuery({
+			type: "findOneAndUpdate",
+			database: PROFILE,
+			collection: CUSTOMER,
+			query: {
+				"phoneNumber.value": phoneNumber
+			},
+			update: {
+				DOB: this.profile.DOB,
+				gender: this.profile.gender,
+				address: {
+					type: this.profile.address.type,
+					houseOrAptNumber: this.profile.address.houseOrAptNumber,
+					landmark: this.profile.address.landmark,
+					address1: this.profile.address.address1,
+					address2: this.profile.address.address2,
+					zipCode: this.profile.address.zipCode.value,
+					city: this.profile.address.city,
+					province: this.profile.address.province,
+					state: this.profile.address.state,
+					country: this.profile.address.country
+				}
+			}
+		})
+			.then(async () => {
+				this.changeState('COMPLETE');
+				return `Your ${this.profile.address.type} address has been registered as:\nhouse type: ${this.profile.address.houseOrAptNumber}\n${this.profile.address.address1}\n${this.profile.address.address2}\n${this.profile.address.city} - ${this.profile.address.zipCode}\n${this.profile.address.state}\n${this.profile.address.country}.\n\nnearest Landmark: ${this.profile.address.landmark}\nnearest post office: ${this.profile.address.province}\n\nYour Profile has been updated!`;
+				// return res.status(200).send("email sent");
+			})
+			.catch(error => {
+				console.error('CATCH SAVE ERROR: ', error);
+				// return res.status(400).send({
+				// 	status: false,
+				// 	message: "User registeration failed, please try again.",
+				// 	error: error
+				// });
+			});
+	},
+
 	async dispatch(actionName, ...payload) {
 		const actions = this.transitions[this.state.type];
 		const action = actions[actionName];
