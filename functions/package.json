@@ -25,6 +25,7 @@
     "mongodb": "^4.2.0",
     "mongoose": "^6.0.13",
     "nodemailer": "^6.7.1",
+    "razorpay": "^2.8.0",
     "twilio": "^3.68.0"
   },
   "devDependencies": {
