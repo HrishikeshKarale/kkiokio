@@ -1,26 +1,32 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-//Import the mongoose module
 const mongoose = require('mongoose');
-const MongoDBurl = process.env.MONGO_DB_URL;
+require("dotenv").config();
+const mongoDBurl = process.env.MONGO_DB_URL;
+let db = null;
 
-// const OPTIONS = {
-// 	useMongoClient: true,
-// 	autoIndex: false,
-// 	autoReconnect: true,
-// 	promiseLibrary: global.Promise
-// };
+const mongoDisconnect = async () => {
+	if (db) {
+		db.disconect();
+	}
+};
 
-//Set up default mongoose connection
-// var mongoDB = 'mongodb://127.0.0.1/my_database';
-mongoose.connect(MongoDBurl, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
-});
+const mongoConnect = async () => {
 
-//Get the default connection
-const db = mongoose.connection;
+	// connect to MONGO_DB
+	mongoose.connect(mongoDBurl, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	});
 
-//Bind connection to error event (to get notification of connection errors)
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+	//Get the default connection
+	db = mongoose.connection;
 
-module.exports = db;
+	//Bind connection to error event (to get notification of connection errors)
+	db
+		.on('error', console.error.bind(console, 'mongoDB connection error:'))
+		.once('open', () => {
+			console.log('MongoDB running');
+		});
+};
+
+module.exports = { mongoConnect, mongoDisconnect };

@@ -128,7 +128,4 @@ userSchema.virtual('lastName').get(function () {
 	return lastName;
 });
 
-// Compile model from schema
-const userModel = mongoose.model('user', userSchema);
-
-module.exports = userModel;
+module.exports = userSchema;

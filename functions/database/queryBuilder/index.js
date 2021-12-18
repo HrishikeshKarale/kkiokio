@@ -24,6 +24,11 @@ const queryBuilder = (query, payload) => {
 		}
 	}
 
+	// SKIP
+	if (payload.skip) {
+		query.skip(payload.skip);
+	}
+
 	// LIMIT
 	if (payload.limit) {
 		query.limit(payload.limit);
@@ -42,7 +47,7 @@ const queryBuilder = (query, payload) => {
 
 	// SELECT
 	if (payload.select) {
-		const STR = payload.select.join(" ");
+		const STR = payload.select.join(" ") | "*";
 		query.select(STR);
 	}
 	return query;

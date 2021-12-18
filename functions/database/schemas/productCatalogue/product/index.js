@@ -44,7 +44,4 @@ productSchema.virtual("Price").get(function () {
 	return `₹ ${this.MRP}/-`;
 });
 
-// Compile model from schema
-const productModel = mongoose.model('product', productSchema);
-
-module.exports = productModel;
+module.exports = productSchema;

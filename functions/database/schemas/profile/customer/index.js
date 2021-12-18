@@ -91,7 +91,7 @@ const customerSchema = new Schema({
 				type: Boolean,
 				default: false
 			}
-		},
+		}
 	],
 	isAdmin: {
 		type: Boolean,

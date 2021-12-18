@@ -4,12 +4,14 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 //api routes
-const apiRoutes = require("./api");
+const apiRoute = require("./api");
 //cors
 const corsFunc = require("./cors");
 
 // connect to db
-require("./database/dbConnection");
+const {mongoConnect} = require("./database/dbConnection.js");
+mongoConnect();
+
 
 const app = express();
 app.use(cors(corsFunc));
@@ -39,7 +41,7 @@ router.route('/')
 	});
 
 //twilio routes (SMS)
-router.use("/", apiRoutes);
+router.use("/", apiRoute);
 
 // use the Express server to make our application accessible
 app.use(router);

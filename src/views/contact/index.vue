@@ -228,10 +228,12 @@ Rochester, NY 14623."
 			const { alert, alertObject } = notify();
 
 			const sendMail = function() {
+				console.log("called!");
 				AXIOS.post(
-					" https://us-central1-portfolio-website-689b4.cloudfunctions.net/router/api/notification/email",
+					"https://us-central1-portfolio-website-689b4.cloudfunctions.net/router/api/notification/email",
 					{
-						target: "contactForm",
+						database: "others",
+						collection: "contactRequest",
 						name: sender.value,
 						subject: "Kkiokio.com Contact Form",
 						email: email.value,
