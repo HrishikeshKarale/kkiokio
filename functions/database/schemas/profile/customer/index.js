@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+require("dotenv").config();
+const MEDICINE = process.env.MONGO_DB_MEDICINE;
+const PRODUCT = process.env.MONGO_DB_PRODUCT;
 //Require Mongoose
 const mongoose = require('mongoose');
 
@@ -167,7 +170,59 @@ const customerSchema = new Schema({
 			trim: true,
 			default: 'India'
 		}
-	}
+	},
+	cart: [
+		{
+			_Pid: {
+				type: Schema.Types.ObjectId,
+				ref: PRODUCT
+			},
+			_Mid: {
+				type: Schema.Types.ObjectId,
+				ref: MEDICINE
+			},
+			name: {
+				type: String,
+				required: true,
+				unique: true,
+				trim: true
+			},
+			typeOfSell: {
+				type: String,
+				required: false,
+				unique: false,
+				trim: true
+			},
+			category: {
+				type: [String],
+				required: false,
+				unique: false,
+				default: []
+			},
+			manufacturer: {
+				type: String,
+				required: true,
+				unique: false,
+				trim: true
+			},
+			MRP: {
+				type: Number,
+				required: false,
+				unique: false,
+				default: 0
+			},
+			quantity: {
+				type: Number,
+				required: false,
+				unique: false,
+				default: 0
+			},
+			createdOn: {
+				type: Date,
+				default: Date.now
+			}
+		}
+	],
 });
 
 // virtual
