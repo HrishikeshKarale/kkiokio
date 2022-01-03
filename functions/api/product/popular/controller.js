@@ -13,6 +13,7 @@ const controller = async (req, res) => {
 	const skip = req.body.skip ? req.body.skip : 0;
 
 	let queryResult = [];
+	console.log("category", category);
 
 	await findQuery({
 		database: PRODUCT_CATALOGUE,

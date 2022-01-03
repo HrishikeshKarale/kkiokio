@@ -6,7 +6,6 @@ const controller = require("./controller");
 const route = express.Router();
 
 // define the route for logging in an administrator
-// route.get("/popular/:limit?", getController);
-route.post("/popular", controller);
+route.post("/order", controller);
 
 module.exports = route;

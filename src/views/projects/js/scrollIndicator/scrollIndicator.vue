@@ -1,6 +1,6 @@
 <template>
 	<div class="scrollIndicator">
-		<div class="body">
+		<div ref="scrollBody" class="body">
 			<slot />
 		</div>
 		<div v-if="tagOffset.length > 1" class="nav">
@@ -16,198 +16,183 @@
 		</div>
 	</div>
 </template>
-<script>
-	import { debounce } from "@/typeScript/debounce";
 
-	export default {
+<script lang="ts">
+	// vue
+	import { defineComponent, ref, reactive, onMounted } from "vue";
+	// ts
+	import debounce from "@/typeScript/debouncets";
+	import repeatFunctionCall from "@/typeScript/utility/repeatFunctionCall";
+
+	export default defineComponent({
 		name: "ScrollIndicator",
-		mixins: [debounce],
-		data() {
-			//used to calculate the height of header/navigation
-			const headerOffset = null;
-			//saves the sectrion tags used to generate Sub Content navigation links.
-			const tag = [];
-			//stores the tag (section) ad well as the top and bottom pixel location of the tag as well as if its selected or not.
-			const tagOffset = [];
-			//stores height opf the current browser window
-			const windowHeight = null;
-			//stores pixel value above which we select a tag.
-			const windowBuffer = null;
-			//ratio used to calculate window buffer
-			const bufferRatio = 0.24;
-			const prevScrollValue = 0;
-			const wait = 0.5;
-			const articleTag = null;
-			return {
-				headerOffset,
-				tag,
-				tagOffset,
-				windowHeight,
-				windowBuffer,
-				bufferRatio,
-				prevScrollValue,
-				wait,
-				articleTag,
-			};
-		},
-		mounted() {
-			setTimeout(() => {
-				this.articleTag = document.getElementsByTagName("article")[0];
-				// this.goBack();
-				this.initialize();
-				this.headerOffset.scrollTop = 0;
-				this.checkScroll();
-			}, this.wait * 1000);
-		}, //unmounted
-		methods: {
-			scrollableHeader: function (highlight) {
-				if (
-					!document
-						.getElementsByTagName("header")[0]
-						.classList.contains("showNav")
-				) {
-					if (this.prevScrollValue >= highlight) {
-						document.getElementsByTagName("header")[0].classList.remove("mini");
-					} else {
-						document.getElementsByTagName("header")[0].classList.add("mini");
-					}
-				} else {
-						document.getElementsByTagName("header")[0].classList.remove("mini");
-				}
-			}, //scrollableHeader
+		setup() {
+			// used to calculate the height of header/navigation
+			const headerOffset = ref<HTMLElement | null>(null);
+			// saves the sectrion tags used to generate Sub Content navigation links.
+			const tag = ref<HTMLInputElement[]>([]);
+			// stores the tag (section) ad well as the top and bottom pixel
+			// location of the tag as well as if its selected or not.
+			let tagOffset: {
+				top: number;
+				bottom: number;
+				id: string | null;
+				selected: boolean;
+			}[] = reactive([]);
+			// stores height opf the current browser window
+			const windowHeight = ref(0);
+			// stores pixel value above which we select a tag.
+			const windowBuffer = ref(0);
+			// ratio used to calculate window buffer
+			const BUFFERRATIO = 0.24;
+			const WAIT = 2;
 
-			goBack: function () {
-				if (this.articleTag) {
-					const header = this.articleTag.getElementsByTagName("header");
-					const backButton = document.createElement("span");
-					backButton.className += "fas fa-long-arrow-alt-left fa-2x";
-					const backText = document.createElement("span");
-					const linkText = document.createTextNode("Go Back");
-					backText.appendChild(linkText);
-					backButton.appendChild(backText);
-					// backButton.classlist.add("fas fa-circle");
-					// backButton.onclick = this.$router.back();
-					// backButton.href = "http://example.com";
-					// console.log(this.$router);
-					header.appendChild(backButton);
-					// console.log(header);
-				}
-			}, //goBack
+			// mixins
+			const { debounceFunc } = debounce();
 
-			scrollNav: function (highlight) {
+			// eslint-disable-next-line
+			const scrollNav = function(highlight) {
 				const breadcrumElement = document.getElementsByClassName("breadcrums")[0];
-				const projectNavElement = document.getElementsByClassName("projectNav")[0];
-				const filterElement = document.getElementsByClassName("vueFilter")[0];
-				// console.log(projectNavElement);
-				let projectNavOffset = 0
-				if(projectNavElement) {
-					projectNavOffset= projectNavElement.offsetTop;
+				const headerElement = document.getElementsByTagName("header")[0];
+				const projectNavElement = document.getElementsByClassName(
+					"projectNav"
+				)[0] as HTMLElement;
+				const filterElement = document.getElementsByClassName(
+					"vueFilter"
+				)[0] as HTMLElement;
+				//  console.log(projectNavElement);
+				let projectNavOffset = 0;
+				if (projectNavElement) {
+					projectNavOffset = projectNavElement.offsetTop;
 				}
-				let filterOffset = 0
-				if(filterElement) {
-					filterOffset= filterElement.offsetTop;
+				let filterOffset = 0;
+				if (filterElement) {
+					filterOffset = filterElement.offsetTop;
 				}
 				if (highlight > 0) {
-					//breadcrum
+					// breadcrum
 					if (breadcrumElement) {
+						headerElement.classList.add("mini");
 						breadcrumElement.classList.add("scroll");
 					}
-					//projectNav
-					if(projectNavElement && projectNavOffset && highlight>projectNavOffset) {
-						projectNavElement.classList.add("scroll")
+					// projectNav
+					if (
+						projectNavElement &&
+						projectNavOffset &&
+						highlight > projectNavOffset
+					) {
+						projectNavElement.classList.add("scroll");
 					}
-					//filter
-					if(filterElement && filterOffset && highlight>filterOffset) {
-						filterElement.classList.add("scroll")
+					// filter
+					if (filterElement && filterOffset && highlight > filterOffset) {
+						filterElement.classList.add("scroll");
 					}
 				} else {
-					//breadcrum
+					// breadcrum
 					if (breadcrumElement) {
 						breadcrumElement.classList.remove("scroll");
+						headerElement.classList.remove("mini");
 					}
-					//projectNav
-					if(projectNavElement && projectNavOffset && highlight <= projectNavOffset) {
-						projectNavElement.classList.remove("scroll")
+					// projectNav
+					if (
+						projectNavElement &&
+						projectNavOffset &&
+						highlight <= projectNavOffset
+					) {
+						projectNavElement.classList.remove("scroll");
 					}
-					//filter
-					if(filterElement && filterOffset && highlight<filterOffset) {
-						filterElement.classList.remove("scroll")
+					// filter
+					if (filterElement && filterOffset && highlight < filterOffset) {
+						filterElement.classList.remove("scroll");
 					}
 				}
-			}, //scrollNav
+			}; // scrollNav
 
-			checkScroll: function () {
-				const highlight = Math.round(this.headerOffset.scrollTop);
-				// console.log(highlight);
-				this.scrollableHeader(highlight);
-				this.scrollNav(highlight);
-				for (let i = 0; i < this.tag.length; i++) {
-					const tagOffset = this.tagOffset[i];
+			// eslint-disable-next-line
+			const checkScroll = function() {
+				const highlight = Math.round(headerOffset.value!.scrollTop);
+				scrollNav(highlight);
+				for (let i = 0; i < tag.value!.length; i += 1) {
+					const tempTagOffset = tagOffset[i];
 
-					//activate tags depending on the window scroll location and tag top/bottom pixel location within the page.
+					// activate tags depending on the window scroll location
+					// and tag top/bottom pixel location within the page.
 					if (
-						highlight + this.windowBuffer > tagOffset.top &&
-						highlight < tagOffset.bottom
+						highlight + windowBuffer.value > tempTagOffset.top &&
+						highlight < tempTagOffset.bottom
 					) {
-						tagOffset.selected = true;
+						tempTagOffset.selected = true;
 						if (i > 0) {
-							this.tag[i - 1].selected = false;
+							tagOffset[i - 1].selected = false;
+						}
+					} else if (
+						i === tag.value.length &&
+						windowHeight.value + highlight >=
+							tagOffset[tagOffset.length - 1].bottom + 32
+					) {
+						// keep last tag selected when scroll exceeds bottom pixel location
+						tempTagOffset.selected = true;
+						if (i > 1) {
+							console.log(tag.value[i - 1]);
+							tagOffset[i - 1].selected = false;
 						}
 					} else {
-						//keep last tag selected when scroll exceeds bottom pixel location
-						if (
-							i == this.tag.length &&
-							this.windowHeight + highlight >=
-								this.tagOffset[this.tagOffset.length - 1].bottom + 32
-						) {
-							tagOffset.selected = true;
-							if (i > 1) {
-								this.tag[i - 1].selected = false;
-							}
-						} else {
-							tagOffset.selected = false;
-						}
+						tempTagOffset.selected = false;
 					}
 				}
-				this.prevScrollValue = highlight;
-			}, //checkScroll
+			}; // checkScroll
 
-			initialize: function () {
-				this.headerOffset = document.getElementsByClassName("body")[0];
-				const offsetHeader = Array.from(
+			// eslint-disable-next-line
+			const initialize = function() {
+				[headerOffset.value] = document.getElementsByClassName(
+					"enterpriseBody"
+				) as any;
+				const [offsetHeader] = Array.from(
 					document.getElementsByClassName("vueHeader")
-				)[0];
-				this.tag = Array.from(document.getElementsByTagName("section"));
-				this.tag = this.tag.filter((tag) => tag.id != "");
-				const headerOffset = offsetHeader ? offsetHeader.offsetHeight : 0;
-				this.tagOffset = this.tag.map((section) => {
-					return {
-						top: section.offsetTop - headerOffset,
-						bottom: section.offsetTop + section.offsetHeight - headerOffset,
-						id: section.getAttribute("id"),
-						selected: false,
-					};
-				});
-				if (this.tag.length > 1) {
-					this.headerOffset.addEventListener(
+				) as any;
+				tag.value = Array.from(document.getElementsByTagName("section")).filter(
+					element => element.id !== ""
+				) as any;
+				// eslint-disable-next-line
+				const tempHeaderOffset = offsetHeader ? offsetHeader.offsetHeight : 0;
+				tagOffset = tag.value.map(section => ({
+					top: section.offsetTop - tempHeaderOffset,
+					bottom: section.offsetTop + section.offsetHeight - tempHeaderOffset,
+					id: section.getAttribute("id"),
+					selected: false
+				}));
+				if (tag.value.length > 1) {
+					console.log(headerOffset.value);
+					headerOffset.value!.addEventListener(
 						"scroll",
-						this.debounce(this.checkScroll),
+						debounceFunc(checkScroll),
 						{
-							capture: false, // top to bottom bubbling/propogation
-							once: false, //should work only once
+							capture: false, //  top to bottom bubbling/propogation
+							once: false // should work only once
 						}
 					);
-					this.windowHeight = this.headerOffset.offsetHeight;
-					this.windowBuffer = this.windowHeight * this.bufferRatio;
-					this.checkScroll();
+					windowHeight.value = headerOffset.value!.offsetHeight;
+					windowBuffer.value = windowHeight.value * BUFFERRATIO;
+					headerOffset.value!.scrollTop = 0;
+					checkScroll();
 				}
-			}, //initialize
-		}, //methods
-	};
+			}; // initialize
+
+			// repeatFunctionCall(initialize, WAIT);
+			onMounted(() => {
+				setTimeout(initialize, WAIT * 1000);
+			});
+
+			return {
+				tagOffset
+			};
+		}
+	});
 </script>
+
 <style lang="less" scoped>
-	@import (reference) "../../../../Less/customMixins.less";
-	@import (reference) "../../../../Less/customVariables.less";
+	@import (reference) "../../Less/customMixins.less";
+	@import (reference) "../../Less/customVariables.less";
 
 	.scrollIndicator {
 		& > div {
@@ -218,7 +203,7 @@
 
 			&.nav {
 				position: absolute;
-				top: calc(50% + (@header/2));
+				top: calc(50% + (@header / 2));
 				right: @spaceLg;
 				height: fit-content;
 				background-color: @cardBackground;
@@ -245,13 +230,13 @@
 					&:hover,
 					&.active {
 						border-radius: @borderRadius;
-						//active block text;
+						// active block text;
 						& > span:last-child {
 							display: block;
 							position: absolute;
 							top: -@spaceXl - @spaceLg;
 							right: 0;
-							color: @accent;
+							color: @accentColor;
 							padding: 0 @spaceMd;
 							background-color: @cardBackground;
 							border-radius: @borderRadius;

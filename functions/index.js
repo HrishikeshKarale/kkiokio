@@ -12,7 +12,7 @@ const corsFunc = require("./cors");
 const {mongoConnect} = require("./database/dbConnection.js");
 mongoConnect();
 
-
+// express initialisation and cors
 const app = express();
 app.use(cors(corsFunc));
 

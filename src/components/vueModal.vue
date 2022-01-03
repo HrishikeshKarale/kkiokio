@@ -82,45 +82,45 @@
 
 		components: {
 			vueButton,
-			diceLoad,
+			diceLoad
 		}, //data
 
 		props: {
 			title: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			text: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			tag: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			icon: {
 				required: false,
 				type: String,
-				default: null,
+				default: null
 			},
 
 			display: {
 				required: false,
 				type: Boolean,
-				default: false,
+				default: false
 			},
 
 			ctx: {
 				required: false,
 				type: [Function, null],
-				default: null,
-			},
+				default: null
+			}
 		},
 
 		data() {
@@ -130,9 +130,9 @@
 			return {
 				autofocus,
 				isDisabled,
-				form,
+				form
 			}; //return
-		}, //components
+		} //components
 	}; //default
 </script>
 
