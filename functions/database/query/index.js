@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-require("dotenv").config();
+
 const mongoose = require("mongoose");
 const PROFILE = process.env.MONGO_DB_PROFILE;
 const CUSTOMER = process.env.MONGO_DB_CUSTOMER;

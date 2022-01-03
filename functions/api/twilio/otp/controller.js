@@ -3,8 +3,8 @@ const sendSMS = require('../../../js/sendSMS/index');
 const generateOTP = require('../../../js/generateOTP/index');
 
 const controller = (req, res) => {
-	const phoneNumber = req.body.phoneNumber ? req.body.phoneNumber : 8551849510;
-	const otp = req.body.otp ? req.body.otp : generateOTP(4);
+	const phoneNumber = req.body.phoneNumber;
+	const otp = req.body.otp ? req.body.otp : generateOTP(5);
 
 	const message = `Kkiokio.com\nOTP Code: ${otp}`;
 
