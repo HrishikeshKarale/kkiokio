@@ -3,7 +3,7 @@ require("dotenv").config();
 const PRODUCT_CATALOGUE = process.env.MONGO_DB_PRODUCT_CATALOGUE;
 const PRODUCT = process.env.MONGO_DB_PRODUCT;
 const { findQuery } = require("../../../database/query/index");
-const { CountQuery } = require("../../../database/query/index");
+const { countQuery } = require("../../../database/query/index");
 
 
 const controller = async (req, res) => {
@@ -29,7 +29,7 @@ const controller = async (req, res) => {
 			return;
 		})
 		.then(() => {
-			return CountQuery({
+			return countQuery({
 				database: PRODUCT_CATALOGUE,
 				collection: PRODUCT,
 				query: {

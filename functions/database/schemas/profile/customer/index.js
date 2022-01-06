@@ -2,8 +2,19 @@
 require("dotenv").config();
 const MEDICINE = process.env.MONGO_DB_MEDICINE;
 const PRODUCT = process.env.MONGO_DB_PRODUCT;
+const PROFILE = process.env.MONGO_DB_PROFILE;
 //Require Mongoose
+// const PRODUCT_CATALOGUE = process.env.MONGO_DB_PRODUCT_CATALOGUE;
+const productSchema = require("../../productCatalogue/product/index");
+const medicineSchema = require("../../productCatalogue/medicine/index");
+
 const mongoose = require('mongoose');
+let conn = mongoose.connection;
+conn = conn.useDb(PROFILE);
+
+// const { selectModel } = require("../../../query/index");
+// const medicineModel = selectModel(PRODUCT_CATALOGUE, MEDICINE, false);
+// const productModel = selectModel(PRODUCT_CATALOGUE, PRODUCT, false);
 
 //Define a schema
 const Schema = mongoose.Schema;
@@ -175,11 +186,17 @@ const customerSchema = new Schema({
 		{
 			_Pid: {
 				type: Schema.Types.ObjectId,
-				ref: PRODUCT
+				// ref: productModel,
+				ref: conn.model(PRODUCT, productSchema, PRODUCT),
+				unique: true,
+				trim: true
 			},
 			_Mid: {
 				type: Schema.Types.ObjectId,
-				ref: MEDICINE
+				// ref: medicineModel,
+				ref: conn.model(MEDICINE, medicineSchema, MEDICINE),
+				unique: true,
+				trim: true
 			},
 			name: {
 				type: String,

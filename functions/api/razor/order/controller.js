@@ -52,7 +52,7 @@ const controller = async (req, res) => {
 	// 		return;
 	// 	})
 	// 	.then(() => {
-	// 		return CountQuery({
+	// 		return countQuery({
 	// 			database: PRODUCT_CATALOGUE,
 	// 			collection: PRODUCT,
 	// 			query: {

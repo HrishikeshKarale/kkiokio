@@ -17,10 +17,10 @@ const productSchema = require("../schemas/productCatalogue/product/index");
 const medicineSchema = require("../schemas/productCatalogue/medicine/index");
 
 // import queryBuilder
-const queryBuilder = require("../queryBuilder/index")
+const queryBuilder = require("../queryBuilder/index");
 
 // SET MODEL
-const selectModel = (database, collection, payload = false) => {
+const selectModel = function (database, collection, payload = false) {
 	let dataModel, model, conn = mongoose.connection;
 
 	switch (database) {
@@ -84,7 +84,7 @@ const selectModel = (database, collection, payload = false) => {
 	}
 
 	return dataModel;
-}
+};
 
 const saveQuery = function (payload) {
 	// set data
@@ -102,7 +102,7 @@ const saveQuery = function (payload) {
 // };
 
 // COUNT
-const CountQuery = async function (payload) {
+const countQuery = async function (payload) {
 	// set data
 	const dataModel = selectModel(payload.database, payload.collection,);
 
@@ -143,7 +143,7 @@ const findQuery = async function (payload) {
 	// })
 
 	return QUERY.exec();
-}
+};
 
 const deleteQuery = function (payload) {
 	// set data
@@ -155,7 +155,7 @@ const deleteQuery = function (payload) {
 	QUERY = queryBuilder(QUERY, payload)
 
 	return QUERY.exec();
-}
+};
 
 const updateQuery = function (payload) {
 	// set data
@@ -167,10 +167,11 @@ const updateQuery = function (payload) {
 	QUERY = queryBuilder(QUERY, payload)
 
 	return QUERY.exec();
-}
+};
 
 module.exports = {
-	CountQuery,
+	selectModel,
+	countQuery,
 	saveQuery,
 	// insertQuery,
 	findQuery,
