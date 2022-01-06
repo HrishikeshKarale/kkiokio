@@ -8,11 +8,16 @@ const MEDICINE = process.env.MONGO_DB_MEDICINE;
 const PRODUCT = process.env.MONGO_DB_PRODUCT;
 const OTHERS = process.env.MONGO_DB_OTHERS;
 const CONTACT_REQ = process.env.MONGO_DB_CONTACT_REQ;
+const AUTH = process.env.MONGO_DB_AUTH;
 
 // schemas
+// others
 const contactRequestSchema = require("../schemas/others/contactRequest/index");
+const authSchema = require("../schemas/others/authentication/index");
+// profile
 const clientSchema = require("../schemas/profile/client/index");
 const customerSchema = require("../schemas/profile/customer/index");
+// productCtalogue
 const productSchema = require("../schemas/productCatalogue/product/index");
 const medicineSchema = require("../schemas/productCatalogue/medicine/index");
 
@@ -73,6 +78,14 @@ const selectModel = function (database, collection, payload = false) {
 			switch (collection) {
 				case CONTACT_REQ:
 					model = conn.model(CONTACT_REQ, contactRequestSchema, CONTACT_REQ);
+					if (payload) {
+						dataModel = new model(payload);
+					} else {
+						dataModel = model;
+					}
+					break;
+				case AUTH:
+					model = conn.model(AUTH, authSchema, AUTH);
 					if (payload) {
 						dataModel = new model(payload);
 					} else {

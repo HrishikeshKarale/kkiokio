@@ -77,4 +77,4 @@ const authSchema = new Schema({
 	}
 });
 
-module.exports = contactSchema;
+module.exports = authSchema;
