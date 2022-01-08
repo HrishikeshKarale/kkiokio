@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-var-requires */
 const mongoose = require("mongoose");
 const PROFILE = process.env.MONGO_DB_PROFILE;
 const CUSTOMER = process.env.MONGO_DB_CUSTOMER;
@@ -28,12 +28,12 @@ const queryBuilder = require("../queryBuilder/index");
 const selectModel = function (database, collection, payload = false) {
 	let dataModel, model, conn = mongoose.connection;
 
+	conn = conn.useDb(database);
 	switch (database) {
 		case PROFILE:
-			conn = conn.useDb(PROFILE);
 			switch (collection) {
 				case CUSTOMER:
-					model = conn.model(CUSTOMER, customerSchema, CUSTOMER);
+					model = conn.model(collection, customerSchema, collection);
 					if (payload) {
 						dataModel = new model(payload);
 					} else {
@@ -41,7 +41,7 @@ const selectModel = function (database, collection, payload = false) {
 					}
 					break;
 				case CLIENT:
-					model = conn.model(CLIENT, clientSchema, CLIENT);
+					model = conn.model(collection, clientSchema, collection);
 					if (payload) {
 						dataModel = new model(payload);
 					} else {
@@ -52,10 +52,9 @@ const selectModel = function (database, collection, payload = false) {
 			break;
 
 		case PRODUCT_CATALOGUE:
-			conn = conn.useDb(PRODUCT_CATALOGUE);
 			switch (collection) {
 				case MEDICINE:
-					model = conn.model(MEDICINE, medicineSchema, MEDICINE);
+					model = conn.model(collection, medicineSchema, collection);
 					if (payload) {
 						dataModel = new model(payload);
 					} else {
@@ -63,7 +62,7 @@ const selectModel = function (database, collection, payload = false) {
 					}
 					break;
 				case PRODUCT:
-					model = conn.model(PRODUCT, productSchema, PRODUCT);
+					model = conn.model(collection, productSchema, collection);
 					if (payload) {
 						dataModel = new model(payload);
 					} else {
@@ -74,10 +73,9 @@ const selectModel = function (database, collection, payload = false) {
 			break;
 
 		case OTHERS:
-			conn = conn.useDb(OTHERS);
 			switch (collection) {
 				case CONTACT_REQ:
-					model = conn.model(CONTACT_REQ, contactRequestSchema, CONTACT_REQ);
+					model = conn.model(collection, contactRequestSchema, collection);
 					if (payload) {
 						dataModel = new model(payload);
 					} else {
@@ -85,7 +83,7 @@ const selectModel = function (database, collection, payload = false) {
 					}
 					break;
 				case AUTH:
-					model = conn.model(AUTH, authSchema, AUTH);
+					model = conn.model(collection, authSchema, collection);
 					if (payload) {
 						dataModel = new model(payload);
 					} else {
@@ -104,7 +102,7 @@ const saveQuery = function (payload) {
 	const dataModel = selectModel(payload.database, payload.collection, payload);
 
 	// return save promiss
-	return dataModel.save()
+	return dataModel.save();
 };
 
 // // INSERT

@@ -30,9 +30,12 @@ const authSchema = new Schema({
 		trim: true
 	},
 	log: [{
+		loggedOut: {
+			type: Boolean,
+			default: false
+		},
 		token: {
 			type: String,
-			unique: true,
 			required: false,
 			trim: true
 		},
@@ -50,7 +53,7 @@ const authSchema = new Schema({
 		source: {
 			type: String,
 			required: false,
-			enum: ["PHONE", "CREDENTIALS"],
+			enum: ["PHONE", "CREDENTIALS", "FORM"],
 			default: "PHONE"
 		},
 		createdOn: {
@@ -58,6 +61,17 @@ const authSchema = new Schema({
 			default: Date.now
 		}
 	}],
+	phoneNumber: {
+		type: String,
+		unique: true,
+		required: true,
+		validate: {
+			validator: function (v) {
+				return /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(v);
+			},
+			message: '{VALUE} is not a valid 10 digit number!'
+		}
+	},
 	username: {
 		type: String,
 		unique: true,

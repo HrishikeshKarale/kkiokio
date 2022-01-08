@@ -2,7 +2,7 @@
 require("dotenv").config();
 const MEDICINE = process.env.MONGO_DB_MEDICINE;
 const PRODUCT = process.env.MONGO_DB_PRODUCT;
-const PROFILE = process.env.MONGO_DB_PROFILE;
+const PRODUCT_CATALOGUE = process.env.MONGO_DB_PRODUCT_CATALOGUE;
 //Require Mongoose
 // const PRODUCT_CATALOGUE = process.env.MONGO_DB_PRODUCT_CATALOGUE;
 const productSchema = require("../../productCatalogue/product/index");
@@ -10,7 +10,8 @@ const medicineSchema = require("../../productCatalogue/medicine/index");
 
 const mongoose = require('mongoose');
 let conn = mongoose.connection;
-conn = conn.useDb(PROFILE);
+conn = conn.useDb(PRODUCT_CATALOGUE);
+
 
 // const { selectModel } = require("../../../query/index");
 // const medicineModel = selectModel(PRODUCT_CATALOGUE, MEDICINE, false);
@@ -19,11 +20,96 @@ conn = conn.useDb(PROFILE);
 //Define a schema
 const Schema = mongoose.Schema;
 
+const cartSchema = new mongoose.Schema(
+	{
+		_Pid: {
+			type: Schema.Types.ObjectId,
+			// ref: productModel,
+			ref: conn.model(PRODUCT, productSchema, PRODUCT)
+		},
+		_Mid: {
+			type: Schema.Types.ObjectId,
+			// ref: medicineModel,
+			ref: conn.model(MEDICINE, medicineSchema, MEDICINE)
+		},
+		name: {
+			type: String,
+			trim: true
+		},
+		typeOfSell: {
+			type: String,
+			trim: true
+		},
+		category: {
+			type: [String],
+			default: []
+		},
+		manufacturer: {
+			type: String,
+			trim: true
+		},
+		MRP: {
+			type: Number,
+		},
+		quantity: {
+			type: Number,
+		},
+		createdOn: {
+			type: Date,
+			default: Date.now
+		}
+	},
+	{ _id: false, _Pid: false, _Mid: false });
+
+const addressSchema = new mongoose.Schema(
+	{
+		type: {
+			type: String,
+			enum: ["HOUSE", "APARTMENT"],
+		},
+		houseOrAptNumber: {
+			type: String,
+			trim: true
+		},
+		landmark: {
+			type: String,
+			trim: true
+		},
+		address1: {
+			type: String,
+			trim: true
+		},
+		address2: {
+			type: String,
+			trim: true
+		},
+		zipCode: {
+			type: String,
+			trim: true
+		},
+		city: {
+			type: String,
+			trim: true
+		},
+		province: {
+			type: String,
+			trim: true
+		},
+		state: {
+			type: String,
+			trim: true
+		},
+		country: {
+			type: String,
+			trim: true,
+			default: 'India'
+		}
+	},
+	{ _id: false });
+
 const customerSchema = new Schema({
 	name: {
 		type: String,
-		unique: false,
-		required: false,
 		trim: true
 	},
 	email: [
@@ -31,7 +117,6 @@ const customerSchema = new Schema({
 			value: {
 				type: String,
 				unique: true,
-				required: false,
 				validate: {
 					validator: function (v) {
 						return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+/.test(v);
@@ -46,19 +131,22 @@ const customerSchema = new Schema({
 			isVerified: {
 				type: Boolean,
 				default: false
+			},
+			isPrimary: {
+				type: Boolean,
+				default: false
 			}
 		}
 	],
 	username: {
 		type: String,
 		unique: true,
-		required: false,
 		trim: true,
 		validate: {
 			validator: function (v) {
 				return /^(?=.{8,20}$)(?![_.0-9])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/.test(v);
 			},
-			message: '{VALUE} is not a valid password!'
+			message: '{VALUE} is not a valid username!'
 		}
 	},
 	phoneNumber: {
@@ -91,15 +179,6 @@ const customerSchema = new Schema({
 			},
 			value: {
 				type: String,
-				trim: true,
-				maxLength: [20, ' password too long'],
-				minLength: [8, ' password too short'],
-				validate: {
-					validator: function (v) {
-						return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})/.test(v);
-					},
-					message: '{VALUE} is not a valid password!'
-				}
 			},
 			isActive: {
 				type: Boolean,
@@ -113,133 +192,17 @@ const customerSchema = new Schema({
 	},
 	DOB: {
 		type: Date,
-		required: false
 	},
 	gender: {
 		type: String,
-		required: false,
 		enum: ["MALE", "FEMALE"],
 	},
 	address: {
-		type: {
-			type: String,
-			required: false,
-			enum: ["HOUSE", "APARTMENT"],
-		},
-		houseOrAptNumber: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true
-		},
-		landmark: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true
-		},
-		address1: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true
-		},
-		address2: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true
-		},
-		zipCode: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true
-		},
-		city: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true
-		},
-		province: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true
-		},
-		state: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true
-		},
-		country: {
-			type: String,
-			unique: false,
-			required: false,
-			trim: true,
-			default: 'India'
-		}
+		type: addressSchema,
 	},
-	cart: [
-		{
-			_Pid: {
-				type: Schema.Types.ObjectId,
-				// ref: productModel,
-				ref: conn.model(PRODUCT, productSchema, PRODUCT),
-				unique: true,
-				trim: true
-			},
-			_Mid: {
-				type: Schema.Types.ObjectId,
-				// ref: medicineModel,
-				ref: conn.model(MEDICINE, medicineSchema, MEDICINE),
-				unique: true,
-				trim: true
-			},
-			name: {
-				type: String,
-				required: true,
-				unique: true,
-				trim: true
-			},
-			typeOfSell: {
-				type: String,
-				required: false,
-				unique: false,
-				trim: true
-			},
-			category: {
-				type: [String],
-				required: false,
-				unique: false,
-				default: []
-			},
-			manufacturer: {
-				type: String,
-				required: true,
-				unique: false,
-				trim: true
-			},
-			MRP: {
-				type: Number,
-				required: false,
-				unique: false,
-				default: 0
-			},
-			quantity: {
-				type: Number,
-				required: false,
-				unique: false,
-				default: 0
-			},
-			createdOn: {
-				type: Date,
-				default: Date.now
-			}
-		}
-	],
+	cart: {
+		type: [cartSchema]
+	},
 });
 
 // virtual

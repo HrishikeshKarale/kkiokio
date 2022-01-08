@@ -17,6 +17,7 @@ const controller = async (req, res) => {
 	const email = req.body.email;
 	const password = req.body.password;
 	const phoneNumber = req.body.phoneNumber;
+	const OTP = req.body.OTP;
 	const query = {};
 	let user, token, sendReponse;
 	if (phoneNumber) {
@@ -34,7 +35,7 @@ const controller = async (req, res) => {
 		.then(async result => {
 			if (result.length === 0) {
 				// when no such user exists
-				res.status(200).send({
+				return res.status(200).send({
 					status: false,
 					message: "No such user found. Please check your redentials"
 				});
@@ -44,7 +45,7 @@ const controller = async (req, res) => {
 				const currentPassword = user.password.find(pass => pass.isActive === true);
 				const passwordIsValid = bcrypt.compareSync(password, currentPassword.value);
 				if (!passwordIsValid) {
-					res.status(401).send({
+					return res.status(401).send({
 						status: false,
 						message: "Incorrect Password"
 					});
@@ -69,7 +70,7 @@ const controller = async (req, res) => {
 			} else {
 				// multiple results found
 				// should not happen
-				res.status(200).send({
+				return res.status(200).send({
 					status: false,
 					message: "Multiple users found. please contact support."
 				});
@@ -93,28 +94,27 @@ const controller = async (req, res) => {
 			}
 			if (result) {
 				// auth record updated as well
-				res.status(200).send(sendReponse);
-			} else {
-				// no matching auth record found
-				const DATA = {
-					database: OTHERS,
-					collection: AUTH,
-					_userID: user._id,
-					name: user.name,
-					log: [{
-						token: token.value,
-						source: "CREDENTIALS"
-					}],
-					username: user.username,
-					image: user.image,
-					isAdmin: user.isAdmin
-				};
-				return await saveQuery(DATA);
+				return res.status(200).send(sendReponse);
 			}
+			// no matching auth record found
+			const DATA = {
+				database: OTHERS,
+				collection: AUTH,
+				_userID: user._id,
+				name: user.name,
+				log: [{
+					token: token.value,
+					source: "CREDENTIALS"
+				}],
+				username: user.username,
+				image: user.image,
+				isAdmin: user.isAdmin
+			};
+			return await saveQuery(DATA);
 		})
 		.then(() => {
 			// auth record updated as well
-			res.status(200).send(sendReponse);
+			return res.status(200).send(sendReponse);
 		})
 		.catch(error => {
 			return res.status(400).send({
